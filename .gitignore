@@ -1,6 +1,12 @@
 # Large local dataset explicitly excluded from the GitHub repository.
 /data/
 
+# Local environments, datasets, and nested Git metadata under the staged project.
+/project/AwareVLN/.conda-*/
+/project/AwareVLN/.venv-*/
+/project/AwareVLN/.git*/
+/project/AwareVLN/llava/data/
+
 # Local Codex configuration, records, caches, and the symlink that exposes them.
 /.codex/
 /.agents
