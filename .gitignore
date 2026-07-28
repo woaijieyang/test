@@ -1,0 +1,6 @@
+# Large local dataset explicitly excluded from the GitHub repository.
+/data/
+
+# Local Codex configuration, records, caches, and the symlink that exposes them.
+/.codex/
+/.agents
