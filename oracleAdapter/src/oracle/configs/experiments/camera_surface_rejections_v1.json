@@ -1,0 +1,29 @@
+{
+  "old_receipt": "outputs/landmark-connectivity/camera-surface-domain-v1/validation.json",
+  "old_receipt_sha256": "cf048dfb41e1cf85aa68765ac8e77030242c01940e314ef19639e5ac9eb81749",
+  "profile": "data/derived/navmeshes/landmark-recast626-mjx-v12/profile.json",
+  "paired_study": "outputs/oracleAdapter/reference-priority-development-v2",
+  "paired_manifest_sha256": "d4b0a65c9bd1291a5bb5d4e96a739a03a90870fcdbc210b9920adf45eca3cc5a",
+  "camera_cpu_seconds_cap": 1800,
+  "retained_prelaunch_failure": "outputs/oracleAdapter/camera-surface-rejections-v1/failure.json",
+  "retained_prelaunch_cpu_charge_seconds": 64,
+  "historical_ast_python": [3, 10],
+  "stage_cpu_seconds_cap": 43200,
+  "cpu_checks_reserved_seconds": 1800,
+  "contexts": [
+    {"scene": "82sE5b5pLXE", "node": "343f046631bb41b1a32a58400bb7df15"},
+    {"scene": "D7N2EKCX4Sj", "node": "6ac9742aa5264ea8a194997121c966c9"},
+    {"scene": "qoiz87JEwZ2", "node": "3d28c5c132ef42808a356be915ede15a"},
+    {"scene": "cV4RVeZvu5T", "node": "acfc7a38863c412bbde815478879ed54"}
+  ],
+  "historical_helper_ast_sha256": {
+    "segment_closest": "3addf79251e87f5ab3e5420d93f139e7d5ebdf696aeb40f447c78c243a39b37c",
+    "triangle_closest": "b6f10e7a06fe107c7008884ef867baab12834114628be48aeedbe39098976e4e",
+    "clip_y": "0af1de2834d8bf15ed55f421b44c8d72bbf4ebad2fe2775b5ba93b5b5772af2c"
+  },
+  "historical_helper_files": {
+    "tests/landmark_diagnostics/bounded_triangle_projection.py": "360263e04160acdadaccae42cb2c73ebf1a261b809ad9b95652bf87eada82369",
+    "tests/landmark_diagnostics/cylinder_contact_height.py": "be6142466330f2b072d8aa6490bf88bc8bcb4c834efee0ee0c3ab7432f9c9fe2"
+  },
+  "scope": "Exactly33historical finite point queries across4preselected camera contexts. No added spatial samples, adopted targets, original-data changes or navigation. Rational certificate checks only the six examined native triangles; camera slab2m/radius0.5m are search-domain definitions, not changed robot parameters."
+}

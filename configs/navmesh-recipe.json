@@ -1,0 +1,77 @@
+{
+  "profile_id": "awarevln-scene-minimal-endpoint9-v2",
+  "agent": {
+    "height": 1.5,
+    "radius": 0.1
+  },
+  "simulator_version": "0.1.7",
+  "reason": "Scene-minimal correction: EU needs only cell_height=.05 (cell_size=.05,regions20); oLB and zs use .025/.05 with regions40 preserving1m2. Both complete endpoints and reference distances pass, with fewer GT projection discrepancies than uniform horizontal refinement. No policy-score selection.",
+  "scenes": {
+    "mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb": {
+      "settings": {
+        "agent_height": 1.5,
+        "agent_max_climb": 0.20000000298023224,
+        "agent_max_slope": 45.0,
+        "agent_radius": 0.10000000149011612,
+        "cell_height": 0.05000000074505806,
+        "cell_size": 0.05000000074505806,
+        "detail_sample_dist": 6.0,
+        "detail_sample_max_error": 1.0,
+        "edge_max_error": 1.2999999523162842,
+        "edge_max_len": 12.0,
+        "filter_ledge_spans": true,
+        "filter_low_hanging_obstacles": true,
+        "filter_walkable_low_height_spans": true,
+        "region_merge_size": 20.0,
+        "region_min_size": 20.0,
+        "verts_per_poly": 6.0
+      },
+      "scene_sha256": "57aef31e1667b6c078b0c722dee83a7e3b616e4f69d0006de5c47cba78507c38",
+      "expected_navmesh_sha256": "b746581fb89742fc0f163335b0ff1b18844aa9b404869441ba098946ef364c23"
+    },
+    "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb": {
+      "settings": {
+        "agent_height": 1.5,
+        "agent_max_climb": 0.20000000298023224,
+        "agent_max_slope": 45.0,
+        "agent_radius": 0.10000000149011612,
+        "cell_height": 0.05000000074505806,
+        "cell_size": 0.02500000037252903,
+        "detail_sample_dist": 6.0,
+        "detail_sample_max_error": 1.0,
+        "edge_max_error": 1.2999999523162842,
+        "edge_max_len": 12.0,
+        "filter_ledge_spans": true,
+        "filter_low_hanging_obstacles": true,
+        "filter_walkable_low_height_spans": true,
+        "region_merge_size": 40.0,
+        "region_min_size": 40.0,
+        "verts_per_poly": 6.0
+      },
+      "scene_sha256": "aa1ff80501ad47ca9505616de05f7d383956154fe2b0b523bae1260cdfca2f23",
+      "expected_navmesh_sha256": "6cca0dbf7bfda45f065d90bea508c01a4ee47d7d7da3776d78c3e212836a000e"
+    },
+    "mp3d/zsNo4HB9uLZ/zsNo4HB9uLZ.glb": {
+      "settings": {
+        "agent_height": 1.5,
+        "agent_max_climb": 0.20000000298023224,
+        "agent_max_slope": 45.0,
+        "agent_radius": 0.10000000149011612,
+        "cell_height": 0.05000000074505806,
+        "cell_size": 0.02500000037252903,
+        "detail_sample_dist": 6.0,
+        "detail_sample_max_error": 1.0,
+        "edge_max_error": 1.2999999523162842,
+        "edge_max_len": 12.0,
+        "filter_ledge_spans": true,
+        "filter_low_hanging_obstacles": true,
+        "filter_walkable_low_height_spans": true,
+        "region_merge_size": 40.0,
+        "region_min_size": 40.0,
+        "verts_per_poly": 6.0
+      },
+      "scene_sha256": "3611ac3b2a2b76bb15ab2623054929a932aa40c03786b3890cb17a73eccc5689",
+      "expected_navmesh_sha256": "49b19e4cc01eb10fd16bf90a69cb95c751ce39216ce168747df84400f99d4e19"
+    }
+  }
+}

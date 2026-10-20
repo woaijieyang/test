@@ -1,0 +1,14 @@
+{
+  "producer": "outputs/oracleAdapter/detail-mesh-control-pRb-Hxp-v1",
+  "producer_manifest_sha256": "d5b9e9464bac2b3800c87b233c18683e1105981ab13fed529c04ed87cf7f11a6",
+  "parent": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "budget_receipt": "outputs/oracleAdapter/soft-duplicate-budget-v1/validation.json",
+  "budget_sha256": "989cc2154b990c01f6d691f66a953e437a01843991205efb040e0daed80dd8ae",
+  "retained_failed_preparation": "outputs/oracleAdapter/prb-detail-scene660-v1",
+  "retained_failed_preparation_seconds": 1200,
+  "information_preservation": "Before generating any point proposal, retain all original targets of official-action-policy tasks. Such tasks remain in the full660 and keep their original action privilege. The changed-target/action rejection gate remains active; no per-navigation-outcome selection.",
+  "scope": "Complete660pRb scene: fixed detail-only mesh candidate, preserve all already-source-clear targets exactly; previously colliding targets may use candidate snap(current) only within original rank0 sphere/camera bounds and float/rational source checks. Preserve source IDs, occurrence order, original heading and information contracts; changed-target tasks with official-action policy are rejected rather than silently changing privileges. Held input positions and all missing positions preserved. No R2R/RxR rerun, copiedPASS, source geometry or physical-gate change, global adoption or push.",
+  "stop": "Any old strictPASS static regression rejects candidate before full motion. Otherwise execute all660 and independently audit. No old strictPASS motion regression plus recovery needed to consider further validation. Hxp detail candidate had0point recovery and is not propagated. No parameter sweeps or per-task method selection.",
+  "resources": "Static preparation1200CPU/wall seconds, one observed idle CPU. Full execution20CPUh within original720CPUh cumulative budget, max32idleCPU workers<=64total, noGPU. Original per-task search/action/physics/source/replay limits unchanged."
+}

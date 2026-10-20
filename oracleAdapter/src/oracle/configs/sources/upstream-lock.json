@@ -1,0 +1,429 @@
+{
+  "status": "FROZEN_REFERENCE_SOURCES_NOT_ALL_PORTED_OR_VALIDATED",
+  "repositories": [
+    {
+      "repository": "https://github.com/facebookresearch/habitat-lab",
+      "commit": "0fb6f43ffe806a8088a171b036336c093bcf604e",
+      "commit_date": "2026-05-07T22:03:47Z",
+      "tree_truncated": false,
+      "files": 889,
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "commit_date": "2026-05-07T22:21:03Z",
+      "tree_truncated": false,
+      "files": 1057,
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/google-research-datasets/RxR",
+      "commit": "d22df5940a0486a42b703cd445937210ce21e9f5",
+      "commit_date": "2023-07-26T19:13:04Z",
+      "tree_truncated": false,
+      "files": 26,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "repository": "https://github.com/hekj/Landmark-RxR",
+      "commit": "6c9c6f5a0313f7c799c5a55538c9540829469031",
+      "commit_date": "2022-01-20T10:50:33Z",
+      "tree_truncated": false,
+      "files": 1,
+      "license": "not supplied in checked repository"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "commit_date": "2023-12-16T20:31:35Z",
+      "tree_truncated": false,
+      "files": 75,
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "commit_date": "2025-01-07T18:53:32Z",
+      "tree_truncated": false,
+      "files": 106,
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "commit_date": "2026-04-27T04:39:02Z",
+      "tree_truncated": false,
+      "files": 242,
+      "license": "MIT"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "commit_date": "2026-09-25T23:25:41Z",
+      "tree_truncated": false,
+      "files": 1267,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "commit_date": "2023-10-31T06:00:57Z",
+      "tree_truncated": false,
+      "files": 145,
+      "license": "MIT"
+    }
+  ],
+  "files": [
+    {
+      "repository": "https://github.com/facebookresearch/habitat-lab",
+      "commit": "0fb6f43ffe806a8088a171b036336c093bcf604e",
+      "path": "habitat-lab/habitat/tasks/nav/shortest_path_follower.py",
+      "sha256": "c24980b22422f7fd51d6bea20e7a26b3cba365d4999864496992b75a628bfe7f",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-lab/0fb6f43ffe806a8088a171b036336c093bcf604e/habitat-lab/habitat/tasks/nav/shortest_path_follower.py"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-lab",
+      "commit": "0fb6f43ffe806a8088a171b036336c093bcf604e",
+      "path": "LICENSE",
+      "sha256": "2d4c3d00d67067461412a2d9a2f3f8b7b9cda62b3db501e4b6844ccf35c949aa",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-lab/0fb6f43ffe806a8088a171b036336c093bcf604e/LICENSE"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-lab",
+      "commit": "0fb6f43ffe806a8088a171b036336c093bcf604e",
+      "path": "examples/vln_reference_path_follower_example.py",
+      "sha256": "b179cb9275690e1ffc0b77e1023b39658cb4cd15f2d6419ddbe84682594fc4bc",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-lab/0fb6f43ffe806a8088a171b036336c093bcf604e/examples/vln_reference_path_follower_example.py"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-lab",
+      "commit": "0fb6f43ffe806a8088a171b036336c093bcf604e",
+      "path": "README.md",
+      "sha256": "49ffbba6a3e459e382aebcc1724a9682ebb3c4eec85df7f6e2aa92ee0eefa8a7",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-lab/0fb6f43ffe806a8088a171b036336c093bcf604e/README.md"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "LICENSE",
+      "sha256": "2d4c3d00d67067461412a2d9a2f3f8b7b9cda62b3db501e4b6844ccf35c949aa",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/LICENSE"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "src/esp/nav/PathFinder.cpp",
+      "sha256": "7c45215a02c0fa4270f8141972a753af781da23fb6f77c4bbef8c13153927d7c",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/src/esp/nav/PathFinder.cpp"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "src_python/habitat_sim/nav/greedy_geodesic_follower.py",
+      "sha256": "4f1957d92ecbc4285bb00f60977e13808fea203ca29acfabd7da8d728eb8dfaa",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/src_python/habitat_sim/nav/greedy_geodesic_follower.py"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "src_python/habitat_sim/agent/controls/controls.py",
+      "sha256": "8f41378ef24fa5c47e677307f5d4c5f9e3af102091b80e8ecdaef2ce6727c157",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/src_python/habitat_sim/agent/controls/controls.py"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "src/esp/nav/GreedyFollower.cpp",
+      "sha256": "9c2424c4e3698f4f96a747e89a1e6c41f5ce2391c3f1b29b4f214936048301c2",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/src/esp/nav/GreedyFollower.cpp"
+    },
+    {
+      "repository": "https://github.com/facebookresearch/habitat-sim",
+      "commit": "57ee4941dc4765240f0f91f70b2c97a919bf9038",
+      "path": "README.md",
+      "sha256": "2422fd0b1c58dc9939fc3e74d6b39415e202df651dd93b87204d3871bfc803b8",
+      "url": "https://raw.githubusercontent.com/facebookresearch/habitat-sim/57ee4941dc4765240f0f91f70b2c97a919bf9038/README.md"
+    },
+    {
+      "repository": "https://github.com/google-research-datasets/RxR",
+      "commit": "d22df5940a0486a42b703cd445937210ce21e9f5",
+      "path": "LICENSE",
+      "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+      "url": "https://raw.githubusercontent.com/google-research-datasets/RxR/d22df5940a0486a42b703cd445937210ce21e9f5/LICENSE"
+    },
+    {
+      "repository": "https://github.com/google-research-datasets/RxR",
+      "commit": "d22df5940a0486a42b703cd445937210ce21e9f5",
+      "path": "README.md",
+      "sha256": "59623f1dcdc55a11246868ac62df860f00837f63e17565bf098f4bba1a6176f0",
+      "url": "https://raw.githubusercontent.com/google-research-datasets/RxR/d22df5940a0486a42b703cd445937210ce21e9f5/README.md"
+    },
+    {
+      "repository": "https://github.com/hekj/Landmark-RxR",
+      "commit": "6c9c6f5a0313f7c799c5a55538c9540829469031",
+      "path": "README.md",
+      "sha256": "f0543b4c053d1292d965622cd9030389c49fc6e8c072e0abeeac15f3640a0a54",
+      "url": "https://raw.githubusercontent.com/hekj/Landmark-RxR/6c9c6f5a0313f7c799c5a55538c9540829469031/README.md"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "LICENSE",
+      "sha256": "807d08b76504c671bc0045f5e70e3600d235e4d78c9da20dac73868784d34a72",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/LICENSE"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "sim2sim_vlnce/Sim2Sim/environments.py",
+      "sha256": "46409e55ce63189eb2181f4080cc56eedcc04d7ef2b7357c239218f4242933b3",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/sim2sim_vlnce/Sim2Sim/environments.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "habitat_extensions/shortest_path_follower.py",
+      "sha256": "babe52b8d65a1b37de8b4f19f5aaf9b9ccbdbcabf80235fd8c0cb35b78bbb004",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/habitat_extensions/shortest_path_follower.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "sim2sim_vlnce/config/graph-oracle_policy.yaml",
+      "sha256": "77373ef313a673c3d0cce5cf5db0068aa9e66f0d3019d0f58967c49195af4feb",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/sim2sim_vlnce/config/graph-oracle_policy.yaml"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "environment.yml",
+      "sha256": "7b0eb471dd8beef3c4ef8c9e3b7b9a103a542fe455ffef7f4313795685593d5d",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/environment.yml"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "README.md",
+      "sha256": "17bf43d422dfda920aa0d972ddce507b648101f5bc485a120b18f935396f6b4e",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/README.md"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "path": "LICENSE",
+      "sha256": "c7c9e93e64f244505d84ba6b0f1d28ab3bd9492b70349727f0f4d0cc4d691200",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/VLN-CE/729d141b2ee10628061ada74dd3a5b9f70faeba5/LICENSE"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "path": "habitat_extensions/shortest_path_follower.py",
+      "sha256": "babe52b8d65a1b37de8b4f19f5aaf9b9ccbdbcabf80235fd8c0cb35b78bbb004",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/VLN-CE/729d141b2ee10628061ada74dd3a5b9f70faeba5/habitat_extensions/shortest_path_follower.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "path": "habitat_extensions/config/vlnce_task.yaml",
+      "sha256": "96c5c4f126ff62d633378e6fd78dbef8859cb92e070d7aea94c33589e88234f4",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/VLN-CE/729d141b2ee10628061ada74dd3a5b9f70faeba5/habitat_extensions/config/vlnce_task.yaml"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "path": "habitat_extensions/task.py",
+      "sha256": "e93993eb16e0d1b747e9b0e217fc18c8e6f24953687409acaf5343e2f8a3c4f2",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/VLN-CE/729d141b2ee10628061ada74dd3a5b9f70faeba5/habitat_extensions/task.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/VLN-CE",
+      "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+      "path": "README.md",
+      "sha256": "33c547d6d6fa8a7deca433c5e441894aad72d676dfca152fea0cd4ef80b9a41c",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/VLN-CE/729d141b2ee10628061ada74dd3a5b9f70faeba5/README.md"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "LICENSE",
+      "sha256": "1cbe97e9125770b6ad793615dee6d5c5f7642c2851a59b436addacc88180683d",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/LICENSE"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "habitat_extensions/habitat_simulator.py",
+      "sha256": "b188a288f476f8f560ae9721bdf13220463ff710ae26dcd48b4a9ac453057312",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/habitat_extensions/habitat_simulator.py"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "run_rxr/rxr_vlnce.yaml",
+      "sha256": "ca811ffd136bf179d7bf2247edbf24aef91d04f5b9046d0068273168373bdfe8",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/run_rxr/rxr_vlnce.yaml"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "vlnce_baselines/models/graph_utils.py",
+      "sha256": "334d7d22b52867e399ea2f1866771d7ffb8db8762fd6bb8a23eaa9d151949f16",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/vlnce_baselines/models/graph_utils.py"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "vlnce_baselines/common/environments.py",
+      "sha256": "8cecbab215e3cd155e2a89de4066f1d3a876ceff6f4ab4ad3c7ca7d951b88b61",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/vlnce_baselines/common/environments.py"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "README.md",
+      "sha256": "8e9e3f34d4641d29247e2a1b7d20eda61c29e091f657f9e2d343c8028799251a",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/README.md"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "path": "LICENSE",
+      "sha256": "f1b0b41dbea7d46f34a723e827b5ef50070d006b34d5463f77a0a06d3dccdf2d",
+      "url": "https://raw.githubusercontent.com/ompl/ompl/5b209a03fe48c41f7a2f364382c2e425bf1c7c1c/LICENSE"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "path": "src/ompl/control/planners/sst/src/SST.cpp",
+      "sha256": "ae490782202bba997d55b0b5961245f7a2ae19f79967442f473d375924919820",
+      "url": "https://raw.githubusercontent.com/ompl/ompl/5b209a03fe48c41f7a2f364382c2e425bf1c7c1c/src/ompl/control/planners/sst/src/SST.cpp"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "path": "src/ompl/control/planners/kpiece/src/KPIECE1.cpp",
+      "sha256": "77781469e5286abcce9b29887652edcb53964103a425591d073236c4d93b105f",
+      "url": "https://raw.githubusercontent.com/ompl/ompl/5b209a03fe48c41f7a2f364382c2e425bf1c7c1c/src/ompl/control/planners/kpiece/src/KPIECE1.cpp"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "path": "src/ompl/control/StatePropagator.h",
+      "sha256": "cb2e9bc099f5ac7030697d788125916749d054462c123423346f922324a7bbfc",
+      "url": "https://raw.githubusercontent.com/ompl/ompl/5b209a03fe48c41f7a2f364382c2e425bf1c7c1c/src/ompl/control/StatePropagator.h"
+    },
+    {
+      "repository": "https://github.com/ompl/ompl",
+      "commit": "5b209a03fe48c41f7a2f364382c2e425bf1c7c1c",
+      "path": "README.md",
+      "sha256": "bdfa7b8f3a5b01a9bbf0aa0273777981a86c108758499e555d4cc798980c84f5",
+      "url": "https://raw.githubusercontent.com/ompl/ompl/5b209a03fe48c41f7a2f364382c2e425bf1c7c1c/README.md"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "LICENSE",
+      "sha256": "aa442979c4fa739d64f416738740dc2a478ae3b49409b5c510005807fab24138",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/LICENSE"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "habitat_extensions/habitat_simulator.py",
+      "sha256": "b188a288f476f8f560ae9721bdf13220463ff710ae26dcd48b4a9ac453057312",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/habitat_extensions/habitat_simulator.py"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "habitat_extensions/config/vlnce_task.yaml",
+      "sha256": "ae908a0d3306702f42c7bedc36b6111339f6fd7621916cacce8287114b1ea121",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/habitat_extensions/config/vlnce_task.yaml"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "vlnce_baselines/common/environments.py",
+      "sha256": "2d7dee4edd616237ab6212302d48bc376b24ecbedab7129a7a4b3bb0dec4dd95",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/vlnce_baselines/common/environments.py"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "README.md",
+      "sha256": "35dfee935d8e8d9b7ca523d4830647a865961a383963f37d1a27d2f39bc51e49",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/README.md"
+    },
+    {
+      "repository": "https://github.com/MarSaKi/ETPNav",
+      "commit": "160e65fe5d23ad83d024d57d710e47be6892fc68",
+      "path": "habitat_extensions/task.py",
+      "sha256": "39d3aacb1da2523404013b5f906b8b54dfa7161c5a49e9ea5f91d0540cb43400",
+      "url": "https://raw.githubusercontent.com/MarSaKi/ETPNav/160e65fe5d23ad83d024d57d710e47be6892fc68/habitat_extensions/task.py"
+    },
+    {
+      "repository": "https://github.com/YicongHong/Discrete-Continuous-VLN",
+      "commit": "2aa38fa5a6c60989bc0742ac99f8f07fe7873e11",
+      "path": "habitat_extensions/task.py",
+      "sha256": "39d3aacb1da2523404013b5f906b8b54dfa7161c5a49e9ea5f91d0540cb43400",
+      "url": "https://raw.githubusercontent.com/YicongHong/Discrete-Continuous-VLN/2aa38fa5a6c60989bc0742ac99f8f07fe7873e11/habitat_extensions/task.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "habitat_extensions/actions.py",
+      "sha256": "dbb18987a0c9312b488c56fe1ad193727bfe49aa84860efea16d948a4432e9f2",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/habitat_extensions/actions.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "sim2sim_vlnce/Sim2Sim/local_policy/local_policy.py",
+      "sha256": "60e6cc296b66b09824172dab16bfa2803e7fca7dbb82ec942c647ee477ac3a5a",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/sim2sim_vlnce/Sim2Sim/local_policy/local_policy.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "sim2sim_vlnce/Sim2Sim/local_policy/fmm_planner.py",
+      "sha256": "a0758616c90a667c16a9e2fda5afc9870feb86b2362649638ed86ea995af7c91",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/sim2sim_vlnce/Sim2Sim/local_policy/fmm_planner.py"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": "habitat_extensions/config/vln_harness_task.yaml",
+      "sha256": "d649b04fc559594a5604981b16ce2a5c37330dd46d152713436c14b435d31f27",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/habitat_extensions/config/vln_harness_task.yaml"
+    },
+    {
+      "repository": "https://github.com/jacobkrantz/Sim2Sim-VLNCE",
+      "commit": "b365d4e5d405df267e3f486e1cfd0b81f94875c2",
+      "path": ".gitmodules",
+      "sha256": "79c972e4d2bc847188920e13448397f1500a66799615e80993ab558e1b7a0e38",
+      "url": "https://raw.githubusercontent.com/jacobkrantz/Sim2Sim-VLNCE/b365d4e5d405df267e3f486e1cfd0b81f94875c2/.gitmodules"
+    }
+  ],
+  "installed_runtime": {
+    "python": "3.10.14",
+    "habitat_sim": "0.1.7",
+    "habitat_sim_commit": "856d4b08c1a2632626bf0d205bf46471a99502b7",
+    "habitat_lab_commit": "d6ed1c0a0e786f16f261de2beafe347f4186d0d8"
+  },
+  "readme_is_not_applicability_proof": true,
+  "sim2sim_gitlinks": [
+    {
+      "path": "habitat-lab",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "d6ed1c0a0e786f16f261de2beafe347f4186d0d8"
+    },
+    {
+      "path": "transformers",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "067923d3267325f525f4e46f357360c191ba562e"
+    }
+  ]
+}

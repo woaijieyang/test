@@ -1,12 +1,59 @@
-# Large local dataset explicitly excluded from the GitHub repository.
+/backup/
+/upstream/
+/runtime/
+/.rebuild/
+/.venv/
+/venv/
+/build/
+/dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
 /data/
+/datasets/
+/scene_datasets/
+/models/
+/weights/
+/checkpoints/
+/downloads/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.navmesh
+/outputs/
+/runs/
+/logs/
+/.cache/
+/.codegraph/
+/.planning/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.log
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+/configs/local/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
 
-# Local environments, datasets, and nested Git metadata under the staged project.
-/project/AwareVLN/.conda-*/
-/project/AwareVLN/.venv-*/
-/project/AwareVLN/.git*/
-/project/AwareVLN/llava/data/
+# Native build products; source geometry fixtures such as .obj remain eligible.
+*.o
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.pyd
+*.exe
 
-# Local Codex configuration, records, caches, and the symlink that exposes them.
-/.codex/
-/.agents
+# Machine-specific Oracle settings; public JSON configs remain tracked.
+/oracleAdapter/src/oracle/configs/local/

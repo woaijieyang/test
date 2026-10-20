@@ -1,0 +1,40 @@
+{
+  "study_id": "guarded-official-prefix-development-v1",
+  "implementation": "oracle.research.route_study:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "protocol_config": "configs/protocols/current_linear.json",
+  "source_run": "outputs/oracleAdapter/official-reexecution-strict-v1",
+  "comparison_factor": "guarded_prefix_fallback",
+  "selection": "All133 source-available tasks in fixed historical192 scope;59 missing-source records remain explicitly retained. No selection based on the new51/82 outcome.",
+  "expected_tasks": 133,
+  "expected_executions": 266,
+  "methods": [
+    {"id": "guarded_official_only", "official_policy": "guard_only"},
+    {"id": "guarded_official_then_search", "official_policy": "guard_then_search"}
+  ],
+  "common_method": {
+    "state_key": "lossless_pose",
+    "source_turn_degrees": 30,
+    "max_expansions_per_search": 5000,
+    "max_transition_calls_per_search": 15000,
+    "max_search_wall_seconds": 60,
+    "max_task_wall_seconds": 180,
+    "max_native_preview_calls": 150000,
+    "max_searches_per_task": 64,
+    "max_actions_per_reference": 1500,
+    "max_task_actions": 10000,
+    "greedy_visit_threshold": 3,
+    "action_costs": {"1": 1.0, "2": 0.15, "3": 0.15},
+    "heuristic": "geodesic_distance_divided_by_forward_step_not_optimality_claim",
+    "dominance": "cost_and_actions_pareto"
+  },
+  "max_workers": 4,
+  "study_wall_seconds_cap": 5400,
+  "per_worker_process_wall_seconds_cap": 900,
+  "development_cpu_hours_cap": 24,
+  "switch_policy": "Consume legal official suggestions continuously across reference boundaries; on first rejected suggestion or source exhaustion permanently disable suggestions. Control ends with preserved rejection; combination uses existing native greedy and bounded search from current actual state. No retry/reset/reselection.",
+  "budget_accounting": "Suggestion preview and all fallback native previews share150000; both phases share180s task and10000 actual actions. Same upper bounds, not a claim of equal realized computation. Study5400s dispatch cap plus final owned900s process cap with4workers bounds this study to about7CPUh excluding small controller/preparation overhead.",
+  "scope": "Known development tasks with same official action privilege, initial state, mapping, profile and physical gates. A fixed conventional portfolio, no established novelty or new model score.",
+  "limits": "Source-absent59 are retained and not accepted. Pure action-search without official information is a separate information condition and is not mixed into this matched-information table. Unseen full3062/33954 validation remains required."
+}

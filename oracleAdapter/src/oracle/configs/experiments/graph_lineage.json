@@ -1,0 +1,14 @@
+{
+  "original_commit": "589d091b111333f9e9f9d6cfd021b2eb68435925",
+  "original_cache": "outputs/oracleAdapter/reference-cache/mattersim-original-589d091",
+  "fetch_receipt": "outputs/oracleAdapter/reference-cache/mattersim-original-589d091/fetch-receipt.json",
+  "published_archive": "outputs/oracleAdapter/reference-cache/graph-audit-inputs/habitat_mp3d_connectivity_graphs.zip",
+  "published_archive_sha256": "41f2a7b7803b7a751fea73657cdd57907ec3bdadb4867ad3b12aef94445e8086",
+  "missing_ledger": "outputs/oracleAdapter/reference-cache/graph-audit-inputs/viewpoints461.json",
+  "legacy_nodes": "outputs/oracleAdapter/reference-cache/graph-audit-inputs/published-identity-nodes.json",
+  "expected_missing": 461,
+  "known_edge": {
+    "scene": "pRbA3pwrgk9",
+    "nodes": ["71dfebffc9fc4ff2b4320650c3cfca03", "77d87c2eae1845e693d164b1a7845eed"]
+  }
+}

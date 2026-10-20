@@ -1,0 +1,12 @@
+{
+  "producer": "outputs/landmark-connectivity/D7-grounded-current-control-v1",
+  "expected_scene_tasks": 786,
+  "inputs": {
+    "producer_validation": {"path": "outputs/landmark-connectivity/D7-grounded-current-control-v1/validation.json", "sha256": "470b1b505e62c579c89aad4c6b8b409c77c67ae96c1bfa985508f437f18d139f"},
+    "candidate_tasks": {"path": "outputs/landmark-connectivity/D7-grounded-current-control-v1/candidate_tasks.json", "sha256": "937afac79831de636c7c6c112612e6d1d2d9186ad8462ef66226d881afb65186"},
+    "historical_audit": {"path": "outputs/landmark-connectivity/D7-grounded-current-control-v1/independent-static.json", "sha256": "62070730e9c964aa05f482bcb316836778c1783b615f826ff2ad4f735fd0926c"},
+    "strict_lineage": {"path": "outputs/oracleAdapter/logical-full-review-v1/all-task-lineage.json", "sha256": "943b859c8cdc3822485e228ae70d7d30d0550f6e4b989a08219aa55f8e5120fb"}
+  },
+  "scope": "Fresh rational/static audit of existing same-profile D7 proposals across all786 records. No seed generation/mesh change, no original data writes or copied motion acceptance. Candidate identities from source graph/CE, never inferred by spatial proximity.",
+  "resources": "One observed idle CPU; no GPU or executed movement. Do not sync or run during the live frozen four-arm experiment."
+}

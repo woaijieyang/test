@@ -1,0 +1,12 @@
+{
+  "implementation": "oracle.research.capability_ablation:audit",
+  "portfolio_run": "outputs/oracleAdapter/guarded-prefix-development-v1",
+  "portfolio_report": "outputs/oracleAdapter/guarded-prefix-paired-report-v1",
+  "search_run": "outputs/oracleAdapter/matched-search-ablation-v1",
+  "search_report": "outputs/oracleAdapter/matched-search-ablation-report-v1",
+  "expected_physical_tasks": 133,
+  "task_objective": "cross_method_accounting_with_explicit_information_conditions_not_model_score",
+  "privileges": ["frozen_task_manifests", "executed_trajectories", "independent_audit_receipts"],
+  "native_actions": 0,
+  "register_hypothetical_union_as_success": false
+}

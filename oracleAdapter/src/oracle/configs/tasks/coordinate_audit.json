@@ -1,0 +1,20 @@
+{
+  "implementation": "oracle.adapters.rxr.coordinate_audit:audit",
+  "task_objective": "source_heading_and_frame_convention_verification_not_motion",
+  "privileges": ["original_guide_annotations", "official_continuous_annotations", "native_frame_constants"],
+  "identity_run": "outputs/oracleAdapter/identity-review-v1",
+  "raw_guide_source_receipt": "outputs/oracleAdapter/rxr-guide-source-v1/validation.json",
+  "expected_records": 33954,
+  "comparison_angle_radians": 0.00001,
+  "comparison_threshold_scope": "Numerical orientation comparison only, not a changed navigation gate",
+  "source_heading_convention": "zero=source+y, source+z up, clockwise-positive radians",
+  "target_convention": "right-handed+y up, forward-z, quaternion xyzw",
+  "axis_rotation": [[1,0,0],[0,0,1],[0,-1,0]],
+  "camera_height_or_pose_offset": "None applied; requires separate source evidence",
+  "references": [
+    "https://github.com/google-research-datasets/RxR/blob/d22df5940a0486a42b703cd445937210ce21e9f5/README.md",
+    "https://aihabitat.org/docs/habitat-sim/coordinate-frame-tutorial.html",
+    "https://aihabitat.org/docs/habitat-lab/habitat.core.simulator.Simulator.html"
+  ],
+  "native_actions": 0
+}

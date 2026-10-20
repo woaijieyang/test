@@ -1,0 +1,20 @@
+{
+  "protocol_id": "existing_exact_continuous_linear_unchanged",
+  "body_height_m": 1.5,
+  "body_radius_m": 0.1,
+  "forward_m": 0.25,
+  "turn_degrees": 15,
+  "goal_radius_m": 0.25,
+  "foot_epsilon_m": 0.00001,
+  "radial_epsilon_m": 0.000001,
+  "horizontal_tolerance_m": 0.0001,
+  "maximum_vertical_transition_m": 0.5,
+  "broadphase": "historical_open_height_slab",
+  "acceptance_protocol": "exact_continuous_linear",
+  "allow_sliding": true,
+  "minimum_forward_motion_m": 0.00001,
+  "maximum_prediction_error_m": 0.00001,
+  "maximum_replay_error_m": 0.00001,
+  "maximum_orientation_error_rad": 0.00001,
+  "alternative_step_curves_adopted": false
+}

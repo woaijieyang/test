@@ -1,0 +1,10 @@
+--- upstream/habitat-sim/src/deps/pybind11/include/pybind11/attr.h
++++ upstream/habitat-sim/src/deps/pybind11/include/pybind11/attr.h
+@@ -11,6 +11,7 @@
+ #pragma once
+ 
+ #include "cast.h"
++#include <cstdint>
+ 
+ PYBIND11_NAMESPACE_BEGIN(PYBIND11_NAMESPACE)
+ 

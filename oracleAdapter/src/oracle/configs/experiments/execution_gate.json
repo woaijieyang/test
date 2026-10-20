@@ -1,0 +1,12 @@
+{
+  "implementation": "oracle.research.route_study:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "source_run": "outputs/oracleAdapter/guarded-prefix-development-v1",
+  "task_key": "train:10326",
+  "method_id": "guarded_official_then_search",
+  "scope": "Engineering integration only: measured restore counter, frozen initial pose, raw trace binding and source-prefix switch. Not a new method score or full-cohort result.",
+  "max_workers": 1,
+  "study_wall_seconds_cap": 600,
+  "per_worker_process_wall_seconds_cap": 300
+}

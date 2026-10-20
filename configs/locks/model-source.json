@@ -1,0 +1,118 @@
+{
+  "repository": "gwx22/AwareVLN-ck",
+  "revision": "59149329064237529deb66862a11d21c139f4827",
+  "queried_at": "2026-10-14T19:42:40.489593+00:00",
+  "files": [
+    {
+      "rfilename": "awarevln/config.json",
+      "blobId": "e5a200a57099f00d34abde40dadb65e3862c1134",
+      "size": 7160
+    },
+    {
+      "rfilename": "awarevln/llm/config.json",
+      "blobId": "75994c4da22574e9fd840ef454ffc110752d64fc",
+      "size": 887
+    },
+    {
+      "rfilename": "awarevln/llm/generation_config.json",
+      "blobId": "4e903e3745e2fd436605ce848b13b949348f5c50",
+      "size": 194
+    },
+    {
+      "rfilename": "awarevln/llm/model-00001-of-00004.safetensors",
+      "blobId": "e60c7dd5fee85e24c58c1329ad84f2d61fa0a794",
+      "size": 4976756016,
+      "lfs": {
+        "sha256": "edcac312bc928bd051371fa140f4c2dcd6b7fc2b616a0b31ade617c4741e1735",
+        "size": 4976756016,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "awarevln/llm/model-00002-of-00004.safetensors",
+      "blobId": "7e0ceacbb43beba01a76e3371a6628c21cf0dd9a",
+      "size": 4999802720,
+      "lfs": {
+        "sha256": "96ae531fab3a13f07fec441de4523e8088e94a556d812ed1e15ac3dda61a051d",
+        "size": 4999802720,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "awarevln/llm/model-00003-of-00004.safetensors",
+      "blobId": "8b1f970e9739dd1a8d78cc149544856def535951",
+      "size": 4915916176,
+      "lfs": {
+        "sha256": "f1208085dfab9496eb7e9ad3354edf7fd08a77d60dd8130e20370dc4431eb35c",
+        "size": 4915916176,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "awarevln/llm/model-00004-of-00004.safetensors",
+      "blobId": "f9951fadb6867b8e9f923310f5644285c22c665c",
+      "size": 1168196152,
+      "lfs": {
+        "sha256": "f52f019a035cedd6f088ccf199c9ae3c26be71601ef2eb97b8db633c002b58dc",
+        "size": 1168196152,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "awarevln/llm/model.safetensors.index.json",
+      "blobId": "c0297426f766fdd79e9d1182ff42661faf1480c2",
+      "size": 23950
+    },
+    {
+      "rfilename": "awarevln/llm/special_tokens_map.json",
+      "blobId": "6f141719d85a3be5910dfb630222585c4a37b27a",
+      "size": 1083
+    },
+    {
+      "rfilename": "awarevln/llm/tokenizer.json",
+      "blobId": "9526d47d95c661d6d43520e52c111b2f35073d69",
+      "size": 9087004
+    },
+    {
+      "rfilename": "awarevln/llm/tokenizer_config.json",
+      "blobId": "06cb2cab8d3f795819d7cb03b9852c4cf045586b",
+      "size": 52428
+    },
+    {
+      "rfilename": "awarevln/mm_projector/config.json",
+      "blobId": "58b77b5edf8a699b6af545e3186f99d6f224fbce",
+      "size": 338
+    },
+    {
+      "rfilename": "awarevln/mm_projector/model.safetensors",
+      "blobId": "dc62a2f678e3d3a5a9e2e8736e9c8c1867b2089d",
+      "size": 71338512,
+      "lfs": {
+        "sha256": "0921455072f43bfe67637a6d69faa7248b830c15dc67a6e9798b50e2aed6d376",
+        "size": 71338512,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "awarevln/vision_tower/config.json",
+      "blobId": "cb073e4f4020a1606172ecb12cf53888307dd2e3",
+      "size": 626
+    },
+    {
+      "rfilename": "awarevln/vision_tower/model.safetensors",
+      "blobId": "486b5478e494512c79c835b2ef73446374b135f9",
+      "size": 856506120,
+      "lfs": {
+        "sha256": "1ff7d080a98a3f014b057dca741d7be358b700565493a15dfd82cb98903b0c4b",
+        "size": 856506120,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "awarevln/vision_tower/preprocessor_config.json",
+      "blobId": "051261b5a784a2e7e5f93de1f86d170d69a9efd9",
+      "size": 368
+    }
+  ],
+  "scope": "Public metadata only; no weights downloaded"
+}

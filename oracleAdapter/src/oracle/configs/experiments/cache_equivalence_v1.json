@@ -1,0 +1,11 @@
+{
+  "catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "catalog_sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727",
+  "lineage": "outputs/oracleAdapter/logical-full-review-v1/all-task-lineage.json",
+  "lineage_sha256": "943b859c8cdc3822485e228ae70d7d30d0550f6e4b989a08219aa55f8e5120fb",
+  "selection": "Each of all71 scenes: lexicographically first Landmark record with actual movement, first/middle/last recorded transition and reference anchor; additionally first declared source-contact anchor. Never sample R2R/RxR. No native queries/actions.",
+  "cache": {"cell_size_m": 0.5, "max_regions": 1024, "max_queries": 16384},
+  "repetitions": 3,
+  "wall_seconds_cap": 1800,
+  "resources": "One idle CPU selected at launch; no GPU; no new navigation. Counts against existing development accounting, not a new24h allowance."
+}

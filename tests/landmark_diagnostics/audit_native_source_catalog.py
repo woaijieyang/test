@@ -1,0 +1,21 @@
+"""Independent streaming binary and identity audit of all71 native scene exports."""
+import os,sys,json,struct,math,time,datetime,fcntl,collections
+from pathlib import Path
+assert os.environ.get('CASE1_PROTECTION');os.environ['CUDA_VISIBLE_DEVICES']='';os.environ['OMP_NUM_THREADS']='1';os.environ['OPENBLAS_NUM_THREADS']='1';os.nice(15)
+R=Path.cwd();sys.path.insert(0,str(R/'scripts'))
+from workspace import atomic_json,digest
+B=R/'outputs/landmark-connectivity';O=B/'native-source-catalog-v1';lock=(O/'independent.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);source=json.loads((O/'process.json').read_text());atomic_json(O/'independent-process.json',{'pid':os.getpid(),'start_ticks':Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19],'source':source})
+def note(status,**kw):atomic_json(O/'independent-state.json',{'status':status,'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),**kw})
+try:
+ note('WAITING_FOR_COMPLETE_NATIVE_CATALOG')
+ while not (O/'validation.json').exists():
+  p=Path('/proc',str(source['pid']),'stat');s=p.read_text().rsplit(')',1)[1].split() if p.exists() else [];assert s and s[19]==str(source['start_ticks']) and s[0] not in ['Z','X'],'Catalog producer terminal without complete validation';time.sleep(60)
+ import psutil
+ usage=psutil.cpu_percent(interval=1,percpu=True);available=[i for i in sorted(os.sched_getaffinity(0))[:64] if i not in [1,7,15,16]];os.sched_setaffinity(0,[min(available,key=lambda i:usage[i])])
+ v=json.loads((O/'validation.json').read_text());m=json.loads((O/'manifest.json').read_text());catalog=json.loads((O/'catalog.json').read_text());assert digest(O/'catalog.json')==v['catalog_sha256'] and digest(O/'manifest.json')==v['manifest_sha256'];parent=B/'full-native-v11/manifest.json';assert digest(parent)==m['parent_manifest_sha256'];tasks=json.loads(parent.read_text())['tasks'];expected=collections.Counter(t['scene'] for t in tasks);assert len(tasks)==33954 and len(expected)==71;rows=catalog['scenes'];assert len(rows)==71 and len({r['scene'] for r in rows})==71 and {r['scene'] for r in rows}==set(expected);audited=[]
+ for r in rows:
+  scene=r['scene'];assert r['tasks']==expected[scene];entry=m['scenes'][scene];screen=json.loads(Path(entry['screen_receipt_path']).read_text());assert digest(entry['screen_receipt_path'])==entry['screen_receipt_sha256'] and r['scene_sha256']==entry['scene_sha256']==screen['scene_sha256'];assert digest(r['receipt_path'])==r['receipt_sha256'];p=Path(r['native_geometry_path']).resolve();assert p.is_relative_to(B.resolve()) and digest(p)==r['native_geometry_sha256'];raw=p.read_bytes();nv,nt=struct.unpack_from('<ii',raw);assert nv==r['native_vertices'] and nt==r['native_triangles'] and p.stat().st_size==r['bytes']==8+12*nv+12*nt and nv>0 and nt>0
+  assert all(all(math.isfinite(x) for x in xyz) for xyz in struct.iter_unpack('<fff',memoryview(raw)[8:8+12*nv]));assert all(all(0<=i<nv for i in triangle) for triangle in struct.iter_unpack('<iii',memoryview(raw)[8+12*nv:]));audited.append({'scene':scene,'tasks':r['tasks'],'geometry_sha256':r['native_geometry_sha256'],'vertices':nv,'triangles':nt,'reused':r['reused']});note('AUDITING_NATIVE_BINARY_IDENTITY',completed=len(audited),expected=71)
+ assert sum(r['tasks'] for r in audited)==33954 and {p:digest(p) for p in m['originals']}==m['originals'];import habitat_sim._ext.habitat_sim_bindings as installed
+ assert digest(installed.__file__)=='507ae9f0ffa8e6e711edb4bf1b5e63e8aa490772a13d18ad2496a98e74fc32ed';atomic_json(O/'independent-validation.json',{'status':'PASS_ALL71_NATIVE_PROVENANCE_AND_BINARY_STRUCTURE_NOT_NAVIGATION','scenes':71,'global_tasks':33954,'records':audited,'catalog_sha256':digest(O/'catalog.json'),'source_validation_sha256':digest(O/'validation.json'),'installed_binding_path':installed.__file__,'installed_binding_sha256':digest(installed.__file__),'original_build_inputs_unchanged':True,'script_sha256':digest(__file__),'limits':'Independent streaming structure/identity/coverage audit only. This is not collision, continuous-motion or dataset acceptance and cannot replace source_geometry_acceptance.'});note('COMPLETE_NATIVE_CATALOG_IDENTITY_AUDIT')
+except Exception as e:note('FAILED',error=repr(e));raise

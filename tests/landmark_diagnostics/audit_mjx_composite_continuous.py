@@ -1,0 +1,64 @@
+"""Audit all594 mJX records using583 historical proofs and11 preserved failures.
+All source counts are retained; bounded step realizations remain unadopted diagnostics.
+"""
+import os,sys,json,struct,ast,math,subprocess,datetime,collections,argparse,re
+from pathlib import Path
+P=argparse.ArgumentParser();P.add_argument('--source-run',required=True);P.add_argument('--targeted-scope',action='store_true');P.add_argument('--scene',required=True);P.add_argument('--output-run',required=True);args=P.parse_args();assert re.fullmatch('[A-Za-z0-9]{11}',args.scene) and re.fullmatch('[A-Za-z0-9-]+',args.source_run) and re.fullmatch('[A-Za-z0-9-]+',args.output_run);
+assert os.environ.get('CASE1_PROTECTION');os.environ['CUDA_VISIBLE_DEVICES']='';os.environ['OMP_NUM_THREADS']='1';os.environ['OPENBLAS_NUM_THREADS']='1';os.nice(15)
+R=Path.cwd();sys.path[:0]=[str(R/'scripts'),str(R/'tests/landmark_diagnostics')]
+from workspace import atomic_json,digest
+from swept_cylinder_reference import triangle_linear_sweep_distance
+import numpy as np,habitat_sim,psutil
+from habitat_sim.utils.common import quat_from_coeffs
+u=psutil.cpu_percent(interval=1,percpu=True);available=[i for i in sorted(os.sched_getaffinity(0))[:64] if i not in [6,10,11,12,13,15,18,20,22,24,27,30]];os.sched_setaffinity(0,[min(available,key=lambda i:u[i])])
+B=R/'outputs/landmark-connectivity';run=B/args.source_run;O=B/args.output_run;O.mkdir(exist_ok=False);atomic_json(O/'process.json',{'pid':os.getpid(),'start_ticks':Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]})
+assert args.scene=='mJXqzFtmKg4' and args.source_run=='recast626-source-guard-scene-v1' and not args.targeted_scope
+source=run/'validation.json';base=json.loads(source.read_text());coverage_path=B/'recast626-source-guard-coverage-peer.json';coverage=json.loads(coverage_path.read_text());assert coverage['expected']==594 and coverage['verified_tasks']==583
+parent=B/'full-native-v11/manifest.json';parent_data=json.loads(parent.read_text());assert digest(parent)==coverage['parent_manifest_sha256'] and parent_data['profile_sha256']==coverage['profile_sha256'];proofs={r['task_key']:r for r in coverage['proofs']};base_rows={r['task_key']:r for r in base['results']};assert len(base_rows)==594 and len(proofs)==583 and set(base_rows)-set(proofs)==set(coverage['unresolved'])
+selected=[];source_manifests={}
+for key,row in base_rows.items():
+ chosen=proofs.get(key,row);rp=Path(chosen['result_path']);assert digest(rp)==chosen['sha256'];record=json.loads(rp.read_text());mp=rp.parent.parent/'manifest.json';assert digest(mp)==record['guard_manifest_sha256'];sm=json.loads(mp.read_text());assert sm['profile_sha256']==parent_data['profile_sha256'] and sm['parent_manifest_sha256']==digest(parent)
+ if key in proofs:assert record['status']=='PASS_DIAGNOSTIC'
+ else:assert record['status']=='FAILED_DIAGNOSTIC'
+ selected.append({'task_key':key,'result_path':str(rp),'sha256':digest(rp),'status':record['status']});source_manifests[key]={'path':str(mp),'sha256':digest(mp)}
+v={'results':selected};m={'parent_manifest_sha256':digest(parent),'profile_path':parent_data['profile_path'],'profile_sha256':parent_data['profile_sha256'],'expected':594,'native_geometry':{'receipt_path':str(B/'step-envelope-native-geometry-v1/validation.json'),'receipt_sha256':digest(B/'step-envelope-native-geometry-v1/validation.json')},'source_guard_mode':'historical_sampled_composite','source_manifests':source_manifests,'coverage_path':str(coverage_path),'coverage_sha256':digest(coverage_path),'source_validation_path':str(source),'source_validation_sha256':digest(source),'selected_results':selected,'expected_tasks':[{'task_key':t['task_key'],'source_record_sha256':t['source_record_sha256']} for t in parent_data['tasks'] if t['scene']==args.scene]};atomic_json(O/'manifest.json',m)
+original_tasks={t['task_key']:t for t in json.loads(parent.read_text())['tasks'] if t['scene']==args.scene};tasks=original_tasks
+if 'candidate_tasks_path' in m:
+ assert digest(m['candidate_tasks_path'])==m['candidate_tasks_sha256'] and digest(m['candidate_static_audit_path'])==m['candidate_static_audit_sha256'];proof=json.loads(Path(m['candidate_static_audit_path']).read_text());assert proof['status']=='PASS_PROPOSAL_IDENTITY_BOUNDS_BODY_AND_CONNECTIVITY_NOT_MOTION' and proof['profile_sha256']==m['profile_sha256'];tasks={t['task_key']:t for t in json.loads(Path(m['candidate_tasks_path']).read_text())['tasks']};assert set(tasks)==set(original_tasks)
+ for key,t in tasks.items():assert {k:v for k,v in t.items() if k not in ['targets','mapping_methods']}=={k:v for k,v in original_tasks[key].items() if k not in ['targets','mapping_methods']}
+parent_scene_tasks=len(tasks)
+if args.targeted_scope:
+ assert m.get('scope_mode')=='targeted_probe';selected={r['task_key'] for r in m['expected_tasks']};assert selected<=set(tasks) and len(selected)==m['expected'];tasks={k:t for k,t in tasks.items() if k in selected}
+expected=len(tasks);assert expected==len(v['results'])==m['expected'];profile=json.loads(Path(m['profile_path']).read_text());asset=profile['assets'][f'mp3d/{args.scene}/{args.scene}.glb'];assert digest(asset['navmesh_path'])==asset['navmesh_sha256'];headers=json.loads(subprocess.check_output([str(R/'.cache/navmesh-header-probe/probe'),asset['navmesh_path']],text=True));climb=headers[0]['climb'];geo_path=Path(m['native_geometry']['receipt_path']);assert digest(geo_path)==m['native_geometry']['receipt_sha256'];geo=json.loads(geo_path.read_text());gp=Path(geo['native_geometry_path']);assert digest(gp)==geo['native_geometry_sha256'];raw=gp.read_bytes();nv,nt=struct.unpack('<ii',raw[:8]);vertices=np.frombuffer(raw,dtype='<f4',count=nv*3,offset=8).reshape(nv,3);ix=np.frombuffer(raw,dtype='<i4',count=nt*3,offset=8+nv*12).reshape(nt,3);tri=vertices[ix].astype(float);lo=tri.min(axis=1);hi=tri.max(axis=1);cache={};regions={}
+helper=R/'tests/landmark_diagnostics/audit_prb_step_interpretations.py';binding=json.loads((B/'pRb-original-trace-step-interpretation-v1/validation.json').read_text());assert digest(helper)==binding['script_sha256'];tree=ast.parse(helper.read_text());functions=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='sweep'];assert len(functions)==1;exec(compile(ast.Module(body=functions,type_ignores=[]),str(helper),'exec'))
+cfg=habitat_sim.SimulatorConfiguration();cfg.scene_id='NONE';cfg.create_renderer=False;cfg.enable_physics=False;a=habitat_sim.agent.AgentConfiguration();a.height=1.5;a.radius=.1;a.sensor_specifications=[];a.action_space={1:habitat_sim.agent.ActionSpec('move_forward',habitat_sim.agent.ActuationSpec(amount=.25)),2:habitat_sim.agent.ActionSpec('turn_left',habitat_sim.agent.ActuationSpec(amount=15)),3:habitat_sim.agent.ActionSpec('turn_right',habitat_sim.agent.ActuationSpec(amount=15))};sim=habitat_sim.Simulator(habitat_sim.Configuration(cfg,[a]));assert sim.pathfinder.load_nav_mesh(asset['navmesh_path']);reports=[]
+for row in v['results']:
+ key=row['task_key'];t=tasks[key];rp=Path(row['result_path']);assert digest(rp)==row['sha256'];d=json.loads(rp.read_text());assert d['task_key']==key and d['source_record_sha256']==t['source_record_sha256']
+ if d['status'] in ['STATIC_BLOCKED_PRESERVED','SOURCE_CANDIDATE_BLOCKED_PRESERVED']:
+  assert d['parent_task']==original_tasks[key]==t
+  if d['status']=='STATIC_BLOCKED_PRESERVED':assert t['status']=='STATIC_BLOCKED_PRESERVED'
+  else:
+   assert digest(m['proposal_rows_path'])==m['proposal_rows_sha256'];pr=next(r for r in json.loads(Path(m['proposal_rows_path']).read_text())['rows'] if r['task_key']==key);assert pr['status']=='NO_SOURCE_CLEAR_COMMON_COMPONENT' and d['candidate_failure']==pr
+  reports.append({'task_key':key,'status':d['status'],'source_result_sha256':row['sha256'],'replayed':False});continue
+ assert d['status'] in ['PASS_DIAGNOSTIC','FAILED_DIAGNOSTIC'] and d['targets']==t['targets'] and d['guard_manifest_sha256']==m['source_manifests'][key]['sha256'] and digest(m['source_manifests'][key]['path'])==m['source_manifests'][key]['sha256'];assert len(d['positions'])==len(d['actions'])+1 and len(d['actions'])<=10000
+ expected_rotation=[0,math.sin(-t['heading']/2),0,math.cos(-t['heading']/2)];assert abs(abs(float(np.dot(expected_rotation,d['rotation'])))-1)<1e-6;state=habitat_sim.AgentState();state.position=t['targets'][0];state.rotation=quat_from_coeffs(d['rotation']);sim.initialize_agent(0,state);positions=[sim.get_agent(0).get_state().position.tolist()];replay_error=math.dist(positions[0],d['positions'][0]);actual_alerts=[];unresolved=[];certificates=[]
+ hit=sweep(positions[0],positions[0])
+ if hit:actual_alerts.append({'position_index':0,**hit})
+ for i,action in enumerate(d['actions'],1):
+  start=positions[-1];sim.step(action);end=sim.get_agent(0).get_state().position.tolist();positions.append(end);replay_error=max(replay_error,math.dist(end,d['positions'][i]));assert sim.pathfinder.is_navigable(end) and abs(end[1]-start[1])<=.5;hit=sweep(end,end)
+  if hit:actual_alerts.append({'position_index':i,**hit})
+  direct=sweep(start,end)
+  if direct:
+   delta=abs(end[1]-start[1]);corner=None;step_hits=None
+   if action==1 and 1e-5<delta<=climb and math.hypot(end[0]-start[0],end[2]-start[2])<=.25+1e-5:
+    corner=[end[0],start[1],end[2]] if end[1]<start[1] else [start[0],end[1],start[2]];step_hits=[sweep(start,corner),sweep(corner,end)]
+   event={'action_index':i,'start':start,'end':end,'direct_contact':direct,'step_corner':corner,'step_contacts':step_hits,'native_internal_curve_observed':False}
+   (certificates if corner is not None and not any(step_hits) else unresolved).append(event)
+ assert replay_error<=1e-5 and [b['reference_index'] for b in d['boundaries']]==list(range(1,len(d['boundaries'])+1));assert len(d['boundaries'])<=len(t['targets'])-1
+ if d['status']=='PASS_DIAGNOSTIC':assert len(d['boundaries'])==len(t['targets'])-1 and d['error'] is None
+ else:assert d['error']
+ prev=0
+ for bound in d['boundaries']:
+  at=bound['action_index'];ri=bound['reference_index'];assert prev<=at<len(positions) and at-prev<=1500;prev=at;q=habitat_sim.ShortestPath();q.requested_start=positions[at];q.requested_end=t['targets'][ri];assert sim.pathfinder.find_path(q) and q.geodesic_distance<=.25
+ status=('SOURCE_FAILURE_PRESERVED' if d['status']=='FAILED_DIAGNOSTIC' else 'ACTUAL_POSE_SOURCE_CONTACT' if actual_alerts else 'UNRESOLVED_CONTINUOUS_SOURCE_CONTACT' if unresolved else 'STEP_REALIZATION_EXISTS_PROTOCOL_REVIEW_REQUIRED' if certificates else 'LINEAR_CONTINUOUS_SOURCE_CLEAR_DIAGNOSTIC');result={'task_key':key,'status':status,'source_result_sha256':row['sha256'],'source_guard_status':d['status'],'source_error':d['error'],'exact_guard_contradiction':bool(m.get('source_guard_mode')=='exact_continuous_linear_sweep' and (actual_alerts or unresolved or certificates)),'actual_contact_count':len(actual_alerts),'unresolved_transition_count':len(unresolved),'hypothetical_step_count':len(certificates),'replayed':True,'actions_replayed':len(d['actions']),'replay_error':replay_error,'actual_pose_alerts':actual_alerts,'unresolved_transitions':unresolved,'step_certificates':certificates,'limits':'Exact native replay; swept chord and bounded step existence are geometric interpretations. Hypothetical step curves are not adopted or observed inside the native action.'};atomic_json(O/(key.replace(':','-')+'.json'),result);reports.append({k:value for k,value in result.items() if k not in ['actual_pose_alerts','unresolved_transitions','step_certificates']});atomic_json(O/'state.json',{'status':'RUNNING','records':len(reports),'counts':dict(collections.Counter(x['status'] for x in reports))})
+sim.close();assert len(reports)==len(tasks) and {r['task_key'] for r in reports}==set(tasks) and sum(r['replayed'] for r in reports)==sum(r['status'] in ['PASS_DIAGNOSTIC','FAILED_DIAGNOSTIC'] for r in v['results']);counts=dict(collections.Counter(r['status'] for r in reports));atomic_json(O/'validation.json',{'status':'COMPLETE_EXACT_GUARD_INDEPENDENT_AUDIT_NOT_ACCEPTANCE','scene_tasks':parent_scene_tasks,'scope_tasks':len(tasks),'full_scene_coverage':len(tasks)==parent_scene_tasks,'scene':args.scene,'records':reports,'counts':counts,'source_guard_manifest_sha256':digest(O/'manifest.json'),'source_guard_mode':m.get('source_guard_mode','sampled_005m'),'source_validation_sha256':digest(source),'native_geometry_receipt_sha256':digest(geo_path),'sweep_function_source_sha256':digest(helper),'script_sha256':digest(__file__),'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),'limits':'Every source execution status retained; native replay and continuous swept geometry independently recomputed. Incomplete search failures are not successes. Any contact in a purported guarded PASS or prefix is an audit issue; alternative curves are never adopted.'});atomic_json(O/'state.json',{'status':'COMPLETE_EXACT_GUARD_INDEPENDENT_AUDIT_NOT_ACCEPTANCE','counts':counts});print(counts)

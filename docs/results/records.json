@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "record_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+      "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+      "status": "retracted",
+      "artifact_path": "/data/zy/vln/case1/outputs/awarevln-r2r-valunseen-endpoint9-20261015-v2",
+      "registered_at": "2026-10-16T15:04:44.223736+00:00",
+      "identity": {
+        "model": "AwareVLN official",
+        "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+        "source_sha256": "c2280a04c33b972034de5660954513b922e334fc55c2ef2b9d7e338e3ece6026",
+        "config_sha256": "dbe8f20d04caf873101f2abe52219a2110b39c49169d45b764e129945287c95e",
+        "navmesh_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+        "benchmark_sha256": "9453e3ad54f596b99a849ab37467f775671bea8edce33da4a7bc21bdb80525a9",
+        "split": "val_unseen",
+        "language": "en",
+        "base_config_sha256": "42f1c1e197352eb449b3c706a4c5d40d8a72eba3ba1b12cba21ccbc8433f1189",
+        "model_code_path": "/data/zy/vln/case1/src",
+        "dataset_paths": {
+          "r2r": "/data/zy/vln/data/raw_data/eval_annotations/R2R_VLNCE_v1-3_preprocessed/val_unseen/val_unseen.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case1/outputs/awarevln-r2r-valunseen-endpoint9-20261015-v2/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case1/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "6c16430072916de4f90e3ebf1f5e053942922524fbfec499a11a35bba7b4090e"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "r2r": {
+            "expected": 1839,
+            "completed": 1839,
+            "navigation_failures": 632,
+            "valid": {
+              "sr": 1839,
+              "spl": 1839,
+              "ndtw": 1839,
+              "ne": 1839,
+              "oracle_sr": 1839
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6563349646547036,
+              "spl": 0.5727817465899102,
+              "ndtw": 0.6536952239527778,
+              "ne": 3.9786473610339654,
+              "oracle_sr": 0.7509516041326808
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "389ccee468a2882642e343679873dd5293cc809c2e1f6a96e91a228f9aad4024",
+        "results.jsonl": "b8776925d2582351eed813d986e4c9de340529f84dbc392b8a526b213847955e",
+        "independent_metrics.json": "4924db2f2f6cf2704293683eb213b826f0fba075705368b0d899eacc6efe31a9",
+        "semantic_audit.json": "43864071198913a740bded63930bbbf10d1a064da4f8f3f424c572b562987d47",
+        "effective-configs.json": "dbe8f20d04caf873101f2abe52219a2110b39c49169d45b764e129945287c95e",
+        "summary.json": "3f6e8c5a2ec0fbd9aead118d6f0487cae1a8990689d64cc5d65ca5b3771a6b5a",
+        "validation.json": "a7f5502d58b04aeb615fb964696f78fd399a082558d4ce2b2f7221eb711572e9"
+      },
+      "status_history": [
+        {
+          "status": "complete",
+          "registered_at": "2026-10-16T15:04:44.223736+00:00"
+        },
+        {
+          "status": "retracted",
+          "time": "2026-10-17T07:09:55.345195+08:00",
+          "reason": "Full strict actual-trajectory audit found five off-mesh native positions in five tasks; all reproduced with zero native replay error."
+        }
+      ],
+      "retraction": {
+        "time": "2026-10-17T07:09:55.345195+08:00",
+        "reason": "Strict navigation acceptance failed; historical metrics and all original evidence retained, not eligible for release.",
+        "audit_path": "outputs/connectivity/r2r-full-precompletion-v1.json",
+        "audit_sha256": "7ff3f8fba9c773fff8ef272d37e234bf50593fd2d6ef70b4f4e6dad7a25725b7",
+        "independent_replay_path": "outputs/connectivity/r2r-offmesh-diagnosis-v2/validation.json",
+        "independent_replay_sha256": "a385149179cd191836420a5fcc94ee83dd3d2e38d8a814804895968c498cf4c9",
+        "affected_tasks": [
+          "r2r|val_unseen|en|mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb|755|-",
+          "r2r|val_unseen|en|mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb|884|-",
+          "r2r|val_unseen|en|mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb|883|-",
+          "r2r|val_unseen|en|mp3d/Z6MFQCViBuw/Z6MFQCViBuw.glb|1001|-",
+          "r2r|val_unseen|en|mp3d/EU6Fwq7SyZv/EU6Fwq7SyZv.glb|1243|-"
+        ]
+      }
+    },
+    {
+      "record_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+      "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+      "status": "complete",
+      "artifact_path": "/data/zy/vln/case1/outputs/awarevln-rxr-valunseen-endpoint9-20261015-v2",
+      "registered_at": "2026-10-18T00:32:26.374971+00:00",
+      "identity": {
+        "model": "AwareVLN official",
+        "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+        "source_sha256": "c2280a04c33b972034de5660954513b922e334fc55c2ef2b9d7e338e3ece6026",
+        "config_sha256": "9b2145b9df3d71385dd7afc8201d93b0c0d64fd950853b90c2bce5b229e5be9d",
+        "navmesh_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+        "benchmark_sha256": "556b628ad57c945448e013d98cb206619086da54788798703adce3a9b1cc5b9f",
+        "split": "val_unseen",
+        "language": "en-US",
+        "base_config_sha256": "bf4f2ec564f64b40b6abd5eb48ee1056bb2f3dc40777a1892b45510a13ab91b4",
+        "model_code_path": "/data/zy/vln/case1/src",
+        "dataset_paths": {
+          "rxr": "/data/zy/vln/case1/data/derived/annotations/rxr-endpoint9-v1/val_unseen/val_unseen_guide.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case1/outputs/awarevln-rxr-valunseen-endpoint9-20261015-v2/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case1/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "6c16430072916de4f90e3ebf1f5e053942922524fbfec499a11a35bba7b4090e"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "rxr": {
+            "expected": 1223,
+            "completed": 1223,
+            "navigation_failures": 396,
+            "valid": {
+              "sr": 1223,
+              "spl": 1223,
+              "ndtw": 1223,
+              "ne": 1223,
+              "oracle_sr": 1223
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6762060506950123,
+              "spl": 0.5593469644051637,
+              "ndtw": 0.6766198149932673,
+              "ne": 4.279347672400568,
+              "oracle_sr": 0.7514309076042518
+            },
+            "annotation_subgroups": {
+              "corrected_9": {
+                "completed": 9,
+                "metrics": {
+                  "sr": 0.6666666666666666,
+                  "spl": 0.6407238505262374,
+                  "ndtw": 0.8056647434556705,
+                  "ne": 1.9670594533284504,
+                  "oracle_sr": 0.6666666666666666
+                }
+              },
+              "unchanged_1214": {
+                "completed": 1214,
+                "metrics": {
+                  "sr": 0.6762767710049423,
+                  "spl": 0.5587436761225527,
+                  "ndtw": 0.6756631392468406,
+                  "ne": 4.2964898420642,
+                  "oracle_sr": 0.7520593080724877
+                }
+              }
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "c775a735b6a31f30fb08d33a860c245350373777faa35bd5e4cf0c16875e7310",
+        "results.jsonl": "7d0ab0f73b62d86f034fd3787baf9792322a6172527635ace5f2c2cd227b2064",
+        "independent_metrics.json": "85e0bf89defaa8e8478a094c2bdb2f210faa160e6e68ca8518c91499d3ceb824",
+        "semantic_audit.json": "070d53fc61adc586f4c3f516b5a7ef98598d2c60c16f50b4053e2c2ecf4cf6e6",
+        "effective-configs.json": "9b2145b9df3d71385dd7afc8201d93b0c0d64fd950853b90c2bce5b229e5be9d",
+        "summary.json": "3e7aa22c917caeb917b0c44db7d4c85d8d2a746bb810e9b6159bbd92646982c4",
+        "validation.json": "76743a00e5a99b27e31ca4d2502e252a323ce66d73113a6d018e21f87c273ace"
+      }
+    }
+  ]
+}

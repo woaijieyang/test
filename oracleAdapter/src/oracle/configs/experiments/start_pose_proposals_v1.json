@@ -1,0 +1,11 @@
+{
+  "cases": "outputs/oracleAdapter/initial-frontier-selection-v1/cases27.json",
+  "cases_sha256": "e53d4a6bd1188609a02f1c3d26b93c92909603a2131ea5601437144006653fc1",
+  "diagnostic": "outputs/oracleAdapter/initial-state-closure-probe-v1/validation.json",
+  "diagnostic_sha256": "dc126460d79b0895e90f92d5e3c7f2cb4bf110c970f049d00a88899f7e51bdb3",
+  "budget_admission": "outputs/oracleAdapter/next-stage-development-budget-review-v1/reservation-admission.json",
+  "budget_admission_sha256": "3613d567e2b76acc712dd00993451429009ea5c54272498fa2659ea44fd6f5d9",
+  "prior_extra_reservation_seconds": 2700,
+  "cpu_reservation_seconds": 900,
+  "scope": "Fixed27 derived initial positions only. Reuse the original source anchor, unchanged current/anchor/ring family and all original bounds. Reject candidates whose native zero-displacement filter violates existing turn/source gates before per-component ranking. No simulator/gate changes, labels adopted or movement acceptance."
+}

@@ -1,0 +1,11 @@
+{
+  "implementation": "oracle.adapters.rxr.continuous_assets:audit",
+  "source_identity_receipt": "outputs/landmark-connectivity/missing-identities.json",
+  "historical_action_replay_summary": "outputs/landmark-connectivity/official-action-replay/summary.json",
+  "continuous_dataset": "data/datasets/RxR_VLNCE_v0",
+  "expected_records": 33954,
+  "navigation_actions": 0,
+  "source_protocol_reference": "https://github.com/jacobkrantz/VLN-CE/blob/729d141b2ee10628061ada74dd3a5b9f70faeba5/habitat_extensions/config/rxr_vlnce_english_task.yaml",
+  "source_protocol": {"turn_degrees": 30, "body_height_m": 0.88, "body_radius_m": 0.18, "allow_sliding": false},
+  "target_protocol_changed": false
+}

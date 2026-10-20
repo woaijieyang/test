@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "purpose": "landmark_order_alignment",
+  "legacy_identity_receipt": "outputs/landmark-connectivity/missing-identities.json",
+  "legacy_node_receipt": "outputs/landmark-connectivity/published-identity-nodes.json",
+  "expected_records": 33954,
+  "expected_unmatched": 8034,
+  "expected_missing_viewpoints": 461,
+  "raw_sources_read_only": true,
+  "identity_by_nearest_point": false,
+  "identity_by_text_similarity": false,
+  "implementation": "oracle.adapters.landmark_rxr.ledger:audit"
+}

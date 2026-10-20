@@ -1,0 +1,14 @@
+#include "tiled_recast_builder.h"
+#include <iomanip>
+void vec(const float* p){std::cout<<"["<<p[0]<<","<<p[1]<<","<<p[2]<<"]";}
+int main(int argc,char** argv){try{
+ require(argc==11,"mesh start3 desired3 observed3");float start[3],end[3],actual[3];for(int i=0;i<3;++i){start[i]=std::stof(argv[2+i]);end[i]=std::stof(argv[5+i]);actual[i]=std::stof(argv[8+i]);}
+ std::ifstream file(argv[1],std::ios::binary);SetHeader h{};file.read((char*)&h,sizeof(h));require(bool(file)&&h.version==1&&h.numTiles>0,"header");
+ std::unique_ptr<dtNavMesh,void(*)(dtNavMesh*)> nav(dtAllocNavMesh(),dtFreeNavMesh);require(dtStatusSucceed(nav->init(&h.params)),"init");
+ for(int i=0;i<h.numTiles;++i){TileHeader th{};file.read((char*)&th,sizeof(th));require(bool(file)&&th.dataSize>0,"tileheader");auto data=(unsigned char*)dtAlloc(th.dataSize,DT_ALLOC_PERM);file.read((char*)data,th.dataSize);require(bool(file),"tiledata");require(dtStatusSucceed(nav->addTile(data,th.dataSize,DT_TILE_FREE_DATA,th.tileRef,nullptr)),"tileload");}
+ dtNavMeshQuery query;require(dtStatusSucceed(query.init(nav.get(),2048)),"query");dtQueryFilter filter;filter.setIncludeFlags(1);filter.setExcludeFlags(0);float extent[3]={2,4,2};dtPolyRef sr=0,er=0,ar=0;float sp[3],ep[3],ap[3];auto ss=query.findNearestPoly(start,extent,&filter,&sr,sp);auto es=query.findNearestPoly(end,extent,&filter,&er,ep);auto as=query.findNearestPoly(actual,extent,&filter,&ar,ap);require(dtStatusSucceed(ss)&&dtStatusSucceed(es)&&dtStatusSucceed(as)&&sr&&er&&ar,"nearest");
+ float moved[3];dtPolyRef visited[256];int count=0;auto ms=query.moveAlongSurface(sr,sp,end,&filter,moved,visited,&count,256,true);require(count>0,"no visited");float beforeHeight[3];memcpy(beforeHeight,moved,sizeof(moved));auto hs=query.getPolyHeight(visited[count-1],moved,&moved[1]);float closest[3];bool over=false;auto cs=query.closestPointOnPoly(visited[count-1],actual,closest,&over);
+ const dtMeshTile* tile=nullptr;const dtPoly* poly=nullptr;require(dtStatusSucceed(nav->getTileAndPolyByRef(visited[count-1],&tile,&poly)),"lastpoly");
+ std::cout<<std::setprecision(12)<<"{\"start_ref\":"<<sr<<",\"end_ref\":"<<er<<",\"observed_nearest_ref\":"<<ar<<",\"last_visited_ref\":"<<visited[count-1]<<",\"move_status\":"<<ms<<",\"height_status\":"<<hs<<",\"closest_status\":"<<cs<<",\"observed_over_last_polygon\":"<<(over?"true":"false")<<",\"visited_count\":"<<count<<",\"projected_start\":";vec(sp);std::cout<<",\"projected_observed\":";vec(ap);std::cout<<",\"move_before_height\":";vec(beforeHeight);std::cout<<",\"move_after_height\":";vec(moved);std::cout<<",\"closest_on_last_polygon\":";vec(closest);std::cout<<",\"last_polygon_vertices\":[";for(int i=0;i<poly->vertCount;++i){if(i)std::cout<<",";vec(&tile->verts[3*poly->verts[i]]);}std::cout<<"]}\n";return 0;
+ }catch(const std::exception& e){std::cerr<<e.what()<<"\n";return 1;}}
+

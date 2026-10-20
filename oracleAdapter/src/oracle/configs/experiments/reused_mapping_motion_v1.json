@@ -1,0 +1,9 @@
+{
+  "static_audit": "outputs/oracleAdapter/d7-reused-bounded-static-audit-v1/validation.json",
+  "static_audit_sha256": "d9a18c3920fdd314fcb7b2acc925a4b2a5690fccf191c72ca8bdb48ab69fa848",
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "total_cpu_budget_hours": 8,
+  "unchanged_execution_modules": ["teachers/ordered.py", "planners/action_space.py", "planners/collision_queries.py", "adapters/habitat/native.py", "verification/source_scene.py", "verification/route_replay.py", "research/full_worker.py", "common/identity.py", "contracts.py", "configs/protocols/current_linear.json"],
+  "scope": "All102 same-profile historical D7 proposals whose current strict endpoint gate failed and whose new independent rational/static audit passed. Fresh cached pure-search execution and independent replay; all786scene/all33954global identities remain preserved outside this affected-scope run. No R2R/RxR evaluation, source geometry edits, action/body/budget/gate relaxation, cachedPASS or claim of blind algorithm improvement.",
+  "budget": "At most4observed-idle CPUworkers, noGPU.8CPUh total including controller/permits/execute/audit is charged within the original720CPUh envelope using completed prior charges, never reset. Same180s task/60s search/5000nodes/15000transition calls and physical/action limits as the completed matrix."
+}

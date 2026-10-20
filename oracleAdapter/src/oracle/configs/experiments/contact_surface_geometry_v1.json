@@ -1,0 +1,9 @@
+{
+  "parent_run": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "catalog_sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727",
+  "contacts": "outputs/oracleAdapter/endpoint-mapping209-attribution-v1/missing7-contacts.json",
+  "scope": "Exactly7recorded source contacts responsible for no-valid-sample outcomes in209already-native-connected tasks. Read actual native geometry bytes; exact rational plane projection plus normal-angle description. No point generation, simulator, navmesh rebuilding or acceptance changes. Unknown building parameters remain unknown.",
+  "cpu_reservation_seconds": 120
+}

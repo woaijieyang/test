@@ -1,0 +1,11 @@
+{
+  "static_audit": "outputs/oracleAdapter/dense-ordered-static-audit-v1/validation.json",
+  "static_audit_sha256": "dc845835ffdc71bc8305840b5104e68ae036387515cf9d05f9a3ff87ac1cbf3f",
+  "producer": "outputs/oracleAdapter/dense-ordered-mapping-v1",
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "max_workers": 4,
+  "per_arm_cpu_hours": 8,
+  "scope": "Complete affected93 Landmark mapping-control tasks x four explicitly matched pure-search arms. Original/candidate mapping x uncached/cached bounded search. No official-action payload in any arm; no reset/heading/label/profile/physical-gate or per-task budget change. This is not all33954 acceptance, R2R/RxR rerun, modelSR or blindgeneralization.",
+  "budget": "Sequential arms, each at most four newly-observed idle CPUs/noGPU. Each arm8CPUh total including full_worker permits/preflight/execution/rational audit; matrix controller at most1CPUh. This33h upper allocation plus previous full charge must fit original720h; no reset. Original failure records retained, no automatic infrastructure retries.",
+  "acceptance": "Every arm requires actual worker/source binding, full93 coverage, fresh movement when native-ready, separate endpoint/source gates, independent native replay and independent full evidence review. Report four cells and per-task mapping/cache effects; never posthoc successful-method union. Preserve full33954 andheld114 outside this affected subcohort."
+}

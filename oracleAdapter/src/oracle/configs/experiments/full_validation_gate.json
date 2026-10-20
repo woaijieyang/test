@@ -1,0 +1,7 @@
+{
+  "expected": {"r2r": 1, "rxr": 1, "landmark_rxr": 2},
+  "max_workers": 2,
+  "total_cpu_budget_hours": 6,
+  "engineering_selection": ["first_missing_landmark", "first_r2r", "first_pose_matched_rxr", "first_finite_legacy_static_landmark"],
+  "scope": "Engineering-only full-controller integration and clean checkpoint resume; not full dataset acceptance or algorithm performance"
+}

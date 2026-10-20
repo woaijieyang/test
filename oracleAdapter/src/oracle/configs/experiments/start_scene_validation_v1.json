@@ -1,0 +1,11 @@
+{
+  "parent_run": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "proposal_run": "outputs/oracleAdapter/actuation-safe-start-proposals-v2",
+  "proposal_validation_sha256": "e8a6aa97dd79f9d3eefa0bd1f0d27e9cd7cedc1864ee6a35c4cbd730e349f8a7",
+  "legacy_manifest": "outputs/landmark-connectivity/full-native-v11/manifest.json",
+  "legacy_manifest_sha256": "9a1e7cfe40071b71c44d80f7461f0d063100a5280c47690a675bfdcaa058c07a",
+  "max_workers": 32,
+  "total_cpu_budget_hours": 20,
+  "scope": "Complete oLBMNvg9in8 Landmark741, fixed27initial-coordinate proposals and714unchanged-input controls. Independent source/seed/native static admission before compilation, then fresh real uninterrupted actions and per-task independent replay for every task. Original heading/references except target[0]/information/profile/body/action/physics/budgets unchanged. All original failures retained, no oldPASS copies, no R2R/RxR or model reruns, no global33954 score or automatic publication. This is affected-scene validation charged to the original720CPUh envelope, not extra unbounded development."
+}

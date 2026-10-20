@@ -1,0 +1,9 @@
+{
+  "new_run": "outputs/oracleAdapter/prb-detail-scene660-v2",
+  "manifest_sha256": "2eded760227035839f589bb36e10a0b92064b966fb57962affe552f5b6390024",
+  "tasks": ["train:23751", "train:23752"],
+  "budget_receipt": "outputs/oracleAdapter/soft-duplicate-budget-v1/validation.json",
+  "budget_sha256": "989cc2154b990c01f6d691f66a953e437a01843991205efb040e0daed80dd8ae",
+  "scope": "Exactly2observed regressions, same goals/initial pose/info/body/action/source thresholds. Historical successful action sequences are explicitly privileged diagnostic inputs. Fresh execution in new profile, then separate-process rational-source replay; stop at first invalid step or original ordered-goal completion. No planner/geometry/label changes, reset, search-budget expansion, full660 score correction or copiedPASS.",
+  "resources": "2observed idleCPU<=64, noGPU;4sequential phase processes each40CPU/45wall seconds plus parent40CPU, full300CPU second reservation. One attempt."
+}

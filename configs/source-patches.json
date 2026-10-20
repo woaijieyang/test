@@ -1,0 +1,23 @@
+[
+  {
+    "path": "src/llava/model/language_model/llava_llama.py",
+    "before_sha256": "8d26b8d07521428a050c94330dbe38e502177e939e968155adec3616c88d9bbc",
+    "after_sha256": "2aa5bcbb9f82ac969b4a6fdcf593cf924e0c660c76fb1e9a13e0a4178c99fd99"
+  },
+  {
+    "path": "src/vlnce_baselines/awarevln_trainer.py",
+    "before_sha256": "9e77256097dc30c4dfec902e2945f89c26fc9131d6024715f974dca5cc76e06d",
+    "after_sha256": "d58d2257f820ee00c01f6bc44ab142f2e65c56df6a916807679059f61e3dcf3b"
+  },
+  {
+    "path": "src/vlnce_baselines/common/environments.py",
+    "before_sha256": "48acbf4f37ca434a80a6c1be12667ee52948246f91b42f2219d1cababcede650",
+    "after_sha256": "0fea3540f71309daaf5d819e2ad2007aa45d48edc7d3c0cfbda4d1c9881f0193"
+  },
+  {
+    "path": "src/habitat_extensions/actions.py",
+    "before_sha256": "a123416b68d37650361b983bce7c24d2911b3b570bbae173b6accde1376ebd64",
+    "after_sha256": "5f462aad5e766e7c31ef048d93deb76745f64c77496078d08b18a77648620237",
+    "reason": "Equivalent numpy legacy float alias replacement in auxiliary registered actions"
+  }
+]

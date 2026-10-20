@@ -1,0 +1,10 @@
+{
+  "habitat-sim": {
+    "url": "https://github.com/facebookresearch/habitat-sim.git",
+    "commit": "856d4b08c1a2632626bf0d205bf46471a99502b7"
+  },
+  "habitat-lab": {
+    "url": "https://github.com/facebookresearch/habitat-lab.git",
+    "commit": "d6ed1c0a0e786f16f261de2beafe347f4186d0d8"
+  }
+}

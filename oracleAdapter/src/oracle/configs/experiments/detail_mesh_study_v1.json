@@ -1,0 +1,20 @@
+{
+  "scenes": ["pRbA3pwrgk9", "HxpKQynjfin"],
+  "profile": "data/derived/navmeshes/landmark-recast626-mjx-v12/profile.json",
+  "profile_sha256": "92e1daf809e500375d9242f8464e3b8e0d40b2d67574565a82076c621c37e86f",
+  "binding_sha256": "507ae9f0ffa8e6e711edb4bf1b5e63e8aa490772a13d18ad2496a98e74fc32ed",
+  "catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "catalog_sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727",
+  "height_queries": "outputs/oracleAdapter/native-height61-v1/validation.json",
+  "height_queries_sha256": "c905b5f0cde7f2c4ca1a371e9bce8e50b239adb9102856d27919184c39748612",
+  "published": "outputs/landmark-connectivity/published-identity-nodes.json",
+  "published_sha256": "8eb4fdbe0a7cb2030d4fd1701a612ba3221c731b05dd2c97f0aa112e1d5909ca",
+  "parent": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "hxp_control_receipt": "outputs/landmark-connectivity/recast626-native-current-batch-v1/HxpKQynjfin/control-build.json",
+  "budget_receipt": "outputs/oracleAdapter/soft-duplicate-budget-v1/validation.json",
+  "budget_sha256": "989cc2154b990c01f6d691f66a953e437a01843991205efb040e0daed80dd8ae",
+  "scope": "One fixed detail_sample_max_error1to0.1 change, no cell/region/climb/body changes. Fresh pRb byte control required; Hxp existing identical-binding/geometry/mesh control reused after hashes checked. Five unknown-original-settings scenes excluded from construction, not dropped from global denominator.19distinct blocked points/83occurrences inspected; no adopted profile or executed route.",
+  "resources": "One observed idle CPU and one idle GPU among4-7 for the same native scene-loader rendering path as historical control.1800CPU/wall seconds reserved cumulatively. No training or shared installs.",
+  "stop": "Byte control mismatch stops that scene before candidate construction; the other scene still needs its own independent control gate. No parameter sweep. Zero point recovery stops candidate. Positive point results require complete affected-scene static nonregression then actual execution/source/replay; not global acceptance."
+}

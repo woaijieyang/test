@@ -1,0 +1,13 @@
+{
+  "implementation": "oracle.adapters.landmark_rxr.heading_lineage:audit",
+  "identity_run": "outputs/oracleAdapter/identity-review-v1",
+  "guide_heading_run": "outputs/oracleAdapter/source-heading-audit-v1",
+  "historical_manifest": "outputs/landmark-connectivity/full-native-v11/manifest.json",
+  "expected_records": 33954,
+  "comparison_angle_radians": 0.00001,
+  "task_objective": "preserve_landmark_subpath_heading_lineage_not_replace_with_guide_heading",
+  "privileges": ["landmark_annotations", "verified_original_guide_heading_ledger"],
+  "native_actions": 0,
+  "automatic_heading_changes": false,
+  "circular_comparison": "Diagnostic conditional on both fields using radians, not proof of their frame semantics"
+}

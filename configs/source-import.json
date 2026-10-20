@@ -1,0 +1,1327 @@
+{
+  "upstream": "https://github.com/GWxuan/AwareVLN",
+  "commit": "8f14eb8450cdd14ff4e3ba1ea04824255121e6be",
+  "files": [
+    {
+      "source": "llava/__init__.py",
+      "target": "src/llava/__init__.py",
+      "sha256": "ab4913c72ea58cde0a44f2bc75b6f71894cefdfc89b012ac8d627ea826119837",
+      "installed_sha256": "ab4913c72ea58cde0a44f2bc75b6f71894cefdfc89b012ac8d627ea826119837"
+    },
+    {
+      "source": "llava/constants.py",
+      "target": "src/llava/constants.py",
+      "sha256": "eb2d293a06404c5e380d8d419d410e4c5831c29468dff4f70475587540bda36d",
+      "installed_sha256": "eb2d293a06404c5e380d8d419d410e4c5831c29468dff4f70475587540bda36d"
+    },
+    {
+      "source": "llava/conversation.py",
+      "target": "src/llava/conversation.py",
+      "sha256": "5995bc8d45e153395bdeaa31ca7f6c0d1f637135c24e66a1947e9d56ebaa39a1",
+      "installed_sha256": "5995bc8d45e153395bdeaa31ca7f6c0d1f637135c24e66a1947e9d56ebaa39a1"
+    },
+    {
+      "source": "llava/entry.py",
+      "target": "src/llava/entry.py",
+      "sha256": "da3808fda2ca0bacac419210650e762351869cd28fd205cb2367118b636ac98f",
+      "installed_sha256": "da3808fda2ca0bacac419210650e762351869cd28fd205cb2367118b636ac98f"
+    },
+    {
+      "source": "llava/media.py",
+      "target": "src/llava/media.py",
+      "sha256": "2aa398c62155b584dedd0124c2aa423b463844f433672d5c5f29accf1b22a9d6",
+      "installed_sha256": "2aa398c62155b584dedd0124c2aa423b463844f433672d5c5f29accf1b22a9d6"
+    },
+    {
+      "source": "llava/mm_utils.py",
+      "target": "src/llava/mm_utils.py",
+      "sha256": "117d382783c3eba5f6336ff1ee6ee7adedec737fa440a2f8834f40f7ddf7de81",
+      "installed_sha256": "117d382783c3eba5f6336ff1ee6ee7adedec737fa440a2f8834f40f7ddf7de81"
+    },
+    {
+      "source": "llava/cli/eval.py",
+      "target": "src/llava/cli/eval.py",
+      "sha256": "abedf715b706aaa43725558b5dd44d2fb7048176db8dd2b280227afca42f0736",
+      "installed_sha256": "abedf715b706aaa43725558b5dd44d2fb7048176db8dd2b280227afca42f0736"
+    },
+    {
+      "source": "llava/cli/run.py",
+      "target": "src/llava/cli/run.py",
+      "sha256": "fbb12a940d7e26f99692dfea2e396e97fd1deb113b072a0c9144906d436e9526",
+      "installed_sha256": "fbb12a940d7e26f99692dfea2e396e97fd1deb113b072a0c9144906d436e9526"
+    },
+    {
+      "source": "llava/data/__init__.py",
+      "target": "src/llava/data/__init__.py",
+      "sha256": "1756ae00f53973a116e301da71765cb25d87972e629b6327a72525c6710300fd",
+      "installed_sha256": "1756ae00f53973a116e301da71765cb25d87972e629b6327a72525c6710300fd"
+    },
+    {
+      "source": "llava/data/base.py",
+      "target": "src/llava/data/base.py",
+      "sha256": "1a0effef8143e18fdd46d1784d8f5e3ae4636d08787f0ab54460132ff6b42fef",
+      "installed_sha256": "1a0effef8143e18fdd46d1784d8f5e3ae4636d08787f0ab54460132ff6b42fef"
+    },
+    {
+      "source": "llava/data/builder.py",
+      "target": "src/llava/data/builder.py",
+      "sha256": "efad6182000074f4890c3a49836a38f52ae5ec83bd2a365d8252c4ec1ea71ed4",
+      "installed_sha256": "efad6182000074f4890c3a49836a38f52ae5ec83bd2a365d8252c4ec1ea71ed4"
+    },
+    {
+      "source": "llava/data/dataset.py",
+      "target": "src/llava/data/dataset.py",
+      "sha256": "4fccc5c9af18195e89d1208680cfeba378285fb08d53234b3d27d61928706272",
+      "installed_sha256": "4fccc5c9af18195e89d1208680cfeba378285fb08d53234b3d27d61928706272"
+    },
+    {
+      "source": "llava/data/datasets_mixture.py",
+      "target": "src/llava/data/datasets_mixture.py",
+      "sha256": "3a4e0eefe0be18f2fa0548a2c1cf6e849b0f0cabdde313c8805be4bfd52b328b",
+      "installed_sha256": "3a4e0eefe0be18f2fa0548a2c1cf6e849b0f0cabdde313c8805be4bfd52b328b"
+    },
+    {
+      "source": "llava/data/simple_vila_webdataset.py",
+      "target": "src/llava/data/simple_vila_webdataset.py",
+      "sha256": "7ad613a5341d59d65e1d5989daa67562b392ad586fa30ddc447dd6bcbc96a2d0",
+      "installed_sha256": "7ad613a5341d59d65e1d5989daa67562b392ad586fa30ddc447dd6bcbc96a2d0"
+    },
+    {
+      "source": "llava/data/utils.py",
+      "target": "src/llava/data/utils.py",
+      "sha256": "a7ea32d3d7a11b676abf097252507b5e1b5e26122744246075fa46bc117cc137",
+      "installed_sha256": "a7ea32d3d7a11b676abf097252507b5e1b5e26122744246075fa46bc117cc137"
+    },
+    {
+      "source": "llava/data_aug/caption2qa.py",
+      "target": "src/llava/data_aug/caption2qa.py",
+      "sha256": "3ab4514cd189e59fcac1cb1213f0e21d7b23bc278496ccad272b6fff8343fc98",
+      "installed_sha256": "3ab4514cd189e59fcac1cb1213f0e21d7b23bc278496ccad272b6fff8343fc98"
+    },
+    {
+      "source": "llava/data_aug/dev.py",
+      "target": "src/llava/data_aug/dev.py",
+      "sha256": "6cb3d105b9dab4402c9861fa430d025d87baca424087bd38bb4644781e596ddf",
+      "installed_sha256": "6cb3d105b9dab4402c9861fa430d025d87baca424087bd38bb4644781e596ddf"
+    },
+    {
+      "source": "llava/data_aug/reformat_tar.py",
+      "target": "src/llava/data_aug/reformat_tar.py",
+      "sha256": "9570a3cd234cb86a70a5715fc11ec45a7801927b111327ec7b43fc8b4bee4351",
+      "installed_sha256": "9570a3cd234cb86a70a5715fc11ec45a7801927b111327ec7b43fc8b4bee4351"
+    },
+    {
+      "source": "llava/data_aug/seval.sh",
+      "target": "src/llava/data_aug/seval.sh",
+      "sha256": "82f0f6624b712dc3e6711e0e412aa08917bd9a9142dc342af9ba073684fe5544",
+      "installed_sha256": "82f0f6624b712dc3e6711e0e412aa08917bd9a9142dc342af9ba073684fe5544"
+    },
+    {
+      "source": "llava/data_aug/srun_cap2qa.sh",
+      "target": "src/llava/data_aug/srun_cap2qa.sh",
+      "sha256": "f90eb464c721c7bb0a2f5bbffaa06c106319c7abfba6e4b5d3428ee77c2076d1",
+      "installed_sha256": "f90eb464c721c7bb0a2f5bbffaa06c106319c7abfba6e4b5d3428ee77c2076d1"
+    },
+    {
+      "source": "llava/data_aug/video_eval.py",
+      "target": "src/llava/data_aug/video_eval.py",
+      "sha256": "235632378837b8215dbe4480466f89b2cd1ed6c0dc891977e3198912a6d68a57",
+      "installed_sha256": "235632378837b8215dbe4480466f89b2cd1ed6c0dc891977e3198912a6d68a57"
+    },
+    {
+      "source": "llava/data_aug/video_inference.py",
+      "target": "src/llava/data_aug/video_inference.py",
+      "sha256": "1bb7b9715947ab093661f410da97956a3d1182e2b32d3c0777c19dd1f1f141df",
+      "installed_sha256": "1bb7b9715947ab093661f410da97956a3d1182e2b32d3c0777c19dd1f1f141df"
+    },
+    {
+      "source": "llava/eval/__init__.py",
+      "target": "src/llava/eval/__init__.py",
+      "sha256": "99d1a2c67d67419d37a7640699130f68c692292f2b2466e62bb3848be4a3adb4",
+      "installed_sha256": "99d1a2c67d67419d37a7640699130f68c692292f2b2466e62bb3848be4a3adb4"
+    },
+    {
+      "source": "llava/eval/cinepile.py",
+      "target": "src/llava/eval/cinepile.py",
+      "sha256": "35b37d8f41c85661eee0f1ed95bfe889632c469b6acbdc12aa343bc51ca310dd",
+      "installed_sha256": "35b37d8f41c85661eee0f1ed95bfe889632c469b6acbdc12aa343bc51ca310dd"
+    },
+    {
+      "source": "llava/eval/eval_mathvista.py",
+      "target": "src/llava/eval/eval_mathvista.py",
+      "sha256": "a47d41a3ba29962ac5745dca8702d21fbb30e23be6e94e7f478a229320e39684",
+      "installed_sha256": "a47d41a3ba29962ac5745dca8702d21fbb30e23be6e94e7f478a229320e39684"
+    },
+    {
+      "source": "llava/eval/eval_mmmu.py",
+      "target": "src/llava/eval/eval_mmmu.py",
+      "sha256": "56963413a71b61fd5ab820db11cd2f17e10d12f7c5e820ef64cc2d3fde8e285d",
+      "installed_sha256": "56963413a71b61fd5ab820db11cd2f17e10d12f7c5e820ef64cc2d3fde8e285d"
+    },
+    {
+      "source": "llava/eval/eval_refcoco.py",
+      "target": "src/llava/eval/eval_refcoco.py",
+      "sha256": "6e86ada8c4b674a49be5cf83eae55bbb4e418fe4948a9e302e971e892e8fa8b3",
+      "installed_sha256": "6e86ada8c4b674a49be5cf83eae55bbb4e418fe4948a9e302e971e892e8fa8b3"
+    },
+    {
+      "source": "llava/eval/eval_textvqa.py",
+      "target": "src/llava/eval/eval_textvqa.py",
+      "sha256": "b6a56c2d5198f1afb48e4d5288392fdd78f267c115f4f760ee4f488f8862d350",
+      "installed_sha256": "b6a56c2d5198f1afb48e4d5288392fdd78f267c115f4f760ee4f488f8862d350"
+    },
+    {
+      "source": "llava/eval/m4c_evaluator.py",
+      "target": "src/llava/eval/m4c_evaluator.py",
+      "sha256": "138c491f796506737005d1e7a866abfb8cb1d567ecc7951e3afc8904e305a7ae",
+      "installed_sha256": "138c491f796506737005d1e7a866abfb8cb1d567ecc7951e3afc8904e305a7ae"
+    },
+    {
+      "source": "llava/eval/model_refcoco.py",
+      "target": "src/llava/eval/model_refcoco.py",
+      "sha256": "74f6bc8298ac6843899606d2259183cf85f6503e32a9c4e29fde9375235cdbaa",
+      "installed_sha256": "74f6bc8298ac6843899606d2259183cf85f6503e32a9c4e29fde9375235cdbaa"
+    },
+    {
+      "source": "llava/eval/model_videochatgpt_benchmark.py",
+      "target": "src/llava/eval/model_videochatgpt_benchmark.py",
+      "sha256": "61f3990822e92612b0ed5cfda731a830ebbe4db684b898509aa4d6b306b81faa",
+      "installed_sha256": "61f3990822e92612b0ed5cfda731a830ebbe4db684b898509aa4d6b306b81faa"
+    },
+    {
+      "source": "llava/eval/model_vqa_ego_schema.py",
+      "target": "src/llava/eval/model_vqa_ego_schema.py",
+      "sha256": "c28fdcb3e47d2d86a7cbe6c8193c42ae361e5066e462fd6736aaf3dd414d1636",
+      "installed_sha256": "c28fdcb3e47d2d86a7cbe6c8193c42ae361e5066e462fd6736aaf3dd414d1636"
+    },
+    {
+      "source": "llava/eval/model_vqa_loader.py",
+      "target": "src/llava/eval/model_vqa_loader.py",
+      "sha256": "a49509df481b91c2ed395d0cd7d76bb53ef1f2c19d984a6ffec0e83d48796890",
+      "installed_sha256": "a49509df481b91c2ed395d0cd7d76bb53ef1f2c19d984a6ffec0e83d48796890"
+    },
+    {
+      "source": "llava/eval/model_vqa_mmmu.py",
+      "target": "src/llava/eval/model_vqa_mmmu.py",
+      "sha256": "07290d482a83fa3ad9b472d2164a2b11f955cde2020acdf6535beeb6d72bd8e0",
+      "installed_sha256": "07290d482a83fa3ad9b472d2164a2b11f955cde2020acdf6535beeb6d72bd8e0"
+    },
+    {
+      "source": "llava/eval/model_vqa_nextqa.py",
+      "target": "src/llava/eval/model_vqa_nextqa.py",
+      "sha256": "98be841c82083f823943f1ece6ba50426cfd3c498e9584af912fa2ef7a11e096",
+      "installed_sha256": "98be841c82083f823943f1ece6ba50426cfd3c498e9584af912fa2ef7a11e096"
+    },
+    {
+      "source": "llava/eval/model_vqa_video.py",
+      "target": "src/llava/eval/model_vqa_video.py",
+      "sha256": "d50d008b4f54fe087f3db720f33cb704b8f5422b676389c6129bb88de426b669",
+      "installed_sha256": "d50d008b4f54fe087f3db720f33cb704b8f5422b676389c6129bb88de426b669"
+    },
+    {
+      "source": "llava/eval/model_vqa_videodemo.py",
+      "target": "src/llava/eval/model_vqa_videodemo.py",
+      "sha256": "65e562b8e6374460bd1f8cb34b2048e6fd3a0e3d7e938334080b1a2b31641ea7",
+      "installed_sha256": "65e562b8e6374460bd1f8cb34b2048e6fd3a0e3d7e938334080b1a2b31641ea7"
+    },
+    {
+      "source": "llava/eval/model_vqa_videomme.py",
+      "target": "src/llava/eval/model_vqa_videomme.py",
+      "sha256": "0460e8ca78ac635b78c18462d882f863a0744d70291abd4716e0007373bfa931",
+      "installed_sha256": "0460e8ca78ac635b78c18462d882f863a0744d70291abd4716e0007373bfa931"
+    },
+    {
+      "source": "llava/eval/model_vqa_videoperception.py",
+      "target": "src/llava/eval/model_vqa_videoperception.py",
+      "sha256": "97b700f16cbfd7033591e1b3e91569457e3ba5c5432ec99f5abfebfd320bb30b",
+      "installed_sha256": "97b700f16cbfd7033591e1b3e91569457e3ba5c5432ec99f5abfebfd320bb30b"
+    },
+    {
+      "source": "llava/eval/registry.yaml",
+      "target": "configs/llava/eval/registry.yaml",
+      "sha256": "457306988265a244083fa5f10e8cf2ac5d2e39824da660d658b9550d16c8f339",
+      "installed_sha256": "457306988265a244083fa5f10e8cf2ac5d2e39824da660d658b9550d16c8f339"
+    },
+    {
+      "source": "llava/eval/rtl.py",
+      "target": "src/llava/eval/rtl.py",
+      "sha256": "88bc42d03ad41970d4f80396dc66d32d471d3fea23a491f1298f65d27839c37a",
+      "installed_sha256": "88bc42d03ad41970d4f80396dc66d32d471d3fea23a491f1298f65d27839c37a"
+    },
+    {
+      "source": "llava/eval/run_navigation.py",
+      "target": "src/llava/eval/run_navigation.py",
+      "sha256": "85f2ffb86bb72f6c5c67bea2ad76e155cd552cab39272b14fb8154f746cb5d03",
+      "installed_sha256": "85f2ffb86bb72f6c5c67bea2ad76e155cd552cab39272b14fb8154f746cb5d03"
+    },
+    {
+      "source": "llava/eval/run_vila.py",
+      "target": "src/llava/eval/run_vila.py",
+      "sha256": "f7c42b5fabd2a3a4510006b3d8756e006e7fd4a593e214b43056066d584d736f",
+      "installed_sha256": "f7c42b5fabd2a3a4510006b3d8756e006e7fd4a593e214b43056066d584d736f"
+    },
+    {
+      "source": "llava/model/__init__.py",
+      "target": "src/llava/model/__init__.py",
+      "sha256": "60a4e40bb5964746274d7eb53b16d96392583017242954f388cf1102fbd39a56",
+      "installed_sha256": "60a4e40bb5964746274d7eb53b16d96392583017242954f388cf1102fbd39a56"
+    },
+    {
+      "source": "llava/model/apply_delta.py",
+      "target": "src/llava/model/apply_delta.py",
+      "sha256": "ad9865ba0129a75ad62dfe8010c0ec110e9873d3d6b19d7fe557c1d2c6f02fb2",
+      "installed_sha256": "ad9865ba0129a75ad62dfe8010c0ec110e9873d3d6b19d7fe557c1d2c6f02fb2"
+    },
+    {
+      "source": "llava/model/builder.py",
+      "target": "src/llava/model/builder.py",
+      "sha256": "0719d770019c16ad19c2c82d065318f9d99e3718041c0c48b1b461f973942333",
+      "installed_sha256": "0719d770019c16ad19c2c82d065318f9d99e3718041c0c48b1b461f973942333"
+    },
+    {
+      "source": "llava/model/configuration_llava.py",
+      "target": "src/llava/model/configuration_llava.py",
+      "sha256": "fa16eecbb21c3a7645f2ce20e37e27fb67c5de97b6fc938b1707ff238a358f97",
+      "installed_sha256": "fa16eecbb21c3a7645f2ce20e37e27fb67c5de97b6fc938b1707ff238a358f97"
+    },
+    {
+      "source": "llava/model/consolidate.py",
+      "target": "src/llava/model/consolidate.py",
+      "sha256": "bc5d028d82511dffae3933da0c65e44dfd444ef587d5a7ec7b6c631e0824b1c8",
+      "installed_sha256": "bc5d028d82511dffae3933da0c65e44dfd444ef587d5a7ec7b6c631e0824b1c8"
+    },
+    {
+      "source": "llava/model/llava_arch.py",
+      "target": "src/llava/model/llava_arch.py",
+      "sha256": "3ae2c4e293ac59420fb60c08c59bf9ce6ef5747a434bb3451a4a09d847fd5247",
+      "installed_sha256": "3ae2c4e293ac59420fb60c08c59bf9ce6ef5747a434bb3451a4a09d847fd5247"
+    },
+    {
+      "source": "llava/model/loss.py",
+      "target": "src/llava/model/loss.py",
+      "sha256": "69d92d61d0cb7ae8bc08f80b0be586ff7d24e8aa7fd148f22bde537780b4b197",
+      "installed_sha256": "69d92d61d0cb7ae8bc08f80b0be586ff7d24e8aa7fd148f22bde537780b4b197"
+    },
+    {
+      "source": "llava/model/make_delta.py",
+      "target": "src/llava/model/make_delta.py",
+      "sha256": "713a216fbdef8ecb92e86aea2b8b30e5b221e609252c72a32c7ea64c52739840",
+      "installed_sha256": "713a216fbdef8ecb92e86aea2b8b30e5b221e609252c72a32c7ea64c52739840"
+    },
+    {
+      "source": "llava/model/utils.py",
+      "target": "src/llava/model/utils.py",
+      "sha256": "5773e3e90bd0476579f429565ceb2d4202969cb1b04203b49f45174ec0154d00",
+      "installed_sha256": "5773e3e90bd0476579f429565ceb2d4202969cb1b04203b49f45174ec0154d00"
+    },
+    {
+      "source": "llava/train/__init__.py",
+      "target": "src/llava/train/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "llava/train/args.py",
+      "target": "src/llava/train/args.py",
+      "sha256": "30ed75859b8c7cea975349a3271482070d4a468b3f76f847d8be905b488e6a78",
+      "installed_sha256": "30ed75859b8c7cea975349a3271482070d4a468b3f76f847d8be905b488e6a78"
+    },
+    {
+      "source": "llava/train/deepspeed_distributed_attention.py",
+      "target": "src/llava/train/deepspeed_distributed_attention.py",
+      "sha256": "bc932cde76f3e01846435614cadf83aa3192d6f1413316c923d6798658faf017",
+      "installed_sha256": "bc932cde76f3e01846435614cadf83aa3192d6f1413316c923d6798658faf017"
+    },
+    {
+      "source": "llava/train/llama_dpsp_attn_monkey_patch.py",
+      "target": "src/llava/train/llama_dpsp_attn_monkey_patch.py",
+      "sha256": "442c5dc7706c11e0ae90c99dc153ce50a05b860b081db648ebebd4b41d66e0e1",
+      "installed_sha256": "442c5dc7706c11e0ae90c99dc153ce50a05b860b081db648ebebd4b41d66e0e1"
+    },
+    {
+      "source": "llava/train/llava_trainer.py",
+      "target": "src/llava/train/llava_trainer.py",
+      "sha256": "d1428dcfd28a944e31db652359dac6e97b677c38c2f40e77954da9805e74cb0a",
+      "installed_sha256": "d1428dcfd28a944e31db652359dac6e97b677c38c2f40e77954da9805e74cb0a"
+    },
+    {
+      "source": "llava/train/slurm_utils.py",
+      "target": "src/llava/train/slurm_utils.py",
+      "sha256": "fb5ac9d43c5c1ecbf16c0b2cfe08d2d21a97508e2694b93eb151cdcafd3ff5da",
+      "installed_sha256": "fb5ac9d43c5c1ecbf16c0b2cfe08d2d21a97508e2694b93eb151cdcafd3ff5da"
+    },
+    {
+      "source": "llava/train/train.py",
+      "target": "src/llava/train/train.py",
+      "sha256": "c1bbc1c334cea4b4f619a0fa9853e32bfe34daddff7e776de9977128b26146f1",
+      "installed_sha256": "c1bbc1c334cea4b4f619a0fa9853e32bfe34daddff7e776de9977128b26146f1"
+    },
+    {
+      "source": "llava/train/train_hybrid.py",
+      "target": "src/llava/train/train_hybrid.py",
+      "sha256": "b7f8b39c244cdc0f5417baa28aea5db96fc489651be8ccee7d6b5dc92aab1d23",
+      "installed_sha256": "b7f8b39c244cdc0f5417baa28aea5db96fc489651be8ccee7d6b5dc92aab1d23"
+    },
+    {
+      "source": "llava/train/train_llm_to_long.py",
+      "target": "src/llava/train/train_llm_to_long.py",
+      "sha256": "137f87158ba1d37d8af92b434efea3b688f34b0b7ab93cf8df55d84e8f3beb3c",
+      "installed_sha256": "137f87158ba1d37d8af92b434efea3b688f34b0b7ab93cf8df55d84e8f3beb3c"
+    },
+    {
+      "source": "llava/train/train_long.py",
+      "target": "src/llava/train/train_long.py",
+      "sha256": "b3dd18c6c0395cb973c5c78af6b22c2369c50c079dcc5effa1c23f13929b5ffa",
+      "installed_sha256": "b3dd18c6c0395cb973c5c78af6b22c2369c50c079dcc5effa1c23f13929b5ffa"
+    },
+    {
+      "source": "llava/train/train_mem.py",
+      "target": "src/llava/train/train_mem.py",
+      "sha256": "81c0f7cd44a3d5d49b82435c1eb44701eae0796bdab742819bc8fff082a8b578",
+      "installed_sha256": "81c0f7cd44a3d5d49b82435c1eb44701eae0796bdab742819bc8fff082a8b578"
+    },
+    {
+      "source": "llava/train/transformer_normalize_monkey_patch.py",
+      "target": "src/llava/train/transformer_normalize_monkey_patch.py",
+      "sha256": "ae83b5f8fdcd1c011c03ab110740a4d540bf29737c50064ccbdca5d2e9f3ebe3",
+      "installed_sha256": "ae83b5f8fdcd1c011c03ab110740a4d540bf29737c50064ccbdca5d2e9f3ebe3"
+    },
+    {
+      "source": "llava/train/utils.py",
+      "target": "src/llava/train/utils.py",
+      "sha256": "864ed27b9f51813cf7441268bd27def4ba77d804c4a39dbcb41bcee7f4524490",
+      "installed_sha256": "864ed27b9f51813cf7441268bd27def4ba77d804c4a39dbcb41bcee7f4524490"
+    },
+    {
+      "source": "llava/trl/__init__.py",
+      "target": "src/llava/trl/__init__.py",
+      "sha256": "53cfd812e1e8a0668dadebdb200b59ac988a148b6c78b75cb7dcd53fb9e756b5",
+      "installed_sha256": "53cfd812e1e8a0668dadebdb200b59ac988a148b6c78b75cb7dcd53fb9e756b5"
+    },
+    {
+      "source": "llava/trl/core.py",
+      "target": "src/llava/trl/core.py",
+      "sha256": "e2a8e647d00c72af98e1591d6c5b6dfeb9ddc9395e2f8db6b392f97360f45c30",
+      "installed_sha256": "e2a8e647d00c72af98e1591d6c5b6dfeb9ddc9395e2f8db6b392f97360f45c30"
+    },
+    {
+      "source": "llava/trl/import_utils.py",
+      "target": "src/llava/trl/import_utils.py",
+      "sha256": "757db053c8cbaf861468415055ab7ababe61abc4ef0b25c1fb87ebd9549a52dd",
+      "installed_sha256": "757db053c8cbaf861468415055ab7ababe61abc4ef0b25c1fb87ebd9549a52dd"
+    },
+    {
+      "source": "llava/utils/__init__.py",
+      "target": "src/llava/utils/__init__.py",
+      "sha256": "6a52031819f1587e09bcff945beecdf7db1e0418b4af5195d61f1fd4444505e7",
+      "installed_sha256": "6a52031819f1587e09bcff945beecdf7db1e0418b4af5195d61f1fd4444505e7"
+    },
+    {
+      "source": "llava/utils/distributed.py",
+      "target": "src/llava/utils/distributed.py",
+      "sha256": "2094b44b0cabe7a01eca90bd95ca3186274e1e9cf65c645ea2c54754b1482078",
+      "installed_sha256": "2094b44b0cabe7a01eca90bd95ca3186274e1e9cf65c645ea2c54754b1482078"
+    },
+    {
+      "source": "llava/utils/io.py",
+      "target": "src/llava/utils/io.py",
+      "sha256": "83f1fe2c390bb087d1f752beb5c5b038842c37abbf2abbd1611fca23cbd6a780",
+      "installed_sha256": "83f1fe2c390bb087d1f752beb5c5b038842c37abbf2abbd1611fca23cbd6a780"
+    },
+    {
+      "source": "llava/utils/logging.py",
+      "target": "src/llava/utils/logging.py",
+      "sha256": "5ad8ae727987c9e4611459be7aa52e7a8e9db7a1f868673b95701de7dc63caf1",
+      "installed_sha256": "5ad8ae727987c9e4611459be7aa52e7a8e9db7a1f868673b95701de7dc63caf1"
+    },
+    {
+      "source": "llava/utils/media.py",
+      "target": "src/llava/utils/media.py",
+      "sha256": "112127ffeeb8b11bf02ad8d69eeeb513bf3b8f1d944fc61383732e8889097bff",
+      "installed_sha256": "112127ffeeb8b11bf02ad8d69eeeb513bf3b8f1d944fc61383732e8889097bff"
+    },
+    {
+      "source": "llava/utils/merge_lora_weights_and_save_hf_model.py",
+      "target": "src/llava/utils/merge_lora_weights_and_save_hf_model.py",
+      "sha256": "6350aa949492208e2da9ea6223611563f9b758465b23b21c88e100cc6e819ce8",
+      "installed_sha256": "6350aa949492208e2da9ea6223611563f9b758465b23b21c88e100cc6e819ce8"
+    },
+    {
+      "source": "llava/utils/tokenizer.py",
+      "target": "src/llava/utils/tokenizer.py",
+      "sha256": "d201bcc29da3a8cf7c17f625454fd08322202bec4015c98d0939730baf3e1a7f",
+      "installed_sha256": "d201bcc29da3a8cf7c17f625454fd08322202bec4015c98d0939730baf3e1a7f"
+    },
+    {
+      "source": "llava/utils/utils.py",
+      "target": "src/llava/utils/utils.py",
+      "sha256": "7a64449eda7a4abad68c3cb153f0ffb08c228e0481bb2c60176bb44127cd667c",
+      "installed_sha256": "7a64449eda7a4abad68c3cb153f0ffb08c228e0481bb2c60176bb44127cd667c"
+    },
+    {
+      "source": "llava/wids/__init__.py",
+      "target": "src/llava/wids/__init__.py",
+      "sha256": "510a6c5bc15247a28df0fcf1008a8cec2b34df991dd7450593a33792f62596f6",
+      "installed_sha256": "510a6c5bc15247a28df0fcf1008a8cec2b34df991dd7450593a33792f62596f6"
+    },
+    {
+      "source": "llava/wids/wids.py",
+      "target": "src/llava/wids/wids.py",
+      "sha256": "d33067585d004b4148bbd195658c77128d3eb208a84102d4ca62f6b28406cd6a",
+      "installed_sha256": "d33067585d004b4148bbd195658c77128d3eb208a84102d4ca62f6b28406cd6a"
+    },
+    {
+      "source": "llava/wids/wids_bench.py",
+      "target": "src/llava/wids/wids_bench.py",
+      "sha256": "2015fbd53fd05e6f44dfc79f920d9a043bb620401e33a9939cdccf3b0c4dda6f",
+      "installed_sha256": "2015fbd53fd05e6f44dfc79f920d9a043bb620401e33a9939cdccf3b0c4dda6f"
+    },
+    {
+      "source": "llava/wids/wids_cleanup.py",
+      "target": "src/llava/wids/wids_cleanup.py",
+      "sha256": "67bbfefdf494299fd6dc09e5498979d02813dfc5e60384601e8c328b24e94fa9",
+      "installed_sha256": "67bbfefdf494299fd6dc09e5498979d02813dfc5e60384601e8c328b24e94fa9"
+    },
+    {
+      "source": "llava/wids/wids_dir.py",
+      "target": "src/llava/wids/wids_dir.py",
+      "sha256": "109592b07d09ed9064a50c118fdd935349cb280a4b750161ef193d925f8c6e3d",
+      "installed_sha256": "109592b07d09ed9064a50c118fdd935349cb280a4b750161ef193d925f8c6e3d"
+    },
+    {
+      "source": "llava/wids/wids_dl.py",
+      "target": "src/llava/wids/wids_dl.py",
+      "sha256": "c819a67305d625cee08b4cd241f3ab2c1c7720980fdfa0b8184e98690638005b",
+      "installed_sha256": "c819a67305d625cee08b4cd241f3ab2c1c7720980fdfa0b8184e98690638005b"
+    },
+    {
+      "source": "llava/wids/wids_index.py",
+      "target": "src/llava/wids/wids_index.py",
+      "sha256": "f0f9676e7abd37225e0afc9afc45fe02b5b1457f3284ef5762082a0d1efaa406",
+      "installed_sha256": "f0f9676e7abd37225e0afc9afc45fe02b5b1457f3284ef5762082a0d1efaa406"
+    },
+    {
+      "source": "llava/wids/wids_lru.py",
+      "target": "src/llava/wids/wids_lru.py",
+      "sha256": "97057e2a482fba7124788e5af0ca10b2d2e642450800123918082ed57f00914c",
+      "installed_sha256": "97057e2a482fba7124788e5af0ca10b2d2e642450800123918082ed57f00914c"
+    },
+    {
+      "source": "llava/wids/wids_mmtar.py",
+      "target": "src/llava/wids/wids_mmtar.py",
+      "sha256": "a99d0f692e7b1501ff6946766d77cec7035b31b7555bbe4b2583e6bb85cced4f",
+      "installed_sha256": "a99d0f692e7b1501ff6946766d77cec7035b31b7555bbe4b2583e6bb85cced4f"
+    },
+    {
+      "source": "llava/wids/wids_specs.py",
+      "target": "src/llava/wids/wids_specs.py",
+      "sha256": "f0d9c7c91bc56dfd7fd7166065327e57cf431363662f453cb4b75503793865d1",
+      "installed_sha256": "f0d9c7c91bc56dfd7fd7166065327e57cf431363662f453cb4b75503793865d1"
+    },
+    {
+      "source": "llava/wids/wids_tar.py",
+      "target": "src/llava/wids/wids_tar.py",
+      "sha256": "11f95f5951d559248b231dd653bfb3341a15b10444076bab1d20bb068fb4963c",
+      "installed_sha256": "11f95f5951d559248b231dd653bfb3341a15b10444076bab1d20bb068fb4963c"
+    },
+    {
+      "source": "llava/data/dataset_impl/__init__.py",
+      "target": "src/llava/data/dataset_impl/__init__.py",
+      "sha256": "ebb32acb5431b677337d8556af2dfd6909490a902386ab11f6428949703e9e10",
+      "installed_sha256": "ebb32acb5431b677337d8556af2dfd6909490a902386ab11f6428949703e9e10"
+    },
+    {
+      "source": "llava/data/dataset_impl/llava.py",
+      "target": "src/llava/data/dataset_impl/llava.py",
+      "sha256": "2e5553867e2cb12d142271bee543d662d0dc4f76aa96bf6f08fd8a36e8acbb09",
+      "installed_sha256": "2e5553867e2cb12d142271bee543d662d0dc4f76aa96bf6f08fd8a36e8acbb09"
+    },
+    {
+      "source": "llava/data/registry/default.yaml",
+      "target": "configs/llava/data/registry/default.yaml",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "llava/eval/mathvista_utils/calculate_score.py",
+      "target": "src/llava/eval/mathvista_utils/calculate_score.py",
+      "sha256": "4c8e4b67831ecab09cfa01870604d34e35912f18e86df3f176b4f49b72fe5309",
+      "installed_sha256": "4c8e4b67831ecab09cfa01870604d34e35912f18e86df3f176b4f49b72fe5309"
+    },
+    {
+      "source": "llava/eval/mathvista_utils/extract_answer.py",
+      "target": "src/llava/eval/mathvista_utils/extract_answer.py",
+      "sha256": "a692e990f9d75a4c3e6719d6d8227b89897e06c09f3c61707732cd70294e6d29",
+      "installed_sha256": "a692e990f9d75a4c3e6719d6d8227b89897e06c09f3c61707732cd70294e6d29"
+    },
+    {
+      "source": "llava/eval/mathvista_utils/utilities.py",
+      "target": "src/llava/eval/mathvista_utils/utilities.py",
+      "sha256": "1b31a841c1326d4282ea73f89fec9094f612756cd1e23dfca763ac487526ee80",
+      "installed_sha256": "1b31a841c1326d4282ea73f89fec9094f612756cd1e23dfca763ac487526ee80"
+    },
+    {
+      "source": "llava/eval/mmmu_utils/data_utils.py",
+      "target": "src/llava/eval/mmmu_utils/data_utils.py",
+      "sha256": "9ae92b858a7e44c76c560aa14c1b47d8044809c8485e99652363655bdb856283",
+      "installed_sha256": "9ae92b858a7e44c76c560aa14c1b47d8044809c8485e99652363655bdb856283"
+    },
+    {
+      "source": "llava/eval/mmmu_utils/eval_utils.py",
+      "target": "src/llava/eval/mmmu_utils/eval_utils.py",
+      "sha256": "8c592ddc46450a11465ac7434885865a10c6eef6b326b402c5955afa69a75d0c",
+      "installed_sha256": "8c592ddc46450a11465ac7434885865a10c6eef6b326b402c5955afa69a75d0c"
+    },
+    {
+      "source": "llava/eval/mmmu_utils/merge_jsons.py",
+      "target": "src/llava/eval/mmmu_utils/merge_jsons.py",
+      "sha256": "4345413b10e5132a0d2bf2eb343ffc1deaaa437b02b427bf20f5423aba4f1435",
+      "installed_sha256": "4345413b10e5132a0d2bf2eb343ffc1deaaa437b02b427bf20f5423aba4f1435"
+    },
+    {
+      "source": "llava/eval/mmmu_utils/model_utils.py",
+      "target": "src/llava/eval/mmmu_utils/model_utils.py",
+      "sha256": "f8aed4bbdef626f45f6ea1ab51f5b1156726b743b3b4c9d372c026e27f82179b",
+      "installed_sha256": "f8aed4bbdef626f45f6ea1ab51f5b1156726b743b3b4c9d372c026e27f82179b"
+    },
+    {
+      "source": "llava/eval/vision_niah_vila/eval_vision_niah.py",
+      "target": "src/llava/eval/vision_niah_vila/eval_vision_niah.py",
+      "sha256": "8aa3e1fe74b9adf119af8a48396f48b9036901f40db4f5ffd11169621e893a8d",
+      "installed_sha256": "8aa3e1fe74b9adf119af8a48396f48b9036901f40db4f5ffd11169621e893a8d"
+    },
+    {
+      "source": "llava/eval/vision_niah_vila/produce_haystack_embedding.py",
+      "target": "src/llava/eval/vision_niah_vila/produce_haystack_embedding.py",
+      "sha256": "afc4a65a1a0fbd1077ca04460324e3220c60ff50e70e00397f087d091a1e9104",
+      "installed_sha256": "afc4a65a1a0fbd1077ca04460324e3220c60ff50e70e00397f087d091a1e9104"
+    },
+    {
+      "source": "llava/eval/vision_niah_vila/produce_needle_embedding.py",
+      "target": "src/llava/eval/vision_niah_vila/produce_needle_embedding.py",
+      "sha256": "9737128a0d040f245b736413ec330f5ae34fc11064c58dd3441827c217ddd1e5",
+      "installed_sha256": "9737128a0d040f245b736413ec330f5ae34fc11064c58dd3441827c217ddd1e5"
+    },
+    {
+      "source": "llava/eval/lmms/models/__init__.py",
+      "target": "src/llava/eval/lmms/models/__init__.py",
+      "sha256": "bdd0e7daf474c5df01a0708428af5c652e6ac404ab27e9375344b03f9d00bd64",
+      "installed_sha256": "bdd0e7daf474c5df01a0708428af5c652e6ac404ab27e9375344b03f9d00bd64"
+    },
+    {
+      "source": "llava/eval/lmms/models/vila_internal.py",
+      "target": "src/llava/eval/lmms/models/vila_internal.py",
+      "sha256": "0a56c423759690b6c9a2330d3ace51a74cdacd4edb1ec00625a95da5962239ac",
+      "installed_sha256": "0a56c423759690b6c9a2330d3ace51a74cdacd4edb1ec00625a95da5962239ac"
+    },
+    {
+      "source": "llava/eval/lmms/tasks/__init__.py",
+      "target": "src/llava/eval/lmms/tasks/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "llava/eval/mathvista_utils/prompts/ext_ans.py",
+      "target": "src/llava/eval/mathvista_utils/prompts/ext_ans.py",
+      "sha256": "867c6dae0a9e31bd1a34c533527061e6ba6d74feb257f1f9133dde1c7bd148ff",
+      "installed_sha256": "867c6dae0a9e31bd1a34c533527061e6ba6d74feb257f1f9133dde1c7bd148ff"
+    },
+    {
+      "source": "llava/eval/vision_niah_vila/zigzag_ring_attn/monkey_patch.py",
+      "target": "src/llava/eval/vision_niah_vila/zigzag_ring_attn/monkey_patch.py",
+      "sha256": "d1794ebcd59f8b6b302e38689baed3dfd44ab9ca3ab04a104536b2437b1ad4f3",
+      "installed_sha256": "d1794ebcd59f8b6b302e38689baed3dfd44ab9ca3ab04a104536b2437b1ad4f3"
+    },
+    {
+      "source": "llava/eval/vision_niah_vila/zigzag_ring_attn/prepare_inputs.py",
+      "target": "src/llava/eval/vision_niah_vila/zigzag_ring_attn/prepare_inputs.py",
+      "sha256": "ff09ecee2f6b16733e5390ec158a1fd965e45311731b4c317ea9bb60f225ee4d",
+      "installed_sha256": "ff09ecee2f6b16733e5390ec158a1fd965e45311731b4c317ea9bb60f225ee4d"
+    },
+    {
+      "source": "llava/model/language_model/builder.py",
+      "target": "src/llava/model/language_model/builder.py",
+      "sha256": "90847af5a9353ea002589c528b63b1a1f47fee55cc20b4d6709831ef86acccf8",
+      "installed_sha256": "90847af5a9353ea002589c528b63b1a1f47fee55cc20b4d6709831ef86acccf8"
+    },
+    {
+      "source": "llava/model/language_model/llava_gemma.py",
+      "target": "src/llava/model/language_model/llava_gemma.py",
+      "sha256": "c42d67da03a734ac83426a86618b18a7ff50ca6dab7d9ac4718c25ec6a29a754",
+      "installed_sha256": "c42d67da03a734ac83426a86618b18a7ff50ca6dab7d9ac4718c25ec6a29a754"
+    },
+    {
+      "source": "llava/model/language_model/llava_llama.py",
+      "target": "src/llava/model/language_model/llava_llama.py",
+      "sha256": "8d26b8d07521428a050c94330dbe38e502177e939e968155adec3616c88d9bbc",
+      "installed_sha256": "8d26b8d07521428a050c94330dbe38e502177e939e968155adec3616c88d9bbc"
+    },
+    {
+      "source": "llava/model/language_model/llava_mistral.py",
+      "target": "src/llava/model/language_model/llava_mistral.py",
+      "sha256": "0230df1e84e2bc9719e4421be5b060d7ef73985b1f87eae9e0e7376feabe6989",
+      "installed_sha256": "0230df1e84e2bc9719e4421be5b060d7ef73985b1f87eae9e0e7376feabe6989"
+    },
+    {
+      "source": "llava/model/language_model/llava_mixtral.py",
+      "target": "src/llava/model/language_model/llava_mixtral.py",
+      "sha256": "53441f42b9b949be0f170410a975075bb602cd2b133a775127d70eab8c8dbbd7",
+      "installed_sha256": "53441f42b9b949be0f170410a975075bb602cd2b133a775127d70eab8c8dbbd7"
+    },
+    {
+      "source": "llava/model/language_model/llava_mpt.py",
+      "target": "src/llava/model/language_model/llava_mpt.py",
+      "sha256": "422afc729b6c234611786ff0da1d7e81ed0c422fa6eaec17ccaa7560a0ecd98b",
+      "installed_sha256": "422afc729b6c234611786ff0da1d7e81ed0c422fa6eaec17ccaa7560a0ecd98b"
+    },
+    {
+      "source": "llava/model/language_model/modeling_mixtral_long_context.py",
+      "target": "src/llava/model/language_model/modeling_mixtral_long_context.py",
+      "sha256": "26430dd907bc0826603fee45dad0328336a1d8f137432eefc73a9b5ba1b3c23f",
+      "installed_sha256": "26430dd907bc0826603fee45dad0328336a1d8f137432eefc73a9b5ba1b3c23f"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/builder.py",
+      "target": "src/llava/model/multimodal_encoder/builder.py",
+      "sha256": "342257a4f2fcd763fda4406e23ad181ae4cefbd3796daf52ca18e8250f9e8a9f",
+      "installed_sha256": "342257a4f2fcd763fda4406e23ad181ae4cefbd3796daf52ca18e8250f9e8a9f"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/clip_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/clip_encoder.py",
+      "sha256": "950b6a7491ce3def3925df09dd7d45698b8fc419b386599bb0d1fb5f35d3f48d",
+      "installed_sha256": "950b6a7491ce3def3925df09dd7d45698b8fc419b386599bb0d1fb5f35d3f48d"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/image_processor.py",
+      "target": "src/llava/model/multimodal_encoder/image_processor.py",
+      "sha256": "c2009b05ed452047b95b9973a98e396216eb38e4175c6576859893eb9fa31f5b",
+      "installed_sha256": "c2009b05ed452047b95b9973a98e396216eb38e4175c6576859893eb9fa31f5b"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/intern_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/intern_encoder.py",
+      "sha256": "361245b3b066a3f4b5cb4011276dbb7099d4ff4c75dae1bdb9bba6ea6c862b2a",
+      "installed_sha256": "361245b3b066a3f4b5cb4011276dbb7099d4ff4c75dae1bdb9bba6ea6c862b2a"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/radio_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/radio_encoder.py",
+      "sha256": "5b28b9c090cd4d295f83a55c68d8f13aa1dba1c1b1282947bbeca53b13f99810",
+      "installed_sha256": "5b28b9c090cd4d295f83a55c68d8f13aa1dba1c1b1282947bbeca53b13f99810"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/radio_torchhub_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/radio_torchhub_encoder.py",
+      "sha256": "10cf66efa5c4d4fdceecbe3cb17653c1e3a0add2910891722fcf7821217de262",
+      "installed_sha256": "10cf66efa5c4d4fdceecbe3cb17653c1e3a0add2910891722fcf7821217de262"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/siglip_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/siglip_encoder.py",
+      "sha256": "85c48b61b70b4a6071d0cf261bb80f079b079f6cd2836935a57da288803d0215",
+      "installed_sha256": "85c48b61b70b4a6071d0cf261bb80f079b079f6cd2836935a57da288803d0215"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/vision_encoder.py",
+      "target": "src/llava/model/multimodal_encoder/vision_encoder.py",
+      "sha256": "9a24c3a46758bc611e4babbc5eee5bb79bb9164f61439249e311c4904c4e0f7e",
+      "installed_sha256": "9a24c3a46758bc611e4babbc5eee5bb79bb9164f61439249e311c4904c4e0f7e"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/visualize_features.py",
+      "target": "src/llava/model/multimodal_encoder/visualize_features.py",
+      "sha256": "67a2866e39446192076b48fd9089c5ffc7886512e53d3f6066387d0151b2abee",
+      "installed_sha256": "67a2866e39446192076b48fd9089c5ffc7886512e53d3f6066387d0151b2abee"
+    },
+    {
+      "source": "llava/model/multimodal_projector/base_projector.py",
+      "target": "src/llava/model/multimodal_projector/base_projector.py",
+      "sha256": "52f699c2839870959c68f72b86a686cca07e81036a2ef4e0bc85930b91e064f4",
+      "installed_sha256": "52f699c2839870959c68f72b86a686cca07e81036a2ef4e0bc85930b91e064f4"
+    },
+    {
+      "source": "llava/model/multimodal_projector/builder.py",
+      "target": "src/llava/model/multimodal_projector/builder.py",
+      "sha256": "d4de28794ab1a84ce37f25c6625bdc4c11f38d7ab1dcd014c2b3f2acc0032de7",
+      "installed_sha256": "d4de28794ab1a84ce37f25c6625bdc4c11f38d7ab1dcd014c2b3f2acc0032de7"
+    },
+    {
+      "source": "llava/model/language_model/chat_templates/qwen2.jinja",
+      "target": "src/llava/model/language_model/chat_templates/qwen2.jinja",
+      "sha256": "4479f9a46f0d88d73ac224157122f749a5b335a1247933c5b2bc2a172a5d9dd9",
+      "installed_sha256": "4479f9a46f0d88d73ac224157122f749a5b335a1247933c5b2bc2a172a5d9dd9"
+    },
+    {
+      "source": "llava/model/language_model/mpt/adapt_tokenizer.py",
+      "target": "src/llava/model/language_model/mpt/adapt_tokenizer.py",
+      "sha256": "4f87b2ce923fc95b1bf3283cceae71b68a5d35269770d340fba9804a8c68b2cb",
+      "installed_sha256": "4f87b2ce923fc95b1bf3283cceae71b68a5d35269770d340fba9804a8c68b2cb"
+    },
+    {
+      "source": "llava/model/language_model/mpt/attention.py",
+      "target": "src/llava/model/language_model/mpt/attention.py",
+      "sha256": "672791d49b123c3b0efafd2644d1811cff49b46ab63c28786eced5f4d6e590cd",
+      "installed_sha256": "672791d49b123c3b0efafd2644d1811cff49b46ab63c28786eced5f4d6e590cd"
+    },
+    {
+      "source": "llava/model/language_model/mpt/blocks.py",
+      "target": "src/llava/model/language_model/mpt/blocks.py",
+      "sha256": "61cdc844bd3253c6fb779841a76b186af258c5b20d9c382dee7e2b964ea7b53b",
+      "installed_sha256": "61cdc844bd3253c6fb779841a76b186af258c5b20d9c382dee7e2b964ea7b53b"
+    },
+    {
+      "source": "llava/model/language_model/mpt/configuration_mpt.py",
+      "target": "src/llava/model/language_model/mpt/configuration_mpt.py",
+      "sha256": "2869a816679f547c1f1489af669d438c468d0bf0437d45681f736e9d9981deaf",
+      "installed_sha256": "2869a816679f547c1f1489af669d438c468d0bf0437d45681f736e9d9981deaf"
+    },
+    {
+      "source": "llava/model/language_model/mpt/custom_embedding.py",
+      "target": "src/llava/model/language_model/mpt/custom_embedding.py",
+      "sha256": "50f7980b4f25c3103c82e44a8d080ea145c4b54afb6c1c795bde06b09053eb34",
+      "installed_sha256": "50f7980b4f25c3103c82e44a8d080ea145c4b54afb6c1c795bde06b09053eb34"
+    },
+    {
+      "source": "llava/model/language_model/mpt/flash_attn_triton.py",
+      "target": "src/llava/model/language_model/mpt/flash_attn_triton.py",
+      "sha256": "cab49bdb2ad905fac3a05e413159cfbdbb197a25f029d0f0168ed8513b42107b",
+      "installed_sha256": "cab49bdb2ad905fac3a05e413159cfbdbb197a25f029d0f0168ed8513b42107b"
+    },
+    {
+      "source": "llava/model/language_model/mpt/hf_prefixlm_converter.py",
+      "target": "src/llava/model/language_model/mpt/hf_prefixlm_converter.py",
+      "sha256": "1237155f5e0e3a3ce3b9c13bcc4d18a912833e7ddf0d9a42c4633321dd813dec",
+      "installed_sha256": "1237155f5e0e3a3ce3b9c13bcc4d18a912833e7ddf0d9a42c4633321dd813dec"
+    },
+    {
+      "source": "llava/model/language_model/mpt/meta_init_context.py",
+      "target": "src/llava/model/language_model/mpt/meta_init_context.py",
+      "sha256": "1de56b902bd3f34bbc0cb482b128d4889ee8456698f35bb2f9439517e8be3238",
+      "installed_sha256": "1de56b902bd3f34bbc0cb482b128d4889ee8456698f35bb2f9439517e8be3238"
+    },
+    {
+      "source": "llava/model/language_model/mpt/modeling_mpt.py",
+      "target": "src/llava/model/language_model/mpt/modeling_mpt.py",
+      "sha256": "c15ce778556b7bcbd687f57131596b5f3b84b47cd8e85e105fcd22c979322c66",
+      "installed_sha256": "c15ce778556b7bcbd687f57131596b5f3b84b47cd8e85e105fcd22c979322c66"
+    },
+    {
+      "source": "llava/model/language_model/mpt/norm.py",
+      "target": "src/llava/model/language_model/mpt/norm.py",
+      "sha256": "6fd2fabeabb4634b46169a722b458a3003b271c589ebd1ca97102a3c068df2f7",
+      "installed_sha256": "6fd2fabeabb4634b46169a722b458a3003b271c589ebd1ca97102a3c068df2f7"
+    },
+    {
+      "source": "llava/model/language_model/mpt/param_init_fns.py",
+      "target": "src/llava/model/language_model/mpt/param_init_fns.py",
+      "sha256": "39b88b1a9aa8ce22cc5d47f83e75c7b8858904b1a0ac5d32c9b0b49c640347c5",
+      "installed_sha256": "39b88b1a9aa8ce22cc5d47f83e75c7b8858904b1a0ac5d32c9b0b49c640347c5"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/intern/configuration_intern_vit.py",
+      "target": "src/llava/model/multimodal_encoder/intern/configuration_intern_vit.py",
+      "sha256": "e11ff9a9148baefdc773f619538dbaa509eb35c2065ec817ca84433d2ea6b850",
+      "installed_sha256": "e11ff9a9148baefdc773f619538dbaa509eb35c2065ec817ca84433d2ea6b850"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/intern/flash_attention.py",
+      "target": "src/llava/model/multimodal_encoder/intern/flash_attention.py",
+      "sha256": "31d8ef46da9ce4a9a4203e873ef7fa58784ecdcb958676e4de351c18443fdc58",
+      "installed_sha256": "31d8ef46da9ce4a9a4203e873ef7fa58784ecdcb958676e4de351c18443fdc58"
+    },
+    {
+      "source": "llava/model/multimodal_encoder/intern/modeling_intern_vit.py",
+      "target": "src/llava/model/multimodal_encoder/intern/modeling_intern_vit.py",
+      "sha256": "e5a8eabed2bc916926dc6ef799ede3890c8c20ae92483ac9621da859677b3d03",
+      "installed_sha256": "e5a8eabed2bc916926dc6ef799ede3890c8c20ae92483ac9621da859677b3d03"
+    },
+    {
+      "source": "llava/train/callbacks/autoresume_callback.py",
+      "target": "src/llava/train/callbacks/autoresume_callback.py",
+      "sha256": "3dcb2c06275da083b7b1ae8ad69c8165fa8f18196fa7c1dd9f1e1b3e8f4b57f9",
+      "installed_sha256": "3dcb2c06275da083b7b1ae8ad69c8165fa8f18196fa7c1dd9f1e1b3e8f4b57f9"
+    },
+    {
+      "source": "llava/train/sequence_parallel/__init__.py",
+      "target": "src/llava/train/sequence_parallel/__init__.py",
+      "sha256": "4da1c66337e94b4e09f1a5f12e454dce18ed3b8663fce02bf6b7bffdb819b355",
+      "installed_sha256": "4da1c66337e94b4e09f1a5f12e454dce18ed3b8663fce02bf6b7bffdb819b355"
+    },
+    {
+      "source": "llava/train/sequence_parallel/all_to_all.py",
+      "target": "src/llava/train/sequence_parallel/all_to_all.py",
+      "sha256": "1e83a1a7bb333d7edb403cf2d266659aa8a455b7bae6e7a2591ff29a45b08980",
+      "installed_sha256": "1e83a1a7bb333d7edb403cf2d266659aa8a455b7bae6e7a2591ff29a45b08980"
+    },
+    {
+      "source": "llava/train/sequence_parallel/globals.py",
+      "target": "src/llava/train/sequence_parallel/globals.py",
+      "sha256": "b26a9d2b30ac00fdc7e9fe3370db628de1037e662bde96f2913a9135149b927a",
+      "installed_sha256": "b26a9d2b30ac00fdc7e9fe3370db628de1037e662bde96f2913a9135149b927a"
+    },
+    {
+      "source": "llava/train/sequence_parallel/hybrid_attn.py",
+      "target": "src/llava/train/sequence_parallel/hybrid_attn.py",
+      "sha256": "295b08759c79b796a1605f9fe7401974884fc02f10d7bb51ef93f67366170116",
+      "installed_sha256": "295b08759c79b796a1605f9fe7401974884fc02f10d7bb51ef93f67366170116"
+    },
+    {
+      "source": "llava/train/sequence_parallel/input_utils.py",
+      "target": "src/llava/train/sequence_parallel/input_utils.py",
+      "sha256": "f47b841ca27836f25f560061ee25b6e3b2e5223ca0e212f41551a6a1e7a1afed",
+      "installed_sha256": "f47b841ca27836f25f560061ee25b6e3b2e5223ca0e212f41551a6a1e7a1afed"
+    },
+    {
+      "source": "llava/train/sequence_parallel/monkey_patch.py",
+      "target": "src/llava/train/sequence_parallel/monkey_patch.py",
+      "sha256": "d138394cdd17fa0efbcffade1ddadfd04d97693067f61b0f38690b8f84cd5787",
+      "installed_sha256": "d138394cdd17fa0efbcffade1ddadfd04d97693067f61b0f38690b8f84cd5787"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ulysses_attn.py",
+      "target": "src/llava/train/sequence_parallel/ulysses_attn.py",
+      "sha256": "8192ada72da8cbc6e9b131791a0d1951e9797d27251c576768a19c94bda39314",
+      "installed_sha256": "8192ada72da8cbc6e9b131791a0d1951e9797d27251c576768a19c94bda39314"
+    },
+    {
+      "source": "llava/train/transformers_replace/modeling_utils.py",
+      "target": "src/llava/train/transformers_replace/modeling_utils.py",
+      "sha256": "541f768a44cdf057281e5b94df4b28418c1cd249fceb9bdf0bed37390691e201",
+      "installed_sha256": "541f768a44cdf057281e5b94df4b28418c1cd249fceb9bdf0bed37390691e201"
+    },
+    {
+      "source": "llava/train/deepspeed_replace/runtime/zero/mics.py",
+      "target": "src/llava/train/deepspeed_replace/runtime/zero/mics.py",
+      "sha256": "673e405ce0783e63b9112af33f085e633166282c387b1ca57115b72b939519b3",
+      "installed_sha256": "673e405ce0783e63b9112af33f085e633166282c387b1ca57115b72b939519b3"
+    },
+    {
+      "source": "llava/train/deepspeed_replace_deprecated/utils/groups.py",
+      "target": "src/llava/train/deepspeed_replace_deprecated/utils/groups.py",
+      "sha256": "268f76f235d862db3d5335ca3955180772d86124ea0cb1d041b82102fc51c8a4",
+      "installed_sha256": "268f76f235d862db3d5335ca3955180772d86124ea0cb1d041b82102fc51c8a4"
+    },
+    {
+      "source": "llava/train/deepspeed_replace_deprecated/runtime/zero/mics.py",
+      "target": "src/llava/train/deepspeed_replace_deprecated/runtime/zero/mics.py",
+      "sha256": "35b3d672a835127d32ddd619936729f4fe1ddf9813116fddbacb37ef1d6d8b0f",
+      "installed_sha256": "35b3d672a835127d32ddd619936729f4fe1ddf9813116fddbacb37ef1d6d8b0f"
+    },
+    {
+      "source": "llava/train/deepspeed_replace_deprecated/runtime/zero/partition_parameters.py",
+      "target": "src/llava/train/deepspeed_replace_deprecated/runtime/zero/partition_parameters.py",
+      "sha256": "2fdc9d2498002359f6ec700662708a1d05ae5b47c214dab9fa55a5132c4b3fd7",
+      "installed_sha256": "2fdc9d2498002359f6ec700662708a1d05ae5b47c214dab9fa55a5132c4b3fd7"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/__init__.py",
+      "target": "src/llava/train/sequence_parallel/ring/__init__.py",
+      "sha256": "f4251b1d60be09c00e79b863352335ce93798daff0d9e247a846001fc62cb649",
+      "installed_sha256": "f4251b1d60be09c00e79b863352335ce93798daff0d9e247a846001fc62cb649"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/ring_flash_attn.py",
+      "target": "src/llava/train/sequence_parallel/ring/ring_flash_attn.py",
+      "sha256": "0b3d492921b803c8aebfd8026f925db80b0fe12799c29bb51130a0305e56e266",
+      "installed_sha256": "0b3d492921b803c8aebfd8026f925db80b0fe12799c29bb51130a0305e56e266"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/ring_flash_attn_varlen.py",
+      "target": "src/llava/train/sequence_parallel/ring/ring_flash_attn_varlen.py",
+      "sha256": "9877a666217a2138c030c3ecf58fd6eb724228d88101127842b62bb2fed6d188",
+      "installed_sha256": "9877a666217a2138c030c3ecf58fd6eb724228d88101127842b62bb2fed6d188"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/stripe_flash_attn.py",
+      "target": "src/llava/train/sequence_parallel/ring/stripe_flash_attn.py",
+      "sha256": "63eccefd35f0c8b676cdc97be3e1755c395d0cdf0983e38aa6c0fa2bb9253650",
+      "installed_sha256": "63eccefd35f0c8b676cdc97be3e1755c395d0cdf0983e38aa6c0fa2bb9253650"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/triton_utils.py",
+      "target": "src/llava/train/sequence_parallel/ring/triton_utils.py",
+      "sha256": "0944359143d5e1d19e823ee1e6e06221f72b555d0990e0df1bb203ee8c266150",
+      "installed_sha256": "0944359143d5e1d19e823ee1e6e06221f72b555d0990e0df1bb203ee8c266150"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/utils.py",
+      "target": "src/llava/train/sequence_parallel/ring/utils.py",
+      "sha256": "6bf381150afc61805bc832939be54e5e4952f4e65386f69be4ff4e26e7f2fbb6",
+      "installed_sha256": "6bf381150afc61805bc832939be54e5e4952f4e65386f69be4ff4e26e7f2fbb6"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/zigzag_ring_flash_attn.py",
+      "target": "src/llava/train/sequence_parallel/ring/zigzag_ring_flash_attn.py",
+      "sha256": "b269ea8137d76e2e54909d38ccd86a2333ab28ec4c31beeef4eeef7829b9367e",
+      "installed_sha256": "b269ea8137d76e2e54909d38ccd86a2333ab28ec4c31beeef4eeef7829b9367e"
+    },
+    {
+      "source": "llava/train/sequence_parallel/ring/zigzag_ring_flash_attn_varlen.py",
+      "target": "src/llava/train/sequence_parallel/ring/zigzag_ring_flash_attn_varlen.py",
+      "sha256": "c59619a1f657fed90b5b66100d2dd4bab30711c3956c74f5afe87693279a7ade",
+      "installed_sha256": "c59619a1f657fed90b5b66100d2dd4bab30711c3956c74f5afe87693279a7ade"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/gemma/__init__.py",
+      "target": "src/llava/train/transformers_replace/models/gemma/__init__.py",
+      "sha256": "f34f75186ee602aaa7f88b55d35d185d4268b4dcc3dfaf47cd67c864e9e7e283",
+      "installed_sha256": "f34f75186ee602aaa7f88b55d35d185d4268b4dcc3dfaf47cd67c864e9e7e283"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/gemma/configuration_gemma.py",
+      "target": "src/llava/train/transformers_replace/models/gemma/configuration_gemma.py",
+      "sha256": "fabd091d6edf421b4e622dde280973e88f40eb54ac27aaf9db3964b29ff6cd42",
+      "installed_sha256": "fabd091d6edf421b4e622dde280973e88f40eb54ac27aaf9db3964b29ff6cd42"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/gemma/modeling_gemma.py",
+      "target": "src/llava/train/transformers_replace/models/gemma/modeling_gemma.py",
+      "sha256": "b67e4ed00e58fb60016430dbb2d8b794931e4941e5906a82bb81b51038dcf96a",
+      "installed_sha256": "b67e4ed00e58fb60016430dbb2d8b794931e4941e5906a82bb81b51038dcf96a"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/llama/configuring_llama.py",
+      "target": "src/llava/train/transformers_replace/models/llama/configuring_llama.py",
+      "sha256": "4c679c37ffbb27f48aa10a75531222ad8807806a3fa73fc56a9e90b7c45b4d69",
+      "installed_sha256": "4c679c37ffbb27f48aa10a75531222ad8807806a3fa73fc56a9e90b7c45b4d69"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/llama/modeling_llama.py",
+      "target": "src/llava/train/transformers_replace/models/llama/modeling_llama.py",
+      "sha256": "d535184380e19a6ebdc6d725fc1bf2f00660a8919c2d356656f7e8e55d8db78c",
+      "installed_sha256": "d535184380e19a6ebdc6d725fc1bf2f00660a8919c2d356656f7e8e55d8db78c"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/llama/tokenization_llama.py",
+      "target": "src/llava/train/transformers_replace/models/llama/tokenization_llama.py",
+      "sha256": "3d99ed9427b716340c90283de8e83e2a37bf61403436fff207275aa79dd699ed",
+      "installed_sha256": "3d99ed9427b716340c90283de8e83e2a37bf61403436fff207275aa79dd699ed"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mistral/__init__.py",
+      "target": "src/llava/train/transformers_replace/models/mistral/__init__.py",
+      "sha256": "d3c47cc7af1d13b866f2e0b9e7a31e7d97bd3cbeb8ba447e80a3d226358fdfdc",
+      "installed_sha256": "d3c47cc7af1d13b866f2e0b9e7a31e7d97bd3cbeb8ba447e80a3d226358fdfdc"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mistral/configuration_mistral.py",
+      "target": "src/llava/train/transformers_replace/models/mistral/configuration_mistral.py",
+      "sha256": "bb8f933b55f5f0002eaf48370e74b140fc52cbb114a88c01436e552694418779",
+      "installed_sha256": "bb8f933b55f5f0002eaf48370e74b140fc52cbb114a88c01436e552694418779"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mistral/modeling_mistral.py",
+      "target": "src/llava/train/transformers_replace/models/mistral/modeling_mistral.py",
+      "sha256": "625a611060601cbffaa9b4f417e6f0b7e911b4f5d5d8158d20ea933831c3d012",
+      "installed_sha256": "625a611060601cbffaa9b4f417e6f0b7e911b4f5d5d8158d20ea933831c3d012"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mixtral/__init__.py",
+      "target": "src/llava/train/transformers_replace/models/mixtral/__init__.py",
+      "sha256": "1b90a4cd58cef7e7aca02a2af8ef9f30183457c6cccb54ae3ae59454a1da1483",
+      "installed_sha256": "1b90a4cd58cef7e7aca02a2af8ef9f30183457c6cccb54ae3ae59454a1da1483"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mixtral/configuration_mixtral.py",
+      "target": "src/llava/train/transformers_replace/models/mixtral/configuration_mixtral.py",
+      "sha256": "463f6bd0bd8b855f43587ad4bfdca071ceb9ab09b9d33766f6b442ace2bc9c68",
+      "installed_sha256": "463f6bd0bd8b855f43587ad4bfdca071ceb9ab09b9d33766f6b442ace2bc9c68"
+    },
+    {
+      "source": "llava/train/transformers_replace/models/mixtral/modeling_mixtral.py",
+      "target": "src/llava/train/transformers_replace/models/mixtral/modeling_mixtral.py",
+      "sha256": "73cee2ad90025cc8cce25657f776d5ec66f8e17391e25ba58b0d04b7348e335f",
+      "installed_sha256": "73cee2ad90025cc8cce25657f776d5ec66f8e17391e25ba58b0d04b7348e335f"
+    },
+    {
+      "source": "llava/trl/environment/__init__.py",
+      "target": "src/llava/trl/environment/__init__.py",
+      "sha256": "529e719ba0104f36c05f3c44a94435c31769467ca05c14f394838f93acda37a3",
+      "installed_sha256": "529e719ba0104f36c05f3c44a94435c31769467ca05c14f394838f93acda37a3"
+    },
+    {
+      "source": "llava/trl/environment/base_environment.py",
+      "target": "src/llava/trl/environment/base_environment.py",
+      "sha256": "61d0a9ce138f94f4a4cfc48792bb149758f9584e80938a9e5594ad0a800ba503",
+      "installed_sha256": "61d0a9ce138f94f4a4cfc48792bb149758f9584e80938a9e5594ad0a800ba503"
+    },
+    {
+      "source": "llava/trl/extras/__init__.py",
+      "target": "src/llava/trl/extras/__init__.py",
+      "sha256": "921f64dc86a0956569fac6c94f08d5106b39431d8e5358ca6d95579595c991ab",
+      "installed_sha256": "921f64dc86a0956569fac6c94f08d5106b39431d8e5358ca6d95579595c991ab"
+    },
+    {
+      "source": "llava/trl/extras/best_of_n_sampler.py",
+      "target": "src/llava/trl/extras/best_of_n_sampler.py",
+      "sha256": "3b6efba3e27fd0feacd3073ecb7971a78893b5f5418eac09162dca50725f4e39",
+      "installed_sha256": "3b6efba3e27fd0feacd3073ecb7971a78893b5f5418eac09162dca50725f4e39"
+    },
+    {
+      "source": "llava/trl/extras/dataset_formatting.py",
+      "target": "src/llava/trl/extras/dataset_formatting.py",
+      "sha256": "9967c1903ac3a5a80112c181e9441871d9782ad3b8102413c1210ce0b79b5bfa",
+      "installed_sha256": "9967c1903ac3a5a80112c181e9441871d9782ad3b8102413c1210ce0b79b5bfa"
+    },
+    {
+      "source": "llava/trl/models/__init__.py",
+      "target": "src/llava/trl/models/__init__.py",
+      "sha256": "9bff8891ff48ea6ab0e635aa1ee1a94b8620159c80bc420680bf92aa614ed6d4",
+      "installed_sha256": "9bff8891ff48ea6ab0e635aa1ee1a94b8620159c80bc420680bf92aa614ed6d4"
+    },
+    {
+      "source": "llava/trl/models/modeling_base.py",
+      "target": "src/llava/trl/models/modeling_base.py",
+      "sha256": "9c7f7bacfd86b55711bb49d9c3a2d676434ec4616fd83c90c8b9adf26af57940",
+      "installed_sha256": "9c7f7bacfd86b55711bb49d9c3a2d676434ec4616fd83c90c8b9adf26af57940"
+    },
+    {
+      "source": "llava/trl/models/modeling_sd_base.py",
+      "target": "src/llava/trl/models/modeling_sd_base.py",
+      "sha256": "e1af1e6d572048c7fe527bc1d48bb051e975cbde14a452e1c5ec06bfa4bc1f05",
+      "installed_sha256": "e1af1e6d572048c7fe527bc1d48bb051e975cbde14a452e1c5ec06bfa4bc1f05"
+    },
+    {
+      "source": "llava/trl/models/modeling_value_head.py",
+      "target": "src/llava/trl/models/modeling_value_head.py",
+      "sha256": "bba5606f553d5e161f20b61eca2c0114001ea3992dc02ad901560828e8a1241b",
+      "installed_sha256": "bba5606f553d5e161f20b61eca2c0114001ea3992dc02ad901560828e8a1241b"
+    },
+    {
+      "source": "llava/trl/models/utils.py",
+      "target": "src/llava/trl/models/utils.py",
+      "sha256": "84dea72be3e48fd9e03654f6124d3ea91b50546214abe229da7a037418f9ec48",
+      "installed_sha256": "84dea72be3e48fd9e03654f6124d3ea91b50546214abe229da7a037418f9ec48"
+    },
+    {
+      "source": "llava/trl/trainer/__init__.py",
+      "target": "src/llava/trl/trainer/__init__.py",
+      "sha256": "d047b2c547bea41f3258cf3e90a129b9030106b9a1a4265e7a24144c481ca752",
+      "installed_sha256": "d047b2c547bea41f3258cf3e90a129b9030106b9a1a4265e7a24144c481ca752"
+    },
+    {
+      "source": "llava/trl/trainer/base.py",
+      "target": "src/llava/trl/trainer/base.py",
+      "sha256": "e75600729b2327c82155b7e105770fec14f4ff25e79a18f41bfcdf66197782e1",
+      "installed_sha256": "e75600729b2327c82155b7e105770fec14f4ff25e79a18f41bfcdf66197782e1"
+    },
+    {
+      "source": "llava/trl/trainer/ddpo_config.py",
+      "target": "src/llava/trl/trainer/ddpo_config.py",
+      "sha256": "cfb4b2400883664d6ae183cf007e870a810f98e53aebacac836bcf5cc96197af",
+      "installed_sha256": "cfb4b2400883664d6ae183cf007e870a810f98e53aebacac836bcf5cc96197af"
+    },
+    {
+      "source": "llava/trl/trainer/ddpo_trainer.py",
+      "target": "src/llava/trl/trainer/ddpo_trainer.py",
+      "sha256": "6732b486b1e906ab6fb5a82c4eb8733f4d4e5a88a4564ca14d6cf9a6d176614d",
+      "installed_sha256": "6732b486b1e906ab6fb5a82c4eb8733f4d4e5a88a4564ca14d6cf9a6d176614d"
+    },
+    {
+      "source": "llava/trl/trainer/dpo_trainer.py",
+      "target": "src/llava/trl/trainer/dpo_trainer.py",
+      "sha256": "3d1d853f70b3ac38558f9a458052ce38915a3b937e1385f8c8f9bee9029056cf",
+      "installed_sha256": "3d1d853f70b3ac38558f9a458052ce38915a3b937e1385f8c8f9bee9029056cf"
+    },
+    {
+      "source": "llava/trl/trainer/iterative_sft_trainer.py",
+      "target": "src/llava/trl/trainer/iterative_sft_trainer.py",
+      "sha256": "4db8850477efd9270494b19626e72bd1e7e455ffff639d773aadfdb0e15bde2c",
+      "installed_sha256": "4db8850477efd9270494b19626e72bd1e7e455ffff639d773aadfdb0e15bde2c"
+    },
+    {
+      "source": "llava/trl/trainer/model_config.py",
+      "target": "src/llava/trl/trainer/model_config.py",
+      "sha256": "740a04de543a1c34a482c0a1254c63ae3382ebdde245aad06df9d19f1cfac50e",
+      "installed_sha256": "740a04de543a1c34a482c0a1254c63ae3382ebdde245aad06df9d19f1cfac50e"
+    },
+    {
+      "source": "llava/trl/trainer/ppo_config.py",
+      "target": "src/llava/trl/trainer/ppo_config.py",
+      "sha256": "0f0974adba5fb265a61c7d1fa78e6bb6c0af940202b4ac6093c3cb7572f442a3",
+      "installed_sha256": "0f0974adba5fb265a61c7d1fa78e6bb6c0af940202b4ac6093c3cb7572f442a3"
+    },
+    {
+      "source": "llava/trl/trainer/ppo_trainer.py",
+      "target": "src/llava/trl/trainer/ppo_trainer.py",
+      "sha256": "ea61647f24d8461977c895267f81393d80ca7ff3d117b014481d83ab5409aeb7",
+      "installed_sha256": "ea61647f24d8461977c895267f81393d80ca7ff3d117b014481d83ab5409aeb7"
+    },
+    {
+      "source": "llava/trl/trainer/reward_config.py",
+      "target": "src/llava/trl/trainer/reward_config.py",
+      "sha256": "f566e90ec99ea24331d931b6d59123abd0046bd5e7b6232f93fb5110ba26f02b",
+      "installed_sha256": "f566e90ec99ea24331d931b6d59123abd0046bd5e7b6232f93fb5110ba26f02b"
+    },
+    {
+      "source": "llava/trl/trainer/reward_trainer.py",
+      "target": "src/llava/trl/trainer/reward_trainer.py",
+      "sha256": "7fb4b7e917587393311e8e25948553cf2503b8b988d5a2cb68496077b4370d30",
+      "installed_sha256": "7fb4b7e917587393311e8e25948553cf2503b8b988d5a2cb68496077b4370d30"
+    },
+    {
+      "source": "llava/trl/trainer/sft_trainer.py",
+      "target": "src/llava/trl/trainer/sft_trainer.py",
+      "sha256": "0bb16daacf56388b494690c72b9377c0aa79dba2fcb59f43663d3fe2dbbc9754",
+      "installed_sha256": "0bb16daacf56388b494690c72b9377c0aa79dba2fcb59f43663d3fe2dbbc9754"
+    },
+    {
+      "source": "llava/trl/trainer/utils.py",
+      "target": "src/llava/trl/trainer/utils.py",
+      "sha256": "2858785f5db27f2398d84ca8517dc32e924aa8e0d26816e4e9eaf3dec95509b3",
+      "installed_sha256": "2858785f5db27f2398d84ca8517dc32e924aa8e0d26816e4e9eaf3dec95509b3"
+    },
+    {
+      "source": "evaluation/habitat_extensions/__init__.py",
+      "target": "src/habitat_extensions/__init__.py",
+      "sha256": "01ebe35eb97331c83df91b51a2f8717535557eae5287657a32e5a0f18a817ec7",
+      "installed_sha256": "01ebe35eb97331c83df91b51a2f8717535557eae5287657a32e5a0f18a817ec7"
+    },
+    {
+      "source": "evaluation/habitat_extensions/actions.py",
+      "target": "src/habitat_extensions/actions.py",
+      "sha256": "a123416b68d37650361b983bce7c24d2911b3b570bbae173b6accde1376ebd64",
+      "installed_sha256": "a123416b68d37650361b983bce7c24d2911b3b570bbae173b6accde1376ebd64"
+    },
+    {
+      "source": "evaluation/habitat_extensions/maps.py",
+      "target": "src/habitat_extensions/maps.py",
+      "sha256": "240b42b6d6eb5ef66a07366f9d5b5163584ec860ce0dcae0d1bbe29185266430",
+      "installed_sha256": "240b42b6d6eb5ef66a07366f9d5b5163584ec860ce0dcae0d1bbe29185266430"
+    },
+    {
+      "source": "evaluation/habitat_extensions/measures.py",
+      "target": "src/habitat_extensions/measures.py",
+      "sha256": "f2d40a10fb5b3b0352e70ab778f614ef7af11c346b7cd320fe56d072163044ea",
+      "installed_sha256": "f2d40a10fb5b3b0352e70ab778f614ef7af11c346b7cd320fe56d072163044ea"
+    },
+    {
+      "source": "evaluation/habitat_extensions/obs_transformers.py",
+      "target": "src/habitat_extensions/obs_transformers.py",
+      "sha256": "3e1987b7925f354c5c3cee310e2d36d1a49c24e56255d3796cb680b18b9546d4",
+      "installed_sha256": "3e1987b7925f354c5c3cee310e2d36d1a49c24e56255d3796cb680b18b9546d4"
+    },
+    {
+      "source": "evaluation/habitat_extensions/sensors.py",
+      "target": "src/habitat_extensions/sensors.py",
+      "sha256": "3f9b04146eaf5e1ac654e1a074dbf9e2565ea4422f96f8c1b360b4cfd31eb4fd",
+      "installed_sha256": "3f9b04146eaf5e1ac654e1a074dbf9e2565ea4422f96f8c1b360b4cfd31eb4fd"
+    },
+    {
+      "source": "evaluation/habitat_extensions/shortest_path_follower.py",
+      "target": "src/habitat_extensions/shortest_path_follower.py",
+      "sha256": "cf2b0b8f0377e79c809a693ec29425b29df78fc6886c0919f4b53ed6fc26cb21",
+      "installed_sha256": "cf2b0b8f0377e79c809a693ec29425b29df78fc6886c0919f4b53ed6fc26cb21"
+    },
+    {
+      "source": "evaluation/habitat_extensions/task.py",
+      "target": "src/habitat_extensions/task.py",
+      "sha256": "dec90e94df9f0f693501c75d6382c6e100d1ae92fa0ea85bc18c6ac6bdd462b2",
+      "installed_sha256": "dec90e94df9f0f693501c75d6382c6e100d1ae92fa0ea85bc18c6ac6bdd462b2"
+    },
+    {
+      "source": "evaluation/habitat_extensions/utils.py",
+      "target": "src/habitat_extensions/utils.py",
+      "sha256": "8b94916478335662e28e935e51aa78f88b0fb1f679bc156ba2b7cb543395b183",
+      "installed_sha256": "8b94916478335662e28e935e51aa78f88b0fb1f679bc156ba2b7cb543395b183"
+    },
+    {
+      "source": "evaluation/habitat_extensions/config/__init__.py",
+      "target": "src/habitat_extensions/config/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "evaluation/habitat_extensions/config/default.py",
+      "target": "src/habitat_extensions/config/default.py",
+      "sha256": "ab96be6173c1d8721768275e780afc7a0a92168c5790dc56cb91eca66db05a87",
+      "installed_sha256": "ab96be6173c1d8721768275e780afc7a0a92168c5790dc56cb91eca66db05a87"
+    },
+    {
+      "source": "evaluation/habitat_extensions/config/rxr_vlnce_english_task.yaml",
+      "target": "configs/habitat_extensions/config/rxr_vlnce_english_task.yaml",
+      "sha256": "1c564a4a934c62ef3d5da687a9ac39c5517c66707318743b630a8f38d4008b6a",
+      "installed_sha256": "1c564a4a934c62ef3d5da687a9ac39c5517c66707318743b630a8f38d4008b6a"
+    },
+    {
+      "source": "evaluation/habitat_extensions/config/vlnce_task.yaml",
+      "target": "configs/habitat_extensions/config/vlnce_task.yaml",
+      "sha256": "8f388794570d3b2f54c9b87132a8a77ebdcba74448fb561bb2ef5f3a899b7940",
+      "installed_sha256": "8f388794570d3b2f54c9b87132a8a77ebdcba74448fb561bb2ef5f3a899b7940"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/__init__.py",
+      "target": "src/vlnce_baselines/__init__.py",
+      "sha256": "340a4a242f6e020e45fa8e0138bc35bbf783ae109c897af55a9921bce40470a8",
+      "installed_sha256": "340a4a242f6e020e45fa8e0138bc35bbf783ae109c897af55a9921bce40470a8"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/awarevln_trainer.py",
+      "target": "src/vlnce_baselines/awarevln_trainer.py",
+      "sha256": "9e77256097dc30c4dfec902e2945f89c26fc9131d6024715f974dca5cc76e06d",
+      "installed_sha256": "9e77256097dc30c4dfec902e2945f89c26fc9131d6024715f974dca5cc76e06d"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/common/aux_losses.py",
+      "target": "src/vlnce_baselines/common/aux_losses.py",
+      "sha256": "aa2db2cdef9034eaf19733f11c03e948f92a44ba1572f3a58d74da40e13f567b",
+      "installed_sha256": "aa2db2cdef9034eaf19733f11c03e948f92a44ba1572f3a58d74da40e13f567b"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/common/base_il_trainer.py",
+      "target": "src/vlnce_baselines/common/base_il_trainer.py",
+      "sha256": "c7cb12ce983fbba38c216db46355d0edd44f167d1cc0a4d1f96b131a72d70858",
+      "installed_sha256": "c7cb12ce983fbba38c216db46355d0edd44f167d1cc0a4d1f96b131a72d70858"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/common/env_utils.py",
+      "target": "src/vlnce_baselines/common/env_utils.py",
+      "sha256": "79572b3cf2f212d9be096806c6a7404be09450cad125666a9a073980b9401831",
+      "installed_sha256": "79572b3cf2f212d9be096806c6a7404be09450cad125666a9a073980b9401831"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/common/environments.py",
+      "target": "src/vlnce_baselines/common/environments.py",
+      "sha256": "48acbf4f37ca434a80a6c1be12667ee52948246f91b42f2219d1cababcede650",
+      "installed_sha256": "48acbf4f37ca434a80a6c1be12667ee52948246f91b42f2219d1cababcede650"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/common/utils.py",
+      "target": "src/vlnce_baselines/common/utils.py",
+      "sha256": "e60c55b2b03e7d7c27a9829d2c884e606456600d4d3f8dfd1a2c8fbf781ddeaf",
+      "installed_sha256": "e60c55b2b03e7d7c27a9829d2c884e606456600d4d3f8dfd1a2c8fbf781ddeaf"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/config/__init__.py",
+      "target": "src/vlnce_baselines/config/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/config/default.py",
+      "target": "src/vlnce_baselines/config/default.py",
+      "sha256": "0240c1fdd522a13f0d43247f69315daa29325f7817a630ec3f0d19e7a9f6ca3c",
+      "installed_sha256": "c3b9f540dad0bca5b6f45546879825b65e88e04d81a27aca47c1d5f133ff6374"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/config/r2r_baselines/awarevln.yaml",
+      "target": "configs/vlnce_baselines/config/r2r_baselines/awarevln.yaml",
+      "sha256": "8b005f866d67705ca9b7616976925dc490fc6e88c284ae93460850b08e937cb2",
+      "installed_sha256": "42f1c1e197352eb449b3c706a4c5d40d8a72eba3ba1b12cba21ccbc8433f1189"
+    },
+    {
+      "source": "evaluation/vlnce_baselines/config/rxr_baselines/awarevln.yaml",
+      "target": "configs/vlnce_baselines/config/rxr_baselines/awarevln.yaml",
+      "sha256": "4957c6008cc316d18ec036151d97b7ed3930c437e22db09e0b595fddc2869322",
+      "installed_sha256": "bf4f2ec564f64b40b6abd5eb48ee1056bb2f3dc40777a1892b45510a13ab91b4"
+    }
+  ],
+  "relocation_rule": "habitat_extensions/config/ -> configs/habitat_extensions/config/",
+  "pyproject_changes": [
+    "setuptools package discovery from src",
+    "WebDataset 0.1.103 per official evaluation README, pending dependency/runtime acceptance"
+  ],
+  "pyproject_upstream_sha256": "9b4769b40256a0bd9100ea92bf208aa9f3a52533daac607c290b1e9b748a076c",
+  "pyproject_installed_sha256": "3f06c61f1e7f7b31ea1fff15ca76d54a974f66502b6c52d1c0e62ba83d23979a"
+}

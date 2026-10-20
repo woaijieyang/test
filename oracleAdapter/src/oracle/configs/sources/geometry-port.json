@@ -1,0 +1,31 @@
+{
+  "status": "PORT_PENDING_NATIVE_REVALIDATION",
+  "files": [
+    {
+      "historical_path": "tests/landmark_diagnostics/projected_distance_reference.py",
+      "historical_sha256": "8c2cfa0e5a3222e2e686dc22a5fb6bf0ce2b4d8dd097a90e3e0f39bc88bae266",
+      "active_path": "verification/projected_distance.py",
+      "active_sha256": "a9e48e94cfacd5cf544e44d26054d9e671c881de84794f10b5c991fb13791068",
+      "change": "package-local import only; no collision formula or default threshold changed",
+      "historical_module_imported_at_runtime": false
+    },
+    {
+      "historical_path": "tests/landmark_diagnostics/swept_cylinder_reference.py",
+      "historical_sha256": "b73833d7dbdc92704c40fbf7fdd372e3791f68a64fbb0ccc6490a3d2b707f383",
+      "active_path": "verification/linear_sweep.py",
+      "active_sha256": "b596c3e2d28b8df07e1fe0c1fd8394ee6bee51bb2c6cc9f2a545fb6f9b889a85",
+      "change": "package-local import only; no collision formula or default threshold changed",
+      "historical_module_imported_at_runtime": false
+    },
+    {
+      "historical_path": "tests/landmark_diagnostics/swept_cylinder_witness.py",
+      "historical_sha256": "6e63da3922d27492fe7e8361fd10e0f3c984d2a3e5a9ab93cf5bcf35a2600484",
+      "active_path": "verification/contact_certificate.py",
+      "active_sha256": "ffb49b145206c403f8895925f3b7d1ecc9bdfaf0339c754f0ba586ee88a1d0ca",
+      "change": "package-local import only; no collision formula or default threshold changed",
+      "historical_module_imported_at_runtime": false
+    }
+  ],
+  "independence_limit": "Linear distance andrational contact certificate use distinct implementations butshare a geometric formulation andinputmesh; this is not a proof of physical model correctness.",
+  "text_encoding_note": "Historical semantic text is preserved except package-local import rewriting; workstation newline encoding can change byte hashes. Both original and active hashes are recorded."
+}

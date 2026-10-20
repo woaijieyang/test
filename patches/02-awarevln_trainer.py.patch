@@ -1,0 +1,148 @@
+--- a/src/vlnce_baselines/awarevln_trainer.py
++++ b/src/vlnce_baselines/awarevln_trainer.py
+@@ -1,4 +1,6 @@
+ import copy
++import random
++from case1_runtime.trace import TraceRecorder
+ import datetime
+ import json
+ import os
+@@ -92,6 +94,7 @@
+         model.config.reason_token_id = reason_id
+         model.config.act_token_id = act_id
+         model = model.cuda()
++        TraceRecorder.model_loaded(checkpoint_path, tokenizer, model)
+ 
+         ACTION_ID_STOP = 0
+         ACTION_ID_FORWARD = 1
+@@ -119,6 +122,8 @@
+             config.TASK_CONFIG.TASK.MEASUREMENTS.append("TOP_DOWN_MAP_VLNCE")
+         config.freeze()
+ 
++        TraceRecorder.effective_configuration(config)
++
+         reason_stuck_id_path = os.path.join(config.RESULTS_DIR, "reason_stuck_id.txt")
+ 
+         if config.EVAL.SAVE_RESULTS:
+@@ -131,7 +136,19 @@
+                 return
+ 
+         envs = construct_envs_auto_reset_false(config, get_env_class(config.ENV_NAME))
++        random.seed(config.TASK_CONFIG.SEED)
++        np.random.seed(config.TASK_CONFIG.SEED)
++        torch.manual_seed(config.TASK_CONFIG.SEED)
+         observations = envs.reset()
++        recorder = TraceRecorder.from_environment()
++        def record_step(actions, stop_source="model"):
++            ep = envs.current_episodes()[0]
++            before = envs.call_at(0, "case1_evaluator_state")
++            recorder.ensure_episode(ep, before)
++            outcome = envs.step(actions)
++            after = envs.call_at(0, "case1_evaluator_state")
++            recorder.step(ep, actions[0], before, after, outcome[0][2], outcome[0][3], stop_source)
++            return outcome
+         observations = extract_instruction_tokens(
+             observations, self.config.TASK_CONFIG.TASK.INSTRUCTION_SENSOR_UUID
+         )
+@@ -171,7 +188,7 @@
+ 
+             if reason_stuck_num > 3:
+                 logger.warning("Reason stuck, forcing STOP.")
+-                outputs = envs.step([ACTION_ID_STOP])
++                outputs = record_step([ACTION_ID_STOP], stop_source="reason_stuck")
+                 frame_id = 0
+                 reason_stuck_num = 0
+                 with open(reason_stuck_id_path, "a", encoding="utf-8") as f:
+@@ -179,7 +196,7 @@
+                     f.write(f"[{timestamp}] {str(current_episodes)}\n\n")
+ 
+             elif len(queue_actions) > 0:
+-                outputs = envs.step([queue_actions[0]])
++                outputs = record_step([queue_actions[0]])
+                 queue_actions.pop(0)
+ 
+             else:
+@@ -232,6 +249,8 @@
+                     stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
+                     stopping_criteria = KeywordsStoppingCriteria([stop_str], tokenizer, input_ids)
+ 
++                    recorder.ensure_episode(current_episodes[0], envs.call_at(0, "case1_evaluator_state"))
++                    recorded_call_id = recorder.begin_model_call(current_episodes[0], frame_id, prompt, past_and_current_rgbs, input_ids, images_tensor, stop_str, conv.sep2)
+                     with torch.inference_mode():
+                         output_ids = model.generate(
+                             input_ids,
+@@ -245,6 +264,7 @@
+                         )
+ 
+                     outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=False)[0].strip()
++                    raw_decoded_for_trace = outputs
+                     if outputs.endswith(stop_str):
+                         outputs = outputs[: -len(stop_str)].strip()
+                     if outputs.endswith(conv.sep2):
+@@ -252,6 +272,8 @@
+                     if outputs.startswith("<|begin_of_text|>"):
+                         outputs = outputs[len("<|begin_of_text|>") :].strip()
+ 
++                    recorder.ensure_episode(current_episodes[0], envs.call_at(0, "case1_evaluator_state"))
++                    recorder.finish_model_call(recorded_call_id, output_ids, raw_decoded_for_trace, outputs)
+                     is_reasoning_mode = False
+                     raw_output_content = outputs
+                     if outputs.startswith(reason_token_str):
+@@ -292,7 +314,7 @@
+                             distance = 25
+                         if (distance % 25) != 0:
+                             distance = min([25, 50, 75], key=lambda x: abs(x - distance))
+-                        outputs = envs.step([ACTION_ID_FORWARD])
++                        outputs = record_step([ACTION_ID_FORWARD])
+                         for _ in range(int(distance // 25) - 1):
+                             queue_actions.append(ACTION_ID_FORWARD)
+ 
+@@ -304,7 +326,7 @@
+                             degree = 15
+                         if (degree % 15) != 0:
+                             degree = min([15, 30, 45], key=lambda x: abs(x - degree))
+-                        outputs = envs.step([ACTION_ID_LEFT])
++                        outputs = record_step([ACTION_ID_LEFT])
+                         for _ in range(int(degree // 15) - 1):
+                             queue_actions.append(ACTION_ID_LEFT)
+ 
+@@ -316,12 +338,12 @@
+                             degree = 15
+                         if (degree % 15) != 0:
+                             degree = min([15, 30, 45], key=lambda x: abs(x - degree))
+-                        outputs = envs.step([ACTION_ID_RIGHT])
++                        outputs = record_step([ACTION_ID_RIGHT])
+                         for _ in range(int(degree // 15) - 1):
+                             queue_actions.append(ACTION_ID_RIGHT)
+ 
+                     else:
+-                        outputs = envs.step(actions)
++                        outputs = record_step(actions)
+                         frame_id = 0
+                         reason_stuck_num = 0
+ 
+@@ -352,6 +374,16 @@
+ 
+                 ep_id = current_episodes[i].episode_id
+                 stats_episodes[ep_id] = infos[i]
++                queue_actions.clear()
++                last_reasoning = ""
++                last_reason_step = 0
++                frame_id = 0
++                reason_stuck_num = 0
++                reasoning_context = ""
++                raw_output_content = ""
++                random.seed(config.TASK_CONFIG.SEED)
++                np.random.seed(config.TASK_CONFIG.SEED)
++                torch.manual_seed(config.TASK_CONFIG.SEED)
+                 observations[i] = envs.reset_at(i)[0]
+                 past_rgbs[i] = []
+ 
+@@ -390,6 +422,7 @@
+                 rgb_frames,
+             )
+ 
++        recorder.close()
+         envs.close()
+         if config.use_pbar:
+             pbar.close()

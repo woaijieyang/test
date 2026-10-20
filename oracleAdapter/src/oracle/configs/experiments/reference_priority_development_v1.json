@@ -1,0 +1,32 @@
+{
+  "selection_receipt": "outputs/oracleAdapter/next-bounded-stage-plan-v1/receipt.json",
+  "selection_file": "outputs/oracleAdapter/next-bounded-stage-plan-v1/selection16.json",
+  "selection_sha256": "a16e3bfc93617baaa6772f654a75c74370255343b6996b67b370b04cb3e10f92",
+  "source_manifest": "outputs/oracleAdapter/dense-mapping-factorial93-v1/runs/candidate_map_cache/manifest.json",
+  "source_manifest_sha256": "ef16c517b4bdd988a04e26bba094bcfac234419b75f369b519e2769b7b327e48",
+  "current_full_closeout": "outputs/oracleAdapter/global-source-priority-closeout-v1/validation.json",
+  "budget_receipt": "outputs/oracleAdapter/next-stage-development-budget-review-v1/reservation-admission.json",
+  "budget_receipt_sha256": "3613d567e2b76acc712dd00993451429009ea5c54272498fa2659ea44fd6f5d9",
+  "retained_failed_run": "outputs/oracleAdapter/reference-priority-development-v1",
+  "controller_accounting": "Both sequential arms run in the same parent PID/start_ticks under one lifetime RLIMIT_CPU3600/3605. Deduplicate controller reservations only after matching actual identities; prior failed process and worker remain separately charged.",
+  "arms": [
+    {"id": "reference_priority1_control", "search_priority_weight": 1.0},
+    {"id": "reference_priority2_candidate", "search_priority_weight": 2.0}
+  ],
+  "expected_tasks": 16,
+  "expected_executions": 32,
+  "max_workers": 32,
+  "sequential_arms": true,
+  "per_arm_cpu_hours": 4.99,
+  "supervisor_cpu_hours": 1,
+  "camera_diagnostic_cpu_hours": 0.5,
+  "cpu_checks_reserve_hours": 0.5,
+  "stage_cpu_hours_cap": 12,
+  "original_development_cpu_hours_cap": 24,
+  "overall_cpu_hours_cap": 720,
+  "maximum_infrastructure_attempts": 1,
+  "resource_note": "Each arm has16tasks, so actual slots cannot exceed16 even though the reusable controller cap is32. Arms are sequential for clear resource accounting. NoGPU; only observed idle CPUs within first64 authorized logical CPUs, sufficient memory required.",
+  "admission": "Current full33954 execution and automatic independent audit must be terminal and all owned processes gone. Prior development costs must be reconciled before navigation launch. Source, actual import paths, methods, tasks, profile and complete budgets frozen before execution.",
+  "scope": "Previously inspected Landmark train development only. Same fixed mapping, original heading, no official-action prior in either arm, same exact query cache and common scheduler. No R2R/RxR reruns, copiedPASS, parameter sweep, physical gate changes, data edits, full-run promotion or automaticpush.",
+  "promotion_gate": "Complete paired accounting, actual execution and independent replay; at least1recovery and0success-control regression. A positive development result only permits considering broader validation; not global90percent or innovation evidence."
+}

@@ -1,0 +1,9 @@
+{
+  "implementation": "oracle.research.report:report",
+  "official_classifier": "oracle.research.official_classification:classify",
+  "contact_diagnoser": "oracle.verification.contact_causes:diagnose",
+  "purpose": "evidence_bound_development_report",
+  "navigation_actions": 0,
+  "pool_different_objectives": false,
+  "retain_failures_in_cost_statistics": true
+}

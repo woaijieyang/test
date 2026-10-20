@@ -1,0 +1,22 @@
+{
+  "implementation": "oracle.research.full_run:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "worker": "oracle.research.full_worker:phase",
+  "inventory": "outputs/oracleAdapter/unified-input-inventory-v1",
+  "official_asset_receipt": "outputs/oracleAdapter/continuous-assets-v1-source-metadata/validation.json",
+  "method_config": "configs/experiments/guarded_portfolio.json",
+  "protocol_config": "configs/protocols/current_linear.json",
+  "expected": {"r2r": 1839, "rxr": 1223, "landmark_rxr": 33954},
+  "max_workers": 16,
+  "max_logical_cpu_index_count": 64,
+  "per_process_wall_seconds": 900,
+  "total_cpu_budget_hours": 720,
+  "maximum_infrastructure_attempts": 2,
+  "resume_completed_navigation_failures": false,
+  "policy": "Preserve original task initial pose. Use the fixed guarded official prefix only when stable source identity, current numeric initial pose and supported action schema match; otherwise run the existing bounded search without action privilege. No pose alignment/reset is introduced.",
+  "static_policy": "Missing coordinates remain explicit input failures. Recheck navigability and adjacent path connectivity in the actual profile; separately report source-body anchor contacts. Actual initial/body/motion/replay gates remain unchanged.",
+  "target_scope": "All supplied reference occurrences including annotated landmark boundaries; not original paper A discrete metrics",
+  "scope": "Full offline continuous-reference feasibility validation, never a model evaluation or publication trigger",
+  "notes": "Algorithm budgets are inherited unchanged. Static/input failures stay in the full denominator. Different input-information branches are reported separately."
+}

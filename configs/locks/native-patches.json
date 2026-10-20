@@ -1,0 +1,9 @@
+[
+  {
+    "path": "upstream/habitat-sim/src/deps/pybind11/include/pybind11/attr.h",
+    "before_sha256": "4f6a98774b7f27cbc91e5762ff3bf2430e291807c9b26a1a158016efdda04bce",
+    "after_sha256": "86d03bf90cc6027ceeba14d11f1ffd7911997cfe3e18298de4bc096d21f6daac",
+    "reason": "attr.h uses std::uint16_t without including cstdint; standalone header probe fails with current system compiler.",
+    "semantic_scope": "header declaration only; no navigation or simulator parameter changes"
+  }
+]

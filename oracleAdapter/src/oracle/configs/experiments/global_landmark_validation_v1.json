@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "global_audit": {"path": "outputs/oracleAdapter/global-bounded-static-audit-v2/validation.json", "sha256": "67ee2aae9a764ef9be105cf0e37936a68cfc57d40b7e2a39206826755f28b8f6"},
+    "dense_audit": {"path": "outputs/oracleAdapter/dense-ordered-static-audit-v1/validation.json", "sha256": "dc845835ffdc71bc8305840b5104e68ae036387515cf9d05f9a3ff87ac1cbf3f"},
+    "held": {"path": "outputs/landmark-connectivity/constraint-blockers.json", "sha256": "a2dcdd6fdb4cd0a886597e47d02a60b1c53fbde5246ee0ee0551b8ddada1c519"},
+    "parent_manifest": {"path": "outputs/oracleAdapter/full-continuous-reference-v1/manifest.json", "sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125"},
+    "old_full_review": {"path": "outputs/oracleAdapter/logical-full-review-v1/validation.json", "sha256": "b2ab9ef8d9f10269aca2ee64483d344e96fad51179104181750d0ff132154d71"},
+    "matrix_closure": {"path": "outputs/oracleAdapter/dense-mapping-factorial93-v1/validation.json", "sha256": "a905071650ac7179368d5b82741ae03feea02944d4f469690b9c0aab38476c0f"},
+    "D7_closure": {"path": "outputs/oracleAdapter/d7-reused-mapping102-v1/validation.json", "sha256": "ae43c3409f346ccab5fbe98d1e019f3157083ff30f486dee92732b93293a9a68"}
+  },
+  "max_workers": 16,
+  "total_cpu_budget_hours": 350,
+  "selection_policy": "Navigation-outcome-independent source priority fixed before this run: retain original targets for unchanged/unresolved/held records; within the2654 independently static-verified candidates, choose official dense trace coordinates for all93 source-available verified cases, otherwise choose source-bounded body proposals. No use of prior navigation success/failure to choose coordinates. Changed mappings withhold whole-episode official actions; unchanged inputs preserve their original fixed information policy. All use the same exact planning-query cache and original bounded search/physical gates. No progress-guard adoption here because it showed no added Landmark coverage.",
+  "scope": "One fresh complete33954 Landmark train/val_seen/val_unseen native validation and independent replay under uniform frozen source-selection rules. All3411static blockers,209other unresolved endpoint faults andheld114 remain; not a filtered2654 denominator. No R2R/RxR model/derived reruns, copiedPASS, posthoc union, modelSR or automaticpush. Different mapping/information groups reported separately.",
+  "budget": "Maximum16observed-idle CPUworkers, noGPU, overallCPU<=64.350CPUh allocation including controller and owned phases must fit original720CPUh after completed old full/matrix/D7 charges. Original180s/task,60s/search,5000expansions,15000transitions,150000previews,1500actions/reference,10000actions/task,body1.5/.1 and all physical/source/replay limits unchanged. One infrastructure attempt; inspect before any continuation. No source/config edits during run."
+}

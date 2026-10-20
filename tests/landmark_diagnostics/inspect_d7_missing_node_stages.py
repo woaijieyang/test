@@ -1,0 +1,18 @@
+"""Local span survival around D7's shared missing anchor; not final mesh position proof."""
+import os,sys,json,struct,math,datetime
+from pathlib import Path
+assert os.environ.get("CASE1_PROTECTION");os.environ["OPENBLAS_NUM_THREADS"]="1";os.environ["OMP_NUM_THREADS"]="1";os.environ["CUDA_VISIBLE_DEVICES"]="";os.nice(15)
+R=Path.cwd();sys.path.insert(0,str(R/"scripts"))
+from workspace import atomic_json,digest
+import numpy as np,psutil
+u=psutil.cpu_percent(interval=1,percpu=True);os.sched_setaffinity(0,[min(sorted(os.sched_getaffinity(0))[:64],key=lambda i:u[i])])
+O=R/"outputs/landmark-connectivity/d7-fine-stage-v1";D=O/"missing-anchor-v1";D.mkdir(exist_ok=False);control=json.loads((O/"native-control.json").read_text());cs,ch,H,climb,radius,region,bx,by,bz=control["config"]
+proposal=R/"outputs/landmark-connectivity/D7-grounded-fine05-v1/validation.json";rows=[r for r in json.loads(proposal.read_text())["nodes"] if r["node"]=="ee8fc6e9d50b443c95e9265e9eb8d475"];assert len(rows)==1;anchor=np.array(rows[0]["anchor"]);pad=np.array([3*cs,2*ch,3*cs]);reports=[]
+for name in ["low_hanging","ledge","low_height"]:
+ path=O/("native-1-"+name+"-raw.bin");raw=path.read_bytes();n=struct.unpack("<i",raw[:4])[0];g=np.frombuffer(raw,dtype="<i4",offset=4).reshape(n,5);positions=np.column_stack((bx+(g[:,0]+.5)*cs,by+g[:,3]*ch,bz+(g[:,1]+.5)*cs));within=np.sum(np.maximum(abs(positions-anchor)-pad,0)**2,axis=1)<=.25;idx=np.flatnonzero(within);records=[]
+ for i in idx:
+  ceiling=int(g[i+1,2]) if i+1<len(g) and np.array_equal(g[i,:2],g[i+1,:2]) else 65535;records.append({"raw_index":int(i),"cell_xz":g[i,:2].tolist(),"bottom":int(g[i,2]),"top":int(g[i,3]),"area":int(g[i,4]),"headroom_voxels":ceiling-int(g[i,3]),"position":positions[i].tolist(),"anchor_distance":float(np.linalg.norm(positions[i]-anchor))})
+ atomic_json(D/(name+".json"),records);walk=[r for r in records if r["area"]];reports.append({"stage":name,"within_padded_source_envelope":len(records),"walkable_spans":len(walk),"headroom_equal_height":sum(r["headroom_voxels"]==int(H) for r in walk),"headroom_below_height":sum(r["headroom_voxels"]<int(H) for r in walk),"source_sha256":digest(path)})
+for name in ["compacted","eroded","regions"]:
+ path=O/("native-1-"+name+"-graph.bin");raw=path.read_bytes();n=struct.unpack("<i",raw[:4])[0];g=np.frombuffer(raw,dtype="<i4",offset=4).reshape(n,11);positions=np.column_stack((bx+(g[:,1]+.5)*cs,by+g[:,3]*ch,bz+(g[:,2]+.5)*cs));within=np.sum(np.maximum(abs(positions-anchor)-pad,0)**2,axis=1)<=.25;idx=np.flatnonzero(within);records=[{"span":g[i].tolist(),"position":positions[i].tolist(),"anchor_distance":float(np.linalg.norm(positions[i]-anchor))} for i in idx];atomic_json(D/(name+".json"),records);walk=[r for r in records if r["span"][5] and (r["span"][6] if name=="regions" else True)];reports.append({"stage":name,"within_padded_source_envelope":len(records),"walkable_spans":len(walk),"headroom_equal_height":sum(r["span"][4]==int(H) for r in walk),"headroom_below_height":sum(r["span"][4]<int(H) for r in walk),"source_sha256":digest(path)})
+atomic_json(D/"validation.json",{"status":"COMPLETE_LOCAL_STAGE_DIAGNOSIS_NOT_REPAIR","node":rows[0]["node"],"anchor":anchor.tolist(),"affected_regressions":15,"stages":reports,"padding_for_diagnosis_only":pad.tolist(),"proposal_sha256":digest(proposal),"native_control_sha256":digest(O/"native-control.json"),"script_sha256":digest(__file__),"limits":"Generous source-sphere envelope around construct spans, not new source displacement permission or finalDetour heights/physics. No filter/cell changes.","time":datetime.datetime.now().isoformat()});print(reports)

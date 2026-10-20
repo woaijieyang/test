@@ -1,0 +1,19 @@
+{
+  "inputs": {
+    "availability": {"path": "outputs/oracleAdapter/landmark-followup-source-scope-v1/records6274.json", "sha256": "c63fddfec01045fe8850f7c10c84ce16d09d12a58320feb8da1b34333e664937"},
+    "lineage": {"path": "outputs/oracleAdapter/logical-full-review-v1/all-task-lineage.json", "sha256": "943b859c8cdc3822485e228ae70d7d30d0550f6e4b989a08219aa55f8e5120fb"},
+    "references": {"path": "outputs/oracleAdapter/continuous-reference-lineage-v1/all33954-reference-lineage.json", "sha256": "42576c626f0648b21b44a2507892a49820511f38e45e2b980e9a67eaa956aeb5"},
+    "official_assets": {"path": "outputs/oracleAdapter/continuous-assets-v1-source-metadata/validation.json", "sha256": "8080aa0a315ce029d0f1946b80f50685d05d0a452dd02cfc34eaba577696b798"},
+    "catalog": {"path": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json", "sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727"}
+  },
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "source_sphere_m": 0.5,
+  "extra_horizontal_m": 0.350001,
+  "bound_source": "Historical source-available official_reference_node extra proposals: sphere0.5m and horizontal0.350001m. Never use unbounded nearest node or camera fallback for this CE-available branch.",
+  "query_cache": {"cell_size_m": 0.5, "max_regions": 1024, "max_queries": 16384},
+  "max_contact_examples_per_task": 8,
+  "wall_seconds_cap": 3600,
+  "resources": "One observed idle CPU, no GPU; at most one CPU-hour charged to current development accounting. Original and shared assets read-only.",
+  "policy": "Apply the same rule to all2036 source-available blockers. Candidate seeds are official GT locations from the exact episode, constrained before/after native snapping to its ordinal reference anchor. Select global minimum displacement with monotone GT occurrence order and one mutual-native component. Equal GT index allowed only for consecutive exact-equal source reference coordinates. Keep every source boundary and original heading. All33954 remain in output ledger. No native movements, adoption, or PASS until independent static and real motion/replay.",
+  "scope_limit": "Missing CE4238 blockers includingheld114 remain unchanged and unresolved; this is not a solution for all6274 or all33954. No new source geometry or navmesh."
+}
