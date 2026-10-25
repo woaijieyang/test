@@ -1,6 +1,6 @@
 # 固定划分 AwareVLN baseline 测评与结果归档结论
 
-状态：R2R/RxR完整推理与独立审计通过，结果已登记并生成对比总表；本地归档完成，GitHub push前审核进行中。对应[执行计划](2026-10-24-1-plan-固定划分基线测评与结果归档.md)。本轮不训练模型、不重跑原始旧baseline、不改Oracle/Landmark工作。
+状态：R2R/RxR完整推理、独立审计、结果登记、对比总表、精确归档和GitHub发布均已完成；main分支commit/tree已核验。对应[执行计划](2026-10-24-1-plan-固定划分基线测评与结果归档.md)。本轮不训练模型、不重跑原始旧baseline、不改Oracle/Landmark工作。
 
 ## 范围、数据与身份
 
@@ -37,4 +37,4 @@ GPU仅4–7；本任务进程树五秒采样最大23758MiB/24,576MiB。本采样
 
 临时辅助脚本已按allowlist逐SHA归档：本地42个、服务器2个；清单[intermediate-cleanup-20261025.json](../../results-show/intermediate-cleanup-20261025.json)，原始runs、逐任务结果、图像、轨迹、worker日志、manifest、失败、审计和源码快照完整保留。用户所有权未确认的process-show目录及另阶段plan/conclusion保留且不暂存。此前clean-export历史证据也保留；归档`outputs/checkpoint-choice-20261024-shared24-v1/cleanup-archive/clean-vln-checkpoint-choice-20261025.tar`对应归档时暂存树`c6d76a054b34d851afe71e6a6c5110b4f9347314`，SHA256见`outputs/checkpoint-choice-20261024-shared24-v1/clean-export-archive-receipt.json`，它只作为该时间点的来源快照，不代表最终发布树；`.cache`源副本在字节校验后移除。最终待发布树由末次prepush audit单独核验。
 
-push之前后续核对完成的暂存树审计、提交SHA、parent、tree、远端main SHA和API回执应记录在本节及`README_WORKFLOW.md`。预期commit message沿用用户指定`awareVLN-baseline-construct`；保留已发布历史、不强推。当前push状态以实际GitHub核验回执为准，不提前宣称成功。
+结果包已以正常追加提交推送到GitHub `woaijieyang/FirstPaper-VLN` 的`main`，未强推。提交SHA `1f79a7cb6747d03b7b5b1f370e73dfab6c6e71fd`，tree `bc3d6a4d6af27361be7dea94b2094cc3381cdfae`，parent `c3b5010c8a5e4efdf1a7063bc0f2f95df6ff9376`，message `awareVLN-baseline-construct`。成功push后，GitHub REST API核对到完全相同的SHA/tree/parent/message；本地远端跟踪核对也匹配。发布回执为`outputs/publication/push-verified-20261025.json`（运行目录忽略文件）；main中的本结论记录了提交身份及核验方式。

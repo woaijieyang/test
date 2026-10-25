@@ -32,10 +32,10 @@ Results迁移和新表生成后，清理仅按本任务拥有清单归档；proc
 
 R2R1839/1839及RxR-US1223/1223完整推理结束；两run的动作语义审计、独立指标重算、validation全部PASS。新旧各数据集逐task_key配对，指标数值在1e-12绝对容差下差异均为0，终止原因/primitive动作数/model调用数也一致；轨迹原始SHA分别不同，不宣称逐字节相同。R2R旧记录5例严格离网导致retracted状态继续保留。模型指标、A/B/Remaining单块/累计/full、来源及协议限制见results-show/MODEL_TEST_RESULTS.md和checkpoint-choice-20261024.md。两个新记录登记为complete，身份及回执绑定在results-show/records.json和outputs内。Worker批次墙钟耗时可能并发重叠，CPU退出进程最终ticks未知，资源账本不估填。
 
-用户要求的精确过程文件归档已生成manifest，原run/trace/log/失败证据保留；所有权未归属的process-show/及另阶段文档保留且不暂存。GitHub push回执完成后附本节commit/tree链接。
+用户要求的精确过程文件归档已生成manifest，原run/trace/log/失败证据保留；所有权未归属的process-show/及另阶段文档保留且不暂存。GitHub main已核验：commit `1f79a7cb6747d03b7b5b1f370e73dfab6c6e71fd`，tree `bc3d6a4d6af27361be7dea94b2094cc3381cdfae`，parent `c3b5010c8a5e4efdf1a7063bc0f2f95df6ff9376`；完整回执见阶段结论与忽略文件`outputs/publication/push-verified-20261025.json`。
 
 
-工作区清理回执：本任务创建的本地37个与服务器2个终态辅助脚本已逐SHA归档，归档manifest列于results-show/intermediate-cleanup-20261025.json；原始运行/失败/轨迹/审计证据保留，未归属本任务的process-show及另阶段文档未修改。push前仍须审查暂存树并记录远端回执。
+工作区清理回执：本任务创建的本地37个与服务器2个终态辅助脚本已逐SHA归档，归档manifest列于results-show/intermediate-cleanup-20261025.json；原始运行/失败/轨迹/审计证据保留，未归属本任务的process-show及另阶段文档未修改。暂存树审核PASS；GitHub main现已验证包含commit `1f79a7cb6747d03b7b5b1f370e73dfab6c6e71fd` / tree `bc3d6a4d6af27361be7dea94b2094cc3381cdfae`。
 
 
 ## 2026-10-25 push前清理与审计最终状态
@@ -46,3 +46,8 @@ R2R/RxR新run全部执行和最终独立审计通过，records登记为complete�
 ## 2026-10-25 固定划分复测交付审核
 
 R2R/RxR各自完整run及最终semantic action audit、独立指标重算、validation均PASS，并写入results-show。新旧逐任务指标差异为0，R2R旧retracted几何限制保留。结果分区、成本、annotation/profile/source identities和trace SHA限制详见阶段conclusion。过程脚本已精确归档，原始失败及审核证据保留；用户所有权未确认文件未暂存。GitHub提交和远端main/tree核验回执将在push后追加。
+
+
+## GitHub发布核验
+
+`woaijieyang/FirstPaper-VLN:main`已收到commit `1f79a7cb6747d03b7b5b1f370e73dfab6c6e71fd`（tree `bc3d6a4d6af27361be7dea94b2094cc3381cdfae`，parent `c3b5010c8a5e4efdf1a7063bc0f2f95df6ff9376`，message `awareVLN-baseline-construct`）。GitHub API返回与本地commit一致；未强推，认证仅在本机relay使用。发布前的目录/秘密/许可/大文件审核PASS，具体数据见阶段结论。
