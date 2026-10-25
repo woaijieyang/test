@@ -49,7 +49,7 @@ SR、SPL、nDTW、Oracle SR 展示为百分比，NE 为米；计算保持原精�
 
 原始证据在 outputs。records.json 是正式结果的轻量索引，model_results.md 和每个 record_id 报告由脚本生成，不能手工修改数字。新记录追加；更正要保留原记录、原因及被替代/撤回状态，不能覆盖原始 run。
 
-新网格协议与旧网格成绩分开，不直接计算收益。阶段 conclusion 解释过程并链接结果，不维护另一套数值。全局 results-show 文件只作格式参考，本次不修改。
+新网格协议与旧网格成绩分开，不直接计算收益。阶段 conclusion 解释过程并链接结果，不维护另一套数值。results-show为case1正式模型结果入口；全局/data/zy/vln/results-show只作格式参考、只读。
 
 
 ## Landmark发布门槛：原生回放与源几何分别验收
@@ -65,7 +65,7 @@ SR、SPL、nDTW、Oracle SR 展示为百分比，NE 为米；计算保持原精�
 
 ## 冻结描述与实际验收状态
 
-正式报告的实验身份会逐字保留冻结协议描述；其中AUTHORIZED_PENDING_VALIDATION是创建协议时的状态，不是一个持续更新的实时字段。正式准入以运行目录validation.json、独立指标/语义回执及docs/results/records.json的登记状态为准。不得为把描述改成PASS而修改正在运行的冻结配置。当前endpoint9协议的dataset_roots只覆盖RxR派生标注；R2R继续使用原R2R标注，但两者使用明确记录的修复网格版本。
+正式报告的实验身份会逐字保留冻结协议描述；其中AUTHORIZED_PENDING_VALIDATION是创建协议时的状态，不是一个持续更新的实时字段。正式准入以运行目录validation.json、独立指标/语义回执及results-show/records.json的登记状态为准。不得为把描述改成PASS而修改正在运行的冻结配置。当前endpoint9协议的dataset_roots只覆盖RxR派生标注；R2R继续使用原R2R标注，但两者使用明确记录的修复网格版本。
 
 同一正式run只能有一个控制器。evaluate.py使用非阻塞.controller.lock，且--resume拒绝仍存活的owned worker、扩大冻结GPU白名单或改变输入身份。不要在现控制器运行时另起同run，也不要抢先启动它已经安排的后续数据集，否则会破坏唯一所有者和恢复流程。
 

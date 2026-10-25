@@ -17,3 +17,32 @@
 远端工作区Oracle CPU217项、根CPU32项全部通过；从暂存树导出的干净副本同样217+32项全部通过，无跳过。干净副本使用既有case1 runtime，不是新安装环境或新导航实验。实际暂存文件逐项审查：无数据/权重/环境/outputs/backup/本机配置、无符号链接、无大于10MiB文件；常见私钥/GitHub/API/AWS令牌和带凭据URL模式扫描无命中（模式检查不构成绝对无秘密保证）。.gitignore正反例通过，公开JSON配置/结果索引可提交；许可文件及来源记录保留。阶段报告5项关键证据路径及SHA256逐一匹配。
 
 Git按既有.gitattributes规范化文本行尾为LF，历史工作区/源码归档保留原字节。发布树的blob/hash和运行时原始source SHA分别记录，不能把Git导出源码摘要冒充旧运行源码摘要。全部历史诊断源码保留用于证据追溯，活跃Oracle仍仅oracleAdapter/src/oracle。以上检查只支持本次阶段快照发布，不提升任何导航失败或科学验收状态。
+
+
+## 2026-10-25 VLN-awareVLN endpoint9固定划分全量复测
+
+用户明确授权：在/data/zy/vln/data/checkpoint-choice/VLN-awareVLN复制修复版，采用已发布endpoint9、沿14叶子固定ID完整测评；原VLN与原始全局数据不改。R2R 1839/1839、RxR-US 1223/1223执行完成，worker审计、独立指标复算和validation均PASS。新旧每数据集逐任务指标/终止/步数/模型调用差异为0；trace SHA不同项分别1839/1223，不声称字节轨迹相同。新R2R evaluator run complete，但旧R2R 5处严格离网/retracted边界仍单独保留。完整对比和成本见results-show/MODEL_TEST_RESULTS.md；阶段结论附run/profile/manifest/validation及限制哈希。
+
+资源：4 GPU worker并发，设备仅4–7；每卡本任务额度24576MiB，采样峰值最高见outputs/checkpoint-choice-20261024-shared24-v1/final-review-receipt.json。CPU更新为<=72后部优先、nice10，最终稳定32个逻辑核；早期退出worker启动亲和性沿用worker-done回执，不粉饰。worker elapsed为并行批次墙钟时间，互相重叠；退出worker精确CPU时间未知，未估填。控制器source freeze和最终审计状态见outputs/checkpoint-choice-20261024-shared24-v1。
+
+Results迁移和新表生成后，清理仅按本任务拥有清单归档；process-show及另有日期阶段文档因所有权不明保留不暂存。push前逐文件核对Git树、ignore、凭据模式、许可和文件大小。
+
+
+## 2026-10-25 固定划分baseline全量复测
+
+R2R1839/1839及RxR-US1223/1223完整推理结束；两run的动作语义审计、独立指标重算、validation全部PASS。新旧各数据集逐task_key配对，指标数值在1e-12绝对容差下差异均为0，终止原因/primitive动作数/model调用数也一致；轨迹原始SHA分别不同，不宣称逐字节相同。R2R旧记录5例严格离网导致retracted状态继续保留。模型指标、A/B/Remaining单块/累计/full、来源及协议限制见results-show/MODEL_TEST_RESULTS.md和checkpoint-choice-20261024.md。两个新记录登记为complete，身份及回执绑定在results-show/records.json和outputs内。Worker批次墙钟耗时可能并发重叠，CPU退出进程最终ticks未知，资源账本不估填。
+
+用户要求的精确过程文件归档已生成manifest，原run/trace/log/失败证据保留；所有权未归属的process-show/及另阶段文档保留且不暂存。GitHub push回执完成后附本节commit/tree链接。
+
+
+工作区清理回执：本任务创建的本地37个与服务器2个终态辅助脚本已逐SHA归档，归档manifest列于results-show/intermediate-cleanup-20261025.json；原始运行/失败/轨迹/审计证据保留，未归属本任务的process-show及另阶段文档未修改。push前仍须审查暂存树并记录远端回执。
+
+
+## 2026-10-25 push前清理与审计最终状态
+
+R2R/RxR新run全部执行和最终独立审计通过，records登记为complete；R2R旧retracted几何限制保留。逐task配对指标差值全为0，trace hash逐条不同且不声称byte-identical。results-show总表报告所有fixed leaf/cumulative/full的新旧差异。40个本地和2个远端本轮临时工具SHA校验归档；原始运行和失败证据保留。未归属的process-show和其他阶段文件不暂存。本次prepush tree审核与远端最终回执在commit生成后另附。
+
+
+## 2026-10-25 固定划分复测交付审核
+
+R2R/RxR各自完整run及最终semantic action audit、独立指标重算、validation均PASS，并写入results-show。新旧逐任务指标差异为0，R2R旧retracted几何限制保留。结果分区、成本、annotation/profile/source identities和trace SHA限制详见阶段conclusion。过程脚本已精确归档，原始失败及审核证据保留；用户所有权未确认文件未暂存。GitHub提交和远端main/tree核验回执将在push后追加。

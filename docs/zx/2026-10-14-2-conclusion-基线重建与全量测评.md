@@ -556,3 +556,25 @@ validation SHA c7a5fc7c32115a7ad96606dc3d2311abc7cf89b6f5ae90b44c9a34922e59e07a�
 远端工作区Oracle CPU217项、根CPU32项全部通过；从暂存树导出的干净副本同样217+32项全部通过，无跳过。干净副本使用既有case1 runtime，不是新安装环境或新导航实验。实际暂存文件逐项审查：无数据/权重/环境/outputs/backup/本机配置、无符号链接、无大于10MiB文件；常见私钥/GitHub/API/AWS令牌和带凭据URL模式扫描无命中（模式检查不构成绝对无秘密保证）。.gitignore正反例通过，公开JSON配置/结果索引可提交；许可文件及来源记录保留。阶段报告5项关键证据路径及SHA256逐一匹配。
 
 Git按既有.gitattributes规范化文本行尾为LF，历史工作区/源码归档保留原字节。发布树的blob/hash和运行时原始source SHA分别记录，不能把Git导出源码摘要冒充旧运行源码摘要。全部历史诊断源码保留用于证据追溯，活跃Oracle仍仅oracleAdapter/src/oracle。以上检查只支持本次阶段快照发布，不提升任何导航失败或科学验收状态。
+
+
+## 2026-10-24 固定划分复测与结果迁移（进行中）
+
+新正式结果唯一入口为case1/results-show/MODEL_TEST_RESULTS.md，原docs/results已完整迁入；records.json及旧run状态保留，旧路径在历史结论中只作历史记录，不再写入。当前计划/结论为docs/zx/2026-10-24-1-{plan,conclusion}-固定划分基线测评与结果归档.md。
+
+用户确认沿用已发布endpoint9，并授权建立/data/zy/vln/data/checkpoint-choice/VLN-awareVLN。该副本已物化R2R1839、RxR-US1223，14叶子不重选、不丢失。6124源记录/GT哈希核验通过，9标注和5GT修正逐字段记账；原VLN未变。副本内dataset.yaml与evaluation.json指向实际复制的修复数据/GT及冻结profile，场景/权重不复制。原VLN引用的audit目录缺失如实保留，新副本当前验收不冒充原历史验收。
+
+历史模型成绩按新划分重算已进入results-show/checkpoint-choice-historical.md，明确不是本次新推理。单块A1/A2/A3/B1/B2/B3/Remaining与A1+A2/A/B1+B2/B/Full分开列，累计指标从逐任务结果计算。R2R旧retracted保持；新复测也不会自动证明5处严格离网问题已消失。
+
+新入口scripts/checkpoint_choice.py按精确叶子ID运行；来源chunk固定1/0，实际worker/trainer/dataset路径及SHA与manifest匹配。受保护启动的results-write只开放results-show，模型worker不得携带行政写权限。40项CPU回归及3模式真实权限测试通过；前39项后增加挂载别名反例为40项。
+
+首次预检失败为旧scene_view只按profile内容命名：当前只读bind mount恢复可用，同一profile在普通shell解析原始路径、保护namespace解析.shared-ro；旧视图链接指向前者，字节哈希相同但严格路径比较冲突。保留旧链接、旧日志和诊断；本次独立视图以实际目标路径加内容身份命名，不修改旧工具或profile。普通shell探测的打印文字误称Protected，实际当次未启用保护；真正保护环境复验由prepare-v2及后续gate提供，不能使用该文字代替执行证据。
+
+GPU仅4–7完全空闲卡、最多4张，CPU总不超64。所有已完成旧run保持封存；新任务未完成前不登记新成绩、不提前push。完成后按受控清单归档本阶段可再生成中间副本，保留运行依赖/失败/源码快照/验证回执，再审查Git并发布。
+
+
+## 2026-10-25固定划分endpoint9完整baseline复测
+
+本轮固定评估分区完整执行R2R1839、RxR-US1223；动作语义审计、独立轨迹指标复算和validation均PASS。两数据集普通导航失败分别632和396，非有限/运行异常0。完整结果、A/B/Remaining各块及新旧逐任务差异见根results-show/MODEL_TEST_RESULTS.md。与旧endpoint9运行task_key、模型、配置、profile、benchmark及427个模型/评测策略冻结文件匹配；五项逐任务指标、终止、步数和模型调用数差异均0。全部trace SHA分别有变化，原因未逐字段确认。旧R2R因独立严格几何5离网发现保持retracted；新旧数值一致不取消该限制。Oracle/Landmark和原数据未改。
+
+本次固定分区副本VLN-awareVLN保留原ID，仅RxR endpoint9修复9 annotation/5 GT；原VLN未变、原audit目录缺失已披露。成本采用每worker结束回执的批次墙钟时间与控制器端到端墙钟分列，批次有重叠，已退出进程CPU秒无法完整恢复，不估填。

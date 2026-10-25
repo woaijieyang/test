@@ -59,7 +59,7 @@ def main():
         d.mkdir(parents=True, exist_ok=True)
         writable.append(d)
     if a.results_write:
-        directory = owned(ROOT / "docs/results")
+        directory = owned(ROOT / "results-show")
         directory.mkdir(parents=True, exist_ok=True)
         writable.append(directory)
     if a.prepare_configs:

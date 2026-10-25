@@ -8,7 +8,7 @@
 | 模块逻辑与数据流 | [ARCHITECTURE](ARCHITECTURE.md) |
 | 链接与网格 | [DATA_INTEGRATION](DATA_INTEGRATION.md) |
 | 测评、恢复与审计 | [EVALUATION](EVALUATION.md) |
-| 正式成绩 | [统一结果](results/model_results.md) |
+| 正式成绩 | [统一结果](../results-show/model_results.md) |
 
 实际过程统一记录在一份conclusion，原始证据在outputs；正式数字只从机器结果生成。文档命令必须在交付前校验，不能将计划入口当成已验证命令。
 

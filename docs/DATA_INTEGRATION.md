@@ -229,3 +229,10 @@ D7 v32后续状态：全786真实执行/独立审查已完成，470严格证明�
 |rxr / val_unseen / en-US / mp3d/oLBMNvg9in8/oLBMNvg9in8.glb / 10494 / 67278|start|[-1.5232399702072144, 1.0429749488830566, -0.21347199380397797]|[-1.5232399702072144, 1.0537188053131104, -0.21347199380397797]|0.010743856|是|
 |rxr / val_unseen / en-US / mp3d/oLBMNvg9in8/oLBMNvg9in8.glb / 10808 / 119396|goal:0|[-1.5232399702072144, 1.0429749488830566, -0.21347199380397797]|[-1.5232399702072144, 1.0537188053131104, -0.21347199380397797]|0.010743856|否|
 |rxr / val_unseen / en-US / mp3d/X7HyMhZNoso/X7HyMhZNoso.glb / 10953 / 93508|start|[0.27877599000930786, 0.25752416253089905, 4.776179790496826]|[0.23258201777935028, 0.295121431350708, 4.795313835144043]|0.062558368|是|
+
+
+## 2026-10-24 VLN-awareVLN固定划分副本
+
+用户指定新增目录/data/zy/vln/data/checkpoint-choice/VLN-awareVLN，原VLN不变。annotations/r2r/val_unseen为原R2R，annotations/rxr/val_unseen为已发布endpoint9修复标注/GT；14叶子仍与VLN同ID。每叶子dataset.yaml只含DATASET字段，evaluation.json另给GT/profile。audit/materialization.json保存全部来源、6124记录级哈希检查及9标注/5GT差异；audit/content-manifest.json与_SUCCESS绑定当前副本。原TREE/_SUCCESS/叶子配置归档provenance/original-VLN，原audit缺失已披露。副本不是endpoint115或新全通过几何协议。
+
+正式入口scripts/checkpoint_choice.py prepare/run/report：受保护进程只读该目录，写入outputs；报告使用with_runtime.sh --results-write写results-show。旧运行不以新配置恢复。普通shell和mount namespace场景解析不同，本轮使用按有效目标路径身份命名的新只读场景链接，不覆写旧视图。

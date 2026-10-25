@@ -10,7 +10,7 @@ from pathlib import Path
 root=Path.cwd();mode=sys.argv[1]
 assert (root/'models/awarevln/config.json').read_bytes()
 with (root/'data/datasets/R2R_VLNCE_v1-3_preprocessed/val_unseen/val_unseen.json.gz').open('rb') as f:assert f.read(16)
-checks=[('outputs',True),('src',False),('docs/results',mode=='results'),('configs/locks',mode=='configs'),('configs/diagnostics',mode=='configs')]
+checks=[('outputs',True),('src',False),('results-show',mode=='results'),('configs/locks',mode=='configs'),('configs/diagnostics',mode=='configs')]
 rows=[]
 for directory,expected in checks:
  p=root/directory/(mode+'-probe.txt')
@@ -34,7 +34,7 @@ def main():
         "scripts",
         "src",
         "outputs",
-        "docs/results",
+        "results-show",
         "configs/locks",
         "configs/diagnostics",
     ):

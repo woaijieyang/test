@@ -201,7 +201,7 @@ def audit(run):
 
 def _register_locked(run, registry=None):
     run = owned(run).resolve()
-    registry = Path(registry) if registry else ROOT / "docs/results/records.json"
+    registry = Path(registry) if registry else ROOT / "results-show/records.json"
     summary, validation = audit(run)
     stored = read_json(run / "validation.json")
     if stored.get("status") != "PASS" or stored["receipts"] != validation["receipts"]:
@@ -381,7 +381,7 @@ def render(index):
             "",
             "## 协议与结论边界",
             "",
-            "修复网格使用独立版本，不与旧网格历史成绩直接计算收益。模型到动作的一致性验证不等于每条导航语义正确；实际导航失败如实保留。33条修复过程、所有尝试和限制见[本阶段结论](../zx/2026-10-14-2-conclusion-基线重建与全量测评.md)。",
+            "修复网格使用独立版本，不与旧网格历史成绩直接计算收益。模型到动作的一致性验证不等于每条导航语义正确；实际导航失败如实保留。33条修复过程、所有尝试和限制见[本阶段结论](../docs/zx/2026-10-14-2-conclusion-基线重建与全量测评.md)。",
             "",
         ]
         reports[r["record_id"] + ".md"] = "\n".join(report)

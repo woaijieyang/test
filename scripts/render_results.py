@@ -10,7 +10,7 @@ if __name__ == "__main__":
         "results_write"
     ):
         raise SystemExit("Use with_runtime.sh --results-write to generate result documents")
-    root = ROOT / "docs/results"
+    root = ROOT / "results-show"
     table, reports = render(read_json(root / "records.json"))
     for name, content in {"model_results.md": table, **reports}.items():
         path = root / name

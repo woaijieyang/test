@@ -9,7 +9,7 @@
 |R2R val_unseen|1839/1839|65.633496|57.278175|65.369522|3.978647|75.095160|632|0/0|
 |RxR en-US val_unseen|1223/1223|67.620605|55.934696|67.661981|4.279348|75.143091|396|0/0|
 
-两者是`awarevln-<r2r或rxr>-valunseen-endpoint9-20261015-v2`冻结运行；源码摘要c2280a04c33b、网格摘要85328a019b54，完整身份与指标见[统一结果](results/model_results.md)及逐run报告。原指标复算与语义审计通过。R2R后续严格轨迹检查发现5处原生离网，登记保持retracted；该限制不等于证明原指标计算错误。RxR登记complete只描述其原协议，不代表新增派生信息流/所有源几何验收均通过。新派生模型协议的实际annotation/GT入口及预处理tensor独立重算等仍有未验收项，本次不自动重测。
+两者是`awarevln-<r2r或rxr>-valunseen-endpoint9-20261015-v2`冻结运行；源码摘要c2280a04c33b、网格摘要85328a019b54，完整身份与指标见[统一结果](../results-show/model_results.md)及逐run报告。原指标复算与语义审计通过。R2R后续严格轨迹检查发现5处原生离网，登记保持retracted；该限制不等于证明原指标计算错误。RxR登记complete只描述其原协议，不代表新增派生信息流/所有源几何验收均通过。新派生模型协议的实际annotation/GT入口及预处理tensor独立重算等仍有未验收项，本次不自动重测。
 
 ## 离线验证与研究：不能冒充模型成功率
 
@@ -57,3 +57,10 @@ Git仅含源码、公开配置、测试、补丁、来源与摘要；原始轨�
 远端工作区Oracle CPU217项、根CPU32项全部通过；从暂存树导出的干净副本同样217+32项全部通过，无跳过。干净副本使用既有case1 runtime，不是新安装环境或新导航实验。实际暂存文件逐项审查：无数据/权重/环境/outputs/backup/本机配置、无符号链接、无大于10MiB文件；常见私钥/GitHub/API/AWS令牌和带凭据URL模式扫描无命中（模式检查不构成绝对无秘密保证）。.gitignore正反例通过，公开JSON配置/结果索引可提交；许可文件及来源记录保留。阶段报告5项关键证据路径及SHA256逐一匹配。
 
 Git按既有.gitattributes规范化文本行尾为LF，历史工作区/源码归档保留原字节。发布树的blob/hash和运行时原始source SHA分别记录，不能把Git导出源码摘要冒充旧运行源码摘要。全部历史诊断源码保留用于证据追溯，活跃Oracle仍仅oracleAdapter/src/oracle。以上检查只支持本次阶段快照发布，不提升任何导航失败或科学验收状态。
+
+
+## 2026-10-25固定划分endpoint9完整baseline复测
+
+本轮固定评估分区完整执行R2R1839、RxR-US1223；动作语义审计、独立轨迹指标复算和validation均PASS。两数据集普通导航失败分别632和396，非有限/运行异常0。完整结果、A/B/Remaining各块及新旧逐任务差异见根results-show/MODEL_TEST_RESULTS.md。与旧endpoint9运行task_key、模型、配置、profile、benchmark及427个模型/评测策略冻结文件匹配；五项逐任务指标、终止、步数和模型调用数差异均0。全部trace SHA分别有变化，原因未逐字段确认。旧R2R因独立严格几何5离网发现保持retracted；新旧数值一致不取消该限制。Oracle/Landmark和原数据未改。
+
+本次固定分区副本VLN-awareVLN保留原ID，仅RxR endpoint9修复9 annotation/5 GT；原VLN未变、原audit目录缺失已披露。成本采用每worker结束回执的批次墙钟时间与控制器端到端墙钟分列，批次有重叠，已退出进程CPU秒无法完整恢复，不估填。

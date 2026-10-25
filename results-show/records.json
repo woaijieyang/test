@@ -260,6 +260,240 @@
         "summary.json": "3e7aa22c917caeb917b0c44db7d4c85d8d2a746bb810e9b6159bbd92646982c4",
         "validation.json": "76743a00e5a99b27e31ca4d2502e252a323ce66d73113a6d018e21f87c273ace"
       }
+    },
+    {
+      "record_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-r2r",
+      "run_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-r2r",
+      "status": "complete",
+      "artifact_path": "/data/zy/vln/case1/outputs/awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-r2r",
+      "registered_at": "2026-10-25T09:28:02.404271+00:00",
+      "identity": {
+        "model": "AwareVLN official",
+        "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+        "source_sha256": "1336e3595037976c4d296a2c8d3779336f4ed23bf877508378af7541974368e4",
+        "config_sha256": "2141f34387a578c2de99b29af590c4f5109dabc9c2a26beaf89aaf19a3c69187",
+        "navmesh_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+        "benchmark_sha256": "9453e3ad54f596b99a849ab37467f775671bea8edce33da4a7bc21bdb80525a9",
+        "split": "val_unseen",
+        "language": "en",
+        "base_config_sha256": "42f1c1e197352eb449b3c706a4c5d40d8a72eba3ba1b12cba21ccbc8433f1189",
+        "model_code_path": "/data/zy/vln/case1/src",
+        "dataset_paths": {
+          "r2r": "/data/zy/vln/data/checkpoint-choice/VLN-awareVLN/annotations/r2r/val_unseen/val_unseen.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case1/outputs/awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-r2r/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case1/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "6c16430072916de4f90e3ebf1f5e053942922524fbfec499a11a35bba7b4090e"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-r2r",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "r2r": {
+            "expected": 1839,
+            "completed": 1839,
+            "navigation_failures": 632,
+            "valid": {
+              "sr": 1839,
+              "spl": 1839,
+              "ndtw": 1839,
+              "ne": 1839,
+              "oracle_sr": 1839
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6563349646547036,
+              "spl": 0.5727817465899094,
+              "ndtw": 0.6536952239527776,
+              "ne": 3.9786473610339654,
+              "oracle_sr": 0.7509516041326808
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "894e674fc0ac53169fbcbcc15ff11d302571bd07f4062bb7eeb53346a6947a9d",
+        "results.jsonl": "e209e6088f704b792d3d163726116741624a25a89f7ad99055de83d1c02225f5",
+        "independent_metrics.json": "06a645c27b90db2e46226911a1fcc1c00cee2955d2ea3dde795d3b7323febf87",
+        "semantic_audit.json": "0973160279845ce534fe7030763be0785b6c00eea8e8250f3c9650b78a977953",
+        "effective-configs.json": "2141f34387a578c2de99b29af590c4f5109dabc9c2a26beaf89aaf19a3c69187",
+        "summary.json": "6b80e13cb974ef0358190d08a1702a97f52171dac05cc70b40a82d4cb07e0c57",
+        "validation.json": "1c1936730a09a35daeb10c8f04283a757367a52e4555743254cfa2fd6a73075b"
+      }
+    },
+    {
+      "record_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-rxr",
+      "run_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-rxr",
+      "status": "complete",
+      "artifact_path": "/data/zy/vln/case1/outputs/awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-rxr",
+      "registered_at": "2026-10-25T09:30:37.201443+00:00",
+      "identity": {
+        "model": "AwareVLN official",
+        "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+        "source_sha256": "1336e3595037976c4d296a2c8d3779336f4ed23bf877508378af7541974368e4",
+        "config_sha256": "a6ffcf579fb3f171ebb3fcd2aa6b3b562646e2bbe692af57a0dcfb4f16519961",
+        "navmesh_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+        "benchmark_sha256": "556b628ad57c945448e013d98cb206619086da54788798703adce3a9b1cc5b9f",
+        "split": "val_unseen",
+        "language": "en-US",
+        "base_config_sha256": "bf4f2ec564f64b40b6abd5eb48ee1056bb2f3dc40777a1892b45510a13ab91b4",
+        "model_code_path": "/data/zy/vln/case1/src",
+        "dataset_paths": {
+          "rxr": "/data/zy/vln/data/checkpoint-choice/VLN-awareVLN/annotations/rxr/val_unseen/val_unseen_guide.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case1/outputs/awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-rxr/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case1/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "6c16430072916de4f90e3ebf1f5e053942922524fbfec499a11a35bba7b4090e"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "awarevln-checkpoint-choice-endpoint9-20261024-shared24-v1-rxr",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "rxr": {
+            "expected": 1223,
+            "completed": 1223,
+            "navigation_failures": 396,
+            "valid": {
+              "sr": 1223,
+              "spl": 1223,
+              "ndtw": 1223,
+              "ne": 1223,
+              "oracle_sr": 1223
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6762060506950123,
+              "spl": 0.559346964405163,
+              "ndtw": 0.6766198149932677,
+              "ne": 4.279347672400568,
+              "oracle_sr": 0.7514309076042518
+            },
+            "annotation_subgroups": {
+              "corrected_9": {
+                "completed": 9,
+                "metrics": {
+                  "sr": 0.6666666666666666,
+                  "spl": 0.6407238505262374,
+                  "ndtw": 0.8056647434556705,
+                  "ne": 1.9670594533284504,
+                  "oracle_sr": 0.6666666666666666
+                }
+              },
+              "unchanged_1214": {
+                "completed": 1214,
+                "metrics": {
+                  "sr": 0.6762767710049423,
+                  "spl": 0.558743676122552,
+                  "ndtw": 0.6756631392468412,
+                  "ne": 4.2964898420642,
+                  "oracle_sr": 0.7520593080724877
+                }
+              }
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "f724637cecd0408abffa35f7047f188df9d87b8f0dcea7f9a04c996ea05ae439",
+        "results.jsonl": "8436c8a20c684cb874adfc538d51f71d354f1ba300284e8b36ee3171fe5007ef",
+        "independent_metrics.json": "3308613d43f02ce1ffa8ff3a339f31ab8a622bce1ca24251156b7b0ed731c480",
+        "semantic_audit.json": "55f6bdb2ff4c2bfeac1719e3121d2c281deada7e4994ec1e7184748c49ef684b",
+        "effective-configs.json": "a6ffcf579fb3f171ebb3fcd2aa6b3b562646e2bbe692af57a0dcfb4f16519961",
+        "summary.json": "24de024e00b99ec90a5d6066a08787433cce8be101298b82053b9be82444dde4",
+        "validation.json": "0a43d3f16db2e65f33d19ce1dfae051a741a21233b4d60b02a3ee4233c008993"
+      }
     }
   ]
 }

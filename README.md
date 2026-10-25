@@ -1,5 +1,7 @@
 # AwareVLN Case1 基线与 OracleAdapter 研究
 
+> **2026-10-25 固定划分复测、独立审计和归档已完成；GitHub push待最终核验。** R2R 1839/1839、RxR-US 1223/1223；全部CPU/语义/指标审计通过。新旧同task逐指标对照一致，旧R2R retracted限制仍保留。完整单块、累计、全量对照及成本见[results-show总表](results-show/MODEL_TEST_RESULTS.md)，过程与限制见[新阶段结论](docs/zx/2026-10-24-1-conclusion-固定划分基线测评与结果归档.md)。
+
 **当前交付：2026-10-20 阶段研究快照。模型R2R/RxR测评已完成并封存；Landmark尚未全修复。** 用户授权先发布，后续继续Landmark修复。pRb候选已授权阶段采纳，保留2条已知退化，不将采纳等同全部验收通过。
 
 先读[本次发布说明：结果、限制、成本和证据](docs/PUBLICATION_SNAPSHOT.md)，再读[总体conclusion](docs/zx/2026-10-14-2-conclusion-基线重建与全量测评.md)及[导航专项conclusion](docs/zx/2026-10-15-1-conclusion-导航连通性专项验收.md)。历史阶段与授权变化保留在原conclusion，不用历史“等待RxR”描述当前状态。
@@ -11,7 +13,7 @@
 |Landmark全量研究|20911/33954严格通过，全分母/held114保留；非模型成绩|
 |pRb660候选|98通过、562失败，恢复31/退化2；用户授权后续研究采纳，未全验收|
 
-部署阅读顺序：[文档导航](docs/README.md) → [SETUP](docs/SETUP.md) → [架构](docs/ARCHITECTURE.md) → [数据](docs/DATA_INTEGRATION.md) → [测评](docs/EVALUATION.md) → [模型结果](docs/results/model_results.md)。研究入口：[OracleAdapter](oracleAdapter/README.md)。执行前核对当前plan、实际manifest和资源，原运行不可为查看状态重跑。
+部署阅读顺序：[文档导航](docs/README.md) → [SETUP](docs/SETUP.md) → [架构](docs/ARCHITECTURE.md) → [数据](docs/DATA_INTEGRATION.md) → [测评](docs/EVALUATION.md) → [模型结果](results-show/model_results.md)。研究入口：[OracleAdapter](oracleAdapter/README.md)。执行前核对当前plan、实际manifest和资源，原运行不可为查看状态重跑。
 
 ```text
 src/              AwareVLN实际运行源码
