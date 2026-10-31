@@ -57,3 +57,8 @@ Thumbs.db
 
 # Machine-specific Oracle settings; public JSON configs remain tracked.
 /oracleAdapter/src/oracle/configs/local/
+
+# Local recording state and task-flow evidence.
+/.case-ledger/
+/task-flow/*
+!/task-flow/TASK-FLOW-TEMPLATE.md

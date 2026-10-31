@@ -101,7 +101,7 @@ AnySearch核查Habitat官方文档及issue1689、ARA*/SBPL固定提交4d654845�
 
 **独立研究根case1/oracleAdapter；原模型、原始数据/场景/共享环境冻结。原RxR已自然完成，不再称运行中，不自动重测或push。**
 
-- **原模型：** R2R1839与RxR1223均完整，独立指标复算及原模型输入/解析到动作审计PASS；普通导航失败分别632/396、运行/非有限0。成绩以[统一总表](../results/model_results.md)及各报告为准。R2R后来5处离网使登记retracted，不代表原指标算错；RxR原审计PASS也不代表完成全部新增源体积/信息流门槛。
+- **原模型：** R2R1839与RxR1223均完整，独立指标复算及原模型输入/解析到动作审计PASS；普通导航失败分别632/396、运行/非有限0。成绩以[统一总表](../../results-show/model_results.md)及各报告为准。R2R后来5处离网使登记retracted，不代表原指标算错；RxR原审计PASS也不代表完成全部新增源体积/信息流门槛。
 - **历史派生：** endpoint115-v3全3062已终态，2225严格通过/837有限搜索失败，187642动作回放0；R2R1353/486、RxR872/351，非模型SR，不覆盖原基线。
 - **新Oracle：** 57项CPU回归；固定12任务×2方法开发对照已完成，1009实际动作逐任务独立进程回放。端点参考两臂均4/8，Landmark顺序两臂均1/4；新增恢复0、退化0，候选CPU成本增加。状态混叠反例成立，但尚无路线覆盖收益或创新结论。
 - **Landmark：** 全33954身份及GT资产台账保留。25920精确匹配CE且动作/forward位置schema通过，8034未匹配CE但已匹配原始Guide；461缺图点365有连续参考/96无直接对应。子段connector单独候选保持，未计运动恢复。held114仍保留。
@@ -1149,7 +1149,7 @@ V2X-grounded-fine05-supported-v1/component-conflict-cores.json将66条分别给�
 
 ### R2R正式验收完成，RxR保持原控制器接续
 
-R2R1839全部正式验证并登记，指标以[正式报告](../results/awarevln-r2r-valunseen-endpoint9-20261015-v2.md)和[统一总表](../results/model_results.md)为唯一文档来源；这里不重复手填指标。语义链路PASS覆盖115138图像，错误0，1次官方fallback保留；8分片各1次worker实际启动，无重试。render_results.py及--check通过。R2R原标注未改，使用修复网格；endpoint9的9条派生标注属于RxR。协议文件里的AUTHORIZED_PENDING_VALIDATION是冻结时描述，实际状态看validation和登记回执，不热改冻结文件。
+R2R1839全部正式验证并登记，指标以[正式报告](../../results-show/awarevln-r2r-valunseen-endpoint9-20261015-v2.md)和[统一总表](../../results-show/model_results.md)为唯一文档来源；这里不重复手填指标。语义链路PASS覆盖115138图像，错误0，1次官方fallback保留；8分片各1次worker实际启动，无重试。render_results.py及--check通过。R2R原标注未改，使用修复网格；endpoint9的9条派生标注属于RxR。协议文件里的AUTHORIZED_PENDING_VALIDATION是冻结时描述，实际状态看validation和登记回执，不热改冻结文件。
 
 23:34核验RxR15/1223正在运行，active1/pending7/failed0，主控制器/新RxR控制器与worker实际身份均存活且匹配；没有重启或改资源策略。Landmark完整门槛尚未通过，整体保持NOT_ACCEPTED，不提交/push。
 

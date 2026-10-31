@@ -245,7 +245,7 @@ v2的35条RxR专项全部完成，独立指标复算与模型输入/输出/动�
 
 正式run awarevln-r2r-valunseen-endpoint9-20261015-v2完成1839/1839，缺失0、未解决运行异常0，各指标有限分母均1839。原生指标与独立复算一致；模型输入/输出解析到实际primitive动作的全量语义审计PASS，覆盖1839任务/轨迹及115138图像文件，错误0。记录到1次官方解析fallback，已按原实现如实包含，不是偷偷替换模型输出；模型普通导航失败保留为有效结果。validation.json于23:02:54 SGT通过，23:04:44登记。
 
-唯一指标来源为[本次正式报告](../results/awarevln-r2r-valunseen-endpoint9-20261015-v2.md)和[自动生成的统一总表](../results/model_results.md)，本结论不另维护一组SR等数值。已执行render_results.py及--check，生成/一致性检查均通过。R2R本身仍读取原始R2R标注；该批使用修复网格。协议中9条派生标注只用于RxR，不把R2R说成修改了9条数据，也不与旧网格分数直接计算收益。
+唯一指标来源为[本次正式报告](../../results-show/awarevln-r2r-valunseen-endpoint9-20261015-v2.md)和[自动生成的统一总表](../../results-show/model_results.md)，本结论不另维护一组SR等数值。已执行render_results.py及--check，生成/一致性检查均通过。R2R本身仍读取原始R2R标注；该批使用修复网格。协议中9条派生标注只用于RxR，不把R2R说成修改了9条数据，也不与旧网格分数直接计算收益。
 
 原控制器808206/start14259388自然接续full-rxr；23:34核验RxR15/1223、active1/pending7/failed0，eval控制器1411184/start26491356，worker1411386/start26494222正常。没有重启任务、改变模型/源码/预算/profile或资源策略。evaluate的run目录和非阻塞.controller.lock要求单一所有者，不手动抢先启动当前controller已安排的后续run。R2R通过不等于项目发布完成；Landmark/source_geometry_acceptance及RxR完整结果仍是后续门槛。
 
@@ -326,7 +326,7 @@ endpoint115-full-motion-v3于19:37:41完整终态，已有独立v1/v3对照于19
 
 ## 2026-10-18T16:35:31.032803+08:00 原模型结果分组收尾与研究边界
 
-原模型1223/1839完整结果及复算回执已逐项核验，见outputs/verification/original-model-runs-closeout-20261018.json和[统一总表](../results/model_results.md)。两组普通导航失败632/396属于有效成绩分母，不是运行异常。旧派生v3和新Oracle开发对照均为离线可执行性研究，不能取代模型成绩。Oracle新对照24/24及资产33954审查完成，但新增路线恢复0，研究尚未全量验收。原模型原协议审计通过与新增严格门槛未过同时如实保留，未commit/push。进一步证据和限制详见[专项conclusion](2026-10-15-1-conclusion-导航连通性专项验收.md)末段。
+原模型1223/1839完整结果及复算回执已逐项核验，见outputs/verification/original-model-runs-closeout-20261018.json和[统一总表](../../results-show/model_results.md)。两组普通导航失败632/396属于有效成绩分母，不是运行异常。旧派生v3和新Oracle开发对照均为离线可执行性研究，不能取代模型成绩。Oracle新对照24/24及资产33954审查完成，但新增路线恢复0，研究尚未全量验收。原模型原协议审计通过与新增严格门槛未过同时如实保留，未commit/push。进一步证据和限制详见[专项conclusion](2026-10-15-1-conclusion-导航连通性专项验收.md)末段。
 
 
 ### 2026-10-18T21:18:56.641354+08:00 原始图参考与461视点、pRb边来源核对

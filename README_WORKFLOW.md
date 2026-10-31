@@ -51,3 +51,6 @@ R2R/RxR各自完整run及最终semantic action audit、独立指标重算、vali
 ## GitHub发布核验
 
 `woaijieyang/FirstPaper-VLN:main`已收到commit `1f79a7cb6747d03b7b5b1f370e73dfab6c6e71fd`（tree `bc3d6a4d6af27361be7dea94b2094cc3381cdfae`，parent `c3b5010c8a5e4efdf1a7063bc0f2f95df6ff9376`，message `awareVLN-baseline-construct`）。GitHub API返回与本地commit一致；未强推，认证仅在本机relay使用。发布前的目录/秘密/许可/大文件审核PASS，具体数据见阶段结论。
+
+## 2026-10-31 Case2 HAMLET-construct
+从 case1 发布提交 d230f31 导入，case2 独立 runtime 与资产视图已完成部署和完整 episode 数据流验证。目标分支 HAMLET-baseline；首次提交仅封存已验证 baseline，随后继续 HAMLET 核心装配与正式测评。源 case1、case0 与共享资产未修改。详情见本次计划、结论及 results-show/deployment-tests.md。

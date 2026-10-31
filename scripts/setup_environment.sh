@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Build only inside case1; never activate or modify the shared environment.
+# Build only inside case2; never activate or modify the shared environment.
 set -euo pipefail
 root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
 cd "$root"
 case "$root" in
-    /data/zy/vln/case1|/data/zy/vln/case1/.cache/clean-*) ;;
+    /data/zy/vln/case2|/data/zy/vln/case2/.cache/clean-*) ;;
     *) echo 'Build root is outside the authorized workspace' >&2; exit 2 ;;
 esac
 # The migration controller checks the archive gate; clean exports need no .rebuild files.

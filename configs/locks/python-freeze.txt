@@ -25,7 +25,7 @@ cryptography==50.0.2
 cycler==0.12.1
 datasets==2.16.1
 decorator==4.4.2
-decord @ file:///data/zy/vln/case1/.cache/wheel-sources/decord-0.6.0-1-py3-none-manylinux2010_x86_64.whl#sha256=a3944520edc3f8b9b1a7acadb5e502f36da22e489ccec534163f2e89e76fa28b
+decord @ file:///data/zy/vln/case2/.cache/wheel-sources/decord-0.6.0-1-py3-none-manylinux2010_x86_64.whl#sha256=e98a7e4d6d3734584c1013bb100bc1bc9373ff69d3aee0ef1eeac848a09f2db9
 deepspeed==0.9.5
 dill==0.3.7
 distlib==0.4.3
@@ -40,7 +40,7 @@ fastapi==0.125.0
 fastdtw==0.3.4
 ffmpy==1.0.0
 filelock==4.1.0
-flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu122torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl#sha256=13454dd3d37cf173649bd389b84614b8072fb283f8f2fd23a65ab66caafc304b
+flash-attn @ file:///data/zy/vln/case2/.cache/wheels/flash_attn-2.5.8%2Bcu122torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl#sha256=13454dd3d37cf173649bd389b84614b8072fb283f8f2fd23a65ab66caafc304b
 flatbuffers==25.12.19
 fonttools==4.65.0
 frozenlist==1.8.0
@@ -60,7 +60,7 @@ gym==0.17.3
 h11==0.14.0
 h5py==3.16.0
 -e git+https://github.com/facebookresearch/habitat-lab.git@d6ed1c0a0e786f16f261de2beafe347f4186d0d8#egg=habitat
-habitat_sim @ file:///data/zy/vln/case1/upstream/habitat-sim/dist/habitat_sim-0.1.7-cp310-cp310-linux_x86_64.whl#sha256=6c3feb9d20480c1896929bcd368bc23316fe0209b4c7a7a75d4e04a8afb54845
+habitat_sim @ file:///data/zy/vln/case2/upstream/habitat-sim/dist/habitat_sim-0.1.7-cp310-cp310-linux_x86_64.whl#sha256=89c67122fa7f8b9e7d0ad6de481632b7ec27e8ef4768f51aaed8e00f8343aff2
 hf-xet==1.7.0
 hjson==3.1.0
 httpcore==0.17.3
@@ -75,7 +75,7 @@ imageio-ffmpeg==0.6.0
 iniconfig==2.3.1
 iopath==0.1.10
 Jinja2==3.1.6
-joblib @ file:///data/zy/vln/case1/.cache/wheel-sources/joblib-1.5.2-py3-none-any.whl#sha256=4e1f0bdbb987e6d843c70cf43714cb276623def372df3c22fe5266b2670bc241
+joblib==1.5.2
 jsonlines==4.0.0
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
@@ -88,7 +88,7 @@ linkify-it-py==2.2.0
 llvmlite==0.50.0
 lmdb==3.0.0
 loguru==0.7.3
-magnum @ file:///data/zy/vln/case1/upstream/habitat-sim/build/deps/magnum-bindings/src/python
+magnum @ file:///data/zy/vln/case2/upstream/habitat-sim/build/deps/magnum-bindings/src/python
 Markdown==3.10.3
 markdown-it-py==2.2.0
 markdown2==2.5.5
@@ -204,7 +204,7 @@ tyro==1.0.16
 tzdata==2026.5
 urllib3==2.8.0
 uvicorn==0.54.0
-vila==1.0.0
+-e git+https://github.com/woaijieyang/FirstPaper-VLN.git@d230f31dbf38c8097594108665f6d0805530b44a#egg=vila
 virtualenv==21.14.7
 wavedrom==2.0.3.post3
 webdataset==0.1.103

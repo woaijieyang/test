@@ -44,6 +44,8 @@ def main():
         )
     )
     atomic_json(ROOT / "outputs/setup/installed-packages.json", installed)
+    # A cached wheel may replace transport only when its bytes match the frozen URL hash.
+    portable_lock = (ROOT / "configs/locks/python-requirements.txt").read_text().splitlines()
     retained = []
     for line in lines:
         if not line or line.startswith("#"):
@@ -86,6 +88,15 @@ def main():
             "corrade",
         ):
             continue
+        if name == "flash-attn" and " @ file:" in line:
+            canonical = [v for v in portable_lock if v.startswith("flash-attn @ https://")]
+            if len(canonical) != 1:
+                raise RuntimeError("Missing unique frozen FlashAttention origin")
+            expected = urllib.parse.parse_qs(urllib.parse.urlsplit(canonical[0].split(" @ ", 1)[1]).fragment).get("sha256", [])
+            local = Path(urllib.parse.unquote(urllib.parse.urlsplit(line.split(" @ ", 1)[1]).path)).resolve()
+            if local.parent != ROOT / ".cache/wheels" or len(expected) != 1 or digest(local) != expected[0]:
+                raise RuntimeError("Cached FlashAttention differs from frozen artifact")
+            line = canonical[0]
         if "file:" in line or str(ROOT) in line:
             if name not in (
                 "packaging",

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "case_id": "case2",
+  "title_zh": "AwareVLN 与 HAMLET 历史版本部署复测",
+  "title_en": "AwareVLN and historical HAMLET reconstruction",
+  "objective_zh": "按 case1 组织规则独立部署并验证，追溯指定 HAMLET 版本",
+  "objective_en": "Independent localized baseline and provenance-bound HAMLET reconstruction",
+  "status": "active",
+  "current_stage": "baseline-publication-before-hamlet-integration",
+  "baseline_version": "published-d230f31",
+  "candidate_versions": [],
+  "updated_at": "2026-10-31T22:09:24+08:00"
+}
