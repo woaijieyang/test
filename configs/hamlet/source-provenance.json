@@ -1,0 +1,109 @@
+{
+  "core_files_and_methods": [
+    {
+      "path": "awarevln_memory/memory/state.py",
+      "sha256": "0689d9ca2bdc8eb04570a4179897d5685ea1338558e822b29f980abde9571da1",
+      "target": "src/awarevln_memory/memory/state.py"
+    },
+    {
+      "path": "awarevln_memory/memory/__init__.py",
+      "sha256": "3bd1bfbc3cb7189def98ef60a0f81c4605dd58212e488beec17ac332d909068b",
+      "target": "src/awarevln_memory/memory/__init__.py"
+    },
+    {
+      "path": "awarevln_memory/__init__.py",
+      "sha256": "63fa67901195883697905a744189e66a94a78ae0766e109b867e78ddc4c81b12",
+      "target": "src/awarevln_memory/__init__.py"
+    },
+    {
+      "path": "awarevln_memory/memory/adapter.py",
+      "sha256": "0e1d87d775e21c279fb967364e0f456dd5410a29b039bd6e0dc6a1b9b8253d5e",
+      "target": "src/awarevln_memory/memory/adapter.py"
+    },
+    {
+      "path": "awarevln_memory/config.py",
+      "sha256": "ab6604ca28fc8e37ea0a11fcbd6500fe26d8033d89ac67f3e388ca9eccb23279",
+      "target": "src/awarevln_memory/config.py"
+    },
+    {
+      "path": "awarevln_memory/cbem/model_identity.py",
+      "sha256": "7333770f7c11dfcc7541ddc82150775304dc5a8bb028bff274bb6508c026974b",
+      "target": "src/awarevln_memory/cbem/model_identity.py"
+    },
+    {
+      "path": "awarevln_memory/cbem/__init__.py",
+      "sha256": "4f5e50dac79ac11650cfb5223636b322db8590d54ff5ab1f2693d7c2669d3aaa",
+      "target": "src/awarevln_memory/cbem/__init__.py"
+    },
+    {
+      "path": "awarevln_memory/cbem/router.py",
+      "sha256": "a3a63c38c7fc19e9bf1501973bb014117fdd5c50179c48cda12946b21778ce29",
+      "target": "src/awarevln_memory/cbem/router.py"
+    },
+    {
+      "path": "awarevln_memory/cbem/config.py",
+      "sha256": "69d9f03a48e2bed39d8f130b4334f8d5b7a06c2a35aa589fa783ed218639a2e8",
+      "target": "src/awarevln_memory/cbem/config.py"
+    },
+    {
+      "path": "awarevln_memory/cbem/artifacts.py",
+      "sha256": "648a0ccdc5e8720a122b40693f93c7fa730e606400b51cca438039b59db795a0",
+      "target": "src/awarevln_memory/cbem/artifacts.py"
+    },
+    {
+      "target": "src/hamlet_v2/model.py:init_memory_adapter",
+      "historical_path": "/data/zy/vln/case0（常规记忆在强baseline上预期不高，可以做，但需要强post-training）/stage1（很难做，暂不做）/V2/source/llava/model/language_model/llava_llama.py",
+      "historical_lines": [
+        76,
+        104
+      ],
+      "ast_sha256": "f242448a336e6067184523e310048ccf7c6bd4294e3db0c3ab2a1f69f95196d8"
+    },
+    {
+      "target": "src/hamlet_v2/model.py:init_cbem_router",
+      "historical_path": "/data/zy/vln/case0（常规记忆在强baseline上预期不高，可以做，但需要强post-training）/stage1（很难做，暂不做）/V2/source/llava/model/language_model/llava_llama.py",
+      "historical_lines": [
+        111,
+        139
+      ],
+      "ast_sha256": "cfb22a891933165e5338d5429a6285d6d6714f07e23df03b69547c1eaecbfa6d"
+    },
+    {
+      "target": "src/hamlet_v2/model.py:_select_last_context_tokens",
+      "historical_path": "/data/zy/vln/case0（常规记忆在强baseline上预期不高，可以做，但需要强post-training）/stage1（很难做，暂不做）/V2/source/llava/model/language_model/llava_llama.py",
+      "historical_lines": [
+        179,
+        201
+      ],
+      "ast_sha256": "d5c08bb86c94c5dcd5487e15e95f8d772fd5440c78f66da3a55fc1b8e46e82d5"
+    },
+    {
+      "target": "src/hamlet_v2/model.py:_base_reason_act_token_ids",
+      "historical_path": "/data/zy/vln/case0（常规记忆在强baseline上预期不高，可以做，但需要强post-training）/stage1（很难做，暂不做）/V2/source/llava/model/language_model/llava_llama.py",
+      "historical_lines": [
+        203,
+        264
+      ],
+      "ast_sha256": "25e8073a267b06431c57a77bafb2d04a9b426ba0275e05d75b0fb689e92654ed"
+    },
+    {
+      "target": "src/hamlet_v2/model.py:generate_with_memory",
+      "historical_path": "/data/zy/vln/case0（常规记忆在强baseline上预期不高，可以做，但需要强post-training）/stage1（很难做，暂不做）/V2/source/llava/model/language_model/llava_llama.py",
+      "historical_lines": [
+        266,
+        466
+      ],
+      "ast_sha256": "c30134b633a6bfc72790a8b26c9a7b1b2c99889d30541f8031846354c622535a"
+    }
+  ],
+  "original_runtime_source_count": 288,
+  "inference_modules_copied": 10,
+  "no_cross_case_runtime_imports": true,
+  "validation_modules_added": [
+    {
+      "path": "awarevln_memory/cbem/validate_deployment.py",
+      "sha256": "041a5d6dea170b86868fda410faa68c65f32d7fe5e62092ac35b339f45d8319a"
+    }
+  ],
+  "test_scope": "Historical inference, adapter forward, causal state, router and certificate regressions. Sparse training-forward test is not migrated because training-forward methods are outside this inference integration."
+}

@@ -160,6 +160,7 @@ def recover_closed_traces(run):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--dataset", choices=["r2r", "rxr"], required=True)
+    p.add_argument("--method", choices=["baseline", "hamlet"], default="baseline")
     p.add_argument(
         "--gpu-ids",
         help="Optional fixed physical GPU allowlist, e.g. 7 for same-device diagnostics",
@@ -192,6 +193,10 @@ def main():
     if a.scope == "full" and a.episode_ids:
         raise ValueError("Full cannot filter identities")
     source_sha, sources = source_identity()
+    candidate_policy = None
+    if a.method == "hamlet":
+        from hamlet_v2.policy import policy_identity
+        candidate_policy = policy_identity(ROOT)
     profile_path = Path(a.profile).resolve()
     profile = read_json(profile_path)
     if profile["agent"] != {"height": 1.5, "radius": 0.1}:
@@ -264,6 +269,8 @@ def main():
             raise RuntimeError("Existing owned worker is live; wait before resume")
     if a.resume:
         manifest = read_json(run / "run_manifest.json")
+        if manifest.get("method", "baseline") != a.method or manifest.get("policy_identity") != candidate_policy:
+            raise ValueError("Resume candidate policy changed")
         if not set(permitted_gpus) <= set(manifest["allowed_gpu_ids"]):
             raise ValueError("Resume would expand the frozen GPU allowlist")
         if (
@@ -282,8 +289,11 @@ def main():
             "scope": a.scope,
             "split": "val_unseen",
             "language": "en-US" if a.dataset == "rxr" else "en",
-            "model": model["model"],
-            "model_sha256": model["model_sha256"],
+            "method": a.method,
+            "policy_identity": candidate_policy,
+            "model": "HAMLET-Z V2 / CBEM aw4 seed10" if candidate_policy else model["model"],
+            "base_model_sha256": model["model_sha256"],
+            "model_sha256": hashlib.sha256((model["model_sha256"] + candidate_policy["sha256"]).encode()).hexdigest() if candidate_policy else model["model_sha256"],
             "source_sha256": source_sha,
             "config_sha256": digest(
                 ROOT / "configs/vlnce_baselines/config" / f"{a.dataset}_baselines/awarevln.yaml"
@@ -307,6 +317,8 @@ def main():
             "allowed_gpu_ids": permitted_gpus,
             "max_logical_cpus": 64,
         }
+        if candidate_policy:
+            manifest["frozen_files"].extend(candidate_policy["files"])
         manifest["frozen_files"].extend(data.get("auxiliary_inputs", []))
         protocol_path=ROOT/'configs/annotation-protocol.json'
         if protocol_path.exists():

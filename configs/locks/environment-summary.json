@@ -95,11 +95,11 @@
       "version": "native-extension"
     }
   },
-  "environment_sha256": "b792af6421cecfa1f9744bae25e5f18b2ec382d58d1ba3b0eb5f9e4fb8a6699b",
+  "environment_sha256": "adc5d88d4f7d0b2159099114f9fb5784b6e374e4afa93ee4b67d80159d2f5ac5",
   "file_count": 4995,
   "upstream_commits": {
     "habitat-sim": "856d4b08c1a2632626bf0d205bf46471a99502b7",
     "habitat-lab": "d6ed1c0a0e786f16f261de2beafe347f4186d0d8"
   },
-  "runtime_files_manifest_sha256": "d188f262f027be70cd9e0da76fd46bf8f5f7702e3edd047bfa9ec8191f81a213"
+  "runtime_files_manifest_sha256": "4a7bee0d5c80160b592ff6cb9609051db9eec2738f20c24e95919e58e5b0abb7"
 }

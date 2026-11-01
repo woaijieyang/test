@@ -95,6 +95,14 @@ class AwareVLNTrainer(BaseVLNCETrainer):
         model.config.act_token_id = act_id
         model = model.cuda()
         TraceRecorder.model_loaded(checkpoint_path, tokenizer, model)
+        hamlet = None
+        if os.environ.get("CASE2_HAMLET_CONFIG"):
+            from pathlib import Path
+            from hamlet_v2.policy import load_policy
+            from hamlet_v2.runtime import HAMLETRuntime
+            hamlet = HAMLETRuntime(model, load_policy(os.environ["AWAREVLN_ROOT"]),
+                                   Path(os.environ["CASE1_TRACE_ROOT"]) / "hamlet-dataflow.jsonl")
+
 
         ACTION_ID_STOP = 0
         ACTION_ID_FORWARD = 1
@@ -252,16 +260,26 @@ class AwareVLNTrainer(BaseVLNCETrainer):
                     recorder.ensure_episode(current_episodes[0], envs.call_at(0, "case1_evaluator_state"))
                     recorded_call_id = recorder.begin_model_call(current_episodes[0], frame_id, prompt, past_and_current_rgbs, input_ids, images_tensor, stop_str, conv.sep2)
                     with torch.inference_mode():
-                        output_ids = model.generate(
-                            input_ids,
-                            images=images_tensor.half().cuda(),
-                            do_sample=False,
-                            temperature=0.0,
-                            max_new_tokens=256,
-                            use_cache=True,
-                            stopping_criteria=[stopping_criteria],
-                            pad_token_id=tokenizer.eos_token_id,
-                        )
+                        if hamlet is None:
+                            output_ids = model.generate(
+                                input_ids,
+                                images=images_tensor.half().cuda(),
+                                do_sample=False,
+                                temperature=0.0,
+                                max_new_tokens=256,
+                                use_cache=True,
+                                stopping_criteria=[stopping_criteria],
+                                pad_token_id=tokenizer.eos_token_id,
+                            )
+                        else:
+                            output_ids = hamlet.generate(
+                                episode=current_episodes[0].episode_id,
+                                call_id=recorded_call_id, frame=frame_id,
+                                input_ids=input_ids, images=images_tensor.half().cuda(),
+                                do_sample=False, temperature=0.0, max_new_tokens=256,
+                                use_cache=True, stopping_criteria=[stopping_criteria],
+                                pad_token_id=tokenizer.eos_token_id,
+                            )
 
                     outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=False)[0].strip()
                     raw_decoded_for_trace = outputs
@@ -305,6 +323,9 @@ class AwareVLNTrainer(BaseVLNCETrainer):
                         actions = [map_string_to_action(raw_output_content)]
                     except Exception:
                         actions = [ACTION_ID_FORWARD]
+
+                    if hamlet is not None:
+                        hamlet.action_decision(actions[0], recorded_call_id)
 
                     if actions[0] == ACTION_ID_FORWARD:
                         try:
@@ -374,6 +395,8 @@ class AwareVLNTrainer(BaseVLNCETrainer):
 
                 ep_id = current_episodes[i].episode_id
                 stats_episodes[ep_id] = infos[i]
+                if hamlet is not None:
+                    hamlet.end_episode(ep_id)
                 queue_actions.clear()
                 last_reasoning = ""
                 last_reason_step = 0
@@ -422,6 +445,8 @@ class AwareVLNTrainer(BaseVLNCETrainer):
                 rgb_frames,
             )
 
+        if hamlet is not None:
+            hamlet.close()
         recorder.close()
         envs.close()
         if config.use_pbar:

@@ -21,6 +21,8 @@ def main():
     protection = json.loads(os.environ["CASE1_PROTECTION"])
     if protection.get("results_write") or protection.get("prepare_configs"):
         raise SystemExit("Administrative write permissions cannot be used for model workers")
+    from hamlet_v2.policy import bind_worker
+    bind_worker(os.environ["AWAREVLN_ROOT"], os.environ["CASE1_RUN_ROOT"])
     import numpy as np, torch
     if os.environ.get("CASE1_TORCH_BUDGET_MIB"):
         torch_budget=int(os.environ["CASE1_TORCH_BUDGET_MIB"])

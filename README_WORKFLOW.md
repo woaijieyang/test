@@ -54,3 +54,6 @@ R2R/RxR各自完整run及最终semantic action audit、独立指标重算、vali
 
 ## 2026-10-31 Case2 HAMLET-construct
 从 case1 发布提交 d230f31 导入，case2 独立 runtime 与资产视图已完成部署和完整 episode 数据流验证。目标分支 HAMLET-baseline；首次提交仅封存已验证 baseline，随后继续 HAMLET 核心装配与正式测评。源 case1、case0 与共享资产未修改。详情见本次计划、结论及 results-show/deployment-tests.md。
+
+## 2026-11-01 全量闭合
+R2R/RxR完整推理与独立全量审计通过，最终报告在result-show，docs/stages记录工程PASS和科学负结果的区别。两个独立快照与原结果逐字节一致；RxR输入/动作审计按原分片并行，原审计逻辑不变。停止重复审核进程的记录保留，未终止模型推理。最终提交仍用HAMLET-construct，普通追加提交，不强推，发布后核验SHA/tree。

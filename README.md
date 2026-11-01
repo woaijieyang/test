@@ -1,20 +1,21 @@
-# Case2：AwareVLN 基线与 HAMLET 复现
+# Case2：AwareVLN上的历史HAMLET-Z V2 + CBEM
 
-当前状态：独立 baseline 部署验证已通过，包括 13 条完整 episode 数据流测试。HAMLET 集成与正式测评进行中；尚未发布本次结果。
+R2R1839条、RxR-US1223条全量推理及独立审计已完成。R2R SR65.144100%（baseline65.633496%）；RxR-US SR67.457073%（baseline67.620605%）。保留全部普通导航失败与负向差异，未因结果重新调参或择优重跑。
 
-基线源码来自 case1 已发布提交 `d230f31dbf38c8097594108665f6d0805530b44a`。仅调整 case2 部署路径并重建独立环境；未纳入源目录未提交的 subtaskAdapter/goalAdapter 工作。历史文档与结果随快照保留，其中标注 case1 的成绩属于源实验，不是本 case 的新结果。
+本仓库复现截图指定的历史HAMLET-Z V2/CBEM aw4 seed10核心，并接到独立部署的AwareVLN baseline；这是受HAMLET启发的导航改造，**不是原论文HAMLET的等价实现**。方法区别、训练来源、初始版本定位和局限在结论中说明。
 
-| 目录 | 用途 |
-|---|---|
-| src / configs / scripts / tests | 运行源码、配置与依赖锁、保护入口、回归 |
-| runtime / upstream / .cache | 独立环境、第三方源码、构建缓存；Git 忽略 |
-| data / models | 只读共享资产链接与 case2 派生视图；Git 忽略 |
-| outputs | 本次原始日志、输入/输出轨迹、审计回执；Git 忽略 |
-| docs / results-show | 部署说明、阶段计划与结论、来源明确的结果登记 |
-| oracleAdapter | 发布快照自带模块，保留来源；不计为 HAMLET 新实验 |
+- [Remaining/Full最终对照与分析](result-show/Remaining-Full-final-analysis.md)
+- [全部A/B/Remaining/Full机器生成总表](result-show/model_results.md)
+- [搭建、模型、训练来源与最终conclusion](docs/stages/2026-10-31-HAMLET装配与部署-conclusion.md)
+- [记忆链路与全1839轨迹分析](result-show/HAMLET记忆链路与收益分析-20261101.md)
+- [原文对照及训练数据扩充](result-show/HAMLET原文对照与训练数据扩充分析-20261101.md)
 
-本次入口：[迁移计划](docs/zx/2026-10-31-1-plan-HAMLET基线迁移与复测.md)、[当前结论](docs/zx/2026-10-31-2-conclusion-HAMLET基线迁移与复测.md)。已有部署和数据流说明见 [SETUP](docs/SETUP.md) 与 [ARCHITECTURE](docs/ARCHITECTURE.md)，其中历史绝对路径须按 case2 本地环境核验。
+## 组织与执行
 
-所有模型与模拟器执行使用 `scripts/with_runtime.sh`。Python 包中的 `case1_runtime` 和保护变量 `CASE1_PROTECTION` 是继承的内部命名，实际路径由当前工作根决定；必须核验导入位置在 case2。
+src为活动源码，configs保存冻结配置与来源，scripts为受保护入口及审计，tests为回归，tools包含分阶段调度和报告。runtime/data/models/outputs/upstream/cache均仅在服务器保存并由Git忽略。数据/权重/原始图像/动作日志不随代码发布。
 
-目标历史版本：HAMLET-Z V2 / CBEM aw4 seed10，run `r2r_full1839_candidate_cbem_prefilter52_aw4_seed10_20260801_v1`。已定位 288 个 SHA 一致的历史源码文件与原 adapter/router；恢复和新测评状态以本次结论为准。
+实际运行只使用GPU4–7、CPU24–95；A→B→Remaining。源代码、模型、标注、网格和实际配置均绑定。必须使用scripts/with_runtime.sh启动模型和模拟器。历史内部名称case1_runtime/CASE1_PROTECTION保留，实际路径来自case2。
+
+服务器的data/landmark保存20847条通过严格筛选的索引；data/baseline-rollouts保存R2R/RxR/Landmark历史baseline轨迹清单。它们没有启动新训练，也不能把验证集或Oracle轨迹伪装成训练baseline。
+
+旧results-show目录保留来源明确的case1历史结果；本次正式对照入口为单数result-show。源码来源为baseline d230f31及经288文件历史哈希定位的候选核心；初始部署提交107317c的消息为HAMLET-construct。

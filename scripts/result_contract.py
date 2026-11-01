@@ -178,6 +178,14 @@ def audit(run):
         or set(semantic.get("task_keys", [])) != set(recomputed)
     ):
         raise ValueError("Semantic audit not accepted")
+    candidate_evidence = None
+    if manifest.get("method") == "hamlet":
+        candidate_evidence = read_json(run / "hamlet_dataflow_audit.json")
+        if candidate_evidence.get("status") != "PASS" or candidate_evidence.get("manifest_sha256") != digest(run / "run_manifest.json") or candidate_evidence["counts"]["episodes"] != len(results) or candidate_evidence["counts"]["consumed_memory_calls"] <= 0:
+            raise ValueError("Actual HAMLET memory consumption not audited")
+        for item in candidate_evidence["files"]:
+            if digest(owned(run / item["path"])) != item["sha256"]:
+                raise ValueError("HAMLET dataflow trace drift")
     receipts = {
         name: digest(run / name)
         for name in (
@@ -188,6 +196,8 @@ def audit(run):
             "effective-configs.json",
         )
     }
+    if candidate_evidence is not None:
+        receipts["hamlet_dataflow_audit.json"] = digest(run / "hamlet_dataflow_audit.json")
     return summary, {
         "schema_version": 1,
         "status": "PASS",

@@ -2,12 +2,28 @@
   {
     "path": "src/llava/model/language_model/llava_llama.py",
     "before_sha256": "8d26b8d07521428a050c94330dbe38e502177e939e968155adec3616c88d9bbc",
-    "after_sha256": "2aa5bcbb9f82ac969b4a6fdcf593cf924e0c660c76fb1e9a13e0a4178c99fd99"
+    "after_sha256": "c55c58bd1e7e397f512cc61401f1c447c574c9f52732be06b3395a083c562970",
+    "revision_history": [
+      {
+        "path": "src/llava/model/language_model/llava_llama.py",
+        "before_sha256": "8d26b8d07521428a050c94330dbe38e502177e939e968155adec3616c88d9bbc",
+        "after_sha256": "2aa5bcbb9f82ac969b4a6fdcf593cf924e0c660c76fb1e9a13e0a4178c99fd99"
+      }
+    ],
+    "case2_change": "Opt-in historical HAMLET core and observational dataflow hooks; baseline default sampling/prompt/parser/primitive loop retained."
   },
   {
     "path": "src/vlnce_baselines/awarevln_trainer.py",
     "before_sha256": "9e77256097dc30c4dfec902e2945f89c26fc9131d6024715f974dca5cc76e06d",
-    "after_sha256": "d58d2257f820ee00c01f6bc44ab142f2e65c56df6a916807679059f61e3dcf3b"
+    "after_sha256": "857ceed330b69ba6153d9183ede84e99d985cff100a24cff62e33a3964b066ec",
+    "revision_history": [
+      {
+        "path": "src/vlnce_baselines/awarevln_trainer.py",
+        "before_sha256": "9e77256097dc30c4dfec902e2945f89c26fc9131d6024715f974dca5cc76e06d",
+        "after_sha256": "d58d2257f820ee00c01f6bc44ab142f2e65c56df6a916807679059f61e3dcf3b"
+      }
+    ],
+    "case2_change": "Opt-in historical HAMLET core and observational dataflow hooks; baseline default sampling/prompt/parser/primitive loop retained."
   },
   {
     "path": "src/vlnce_baselines/common/environments.py",

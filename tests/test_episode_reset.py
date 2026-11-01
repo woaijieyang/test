@@ -69,7 +69,10 @@ class Reset(unittest.TestCase):
         if not source.exists():
             self.skipTest("Source installation is gated on archive completion")
         fake = types.SimpleNamespace(seed=lambda _: None, manual_seed=lambda _: None)
+        ended = []
         state = dict(
+            hamlet=types.SimpleNamespace(end_episode=lambda episode: ended.append(episode)),
+            ep_id="episode-A",
             queue_actions=[1, 1],
             last_reasoning="old",
             last_reason_step=8,
@@ -90,6 +93,7 @@ class Reset(unittest.TestCase):
             ),
             state,
         )
+        self.assertEqual(ended, ["episode-A"])
         for name, value in [
             ("queue_actions", []),
             ("last_reasoning", ""),

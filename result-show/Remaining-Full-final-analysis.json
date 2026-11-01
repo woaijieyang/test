@@ -1,0 +1,191 @@
+{
+  "status": "FULL_AUDIT_PASS",
+  "receipts": {
+    "r2r": {
+      "snapshot": "/data/zy/vln/case2/outputs/independent-r2r-full-audit-20261101",
+      "validation_sha256": "18eb5d45f128dfdc35470c68e440dd3e6a02fe7f76fcc625997a7302688efbc2",
+      "manifest_sha256": "ed96ac4cf6b38f255d2c94c35836c8d6b010e8ba57810e09712d45c361c70b90",
+      "results_sha256": "0d5d11594234c41430fdbe2ee7cbb5b72a85caf073bd88dcc32c8fd5e18a317f",
+      "native_original_run": "/data/zy/vln/case2/outputs/case2-hamlet-abc-20261031-v2-r2r",
+      "same_raw_result_bytes": true
+    },
+    "rxr": {
+      "snapshot": "/data/zy/vln/case2/outputs/independent-rxr-full-audit-20261101",
+      "validation_sha256": "6f952e7aad7c5971ead73b27eac068797cbdea35d68a2b8d9579d4c8f5599124",
+      "manifest_sha256": "b54f358bd2048d256c6d1cd5bc0a020ea3a20052ab73c820282ebac0b4572094",
+      "results_sha256": "a3bd338d51cb970df27ea328ff5cc40842121aab828c0e14e4887a6e8f3362df",
+      "native_original_run": "/data/zy/vln/case2/outputs/case2-hamlet-abc-20261031-v2-rxr",
+      "same_raw_result_bytes": true
+    }
+  },
+  "analysis": {
+    "r2r": {
+      "Remaining": {
+        "comparison": {
+          "episodes": 615,
+          "status": "audited_complete",
+          "new_hamlet": {
+            "sr": 0.6455284552845528,
+            "spl": 0.5644875627064003,
+            "ndtw": 0.6584126361687511,
+            "ne": 3.987430125147831,
+            "oracle_sr": 0.7414634146341463
+          },
+          "baseline": {
+            "sr": 0.6471544715447154,
+            "spl": 0.5694180700828005,
+            "ndtw": 0.659118303727382,
+            "ne": 4.052369615544634,
+            "oracle_sr": 0.7382113821138211
+          },
+          "historical_hamlet": {
+            "sr": 0.6455284552845528,
+            "spl": 0.5639853749556929,
+            "ndtw": 0.6646050108067212,
+            "ne": 3.981205455244072,
+            "oracle_sr": 0.7414634146341463
+          },
+          "new_minus_baseline": {
+            "sr": -0.001626016260162566,
+            "spl": -0.004930507376400217,
+            "ndtw": -0.0007056675586308847,
+            "ne": -0.06493949039680258,
+            "oracle_sr": 0.003252032520325243
+          },
+          "new_minus_historical": {
+            "sr": 0.0,
+            "spl": 0.0005021877507074279,
+            "ndtw": -0.006192374637970066,
+            "ne": 0.006224669903759139,
+            "oracle_sr": 0.0
+          }
+        },
+        "paired_success_transitions": {
+          "recovered": 18,
+          "regressed": 19,
+          "both_success": 379,
+          "both_fail": 199
+        }
+      },
+      "Full": {
+        "comparison": {
+          "episodes": 1839,
+          "status": "audited_complete",
+          "new_hamlet": {
+            "sr": 0.6514410005437737,
+            "spl": 0.5662483497917151,
+            "ndtw": 0.6527290774113298,
+            "ne": 3.972517142264763,
+            "oracle_sr": 0.7558455682436107
+          },
+          "baseline": {
+            "sr": 0.6563349646547036,
+            "spl": 0.57278174658991,
+            "ndtw": 0.6536952239527786,
+            "ne": 3.9786473610339654,
+            "oracle_sr": 0.7509516041326808
+          },
+          "historical_hamlet": {
+            "sr": 0.6487221315932572,
+            "spl": 0.5643696327255274,
+            "ndtw": 0.661826261531288,
+            "ne": 3.991342334689541,
+            "oracle_sr": 0.7531266992930941
+          },
+          "new_minus_baseline": {
+            "sr": -0.004893964110929905,
+            "spl": -0.006533396798194868,
+            "ndtw": -0.0009661465414487758,
+            "ne": -0.0061302187692025,
+            "oracle_sr": 0.004893964110929905
+          },
+          "new_minus_historical": {
+            "sr": 0.0027188689505165398,
+            "spl": 0.0018787170661876962,
+            "ndtw": -0.00909718411995819,
+            "ne": -0.01882519242477798,
+            "oracle_sr": 0.002718868950516651
+          }
+        },
+        "paired_success_transitions": {
+          "recovered": 64,
+          "regressed": 73,
+          "both_success": 1134,
+          "both_fail": 568
+        }
+      }
+    },
+    "rxr": {
+      "Remaining": {
+        "comparison": {
+          "episodes": 409,
+          "status": "audited_complete",
+          "new_hamlet": {
+            "sr": 0.6968215158924206,
+            "spl": 0.5857018556601128,
+            "ndtw": 0.6908050710095406,
+            "ne": 3.895416207465828,
+            "oracle_sr": 0.7946210268948656
+          },
+          "baseline": {
+            "sr": 0.7017114914425427,
+            "spl": 0.5824824168178309,
+            "ndtw": 0.6809933012676948,
+            "ne": 3.910427316094232,
+            "oracle_sr": 0.784841075794621
+          },
+          "historical_hamlet": null,
+          "new_minus_baseline": {
+            "sr": -0.004889975550122161,
+            "spl": 0.0032194388422819298,
+            "ndtw": 0.009811769741845833,
+            "ne": -0.015011108628403935,
+            "oracle_sr": 0.009779951100244544
+          },
+          "new_minus_historical": null
+        },
+        "paired_success_transitions": {
+          "recovered": 17,
+          "regressed": 19,
+          "both_success": 268,
+          "both_fail": 105
+        }
+      },
+      "Full": {
+        "comparison": {
+          "episodes": 1223,
+          "status": "audited_complete",
+          "new_hamlet": {
+            "sr": 0.6745707277187244,
+            "spl": 0.5588154685735661,
+            "ndtw": 0.6724031954148612,
+            "ne": 4.346312300217561,
+            "oracle_sr": 0.7563368765331153
+          },
+          "baseline": {
+            "sr": 0.6762060506950123,
+            "spl": 0.5593469644051641,
+            "ndtw": 0.676619814993268,
+            "ne": 4.279347672400568,
+            "oracle_sr": 0.7514309076042518
+          },
+          "historical_hamlet": null,
+          "new_minus_baseline": {
+            "sr": -0.0016353229762878785,
+            "spl": -0.0005314958315979501,
+            "ndtw": -0.0042166195784067995,
+            "ne": 0.06696462781699353,
+            "oracle_sr": 0.004905968928863524
+          },
+          "new_minus_historical": null
+        },
+        "paired_success_transitions": {
+          "recovered": 56,
+          "regressed": 58,
+          "both_success": 769,
+          "both_fail": 340
+        }
+      }
+    }
+  }
+}

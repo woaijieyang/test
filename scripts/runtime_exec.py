@@ -17,7 +17,7 @@ def main():
     command = a.command[1:] if a.command[:1] == ["--"] else a.command
     if not command:
         raise SystemExit("Provide executable and arguments after --")
-    os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[:64])
+    os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[-72:])
     check_links()
     if not a.mounted:
         probe = subprocess.run(

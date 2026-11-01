@@ -62,3 +62,6 @@ Thumbs.db
 /.case-ledger/
 /task-flow/*
 !/task-flow/TASK-FLOW-TEMPLATE.md
+
+# Machine-local automatic recording audit; not publication content.
+/RECORDING_AUDIT.md

@@ -494,6 +494,242 @@
         "summary.json": "24de024e00b99ec90a5d6066a08787433cce8be101298b82053b9be82444dde4",
         "validation.json": "0a43d3f16db2e65f33d19ce1dfae051a741a21233b4d60b02a3ee4233c008993"
       }
+    },
+    {
+      "record_id": "case2-hamlet-abc-20261031-v2-r2r",
+      "run_id": "case2-hamlet-abc-20261031-v2-r2r",
+      "status": "complete",
+      "artifact_path": "/data/zy/vln/case2/outputs/independent-r2r-full-audit-20261101",
+      "registered_at": "2026-11-01T12:49:48.141016+00:00",
+      "identity": {
+        "model": "HAMLET-Z V2 / CBEM aw4 seed10",
+        "model_sha256": "e15ef26d8d1d528cc556ba082e358b2067fbc079490a17e8f3aacd7ddd54addc",
+        "source_sha256": "ed8461301ce972ba9684e49fe199cf9b8295529859c0582a8b2d5d49c61b118a",
+        "config_sha256": "abdec7daca6a01630586e17ae473ae5c06cc9bcf42ef1e2c05650698e25ce65c",
+        "navmesh_sha256": "a94b5d48f065cee13db20b3fa0ee0cbfe18e9ae182bb6d763b27cd4456e970f9",
+        "benchmark_sha256": "9453e3ad54f596b99a849ab37467f775671bea8edce33da4a7bc21bdb80525a9",
+        "split": "val_unseen",
+        "language": "en",
+        "base_config_sha256": "42f1c1e197352eb449b3c706a4c5d40d8a72eba3ba1b12cba21ccbc8433f1189",
+        "model_code_path": "/data/zy/vln/case2/src",
+        "dataset_paths": {
+          "r2r": "/data/zy/vln/data/checkpoint-choice/VLN-awareVLN/annotations/r2r/val_unseen/val_unseen.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case2/outputs/independent-r2r-full-audit-20261101/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case2/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "bbdc611ce0e6f719356f0e40a0c74baeb5c7c2d9e5180321980dedbfd8daf775"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "case2-hamlet-abc-20261031-v2-r2r",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "r2r": {
+            "expected": 1839,
+            "completed": 1839,
+            "navigation_failures": 641,
+            "valid": {
+              "sr": 1839,
+              "spl": 1839,
+              "ndtw": 1839,
+              "ne": 1839,
+              "oracle_sr": 1839
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6514410005437737,
+              "spl": 0.5662483497917155,
+              "ndtw": 0.65272907741133,
+              "ne": 3.972517142264763,
+              "oracle_sr": 0.7558455682436107
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "ed96ac4cf6b38f255d2c94c35836c8d6b010e8ba57810e09712d45c361c70b90",
+        "results.jsonl": "0d5d11594234c41430fdbe2ee7cbb5b72a85caf073bd88dcc32c8fd5e18a317f",
+        "independent_metrics.json": "822f1c2afb699a7e41b20096d8ed43d2837c80df9646eb036d1326fa2c64d152",
+        "semantic_audit.json": "00e13a92f3b2da4da82d15a4654fa0aa65babef21f089d14dbfcf6a16cd06a7d",
+        "effective-configs.json": "abdec7daca6a01630586e17ae473ae5c06cc9bcf42ef1e2c05650698e25ce65c",
+        "hamlet_dataflow_audit.json": "7f02665137537c775943b535415bbc71d86fcc47d3e15fefbb3af723c4cca543",
+        "summary.json": "479d7390b82be927d9ff8ebfa37f5e7654ffa116aa4b987d3eeb854f1223ea9f",
+        "validation.json": "18eb5d45f128dfdc35470c68e440dd3e6a02fe7f76fcc625997a7302688efbc2"
+      }
+    },
+    {
+      "record_id": "case2-hamlet-abc-20261031-v2-rxr",
+      "run_id": "case2-hamlet-abc-20261031-v2-rxr",
+      "status": "complete",
+      "artifact_path": "/data/zy/vln/case2/outputs/independent-rxr-full-audit-20261101",
+      "registered_at": "2026-11-01T12:51:25.797310+00:00",
+      "identity": {
+        "model": "HAMLET-Z V2 / CBEM aw4 seed10",
+        "model_sha256": "e15ef26d8d1d528cc556ba082e358b2067fbc079490a17e8f3aacd7ddd54addc",
+        "source_sha256": "ed8461301ce972ba9684e49fe199cf9b8295529859c0582a8b2d5d49c61b118a",
+        "config_sha256": "40bed54efce2ff4f5095d3d4a23d389704d1ffdfc41620729a2981434ee00e85",
+        "navmesh_sha256": "a94b5d48f065cee13db20b3fa0ee0cbfe18e9ae182bb6d763b27cd4456e970f9",
+        "benchmark_sha256": "556b628ad57c945448e013d98cb206619086da54788798703adce3a9b1cc5b9f",
+        "split": "val_unseen",
+        "language": "en-US",
+        "base_config_sha256": "bf4f2ec564f64b40b6abd5eb48ee1056bb2f3dc40777a1892b45510a13ab91b4",
+        "model_code_path": "/data/zy/vln/case2/src",
+        "dataset_paths": {
+          "rxr": "/data/zy/vln/data/checkpoint-choice/VLN-awareVLN/annotations/rxr/val_unseen/val_unseen_guide.json.gz"
+        },
+        "dataset_manifest_path": "/data/zy/vln/case2/outputs/independent-rxr-full-audit-20261101/run_manifest.json",
+        "navmesh_profile": "/data/zy/vln/case2/data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+        "annotation_protocol": {
+          "schema_version": 1,
+          "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+          "status": "AUTHORIZED_PENDING_VALIDATION",
+          "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+          "dataset_roots": {
+            "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+          },
+          "old_position": [
+            5.300414085388184,
+            0.04583600163459778,
+            2.102294683456421
+          ],
+          "new_position": [
+            5.370209217071533,
+            0.009996652603149414,
+            2.14882493019104
+          ],
+          "start_episode_ids": [
+            "3888",
+            "7963",
+            "8829",
+            "10116",
+            "10287"
+          ],
+          "goal_episode_ids": [
+            "6171",
+            "6243",
+            "10646",
+            "10757"
+          ],
+          "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+          "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+          "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+          "mesh_recipe": "configs/navmesh-recipe.json"
+        },
+        "annotation_derivative_sha256": "bbdc611ce0e6f719356f0e40a0c74baeb5c7c2d9e5180321980dedbfd8daf775"
+      },
+      "summary": {
+        "schema_version": 1,
+        "run_id": "case2-hamlet-abc-20261031-v2-rxr",
+        "claim_scope": "online_navigation",
+        "complete": true,
+        "missing": [],
+        "runtime_errors": [],
+        "datasets": {
+          "rxr": {
+            "expected": 1223,
+            "completed": 1223,
+            "navigation_failures": 398,
+            "valid": {
+              "sr": 1223,
+              "spl": 1223,
+              "ndtw": 1223,
+              "ne": 1223,
+              "oracle_sr": 1223
+            },
+            "nonfinite": {
+              "sr": 0,
+              "spl": 0,
+              "ndtw": 0,
+              "ne": 0,
+              "oracle_sr": 0
+            },
+            "metrics": {
+              "sr": 0.6745707277187244,
+              "spl": 0.5588154685735657,
+              "ndtw": 0.6724031954148605,
+              "ne": 4.346312300217561,
+              "oracle_sr": 0.7563368765331153
+            },
+            "annotation_subgroups": {
+              "corrected_9": {
+                "completed": 9,
+                "metrics": {
+                  "sr": 0.6666666666666666,
+                  "spl": 0.6407238505262374,
+                  "ndtw": 0.8056647434556704,
+                  "ne": 1.9670594533284504,
+                  "oracle_sr": 0.6666666666666666
+                }
+              },
+              "unchanged_1214": {
+                "completed": 1214,
+                "metrics": {
+                  "sr": 0.6746293245469522,
+                  "spl": 0.5582082400417915,
+                  "ndtw": 0.6714152597209831,
+                  "ne": 4.363950912756278,
+                  "oracle_sr": 0.757001647446458
+                }
+              }
+            }
+          }
+        }
+      },
+      "receipts": {
+        "run_manifest.json": "b54f358bd2048d256c6d1cd5bc0a020ea3a20052ab73c820282ebac0b4572094",
+        "results.jsonl": "a3bd338d51cb970df27ea328ff5cc40842121aab828c0e14e4887a6e8f3362df",
+        "independent_metrics.json": "1ea91d7f4b2783bea94fc8c4df8b602d42fd4f70d54ea99393b19dd39724f733",
+        "semantic_audit.json": "ca01146eb992d2a5005fd22bfbc69989b4b85428a2de6ffbd055c5a648a1fae3",
+        "effective-configs.json": "40bed54efce2ff4f5095d3d4a23d389704d1ffdfc41620729a2981434ee00e85",
+        "hamlet_dataflow_audit.json": "2a4326aac32f4380f61b6a8bc0d99ea1224bdf3917eb24ffdcd6cd4dfc6fb1cb",
+        "summary.json": "22500ad29e600b1a4b043aa77045745039a8546b4600e9a41994681d80bdc216",
+        "validation.json": "6f952e7aad7c5971ead73b27eac068797cbdea35d68a2b8d9579d4c8f5599124"
+      }
     }
   ]
 }

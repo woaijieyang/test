@@ -38,7 +38,7 @@ def main():
         (ROOT / ".cache" / rel).mkdir(exist_ok=True)
     for name in ("/dev/null", "/dev/zero", "/dev/urandom", "/dev/shm"):
         writable.append(Path(name))
-    os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[:64])
+    os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[-72:])
     abi = restrict(writable)
     os.environ.update(
         {

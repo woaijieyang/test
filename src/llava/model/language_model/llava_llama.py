@@ -7,6 +7,7 @@ from transformers import AutoConfig, AutoModel, PretrainedConfig, PreTrainedMode
 from transformers.modeling_outputs import CausalLMOutputWithPast
 
 from llava.model.loss import soft_cross_entropy
+from hamlet_v2.model import HAMLETMemoryMixin
 
 from ...train.utils import calculate_loss_weight
 from ..configuration_llava import LlavaConfig
@@ -17,7 +18,7 @@ class LlavaLlamaConfig(LlavaConfig):
     model_type = "awarevln_llama"
 
 
-class AwareVLNModel(LlavaMetaModel, LlavaMetaForCausalLM, PreTrainedModel):
+class AwareVLNModel(HAMLETMemoryMixin, LlavaMetaModel, LlavaMetaForCausalLM, PreTrainedModel):
     """AwareVLN multimodal model (Llama + SigLIP) with reasoning/action token supervision."""
 
     config_class = LlavaLlamaConfig
@@ -30,6 +31,8 @@ class AwareVLNModel(LlavaMetaModel, LlavaMetaForCausalLM, PreTrainedModel):
 
         self.reason_token_id = getattr(config, "reason_token_id", None)
         self.act_token_id = getattr(config, "act_token_id", None)
+        self.memory_adapter = None
+        self.cbem_router = None
 
     @classmethod
     def from_pretrained(
