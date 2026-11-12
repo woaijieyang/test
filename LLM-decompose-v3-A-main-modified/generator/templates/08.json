@@ -1,0 +1,33 @@
+{
+  "input": {
+    "original_instruction": "Turn left, sorry, turn right, and walk to the blue door next to the stairs. Go through it into the lounge. Keep the sofa on your left as you cross the lounge and stop beside the window. Then return through the same blue door and stop beside the stairs."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+      "Cross the lounge with the sofa on your left and stop beside the window.",
+      "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+    ],
+    "issues": []
+  },
+  "id": "G08",
+  "topic": "correction_revisit",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn left, then turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+        "Cross the lounge with the sofa on your left and stop beside the window.",
+        "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+      ],
+      "issues": []
+    },
+    "failed_check": "C03",
+    "difference": "The explicitly corrected-away turn has become an active event.",
+    "execution_difference": "An additional left turn changes the initial route.",
+    "source_evidence": "Turn left, sorry, turn right"
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

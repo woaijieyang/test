@@ -1,0 +1,96 @@
+{
+  "id": "R01",
+  "topic": "initial_context",
+  "provenance": "Authored audit target, not a measured model output. Source comes from paired generator template.",
+  "input": {
+    "original_instruction": "You will start by standing in front of a glass door and on your right is a doorway. Turn around and you will see a doorway to the washroom. Walk towards the doorway and inside the washroom. Once you're there, stand in between the sink and the bathtub and once you're there, you're done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
+        "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "pass",
+    "quality": {
+      "fidelity": "supported",
+      "closure_handoff": "supported",
+      "segmentation_adequacy": "adequate"
+    },
+    "checklist": {
+      "C01": "pass",
+      "C02": "pass",
+      "C03": "pass",
+      "C04": "pass",
+      "C05": "pass",
+      "C06": "pass",
+      "C07": "pass",
+      "C08": "pass",
+      "C09": "pass",
+      "C10": "pass",
+      "C11": "pass",
+      "C12": "pass"
+    },
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Initial glass-door context",
+        "required_history": [
+          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+        ],
+        "completion_condition": "Enter the washroom after the turn-around",
+        "completion_basis": "explicit_event",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "You will start by standing in front of a glass door and on your right is a doorway. Turn around and you will see a doorway to the washroom. Walk towards the doorway and inside the washroom. Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
+        ],
+        "candidate_quotes": [
+          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+        ],
+        "status": "supported"
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "Inside the same washroom",
+        "required_history": [
+          "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+        ],
+        "completion_condition": "Stand between sink and bathtub",
+        "completion_basis": "explicit_event",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "You will start by standing in front of a glass door and on your right is a doorway. Turn around and you will see a doorway to the washroom. Walk towards the doorway and inside the washroom. Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
+        ],
+        "candidate_quotes": [
+          "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+        ],
+        "status": "supported"
+      }
+    ],
+    "boundary_checks": [
+      {
+        "previous_index": 0,
+        "next_index": 1,
+        "previous_exit": "Enter the washroom after the turn-around",
+        "next_required_entry": "Inside the same washroom",
+        "shared_referents": [],
+        "completion_evidence": [
+          "You will start by standing in front of a glass door and on your right is a doorway. Turn around and you will see a doorway to the washroom. Walk towards the doorway and inside the washroom. Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
+        ],
+        "previous_candidate_quotes": [
+          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+        ],
+        "next_candidate_quotes": [
+          "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+        ],
+        "status": "supported",
+        "note": "The preceding supported end and next source-grounded entry agree; no observed success is asserted."
+      }
+    ]
+  },
+  "teaching_note": "A valid grain is accepted without mandatory prefix or split count."
+}

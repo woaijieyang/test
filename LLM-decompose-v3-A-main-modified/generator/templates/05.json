@@ -1,0 +1,31 @@
+{
+  "input": {
+    "original_instruction": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
+      "Inside the bathroom, turn left and stop in front of the toilet."
+    ],
+    "issues": []
+  },
+  "id": "G05",
+  "topic": "late_description",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the toilet is in the darker-painted wall.",
+        "Inside the bathroom, turn left and stop in front of the toilet."
+      ],
+      "issues": []
+    },
+    "failed_check": "C05",
+    "difference": "A door-selection descriptor now describes the toilet.",
+    "execution_difference": "The robot loses the source cue for selecting the bathroom doorway.",
+    "source_evidence": "The bathroom doorway is in the darker-painted wall."
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

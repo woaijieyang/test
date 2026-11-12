@@ -1,0 +1,29 @@
+{
+  "input": {
+    "original_instruction": "Turn left, cross the pantry and stop beside the refrigerator. "
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn left, cross the pantry and stop beside the refrigerator. "
+    ],
+    "issues": []
+  },
+  "id": "G11",
+  "topic": "single_complete_local_goal",
+  "provenance": "New synthetic training-style example, not a held-out episode or measured rollout.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn left and stop beside the refrigerator."
+      ],
+      "issues": []
+    },
+    "failed_check": "C01",
+    "difference": "The pantry crossing has been omitted.",
+    "execution_difference": "The final object match can replace required traversal.",
+    "source_evidence": "cross the pantry"
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

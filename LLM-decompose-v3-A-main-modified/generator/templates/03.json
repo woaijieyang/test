@@ -1,0 +1,30 @@
+{
+  "input": {
+    "original_instruction": "Walk toward the dining room but turn left before entering it and go into the open area."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk toward the dining room, but turn left before entering it and go into the open area."
+    ],
+    "issues": []
+  },
+  "id": "G03",
+  "topic": "before_entry",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk to the dining-room entrance and stop.",
+        "Enter the dining room, turn left and go into the open area."
+      ],
+      "issues": []
+    },
+    "failed_check": "C02",
+    "difference": "The approach-before-entry maneuver gains a stop and an entry.",
+    "execution_difference": "The robot must enter a room the source turns away from.",
+    "source_evidence": "turn left before entering it"
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

@@ -1,0 +1,31 @@
+{
+  "input": {
+    "original_instruction": "Enter the kitchen and stop beside the counter. From the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Enter the kitchen and stop beside the counter.",
+      "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+    ],
+    "issues": []
+  },
+  "id": "G09",
+  "topic": "conditional_handoff",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Enter the kitchen and stop beside the counter.",
+        "From beside the counter, go through the door to the laundry room, then use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+      ],
+      "issues": []
+    },
+    "failed_check": "C04",
+    "difference": "Mutually conditional alternatives became consecutive requirements.",
+    "execution_difference": "Both entrances must be traversed irrespective of the door state.",
+    "source_evidence": "if the door to the laundry room is open, go through it; otherwise use the open archway beside that door."
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

@@ -1,0 +1,29 @@
+{
+  "input": {
+    "original_instruction": "Go down the staircase. Go about halfway down and then stop. Wait there."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Go about halfway down the staircase, then stop and wait there."
+    ],
+    "issues": []
+  },
+  "id": "G06",
+  "topic": "same_event_refinement",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go to the bottom of the staircase, then stop and wait there."
+      ],
+      "issues": []
+    },
+    "failed_check": "C03",
+    "difference": "The halfway restriction of the descent becomes a full descent.",
+    "execution_difference": "The robot must pass the prescribed midpoint before stopping.",
+    "source_evidence": "Go about halfway down and then stop."
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

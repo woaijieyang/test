@@ -1,0 +1,31 @@
+{
+  "input": {
+    "original_instruction": "You start facing a wall. Turn left and walk towards the white table. Now you are standing next to the white table, with the table on your left. Turn right and walk through the open doorway into the kitchen. Stop just inside, facing the sink."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
+      "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+    ],
+    "issues": []
+  },
+  "id": "G07",
+  "topic": "expected_endpoint_not_invariant",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You start facing a wall. Turn left and walk towards the white table until you are next to it. Keep the table on your left throughout the approach.",
+        "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+      ],
+      "issues": []
+    },
+    "failed_check": "C06",
+    "difference": "A relation at the endpoint is made continuous during the approach.",
+    "execution_difference": "The candidate can require a different approach path.",
+    "source_evidence": "Now you are standing next to the white table, with the table on your left."
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

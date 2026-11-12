@@ -1,0 +1,253 @@
+[
+  {
+    "id": "PARTIAL",
+    "input": {
+      "original_instruction": "Follow the wall. At the brass doorway, turn right into the study and stop beside the desk.",
+      "candidate": {
+        "status": "ok",
+        "subtasks": [
+          "Follow the wall.",
+          "At the brass doorway, turn right into the study and stop beside the desk."
+        ],
+        "issues": []
+      },
+      "reviewer_feedback": {
+        "verdict": "revise",
+        "quality": {
+          "fidelity": "supported",
+          "closure_handoff": "issue",
+          "segmentation_adequacy": "adequate"
+        },
+        "checklist": {
+          "C01": "pass",
+          "C02": "pass",
+          "C03": "pass",
+          "C04": "pass",
+          "C05": "pass",
+          "C06": "pass",
+          "C07": "pass",
+          "C08": "issue",
+          "C09": "issue",
+          "C10": "pass",
+          "C11": "pass",
+          "C12": "pass"
+        },
+        "findings": [
+          {
+            "finding_id": "F1",
+            "check_id": "C08",
+            "dimension": "closure_handoff",
+            "severity": "material",
+            "code": "DETACHED_TRIGGER",
+            "subtask_indices": [
+              0,
+              1
+            ],
+            "source_quotes": [
+              "At the brass doorway, turn right into the study and stop beside the desk."
+            ],
+            "candidate_quotes": [
+              {
+                "subtask_index": 0,
+                "quote": "Follow the wall."
+              }
+            ],
+            "problem": "The wall-following phase has lost the doorway termination condition.",
+            "execution_difference": "The first stage has no supported ending while the second presumes doorway proximity.",
+            "suggestion": "End the first phase at the brass doorway and stop there before turning right.",
+            "preserve": "Retain all unaffected source actions, target attributes, temporal relations, intermediate stops and final pose. Do not add a route fact.",
+            "related_check_ids": [
+              "C09"
+            ],
+            "related_dimensions": []
+          }
+        ],
+        "stage_checks": [
+          {
+            "subtask_index": 0,
+            "entry_context": "Actual episode start at the source wall-following route",
+            "required_history": [
+              "Follow the wall."
+            ],
+            "completion_condition": null,
+            "completion_basis": "later_trigger_or_refinement",
+            "carryover_requirements": [
+              "The brass doorway is the later turn trigger."
+            ],
+            "source_quotes": [
+              "Follow the wall.",
+              "At the brass doorway, turn right into the study and stop beside the desk."
+            ],
+            "candidate_quotes": [
+              "Follow the wall."
+            ],
+            "status": "incomplete"
+          },
+          {
+            "subtask_index": 1,
+            "entry_context": "At the brass doorway, not established by the preceding candidate stage",
+            "required_history": [
+              "Turn right into the study.",
+              "Stop beside the desk."
+            ],
+            "completion_condition": "Stopped beside the desk in the study",
+            "completion_basis": "explicit_event",
+            "carryover_requirements": [],
+            "source_quotes": [
+              "At the brass doorway, turn right into the study and stop beside the desk."
+            ],
+            "candidate_quotes": [
+              "At the brass doorway, turn right into the study and stop beside the desk."
+            ],
+            "status": "incomplete"
+          }
+        ],
+        "boundary_checks": [
+          {
+            "previous_index": 0,
+            "next_index": 1,
+            "previous_exit": null,
+            "next_required_entry": "At the brass doorway",
+            "shared_referents": [
+              "The source wall-following route and brass doorway"
+            ],
+            "completion_evidence": [
+              "At the brass doorway, turn right into the study and stop beside the desk."
+            ],
+            "previous_candidate_quotes": [
+              "Follow the wall."
+            ],
+            "next_candidate_quotes": [
+              "At the brass doorway"
+            ],
+            "status": "gap",
+            "note": "The earlier movement must retain the later doorway trigger; the suggestion of an extra stop is fallible."
+          }
+        ]
+      }
+    },
+    "output": {
+      "candidate": {
+        "status": "ok",
+        "subtasks": [
+          "Follow the wall until you reach the brass doorway.",
+          "At the brass doorway, turn right into the study and stop beside the desk."
+        ],
+        "issues": []
+      },
+      "feedback_response": [
+        {
+          "finding_id": "F1",
+          "decision": "partially_accept",
+          "source_quotes": [
+            "At the brass doorway, turn right into the study and stop beside the desk."
+          ],
+          "reason": "The source supplies the doorway as the turn trigger, but no intermediate STOP. Bind the endpoint without adding a pause."
+        }
+      ]
+    },
+    "provenance": "Authored repair demonstration: reviewer advice is intentionally imperfect. Technical validation does not endorse the advice."
+  },
+  {
+    "id": "REJECT",
+    "input": {
+      "original_instruction": "Walk toward the dining room but turn left before entering it and go into the open area.",
+      "candidate": {
+        "status": "ok",
+        "subtasks": [
+          "Walk toward the dining room, but turn left before entering it and go into the open area."
+        ],
+        "issues": []
+      },
+      "reviewer_feedback": {
+        "verdict": "revise",
+        "quality": {
+          "fidelity": "issue",
+          "closure_handoff": "supported",
+          "segmentation_adequacy": "adequate"
+        },
+        "checklist": {
+          "C01": "issue",
+          "C02": "pass",
+          "C03": "pass",
+          "C04": "pass",
+          "C05": "pass",
+          "C06": "pass",
+          "C07": "pass",
+          "C08": "pass",
+          "C09": "pass",
+          "C10": "pass",
+          "C11": "pass",
+          "C12": "pass"
+        },
+        "findings": [
+          {
+            "finding_id": "F1",
+            "check_id": "C01",
+            "dimension": "fidelity",
+            "severity": "material",
+            "code": "FALLIBLE_ENTRY_SUGGESTION",
+            "subtask_indices": [
+              0
+            ],
+            "source_quotes": [
+              "before entering it"
+            ],
+            "candidate_quotes": [
+              {
+                "subtask_index": 0,
+                "quote": "Walk toward the dining room, but turn left before entering it and go into the open area."
+              }
+            ],
+            "problem": "Reviewer mistakenly interprets before as requiring eventual dining-room entry.",
+            "execution_difference": "Reviewer alleges an omitted entry, but that allegation is not entailed by the source.",
+            "suggestion": "Enter the dining room after turning left.",
+            "preserve": "Keep the left turn and open-area destination.",
+            "related_check_ids": [],
+            "related_dimensions": []
+          }
+        ],
+        "stage_checks": [
+          {
+            "subtask_index": 0,
+            "entry_context": "Actual episode start",
+            "required_history": [
+              "Approach dining room, turn left before entry, and go into the open area."
+            ],
+            "completion_condition": "Inside the open area after the conditioned left turn",
+            "completion_basis": "explicit_event",
+            "carryover_requirements": [],
+            "source_quotes": [
+              "Walk toward the dining room but turn left before entering it and go into the open area."
+            ],
+            "candidate_quotes": [
+              "Walk toward the dining room, but turn left before entering it and go into the open area."
+            ],
+            "status": "supported"
+          }
+        ],
+        "boundary_checks": []
+      }
+    },
+    "output": {
+      "candidate": {
+        "status": "ok",
+        "subtasks": [
+          "Walk toward the dining room, but turn left before entering it and go into the open area."
+        ],
+        "issues": []
+      },
+      "feedback_response": [
+        {
+          "finding_id": "F1",
+          "decision": "reject",
+          "source_quotes": [
+            "Walk toward the dining room but turn left before entering it and go into the open area."
+          ],
+          "reason": "The source turns away before entry and proceeds into the open area. It does not prescribe a later dining-room visit."
+        }
+      ]
+    },
+    "provenance": "Authored repair demonstration: reviewer advice is intentionally imperfect. Technical validation does not endorse the advice."
+  }
+]

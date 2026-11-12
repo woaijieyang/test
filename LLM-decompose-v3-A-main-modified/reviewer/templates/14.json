@@ -1,0 +1,89 @@
+{
+  "id": "R14",
+  "topic": "path_relation_owner",
+  "provenance": "Authored audit target, not a measured model output. Source comes from paired generator template.",
+  "input": {
+    "original_instruction": "Walk towards the piano. Walk on the right side of the brown sofa, turn left after the sofa and stop beside the bookshelf.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk towards the piano on the right side of the brown sofa. Turn left after the sofa and stop beside the bookshelf."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "quality": {
+      "fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "adequate"
+    },
+    "checklist": {
+      "C01": "pass",
+      "C02": "pass",
+      "C03": "pass",
+      "C04": "pass",
+      "C05": "pass",
+      "C06": "issue",
+      "C07": "pass",
+      "C08": "issue",
+      "C09": "pass",
+      "C10": "pass",
+      "C11": "pass",
+      "C12": "pass"
+    },
+    "findings": [
+      {
+        "finding_id": "F1",
+        "check_id": "C06",
+        "dimension": "fidelity",
+        "severity": "material",
+        "code": "PATH_OWNER",
+        "subtask_indices": [
+          0
+        ],
+        "source_quotes": [
+          "Walk on the right side of the brown sofa"
+        ],
+        "candidate_quotes": [
+          {
+            "subtask_index": 0,
+            "quote": "the piano on the right side of the brown sofa"
+          }
+        ],
+        "problem": "The path-side requirement is attached to a target object.",
+        "execution_difference": "A path on the other side can satisfy the new piano description but violate the original walking constraint.",
+        "suggestion": "Retain a walking predicate as owner of the side relation; no need to invent a new endpoint.",
+        "preserve": "Retain all unaffected source actions, target attributes, temporal relations, intermediate stops and final pose. Do not add a route fact.",
+        "related_check_ids": [
+          "C08"
+        ],
+        "related_dimensions": [
+          "closure_handoff"
+        ]
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Episode start",
+        "required_history": [
+          "Approach a piano described as right of the sofa, then turn left after sofa and stop at bookshelf"
+        ],
+        "completion_condition": "Stopped beside bookshelf",
+        "completion_basis": "explicit_event",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Walk towards the piano. Walk on the right side of the brown sofa, turn left after the sofa and stop beside the bookshelf."
+        ],
+        "candidate_quotes": [
+          "Walk towards the piano on the right side of the brown sofa. Turn left after the sofa and stop beside the bookshelf."
+        ],
+        "status": "incomplete"
+      }
+    ],
+    "boundary_checks": []
+  },
+  "teaching_note": "The path-side requirement is attached to a target object."
+}

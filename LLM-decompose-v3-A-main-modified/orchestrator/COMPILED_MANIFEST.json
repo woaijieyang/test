@@ -1,0 +1,69 @@
+{
+  "generator": {
+    "sha256": "c1649261602b2259ec0392523ce5186e123e7b5a5183f2bd9434e45465c9bf7d",
+    "bytes": 37707,
+    "words": 5122,
+    "templates": 15,
+    "shared_standard_sha256": "b47151affa450e79fddc873ccdf2278572d7f70fe72a3fe64573adbb5275418e",
+    "components": {
+      "generator/prompt.md": "d45007f860093d5675fa9af648990838a1427cf50ea648870312e7760b16f2c2",
+      "contracts/execution_standard.md": "b47151affa450e79fddc873ccdf2278572d7f70fe72a3fe64573adbb5275418e",
+      "generator/output.schema.json": "2f387829f3a9a565dd4ffaaf0424400d5f4dde300e88b3587baf116e4d3ed0dd",
+      "generator/manifest.json": "2a50763e260cd57607a9939882d58f3d92e4548473c16c2ae420a7c5a8159e0b",
+      "generator/templates/01.json": "14495e188741d09c4f39694f270bb8d350d730e88c44940fdc6e4c757934aee2",
+      "generator/templates/02.json": "7c306e6f3509c9376405fe4664b2e69c61733007c1f48d99ed1db4f1b8a8137c",
+      "generator/templates/03.json": "8389a8b3828a44de103da6dc113f55a56b7bab3795903f5b6de9931b72967433",
+      "generator/templates/04.json": "af35d5151552e8dcf20ffbda76ca562ed3aec433aeb9cb3740b68043af1b0396",
+      "generator/templates/05.json": "73fcae4f6780f809fec998bd8f285d9cc73c851f70dcb649a3f052cdb27d9449",
+      "generator/templates/06.json": "d9cb9b26b29f7d028c2e4b5457eb14500f375e351b58e5274447e711b37b236c",
+      "generator/templates/07.json": "11944df1275ce866a36bc953ac66fc69fdb3c2c253fe9fc5ddfe0ddd5299852d",
+      "generator/templates/08.json": "6a5d5f367254edd61771280e98dc3e9530518f9871fad4052a7d4ae75125b5e7",
+      "generator/templates/09.json": "06a125c2635144795bbac728ae9f8ea7a2044a568c7495a6a8af11b6fcefc9d9",
+      "generator/templates/10.json": "3f4407846c075b1a608306d35bbf2ce0c7e1e1006de7dde0aba541ac0e68acb2",
+      "generator/templates/11.json": "87a1724f75eac4670080b1790f7b5ce9f6c5857770a90c7de0989da9ba1127a8",
+      "generator/templates/12.json": "24e6e1db6f1577f1bbcd43bbbdf9a00c536bd224fa5bb66823ee1736583fea13",
+      "generator/templates/13.json": "6a657b3ff89303c589c7a187301aa098eaa2d38cc674fa6885312bd08268922f",
+      "generator/templates/14.json": "64433cf1582c1524a9b0396c78f8680ad4fe792f5831b1f4b849c3751835f309",
+      "generator/templates/15.json": "df9f3a47dac21a2e9fe352257c2f71607aca4b2ec8990b8b76845725789592ca"
+    }
+  },
+  "reviewer": {
+    "sha256": "81a0de7e77267c84c14a9fe25435e7810104c848a022de4b0668b2946dc537de",
+    "bytes": 69137,
+    "words": 7300,
+    "templates": 15,
+    "shared_standard_sha256": "b47151affa450e79fddc873ccdf2278572d7f70fe72a3fe64573adbb5275418e",
+    "components": {
+      "reviewer/prompt.md": "07bf281f1cf297e8356c3d8ac44923b7b1fcf604469e69ca1cc65ebc2fc3d84b",
+      "contracts/execution_standard.md": "b47151affa450e79fddc873ccdf2278572d7f70fe72a3fe64573adbb5275418e",
+      "reviewer/output.schema.json": "b818513bc5779c50b02fc50e385037b000d3cb0979c3b8474cc1e80f06a51444",
+      "reviewer/manifest.json": "a9a035e5da356089f2208b464f4670aa0702ff4d48be4912db35ff5fdb4b21c7",
+      "reviewer/templates/01.json": "05634ad5125000e809913b1c5d111dd0ce5eb453e750d5732b92f4e2f0ff69a5",
+      "reviewer/templates/02.json": "7378cc1c0f65c70255d9656d58e490258b817bb3ad54be81d4bc4cea47401ad8",
+      "reviewer/templates/03.json": "81b9286091453d8349c3cff90e59399ee84f2c5eb8df0a2b15fa35da28e6f90d",
+      "reviewer/templates/04.json": "86705e7cd4f99fd7d4c7d197e914e83a97927e7309f3f4702881a2e93a2e9085",
+      "reviewer/templates/05.json": "e2315bd5a060ea50b9faf45da3505a41dcd72b9479ae5e72ba127939b2fdc819",
+      "reviewer/templates/06.json": "244626da8245e202b2f67d0e97fbf91947be085b2d18323f940b6a69e795d4c1",
+      "reviewer/templates/07.json": "a7b3e996dbc39c2783be859b5d94325767d9bff7a069ec44505fdb4e29a8236c",
+      "reviewer/templates/08.json": "72f7cb7b4cbee28545788ad3ea55ce2585b8309ad867e3a5948e8ed4053f04d5",
+      "reviewer/templates/09.json": "615e87051c7990defe03484bc6696853299c0ce689dcf22865b697c452143b93",
+      "reviewer/templates/10.json": "dc94a0fddab49835ab89435906bc26cd5fd99df813f7aadf6a64f91b3599479e",
+      "reviewer/templates/11.json": "832722c0718457b09f42b46023c0e53d35353086ae843fe2e16d67b8a9668a1c",
+      "reviewer/templates/12.json": "5bf16671e8dc69522c53231bb58ac428a31bf2860368c60888fca5dff42c0531",
+      "reviewer/templates/13.json": "89da4b21622bbb64a6cdddf4d6b31aa3909766c3600975a709cb8e04a7ac26b7",
+      "reviewer/templates/14.json": "31a2eac4077b9b54208ca4d46c83feecc77f2edc8a7cd8a088f471670782f900",
+      "reviewer/templates/15.json": "44469d242f77aad8c05598d431b2a4bceff787e041ddc69a643b9eb83386d376"
+    }
+  },
+  "repair": {
+    "sha256": "a1fc102dac970f525096704530a09a040dfa305a266c26b84d7f12b0c577dbf9",
+    "bytes": 26911,
+    "components": {
+      "generator/prompt.md": "d45007f860093d5675fa9af648990838a1427cf50ea648870312e7760b16f2c2",
+      "contracts/execution_standard.md": "b47151affa450e79fddc873ccdf2278572d7f70fe72a3fe64573adbb5275418e",
+      "generator/repair.md": "0cf3b801fc0455305cd7714a88882854019f3e6e390386d9d246b2a4599a13d0",
+      "generator/repair.schema.json": "fb9c09b5c0b6e43f711506deb6f4df911f6b25e93206cce8d3f10128b2cbf467",
+      "generator/repair_examples.json": "09433c723555c3dc7d1a137fbe5e48502d0f9c647229b8b2e0720424b5a6950c"
+    }
+  }
+}

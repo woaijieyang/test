@@ -1,0 +1,34 @@
+{
+  "input": {
+    "original_instruction": "Enter the kitchen after you have walked to the end of the hallway. Before walking down the hallway, turn right. Once inside the kitchen, cross it and go through the archway into the dining room. Cross the dining room and enter the study through the door beside the bookcase. In the study, walk around the desk and stop at the window."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right, then walk down the hallway to its end and enter the kitchen.",
+      "Once inside the kitchen, cross it and go through the archway into the dining room.",
+      "Cross the dining room and enter the study through the door beside the bookcase.",
+      "In the study, walk around the desk and stop at the window."
+    ],
+    "issues": []
+  },
+  "id": "G04",
+  "topic": "temporal_order",
+  "provenance": "Retained v1.3 input/output; audit counterexample newly authored.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Enter the kitchen first.",
+        "Turn right and walk down the hallway.",
+        "Cross the kitchen and dining room to the study, then stop at the window."
+      ],
+      "issues": []
+    },
+    "failed_check": "C03",
+    "difference": "Mention order has replaced the specified execution order.",
+    "execution_difference": "Kitchen entry is executed before the required hallway leg.",
+    "source_evidence": "Enter the kitchen after you have walked to the end of the hallway."
+  },
+  "allowed_granularity": "The shown output is an acceptable solution, not unique gold segmentation. Another grain must preserve dependencies AND useful independent objectives. Do not optimize the shown count."
+}

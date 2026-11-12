@@ -1,0 +1,25 @@
+{
+  "version": "v1.3-static.2",
+  "role": "reviewer",
+  "core": "prompt.md",
+  "shared_standard": "../contracts/execution_standard.md",
+  "schema": "output.schema.json",
+  "templates": [
+    "templates/01.json",
+    "templates/02.json",
+    "templates/03.json",
+    "templates/04.json",
+    "templates/05.json",
+    "templates/06.json",
+    "templates/07.json",
+    "templates/08.json",
+    "templates/09.json",
+    "templates/10.json",
+    "templates/11.json",
+    "templates/12.json",
+    "templates/13.json",
+    "templates/14.json",
+    "templates/15.json"
+  ],
+  "baseline_not_loaded": true
+}

@@ -1,0 +1,126 @@
+{
+  "id": "R05",
+  "topic": "late_description",
+  "provenance": "Authored audit target, not a measured model output. Source comes from paired generator template.",
+  "input": {
+    "original_instruction": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the toilet is in the darker-painted wall.",
+        "Inside the bathroom, turn left and stop in front of the toilet."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "quality": {
+      "fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "adequate"
+    },
+    "checklist": {
+      "C01": "pass",
+      "C02": "pass",
+      "C03": "pass",
+      "C04": "pass",
+      "C05": "issue",
+      "C06": "pass",
+      "C07": "pass",
+      "C08": "issue",
+      "C09": "pass",
+      "C10": "pass",
+      "C11": "pass",
+      "C12": "pass"
+    },
+    "findings": [
+      {
+        "finding_id": "F1",
+        "check_id": "C05",
+        "dimension": "fidelity",
+        "severity": "material",
+        "code": "DESCRIPTOR_OWNER",
+        "subtask_indices": [
+          0
+        ],
+        "source_quotes": [
+          "The bathroom doorway is in the darker-painted wall."
+        ],
+        "candidate_quotes": [
+          {
+            "subtask_index": 0,
+            "quote": "the toilet is in the darker-painted wall."
+          }
+        ],
+        "problem": "The identifying darker-wall relation has moved from the bathroom doorway to the toilet.",
+        "execution_difference": "The robot loses the source cue for selecting the bathroom doorway.",
+        "suggestion": "Attach the darker-wall cue to the target doorway before selection; keep the toilet stop unchanged.",
+        "preserve": "Retain all unaffected source actions, target attributes, temporal relations, intermediate stops and final pose. Do not add a route fact.",
+        "related_check_ids": [
+          "C08"
+        ],
+        "related_dimensions": [
+          "closure_handoff"
+        ]
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Bedroom",
+        "required_history": [
+          "Cross the bedroom and enter the first right-hand bathroom doorway; the darker-wall property is now assigned to the toilet."
+        ],
+        "completion_condition": "Inside the selected bathroom",
+        "completion_basis": "explicit_event",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet."
+        ],
+        "candidate_quotes": [
+          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the toilet is in the darker-painted wall."
+        ],
+        "status": "incomplete"
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "Inside the selected bathroom",
+        "required_history": [
+          "Turn left and stop in front of the toilet."
+        ],
+        "completion_condition": "Stopped in front of the toilet",
+        "completion_basis": "explicit_event",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet."
+        ],
+        "candidate_quotes": [
+          "Inside the bathroom, turn left and stop in front of the toilet."
+        ],
+        "status": "supported"
+      }
+    ],
+    "boundary_checks": [
+      {
+        "previous_index": 0,
+        "next_index": 1,
+        "previous_exit": "Inside the selected bathroom",
+        "next_required_entry": "Inside that bathroom",
+        "shared_referents": [],
+        "completion_evidence": [
+          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet."
+        ],
+        "previous_candidate_quotes": [
+          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the toilet is in the darker-painted wall."
+        ],
+        "next_candidate_quotes": [
+          "Inside the bathroom, turn left and stop in front of the toilet."
+        ],
+        "status": "gap",
+        "note": "The cited candidate defect prevents certifying this source-specific transition; the missing or changed obligation is localized in findings."
+      }
+    ]
+  },
+  "teaching_note": "A door-selection descriptor now describes the toilet."
+}

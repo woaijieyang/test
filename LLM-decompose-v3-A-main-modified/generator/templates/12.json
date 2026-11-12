@@ -1,0 +1,32 @@
+{
+  "input": {
+    "original_instruction": "Walk to the bronze cabinet, turn left and walk to the lattice screen, then turn right, enter the study and wait beside the desk."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk to the bronze cabinet.",
+      "From the bronze cabinet, turn left and walk to the lattice screen.",
+      "From the lattice screen, turn right, enter the study and wait beside the desk."
+    ],
+    "issues": []
+  },
+  "id": "G12",
+  "topic": "short_multiple_arrivals",
+  "provenance": "New synthetic training-style example, not a held-out episode or measured rollout.",
+  "contrast": {
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk to the bronze cabinet, turn left and walk to the lattice screen, then turn right, enter the study and wait beside the desk."
+      ],
+      "issues": []
+    },
+    "failed_check": "C10",
+    "difference": "The one-line version is faithful, but does not display separate arrival/turn objectives. Decide whether independent focus is actually needed; do not assume every named waypoint demands a cut.",
+    "execution_difference": "This is an organization contrast, not proof of route error or runtime harm. A two-stage solution may also provide sufficient focus.",
+    "source_evidence": "turn left and walk to the lattice screen, then turn right",
+    "note": "Granularity contrast only. A material undersegmentation verdict needs a concrete missing-focus argument, not the existence of more possible cuts."
+  },
+  "allowed_granularity": "Two or three coherent stages may be acceptable. A coherent one-stage alternative is not automatically a semantic error; assess the requested local focus with source evidence. Do not learn a three-stage target."
+}
