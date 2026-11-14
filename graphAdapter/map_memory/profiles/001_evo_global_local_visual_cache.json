@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "sensor_clock": {
+    "kind": "static_simulator_sequence",
+    "rate_hz": 60,
+    "source": "PoseAdapter.logical_sensor_timestamp; acquisition sequence only; no physical FPS claim"
+  },
+  "memory_injection": true,
+  "stage": "002",
+  "simulator_pose_diagnostic": true,
+  "pose_provider": "simulator_ground_truth",
+  "pose_sampling": "primitive_endpoints",
+  "map_memory": {
+    "enabled": true,
+    "frame_timeout_seconds": 180,
+    "render_on_episode_end": false,
+    "host_transform": {
+      "kind": "identity",
+      "source": "common accepted000host;enabled obs_transforms must be empty and rechecked before eval"
+    },
+    "geometry": {
+      "voxel_size": 0.1,
+      "core_size": [
+        8.0,
+        8.0,
+        3.0
+      ],
+      "halo_cells": 1,
+      "max_resident_tiles": 16,
+      "max_total_tiles": 512,
+      "max_candidate_tiles": 64,
+      "near_m": 0.0,
+      "far_m": 10.0
+    },
+    "resources": {
+      "minimum_filesystem_free_bytes": 0,
+      "disk_budget_mode": "filesystem_capacity",
+      "ram_peak_bytes": 17179869184,
+      "camera_cache_bytes": 536870912,
+      "parallel_geometry_scene": false,
+      "replay_writeback_bytes": 67108864
+    },
+    "motion": {
+      "minimum_translation_m": 0.03,
+      "maximum_translation_m": 0.5,
+      "source": "base linked odometry;verified chart and unchanged odometry frame link"
+    },
+    "source_commit": "5770e8cc31763f11374a74483c6e4b1ca982513f",
+    "scope": "Primitive endpoint mapping with pinned read-only retrieval at original decisions",
+    "pose_input_mode": "provider_pose",
+    "pose_provider": "simulator_ground_truth",
+    "stage": "002",
+    "simulator_pose_diagnostic": true,
+    "execution_mode": "live",
+    "async_admission": true,
+    "admission_capacity": 2,
+    "max_episode_observations": 501,
+    "decision_max_capture_lag": 1,
+    "retrieval": {
+      "enabled": true,
+      "mode": "native_plus_attachment",
+      "evidence_policy": "evo_topology",
+      "topology_relations": false,
+      "global_map": true,
+      "context_bundle": true,
+      "attachment_feature_cache_bytes": 33554432
+    }
+  },
+  "feature": "retrieval",
+  "mode": "native_plus_attachment",
+  "implementation_status": "CANDIDATE_PENDING_ONLINE_ACCEPTANCE"
+}

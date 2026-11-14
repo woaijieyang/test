@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "feature": "observation_pose",
+  "mode": "passive_measurement_existing_action_authorization",
+  "pose_backend": "cuvslam_rtabmap",
+  "frontend_profile": "rgbd_metric_precision_v4",
+  "rtab_registration_profile": "rgbd_icp_reference_v2",
+  "sampling": "primitive_endpoints",
+  "mapping": false,
+  "memory_injection": false,
+  "pose_options": {
+    "pose_backend": "cuvslam_rtabmap",
+    "frontend_profile": "rgbd_metric_precision_v4",
+    "rtab_registration_profile": "rgbd_icp_reference_v2",
+    "occupancy_update_mode": "full",
+    "map_cache_max_bytes": 67108864,
+    "buffer_capacity": 256,
+    "queue_capacity": 2,
+    "timestamp_tolerance_ns": 0,
+    "frame_wait_seconds": 60.0,
+    "worker_command": [],
+    "startup_wait_seconds": 30.0,
+    "rtab_translation_m": 0.1,
+    "rtab_rotation_rad": 0.1,
+    "rtab_max_interval_s": 1.0,
+    "rtab_min_interval_s": 0.0,
+    "rtab_proximity_by_space": true,
+    "rtab_visual_estimation_type": 1,
+    "shutdown_wait_seconds": 120.0
+  },
+  "sensor_clock": {
+    "kind": "static_simulator_sequence",
+    "rate_hz": 60,
+    "source": "PoseAdapter.logical_sensor_timestamp; acquisition sequence only; no physical FPS claim"
+  }
+}

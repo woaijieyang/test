@@ -1,0 +1,143 @@
+{
+  "stage": "002",
+  "status": "IMPLEMENTING_NOT_ACCEPTED",
+  "scope": "All seven stages of 002 plus applicable006 evaluation contracts; user15 override belongs only to001",
+  "required_files": [
+    "query_adapter.py",
+    "candidates.py",
+    "bundles.py",
+    "selector.py",
+    "host_input_compiler.py",
+    "input_audit.py"
+  ],
+  "supporting_files": [
+    "contracts.py",
+    "session.py",
+    "validation.py",
+    "../profiles/001_decision_baseline.json"
+  ],
+  "checks": [
+    {
+      "id": "R00",
+      "requirement": "Full instruction tail coverage and recall",
+      "files": "query_adapter.py,candidates.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Recorded-task relevance review pending"
+    },
+    {
+      "id": "R01",
+      "requirement": "Repeated category, positions and reverse revisit",
+      "files": "contracts.py,bundles.py,host_input_compiler.py",
+      "status": "PARTIAL",
+      "remaining": "Full alias/revisit fixtures and human review pending"
+    },
+    {
+      "id": "R02",
+      "requirement": "Stored edges and explicit partial evidence",
+      "files": "bundles.py,selector.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Online input consumption pending"
+    },
+    {
+      "id": "R03",
+      "requirement": "Future/duplicate/retired/invalid-pose handling",
+      "files": "candidates.py,bundles.py,contracts.py",
+      "status": "PARTIAL",
+      "remaining": "All retired/alias cases and integration pending"
+    },
+    {
+      "id": "R04",
+      "requirement": "B=2/4/8 and native padding",
+      "files": "selector.py,host_input_compiler.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "All host modes end-to-end pending"
+    },
+    {
+      "id": "R05",
+      "requirement": "Final capture ordering and labels",
+      "files": "selector.py,host_input_compiler.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Final model boundary pending"
+    },
+    {
+      "id": "R06",
+      "requirement": "Raw to host to crops/tensors",
+      "files": "host_input_compiler.py,input_audit.py",
+      "status": "CPU_COMPONENT_VERIFIED",
+      "remaining": "Actual checkpoint processor/tokenizer CPU path passed; live model consumption and vision expansion pending"
+    },
+    {
+      "id": "R07",
+      "requirement": "No mixed-version spatial facts",
+      "files": "host_input_compiler.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Version/rigid optical transform tests pass; actual entity facts integration pending"
+    },
+    {
+      "id": "R08",
+      "requirement": "Missing files/decode/timeout bounded fallback",
+      "files": "storage/features.py,host_input_compiler.py,session.py",
+      "status": "PARTIAL",
+      "remaining": "IPC timeout and host fallback pending"
+    },
+    {
+      "id": "R09",
+      "requirement": "Reasoning/format/truncation behavior",
+      "files": "host_input_compiler.py,input_audit.py,evaluation/",
+      "status": "PARTIAL_REAL_TRACE_VERIFIED",
+      "remaining": "Two paired members have verified action/mode accounting; broader comparisons and explicit generation stop-reason coverage pending"
+    },
+    {
+      "id": "R10",
+      "requirement": "Determinism after archive reload",
+      "files": "candidates.py,bundles.py,selector.py",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Complete input equality pending"
+    },
+    {
+      "id": "R11",
+      "requirement": "Same-state removal/shuffle behavior",
+      "files": "evaluation/",
+      "status": "SMALL_SAME_STATE_VERIFIED",
+      "remaining": "Sensitivity observed on selected states; independent closed-loop improvement remains unverified"
+    },
+    {
+      "id": "R12",
+      "requirement": "Final oracle sentinel rejection",
+      "files": "input_audit.py,runtime/host_integration/",
+      "status": "COMPONENT_VERIFIED",
+      "remaining": "Final material sentinel tests pass; production namespace and final model path pending"
+    }
+  ],
+  "modes": [
+    "uniform_original",
+    "uniform_tagged",
+    "flat_equal_budget",
+    "graph_image_only",
+    "graph_image_facts",
+    "facts_only"
+  ],
+  "commands": {
+    "check_retrieval": "CPU_4_SUITES_VERIFIED_87",
+    "eval_002": "EXPLICIT_SMALL_COHORT_VERIFIED; standard A admission pending",
+    "report_input_audit_behavior": "Verified on small additive-text and dynamic native-plus-attachment runs; full A pending"
+  },
+  "online_sequence": [
+    "A16 per domain debugging",
+    "A1 R2R123 RxR81 profile selection",
+    "frozen fullA R2R612 RxR407"
+  ],
+  "effect_policy": "Must predeclare SR/SPL/forcedSTOP/default-forward thresholds before results; engineering alone cannot promote003",
+  "isolation": "Simulator pose only; native PoseAdapter untouched; no evaluator inputs to memory; original generation/parser/queue/STOP unchanged",
+  "required_files_present": true,
+  "complete_stage_accepted": false,
+  "latest_test_count": 97,
+  "current_cpu_check": "validation/unified-check-final/test_results.json",
+  "paired_report": "validation/paired-report/additive-02.json",
+  "reason_act_ablation": "validation/reason-then-act/outcomes.json",
+  "implementation_directory": "src/graphAdapter/map_memory/retrieval",
+  "host_entry": "graphAdapter.map_memory.retrieval.HostInjection",
+  "worker_entry": "graphAdapter.map_memory.retrieval.WorkerRetrieval",
+  "previous_evidence_root": "/data/zy/vln/case2/outputs/graph_memory/graph002-work-20261113",
+  "stage_accepted": false
+}
