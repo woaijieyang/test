@@ -1,9 +1,29 @@
 # Reviewer — independent, source-grounded L0–L6 audit
 
-Reviewer uses **exactly the same** `shared/semantic_contract.md` as Generator. Its prompt and `checklist.md` define audit order L0 rendered-text fidelity, L1 source coverage, L2 event/temporal/identity dependency, L3 every stage five elements, L4 adjacent handoffs, L5 segmentation sufficiency, L6 whole-route bidirectional source support.
+Reviewer uses exactly the same `shared/semantic_contract.md` as Generator. `prompt.md` and `checklist.md` define L0 rendered-text integrity, L1 source coverage, L2 dependencies, L3 five-element stage checks, L4 adjacent handoffs, L5 grouping, and L6 whole-route readback. The active `output.schema.json` is Draft 2020-12 and is shared by R0 and R1.
 
-Input is ONLY the source instruction, candidate natural-language stage array, and Renderer-frozen text. **Never receive Generator's stage_audit or handoff self-assessment.** An audit summary may not replace missing words in a stage. Inherited pose/entity is allowed when uniquely established; a missing ordinal origin or action reference may require a source-supported anchor. Terminal 'towards' cannot be upgraded to arrival. Non-final unsupported boundary must be repaired/merged, not excused.
+## Input independence
 
-`output.schema.json` is the canonical live review output: verdict, three dimensions, source_coverage, seven layer_checks, evidence-backed findings, stage_checks and handoffs. For each material finding provide exact source and candidate quotes, affected check/stage, concrete execution harm, local supported repair and protected actions. Advice never commands Generator; Generator may accept/partially accept/reject/unresolve one finding per index. A pass is not navigation success.
+R0 receives the original instruction, frozen candidate stage strings and exact rendered text. It never receives Generator's `stage_audit` or Handoff self-assessment. R1 is a fresh independent session; it receives the new source/candidate/rendered text plus the frozen R0 review, exact R0 candidate and exact R0 rendered text so it can verify each prior blocking finding. It does not receive G1's response as proof and must independently re-audit the complete new candidate.
 
-`templates/r2r.json` and `templates/rxr_en_us.json` each contain **35 full-schema demonstrations** from train-only sources, both clean passes and actual source-grounded defects. R0 selects **8** (3 core+5 source-feature matches) once, reused without reselection in R1; 35 is explicit ablation. No Reviewer template is the unique gold segmentation for its source. Verify all examples under `host.protocol.reviewer` before use.
+## Runtime output
+
+- Dimensions are exactly `source_fidelity`, `closure_handoff`, `segmentation_adequacy`; do not use `fidelity`.
+- `source_coverage` is event-level and candidate evidence is `{subtask_index, quote}`.
+- `layer_checks` must report L0–L6 exactly once and in order.
+- Each `stage_checks` item uses `subtask_index`, all five structured elements, source requirement IDs, source quotes and carryover.
+- Each finding contains source evidence, candidate evidence, failed layer/check, dimension, affected stage indices, separate repair-target indices, concrete execution consequence and a local repair option.
+- Candidate evidence may cite both sides of a handoff even when the repair target is only one stage. Evidence indices are validated independently from repair indices.
+- R0 returns `prior_finding_reviews: []`. R1 returns exactly one `resolved/partially_resolved/unresolved` disposition for each R0 finding, with evidence from the new candidate. R1 may PASS only if all prior blockers are resolved and no new blocker exists.
+
+A finding is advisory; Generator may reject it when the source does not support the proposed action. A PASS is not navigation success.
+
+## Teaching corpus
+
+- `templates/R2R/paired/`: 35 paired R2R Reviewer examples.
+- `templates/R2R/diagnostics/`: 26 R2R adversarial diagnostics.
+- `templates/RxR/paired/`: 35 paired RxR Reviewer examples.
+- `templates/RxR/diagnostics/`: 29 RxR adversarial diagnostics.
+- `templates/RxR/legacy/`: 10 provenance-labelled legacy Reviewer examples.
+
+The 35 paired examples per dataset are not unique gold segmentations. Diagnostics teach material defects and must not be treated as positive examples. Retrieve 8–12 source-matched cases once for R0 and reuse the same Reviewer IDs in R1. Full schema, evidence and verdict gates are defined in `host/README.md`.
