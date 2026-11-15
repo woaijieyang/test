@@ -13,15 +13,15 @@
       "review": {
         "verdict": "revise",
         "dimensions": {
-          "source_fidelity": "pass",
-          "closure_handoff": "issue",
+          "source_fidelity": "issue",
+          "closure_handoff": "pass",
           "segmentation_adequacy": "pass"
         },
         "source_coverage": [
           {
             "requirement_id": "q1",
             "source_quote": "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. ",
-            "requirement": "The required side of the center-unit traversal is reversed.",
+            "requirement": "Preserve the source-required right-side traversal around the center unit; the candidate reverses it to the left.",
             "candidate_evidence": [
               {
                 "subtask_index": 0,
@@ -40,9 +40,11 @@
           },
           {
             "layer": "L1_source_coverage",
-            "status": "pass",
-            "finding_indices": [],
-            "conclusion": "Every active source event and its descriptors/conditions is represented in the coverage rows."
+            "status": "issue",
+            "finding_indices": [
+              0
+            ],
+            "conclusion": "The candidate reverses the source-required right-side traversal to the left side."
           },
           {
             "layer": "L2_dependencies",
@@ -50,7 +52,7 @@
             "finding_indices": [
               0
             ],
-            "conclusion": "The required side of the center-unit traversal is reversed."
+            "conclusion": "The egocentric side relation is reversed and changes the required route."
           },
           {
             "layer": "L3_stage_checks",
@@ -58,13 +60,13 @@
             "finding_indices": [
               0
             ],
-            "conclusion": "The required side of the center-unit traversal is reversed."
+            "conclusion": "The actual process text instructs the opposite side from the source."
           },
           {
             "layer": "L4_handoffs",
             "status": "not_applicable",
             "finding_indices": [],
-            "conclusion": "Only one stage; there is no inter-stage handoff to audit."
+            "conclusion": "Only one stage; no inter-stage handoff exists."
           },
           {
             "layer": "L5_grouping",
@@ -78,18 +80,16 @@
             "finding_indices": [
               0
             ],
-            "conclusion": "Do not publish until the source-supported local defect is corrected; the audit does not repair the executable text."
+            "conclusion": "The candidate route readback conflicts with the source's right-side traversal."
           }
         ],
         "findings": [
           {
             "code": "WRONG_RELATION",
-            "failed_layer": "L2_dependencies",
+            "failed_layer": "L1_source_coverage",
             "c_check": "C06",
             "dimension": "source_fidelity",
-            "related_dimensions": [
-              "closure_handoff"
-            ],
+            "related_dimensions": [],
             "affected_subtask_indices": [
               0
             ],
@@ -104,8 +104,8 @@
               }
             ],
             "evidence_level": "S1",
-            "problem": "The required side of the center-unit traversal is reversed.",
-            "execution_consequence": "The candidate directs a different path even if it later reaches the same doorway.",
+            "problem": "The source requires going around the right side of the center unit, but the candidate says left side.",
+            "execution_consequence": "The agent follows the opposite side of the center unit and may approach the doorway from the wrong side.",
             "repair": {
               "operation": "restore",
               "affected_subtask_indices": [
