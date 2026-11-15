@@ -78,7 +78,7 @@
   "tests/test_final_best_contract.py": "38ee1237258cf4ab4413170d329acdcd8d2ff8f3e7607c104edcbb3c70d5c5cf",
   "tests/test_patch.py": "ba80ed094ed6eaec82bb528a903f8767304f1d0e999070ca25025c1383aaf9a9",
   "validation.json": "c66987b78f9116dc78fc7bfb72b871a0aa93f0f672617f7fd230b20dbd5ddc9d",
-  "verify_package.py": "770dd90e209db4fc0de87c1c30914f0aa7b5a09938024d986c27177710fc0184",
+  "verify_package.py": "1cd15e794a11071bf0a1792ea39e3dfc1fae64e3e631ecadfc8a5757f0500531",
   "generator/repair_examples.json": "1f483f4b2e57c84f0f375bd6a0a41f4fb1ad57828359f66c547d652e8e79936a",
   "tests/test_runtime_contract_v2.py": "289ae2133ee2454e3506c0e9b2626ff89b3cc0bbeebf3930ffa5f6b7ce2bd85e",
   "archive/pre-closed-loop-35-20261114/generator/README.md": "gitblob-sha1:5d6f9f7d73ad7afc1b7dc38b7e87b702189223dc",
