@@ -13,84 +13,84 @@
       "review": {
         "verdict": "revise",
         "dimensions": {
-          "fidelity": "issue",
+          "source_fidelity": "pass",
           "closure_handoff": "issue",
           "segmentation_adequacy": "pass"
         },
         "source_coverage": [
           {
-            "id": "q1",
+            "requirement_id": "q1",
             "source_quote": "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. ",
-            "state": "altered",
+            "requirement": "The required side of the center-unit traversal is reversed.",
             "candidate_evidence": [
               {
-                "index": 0,
+                "subtask_index": 0,
                 "quote": "Go around the left side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
               }
             ],
-            "note": "The required side of the center-unit traversal is reversed."
+            "status": "altered_or_missing"
           }
         ],
         "layer_checks": [
           {
-            "layer": "L0",
+            "layer": "L0_integrity",
             "status": "pass",
             "finding_indices": [],
-            "note": "Audit the supplied candidate; source-envelope whitespace and stage layout belong to the renderer."
+            "conclusion": "Audit the supplied candidate; source-envelope whitespace and stage layout belong to the renderer."
           },
           {
-            "layer": "L1",
+            "layer": "L1_source_coverage",
             "status": "pass",
             "finding_indices": [],
-            "note": "Every active source event and its descriptors/conditions is represented in the coverage rows."
+            "conclusion": "Every active source event and its descriptors/conditions is represented in the coverage rows."
           },
           {
-            "layer": "L2",
+            "layer": "L2_dependencies",
             "status": "issue",
             "finding_indices": [
               0
             ],
-            "note": "The required side of the center-unit traversal is reversed."
+            "conclusion": "The required side of the center-unit traversal is reversed."
           },
           {
-            "layer": "L3",
+            "layer": "L3_stage_checks",
             "status": "issue",
             "finding_indices": [
               0
             ],
-            "note": "The required side of the center-unit traversal is reversed."
+            "conclusion": "The required side of the center-unit traversal is reversed."
           },
           {
-            "layer": "L4",
+            "layer": "L4_handoffs",
             "status": "not_applicable",
             "finding_indices": [],
-            "note": "Only one stage; there is no inter-stage handoff to audit."
+            "conclusion": "Only one stage; there is no inter-stage handoff to audit."
           },
           {
-            "layer": "L5",
+            "layer": "L5_grouping",
             "status": "pass",
             "finding_indices": [],
-            "note": "The path-side constraint, doorway identity and wait position belong to one local objective; no added approach stage."
+            "conclusion": "The path-side constraint, doorway identity and wait position belong to one local objective; no added approach stage."
           },
           {
-            "layer": "L6",
+            "layer": "L6_route_readback",
             "status": "issue",
             "finding_indices": [
               0
             ],
-            "note": "Do not publish until the source-supported local defect is corrected; the audit does not repair the executable text."
+            "conclusion": "Do not publish until the source-supported local defect is corrected; the audit does not repair the executable text."
           }
         ],
         "findings": [
           {
             "code": "WRONG_RELATION",
-            "layer": "L2",
-            "check_id": "C06",
-            "dimension": "fidelity",
+            "failed_layer": "L2_dependencies",
+            "c_check": "C06",
+            "dimension": "source_fidelity",
             "related_dimensions": [
               "closure_handoff"
             ],
-            "subtask_indices": [
+            "affected_subtask_indices": [
               0
             ],
             "source_requirement_ids": [
@@ -99,20 +99,20 @@
             "source_quote": "right side of the center unit",
             "candidate_evidence": [
               {
-                "index": 0,
+                "subtask_index": 0,
                 "quote": "left side of the center unit"
               }
             ],
             "evidence_level": "S1",
             "problem": "The required side of the center-unit traversal is reversed.",
-            "consequence": "The candidate directs a different path even if it later reaches the same doorway.",
+            "execution_consequence": "The candidate directs a different path even if it later reaches the same doorway.",
             "repair": {
               "operation": "restore",
-              "indices": [
+              "affected_subtask_indices": [
                 0
               ],
               "instruction": "Restore the source right-side traversal in stage 0; keep the doorway selection and stopping relation.",
-              "preserve": [
+              "protected_requirements": [
                 "The doorway is on the right and identified by the dining table and mirror."
               ]
             }
@@ -120,17 +120,12 @@
         ],
         "stage_checks": [
           {
-            "index": 0,
+            "subtask_index": 0,
+            "status": "gap",
             "entry": {
               "mode": "episode_start",
               "text": "The actual episode start; no extra starting location or pose is asserted.",
               "candidate_quotes": []
-            },
-            "process": {
-              "text": "Go around the left side of the center unit and stop by the right side doorway with the dining table and mirror in it.",
-              "candidate_quotes": [
-                "Go around the left side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
-              ]
             },
             "target": {
               "text": "right side doorway with the dining table and mirror in it",
@@ -138,12 +133,19 @@
                 "right side doorway with the dining table and mirror in it"
               ]
             },
+            "process": {
+              "text": "Go around the left side of the center unit and stop by the right side doorway with the dining table and mirror in it.",
+              "candidate_quotes": [
+                "Go around the left side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
+              ]
+            },
             "ending": {
               "kind": "explicit_event",
               "text": "stop by the right side doorway",
               "candidate_quotes": [
                 "stop by the right side doorway"
-              ]
+              ],
+              "stop_scope": "terminal"
             },
             "conditions": {
               "text": null,
@@ -152,10 +154,14 @@
             "source_requirement_ids": [
               "q1"
             ],
-            "status": "gap"
+            "source_quotes": [
+              "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
+            ],
+            "carryover": []
           }
         ],
-        "handoffs": []
+        "handoffs": [],
+        "prior_finding_reviews": []
       }
     },
     "output": {
@@ -167,17 +173,11 @@
         "issues": [],
         "stage_audit": [
           {
-            "index": 0,
+            "subtask_index": 0,
             "entry": {
               "mode": "episode_start",
               "text": "The actual episode start; no extra starting location or pose is asserted.",
               "candidate_quotes": []
-            },
-            "process": {
-              "text": "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it.",
-              "candidate_quotes": [
-                "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
-              ]
             },
             "target": {
               "text": "right side doorway with the dining table and mirror in it",
@@ -185,12 +185,19 @@
                 "right side doorway with the dining table and mirror in it"
               ]
             },
+            "process": {
+              "text": "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it.",
+              "candidate_quotes": [
+                "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
+              ]
+            },
             "ending": {
               "kind": "explicit_event",
               "text": "stop by the right side doorway",
               "candidate_quotes": [
                 "stop by the right side doorway"
-              ]
+              ],
+              "stop_scope": "terminal"
             },
             "conditions": {
               "text": "right side of the center unit",
@@ -198,10 +205,6 @@
                 "right side of the center unit"
               ]
             },
-            "source_requirement_ids": [
-              "q1"
-            ],
-            "status": "supported",
             "source_quotes": [
               "Go around the right side of the center unit and stop by the right side doorway with the dining table and mirror in it. "
             ],
@@ -237,80 +240,80 @@
       "review": {
         "verdict": "revise",
         "dimensions": {
-          "fidelity": "pass",
+          "source_fidelity": "pass",
           "closure_handoff": "issue",
           "segmentation_adequacy": "pass"
         },
         "source_coverage": [
           {
-            "id": "q1",
+            "requirement_id": "q1",
             "source_quote": "Go around the kitchen island and wait between the tall cabinet and wine fridge. ",
-            "state": "covered",
+            "requirement": "The quoted stage preserves this coherent source event and its selection/condition details; introductory context is not turned into an extra action.",
             "candidate_evidence": [
               {
-                "index": 0,
+                "subtask_index": 0,
                 "quote": "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
               }
             ],
-            "note": "The quoted stage preserves this coherent source event and its selection/condition details; introductory context is not turned into an extra action."
+            "status": "covered"
           }
         ],
         "layer_checks": [
           {
-            "layer": "L0",
+            "layer": "L0_integrity",
             "status": "pass",
             "finding_indices": [],
-            "note": "Audit the supplied candidate; source-envelope whitespace and stage layout belong to the renderer."
+            "conclusion": "Audit the supplied candidate; source-envelope whitespace and stage layout belong to the renderer."
           },
           {
-            "layer": "L1",
+            "layer": "L1_source_coverage",
             "status": "pass",
             "finding_indices": [],
-            "note": "Every active source event and its descriptors/conditions is represented in the coverage rows."
+            "conclusion": "Every active source event and its descriptors/conditions is represented in the coverage rows."
           },
           {
-            "layer": "L2",
+            "layer": "L2_dependencies",
             "status": "pass",
             "finding_indices": [],
-            "note": "The source order, condition owners and any correction/refinement are retained; no external route facts are used."
+            "conclusion": "The source order, condition owners and any correction/refinement are retained; no external route facts are used."
           },
           {
-            "layer": "L3",
+            "layer": "L3_stage_checks",
             "status": "issue",
             "finding_indices": [
               0
             ],
-            "note": "Hypothetical reviewer incorrectly insists on an extra physical stop at a valid completion; its repair advice is deliberately unsound."
+            "conclusion": "Hypothetical reviewer incorrectly insists on an extra physical stop at a valid completion; its repair advice is deliberately unsound."
           },
           {
-            "layer": "L4",
+            "layer": "L4_handoffs",
             "status": "not_applicable",
             "finding_indices": [],
-            "note": "Only one stage; there is no inter-stage handoff to audit."
+            "conclusion": "Only one stage; there is no inter-stage handoff to audit."
           },
           {
-            "layer": "L5",
+            "layer": "L5_grouping",
             "status": "pass",
             "finding_indices": [],
-            "note": "One coherent around-island placement needs no cut or extra waypoint."
+            "conclusion": "One coherent around-island placement needs no cut or extra waypoint."
           },
           {
-            "layer": "L6",
+            "layer": "L6_route_readback",
             "status": "issue",
             "finding_indices": [
               0
             ],
-            "note": "Hypothetical reviewer incorrectly insists on an extra physical stop at a valid completion; its repair advice is deliberately unsound."
+            "conclusion": "Hypothetical reviewer incorrectly insists on an extra physical stop at a valid completion; its repair advice is deliberately unsound."
           }
         ],
         "findings": [
           {
             "code": "OPEN_INTERMEDIATE_STAGE",
-            "layer": "L3",
-            "check_id": "C08",
+            "failed_layer": "L3_stage_checks",
+            "c_check": "C08",
             "dimension": "closure_handoff",
             "related_dimensions": [],
-            "subtask_indices": [
+            "affected_subtask_indices": [
               0
             ],
             "source_requirement_ids": [
@@ -319,20 +322,20 @@
             "source_quote": "Go around the kitchen island and wait between the tall cabinet and wine fridge. ",
             "candidate_evidence": [
               {
-                "index": 0,
+                "subtask_index": 0,
                 "quote": "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
               }
             ],
             "evidence_level": "S1",
             "problem": "Hypothetical false critique: an extra explicit STOP is required despite the source-supported endpoint already being complete.",
-            "consequence": "If adopted, an unrequested extra stop would alter the route task.",
+            "execution_consequence": "If adopted, an unrequested extra stop would alter the route task.",
             "repair": {
               "operation": "restore",
-              "indices": [
+              "affected_subtask_indices": [
                 0
               ],
               "instruction": "Add a new physical STOP regardless of the source wording.",
-              "preserve": [
+              "protected_requirements": [
                 "Retain all source-required route actions and the final target."
               ]
             }
@@ -340,17 +343,12 @@
         ],
         "stage_checks": [
           {
-            "index": 0,
+            "subtask_index": 0,
+            "status": "gap",
             "entry": {
               "mode": "episode_start",
               "text": "The actual episode start; no extra starting location or pose is asserted.",
               "candidate_quotes": []
-            },
-            "process": {
-              "text": "Go around the kitchen island and wait between the tall cabinet and wine fridge.",
-              "candidate_quotes": [
-                "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
-              ]
             },
             "target": {
               "text": "between the tall cabinet and wine fridge",
@@ -358,12 +356,19 @@
                 "between the tall cabinet and wine fridge"
               ]
             },
+            "process": {
+              "text": "Go around the kitchen island and wait between the tall cabinet and wine fridge.",
+              "candidate_quotes": [
+                "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
+              ]
+            },
             "ending": {
               "kind": "explicit_event",
               "text": "wait between the tall cabinet and wine fridge",
               "candidate_quotes": [
                 "wait between the tall cabinet and wine fridge"
-              ]
+              ],
+              "stop_scope": "terminal"
             },
             "conditions": {
               "text": null,
@@ -372,10 +377,14 @@
             "source_requirement_ids": [
               "q1"
             ],
-            "status": "gap"
+            "source_quotes": [
+              "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
+            ],
+            "carryover": []
           }
         ],
-        "handoffs": []
+        "handoffs": [],
+        "prior_finding_reviews": []
       }
     },
     "output": {
@@ -387,17 +396,11 @@
         "issues": [],
         "stage_audit": [
           {
-            "index": 0,
+            "subtask_index": 0,
             "entry": {
               "mode": "episode_start",
               "text": "The actual episode start; no extra starting location or pose is asserted.",
               "candidate_quotes": []
-            },
-            "process": {
-              "text": "Go around the kitchen island and wait between the tall cabinet and wine fridge.",
-              "candidate_quotes": [
-                "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
-              ]
             },
             "target": {
               "text": "between the tall cabinet and wine fridge",
@@ -405,21 +408,24 @@
                 "between the tall cabinet and wine fridge"
               ]
             },
+            "process": {
+              "text": "Go around the kitchen island and wait between the tall cabinet and wine fridge.",
+              "candidate_quotes": [
+                "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
+              ]
+            },
             "ending": {
               "kind": "explicit_event",
               "text": "wait between the tall cabinet and wine fridge",
               "candidate_quotes": [
                 "wait between the tall cabinet and wine fridge"
-              ]
+              ],
+              "stop_scope": "terminal"
             },
             "conditions": {
               "text": null,
               "candidate_quotes": []
             },
-            "source_requirement_ids": [
-              "q1"
-            ],
-            "status": "supported",
             "source_quotes": [
               "Go around the kitchen island and wait between the tall cabinet and wine fridge. "
             ],
