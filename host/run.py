@@ -11,6 +11,7 @@ from subprocess import run as subprocess_run
 import json
 import argparse
 import sys
+import shlex
 from pathlib import Path
 
 from adapter.source import Source, load_record
@@ -69,11 +70,31 @@ def run_record(src: Source, transport: Transport, *, pins: dict,
         event["call_state"] = "transport_entered"
         try:
             reply = transport(req)
-        except Exception:
-            # The provider may have executed the call; do not retry blindly.
+            event["call_state"] = "transport_returned"
+        except Exception as transport_error:
+            # A timeout/connection loss does not prove the provider did not
+            # execute. First query the same invocation by its deterministic
+            # request hash. Never submit a second generation request.
             event["call_state"] = "transport_failed_execution_unknown"
-            raise
-        event["call_state"] = "transport_returned"
+            event["transport_error"] = f"{type(transport_error).__name__}: {transport_error}"
+            recover = getattr(transport, "recover", None)
+            if not callable(recover):
+                event["recovery_state"] = "unavailable"
+                raise
+            context["step"] = "transport_recovery_lookup"
+            event["recovery_state"] = "lookup_started"
+            try:
+                recovered = recover(req)
+            except Exception as recovery_error:
+                event["recovery_state"] = "lookup_failed"
+                event["recovery_error"] = f"{type(recovery_error).__name__}: {recovery_error}"
+                raise transport_error
+            if recovered is None:
+                event["recovery_state"] = "not_found"
+                raise transport_error
+            reply = recovered
+            event["recovery_state"] = "original_call_recovered"
+            event["call_state"] = "original_call_recovered"
         context["step"] = "receipt_validation"
         need(isinstance(reply, dict) and "output" in reply,
              "Malformed transport reply", code="TRANSPORT_REPLY_INVALID",
@@ -301,7 +322,7 @@ def receipt_for_navigation(result, *, instruction_seen, full_prompt_utf8: bytes,
     }
 
 
-def command_transport(argv, timeout=300):
+def command_transport(argv, timeout=300, recovery_argv=None):
     def send(req):
         import subprocess
         try:
@@ -314,6 +335,37 @@ def command_transport(argv, timeout=300):
         if process.returncode:
             raise RuntimeError(f"existing transport exit {process.returncode}; inspect its own log")
         return json.loads(process.stdout.decode("utf-8"))
+
+    if recovery_argv:
+        def recover(req):
+            import subprocess
+            payload = {
+                "operation": "lookup_original_request",
+                "request_sha256": obj_hash(req),
+                "request": req,
+            }
+            try:
+                process = subprocess_run(
+                    recovery_argv, input=canonical(payload).encode(),
+                    capture_output=True, timeout=timeout, check=False
+                )
+            except subprocess.TimeoutExpired as exc:
+                raise TimeoutError("original-request recovery lookup timeout") from exc
+            if process.returncode:
+                raise RuntimeError(
+                    f"recovery lookup exit {process.returncode}; no generation retry was attempted"
+                )
+            result = json.loads(process.stdout.decode("utf-8"))
+            need(isinstance(result, dict) and type(result.get("found")) is bool,
+                 "Malformed recovery lookup result",
+                 code="RECOVERY_REPLY_INVALID", module="host.run", path="/recovery/found")
+            if not result["found"]:
+                return None
+            need(isinstance(result.get("reply"), dict),
+                 "Recovery result must contain the original transport reply",
+                 code="RECOVERY_REPLY_INVALID", module="host.run", path="/recovery/reply")
+            return result["reply"]
+        send.recover = recover
     return send
 
 
@@ -322,6 +374,8 @@ def main():
     parser.add_argument("--record", required=True)
     parser.add_argument("--pins", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--recover-command", default=None,
+                        help="optional lookup-only command; receives {operation, request_sha256, request} and returns {found:false} or {found:true, reply:<original reply>}")
     parser.add_argument("--transport", nargs=argparse.REMAINDER, required=True,
                         help="existing command: JSON request on stdin, reply on stdout; may incur cost")
     args = parser.parse_args()
@@ -334,7 +388,10 @@ def main():
         source = load_record(args.record)
         step = "configuration_loading"
         pins = json.loads(Path(args.pins).read_bytes())
-        result = run_record(source, command_transport(args.transport), pins=pins)
+        recovery_argv = shlex.split(args.recover_command) if args.recover_command else None
+        result = run_record(
+            source, command_transport(args.transport, recovery_argv=recovery_argv), pins=pins
+        )
     except (ContractError, ValueError, TypeError, OSError) as exc:
         diagnostic = exc.to_dict() if isinstance(exc, ContractError) else {
             "code": "CONFIGURATION_LOAD_FAILED", "module": "host.run",
