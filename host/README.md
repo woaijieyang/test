@@ -71,7 +71,7 @@ Each layer row requires `layer`, `status`, `finding_indices`, and `conclusion`. 
 6. `L5_grouping`
 7. `L6_route_readback`
 
-Status is `pass`, `issue`, `source_limited`, or `not_applicable`. An `issue` or `source_limited` layer must reference at least one finding. Every finding must be referenced by its failed layer.
+Status is `pass`, `issue`, `source_limited`, or `not_applicable`. An `issue` or `source_limited` layer must reference at least one finding. Every finding must be referenced by its failed layer. A stage marked `gap`/`source_limited` must map to a finding that cites that stage and at least one of its source requirement IDs. A handoff marked `gap`/`source_limited` must map to a finding that cites at least one adjacent stage, overlaps the handoff's source requirement IDs, and identifies a closure/handoff issue.
 
 ### Findings and cross-stage evidence
 
