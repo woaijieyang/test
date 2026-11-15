@@ -1,0 +1,3 @@
+# Shared teaching templates
+
+There are 15 contrastive teaching pairs. Each contains a source, an acceptable example, a minimally different problematic alternative, the acceptance dimension/check, source evidence and the reason/limit. They are synthetic pedagogical cases, not hidden route facts, not evaluation gold labels, and not the only valid segmentation. Both Generator and Reviewer receive the same maintained set. T10 in final-best-v1 explicitly distinguishes a terminal target-directed approach from an invented arrival/STOP; the previous T10 is archived under `provenance/templates/v1_3_patch/10.json`.

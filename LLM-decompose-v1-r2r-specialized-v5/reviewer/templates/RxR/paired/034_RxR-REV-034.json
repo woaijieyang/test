@@ -1,0 +1,162 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-034",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-034",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "6111",
+    "episode_id": "1020",
+    "instruction_id": "6111",
+    "scene_id": "mp3d/1pXnuDYAj8r/1pXnuDYAj8r.glb",
+    "trajectory_id": "2524"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You are facing a wall.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are facing a wall.",
+        "candidate_evidence": [
+          "You are facing a wall."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "You are going to turn to your left and go thru the door.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are going to turn to your left and go thru the door.",
+        "candidate_evidence": [
+          "You are going to turn to your left and go thru the door."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+        "candidate_evidence": [
+          "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall",
+          "candidate_quotes": [
+            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+          ]
+        },
+        "process": {
+          "text": "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+          "candidate_quotes": [
+            "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall",
+          "candidate_quotes": [
+            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: once; spatial_frame: facing, left, on your, right",
+          "candidate_quotes": [
+            "once",
+            "facing",
+            "left",
+            "on your",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+          "You are going to turn to your left and go thru the door.",
+          "You are facing a wall."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "single_coherent_stage",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: You are facing a wall.; Preserve the directional/spatial relation and its reference frame: You are going to turn to your left and go thru the…; Preserve the directional/spatial relation and its reference frame: And you are going to continue forward and once you…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: You are facing a wall.; Preserve the directional/spatial relation and its reference frame: You are going to turn to your left and go thru the…; Preserve the directional/spatial relation and its reference frame: And you are going to continue forward and once you…"
+  }
+}

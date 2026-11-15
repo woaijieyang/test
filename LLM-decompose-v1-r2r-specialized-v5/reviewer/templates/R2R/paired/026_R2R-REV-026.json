@@ -1,0 +1,153 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-REV-026",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": "R2R-GEN-026",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "26",
+    "episode_id": "26",
+    "instruction_id": null,
+    "scene_id": "mp3d/7y3sRwLe3Va/7y3sRwLe3Va.glb",
+    "trajectory_id": "251",
+    "source_key": "R2R|val_seen|standard|record_id=26|episode_id=26|trajectory_id=251"
+  },
+  "provenance": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Walk alongside the staircase through the hall towards the backdoor of the home. Turn the corner into the living room area with couches. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk alongside the staircase through the hall towards the backdoor of the home. Turn the corner into the living room area with couches. "
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk alongside the staircase through the hall towards the backdoor of the home.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall towards the backdoor of the home.",
+        "candidate_evidence": [
+          "Walk alongside the staircase through the hall towards the backdoor of the home."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn the corner into the living room area with couches.",
+        "requirement": "Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches.",
+        "candidate_evidence": [
+          "Turn the corner into the living room area with couches."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn the corner into the living room area with couches.",
+          "candidate_quotes": [
+            "Turn the corner into the living room area with couches."
+          ]
+        },
+        "process": {
+          "text": "Walk alongside the staircase through the hall towards the backdoor of the home. Turn the corner into the living room area with couches. ",
+          "candidate_quotes": [
+            "Walk alongside the staircase through the hall towards the backdoor of the home. Turn the corner into the living room area with couches. "
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated corner turn into the living-room area with couches.",
+          "candidate_quotes": [
+            "Turn the corner into the living room area with couches."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "through",
+          "candidate_quotes": [
+            "through"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "Walk alongside the staircase through the hall towards the backdoor of the home.",
+          "Turn the corner into the living room area with couches."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "single_coherent_stage",
+    "why_this_review_matters": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state.",
+    "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
+    "retrieval_tags": [
+      "room_transition",
+      "doorway_selection_and_crossing",
+      "single_stage_keep"
+    ],
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall…; Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall…; Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches."
+  }
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "dataset": "R2R",
+    "id": "1",
+    "supplied_stage_count": 1,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "bf89727b03544770d5d1da2b47ed5f0696671c89cae0aa09ccb72eb1435d8cbc",
+    "preview_sha256": "bf89727b03544770d5d1da2b47ed5f0696671c89cae0aa09ccb72eb1435d8cbc",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "2",
+    "supplied_stage_count": 3,
+    "mode": "BOUNDARY_ONLY",
+    "source_sha256": "c4b77b75d7e80da411682c73837691c9cc9cde87115b3c36aff8f7441b2472a0",
+    "preview_sha256": "1fee021374aecb5ff7b27a119fe61da78be3f3ef9aa5aafd00a89618a07c01c4",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "19",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "3cadd545b9bd0d06f6f8ac827d5f7cf081842ab93d5f60bbae32b88d79d1d16a",
+    "preview_sha256": "d42371c840b1e9074d70dceeb5e2e827012d59c7e770666f41ac6c4821d90dfd",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "53",
+    "supplied_stage_count": 2,
+    "mode": "BOUNDARY_ONLY",
+    "source_sha256": "81b577fd356b15664d2171108cdb1c6ed3e130427e2c4eb6e1ece7c0c9a6c93c",
+    "preview_sha256": "06cb43c451bc692c041d8e8bb99428d2025660e45d6ffd52ab1142bbf14c0cf0",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "98",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "b05b456d35a77aa7a19dd8a519ca0aa03587d72c02bc23d14ded42ebe136d061",
+    "preview_sha256": "7a2133aad8d5d5ef36226ffd5e8347e079109722bfb1d569ee4895d4da809eae",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "137",
+    "supplied_stage_count": 0,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "306f0cc2df2178ea7c24617abe4503e0e90da2d3532f715c16186c80964a1acc",
+    "preview_sha256": "306f0cc2df2178ea7c24617abe4503e0e90da2d3532f715c16186c80964a1acc",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "149",
+    "supplied_stage_count": 1,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "f9f7155602c062261c9dd516b339d71b2a107a8af207f50a268a3fb730d953dd",
+    "preview_sha256": "f9f7155602c062261c9dd516b339d71b2a107a8af207f50a268a3fb730d953dd",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "188",
+    "supplied_stage_count": 0,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "85f2577b68ce12a5aff8f187c06f599e3149fe19d57bccd6144df086494eec41",
+    "preview_sha256": "85f2577b68ce12a5aff8f187c06f599e3149fe19d57bccd6144df086494eec41",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "336",
+    "supplied_stage_count": 3,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "1f8bc1b4ad24c0f008597fbb5991a6ff1a9baf4504803a14540163b31dce51c6",
+    "preview_sha256": "83083350172953318cbab1984c99d5dadd3260edf0e5d9af8aecad726d192d76",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "472",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "ada6b99851e8aef9a330b3d4f3fc6c015044a08428f4986d9cbe9005fdd74afb",
+    "preview_sha256": "182a06fc6568a3f9475a10771278e7a2b99437c0a0bc6296ebb061780a31c023",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "630",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "bb6091876860a7ac35929e8e55f3299c9dc85b99d6cbf49720ed4e67a2c78eb0",
+    "preview_sha256": "7abcc3dd7a0fb8a5ec15a01202afa1587ec41781814b9ad1904b3bda67370640",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "700",
+    "supplied_stage_count": 2,
+    "mode": "BOUNDARY_ONLY",
+    "source_sha256": "eaadb8af67b0fc3886e4b1be65b8262a0511b312c69c3c36067abc26e51e48f0",
+    "preview_sha256": "f74224be3d4d743bed3757c36f75bace9ce6fb98564e123285aa8a6660c422db",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "856",
+    "supplied_stage_count": 2,
+    "mode": "BOUNDARY_ONLY",
+    "source_sha256": "34e672ace28220fe47a4866afd115638444afcaf37da484ade352091793d182d",
+    "preview_sha256": "2ea1f2348af8013894d5a080327bffad3d5039350843d8e0087e74972d40be04",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "1148",
+    "supplied_stage_count": 1,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "438b74a54fd432a32353d087bd7ee9a67169e6dba67c14e193a68460c1869cc1",
+    "preview_sha256": "438b74a54fd432a32353d087bd7ee9a67169e6dba67c14e193a68460c1869cc1",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "1205",
+    "supplied_stage_count": 1,
+    "mode": "SOURCE_EXACT",
+    "source_sha256": "1d0c15564064c2d621ce5c6b5112d69b3bae4a3594dec4568447d48b010e5873",
+    "preview_sha256": "1d0c15564064c2d621ce5c6b5112d69b3bae4a3594dec4568447d48b010e5873",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "1464",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "c6246f2f956ad75586a12acc4f0ecc7bb615b8d7ea6fa3a97d1ad7636133ee52",
+    "preview_sha256": "0039e6ffb16416372bdd92e53dcc018837c46e769564f28172e65c30ed758c7c",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "R2R",
+    "id": "1483",
+    "supplied_stage_count": 1,
+    "mode": "ASSEMBLED_SINGLE",
+    "source_sha256": "ef9a81a3ff3a7cfab720dbbd582c6366097f24a7c88c72dd2dce8f3d0a8dde4d",
+    "preview_sha256": "23a2e85751cf628abd5231e1b742cfb7ef1f11c92551b2f3fac1b1670f3d58cb",
+    "frozen_stage_text_differs_from_proposal": true,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "1509",
+    "supplied_stage_count": 4,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "11a49578d770ae7e0d6d3cb86cf0e34ca3713b5bc7faf82f70a2cc445287c8bc",
+    "preview_sha256": "4ea909e5e81c8427f8c02b37b0e71bc459a001a844119a18fa4e67e0857d461a",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "4879",
+    "supplied_stage_count": 3,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "9136ac679be6234f3343809ec8759ec4ffaa2e09e113251af7b1fca8b7ae707e",
+    "preview_sha256": "7aa53bb4580f77e81a57e73ddd94458e7ba386cea0afd7a208d045c2a2a693e9",
+    "frozen_stage_text_differs_from_proposal": true,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "5512",
+    "supplied_stage_count": 3,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "fb561d236507602e36e33614837a17e7bd70b3d2c6d8e2255124f73020cbce54",
+    "preview_sha256": "c5c8daa8b9441a47e363d9ee5f061772fc6578bc68023a81dec8f0bcb1111957",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "2590",
+    "supplied_stage_count": 4,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "b3ad63cd28fad9fbb76fba5c313b9e29700b59fb750d4f0daabab70eb125bbe5",
+    "preview_sha256": "01fa93c15d1ac4c2dea02e9da3083935612503fcbb8b318f11dddfb51a6d0239",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "8593",
+    "supplied_stage_count": 5,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "49042db767bdbbba70cb25b26423100d139a3b05743cb36ab4df6b7a2ea31b45",
+    "preview_sha256": "cc8b19d0d239d500b8bd23eeed0d12039e2a4c307cd2f8edf0ea0d8cac613f13",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "9708",
+    "supplied_stage_count": 2,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "09d696c4b851ce399648c0ff7e91c5450c875ac10b4d02c0145b42eab902ce33",
+    "preview_sha256": "02ee198e36f967c39f0a0b1212da593d46fca70be6f9823835bfe1d970dc1e95",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  },
+  {
+    "dataset": "RxR",
+    "id": "11287",
+    "supplied_stage_count": 4,
+    "mode": "ASSEMBLED_MULTI",
+    "source_sha256": "2b134fbf364ef64f2053ef4f6049ab78dafe1460872817594fc917bb19f64a54",
+    "preview_sha256": "abd8b25911be8bd49352c95daac6affc2d92be28d585a8fabaf92da39ba90fe0",
+    "frozen_stage_text_differs_from_proposal": false,
+    "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
+  }
+]

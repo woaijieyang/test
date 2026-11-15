@@ -1,0 +1,178 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-LEGACY-G09",
+  "role": "generator",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G09",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": {
+    "kind": "inherited_prompt_example",
+    "source_status": "synthetic_or_adapted_not_raw_RxR_annotation",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record."
+  },
+  "input": {
+    "original_instruction": "Enter the kitchen and stop beside the counter. From the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Enter the kitchen and stop beside the counter.",
+      "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Enter the kitchen and stop beside the counter.",
+          "candidate_quotes": [
+            "Enter the kitchen and stop beside the counter."
+          ]
+        },
+        "process": {
+          "text": "Enter the kitchen and stop beside the counter.",
+          "candidate_quotes": [
+            "Enter the kitchen and stop beside the counter."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Enter the kitchen and stop beside the counter.",
+          "candidate_quotes": [
+            "Enter the kitchen and stop beside the counter."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_quotes": [
+          "Enter the kitchen and stop beside the counter.",
+          "Once inside the laundry room, stop at the sink.",
+          "otherwise use the open archway beside that door.",
+          "From the counter, if the door to the laundry room is open, go through it"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door",
+          "candidate_quotes": [
+            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
+          ]
+        },
+        "target": {
+          "text": "Once inside the laundry room, stop at the sink.",
+          "candidate_quotes": [
+            "Once inside the laundry room, stop at the sink."
+          ]
+        },
+        "process": {
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
+          "candidate_quotes": [
+            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Once inside the laundry room, stop at the sink.",
+          "candidate_quotes": [
+            "Once inside the laundry room, stop at the sink."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: Once; branch: if, otherwise; manner_or_constraint: through",
+          "candidate_quotes": [
+            "Once",
+            "if",
+            "otherwise",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Once inside the laundry room, stop at the sink.",
+          "Both entrances lead into the laundry room.",
+          "otherwise use the open archway beside that door.",
+          "From the counter, if the door to the laundry room is open, go through it"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Enter the kitchen and stop beside the counter.",
+          "candidate_quote": "Enter the kitchen and stop beside the counter."
+        },
+        "next_entry": {
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door",
+          "candidate_quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "intermediate_stop_and_conditional_branch",
+    "why_this_case_matters": "Keep the kitchen counter stop as an intermediate event; preserve both entrance alternatives in one branch-aware stage because both converge to the laundry room.",
+    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not flatten if/otherwise into two mandatory sequential entrances."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "landmark_conditioned_navigation",
+    "temporal_dependency",
+    "intermediate_stop_or_wait",
+    "conditional_branch",
+    "multi_stage_split",
+    "intermediate_stop_and_conditional_branch",
+    "legacy_user_uploaded_json"
+  ],
+  "legacy_reference": {
+    "original_template_id": "G09",
+    "title": "Intermediate stop and conditional alternatives with an explicit common exit state",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+    "original_output": {
+      "status": "ok",
+      "subtasks": [
+        "Enter the kitchen and stop beside the counter.",
+        "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+      ],
+      "issues": []
+    },
+    "upgrade_note": "The original output is retained for traceability. The active output above is restructured to satisfy the uploaded v1.3 five-element stage_audit and adjacent handoff contract."
+  }
+}

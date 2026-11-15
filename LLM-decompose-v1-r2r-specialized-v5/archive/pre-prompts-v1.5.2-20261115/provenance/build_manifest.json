@@ -1,0 +1,116 @@
+{
+  "generator/compiled_r2r-en.txt": {
+    "compiled_sha256": "42f732bd878360a2dea104291bdef2e018a0fe599552c173fee395e9dff2aef0",
+    "schema_sha256": "a11b8bf0501daf6bcb48acb425240ab8456fd4e079632f5073a670fb96dc619c",
+    "bytes": 68473,
+    "default_examples": 8,
+    "library_count": 35,
+    "profile": "r2r-en",
+    "example_ids": [
+      "R2R-GEN-032",
+      "R2R-GEN-033",
+      "R2R-GEN-003",
+      "R2R-GEN-004",
+      "R2R-GEN-013",
+      "R2R-GEN-016",
+      "R2R-GEN-017",
+      "R2R-GEN-022"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  },
+  "reviewer/compiled_r2r-en.txt": {
+    "compiled_sha256": "47f8846f5ea17104154d0566ec3c7477268e9cd845c43708b95bd3def810e21b",
+    "schema_sha256": "39ee67c6bd5c4b8da58cf7bcfbf6ebb92ebfeb4c71703989186d1e65c075a5bd",
+    "bytes": 74147,
+    "default_examples": 8,
+    "library_count": 61,
+    "profile": "r2r-en",
+    "example_ids": [
+      "R2R-REV-017",
+      "R2R-DIAG-03",
+      "R2R-REV-031",
+      "R2R-REV-033",
+      "R2R-DIAG-17",
+      "R2R-DIAG-23",
+      "R2R-REV-026",
+      "R2R-REV-032"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  },
+  "generator/compiled_repair_r2r-en.txt": {
+    "compiled_sha256": "e3255bf184551583b64fffa94c08e591e1f08228cac1203125edcce93ec975d7",
+    "schema_sha256": "6186e72b6c0c629567fd131db4387e3f290a4e84da485827615cebee85aeeab4",
+    "bytes": 81288,
+    "default_examples": 8,
+    "library_count": 35,
+    "profile": "r2r-en",
+    "example_ids": [
+      "R2R-GEN-032",
+      "R2R-GEN-033",
+      "R2R-GEN-003",
+      "R2R-GEN-004",
+      "R2R-GEN-013",
+      "R2R-GEN-016",
+      "R2R-GEN-017",
+      "R2R-GEN-022"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  },
+  "generator/compiled_rxr-en-us.txt": {
+    "compiled_sha256": "44eb32e279a2155f879d897156ce8b4122c2e095f13cad5aa588f9bcdb7c9083",
+    "schema_sha256": "a11b8bf0501daf6bcb48acb425240ab8456fd4e079632f5073a670fb96dc619c",
+    "bytes": 61658,
+    "default_examples": 8,
+    "library_count": 45,
+    "profile": "rxr-en-us",
+    "example_ids": [
+      "RxR-GEN-013",
+      "RxR-GEN-004",
+      "RxR-GEN-022",
+      "RxR-LEGACY-G06",
+      "RxR-LEGACY-G10",
+      "RxR-GEN-018",
+      "RxR-LEGACY-G03",
+      "RxR-GEN-005"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  },
+  "reviewer/compiled_rxr-en-us.txt": {
+    "compiled_sha256": "0129cfba2ac8368f98724fc45c287363cc423fd203556c90ca0735427d0d2f52",
+    "schema_sha256": "39ee67c6bd5c4b8da58cf7bcfbf6ebb92ebfeb4c71703989186d1e65c075a5bd",
+    "bytes": 70309,
+    "default_examples": 8,
+    "library_count": 74,
+    "profile": "rxr-en-us",
+    "example_ids": [
+      "RxR-LEGACY-G10",
+      "RxR-REV-004",
+      "RxR-DIAG-04",
+      "RxR-REV-013",
+      "RxR-DIAG-14",
+      "RxR-DIAG-15",
+      "RxR-LEGACY-G03",
+      "RxR-LEGACY-G06"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  },
+  "generator/compiled_repair_rxr-en-us.txt": {
+    "compiled_sha256": "f66c43cf50b0731b5b940ee72487084601d72adfe1b57fe3a4b6217539b633ca",
+    "schema_sha256": "6186e72b6c0c629567fd131db4387e3f290a4e84da485827615cebee85aeeab4",
+    "bytes": 74473,
+    "default_examples": 8,
+    "library_count": 45,
+    "profile": "rxr-en-us",
+    "example_ids": [
+      "RxR-GEN-013",
+      "RxR-GEN-004",
+      "RxR-GEN-022",
+      "RxR-LEGACY-G06",
+      "RxR-LEGACY-G10",
+      "RxR-GEN-018",
+      "RxR-LEGACY-G03",
+      "RxR-GEN-005"
+    ],
+    "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
+  }
+}

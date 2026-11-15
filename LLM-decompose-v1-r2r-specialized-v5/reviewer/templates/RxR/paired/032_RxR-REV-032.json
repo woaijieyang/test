@@ -1,0 +1,289 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-032",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-032",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5780",
+    "episode_id": "698",
+    "instruction_id": "5780",
+    "scene_id": "mp3d/759xd9YjKW5/759xd9YjKW5.glb",
+    "trajectory_id": "1980"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "For your start point you are in a bedroom, you will need to exit this bedroom by moving past the bed that is on your right. pass the chest that is o your left and the dresser that is on your right until you reach the doorway or archway. Once you are there turn right through the open doorway. Move into the  hall  and turn left and go down the stairs. Once you are down the stairs you will be in a foyer to the right you will see the front door that is open. And turning back straight a head you will see a console table to your left that has a mirror and a umbrella stand to your right. Move forward until you are in the middle of the doorway that leads into a living room, once you are there do not move. You have reached your end point in between the doorway leading into the living room.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "For your start point, you are in a bedroom. Exit this bedroom by moving past the bed on your right, passing the chest on your left and the dresser on your right until you reach the doorway or archway. Once you are there, turn right through the open doorway. Move into the hall, turn left, and go down the stairs.",
+        "Once you are down the stairs, you will be in a foyer. To the right you will see the front door that is open. Turning back straight ahead, you will see a console table to your left that has a mirror and an umbrella stand to your right. Move forward until you are in the middle of the doorway that leads into a living room. Once you are there, do not move. You have reached your endpoint in between the doorway leading into the living room."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "For your start point you are in a bedroom, you will need to exit this bedroom by moving past the bed that is on your right.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: For your start point you are in a bedroom, you will need to exit this bedroom by moving past the bed that is on your right.",
+        "candidate_evidence": [
+          "Exit this bedroom by moving past the bed on your right, passing the chest on your left and the dresser on your right until you reach the doorway or archway.",
+          "For your start point, you are in a bedroom."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "pass the chest that is o your left and the dresser that is on your right until you reach the doorway or archway.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: pass the chest that is o your left and the dresser that is on your right until you reach the doorway or archway.",
+        "candidate_evidence": [
+          "Exit this bedroom by moving past the bed on your right, passing the chest on your left and the dresser on your right until you reach the doorway or archway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Once you are there turn right through the open doorway.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are there turn right through the open doorway.",
+        "candidate_evidence": [
+          "Once you are there, turn right through the open doorway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Move into the  hall  and turn left and go down the stairs.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Move into the  hall  and turn left and go down the stairs.",
+        "candidate_evidence": [
+          "Move into the hall, turn left, and go down the stairs."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "Once you are down the stairs you will be in a foyer to the right you will see the front door that is open.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are down the stairs you will be in a foyer to the right you will see the front door that is open.",
+        "candidate_evidence": [
+          "Once you are down the stairs, you will be in a foyer.",
+          "To the right you will see the front door that is open."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "And turning back straight a head you will see a console table to your left that has a mirror and a umbrella stand to your right.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And turning back straight a head you will see a console table to your left that has a mirror and a umbrella stand to your right.",
+        "candidate_evidence": [
+          "Turning back straight ahead, you will see a console table to your left that has a mirror and an umbrella stand to your right."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "Move forward until you are in the middle of the doorway that leads into a living room, once you are there do not move.",
+        "requirement": "Preserve the temporal trigger/order and its scope: Move forward until you are in the middle of the doorway that leads into a living room, once you are there do not move.",
+        "candidate_evidence": [
+          "Move forward until you are in the middle of the doorway that leads into a living room."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "You have reached your end point in between the doorway leading into the living room.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You have reached your end point in between the doorway leading into the living room.",
+        "candidate_evidence": [
+          "You have reached your endpoint in between the doorway leading into the living room."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Move into the hall, turn left, and go down the stairs.",
+          "candidate_quotes": [
+            "Move into the hall, turn left, and go down the stairs."
+          ]
+        },
+        "process": {
+          "text": "For your start point, you are in a bedroom. Exit this bedroom by moving past the bed on your right, passing the chest on your left and the dresser on your right until you reach the doorway or archway. Once you are there, turn right through the open doorway. Move into the hall, turn left, and go down the stairs.",
+          "candidate_quotes": [
+            "For your start point, you are in a bedroom. Exit this bedroom by moving past the bed on your right, passing the chest on your left and the dresser on your right until you reach the doorway or archway. Once you are there, turn right through the open doorway. Move into the hall, turn left, and go down the stairs."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Move into the hall, turn left, and go down the stairs.",
+          "candidate_quotes": [
+            "Move into the hall, turn left, and go down the stairs."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "descriptive_uncertainty: 'doorway or archway' names alternative descriptions of the same opening, not two routes. temporal: continue past the bed/chest/dresser until reaching that opening, then turn right through it. spatial frame: bed on right, chest left, dresser right.",
+          "candidate_quotes": [
+            "doorway or archway",
+            "until you reach the doorway or archway",
+            "turn right through the open doorway"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "Move into the  hall  and turn left and go down the stairs.",
+          "Once you are there turn right through the open doorway.",
+          "For your start point you are in a bedroom, you will need to exit this bedroom by moving past the bed that is on your right.",
+          "pass the chest that is o your left and the dresser that is on your right until you reach the doorway or archway."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once you are down the stairs, you will be in a foyer",
+          "candidate_quotes": [
+            "Once you are down the stairs, you will be in a foyer"
+          ]
+        },
+        "target": {
+          "text": "You have reached your endpoint in between the doorway leading into the living room.",
+          "candidate_quotes": [
+            "You have reached your endpoint in between the doorway leading into the living room."
+          ]
+        },
+        "process": {
+          "text": "Once you are down the stairs, you will be in a foyer. To the right you will see the front door that is open. Turning back straight ahead, you will see a console table to your left that has a mirror and an umbrella stand to your right. Move forward until you are in the middle of the doorway that leads into a living room. Once you are there, do not move. You have reached your endpoint in between the doorway leading into the living room.",
+          "candidate_quotes": [
+            "Once you are down the stairs, you will be in a foyer. To the right you will see the front door that is open. Turning back straight ahead, you will see a console table to your left that has a mirror and an umbrella stand to your right. Move forward until you are in the middle of the doorway that leads into a living room. Once you are there, do not move. You have reached your endpoint in between the doorway leading into the living room."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "You have reached your endpoint in between the doorway leading into the living room.",
+          "candidate_quotes": [
+            "You have reached your endpoint in between the doorway leading into the living room."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once, until; negation: do not; spatial_frame: right, ahead, left, between",
+          "candidate_quotes": [
+            "Once",
+            "until",
+            "do not",
+            "right",
+            "ahead",
+            "left",
+            "between"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
+        ],
+        "source_quotes": [
+          "Move forward until you are in the middle of the doorway that leads into a living room, once you are there do not move.",
+          "Once you are down the stairs you will be in a foyer to the right you will see the front door that is open.",
+          "And turning back straight a head you will see a console table to your left that has a mirror and a umbrella stand to your right.",
+          "You have reached your end point in between the doorway leading into the living room."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Move into the hall, turn left, and go down the stairs.",
+          "candidate_quote": "Move into the hall, turn left, and go down the stairs."
+        },
+        "next_entry": {
+          "text": "Once you are down the stairs, you will be in a foyer",
+          "candidate_quote": "Once you are down the stairs, you will be in a foyer"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "conditions_focus": "descriptive_uncertainty: 'doorway or archway' names alternative descriptions of the same opening, not two routes. temporal: continue past the bed/chest/dresser until reaching that opening, then turn right through it. spatial frame: bed on right, chest left, dresser right.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: For your start point you are in a bedroom, you will…; Preserve the two descriptive labels for the same opening; do not execute two separate routes.; Preserve the directional/spatial relation and its reference frame: Once you are there turn right through the open…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: For your start point you are in a bedroom, you will…; Preserve the two descriptive labels for the same opening; do not execute two separate routes.; Preserve the directional/spatial relation and its reference frame: Once you are there turn right through the open…"
+  }
+}

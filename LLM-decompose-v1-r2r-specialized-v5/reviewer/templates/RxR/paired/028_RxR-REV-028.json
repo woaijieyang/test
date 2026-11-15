@@ -1,0 +1,465 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-028",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-028",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5555",
+    "episode_id": "888",
+    "instruction_id": "5555",
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "trajectory_id": "2289"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Our starting point is in seating area, and we're facing towards beside the window there's a chair and a bench, turn around and exit through the door that's between the two curtains... We're now facing a living room, walk towards the chair that's in the centre of the room, walk towards the chair that's on your left, and then, walk towards the threshold of the door that's towards the right, turn slightly to the left and enter the room that's n front of you... We're now facing towards a table with books on top, turn right... You'll come across, actually, two doorways, walk towards the doorway that's on your right and walk pass the hallway, turn towards the left, leaving the small round table towards the right, and you'll come across a staircase, do not go down, walk pass the staircase towards the right, on your right there's a hallway, do not walk into the hallway, then towards the left, and in front of you there' will be a long window, walk towards the right side of the window, and that is your destination.   ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains.",
+        "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+        "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "and we're facing towards beside the window there's a chair and a bench",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: and we're facing towards beside the window there's a chair and a bench",
+        "candidate_evidence": [
+          "We are facing a window, with a chair and a bench beside it."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "turn around and exit through the door that's between the two curtains...",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn around and exit through the door that's between the two curtains...",
+        "candidate_evidence": [
+          "Turn around and exit through the door between the two curtains."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "We're now facing a living room",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We're now facing a living room",
+        "candidate_evidence": [
+          "Now you are facing a living room."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "walk towards the chair that's in the centre of the room",
+        "requirement": "Preserve the spatial transition and region/threshold: walk towards the chair that's in the centre of the room",
+        "candidate_evidence": [
+          "Walk towards the chair in the centre of the room, then towards the chair on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "walk towards the chair that's on your left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the chair that's on your left",
+        "candidate_evidence": [
+          "Walk towards the chair in the centre of the room, then towards the chair on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "walk towards the threshold of the door that's towards the right",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the threshold of the door that's towards the right",
+        "candidate_evidence": [
+          "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "turn slightly to the left and enter the room that's n front of you...",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn slightly to the left and enter the room that's n front of you...",
+        "candidate_evidence": [
+          "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "We're now facing towards a table with books on top, turn right...",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We're now facing towards a table with books on top, turn right...",
+        "candidate_evidence": [
+          "Now you are facing a table with books on top."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-09",
+        "source_quote": "walk towards the doorway that's on your right and walk pass the hallway",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the doorway that's on your right and walk pass the hallway",
+        "candidate_evidence": [
+          "walk towards the doorway on your right and walk past the hallway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-10",
+        "source_quote": "turn towards the left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn towards the left",
+        "candidate_evidence": [
+          "Then move towards the left.",
+          "Turn left, leaving the small round table on your right."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-11",
+        "source_quote": "leaving the small round table towards the right",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: leaving the small round table towards the right",
+        "candidate_evidence": [
+          "Turn left, leaving the small round table on your right."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-12",
+        "source_quote": "do not go down",
+        "requirement": "Preserve the condition, alternative, uncertainty or prohibition and its scope: do not go down",
+        "candidate_evidence": [
+          "do not go down."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-13",
+        "source_quote": "walk pass the staircase towards the right",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk pass the staircase towards the right",
+        "candidate_evidence": [
+          "Walk past the staircase towards the right.",
+          "Walk towards the right side of the window."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-14",
+        "source_quote": "on your right there's a hallway",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: on your right there's a hallway",
+        "candidate_evidence": [
+          "There is a hallway on your right"
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-15",
+        "source_quote": "do not walk into the hallway",
+        "requirement": "Preserve the spatial transition and region/threshold: do not walk into the hallway",
+        "candidate_evidence": [
+          "do not walk into the hallway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-16",
+        "source_quote": "then towards the left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: then towards the left",
+        "candidate_evidence": [
+          "Then move towards the left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-17",
+        "source_quote": "and in front of you there' will be a long window",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: and in front of you there' will be a long window",
+        "candidate_evidence": [
+          "In front of you there will be a long window."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-18",
+        "source_quote": "walk towards the right side of the window",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the right side of the window",
+        "candidate_evidence": [
+          "Walk towards the right side of the window."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Turn around and exit through the door between the two curtains."
+          ]
+        },
+        "process": {
+          "text": "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Turn around and exit through the door between the two curtains."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "ordinal_or_count: two; spatial_frame: facing, between; manner_or_constraint: around, through",
+          "candidate_quotes": [
+            "two",
+            "facing",
+            "between",
+            "around",
+            "through"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "Our starting point is in seating area",
+          "turn around and exit through the door that's between the two curtains...",
+          "and we're facing towards beside the window there's a chair and a bench",
+          "turn towards the left"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Now you are facing a living room",
+          "candidate_quotes": [
+            "Now you are facing a living room"
+          ]
+        },
+        "target": {
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ]
+        },
+        "process": {
+          "text": "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: facing, on your, left, right, in front of",
+          "candidate_quotes": [
+            "then",
+            "facing",
+            "on your",
+            "left",
+            "right",
+            "in front of"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
+        ],
+        "source_quotes": [
+          "then towards the left",
+          "turn towards the left",
+          "and then",
+          "walk towards the chair that's in the centre of the room"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Now you are facing a table with books on top",
+          "candidate_quotes": [
+            "Now you are facing a table with books on top"
+          ]
+        },
+        "target": {
+          "text": "The right side of the long window; final approach is directed toward it without an explicit arrival threshold.",
+          "candidate_quotes": [
+            "Walk towards the right side of the window"
+          ]
+        },
+        "process": {
+          "text": "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination.",
+          "candidate_quotes": [
+            "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination."
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "Move toward the right side of the long window as the final directed goal. The source does not state a separate arrival threshold or stationary position.",
+          "candidate_quotes": [
+            "Walk towards the right side of the window."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Then; ordinal_or_count: two; negation: do not; spatial_frame: facing, right, on your, left, In front of; manner_or_constraint: past",
+          "candidate_quotes": [
+            "Then",
+            "two",
+            "do not",
+            "facing",
+            "right",
+            "on your",
+            "left",
+            "In front of",
+            "past"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-08",
+          "SRC-09",
+          "SRC-10",
+          "SRC-11",
+          "SRC-12",
+          "SRC-13",
+          "SRC-14",
+          "SRC-15",
+          "SRC-16",
+          "SRC-17",
+          "SRC-18"
+        ],
+        "source_quotes": [
+          "and that is your destination.",
+          "walk towards the right side of the window",
+          "then towards the left",
+          "do not walk into the hallway"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quote": "Turn around and exit through the door between the two curtains."
+        },
+        "next_entry": {
+          "text": "Now you are facing a living room",
+          "candidate_quote": "Now you are facing a living room"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quote": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+        },
+        "next_entry": {
+          "text": "Now you are facing a table with books on top",
+          "candidate_quote": "Now you are facing a table with books on top"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: and we're facing towards beside the window there's…; Preserve the directional/spatial relation and its reference frame: turn around and exit through the door that's…; Preserve the directional/spatial relation and its reference frame: We're now facing a living room. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: and we're facing towards beside the window there's…; Preserve the directional/spatial relation and its reference frame: turn around and exit through the door that's…; Preserve the directional/spatial relation and its reference frame: We're now facing a living room"
+  }
+}

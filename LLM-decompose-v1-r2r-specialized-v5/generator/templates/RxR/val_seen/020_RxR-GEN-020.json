@@ -1,0 +1,186 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-020",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "3934",
+    "episode_id": "549",
+    "instruction_id": "3934",
+    "scene_id": "mp3d/Uxmj2M2itWa/Uxmj2M2itWa.glb",
+    "trajectory_id": "1627"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You are facing a bedroom, turn around and now you should be facing two chairs on the wall and straight ahead their is a kitchen with blue cabinets and the steel oven and the blue cabinets looking outside at the rocks turn right and move towards the same area with the chairs on the wall. Once you are standing next to the black chairs look straight ahead more towards the black chairs their is an opening to go outside. do not go outside just go near and stand. Once you are standing near the open door just at the back door you should see a room or another door at the back of it  and walk towards that and now you should be standing near a desk and  at the back of the brown chairs, when you are standing at the chair turn right and now you should be standing near the foot of the bed, once you are here you are done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "Split after the source-explicit intermediate placement near the open back door: the instruction says not to go outside, but to move near the opening and stand. The next leg begins from that established position and continues toward the subsequently described room/door, desk, chair and final foot-of-bed target. The phrase 'a room or another door' remains descriptive/referential uncertainty; it is preserved rather than converted into two executable branches or silently resolved."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there.",
+      "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin from the stated bedroom-facing start; no additional pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The black chairs and the opening to the outside, approached without crossing outside.",
+          "candidate_quotes": [
+            "black chairs",
+            "opening to go outside"
+          ]
+        },
+        "process": {
+          "text": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there.",
+          "candidate_quotes": [
+            "Turn around to face the two chairs on the wall",
+            "the kitchen with blue cabinets and a steel oven is straight ahead",
+            "the rocks outside as an additional visual reference",
+            "Turn right and move towards the same area with the chairs",
+            "look straight ahead towards the opening to go outside"
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Reach the source-described position near the open back-door opening and stand there; this is an explicit intermediate placement, not the episode terminal goal.",
+          "candidate_quotes": [
+            "Do not go outside; move near the opening and stand there."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "negation/prohibition: do not go outside; spatial frame: chairs on the wall, kitchen straight ahead, opening ahead; intermediate placement: stand near the opening.",
+          "candidate_quotes": [
+            "the kitchen with blue cabinets and a steel oven is straight ahead",
+            "the rocks outside as an additional visual reference",
+            "Do not go outside",
+            "move near the opening and stand there"
+          ]
+        },
+        "source_quotes": [
+          "You are facing a bedroom, turn around",
+          "now you should be facing two chairs on the wall and straight ahead their is a kitchen with blue cabinets and the steel oven and the blue cabinets looking outside at the rocks",
+          "turn right and move towards the same area with the chairs on the wall",
+          "Once you are standing next to the black chairs look straight ahead more towards the black chairs their is an opening to go outside. do not go outside just go near and stand."
+        ],
+        "carryover": [
+          "Retain the near-open-back-door position and the identity of the opening; do not cross outside or replay the approach."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Continue from the established position near the open back door; the preceding stage has not entered or crossed outside.",
+          "candidate_quotes": [
+            "From near the open back door"
+          ]
+        },
+        "target": {
+          "text": "The final standing position near the foot of the bed.",
+          "candidate_quotes": [
+            "standing near the foot of the bed"
+          ]
+        },
+        "process": {
+          "text": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "candidate_quotes": [
+            "look towards a room or another door visible at the back of it and move towards that target",
+            "near a desk and at the back of the brown chairs",
+            "When you are standing at the chair, turn right",
+            "continue until you are standing near the foot of the bed"
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement.",
+          "candidate_quotes": [
+            "continue until you are standing near the foot of the bed",
+            "This is your destination."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed.",
+          "candidate_quotes": [
+            "a room or another door",
+            "near a desk and at the back of the brown chairs",
+            "When you are standing at the chair",
+            "until you are standing near the foot of the bed"
+          ]
+        },
+        "source_quotes": [
+          "you should see a room or another door at the back of it",
+          "walk towards that and now you should be standing near a desk and  at the back of the brown chairs",
+          "when you are standing at the chair turn right",
+          "now you should be standing near the foot of the bed, once you are here you are done."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The agent has moved near the open back door and stands there without going outside.",
+          "candidate_quote": "move near the opening and stand there."
+        },
+        "next_entry": {
+          "text": "Continue from near the open back door; do not assume the agent crossed it.",
+          "candidate_quote": "From near the open back door"
+        },
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The agent is near the open back door/opening, not outside."
+          },
+          {
+            "kind": "inherited_context",
+            "text": "The room-or-additional-door description remains referentially uncertain and is not converted into two route branches."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-04",
+          "SRC-05"
+        ],
+        "handoff_rationale": "The source explicitly establishes standing near the open back door before describing the room/door, desk, chair and foot-of-bed continuation. The boundary preserves that state and does not convert 'see a room or another door' into arrival at either object."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "explicit_intermediate_stand_then_continue_with_preserved_referent_uncertainty",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Do not go outside; move near the opening and stand there.'; stage 2 begins from 'From near the open back door'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: negation/prohibition: do not go outside; spatial frame: chairs on the wall, kitchen straight ahead, opening… Stage 2: referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a…",
+    "handoff_focus": "Stage 1 ends with 'Do not go outside; move near the opening and stand there.'; stage 2 begins from 'From near the open back door'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+  },
+  "retrieval_tags": [
+    "intermediate_stop_or_wait",
+    "prohibition_scope",
+    "referent_uncertainty",
+    "explicit_context_handoff",
+    "long_route_multi_goal",
+    "target_identity_vs_reference_landmark"
+  ]
+}

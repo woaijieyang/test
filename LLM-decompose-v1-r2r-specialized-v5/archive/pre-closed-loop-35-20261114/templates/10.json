@@ -1,0 +1,26 @@
+{
+  "id": "T10",
+  "title": "Terminal target-directed approach is not arrival",
+  "origin": "New teaching pair; not a historical dataset record or navigation outcome.",
+  "source": "Walk toward the tall cupboard.",
+  "acceptable": {
+    "status": "ok",
+    "subtasks": [
+      "Walk toward the tall cupboard."
+    ],
+    "issues": []
+  },
+  "contrast": {
+    "status": "ok",
+    "subtasks": [
+      "Walk to the tall cupboard and stop against it."
+    ],
+    "issues": []
+  },
+  "dimension": "fidelity",
+  "check": "C02",
+  "source_quote": "Walk toward the tall cupboard",
+  "candidate_contrast_quote": "Walk to the tall cupboard and stop against it.",
+  "execution_or_focus_difference": "The source gives a terminal target-directed approach. The contrast strengthens it into arrival and a stop against the object.",
+  "alternative_or_limit": "This is valid only as the final directive when no later route action depends on arrival. If a later clause says to turn, enter or stop at the cupboard, bind that event to the approach. Never claim the agent arrived merely because the terminal directive is toward the target."
+}

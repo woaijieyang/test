@@ -1,0 +1,235 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-029",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5587",
+    "episode_id": "915",
+    "instruction_id": "5587",
+    "scene_id": "mp3d/gTV8FGcVJC9/gTV8FGcVJC9.glb",
+    "trajectory_id": "2303"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "We're going to be in a large living room with a large piano to our left. Let's walk our of the rug, then proceed to climb up the marble stairs, and then to the room of the entrance. Now, let's move up the large stairs that we have in front of us, we should be facing a plant with a vase in the middle of the stairs. Let's walk to it, look to your right, climb up the remaining stairs 'till the end. Then, to our left we'll be facing a closed door: let's walk to it. Now, we should be looking at some curve-shaped stairs. Let's walk to the first two-steps of the stairs, and this will be our destination. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "We are in a large living room with a large piano to our left. Walk out of the rug, climb up the marble stairs, and go to the room of the entrance. Move up the large stairs in front of us. You should be facing a plant with a vase in the middle of the stairs. Walk to it.",
+      "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end. Then, to our left, we will be facing a closed door; walk to it.",
+      "From the closed door, walk to the first two steps of the curved stairs. This is our destination."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk to it.",
+          "candidate_quotes": [
+            "Walk to it."
+          ]
+        },
+        "process": {
+          "text": "We are in a large living room with a large piano to our left. Walk out of the rug, climb up the marble stairs, and go to the room of the entrance. Move up the large stairs in front of us. You should be facing a plant with a vase in the middle of the stairs. Walk to it.",
+          "candidate_quotes": [
+            "We are in a large living room with a large piano to our left. Walk out of the rug, climb up the marble stairs, and go to the room of the entrance. Move up the large stairs in front of us. You should be facing a plant with a vase in the middle of the stairs. Walk to it."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Walk to it.",
+          "candidate_quotes": [
+            "Walk to it."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: left, in front of, facing",
+          "candidate_quotes": [
+            "left",
+            "in front of",
+            "facing"
+          ]
+        },
+        "source_quotes": [
+          "We're going to be in a large living room with a large piano to our left.",
+          "Now, let's move up the large stairs that we have in front of us, we should be facing a plant with a vase in the middle of the stairs.",
+          "Let's walk our of the rug, then proceed to climb up the marble stairs, and then to the room of the entrance.",
+          "Then, to our left we'll be facing a closed door: let's walk to it."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end",
+          "candidate_quotes": [
+            "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end"
+          ]
+        },
+        "target": {
+          "text": "Then, to our left, we will be facing a closed door; walk to it.",
+          "candidate_quotes": [
+            "Then, to our left, we will be facing a closed door; walk to it."
+          ]
+        },
+        "process": {
+          "text": "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end. Then, to our left, we will be facing a closed door; walk to it.",
+          "candidate_quotes": [
+            "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end. Then, to our left, we will be facing a closed door; walk to it."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Then, to our left, we will be facing a closed door; walk to it.",
+          "candidate_quotes": [
+            "Then, to our left, we will be facing a closed door; walk to it."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Then; spatial_frame: right, left, facing",
+          "candidate_quotes": [
+            "Then",
+            "right",
+            "left",
+            "facing"
+          ]
+        },
+        "source_quotes": [
+          "Let's walk to it, look to your right, climb up the remaining stairs 'till the end.",
+          "Then, to our left we'll be facing a closed door: let's walk to it.",
+          "Let's walk our of the rug, then proceed to climb up the marble stairs, and then to the room of the entrance.",
+          "Let's walk to the first two-steps of the stairs, and this will be our destination."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From the closed door, walk to the first two steps of the curved stairs",
+          "candidate_quotes": [
+            "From the closed door, walk to the first two steps of the curved stairs"
+          ]
+        },
+        "target": {
+          "text": "The first two steps of the curved stairs, explicitly named as the destination.",
+          "candidate_quotes": [
+            "walk to the first two steps of the curved stairs"
+          ]
+        },
+        "process": {
+          "text": "From the closed door, walk to the first two steps of the curved stairs. This is our destination.",
+          "candidate_quotes": [
+            "From the closed door, walk to the first two steps of the curved stairs. This is our destination."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The destination is the first two steps of the curved stairs; quote the movement to that location as well as the destination statement.",
+          "candidate_quotes": [
+            "From the closed door, walk to the first two steps of the curved stairs."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "ordinal_or_count: first, two",
+          "candidate_quotes": [
+            "first",
+            "two"
+          ]
+        },
+        "source_quotes": [
+          "Let's walk to the first two-steps of the stairs, and this will be our destination.",
+          "Then, to our left we'll be facing a closed door: let's walk to it.",
+          "Let's walk our of the rug, then proceed to climb up the marble stairs, and then to the room of the entrance.",
+          "Let's walk to it, look to your right, climb up the remaining stairs 'till the end."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk to it.",
+          "candidate_quote": "Walk to it."
+        },
+        "next_entry": {
+          "text": "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end",
+          "candidate_quote": "From the plant in the middle of the stairs, look to your right and climb up the remaining stairs to the end"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Then, to our left, we will be facing a closed door; walk to it.",
+          "candidate_quote": "Then, to our left, we will be facing a closed door; walk to it."
+        },
+        "next_entry": {
+          "text": "From the closed door, walk to the first two steps of the curved stairs",
+          "candidate_quote": "From the closed door, walk to the first two steps of the curved stairs"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 3 stages. Stage 1 ends with 'Walk to it.'; stage 2 begins from 'From the plant in the middle of the stairs, look to your right and climb up the remaining…'. Stage 2 ends with 'Then, to our left, we will be facing a closed door; walk to it.'; stage 3 begins from 'From the closed door, walk to the first two steps of the curved stairs'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: spatial_frame: left, in front of, facing Stage 2: temporal: Then; spatial_frame: right, left, facing Stage 3: ordinal_or_count: first, two",
+    "handoff_focus": "Stage 1 ends with 'Walk to it.'; stage 2 begins from 'From the plant in the middle of the stairs, look to your right and climb up the remaining…'. Stage 2 ends with 'Then, to our left, we will be facing a closed door; walk to it.'; stage 3 begins from 'From the closed door, walk to the first two steps of the curved stairs'."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "ordinal_target_selection",
+    "orientation_or_reference_frame",
+    "multi_stage_split"
+  ]
+}

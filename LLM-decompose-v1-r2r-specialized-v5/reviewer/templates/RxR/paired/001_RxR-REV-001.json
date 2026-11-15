@@ -1,0 +1,268 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-001",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-001",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "106",
+    "episode_id": "19",
+    "instruction_id": "106",
+    "scene_id": "mp3d/i5noydFURQK/i5noydFURQK.glb",
+    "trajectory_id": "45"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "You are standing in between a counter on your right and laundry machines on your left, turn around and exit the laundry room, straight ahead, once you exit laundry room, turn right and move a little bit straight ahead towards the window in front of you, turn right when you are near the window and turn right go downstairs, once you are at the middle landing you are done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You are standing in between a counter on your right and laundry machines on your left. Turn around and exit the laundry room, straight ahead.",
+        "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you. Turn right when you are near the window, then turn right and go downstairs. Once you are at the middle landing, you are done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You are standing in between a counter on your right and laundry machines on your left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are standing in between a counter on your right and laundry machines on your left",
+        "candidate_evidence": [
+          "You are standing in between a counter on your right and laundry machines on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "turn around and exit the laundry room",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn around and exit the laundry room",
+        "candidate_evidence": [
+          "Turn around and exit the laundry room, straight ahead."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "once you exit laundry room",
+        "requirement": "Preserve the temporal trigger/order and its scope: once you exit laundry room",
+        "candidate_evidence": [
+          "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "turn right and move a little bit straight ahead towards the window in front of you",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn right and move a little bit straight ahead towards the window in front of you",
+        "candidate_evidence": [
+          "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "turn right when you are near the window and turn right go downstairs",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn right when you are near the window and turn right go downstairs",
+        "candidate_evidence": [
+          "Turn right when you are near the window, then turn right and go downstairs."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "once you are at the middle landing you are done.",
+        "requirement": "Preserve the temporal trigger/order and its scope: once you are at the middle landing you are done.",
+        "candidate_evidence": [
+          "Once you are at the middle landing, you are done."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn around and exit the laundry room, straight ahead.",
+          "candidate_quotes": [
+            "Turn around and exit the laundry room, straight ahead."
+          ]
+        },
+        "process": {
+          "text": "You are standing in between a counter on your right and laundry machines on your left. Turn around and exit the laundry room, straight ahead.",
+          "candidate_quotes": [
+            "You are standing in between a counter on your right and laundry machines on your left. Turn around and exit the laundry room, straight ahead."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn around and exit the laundry room, straight ahead.",
+          "candidate_quotes": [
+            "Turn around and exit the laundry room, straight ahead."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: between, on your, right, left, ahead; manner_or_constraint: around",
+          "candidate_quotes": [
+            "between",
+            "on your",
+            "right",
+            "left",
+            "ahead",
+            "around"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "straight ahead",
+          "turn around and exit the laundry room",
+          "You are standing in between a counter on your right and laundry machines on your left",
+          "once you exit laundry room"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you",
+          "candidate_quotes": [
+            "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you"
+          ]
+        },
+        "target": {
+          "text": "Once you are at the middle landing",
+          "candidate_quotes": [
+            "Once you are at the middle landing"
+          ]
+        },
+        "process": {
+          "text": "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you. Turn right when you are near the window, then turn right and go downstairs. Once you are at the middle landing, you are done.",
+          "candidate_quotes": [
+            "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you. Turn right when you are near the window, then turn right and go downstairs. Once you are at the middle landing, you are done."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Once you are at the middle landing",
+          "candidate_quotes": [
+            "Once you are at the middle landing"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once, when, then; spatial_frame: right, ahead, in front of",
+          "candidate_quotes": [
+            "Once",
+            "when",
+            "then",
+            "right",
+            "ahead",
+            "in front of"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ],
+        "source_quotes": [
+          "once you are at the middle landing you are done.",
+          "turn right when you are near the window and turn right go downstairs",
+          "turn right and move a little bit straight ahead towards the window in front of you",
+          "once you exit laundry room"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn around and exit the laundry room, straight ahead.",
+          "candidate_quote": "Turn around and exit the laundry room, straight ahead."
+        },
+        "next_entry": {
+          "text": "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you",
+          "candidate_quote": "Once you exit the laundry room, turn right and move a little bit straight ahead towards the window in front of you"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: You are standing in between a counter on your right…; Preserve the directional/spatial relation and its reference frame: turn around and exit the laundry room; Preserve the temporal trigger/order and its scope: once you exit laundry room. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: You are standing in between a counter on your right…; Preserve the directional/spatial relation and its reference frame: turn around and exit the laundry room; Preserve the temporal trigger/order and its scope: once you exit laundry room"
+  }
+}

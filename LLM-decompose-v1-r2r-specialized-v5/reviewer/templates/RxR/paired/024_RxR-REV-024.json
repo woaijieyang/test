@@ -1,0 +1,252 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-024",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-024",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "4992",
+    "episode_id": "732",
+    "instruction_id": "4992",
+    "scene_id": "mp3d/VzqfbhrpDEA/VzqfbhrpDEA.glb",
+    "trajectory_id": "2067"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You begin facing a door",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You begin facing a door",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "turn to your left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your left",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "take a step to the right of the dining area",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: take a step to the right of the dining area",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "take another step towards the chairs and then turn to your right",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: take another step towards the chairs and then turn to your right",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "take a step towards the staircase",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: take a step towards the staircase",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "turn to your right and then take a step towards the curtains",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right and then take a step towards the curtains",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "and then turn to your left",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: and then turn to your left",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "take a step going down the hallway",
+        "requirement": "Preserve the spatial transition and region/threshold: take a step going down the hallway",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-09",
+        "source_quote": "turn to your right",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-10",
+        "source_quote": "take a step into the bathroom",
+        "requirement": "Preserve the spatial transition and region/threshold: take a step into the bathroom",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-11",
+        "source_quote": "turn to your right again",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right again",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-12",
+        "source_quote": "take 2 steps towards the toilet and you're done.",
+        "requirement": "Preserve the completion or stationary-position condition: take 2 steps towards the toilet and you're done.",
+        "candidate_evidence": [
+          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The position reached after taking exactly two steps toward the toilet.",
+          "candidate_quotes": [
+            "2 steps towards the toilet"
+          ]
+        },
+        "process": {
+          "text": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done.",
+          "candidate_quotes": [
+            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet and you're done."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Complete the explicitly bounded two-step movement toward the toilet; do not add an arrival or STOP.",
+          "candidate_quotes": [
+            "take 2 steps towards the toilet"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: facing, left, right",
+          "candidate_quotes": [
+            "then",
+            "facing",
+            "left",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09",
+          "SRC-10",
+          "SRC-11",
+          "SRC-12"
+        ],
+        "source_quotes": [
+          "take 2 steps towards the toilet and you're done.",
+          "turn to your right again",
+          "take a step into the bathroom",
+          "turn to your right"
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "single_coherent_stage",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: You begin facing a door; Preserve the directional/spatial relation and its reference frame: turn to your left; Preserve the directional/spatial relation and its reference frame: take a step to the right of the dining area. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: You begin facing a door; Preserve the directional/spatial relation and its reference frame: turn to your left; Preserve the directional/spatial relation and its reference frame: take a step to the right of the dining area"
+  }
+}

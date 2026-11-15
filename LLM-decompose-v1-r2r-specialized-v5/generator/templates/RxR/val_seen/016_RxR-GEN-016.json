@@ -1,0 +1,168 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-016",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "3019",
+    "episode_id": "460",
+    "instruction_id": "3019",
+    "scene_id": "mp3d/JeFG25nYj2p/JeFG25nYj2p.glb",
+    "trajectory_id": "1253"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You're looking at a picture of a dog, turn to the left. And go down this hallway past the picture of the zebra. And turn left and go through the doorway with the white open door. And then take through this doorway that's across from the mirror on the right. And take one step into this closet and you're done. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door.",
+      "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn left and go through the doorway with the white open door.",
+          "candidate_quotes": [
+            "Turn left and go through the doorway with the white open door."
+          ]
+        },
+        "process": {
+          "text": "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door.",
+          "candidate_quotes": [
+            "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn left and go through the doorway with the white open door.",
+          "candidate_quotes": [
+            "Turn left and go through the doorway with the white open door."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: left; manner_or_constraint: past, through",
+          "candidate_quotes": [
+            "left",
+            "past",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "And turn left and go through the doorway with the white open door.",
+          "And go down this hallway past the picture of the zebra.",
+          "You're looking at a picture of a dog, turn to the left.",
+          "And then take through this doorway that's across from the mirror on the right."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From that doorway, go through the doorway across from the mirror on the right",
+          "candidate_quotes": [
+            "From that doorway, go through the doorway across from the mirror on the right"
+          ]
+        },
+        "target": {
+          "text": "Take one step into this closet",
+          "candidate_quotes": [
+            "Take one step into this closet"
+          ]
+        },
+        "process": {
+          "text": "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done.",
+          "candidate_quotes": [
+            "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Take one step into this closet",
+          "candidate_quotes": [
+            "Take one step into this closet"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "ordinal_or_count: one step; spatial_frame: right; manner_or_constraint: through",
+          "candidate_quotes": [
+            "one step",
+            "right",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "And take one step into this closet and you're done.",
+          "And then take through this doorway that's across from the mirror on the right.",
+          "And turn left and go through the doorway with the white open door.",
+          "And go down this hallway past the picture of the zebra."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn left and go through the doorway with the white open door.",
+          "candidate_quote": "Turn left and go through the doorway with the white open door."
+        },
+        "next_entry": {
+          "text": "From that doorway, go through the doorway across from the mirror on the right",
+          "candidate_quote": "From that doorway, go through the doorway across from the mirror on the right"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Turn left and go through the doorway with the white open door.'; stage 2 begins from 'From that doorway, go through the doorway across from the mirror on the right'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: spatial_frame: left; manner_or_constraint: past, through Stage 2: ordinal_or_count: one step; spatial_frame: right; manner_or_constraint: through",
+    "handoff_focus": "Stage 1 ends with 'Turn left and go through the doorway with the white open door.'; stage 2 begins from 'From that doorway, go through the doorway across from the mirror on the right'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "orientation_or_reference_frame",
+    "bounded_motion",
+    "multi_stage_split"
+  ]
+}

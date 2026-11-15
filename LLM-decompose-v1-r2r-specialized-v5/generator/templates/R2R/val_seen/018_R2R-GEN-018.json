@@ -1,0 +1,95 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "R2R-GEN-018",
+  "role": "generator",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "18",
+    "episode_id": "18",
+    "instruction_id": null,
+    "scene_id": "mp3d/JeFG25nYj2p/JeFG25nYj2p.glb",
+    "trajectory_id": "180",
+    "source_key": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "keep",
+    "rationale": "Keep the complete route as one executable stage because the source does not provide a useful intermediate completion point without detaching a coupled maneuver or inventing a state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Wait at the bedroom door.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ]
+        },
+        "process": {
+          "text": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. ",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "until; through",
+          "candidate_quotes": [
+            "until",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom.",
+          "Wait at the bedroom door."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "single_coherent_stage",
+    "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Go through the doorway to the room with the sink and follow the hallway until you get to a…). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
+    "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
+    "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "temporal_dependency",
+    "intermediate_stop_or_wait",
+    "single_stage_keep"
+  ]
+}

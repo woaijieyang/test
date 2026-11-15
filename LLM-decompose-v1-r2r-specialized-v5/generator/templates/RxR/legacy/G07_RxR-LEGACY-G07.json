@@ -1,0 +1,181 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-LEGACY-G07",
+  "role": "generator",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G07",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": {
+    "kind": "inherited_prompt_example",
+    "source_status": "synthetic_or_adapted_not_raw_RxR_annotation",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record."
+  },
+  "input": {
+    "original_instruction": "You start facing a wall. Turn left and walk towards the white table. Now you are standing next to the white table, with the table on your left. Turn right and walk through the open doorway into the kitchen. Stop just inside, facing the sink."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
+      "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "At that position, the table should be on your left.",
+          "candidate_quotes": [
+            "At that position, the table should be on your left."
+          ]
+        },
+        "process": {
+          "text": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
+          "candidate_quotes": [
+            "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "At that position, the table should be on your left.",
+          "candidate_quotes": [
+            "At that position, the table should be on your left."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: until; spatial_frame: facing, left, on your",
+          "candidate_quotes": [
+            "until",
+            "facing",
+            "left",
+            "on your"
+          ]
+        },
+        "source_quotes": [
+          "Turn left and walk towards the white table.",
+          "You start facing a wall.",
+          "Now you are standing next to the white table, with the table on your left.",
+          "Turn right and walk through the open doorway into the kitchen."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen",
+          "candidate_quotes": [
+            "From beside the white table, turn right and walk through the open doorway into the kitchen"
+          ]
+        },
+        "target": {
+          "text": "Stop just inside the kitchen, facing the sink.",
+          "candidate_quotes": [
+            "Stop just inside the kitchen, facing the sink."
+          ]
+        },
+        "process": {
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink.",
+          "candidate_quotes": [
+            "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Stop just inside the kitchen, facing the sink.",
+          "candidate_quotes": [
+            "Stop just inside the kitchen, facing the sink."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "spatial_frame: right, facing; manner_or_constraint: through",
+          "candidate_quotes": [
+            "right",
+            "facing",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Stop just inside, facing the sink.",
+          "Turn right and walk through the open doorway into the kitchen.",
+          "Turn left and walk towards the white table.",
+          "Now you are standing next to the white table, with the table on your left."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "At that position, the table should be on your left.",
+          "candidate_quote": "At that position, the table should be on your left."
+        },
+        "next_entry": {
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen",
+          "candidate_quote": "From beside the white table, turn right and walk through the open doorway into the kitchen"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "expected_state_and_endpoint_orientation",
+    "why_this_case_matters": "Use the narrated beside-table state as the intended result of the approach, then hand off from that state into the kitchen.",
+    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Keep the table-on-left relation endpoint-scoped; do not turn it into a constraint over the whole approach."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "landmark_conditioned_navigation",
+    "intermediate_stop_or_wait",
+    "orientation_or_reference_frame",
+    "multi_stage_split",
+    "expected_state_and_endpoint_orientation",
+    "legacy_user_uploaded_json"
+  ],
+  "legacy_reference": {
+    "original_template_id": "G07",
+    "title": "Expected-state narration and final orientation",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+    "original_output": {
+      "status": "ok",
+      "subtasks": [
+        "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
+        "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+      ],
+      "issues": []
+    },
+    "upgrade_note": "The original output is retained for traceability. The active output above is restructured to satisfy the uploaded v1.3 five-element stage_audit and adjacent handoff contract."
+  }
+}

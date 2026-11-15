@@ -1,0 +1,230 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-11",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "8874",
+    "episode_id": "1377",
+    "instruction_id": "8874",
+    "scene_id": null
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_uploaded_val_seen",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "ORDINAL"
+  },
+  "review_input": {
+    "original_instruction": "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the first door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You're going to start in a bathroom facing some sinks and a mirror.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to start in a bathroom facing some sinks and a mirror.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "You're going to turn slightly towards your right.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to turn slightly towards your right.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Take a step forward towards the first door opening that you see that's right in front of you.",
+        "requirement": "Preserve the ordinal target and its counting origin: Take a step forward towards the first door opening that you see that's right in front of you.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "You're going to take one small step forway right before the next door opening.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to take one small step forway right before the next door opening.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "On your right there should be a shower with on a hook on the side with a robe.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: On your right there should be a shower with on a hook on the side with a robe.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "On your left should another robe and some more hooks and what might be a closet.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: On your left should another robe and some more hooks and what might be a closet.",
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_assessable",
+        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "first",
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "candidate_evidence": [
+          "You're going to start in a bathroom facing some sinks and a mirror."
+        ],
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C4_CONTINUITY",
+        "evidence_level": "S1",
+        "problem": "The candidate removes the source ordinal identity and changes which landmark is selected.",
+        "execution_consequence": "The ordinal changes which door/landmark is selected; the agent may enter the wrong room or count from the wrong item.",
+        "repair": {
+          "operation": "ordinal",
+          "affected_stage_indices": [
+            0
+          ],
+          "instruction": "Restore the exact ordinal and preserve its counting origin.",
+          "protected_requirements": [
+            "Preserve every other source-supported action and landmark.",
+            "Do not add a stop or route not stated by the source.",
+            "Keep the original condition, direction, count, and spatial relation."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "gap",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "This will be your stopping point.",
+          "candidate_quotes": [
+            "This will be your stopping point."
+          ]
+        },
+        "process": {
+          "text": "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point.",
+          "candidate_quotes": [
+            "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "candidate_quotes": [],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: before; spatial_frame: facing, right, in front of, On your, left",
+          "candidate_quotes": [
+            "before",
+            "facing",
+            "right",
+            "in front of",
+            "On your",
+            "left"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "This will be your stopping point.",
+          "On your left should another robe and some more hooks and what might be a closet.",
+          "On your right there should be a shower with on a hook on the side with a robe.",
+          "You're going to take one small step forway right before the next door opening."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "ordinal",
+    "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
+    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
+    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+  }
+}

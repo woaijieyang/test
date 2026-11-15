@@ -1,0 +1,245 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-LEGACY-G08",
+  "role": "generator",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G08",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": {
+    "kind": "inherited_prompt_example",
+    "source_status": "synthetic_or_adapted_not_raw_RxR_annotation",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record."
+  },
+  "input": {
+    "original_instruction": "Turn left, sorry, turn right, and walk to the blue door next to the stairs. Go through it into the lounge. Keep the sofa on your left as you cross the lounge and stop beside the window. Then return through the same blue door and stop beside the stairs."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+      "Cross the lounge with the sofa on your left and stop beside the window.",
+      "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+          "candidate_quotes": [
+            "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+          ]
+        },
+        "process": {
+          "text": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+          "candidate_quotes": [
+            "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+          "candidate_quotes": [
+            "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: right; manner_or_constraint: through",
+          "candidate_quotes": [
+            "then",
+            "right",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Go through it into the lounge.",
+          "Turn left, sorry, turn right, and walk to the blue door next to the stairs.",
+          "Then return through the same blue door and stop beside the stairs.",
+          "Keep the sofa on your left as you cross the lounge and stop beside the window."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Cross the lounge with the sofa on your left and stop beside the window.",
+          "candidate_quotes": [
+            "Cross the lounge with the sofa on your left and stop beside the window."
+          ]
+        },
+        "process": {
+          "text": "Cross the lounge with the sofa on your left and stop beside the window.",
+          "candidate_quotes": [
+            "Cross the lounge with the sofa on your left and stop beside the window."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Cross the lounge with the sofa on your left and stop beside the window.",
+          "candidate_quotes": [
+            "Cross the lounge with the sofa on your left and stop beside the window."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "spatial_frame: on your, left",
+          "candidate_quotes": [
+            "on your",
+            "left"
+          ]
+        },
+        "source_quotes": [
+          "Keep the sofa on your left as you cross the lounge and stop beside the window.",
+          "Then return through the same blue door and stop beside the stairs.",
+          "Go through it into the lounge.",
+          "Turn left, sorry, turn right, and walk to the blue door next to the stairs."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs",
+          "candidate_quotes": [
+            "From beside the window, return through the same blue door next to the stairs and stop beside the stairs"
+          ]
+        },
+        "target": {
+          "text": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs.",
+          "candidate_quotes": [
+            "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+          ]
+        },
+        "process": {
+          "text": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs.",
+          "candidate_quotes": [
+            "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs.",
+          "candidate_quotes": [
+            "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "manner_or_constraint: through",
+          "candidate_quotes": [
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Then return through the same blue door and stop beside the stairs.",
+          "Turn left, sorry, turn right, and walk to the blue door next to the stairs.",
+          "Keep the sofa on your left as you cross the lounge and stop beside the window.",
+          "Go through it into the lounge."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+          "candidate_quote": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Cross the lounge with the sofa on your left and stop beside the window"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Cross the lounge with the sofa on your left and stop beside the window.",
+          "candidate_quote": "Cross the lounge with the sofa on your left and stop beside the window."
+        },
+        "next_entry": {
+          "text": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs",
+          "candidate_quote": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "correction_ongoing_constraint_and_return",
+    "why_this_case_matters": "Apply the spoken correction to the first turn, keep the sofa-left constraint over the lounge crossing, and preserve the explicit return through the same door as a separate event.",
+    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "A return visit is not satisfied by reaching the earlier door once; retain the intervening route and repeated crossing."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "intermediate_stop_or_wait",
+    "return_or_revisit",
+    "orientation_or_reference_frame",
+    "multi_stage_split",
+    "correction_ongoing_constraint_and_return",
+    "legacy_user_uploaded_json"
+  ],
+  "legacy_reference": {
+    "original_template_id": "G08",
+    "title": "Correction, ongoing constraint, and an explicit return visit",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+    "original_output": {
+      "status": "ok",
+      "subtasks": [
+        "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+        "Cross the lounge with the sofa on your left and stop beside the window.",
+        "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+      ],
+      "issues": []
+    },
+    "upgrade_note": "The original output is retained for traceability. The active output above is restructured to satisfy the uploaded v1.3 five-element stage_audit and adjacent handoff contract."
+  }
+}

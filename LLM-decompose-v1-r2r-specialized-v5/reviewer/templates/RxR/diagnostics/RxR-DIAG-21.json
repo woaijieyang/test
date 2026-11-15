@@ -1,0 +1,286 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-21",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "2426",
+    "episode_id": "265",
+    "instruction_id": "2426",
+    "scene_id": "mp3d/D7N2EKCX4Sj/D7N2EKCX4Sj.glb",
+    "trajectory_id": "1009"
+  },
+  "provenance": {
+    "kind": "reviewer_only_semantic_adversarial_example",
+    "source_status": "original_instruction_from_uploaded_val_seen_template_source",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "AUXILIARY_LANDMARK_AS_TARGET"
+  },
+  "review_input": {
+    "original_instruction": "You're standing facing some wooden portraits that are hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Now walk in between it and the round dining tables and head int he direction of the wooden doorway with the off white curtains that will be on your right. oh and now take a small step inside this room and walk back out from the place you came and turn right into this wooden doorless doorway and into a small hall. You will see a pink stalled restroom and an open door at the end of the hall on the right. Which turns out to be a men's restroom. Stop at the entrance of it and for reference, there will be a fire extinguisher on the wall next to you. You're done. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+        "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You're standing facing some wooden portraits that are hanging on the wall.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn to the left and step towards the stone edge of the fireplace.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Now walk in between it and the round dining tables and head int he direction of the wooden doorway with the off white curtains that will be on your right.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "oh and now take a small step inside this room and walk back out from the place you came and turn right into this wooden doorless doorway and into a small hall.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "You will see a pink stalled restroom and an open door at the end of the hall on the right.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Stop at the entrance of it and for reference, there will be a fire extinguisher on the wall next to you.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The source target is the men’s restroom entrance; the fire extinguisher is only a nearby reference."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "The source target is the men’s restroom entrance; the fire extinguisher is only a nearby reference."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "issue",
+        "conclusion": "The altered event changes the stage completion/entry relation; the adjacent handoff must not be marked supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The source target is the men’s restroom entrance; the fire extinguisher is only a nearby reference."
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "Stop at the entrance of it",
+        "source_requirement_ids": [
+          "SRC-06"
+        ],
+        "candidate_evidence": [
+          "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        ],
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C05",
+        "evidence_level": "S1",
+        "problem": "The source target is the men’s restroom entrance; the fire extinguisher is only a nearby reference.",
+        "execution_consequence": "The agent may stop at the extinguisher rather than the restroom entrance.",
+        "repair": {
+          "operation": "restore_source_semantics",
+          "affected_stage_indices": [
+            1
+          ],
+          "instruction": "Restore the stop at the restroom entrance and keep the extinguisher as a reference cue only.",
+          "protected_requirements": [
+            "Preserve all unaffected actions and source order.",
+            "Do not add a physical STOP unless the source requires it."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+          ]
+        },
+        "process": {
+          "text": "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: facing, left, between, on your, right",
+          "candidate_quotes": [
+            "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "Stop at the entrance of it"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "gap",
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall"
+          ]
+        },
+        "target": {
+          "text": "The entrance to the identified men's restroom; the fire extinguisher is only a nearby reference landmark.",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+          ]
+        },
+        "process": {
+          "text": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done.",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+          ]
+        },
+        "ending": {
+          "kind": "unspecified",
+          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "The open door is at the end of the hall on the right; the fire extinguisher is a nearby visual reference, not the destination.",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-06"
+        ],
+        "source_quotes": [
+          "Stop at the entrance of it"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "gap",
+        "preceding_exit": {
+          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
+          "candidate_quote": "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+        },
+        "next_entry": {
+          "text": "The actual next candidate stage.",
+          "candidate_quote": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop beside the fire extinguisher. There will be a fire extinguisher on the wall next to you. You are done."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "auxiliary_landmark_as_target",
+    "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+  }
+}

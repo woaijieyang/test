@@ -1,0 +1,215 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "R2R-GEN-005",
+  "role": "generator",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "5",
+    "episode_id": "5",
+    "instruction_id": null,
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "trajectory_id": "93",
+    "source_key": "R2R|val_seen|standard|record_id=5|episode_id=5|trajectory_id=93"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "Walk through the office passed the table and armchairs. Walk through the door on the other side of the table swith the arched window above. Walk down the hall and into the room at the end of the hallway. Walk towards the circular tables in the middle of the large room. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk through the office past the table and armchairs. Walk through the door on the other side of the table with the arched window above.",
+      "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+      "Inside the large room, walk towards the circular tables in the middle."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk through the door on the other side of the table with the arched window above.",
+          "candidate_quotes": [
+            "Walk through the door on the other side of the table with the arched window above."
+          ]
+        },
+        "process": {
+          "text": "Walk through the office past the table and armchairs. Walk through the door on the other side of the table with the arched window above.",
+          "candidate_quotes": [
+            "Walk through the office past the table and armchairs. Walk through the door on the other side of the table with the arched window above."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "Walk through the door on the other side of the table with the arched window above."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "through; past",
+          "candidate_quotes": [
+            "through",
+            "past"
+          ]
+        },
+        "source_quotes": [
+          "Walk through the office passed the table and armchairs.",
+          "Walk through the door on the other side of the table swith the arched window above."
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From that doorway, walk down the hall and enter the room at the end of the hallway"
+          ]
+        },
+        "target": {
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+          "candidate_quotes": [
+            "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          ]
+        },
+        "process": {
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+          "candidate_quotes": [
+            "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_quotes": [
+          "Walk down the hall and into the room at the end of the hallway."
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "Inside the large room, walk towards the circular tables in the middle"
+          ]
+        },
+        "target": {
+          "text": "Inside the large room, walk towards the circular tables in the middle.",
+          "candidate_quotes": [
+            "Inside the large room, walk towards the circular tables in the middle."
+          ]
+        },
+        "process": {
+          "text": "Inside the large room, walk towards the circular tables in the middle.",
+          "candidate_quotes": [
+            "Inside the large room, walk towards the circular tables in the middle."
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "Preserve the final directed approach; the source does not specify a further arrival threshold or physical STOP.",
+          "candidate_quotes": [
+            "Inside the large room, walk towards the circular tables in the middle."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_quotes": [
+          "Walk towards the circular tables in the middle of the large room."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk through the door on the other side of the table with the arched window above.",
+          "candidate_quote": "Walk through the door on the other side of the table with the arched window above."
+        },
+        "next_entry": {
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway",
+          "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'Walk through the door on the other side of the table with the arched window above.'; the next stage begins with 'From that doorway, walk down the hall and enter the room at the end of the hallway'. The handoff carries the established location/reference frame without adding a physical stop."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+          "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway."
+        },
+        "next_entry": {
+          "text": "Inside the large room, walk towards the circular tables in the middle",
+          "candidate_quote": "Inside the large room, walk towards the circular tables in the middle"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'From that doorway, walk down the hall and enter the room at the end of the hallway.'; the next stage begins with 'Inside the large room, walk towards the circular tables in the middle'. The handoff carries the established location/reference frame without adding a physical stop."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 3 stages. Stage 1 ends with 'Walk through the door on the other side of the table with the arched window above.'; stage 2 begins from 'From that doorway, walk down the hall and enter the room at the end of the hallway'. Stage 2 ends with 'From that doorway, walk down the hall and enter the room at the end of the hallway.'; stage 3 begins from 'Inside the large room, walk towards the circular tables in the middle'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: through; past",
+    "handoff_focus": "Stage 1 ends with 'Walk through the door on the other side of the table with the arched window above.'; stage 2 begins from 'From that doorway, walk down the hall and enter the room at the end of the hallway'. Stage 2 ends with 'From that doorway, walk down the hall and enter the room at the end of the hallway.'; stage 3 begins from 'Inside the large room, walk towards the circular tables in the middle'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "multi_stage_split"
+  ]
+}

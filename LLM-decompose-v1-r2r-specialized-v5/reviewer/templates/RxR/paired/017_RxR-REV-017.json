@@ -1,0 +1,195 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-017",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-017",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "3021",
+    "episode_id": "469",
+    "instruction_id": "3021",
+    "scene_id": "mp3d/gTV8FGcVJC9/gTV8FGcVJC9.glb",
+    "trajectory_id": "1255"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Look around there is grand staircase in a huge house. We will head towards the room that's in front of us with the piano, leaving the two statues on our left. Head towards that piano, stepping on the carpet. Continuing forward towards that piano, with the chairs and table on our left. We will walk towards the glass doors, stopping before we exit. Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet. We have reached our destination.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Look around there is grand staircase in a huge house. We will head towards the room that's in front of us with the piano, leaving the two statues on our left. Head towards that piano, stepping on the carpet. Continuing forward towards that piano, with the chairs and table on our left. We will walk towards the glass doors, stopping before we exit. Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet. We have reached our destination."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Look around there is grand staircase in a huge house.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Look around there is grand staircase in a huge house.",
+        "candidate_evidence": [
+          "Look around there is grand staircase in a huge house."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "We will head towards the room that's in front of us with the piano, leaving the two statues on our left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We will head towards the room that's in front of us with the piano, leaving the two statues on our left.",
+        "candidate_evidence": [
+          "We will head towards the room that's in front of us with the piano, leaving the two statues on our left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Head towards that piano, stepping on the carpet.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Head towards that piano, stepping on the carpet.",
+        "candidate_evidence": [
+          "Head towards that piano, stepping on the carpet."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Continuing forward towards that piano, with the chairs and table on our left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Continuing forward towards that piano, with the chairs and table on our left.",
+        "candidate_evidence": [
+          "Continuing forward towards that piano, with the chairs and table on our left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "We will walk towards the glass doors, stopping before we exit.",
+        "requirement": "Preserve the temporal trigger/order and its scope: We will walk towards the glass doors, stopping before we exit.",
+        "candidate_evidence": [
+          "We will walk towards the glass doors, stopping before we exit."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet.",
+        "requirement": "Preserve the completion or stationary-position condition: Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet.",
+        "candidate_evidence": [
+          "Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet.",
+          "candidate_quotes": [
+            "Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet."
+          ]
+        },
+        "process": {
+          "text": "Look around there is grand staircase in a huge house. We will head towards the room that's in front of us with the piano, leaving the two statues on our left. Head towards that piano, stepping on the carpet. Continuing forward towards that piano, with the chairs and table on our left. We will walk towards the glass doors, stopping before we exit. Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet. We have reached our destination.",
+          "candidate_quotes": [
+            "Look around there is grand staircase in a huge house. We will head towards the room that's in front of us with the piano, leaving the two statues on our left. Head towards that piano, stepping on the carpet. Continuing forward towards that piano, with the chairs and table on our left. We will walk towards the glass doors, stopping before we exit. Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet. We have reached our destination."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Finish at the specified position before exiting: doors directly ahead, looking outside, while remaining indoors on the carpet.",
+          "candidate_quotes": [
+            "stopping before we exit",
+            "staying indoors on the carpet",
+            "We have reached our destination."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: before; ordinal_or_count: two; spatial_frame: in front of, left; manner_or_constraint: around",
+          "candidate_quotes": [
+            "before",
+            "two",
+            "in front of",
+            "left",
+            "around"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ],
+        "source_quotes": [
+          "We have reached our destination.",
+          "Standing with the doors directly in front of us looking outside to another set of table and chairs, but staying indoors on the carpet.",
+          "We will walk towards the glass doors, stopping before we exit.",
+          "Continuing forward towards that piano, with the chairs and table on our left."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "single_coherent_stage",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Look around there is grand staircase in a huge house.; Preserve the directional/spatial relation and its reference frame: We will head towards the room that's in front of us…; Preserve the ordered route action or target-identifying landmark: Head towards that piano, stepping on the carpet.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Look around there is grand staircase in a huge house.; Preserve the directional/spatial relation and its reference frame: We will head towards the room that's in front of us…; Preserve the ordered route action or target-identifying landmark: Head towards that piano, stepping on the carpet."
+  }
+}

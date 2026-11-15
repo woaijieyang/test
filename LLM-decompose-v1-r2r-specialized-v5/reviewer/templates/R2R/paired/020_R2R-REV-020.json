@@ -1,0 +1,249 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-REV-020",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": "R2R-GEN-020",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "20",
+    "episode_id": "20",
+    "instruction_id": null,
+    "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
+    "trajectory_id": "185",
+    "source_key": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185"
+  },
+  "provenance": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table and up the stairs into the entry way stopping on the third tile from the left at the top step. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
+        "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk straight into the living room passing the chair and the couch",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the chair and the couch",
+        "candidate_evidence": [
+          "Walk straight into the living room, passing the chair and the couch."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "taking a left behind the couch and past the dining room table",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining room table",
+        "candidate_evidence": [
+          "Take a left behind the couch and continue past the dining room table."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "up the stairs into the entry way",
+        "requirement": "Preserve the spatial transition and region/threshold: up the stairs into the entry way",
+        "candidate_evidence": [
+          "After passing the dining room table, go up the stairs into the entryway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "stopping on the third tile from the left at the top step",
+        "requirement": "Preserve the ordinal target and its counting origin: stopping on the third tile from the left at the top step",
+        "candidate_evidence": [
+          "Stop on the third tile from the left at the top step."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Take a left behind the couch and continue past the dining room table.",
+          "candidate_quotes": [
+            "Take a left behind the couch and continue past the dining room table."
+          ]
+        },
+        "process": {
+          "text": "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
+          "candidate_quotes": [
+            "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "Take a left behind the couch and continue past the dining room table."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "left; past; behind",
+          "candidate_quotes": [
+            "left",
+            "past",
+            "behind"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "Walk straight into the living room passing the chair and the couch",
+          "taking a left behind the couch and past the dining room table"
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "After passing the dining room table, go up the stairs into the entryway"
+          ]
+        },
+        "target": {
+          "text": "Stop on the third tile from the left at the top step.",
+          "candidate_quotes": [
+            "Stop on the third tile from the left at the top step."
+          ]
+        },
+        "process": {
+          "text": "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step.",
+          "candidate_quotes": [
+            "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "candidate_quotes": [
+            "Stop on the third tile from the left at the top step."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "After; third; left",
+          "candidate_quotes": [
+            "After",
+            "third",
+            "left"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "up the stairs into the entry way",
+          "stopping on the third tile from the left at the top step"
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Take a left behind the couch and continue past the dining room table.",
+          "candidate_quote": "Take a left behind the couch and continue past the dining room table."
+        },
+        "next_entry": {
+          "text": "After passing the dining room table, go up the stairs into the entryway",
+          "candidate_quote": "After passing the dining room table, go up the stairs into the entryway"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'Take a left behind the couch and continue past the dining room table.'; the next stage begins with 'After passing the dining room table, go up the stairs into the entryway'. The handoff carries the established location/reference frame without adding a physical stop."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "why_this_review_matters": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective.",
+    "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
+    "retrieval_tags": [
+      "room_transition",
+      "stairs_or_level_change",
+      "landmark_conditioned_navigation",
+      "ordinal_target_selection",
+      "orientation_or_reference_frame",
+      "single_stage_keep"
+    ],
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the…; Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining…; Preserve the spatial transition and region/threshold: up the stairs into the entry way. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the…; Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining…; Preserve the spatial transition and region/threshold: up the stairs into the entry way"
+  }
+}

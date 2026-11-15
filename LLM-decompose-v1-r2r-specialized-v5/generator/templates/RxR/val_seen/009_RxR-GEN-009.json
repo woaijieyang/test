@@ -1,0 +1,239 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-009",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "1669",
+    "episode_id": "214",
+    "instruction_id": "1669",
+    "scene_id": "mp3d/ZMojNkEp431/ZMojNkEp431.glb",
+    "trajectory_id": "711"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You're currently looking into a whiteboard. Turn around, and face right. Take a step forward to the wooden desk, passing the double glass doors on your left. Turn slightly to the right. Take a step forward to the wooden news stand, holding a pile books. Turn around, and face right. Take a step forward, passing a long tan table with a potted plant on top. Take another step forward, keeping that long tan desk to the right of you. Slightly in front of you, you see a white bookshelf. Take two steps forward, passing the white bookshelf on your left. Now, turn around and face right. You see a white computer desktop on a tan desk. Take a step forward to your left. Once you're standing slightly in front of, to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it, you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You are currently looking into a whiteboard. Turn around and face right. Take a step forward to the wooden desk, passing the double glass doors on your left. Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+      "Turn around and face right. Take a step forward, passing a long tan table with a potted plant on top. Take another step forward, keeping that long tan desk to your right. Slightly in front of you, you see a white bookshelf. Take two steps forward, passing the white bookshelf on your left.",
+      "Now turn around and face right. You see a white computer desktop on a tan desk. Take a step forward to your left. Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it, you are done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "candidate_quotes": [
+            "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
+          ]
+        },
+        "process": {
+          "text": "You are currently looking into a whiteboard. Turn around and face right. Take a step forward to the wooden desk, passing the double glass doors on your left. Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "candidate_quotes": [
+            "You are currently looking into a whiteboard. Turn around and face right. Take a step forward to the wooden desk, passing the double glass doors on your left. Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "candidate_quotes": [
+            "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "spatial_frame: right, on your, left; manner_or_constraint: around",
+          "candidate_quotes": [
+            "right",
+            "on your",
+            "left",
+            "around"
+          ]
+        },
+        "source_quotes": [
+          "Take a step forward to your left.",
+          "Turn around, and face right.",
+          "Take a step forward to the wooden news stand, holding a pile books.",
+          "Turn slightly to the right."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Take two steps forward, passing the white bookshelf on your left.",
+          "candidate_quotes": [
+            "Take two steps forward, passing the white bookshelf on your left."
+          ]
+        },
+        "process": {
+          "text": "Turn around and face right. Take a step forward, passing a long tan table with a potted plant on top. Take another step forward, keeping that long tan desk to your right. Slightly in front of you, you see a white bookshelf. Take two steps forward, passing the white bookshelf on your left.",
+          "candidate_quotes": [
+            "Turn around and face right. Take a step forward, passing a long tan table with a potted plant on top. Take another step forward, keeping that long tan desk to your right. Slightly in front of you, you see a white bookshelf. Take two steps forward, passing the white bookshelf on your left."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Take two steps forward, passing the white bookshelf on your left.",
+          "candidate_quotes": [
+            "Take two steps forward, passing the white bookshelf on your left."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "ordinal_or_count: two; spatial_frame: right, in front of, on your, left; manner_or_constraint: around, keeping",
+          "candidate_quotes": [
+            "two",
+            "right",
+            "in front of",
+            "on your",
+            "left",
+            "around",
+            "keeping"
+          ]
+        },
+        "source_quotes": [
+          "Take a step forward to your left.",
+          "Take two steps forward, passing the white bookshelf on your left.",
+          "Slightly in front of you, you see a white bookshelf.",
+          "Take another step forward, keeping that long tan desk to the right of you."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Now turn around and face right",
+          "candidate_quotes": [
+            "Now turn around and face right"
+          ]
+        },
+        "target": {
+          "text": "Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it",
+          "candidate_quotes": [
+            "Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it"
+          ]
+        },
+        "process": {
+          "text": "Now turn around and face right. You see a white computer desktop on a tan desk. Take a step forward to your left. Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it, you are done.",
+          "candidate_quotes": [
+            "Now turn around and face right. You see a white computer desktop on a tan desk. Take a step forward to your left. Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it, you are done."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it",
+          "candidate_quotes": [
+            "Once you are standing slightly in front of and to the left of a black computer chair connected to a tan desk with a silver computer desktop on top of it"
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: Once; spatial_frame: right, left, in front of; manner_or_constraint: around",
+          "candidate_quotes": [
+            "Once",
+            "right",
+            "left",
+            "in front of",
+            "around"
+          ]
+        },
+        "source_quotes": [
+          "Take a step forward to your left.",
+          "You see a white computer desktop on a tan desk.",
+          "Now, turn around and face right.",
+          "Turn around, and face right."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "candidate_quote": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Turn around and face right"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Take two steps forward, passing the white bookshelf on your left.",
+          "candidate_quote": "Take two steps forward, passing the white bookshelf on your left."
+        },
+        "next_entry": {
+          "text": "Now turn around and face right",
+          "candidate_quote": "Now turn around and face right"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 3 stages. Stage 1 ends with 'Turn slightly to the right and take a step forward to the wooden news stand holding a pile of…'; stage 2 begins from 'Turn around and face right. Take a step forward, passing a long tan table with a potted plant…'. Stage 2 ends with 'Take two steps forward, passing the white bookshelf on your left.'; stage 3 begins from 'Now turn around and face right'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: spatial_frame: right, on your, left; manner_or_constraint: around Stage 2: ordinal_or_count: two; spatial_frame: right, in front of, on your, left; manner_or_constraint: around, keeping Stage 3: temporal: Once; spatial_frame: right, left, in front of; manner_or_constraint: around",
+    "handoff_focus": "Stage 1 ends with 'Turn slightly to the right and take a step forward to the wooden news stand holding a pile of…'; stage 2 begins from 'Turn around and face right. Take a step forward, passing a long tan table with a potted plant…'. Stage 2 ends with 'Take two steps forward, passing the white bookshelf on your left.'; stage 3 begins from 'Now turn around and face right'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+  },
+  "retrieval_tags": [
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "temporal_dependency",
+    "orientation_or_reference_frame",
+    "bounded_motion",
+    "multi_stage_split"
+  ]
+}

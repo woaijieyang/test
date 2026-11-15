@@ -1,0 +1,92 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "R2R-GEN-032",
+  "role": "generator",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "32",
+    "episode_id": "32",
+    "instruction_id": null,
+    "scene_id": "mp3d/dhjEzFoUFzH/dhjEzFoUFzH.glb",
+    "trajectory_id": "355",
+    "source_key": "R2R|val_seen|standard|record_id=32|episode_id=32|trajectory_id=355"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "Go left down the hall. Continue to the stairs. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "keep",
+    "rationale": "Keep the complete route as one executable stage because the source does not provide a useful intermediate completion point without detaching a coupled maneuver or inventing a state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Go left down the hall. Continue to the stairs. "
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Continue to the stairs.",
+          "candidate_quotes": [
+            "Continue to the stairs."
+          ]
+        },
+        "process": {
+          "text": "Go left down the hall. Continue to the stairs. ",
+          "candidate_quotes": [
+            "Go left down the hall. Continue to the stairs. "
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "Continue toward the stairs as the final directed approach. The source does not specify an arrival threshold, exact position or stop.",
+          "candidate_quotes": [
+            "Continue to the stairs."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "left",
+          "candidate_quotes": [
+            "left"
+          ]
+        },
+        "source_quotes": [
+          "Go left down the hall.",
+          "Continue to the stairs."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "single_coherent_stage",
+    "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Go left down the hall. Continue to the stairs.). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
+    "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
+    "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint."
+  },
+  "retrieval_tags": [
+    "stairs_or_level_change",
+    "orientation_or_reference_frame",
+    "single_stage_keep"
+  ]
+}

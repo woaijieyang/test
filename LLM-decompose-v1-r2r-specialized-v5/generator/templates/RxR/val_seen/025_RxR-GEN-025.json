@@ -1,0 +1,177 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-025",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5295",
+    "episode_id": "816",
+    "instruction_id": "5295",
+    "scene_id": "mp3d/D7N2EKCX4Sj/D7N2EKCX4Sj.glb",
+    "trajectory_id": "2185"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "For your start point you are facing a wooden garden arbor turn around so that you can see the rows of white chairs to your right and left. And move forward through the center aisle. Once you are at the end of the aisle  you will need to make a right turn towards the column that's to the right. And from that column that is supporting the balcony above you will see a bench, a black iron bench. You will need to make your way to the second black iron bench that is directly opposite and hop over the bench. you will see there's an open doorway. Move forward to the left and enter that doorway. And move one step inside it looks like a dining room or a banquet hall. Turn to the left you will move in front of a column and you will also see there's a banquet table to your left and one to the right closet to the flat screen TV on the wall. You will need to move in between both tables."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway.",
+      "Move forward to the left and enter that doorway. Move one step inside; it looks like a dining room or a banquet hall. Turn to the left. You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall. Move in between both tables."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The second black iron bench directly opposite the first, which the route explicitly says to hop over.",
+          "candidate_quotes": [
+            "second black iron bench"
+          ]
+        },
+        "process": {
+          "text": "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway.",
+          "candidate_quotes": [
+            "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Complete the hop over the selected second black iron bench. The following open doorway is a visual cue for the next stage, not proof that the doorway has been reached.",
+          "candidate_quotes": [
+            "hop over the bench"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "The second bench is selected from the bench opposite the column; after hopping over it, the open doorway becomes visible.",
+          "candidate_quotes": [
+            "second black iron bench",
+            "hop over the bench",
+            "open doorway"
+          ]
+        },
+        "source_quotes": [
+          "And move forward through the center aisle.",
+          "For your start point you are facing a wooden garden arbor turn around so that you can see the rows of white chairs to your right and left.",
+          "And from that column that is supporting the balcony above you will see a bench, a black iron bench.",
+          "You will need to make your way to the second black iron bench that is directly opposite and hop over the bench."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The position between the two banquet tables.",
+          "candidate_quotes": [
+            "Move in between both tables"
+          ]
+        },
+        "process": {
+          "text": "Move forward to the left and enter that doorway. Move one step inside; it looks like a dining room or a banquet hall. Turn to the left. You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall. Move in between both tables.",
+          "candidate_quotes": [
+            "Move forward to the left and enter that doorway. Move one step inside; it looks like a dining room or a banquet hall. Turn to the left. You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall. Move in between both tables."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Reach the specified position in between the two banquet tables.",
+          "candidate_quotes": [
+            "Move in between both tables."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "descriptive_uncertainty: dining room or banquet hall describes uncertain room identity, not an alternative route; bounded movement: one step inside; spatial relations: column/table left and right.",
+          "candidate_quotes": [
+            "dining room or a banquet hall",
+            "one step inside",
+            "Move in between both tables"
+          ]
+        },
+        "source_quotes": [
+          "And move one step inside it looks like a dining room or a banquet hall.",
+          "Move forward to the left and enter that doorway.",
+          "You will need to move in between both tables.",
+          "Turn to the left you will move in front of a column and you will also see there's a banquet table to your left and one to the right closet to the flat screen TV on the wall."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the hop over the selected second black iron bench. The open doorway is only a visual cue and has not yet been reached.",
+          "candidate_quote": "hop over the bench"
+        },
+        "next_entry": {
+          "text": "Continue from the post-hop state and execute the approach to and entry through the visible open doorway.",
+          "candidate_quote": "Move forward to the left and enter that doorway"
+        },
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The selected second black iron bench has been hopped over."
+          },
+          {
+            "kind": "inherited_context",
+            "text": "The open doorway is visible but has not yet been reached; stage 2 must still approach and enter it."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The first stage ends after the explicitly requested hop over the second bench. The following 'you will see an open doorway' is an anticipated visual cue, not arrival at the threshold. The next stage therefore still performs the approach and doorway entry."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'hop over the bench'; stage 2 begins from 'Move forward to the left and enter that doorway. Move one step inside; it looks like a dining…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: The second bench is selected from the bench opposite the column; after hopping over it, the open doorway… Stage 2: descriptive_uncertainty: dining room or banquet hall describes uncertain room identity, not an alternative…",
+    "handoff_focus": "Stage 1 ends with 'hop over the bench'; stage 2 begins from 'Move forward to the left and enter that doorway. Move one step inside; it looks like a dining…'."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "ordinal_target_selection",
+    "temporal_dependency",
+    "orientation_or_reference_frame",
+    "bounded_motion",
+    "multi_stage_split"
+  ]
+}

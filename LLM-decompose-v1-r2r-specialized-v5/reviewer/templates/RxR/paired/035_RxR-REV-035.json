@@ -1,0 +1,395 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-035",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-035",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "6767",
+    "episode_id": "1104",
+    "instruction_id": "6767",
+    "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
+    "trajectory_id": "2783"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "You will start by facing in front of a wall with posters on it. Turn right take one step slightly at the foot of the bed. Take another step towards the TV with a console table underneath. From there, turn left and walk two steps down the hallway and exit this room. Turn left once again and walk down this narrow hallway and take one step towards the glass railing. Once you're facing the circular glass railing. Jump over that and walk towards the other side of that railing. Now turn right and walk down the stairs. Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame. Turn right once again and you will see a narrow opening with a closed door and now it will open for you. Walk towards the one that is narrow not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside and you are done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You will start facing a wall with posters on it. Turn right and take one step slightly at the foot of the bed. Take another step towards the TV with a console table underneath. From there, turn left and walk two steps down the hallway and exit this room. Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+        "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing. Then turn right and walk down the stairs. Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+        "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You will start by facing in front of a wall with posters on it.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You will start by facing in front of a wall with posters on it.",
+        "candidate_evidence": [
+          "You will start facing a wall with posters on it."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn right take one step slightly at the foot of the bed.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right take one step slightly at the foot of the bed.",
+        "candidate_evidence": [
+          "Turn right and take one step slightly at the foot of the bed."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Take another step towards the TV with a console table underneath.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Take another step towards the TV with a console table underneath.",
+        "candidate_evidence": [
+          "Take another step towards the TV with a console table underneath."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "From there, turn left and walk two steps down the hallway and exit this room.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: From there, turn left and walk two steps down the hallway and exit this room.",
+        "candidate_evidence": [
+          "From there, turn left and walk two steps down the hallway and exit this room."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+        "candidate_evidence": [
+          "Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Once you're facing the circular glass railing.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you're facing the circular glass railing.",
+        "candidate_evidence": [
+          "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "Jump over that and walk towards the other side of that railing.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Jump over that and walk towards the other side of that railing.",
+        "candidate_evidence": [
+          "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "Now turn right and walk down the stairs.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Now turn right and walk down the stairs.",
+        "candidate_evidence": [
+          "Then turn right and walk down the stairs."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-09",
+        "source_quote": "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+        "candidate_evidence": [
+          "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-10",
+        "source_quote": "Turn right once again and you will see a narrow opening with a closed door and now it will open for you.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right once again and you will see a narrow opening with a closed door and now it will open for you.",
+        "candidate_evidence": [
+          "Turn right once again and you will see a narrow opening with a closed door."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-11",
+        "source_quote": "Walk towards the one that is narrow not the one that was closest to you earlier.",
+        "requirement": "Preserve the condition, alternative, uncertainty or prohibition and its scope: Walk towards the one that is narrow not the one that was closest to you earlier.",
+        "candidate_evidence": [
+          "Walk towards the narrow opening, not the one that was closest to you earlier."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-12",
+        "source_quote": "Take a step inside and you will see a section where there is a large stone inside and you are done.",
+        "requirement": "Preserve the completion or stationary-position condition: Take a step inside and you will see a section where there is a large stone inside and you are done.",
+        "candidate_evidence": [
+          "Take a step inside and you will see a section where there is a large stone inside, and you are done."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+          "candidate_quotes": [
+            "Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+          ]
+        },
+        "process": {
+          "text": "You will start facing a wall with posters on it. Turn right and take one step slightly at the foot of the bed. Take another step towards the TV with a console table underneath. From there, turn left and walk two steps down the hallway and exit this room. Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+          "candidate_quotes": [
+            "You will start facing a wall with posters on it. Turn right and take one step slightly at the foot of the bed. Take another step towards the TV with a console table underneath. From there, turn left and walk two steps down the hallway and exit this room. Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+          "candidate_quotes": [
+            "Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: once; ordinal_or_count: one step, two; spatial_frame: facing, right, left",
+          "candidate_quotes": [
+            "once",
+            "one step",
+            "two",
+            "facing",
+            "right",
+            "left"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "source_quotes": [
+          "Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+          "From there, turn left and walk two steps down the hallway and exit this room.",
+          "Take another step towards the TV with a console table underneath.",
+          "Turn right take one step slightly at the foot of the bed."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing",
+          "candidate_quotes": [
+            "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing"
+          ]
+        },
+        "target": {
+          "text": "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+          "candidate_quotes": [
+            "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame."
+          ]
+        },
+        "process": {
+          "text": "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing. Then turn right and walk down the stairs. Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+          "candidate_quotes": [
+            "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing. Then turn right and walk down the stairs. Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+          "candidate_quotes": [
+            "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once, Then; ordinal_or_count: one step; spatial_frame: facing, right",
+          "candidate_quotes": [
+            "Once",
+            "Then",
+            "one step",
+            "facing",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09"
+        ],
+        "source_quotes": [
+          "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+          "Jump over that and walk towards the other side of that railing.",
+          "Now turn right and walk down the stairs.",
+          "Once you're facing the circular glass railing."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Take a step inside and you will see a section where there is a large stone inside",
+          "candidate_quotes": [
+            "Take a step inside and you will see a section where there is a large stone inside"
+          ]
+        },
+        "process": {
+          "text": "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done.",
+          "candidate_quotes": [
+            "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Take a step inside and you will see a section where there is a large stone inside",
+          "candidate_quotes": [
+            "Take a step inside and you will see a section where there is a large stone inside"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: once; negation: not; spatial_frame: right",
+          "candidate_quotes": [
+            "once",
+            "not",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-10",
+          "SRC-11",
+          "SRC-12"
+        ],
+        "source_quotes": [
+          "Take a step inside and you will see a section where there is a large stone inside and you are done.",
+          "Walk towards the one that is narrow not the one that was closest to you earlier.",
+          "Turn right once again and you will see a narrow opening with a closed door and now it will open for you.",
+          "Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
+          "candidate_quote": "Turn left once again and walk down this narrow hallway and take one step towards the glass railing."
+        },
+        "next_entry": {
+          "text": "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing",
+          "candidate_quote": "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
+          "candidate_quote": "Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Turn right once again and you will see a narrow opening with a closed door"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: You will start by facing in front of a wall with…; Preserve the directional/spatial relation and its reference frame: Turn right take one step slightly at the foot of…; Preserve the ordered route action or target-identifying landmark: Take another step towards the TV with a console…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: You will start by facing in front of a wall with…; Preserve the directional/spatial relation and its reference frame: Turn right take one step slightly at the foot of…; Preserve the ordered route action or target-identifying landmark: Take another step towards the TV with a console…"
+  }
+}
