@@ -29,13 +29,13 @@ Four modes:
 
 Reviewer receives the original source, frozen candidate strings and exact rendered instruction. It audits all C01–C12 items, every stage and every adjacent handoff. Its output is an evidence report, not a replacement route. A material finding must quote the exact source and candidate, state the concrete defect, explain the execution/focus consequence, and give a local nonbinding repair option.
 
-Reviewer separately reports `fidelity`, `closure_handoff`, and `segmentation_adequacy`. A missed useful split can be a C10 issue while route fidelity remains pass. A terminal target-directed final command can be `terminal_goal_directive`; it must not be described as arrival.
+Reviewer separately reports `source_fidelity`, `closure_handoff`, and `segmentation_adequacy`. A missed useful split can be a C10 issue while route fidelity remains pass. A terminal target-directed final command can be `terminal_goal_directive`; it must not be described as arrival.
 
 ## 5. Generator G1 and Reviewer R1
 
 With the retained implementation, R0 `revise` enters G1; an active candidate with R0 `unresolved` also enters G1. An inactive source-limited candidate with R0 `unresolved` falls back directly. On entry to G1, the generator gets the original source, frozen candidate and findings. For each finding it independently chooses `accept`, `partially_accept`, `reject` or `unresolved`, quotes source evidence and explains why. Reviewer advice is not an instruction. A proposed fix may be wrong even when the review concern is valid.
 
-After G1, the renderer creates a new frozen snapshot. R1 receives only the original source, new candidate and new rendered instruction in a fresh context. It does not receive R0's verdict, findings, generator rebuttal or navigation results. There is no third reviewer and no iterative sample-until-pass loop.
+After G1, the renderer creates a new frozen snapshot. R1 runs in a fresh independent session and receives the original source, new candidate and new rendered instruction, plus the frozen R0 review, exact R0 candidate and exact R0 rendered instruction. It must disposition every R0 blocking finding exactly once, verify whether each is resolved, and independently identify any newly introduced defect. It does not receive G1's response as proof or any navigation results. There is no third reviewer and no iterative sample-until-pass loop.
 
 ## 6. Release policy
 
@@ -56,3 +56,8 @@ For tokenizer/input provenance, instrument the existing navigator after it const
 `host.protocol` detects schema/linkage violations; `adapter.source` detects input identity/shape problems. The detecting module is distinct from the author of a candidate and from an unproven semantic cause. Schema pointers include the missing property; generator repair pointers include `/candidate`. Each stage diagnostic uses zero-based `stage_index` and one-based `stage_number`. Stage `explicit_context` requires a nonblank explanation plus actual candidate quotations. Reviewer pass follows the same stage-index mode restrictions, while non-pass reports can diagnose a deficient entry.
 
 `host.run` retains raw outputs and legacy error strings, adding role/phase/step and call-state diagnostics. A receipt records verified invocation metadata, not semantic correctness. `input_failed` has no invented source fields and no model calls. Technical errors remain exact-source fallbacks when a valid Source exists. No diagnostic is automatically fed into another model call.
+
+
+## 8. Runtime wire-schema v2
+
+G0 and G1 use `generator/output.schema.json`; G1 wraps it in `generator/repair.schema.json` with a one-to-one `responses` list. R0 and R1 use `reviewer/output.schema.json`. Generator stage audits use `subtask_index` and required `ending.stop_scope`; Reviewer dimensions use `source_fidelity`. R0's `prior_finding_reviews` is empty; R1's contains exactly one disposition per R0 finding. The complete field table and empty/null semantics are in `host/README.md`.
