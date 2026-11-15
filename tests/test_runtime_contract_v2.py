@@ -5,6 +5,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 from host import protocol
+from host.run import run_record
+from adapter.source import Source
 from host.compile import ROOT
 from shared.identity import ContractError
 
@@ -333,6 +335,53 @@ class RuntimeContractV2Tests(unittest.TestCase):
             prior_rendered_instruction=old_rendered
         )
         self.assertEqual(new_review["prior_finding_reviews"][0]["status"], "resolved")
+
+
+    def test_run_record_passes_frozen_r0_context_to_r1(self):
+        old = generator_candidate(repaired=False)
+        new = generator_candidate(repaired=True)
+        r0 = reviewer_output(old, repaired=False)
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        repair = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The source explicitly requires the omitted hallway traversal."
+            }]
+        }
+        replies = [old, r0, repair, r1]
+        requests = []
+        def transport(request):
+            requests.append(copy.deepcopy(request))
+            output = replies.pop(0)
+            return {
+                "output": output,
+                "receipt": {
+                    "model": request["model"],
+                    "effort": request["effort"],
+                    "request_id": f"offline-{len(requests)}"
+                }
+            }
+        result = run_record(
+            Source("runtime-v2-smoke", "R2R", "en", SOURCE),
+            transport,
+            pins={
+                "generator": {"model": "offline-fixture", "effort": "low"},
+                "reviewer": {"model": "offline-fixture", "effort": "low"}
+            }
+        )
+        self.assertEqual(result["disposition"], "accepted_candidate")
+        self.assertEqual(len(requests), 4)
+        r1_payload = json.loads(requests[3]["messages"][1]["content"])
+        self.assertIn("prior_review", r1_payload)
+        self.assertIn("prior_candidate", r1_payload)
+        self.assertIn("prior_rendered_instruction", r1_payload)
+        self.assertEqual(
+            r1_payload["prior_review"]["findings"][0]["source_quote"],
+            "go down the hall"
+        )
 
     def test_r0_must_not_return_prior_finding_reviews(self):
         candidate = generator_candidate(repaired=True)
