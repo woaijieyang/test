@@ -228,6 +228,10 @@ def _validate_prior_context(source, prior_review, prior_candidate, prior_rendere
     check(isinstance(prior_rendered, str),
           "R1 requires the exact R0 rendered instruction", path="/prior_rendered_instruction")
     old_parts = prior_candidate.get("subtasks", [])
+    for i, stage_text in enumerate(old_parts):
+        check(stage_text in prior_rendered,
+              "R0 rendered snapshot does not contain its frozen candidate stage",
+              path=f"/prior_rendered_instruction/stage/{i}", stage_index=i)
     for i, finding in enumerate(prior_review.get("findings", [])):
         quote(finding["source_quote"], source, path=f"/prior_review/findings/{i}/source_quote")
         for j, ev in enumerate(finding.get("candidate_evidence", [])):
@@ -244,8 +248,14 @@ def _validate_prior_context(source, prior_review, prior_candidate, prior_rendere
 def reviewer(source, candidate, review, *, rendered_instruction=None,
              prior_review=None, prior_candidate=None, prior_rendered_instruction=None):
     validate("reviewer/output.schema.json", review)
+    check(candidate.get("status") in ("ok", "needs_review"),
+          "Reviewer candidate has an unknown Generator status", path="/candidate/status")
     parts, verdict = candidate["subtasks"], review["verdict"]
     n = len(parts)
+    if candidate["status"] == "needs_review":
+        check(not parts, "needs_review candidate cannot contain partial stages", path="/candidate/subtasks")
+    else:
+        check(bool(parts), "ok candidate must contain at least one stage", path="/candidate/subtasks")
     axes = review["dimensions"]
     is_recheck = prior_review is not None
 
