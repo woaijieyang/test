@@ -109,3 +109,19 @@ Handoff compares the previous stage's actual completed event with the next stage
 
 ### Uncertainty and segmentation
 Resolve references only when the full source uniquely supports the resolution. Preserve non-critical descriptive/approximate/referential uncertainty. Use the role's source-limitation status only when a route-critical target, route choice, condition or completion state remains unknowable after contextual reconstruction and sensible merging. An intermediate STOP/WAIT is only a possible split point; split only when a distinct later objective, supported handoff and meaningful local-focus benefit also exist. Do not optimize split count or ratio.
+
+
+## Runtime JSON contract — exact field names
+
+Return exactly the object defined by the ACTIVE `generator/output.schema.json`. Do not substitute teaching-template names.
+
+- Root required fields: `status`, `subtasks`, `issues`, `stage_audit`, `handoffs`.
+- `status="ok"`: `subtasks` is nonempty, `issues=[]`, `stage_audit` contains exactly one record per subtask, and `handoffs` contains exactly one record per adjacent pair (zero for one stage).
+- `status="needs_review"`: `subtasks=[]`, `stage_audit=[]`, `handoffs=[]`, and `issues` is nonempty. Never publish a guessed partial route or partial audit.
+- Each `stage_audit[i]` uses **`subtask_index`** (zero-based), not `index`, and contains `entry`, `target`, `process`, `ending`, `conditions`, `source_quotes`, and `carryover`. The shared Stage Audit Schema is authoritative for nested fields.
+- `source_quotes` must be exact substrings of the original instruction. Every field's `candidate_quotes` must be exact substrings of that same stage's actual English text. An audit explanation or carryover never replaces missing executable text.
+- `ending.stop_scope` is required: `none`, `intermediate`, or `terminal`. It records an explicitly requested stationary stop/wait/stand/remain at that stage ending, not the mere existence of a subtask boundary. `stand/remain` is stationary placement, not an extra physical STOP.
+- Each `handoffs[j]` links `from_subtask_index=j` to `to_subtask_index=j+1`, and records `status`, `preceding_exit`, `next_entry`, `shared_context`, `source_requirement_ids`, and `handoff_rationale`. Both endpoint quotations must occur in their respective actual stages.
+- Empty `conditions.text` is represented as `null` with `candidate_quotes=[]`; a nonempty condition needs exact candidate evidence. A target may be null only when no target is source-supported; do not use null to hide an omitted target.
+
+The Host checks exact quotation existence, indices, stage/handoff cardinality and schema conditions. It does not infer semantic entailment. Any edit to a stage requires rebuilding its complete audit and all affected handoffs before returning.
