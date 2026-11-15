@@ -32,7 +32,14 @@
     "host_protocol_uses_canonical_dimension_and_stage_names": true,
     "host_run_passes_prior_r0_review_candidate_and_render_to_r1": true,
     "cross_stage_candidate_evidence_not_restricted_to_repair_target": true,
-    "lookup_only_transport_recovery_hook_added_no_generation_retry": true
+    "lookup_only_transport_recovery_hook_added_no_generation_retry": true,
+    "full_tree_integrity_manifest_entries": 381,
+    "full_tree_integrity_manifest_exact_path_set": true,
+    "full_tree_integrity_manifest_algorithms": {
+      "sha256": 82,
+      "gitblob_sha1": 299
+    },
+    "full_tree_integrity_manifest_verified_by_runtime_script": false
   },
   "tests": {
     "new_offline_regression_suite": "tests/test_runtime_contract_v2.py",
@@ -47,7 +54,8 @@
     "Full Draft 2020-12 reference resolution with the installed jsonschema/referencing versions",
     "Existing legacy test files against the updated runtime schema",
     "Production transport recovery adapter lookup behavior",
-    "Actual model response conformance, semantic quality, and navigation performance"
+    "Actual model response conformance, semantic quality, and navigation performance",
+    "Execution of verify_package.py against a local checkout; manifest path set was compared to the live Git tree, but file bytes were not materialized in this environment."
   ],
   "important_runtime_rules": {
     "g0_needs_review_and_r0_unresolved": "direct exact-source fallback; do not generate partial plan",
