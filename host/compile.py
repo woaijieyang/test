@@ -6,6 +6,35 @@ from shared.identity import canonical,text_hash
 from host.template_selector import select_examples,library,DEFAULT_EXAMPLES,PROFILES
 ROOT=Path(__file__).resolve().parents[1]
 
+def wire_schema(path):
+    """Resolve the package's finite local schema references for standalone requests."""
+    from urllib.parse import urljoin, urlsplit
+
+    def expand(node, base, ancestors):
+        if isinstance(node, list):
+            return [expand(item, base, ancestors) for item in node]
+        if not isinstance(node, dict):
+            return node
+        base = urljoin(base, node.get('$id', ''))
+        result = {key: expand(value, base, ancestors) for key, value in node.items()
+                  if key not in ('$ref', '$id', '$defs')}
+        if '$ref' in node:
+            uri = urljoin(base, node['$ref'])
+            address = urlsplit(uri)
+            if address.scheme != 'https' or address.netloc != 'vln.local' or uri in ancestors:
+                raise ValueError(f'Unsupported schema reference: {uri}')
+            target = (ROOT/address.path.lstrip('/')).resolve()
+            target.relative_to(ROOT)
+            value = json.loads(target.read_bytes())
+            for segment in address.fragment.split('/')[1:]:
+                value = value[segment.replace('~1', '/').replace('~0', '~')]
+            resolved = expand(value, uri.partition('#')[0], ancestors | {uri})
+            return {'allOf': [resolved], **result} if result else resolved
+        return result
+
+    uri = 'https://vln.local/' + path.relative_to(ROOT).as_posix()
+    return expand(json.loads(path.read_bytes()), uri, {uri})
+
 def compile_prompt(role,phase='initial',*,profile,examples=True,
                    original_instruction=None,example_count=DEFAULT_EXAMPLES,
                    selected_ids=None,selection_mode='adaptive'):
@@ -14,11 +43,11 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if role=='reviewer' and phase not in ('review','recheck'):raise ValueError('Unsupported review phase')
     if role=='generator' and phase not in ('initial','repair'):raise ValueError('Unsupported generator phase')
     d=ROOT/role;repair=role=='generator' and phase=='repair'
-    parts=['BUILD: final-best-v1 / roles-closed-loop-35. Selected few-shot examples are source-feature-matched and frozen per record; the source instruction remains the only route authority.',
+    parts=['BUILD: v1.5.2 / runtime-contract-v2. Selected few-shot examples are source-feature-matched and frozen per record; the source instruction remains the only route authority.',
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
     if role=='reviewer':parts.append((d/'checklist.md').read_text(encoding='utf-8'))
     if repair:parts.append((d/'repair.md').read_text(encoding='utf-8'))
-    schema=json.loads((d/('repair.schema.json' if repair else 'output.schema.json')).read_bytes())
+    schema=wire_schema(d/('repair.schema.json' if repair else 'output.schema.json'))
     parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     if examples:
         rows=library(role,profile)
@@ -39,7 +68,11 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
                                 stage_evidence=example['output']['stage_audit'],
                                 handoffs=example['output']['handoffs'], issues=example['output']['issues'])
             else:
-                teaching = dict(review_case=example['review_input'], annotated_review=example['expected_review'])
+                audit = example['expected_review']
+                teaching = dict(review_case=example['review_input'], verdict=audit['verdict'],
+                                coverage_evidence=audit['source_coverage'], teaching_findings=audit['findings'],
+                                stage_evidence=audit['stage_checks'], handoffs=audit['handoffs'],
+                                layer_observations=audit['layer_checks'], dimensions=audit['dimensions'])
             parts.append(canonical(dict(template_id=eid, teaching=teaching, notes=example['teaching_notes'])))
         if repair:
             parts.append('TWO REPAIR-ENVELOPE EXAMPLES — active repair Schema, unlike initial-output examples. They teach accepting supported critique and rejecting unsupported advice.')

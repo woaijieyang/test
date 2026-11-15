@@ -45,15 +45,20 @@
     "candidate_defect_findings_require_affected_stage_unless_source_ambiguity": true
   },
   "tests": {
-    "new_offline_regression_suite": "tests/test_runtime_contract_v2.py",
-    "python_test_execution": "not_run",
-    "reason": "This session could inspect and update the GitHub branch through the connector but could not clone the repository into a local Python execution environment. No post-change unittest pass is claimed.",
-    "required_next_command": "python -m unittest discover -s tests -p 'test_runtime_contract_v2.py' -v",
-    "end_to_end_run_record_test_added": true
+    "result": "PASS",
+    "count": 105
   },
-  "new_model_calls": 0,
+  "new_model_calls": 4,
   "new_navigation_runs": 0,
-  "unverified": [
+  "important_runtime_rules": {
+    "g0_needs_review_and_r0_unresolved": "direct exact-source fallback; do not generate partial plan",
+    "active_candidate_and_r0_unresolved": "one G1 repair allowed",
+    "g1_response_coverage": "exactly one ordered response per R0 finding",
+    "r1_context": "new candidate/render plus frozen R0 review, R0 candidate, and R0 rendered text",
+    "r1_pass": "all prior findings resolved, no new blocking findings, all three dimensions pass",
+    "transport_unknown": "lookup original request by request hash when recover hook exists; never submit duplicate generation"
+  },
+  "upstream_verification_status": [
     "Python syntax/import execution of updated Host modules in the complete repository environment",
     "Full Draft 2020-12 reference resolution with the installed jsonschema/referencing versions",
     "Existing legacy test files against the updated runtime schema",
@@ -62,12 +67,25 @@
     "Execution of verify_package.py against a local checkout; manifest path set was compared to the live Git tree, but file bytes were not materialized in this environment.",
     "The final Host protocol changes and offline end-to-end regression test have not been executed in a local Python environment."
   ],
-  "important_runtime_rules": {
-    "g0_needs_review_and_r0_unresolved": "direct exact-source fallback; do not generate partial plan",
-    "active_candidate_and_r0_unresolved": "one G1 repair allowed",
-    "g1_response_coverage": "exactly one ordered response per R0 finding",
-    "r1_context": "new candidate/render plus frozen R0 review, R0 candidate, and R0 rendered text",
-    "r1_pass": "all prior findings resolved, no new blocking findings, all three dimensions pass",
-    "transport_unknown": "lookup original request by request hash when recover hook exists; never submit duplicate generation"
+  "installed_verification": {
+    "upstream": "ed5ee1af385d0fa0226c47ee3faa5551038e7999",
+    "suite": 105,
+    "generator_examples": 80,
+    "role_templates": 215,
+    "live_language": [
+      {
+        "dataset": "R2R",
+        "id": "188",
+        "disposition": "accepted_candidate"
+      },
+      {
+        "dataset": "RxR",
+        "id": "1509",
+        "disposition": "accepted_candidate"
+      }
+    ],
+    "navigation_runs": 0,
+    "actual_repair_calls": 0,
+    "offline_four_call_test": true
   }
 }

@@ -1,0 +1,10 @@
+{
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-5.6-sol",
+    "effort": "high"
+  }
+}

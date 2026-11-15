@@ -1,3 +1,6 @@
+from host.template_selector import library, source, PROFILES, select_examples
+from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+from host import protocol
 import json,sys,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -5,30 +8,34 @@ sys.path.insert(0,str(ROOT))
 from host.compile import compile_prompt
 from host.protocol import generator,reviewer
 class RolesRepairTests(unittest.TestCase):
- def test_each_role_has_35_per_profile(self):
-  for role in ('generator','reviewer'):
-   for file in ('r2r.json','rxr_en_us.json'):
-    rows=json.loads((ROOT/role/'templates'/file).read_text(encoding='utf-8'))
-    self.assertEqual(len(rows),35);self.assertEqual(len({x['input']['original_instruction'] for x in rows}),35)
+ def test_role_specific_profile_counts(self):
+     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(45,74))]:
+         for role,n in zip(('generator','reviewer'),expected):
+             rows=library(role,profile)
+             self.assertEqual(len(rows),n)
+             self.assertEqual(len({r['template_id'] for r in rows}),n)
  def test_r2r_and_rxr_examples_are_not_mixed(self):
-  for profile,tag,other in [('r2r-en','R2R','RXR'),('rxr-en-us','RXR','R2R')]:
-   for role in ('generator','reviewer'):
-    prefix=tag+'-REVIEW-01' if role=='reviewer' else tag+'-01'
-    text,_=compile_prompt(role,'review' if role=='reviewer' else 'initial',profile=profile)
-    self.assertIn(prefix,text)
-    self.assertNotIn(other+'-REVIEW-01' if role=='reviewer' else other+'-01',text)
-    self.assertIn('Selected example IDs',text) if False else None
+     for profile,ds in PROFILES.items():
+         for role in ('generator','reviewer'):
+             ids=select_examples(role,profile,SOURCE)
+             self.assertTrue(all(i.startswith(ds+'-') for i in ids))
+             prompt,_=compile_prompt(role,'initial' if role=='generator' else 'review',profile=profile,selected_ids=ids)
+             self.assertTrue(all(i in prompt for i in ids))
 
- def test_reviewer_examples_validate_against_live_contract(self):
-  for role in ('r2r','rxr'):
-   file='r2r.json' if role=='r2r' else 'rxr_en_us.json'
-   for e in json.loads((ROOT/'reviewer'/'templates'/file).read_text(encoding='utf-8')):
-    reviewer(e['input']['original_instruction'],e['input']['candidate'],e['output'])
+ def test_teaching_examples_against_teaching_contract(self):
+     from jsonschema import Draft202012Validator
+     from referencing import Registry,Resource
+     schemas={f.name:json.loads(f.read_bytes()) for f in (ROOT/'shared/template_schemas_v1_5_2').glob('*.json')}
+     registry=Registry().with_resources((name,Resource.from_contents(data)) for name,data in schemas.items())
+     for role in ('generator','reviewer'):
+         validator=Draft202012Validator(schemas[role+'_template.schema.json'],registry=registry)
+         for profile in PROFILES:
+             for row in library(role,profile):
+                 validator.validate(row)
  def test_generator_examples_validate(self):
-  for role in ('r2r','rxr'):
-   file='r2r.json' if role=='r2r' else 'rxr_en_us.json'
-   for e in json.loads((ROOT/'generator'/'templates'/file).read_text(encoding='utf-8')):
-    generator(e['input']['original_instruction'],e['output'])
+     for profile in PROFILES:
+         for row in library('generator',profile):
+             protocol.generator(source(row),row['output'])
  def test_r2r_regression_suite_has_six_distinct_cases(self):
   x=json.loads((ROOT/'generator/tests/r2r_regressions.json').read_text(encoding='utf-8'))
   self.assertEqual({r['episode'] for r in x},{'1099','1148','1149','115','1330','406'})

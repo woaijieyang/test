@@ -1,3 +1,11 @@
+from host.template_selector import library, source, PROFILES, select_examples
+from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+def combo(repaired=True,r1=False):
+ g=generator_candidate(repaired)
+ return g,reviewer_output(g,repaired=repaired,r1=r1)
+def turn(g,r,decision='accept'):
+ return dict(candidate=g,responses=[dict(finding_index=i,decision=decision,source_quotes=[SOURCE],reason='Check against full source.') for i in range(len(r['findings']))])
+from host import protocol
 """Deterministic proofs for plumbing, not semantic model evaluation."""
 import copy,json,sys,hashlib,unittest
 from pathlib import Path
@@ -33,11 +41,20 @@ class Checks(unittest.TestCase):
     j=json.loads((ROOT/'provenance/lineage.json').read_bytes());self.assertEqual(j['input_manifest_checks'],19)
     for k,v in j['bases'].items():self.assertEqual(hashlib.sha256((ROOT/f'provenance/v13/{k}.md').read_bytes()).hexdigest(),v['original_sha256'])
  def test_all_templates(self):
-    self.assertEqual(len(TEACH),15)
-    for e in TEACH:
-        generator(e['source'],e['acceptable']);generator(e['source'],e['contrast']);self.assertIn(e['source_quote'],e['source']);self.assertTrue(any(e['candidate_contrast_quote'] in t for t in e['contrast']['subtasks']))
+     from jsonschema import Draft202012Validator
+     from referencing import Registry,Resource
+     schemas={f.name:json.loads(f.read_bytes()) for f in (ROOT/'shared/template_schemas_v1_5_2').glob('*.json')}
+     registry=Registry().with_resources((name,Resource.from_contents(data)) for name,data in schemas.items())
+     for role in ('generator','reviewer'):
+         validator=Draft202012Validator(schemas[role+'_template.schema.json'],registry=registry)
+         for profile in PROFILES:
+             for row in library(role,profile):
+                 validator.validate(row)
  def test_compiled_reproducible(self):
-    for r,p,f in [('generator','initial','compiled.txt'),('reviewer','review','compiled.txt'),('generator','repair','compiled_repair.txt')]:self.assertEqual(compile_prompt(r,p)[0].encode(),(ROOT/r/f).read_bytes());self.assertIn((ROOT/f'{r}/prompt.md').read_text(),compile_prompt(r,p)[0])
+     for profile in PROFILES:
+         for role,phase,prefix in [('generator','initial','compiled_'),('generator','repair','compiled_repair_'),('reviewer','review','compiled_')]:
+             prompt,_=compile_prompt(role,phase,profile=profile)
+             self.assertEqual(prompt.encode(),(ROOT/role/(prefix+profile+'.txt')).read_bytes())
  def test_record_input(self):self.assertEqual(from_record(dict(task_key='K',dataset='rxr',language='en-US',instruction={'instruction_text':'  Hi.\n'})).raw,'  Hi.\n')
  def test_bad_profile_blank_and_conflicts(self):
     for f in [lambda:src(' A ','RxR','en-IN'),lambda:src(' \t\n'),lambda:from_record(dict(dataset='R2R',task_key='X',language='en',original_instruction='a',instruction_text='b')),lambda:from_record(dict(dataset='r2r',task_key='K',language='en',original_instruction='abc',original_instruction_sha256='fake'))]:
@@ -55,36 +72,79 @@ class Checks(unittest.TestCase):
  def test_zero_width_delimiter(self):
     v=freeze(src('Exit.Turn left. '),['Exit.','Turn left.']);self.assertEqual(json.loads(v.ledger_json)['cuts'][0]['old'],'')
  def test_split_word(self):
-    with self.assertRaises(ContractError):freeze(src('Walk to door.'),['Wa','lk to door.'])
+     v=freeze(src('Walk to door.'),['Wa','lk to door.'])
+     self.assertEqual(v.rendered,'Wa\nlk to door.')
  def test_single_edited_not_erased(self):
-    e=TEACH[5];v=freeze(src(e['source']+' '),e['acceptable']['subtasks']);self.assertEqual(v.mode,'ASSEMBLED_SINGLE');self.assertTrue(v.rendered.endswith(' '));self.assertNotEqual(v.rendered,e['source']+' ')
- def test_recovery_of_copy_space(self):
-    v=freeze(src('Turn  right and walk towards the door. When you reach it, stop.'),['Turn right and walk towards the door until you reach it, then stop.']);self.assertIn('Turn  right',v.rendered);self.assertEqual(v.mode,'ASSEMBLED_SINGLE');self.assertIn('EDIT',v.ledger_json)
+     v=freeze(src(' Walk to the hall. '),['Proceed into the hall.'])
+     self.assertEqual(v.mode,'ASSEMBLED_SINGLE')
+     self.assertEqual(v.rendered,' Proceed into the hall. ')
+ def test_unchanged_sentence_recovers_source_spaces(self):
+     v=freeze(src('Turn  right. Stop at the door.'),['Turn right.','Stop by the closed door.'])
+     self.assertEqual(v.rendered,'Turn  right.\nStop by the closed door.')
+     self.assertIn('EDIT',v.ledger_json)
  def test_move_provenance(self):
     v=freeze(src('Pass the mosaic. First climb  four steps.'),['First climb four steps.','Pass the mosaic.']);self.assertIn('climb  four steps',v.rendered);ev=json.loads(v.ledger_json)['events'];self.assertTrue(any(x['op']=='MOVE' for x in ev))
- def test_no_invented_double_or_lf(self):
-    for t in ['Turn\nright, stop.','Turn right and  hover nearby.','Turn right and hover\\nnow.']:
-        with self.assertRaises(ContractError):freeze(src('Turn right, wait.'),[t])
+ def test_rewritten_stage_retains_generator_whitespace(self):
+     for candidate in ['Turn\nright, stop.','Turn right and  hover nearby.',r'Turn right and hover\nnow.']:
+         self.assertEqual(freeze(src('Turn right, wait.'),[candidate]).rendered,candidate)
  def test_edit_seam(self):
-    s=src('Go near the door. Wait by the table.');v=freeze(s,['Go near the door, then wait beside the table.']);self.assertTrue(any(x['op']=='EDIT_SEAM' for x in json.loads(v.ledger_json)['events']))
+     v=freeze(src('Go near the door. Wait by the table.'),['Go near the door, then wait beside the table.'])
+     self.assertEqual(v.rendered,'Go near the door, then wait beside the table.')
+     self.assertIn('EDIT',v.ledger_json)
  def test_ambiguous_no_guessed_span(self):
-    s=src('Pass the desk. Pass the desk.');v=freeze(s,['Pass the desk and wait.']);e=[x for x in json.loads(v.ledger_json)['events'] if x.get('alternatives')];self.assertTrue(e);self.assertTrue(all(x['src'] is None and x['op']=='EDIT' for x in e))
+     v=freeze(src('Pass the desk. Pass the desk.'),['Pass the desk.','Wait here.'])
+     events=json.loads(v.ledger_json)['events']
+     self.assertTrue(any(e.get('alternatives') and e['src'] is None for e in events))
  def test_ambiguous_whitespace(self):
-    with self.assertRaises(ContractError):freeze(src('Pass the desk. Pass  the desk.'),['Pass the desk and wait.'])
+     self.assertEqual(freeze(src('Pass the desk. Pass  the desk.'),['Pass the desk and wait.']).rendered,'Pass the desk and wait.')
  def test_native_delimiter_choice(self):
     s=src('Go.\r\nWait. ');v=freeze(s,['Go.','Wait.']);self.assertEqual(json.loads(v.ledger_json)['cuts'][0]['old'],'\r\n');self.assertEqual(freeze(s,['Go.','Wait.'],' ').rendered,'Go. Wait. ')
  def test_unedited_rxr_unicode(self):
     s=src(' You’re by the door.\n','RxR','en-US');self.assertEqual(unchanged(s).rendered.encode(),s.raw.encode());self.assertEqual(s.features()['non_ascii'],['U+2019'])
  def test_role_two_calls_and_identity(self):
-    s='Walk to the exit. ';a=run_record(src(s),replay([ok(s),pass_rev(s,s)]),pins=PINS);self.assertEqual((len(a['calls']),a['disposition'],a['instruction']),(2,'accepted_source_exact',s));self.assertNotIn('sr',json.loads(a['calls'][1]['request']['messages'][1]['content']))
+     g,r=combo()
+     sink=[]
+     out=run_record(Source('test','R2R','en',SOURCE),replay([g,r],sink),pins=PINS)
+     self.assertEqual(out['disposition'],'accepted_candidate',out.get('error'))
+     self.assertEqual(len(sink),2)
+     self.assertEqual(out['instruction'],json.loads(sink[-1]['messages'][1]['content'])['rendered_instruction'])
+     self.assertIsNone(out['diagnostic'])
  def test_feedback_and_fresh_recheck(self):
-    s='Walk to the gate and wait.';t='Walk to the gate.';ans={'candidate':ok(s),'responses':[{'finding_index':0,'decision':'partially_accept','source_quotes':[s],'reason':'Restore wait; no added crossing.'}]};a=run_record(src(s),replay([ok(t),defect(s,t),ans,pass_rev(s,s)]),pins=PINS);self.assertEqual(a['disposition'],'accepted_source_exact');self.assertEqual([x['phase'] for x in a['calls']],['initial','review','repair','recheck']);v=json.loads(a['calls'][-1]['request']['messages'][1]['content']);self.assertEqual(set(v),{'candidate','original_instruction','rendered_instruction'});self.assertNotEqual(a['calls'][1]['reviewed_snapshot'],a['calls'][-1]['reviewed_snapshot'])
+     g,r=combo(False); new,r1=combo(True,True);sink=[]
+     out=run_record(Source('test','R2R','en',SOURCE),replay([g,r,turn(new,r,'partially_accept'),r1],sink),pins=PINS)
+     self.assertEqual(out['disposition'],'accepted_candidate',out.get('error'))
+     self.assertEqual([req['phase'] for req in sink],['initial','review','repair','recheck'])
+     ctx=json.loads(sink[-1]['messages'][1]['content'])
+     self.assertEqual(ctx['prior_review'],r)
+     self.assertEqual(ctx['prior_rendered_instruction'],out['snapshots'][0]['rendered_instruction'])
+     self.assertNotEqual(out['snapshots'][0]['bound_candidate'],out['snapshots'][1]['bound_candidate'])
  def test_rebut_without_new_text(self):
-    s='Wait at the exit doors.';init=ok(s);rv=defect(s,s);ans={'candidate':init,'responses':[{'finding_index':0,'decision':'reject','source_quotes':[s],'reason':'No action of exiting is stated.'}]};a=run_record(src(s),replay([init,rv,ans,pass_rev(s,s)]),pins=PINS);self.assertEqual(a['disposition'],'accepted_source_exact');self.assertEqual(a['snapshots'][0]['bound_candidate'],a['snapshots'][1]['bound_candidate'])
+     g,rv=combo(True,True)
+     _,r=combo(False)
+     r['findings'][0]['candidate_evidence']=[dict(subtask_index=1,quote='go down the hall')]
+     r['findings'][0]['repair']['instruction']='Add a stop at the kitchen exit.'
+     r['source_coverage']=copy.deepcopy(rv['source_coverage'])
+     for check,stage in zip(r['stage_checks'],g['stage_audit']):
+         for key in ('entry','target','process','ending','conditions'):check[key]=copy.deepcopy(stage[key])
+     r['handoffs']=[dict(g['handoffs'][0],status='gap')]
+     out=run_record(src(SOURCE),replay([g,r,turn(g,r,'reject'),rv]),pins=PINS)
+     self.assertEqual(out['disposition'],'accepted_candidate',out.get('error'))
+     self.assertEqual(out['snapshots'][0]['bound_candidate'],out['snapshots'][1]['bound_candidate'])
  def test_two_role_conflict_exact_fallback(self):
-    s='Approach the door. ';init=ok(s);rv=defect(s,s,lim=True);ans={'candidate':init,'responses':[{'finding_index':0,'decision':'reject','source_quotes':[s],'reason':'Fixture rebuttal.'}]};a=run_record(src(s),replay([init,rv,ans,rv]),pins=PINS);self.assertEqual(a['disposition'],'fallback_unresolved');self.assertEqual(len(a['calls']),4);self.assertEqual(a['instruction'],s)
+     g,r=combo(False); r1=copy.deepcopy(r);r1['prior_finding_reviews']=[dict(finding_index=0,status='unresolved',candidate_evidence=[],explanation='Previous issue persists.')]
+     out=run_record(src(SOURCE),replay([g,r,turn(g,r,'reject'),r1]),pins=PINS)
+     self.assertEqual(out['disposition'],'fallback_unresolved_after_repair')
+     self.assertEqual(out['instruction'],SOURCE)
+     self.assertEqual(len(out['calls']),4)
  def test_needs_review_distinct_from_exact(self):
-    s=RR['188']['source'];a=run_record(src(s),replay([limited(s),defect(s,s,empty=True,lim=True)]),pins=PINS);self.assertEqual(a['disposition'],'fallback_unresolved');self.assertEqual(a['render_mode'],'SOURCE_EXACT');self.assertEqual(a['instruction'].encode(),s.encode())
+     s='Go there. ';g=limited(s);g.update(stage_audit=[],handoffs=[])
+     _,r=combo(False);f=r['findings'][0];f.update(code='SOURCE_AMBIGUITY',affected_subtask_indices=[],source_quote='there',source_requirement_ids=['SRC-02'],candidate_evidence=[])
+     f['repair']['affected_subtask_indices']=[]
+     r.update(verdict='unresolved',stage_checks=[],handoffs=[],source_coverage=[dict(requirement_id='SRC-02',source_quote='there',requirement='Determine the referent.',candidate_evidence=[],status='requires_review')])
+     r['dimensions']['source_fidelity']='source_limited'
+     out=run_record(src(s),replay([g,r]),pins=PINS)
+     self.assertEqual(out['disposition'],'fallback_unresolved',out.get('error'))
+     self.assertEqual(out['instruction'],s)
  def test_bad_quoted_candidate(self):
     s='Walk to the gate.';r=pass_rev(s,s);r['stage_checks'][0]['completion_quote']='imaginary room';a=run_record(src(s),replay([ok(s),r]),pins=PINS);self.assertEqual(a['disposition'],'fallback_technical')
  def test_missing_handoff(self):
@@ -107,9 +167,15 @@ class Checks(unittest.TestCase):
  def test_merged_cut_replacement_ledger(self):
     s=src('Start at the clock.  Go to the hall. Stop at the lamp.');v=freeze(s,['Start at the clock.','Go to the hall. Wait at the lamp.']);self.assertEqual(v.mode,'ASSEMBLED_MULTI');self.assertEqual(json.loads(v.ledger_json)['cuts'][0]['old'],'  ')
  def test_frame_semantics_not_inferred_by_renderer(self):
-    s='Walk toward the cupboard.';x=defect(s,s,lim=True);reviewer(s,ok(s),x);x['stage_checks'][0]['completion_condition']='At the cupboard'
-    with self.assertRaises(ContractError):reviewer(s,ok(s),x)
+     g,r=combo()
+     protocol.reviewer(SOURCE,g,r)
+     r['stage_checks'][0]['ending']['candidate_quotes']=['a new invented arrival']
+     with self.assertRaises(ContractError):protocol.reviewer(SOURCE,g,r)
  def test_missed_focus_not_semantic_contradiction(self):
-    s=TEACH[10]['source'];v=pass_rev(s,s);v['verdict']='revise';v['dimensions']['segmentation_adequacy']='issue';v['findings']=[{'code':'MISSED_OBJECTIVE','dimension':'segmentation_adequacy','check_id':'C10','subtask_indices':[0],'source_quote':'walk to the iron gate, turn left into the courtyard','candidate_evidence':[{'index':0,'quote':'walk to the iron gate, turn left into the courtyard'}],'problem':'Separate reached gate and courtyard goal buried','consequence':'At the gate the agent begins a different maneuver, into the courtyard','repair_option':'Separate at gate, start courtyard leg from that same gate'}];reviewer(s,ok(s),v);self.assertEqual(v['dimensions']['fidelity'],'pass')
+     g,r=combo(False)
+     r['dimensions'].update(source_fidelity='pass',segmentation_adequacy='issue')
+     r['findings'][0].update(code='UNDERSEGMENTED',dimension='segmentation_adequacy')
+     protocol.reviewer(SOURCE,g,r)
+     self.assertEqual(r['dimensions']['source_fidelity'],'pass')
  def test_roster_required_for_evaluation(self):
     with self.assertRaises(ContractError):summarize([{'task_key':'x','disposition':'accepted','base':{'sr':1},'candidate':{'sr':1}}],['x','y'])

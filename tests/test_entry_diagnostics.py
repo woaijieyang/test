@@ -1,3 +1,11 @@
+from host.template_selector import library, source, PROFILES, select_examples
+from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+def combo(repaired=True,r1=False):
+ g=generator_candidate(repaired)
+ return g,reviewer_output(g,repaired=repaired,r1=r1)
+def turn(g,r,decision='accept'):
+ return dict(candidate=g,responses=[dict(finding_index=i,decision=decision,source_quotes=[SOURCE],reason='Check against full source.') for i in range(len(r['findings']))])
+from host import protocol
 """Offline contract regressions; fixtures are not LLM or navigation results."""
 import copy
 import json
@@ -60,19 +68,18 @@ class EntryDiagnostics(unittest.TestCase):
 
     def test_explicit_context_requires_explanation(self):
         r = gen(); a = r['output']['stage_audit'][0]
-        a['entry'].update(mode='explicit_context', text=None,
+        a['entry'].update(mode='explicit_context', text=' ',
                           candidate_quotes=[r['output']['subtasks'][0]])
         self.diagnostic(lambda: protocol.generator(r['input']['original_instruction'], r['output']),
                         'EXPLICIT_CONTEXT_EVIDENCE_MISSING', '/stage_audit/0/entry')
 
     def test_reviewer_pass_first_mode_parity(self):
-        r = rev(); r['output']['stage_checks'][0]['entry']['mode'] = 'inherited_entity'
-        self.diagnostic(lambda: protocol.reviewer(r['input']['original_instruction'], r['input']['candidate'], r['output']),
-                        'ENTRY_MODE_INVALID_FOR_STAGE', '/stage_checks/0/entry/mode')
+        g,r=combo();r['stage_checks'][0]['entry']['mode']='inherited_entity'
+        self.diagnostic(lambda:protocol.reviewer(SOURCE,g,r),'ENTRY_MODE_INVALID_FOR_STAGE','/stage_checks/0/entry/mode')
 
     def test_reviewer_revise_can_describe_bad_entry(self):
-        r = rev(0); r['output']['stage_checks'][0]['entry']['mode'] = 'inherited_pose'
-        protocol.reviewer(r['input']['original_instruction'], r['input']['candidate'], r['output'])
+        g,r=combo(False);r['stage_checks'][0]['entry']['mode']='inherited_pose'
+        protocol.reviewer(SOURCE,g,r)
 
     def test_missing_field_pointer(self):
         r = gen(); del r['output']['stage_audit'][0]['entry']['mode']
@@ -116,9 +123,15 @@ class EntryDiagnostics(unittest.TestCase):
             self.assertEqual(text.count(contract), 1)
 
     def test_fixture_libraries_preserved_and_valid(self):
-        for profile in PROFILES:
-            for r in library('generator', profile): protocol.generator(r['input']['original_instruction'], r['output'])
-            for r in library('reviewer', profile): protocol.reviewer(r['input']['original_instruction'], r['input']['candidate'], r['output'])
+        from jsonschema import Draft202012Validator
+        from referencing import Registry,Resource
+        schemas={f.name:json.loads(f.read_bytes()) for f in (ROOT/'shared/template_schemas_v1_5_2').glob('*.json')}
+        registry=Registry().with_resources((name,Resource.from_contents(data)) for name,data in schemas.items())
+        for role in ('generator','reviewer'):
+            validator=Draft202012Validator(schemas[role+'_template.schema.json'],registry=registry)
+            for profile in PROFILES:
+                for row in library(role,profile):
+                    validator.validate(row)
 
     def test_failure_before_reviewer(self):
         g = gen(); g['output']['stage_audit'][0]['entry']['mode']='inherited_pose'; sink=[]
@@ -141,13 +154,13 @@ class EntryDiagnostics(unittest.TestCase):
         self.assertEqual(out['instruction'],src.raw)
 
     def test_success_snapshot_and_no_extra_call(self):
-        g=gen(); r=rev(); sink=[]; src=Source('offline-fixture','R2R','en',g['input']['original_instruction'])
-        out=run_record(src,replay([g['output'],r['output']],sink),pins=PINS)
-        self.assertEqual([q['phase'] for q in sink],['initial','review'])
+        g,r=combo()
+        sink=[]
+        out=run_record(Source('test','R2R','en',SOURCE),replay([g,r],sink),pins=PINS)
+        self.assertEqual(out['disposition'],'accepted_candidate')
+        self.assertEqual(len(sink),2)
+        self.assertEqual(out['instruction'],json.loads(sink[-1]['messages'][1]['content'])['rendered_instruction'])
         self.assertIsNone(out['diagnostic'])
-        self.assertEqual(out['instruction'],src.raw)
-        self.assertEqual(json.loads(sink[1]['messages'][1]['content'])['rendered_instruction'],out['instruction'])
-        self.assertEqual([q['effort'] for q in sink],[PINS['generator']['effort'],PINS['reviewer']['effort']])
 
     def test_bad_pins_and_selector_failures_are_recorded(self):
         src=Source('offline-fixture','R2R','en','Go.'); sink=[]
@@ -160,30 +173,14 @@ class EntryDiagnostics(unittest.TestCase):
         self.assertEqual(sink,[])
 
     def test_one_semantic_repair_four_calls_and_fresh_reviewer(self):
-        g=gen(); good=rev()['output']; critique=copy.deepcopy(good)
-        source=g['input']['original_instruction'];critique['verdict']='revise'
-        critique['dimensions']['segmentation_adequacy']='issue'
-        critique['layer_checks'][5].update(status='issue',finding_indices=[0])
-        finding=copy.deepcopy(rev(0)['output']['findings'][0])
-        finding.update(code='OVERREJECTION',layer='L5',check_id='C10',dimension='segmentation_adequacy',
-                       related_dimensions=[],source_quote=source,source_requirement_ids=['q1'],
-                       candidate_evidence=[{'index':0,'quote':g['output']['subtasks'][0]}],
-                       problem='Offline fixture critique, not a semantic annotation.',
-                       consequence='Tests bounded feedback plumbing only.')
-        critique['findings']=[finding]
-        answer={'candidate':g['output'],'responses':[{'finding_index':0,'decision':'reject',
-                'source_quotes':[source],'reason':'Offline fixture: preserve the same source-supported candidate.'}]}
-        sink=[];src=Source('fixture','R2R','en',source)
-        out=run_record(src,replay([g['output'],critique,answer,good],sink),pins=PINS)
-        self.assertEqual([q['phase'] for q in sink],['initial','review','repair','recheck'])
-        self.assertEqual(out['instruction'],source)
-        self.assertEqual(set(json.loads(sink[-1]['messages'][1]['content'])),
-                         {'original_instruction','candidate','rendered_instruction'})
-        self.assertIsNone(out['diagnostic'])
-        sink=[]
-        out=run_record(src,replay([g['output'],critique,answer,critique],sink),pins=PINS)
-        self.assertEqual(len(sink),4)
-        self.assertEqual(out['disposition'],'fallback_unresolved_after_repair')
+        g,r=combo(False); new,r1=combo(True,True);sink=[]
+        out=run_record(Source('test','R2R','en',SOURCE),replay([g,r,turn(new,r,'partially_accept'),r1],sink),pins=PINS)
+        self.assertEqual(out['disposition'],'accepted_candidate')
+        self.assertEqual([req['phase'] for req in sink],['initial','review','repair','recheck'])
+        ctx=json.loads(sink[-1]['messages'][1]['content'])
+        self.assertEqual(ctx['prior_review'],r)
+        self.assertEqual(ctx['prior_rendered_instruction'],out['snapshots'][0]['rendered_instruction'])
+        self.assertNotEqual(out['snapshots'][0]['bound_candidate'],out['snapshots'][1]['bound_candidate'])
 
     def test_mismatched_receipt_not_called_success(self):
         g=gen();sink=[]

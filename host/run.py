@@ -43,7 +43,7 @@ def request(role, phase, payload, pin, profile, selected_ids):
     }
 
 
-def run_record(src: Source, transport: Transport, *, pins: dict,
+def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                separator="\n", example_count=DEFAULT_EXAMPLES,
                selection_mode="adaptive"):
     """Run at most four calls; preserve exact source fallback on every failure."""
@@ -154,6 +154,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict,
         }
 
     try:
+        if pins is None:
+            pins = json.loads(Path(__file__).with_name("role-pins.json").read_bytes())
         need(
             isinstance(pins, dict) and set(pins) == {"generator", "reviewer"} and
             all(isinstance(v, dict) and
@@ -372,7 +374,7 @@ def command_transport(argv, timeout=300, recovery_argv=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--record", required=True)
-    parser.add_argument("--pins", required=True)
+    parser.add_argument("--pins", help="override the packaged host/role-pins.json")
     parser.add_argument("--output", required=True)
     parser.add_argument("--recover-command", default=None,
                         help="optional lookup-only command; receives {operation, request_sha256, request} and returns {found:false} or {found:true, reply:<original reply>}")
@@ -387,7 +389,7 @@ def main():
              code="CONFIGURATION_INVALID", module="host.run", path="/transport")
         source = load_record(args.record)
         step = "configuration_loading"
-        pins = json.loads(Path(args.pins).read_bytes())
+        pins = json.loads(Path(args.pins).read_bytes()) if args.pins else None
         recovery_argv = shlex.split(args.recover_command) if args.recover_command else None
         result = run_record(
             source, command_transport(args.transport, recovery_argv=recovery_argv), pins=pins

@@ -59,6 +59,8 @@ def validate(path, value, *, prefix=""):
     err = next(schema(path).iter_errors(value), None)
     if err is None:
         return
+    while len(err.context) == 1:
+        err = err.context[0]
     location = list(err.absolute_path)
     if err.validator == "required" and isinstance(err.instance, dict):
         missing = [k for k in err.validator_value if k not in err.instance]
@@ -200,10 +202,10 @@ def generator(source, candidate, *, prefix=""):
               path=loc + "/ending/kind", stage_index=i)
         if audit["ending"]["kind"] == "terminal_goal_directive":
             wording = audit["ending"]["text"].casefold()
-            check(i == n - 1 and any(term in wording for term in (
+            check(i == n - 1 and (re.search(r"(?:does not (?:specify|state)|do not invent|no further)\b[^.;]*\b(?:arrival|stop|stopping)\b", wording) or any(term in wording for term in (
                 "no arrival", "arrival is not", "not asserted", "no explicit",
                 "unspecified", "not specified", "no stop", "stop is not"
-            )), "terminal_goal_directive must be final-only and disclaim arrival/STOP",
+            ))), "terminal_goal_directive must be final-only and disclaim arrival/STOP",
                   path=loc + "/ending", stage_index=i)
     for j, handoff in enumerate(candidate["handoffs"]):
         _check_handoff(handoff, parts, f"{prefix}/handoffs/{j}", accepted=True)

@@ -1,3 +1,5 @@
+from host.template_selector import library, source, PROFILES, select_examples
+from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
 import json, unittest
 from adapter.source import from_record, Source
 from host.compile import compile_prompt
@@ -28,34 +30,17 @@ class FinalBestContract(unittest.TestCase):
                          'instruction_text':'Walk.','original_instruction':'Turn.'})
 
     def test_both_roles_receive_same_acceptance_contract(self):
-        g,_=compile_prompt('generator','initial')
-        r,_=compile_prompt('reviewer','review')
-        required=['C01 Coverage','C10 Segmentation adequacy','terminal_goal_directive',
-                  'previous exit','next entry']
-        for phrase in required:
-            self.assertIn(phrase,g)
-            self.assertIn(phrase,r)
+        from host.compile import ROOT
+        contract=(ROOT/'shared/semantic_contract.md').read_text(encoding='utf8')
+        for role,phase in [('generator','initial'),('reviewer','review')]:
+            prompt,_=compile_prompt(role,phase,profile='r2r-en')
+            self.assertIn(contract,prompt)
 
     def test_terminal_goal_directive_is_valid_basis(self):
-        s='Walk toward the front door.'
-        candidate={'status':'ok','subtasks':[s],'issues':[]}
-        review={
-          'verdict':'pass',
-          'dimensions':{'fidelity':'pass','closure_handoff':'pass','segmentation_adequacy':'pass'},
-          'findings':[],
-          'stage_checks':[{
-            'subtask_index':0,'entry_context':'The source starting context.',
-            'required_history':['Walk toward the front door.'],
-            'completion_condition':'The final instructed objective is to walk toward the front door; arrival is not asserted.',
-            'completion_basis':'terminal_goal_directive',
-            'source_quotes':['Walk toward the front door.'],
-            'candidate_quotes':['Walk toward the front door.'],
-            'completion_quote':'Walk toward the front door.',
-            'carryover_requirements':[]
-          }],
-          'handoffs':[]
-        }
-        reviewer(s,candidate,review)
+        from host import protocol
+        rows=[r for r in library('generator','r2r-en') if r['output']['stage_audit'] and r['output']['stage_audit'][-1]['ending']['kind']=='terminal_goal_directive']
+        self.assertTrue(rows)
+        for r in rows:protocol.generator(source(r),r['output'])
 
 if __name__=='__main__':
     unittest.main()

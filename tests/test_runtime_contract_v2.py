@@ -321,10 +321,8 @@ class RuntimeContractV2Tests(unittest.TestCase):
         old_review = reviewer_output(old_candidate, repaired=False)
         new_candidate = generator_candidate(repaired=True)
         new_review = reviewer_output(new_candidate, repaired=True, r1=True)
-        new_rendered = "
-".join(new_candidate["subtasks"])
-        old_rendered = "
-".join(old_candidate["subtasks"])
+        new_rendered = "\n".join(new_candidate["subtasks"])
+        old_rendered = "\n".join(old_candidate["subtasks"])
         protocol.reviewer(
             SOURCE,
             {"status": "ok", "subtasks": new_candidate["subtasks"], "issues": []},

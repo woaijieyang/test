@@ -1,0 +1,21 @@
+{
+  "upstream": "ed5ee1af385d0fa0226c47ee3faa5551038e7999",
+  "suite": 105,
+  "generator_examples": 80,
+  "role_templates": 215,
+  "live_language": [
+    {
+      "dataset": "R2R",
+      "id": "188",
+      "disposition": "accepted_candidate"
+    },
+    {
+      "dataset": "RxR",
+      "id": "1509",
+      "disposition": "accepted_candidate"
+    }
+  ],
+  "navigation_runs": 0,
+  "actual_repair_calls": 0,
+  "offline_four_call_test": true
+}
