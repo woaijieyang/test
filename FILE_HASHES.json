@@ -3,7 +3,7 @@
   "CODEX_START_HERE.md": "25aaf56fed83f556da332539cd5d3c4a49d431edc4991b93fd78adde61d25476",
   "IMPLEMENTATION.md": "6ccd06eaafd38bab3865927109ca298b4005c1113932e71b7382e5f3d13609d5",
   "README.md": "7b88348250cb9b15b67f1b4ca5cad9d5c90ec72721b1deef1a3df896d33a7a87",
-  "VERSION": "60c4d447af5c70eecdb4bcc1cac8e2288c93942495e07e20a90617bb96a09407",
+  "VERSION": "bb37e55d5c448e802b07fdb4228a2c99ead46f8fd2c2f0a7244ed0af41a4511f",
   "WORKFLOW.md": "c7563e7b8262fecbf494ed0c26ddb0464156a6df9f3dc264169c3fe84f2e7b28",
   "adapter/README.md": "182d5c43da432ef7398ffad346e56f8994cc1ec80a8a0dc75149ca8c7ffbeab8",
   "adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -97,7 +97,8 @@
   "tests/last_run.txt": "f93b07235ddf25031e92445d108cb2aa91689a5760e911c1f2f84120dd0530e4",
   "tests/test_final_best_contract.py": "38ee1237258cf4ab4413170d329acdcd8d2ff8f3e7607c104edcbb3c70d5c5cf",
   "tests/test_patch.py": "ba80ed094ed6eaec82bb528a903f8767304f1d0e999070ca25025c1383aaf9a9",
-  "validation.json": "36d3697af5c1036600724ec6e5c82c6364fa62faad73ba47bf75f643e7e2e891",
-  "verify_package.py": "ec5a959aa5e539a38c88aca723626c8d2ddad683a2dd83837b037485add7f68c",
-  "generator/repair_examples.json": "1f483f4b2e57c84f0f375bd6a0a41f4fb1ad57828359f66c547d652e8e79936a"
+  "validation.json": "a3bd3819e121058037b2735a8651674eaeee03736503d7578e089d933c5aceac",
+  "verify_package.py": "3eb5e4ad28a0883e665ccfe6b685b8a8f18a56dbeda90157dae20bf68907492b",
+  "generator/repair_examples.json": "1f483f4b2e57c84f0f375bd6a0a41f4fb1ad57828359f66c547d652e8e79936a",
+  "tests/test_runtime_contract_v2.py": "a6e320f4c5e6e12e539258d9829063b8ea85aba1ef9d8809a4da935447656654"
 }
