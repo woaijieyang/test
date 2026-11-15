@@ -340,6 +340,13 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
         _field_quotes(stage_check, parts[i], loc, i)
         _entry(stage_check["entry"], i, loc + "/entry", enforce_mode=(verdict == "pass"))
         _stop_scope(stage_check["ending"], i, n, loc + "/ending/stop_scope")
+        if stage_check["status"] in ("gap", "source_limited"):
+            check(any(
+                i in finding["affected_subtask_indices"] and
+                bool(set(stage_check["source_requirement_ids"]) & set(finding["source_requirement_ids"]))
+                for finding in review["findings"]
+            ), "A gap/source-limited stage requires a matching evidence-backed finding",
+                 path=loc + "/status", stage_index=i)
         if verdict == "pass":
             check(stage_check["status"] == "supported" and
                   stage_check["entry"]["mode"] not in ("missing", "source_unspecified") and
@@ -352,6 +359,18 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
               "Handoff references an unknown source requirement ID",
               path=loc + "/source_requirement_ids")
         _check_handoff(handoff, parts, loc, accepted=(verdict == "pass"))
+        if handoff["status"] in ("gap", "source_limited"):
+            adjacent = {handoff["from_subtask_index"], handoff["to_subtask_index"]}
+            required_ids = set(handoff["source_requirement_ids"])
+            check(any(
+                bool(adjacent & set(finding["affected_subtask_indices"])) and
+                bool(required_ids & set(finding["source_requirement_ids"])) and
+                ("closure_handoff" == finding["dimension"] or
+                 "closure_handoff" in finding["related_dimensions"] or
+                 finding["failed_layer"] == "L4_handoffs")
+                for finding in review["findings"]
+            ), "A gap/source-limited handoff requires a matching cross-stage finding",
+                 path=loc + "/status")
 
     for j, finding in enumerate(review["findings"]):
         loc = f"/findings/{j}"
