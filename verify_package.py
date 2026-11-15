@@ -14,8 +14,13 @@ REQUIRED = [
     "adapter/source.py", "adapter/profiles.json", "renderer/freeze.py",
     "host/run.py", "host/protocol.py", "host/README.md", "shared/semantic_contract.md",
     "generator/repair.schema.json", "tests/test_runtime_contract_v2.py",
-    "templates/01.json", "templates/15.json", "tests/test_patch.py",
-    "tests/test_final_best_contract.py", "validation.json",
+    "generator/templates/R2R/val_seen/001_R2R-GEN-001.json",
+    "generator/templates/RxR/val_seen/001_RxR-GEN-001.json",
+    "reviewer/templates/R2R/paired/001_R2R-REV-001.json",
+    "reviewer/templates/RxR/paired/001_RxR-REV-001.json",
+    "shared/template_schemas_v1_5_2/stage_audit.schema.json",
+    "shared/template_schemas_v1_5_2/handoff.schema.json",
+    "tests/test_patch.py", "tests/test_final_best_contract.py", "validation.json",
 ]
 
 def main() -> int:
