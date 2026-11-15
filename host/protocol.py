@@ -286,6 +286,11 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
                 quote(ev["quote"], parts[idx],
                       path=f"/prior_finding_reviews/{i}/candidate_evidence/{j}/quote",
                       target="candidate_stage", stage_index=idx)
+        for i, item in enumerate(review["prior_finding_reviews"]):
+            if item["status"] in ("resolved", "partially_resolved"):
+                check(bool(item["candidate_evidence"]),
+                      "Resolved/partially resolved prior finding requires evidence from the new candidate",
+                      path=f"/prior_finding_reviews/{i}/candidate_evidence")
         if verdict == "pass":
             check(all(x["status"] == "resolved" for x in review["prior_finding_reviews"]),
                   "R1 cannot pass while any prior blocking finding remains unresolved",
@@ -329,6 +334,13 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
                       for f in review["findings"]),
                   "Omitted/altered source requirement must have a blocking finding",
                   path=loc + "/status")
+        if row["status"] == "requires_review":
+            check(any(
+                row["requirement_id"] in f["source_requirement_ids"] and
+                f["code"] == "SOURCE_AMBIGUITY"
+                for f in review["findings"]
+            ), "A requires_review source row must map to a source-ambiguity finding",
+                 path=loc + "/status")
 
     for i, stage_check in enumerate(review["stage_checks"]):
         loc = f"/stage_checks/{i}"
@@ -382,6 +394,15 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
         check(all(0 <= idx < n for idx in affected),
               "Finding affected-stage index is out of range",
               path=loc + "/affected_subtask_indices")
+        if finding["code"] != "SOURCE_AMBIGUITY":
+            check(bool(affected),
+                  "A candidate defect finding must identify at least one affected stage",
+                  path=loc + "/affected_subtask_indices")
+        if not finding["candidate_evidence"]:
+            check(finding["code"] in (
+                "OMISSION", "MISSING_ENTRY_ANCHOR", "SOURCE_AMBIGUITY", "OVERREJECTION"
+            ), "Empty candidate evidence is only valid for a genuine absence or source-level uncertainty",
+                 path=loc + "/candidate_evidence")
         repair_indices = finding["repair"]["affected_subtask_indices"]
         check(all(idx in affected for idx in repair_indices),
               "Repair target indices must be a subset of affected stage indices",
