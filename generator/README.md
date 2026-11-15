@@ -1,11 +1,24 @@
 # Generator — semantic author of executable local navigation stages
 
-`prompt.md` remains a targeted extension of the working v1.3 RxR decomposition approach, with specific R2R boundary/entry/count safeguards. `acceptance.md` is **byte-identical to** `../shared/semantic_contract.md`; the shared version is actually compiled by Host into BOTH semantic roles. No copied independent acceptance rules.
+`prompt.md` is the role instruction; `shared/semantic_contract.md` is the single acceptance standard shared with Reviewer. `output.schema.json` is the active Draft 2020-12 runtime contract for both G0 and the candidate inside G1's repair envelope.
 
-`output.schema.json`: `status/subtasks/issues/stage_audit/handoffs`. For every ok candidate, stage_audit has one record per subtask, handoffs one per adjacent pair. Stage audit contains the **five meanings** (entry/process/target/ending/conditions) plus literal evidence and carryover. This certificate stays offline; navigator receives only `subtasks` rendered into natural English. Source-limited candidates use empty arrays with justified issues.
+## Runtime output
 
-**Before accepting a boundary**, verify the prior stage has a supported ending and the next stage can start from it without inventing a new pose, count origin, STOP or environment fact. If not: bind a minimal source-supported prior event, move the cut or merge. A final terminal_goal_directive can preserve an unbounded source approach but must not certify arrival/STOP. One-stage assembly is valid and must not silently revert to the source.
+The root response is `status/subtasks/issues/stage_audit/handoffs`. `ok` requires nonempty subtasks, no issues, exactly one five-element Stage Audit per stage and one Handoff per adjacent pair. `needs_review` requires empty subtasks/audits/handoffs and at least one source-grounded issue. Stage index is `subtask_index`, not `index`; `ending.stop_scope` is required. See `host/README.md` for every field's null/empty semantics and the shared Stage Audit/Handoff references.
 
-`templates/r2r.json` and `templates/rxr_en_us.json` have **35 train-source records each**, including 15 new difficult sources per language. Each has natural English output and stage audit, teaching explanations and contrast when appropriate. `repair.md`+`repair.schema.json` specify a distinct G1 envelope `candidate + responses`, and `repair_examples.json` teaches independent accept/reject. All actual live candidate structures must match the active phase Schema.
+The five meanings are entry, target, process, ending and conditions. `source_quotes` are exact original-instruction excerpts; each `candidate_quotes` array is exact text from its own executable stage; `carryover` is inherited context only and never replaces missing English. The navigator receives only the rendered natural-language subtasks.
 
-At request preparation Host selects **8** Generator sources (3 core+5 deterministic source-feature matches) once, reusing the same IDs for G1. G1 additionally receives two fixed repair-envelope demonstrations; the contextual examples are marked reference plans rather than false repair-envelope responses. Full 35 is opt-in ablation. Changes to templates require `python -m host.compile` and a new experiment hash.
+## Boundary and repair policy
+
+Before accepting a boundary, verify the previous stage's actual supported ending and the next stage's first unperformed action. Do not invent a pose, count origin, STOP, entry or environment fact. If a handoff is unsupported, bind a minimal source-supported entry, move the cut or merge. A final `terminal_goal_directive` may preserve an unbounded final approach but must explicitly disclaim arrival/STOP. One-stage output is valid only after a real KEEP decision; it must not silently revert to source merely because it has one stage.
+
+## Teaching corpus
+
+- `templates/R2R/val_seen/`: 35 R2R Generator examples.
+- `templates/RxR/val_seen/`: 35 RxR Generator examples.
+- `templates/RxR/legacy/`: 10 provenance-labelled legacy examples; not part of the 35 val_seen set.
+- `repair_examples.json`: two G1 envelope examples, migrated to the active runtime schema.
+
+Templates are prompt-development demonstrations, not official subtask labels or trajectory-verified ground truth. Retrieve 8–12 source-matched examples once per task; reuse the same Generator IDs in G1. G1 receives the complete R0 review and returns a complete candidate plus exactly one indexed response per blocking finding. It may reject unsupported Reviewer advice with source quotes. No reviewer patch is applied automatically.
+
+Run `python -m host.compile` after changing role prompts, shared contract, schemas or examples. The Host/compile owner should regenerate compiled prompts and build manifests before model evaluation.
