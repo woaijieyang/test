@@ -40,7 +40,7 @@ Reviewer R0: layered C01–C12 audit + per-stage checks + adjacent handoffs
                 Renderer: freeze new snapshot
                       │
                       ▼
-                Reviewer R1 in a fresh context; no R0 verdict/history is supplied
+                Reviewer R1 in a fresh context; receives the frozen R0 findings, old candidate and old rendered text for one-to-one recheck
                       │
                       ├── pass ─► commit that exact snapshot
                       └── otherwise ─► exact original source fallback
@@ -110,3 +110,10 @@ Results retain `error` and add `diagnostic` (null on success). Failures identify
 Current regression commands above exercise offline fixtures only. The two inherited legacy test files are retained and still expose 18 baseline failures/errors associated with older interfaces and renderer expectations. They are not skipped or represented as passing. Full before/after evidence, exact diffs, original archive, installation journal and rollback tool are in `docs/stages/v5-entry-diagnostics-20261114-r0` under the case1 root. The release transaction test uses that companion tool.
 
 This release does not repair the known terminal-disclaimer keyword rule, change missing-split policy, alter the active-candidate unresolved branch, add retries, or modify evaluation/model/STOP/image settings. Do not replay an old result with the new prompt or compare full result dictionaries across versions as if they were identical. Use its recorded frozen original package.
+
+
+## Runtime contract v2 (2026-11-15)
+
+The active wire schemas are `generator/output.schema.json`, `reviewer/output.schema.json`, and `generator/repair.schema.json` (Draft 2020-12). The shared `stage_audit.schema.json` and `handoff.schema.json` remain the nested teaching/runtime references. Runtime names are canonical: Generator stage index is `subtask_index`; Reviewer dimension is `source_fidelity`; candidate evidence uses `{subtask_index, quote}`. R0 requires an empty `prior_finding_reviews`; R1 must disposition every R0 blocking finding exactly once.
+
+The Host now passes R1 the exact frozen R0 review, R0 candidate and R0 rendered instruction in addition to the new candidate/rendered text. Cross-stage findings may cite evidence from both sides of a handoff while targeting only one stage for repair. G1 responses are one-to-one with R0 findings and the repaired candidate is a complete Generator output, not a text patch. See `host/README.md` for the field contract, null/empty semantics, verdict gates and fallback policy.
