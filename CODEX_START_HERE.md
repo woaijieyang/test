@@ -39,7 +39,7 @@ python -m evaluation.smoke24
 python verify_package.py
 ```
 
-Read both compiled prompts and confirm they contain the same shared acceptance contract. Do not edit compiled files manually; change the source prompt/contract/schema and recompile. Reviewer must see the actual frozen candidate and rendered instruction. Generator repair must independently accept/partially accept/reject/unresolve each finding; no reviewer patch is auto-applied.
+Read both compiled prompts and confirm they contain the same shared acceptance contract. Do not edit compiled files manually; change the source prompt/contract/schema and recompile. Reviewer must see the actual frozen candidate and rendered instruction. G1 must independently accept/partially accept/reject/unresolve each finding and return a complete candidate plus one response per finding. R1 is a fresh session but must receive the frozen R0 review, old candidate and old rendered text so it can verify every prior finding; no reviewer patch is auto-applied.
 
 ## Step 4 — connect the existing model transport
 
@@ -60,3 +60,8 @@ Do not use stage audit metadata as actor state or a completion certificate. Do n
 5. Use a scene/path-disjoint held-out set after development. Do not select the best prompt by per-episode navigation outcomes.
 
 No result from this package should be called a gain until the corresponding model and navigation experiment has actually run.
+
+
+## Runtime schema v2 integration checks
+
+Before connecting a paid transport, verify the three runtime schemas are Draft 2020-12 and the host uses their exact names. In particular, do not regress `subtask_index` to `index`, or `source_fidelity` to `fidelity`. Confirm the Generator output schema reuses the shared Stage Audit/Handoff schemas; confirm Reviewer findings allow evidence indices across stages independent of repair-target indices; confirm R0/R1 both use the Reviewer schema and R1 receives `prior_review`, `prior_candidate`, and `prior_rendered_instruction`. Read `host/README.md` as the source of truth for the runtime field table and final verdict/fallback rules.
