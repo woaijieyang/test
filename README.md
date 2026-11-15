@@ -1,27 +1,112 @@
-# AwareVLN 位姿接口与图记忆候选
+# final-best-v1｜VLN 子任务生成、审核、装配与格式冻结
 
-**001 建图已按 15 集范围验收；002 已验证图文能进入模型，导航收益尚未通过验收。** 本仓库存放两个模块的交接源码。服务器正式入口仍使用 001，模型权重、环境资产、原生 PoseAdapter 依赖及封存运行日志位于原工程。详细结果见[阶段结论](docs/conclusion.md)，待验事项见[当前计划](docs/plan.md)。
+**定位：** 这是基于完整 R2R/RxR 轨迹审计、用户分析和 v1.3 语义基线整理出的最终综合版本，面向 **R2R English** 与 **RxR en-US**。Generator 仍是唯一语义作者；Reviewer 是独立诊断者；Adapter 只读取原始记录；Renderer 只做来源可追溯的机械装配与冻结；Host 只编排两角色调用并执行技术合同。
 
-## 两个模块各自负责什么
+本包没有运行新的模型或导航实验。单元测试通过只能证明接口、来源追踪和技术合同可运行，不能证明分割语义准确或 SR/SPL/nDTW 提升。
 
-| 模块 | 输入 | 输出与职责 |
+## 先看什么
+
+1. `WORKFLOW.md`：完整数据流、模块顺序和失败回退。
+2. `IMPLEMENTATION.md`：最终设计取舍、关键边界和实验顺序。
+3. `CODEX_START_HERE.md`：交给 Codex 的逐步接入合同。
+4. `shared/semantic_contract.md`：Generator/Reviewer 唯一共同验收标准。
+5. `generator/prompt.md`、`reviewer/prompt.md`：两角色可维护提示词；实际调用文本由 `host/compile.py` 编译。
+
+## 工作流
+
+```text
+R2R en / RxR en-US source row
+        │
+        ▼
+adapter: exact source + task identity + SHA-256 + source envelope
+        │  (only original_instruction is sent to semantic roles)
+        ▼
+Generator G0 ── one candidate JSON
+        │
+        ▼
+Renderer: freeze exact stage strings + source provenance + LF join
+        │
+        ▼
+Reviewer R0: layered C01–C12 audit + per-stage checks + adjacent handoffs
+        │
+        ├── pass ───────────────────────────────► commit the same frozen snapshot
+        │
+        ├── unresolved/source-limited ──────────► exact original source fallback
+        │
+        └── revise ─► Generator G1 independently accepts / partially accepts /
+                      rejects / leaves findings unresolved
+                      │
+                      ▼
+                Renderer: freeze new snapshot
+                      │
+                      ▼
+                Reviewer R1 in a fresh context; no R0 verdict/history is supplied
+                      │
+                      ├── pass ─► commit that exact snapshot
+                      └── otherwise ─► exact original source fallback
+
+Committed instruction ─► existing AwareVLN instruction slot
+                         (no new goal switch, memory, STOP hook or state reset)
+```
+
+## Directory responsibilities
+
+| Directory | Owns | Must not do |
 |---|---|---|
-| [SimulatorAdapter](SimulatorAdapter/pose.py) | Habitat 当前机体的位置和旋转，以及会话、帧号、时间戳 | 将机体姿态转换到本集初始 FLU 坐标系，按帧提供位姿。世界原点留在模拟器侧。目标位置、参考路径、房间真值、navmesh 和未来观测均不在输出合同内。 |
-| [graphAdapter](graphAdapter/README.md) | 宿主实际采集的 RGB-D、静态标定、执行反馈，以及统一接口返回的位姿 | 对齐同帧数据，融合几何、对象和视图，发布可重载快照。在 002 中按决策检索证据，将拓扑说明、地图和历史图文编译成模型附加输入。 |
+| `generator/` | Full-source interpretation, boundary selection, local-context assembly, only candidate author, one independent repair decision | Read scores/GT, trust reviewer suggestions automatically, claim actions completed |
+| `reviewer/` | Independent source-grounded C01–C12 audit, each stage and each handoff, factual findings and local repair options | Rewrite candidate, author a replacement route, see navigation scores, act as a third/primary reviewer |
+| `adapter/` | R2R/RxR English schema intake, task key, exact decoded string, UTF-8 hash, read-only prefix/body/suffix features | Trim/normalize, segment, infer a route, pass trajectory/GT/score to LLM |
+| `renderer/` | SOURCE_EXACT / BOUNDARY_ONLY / ASSEMBLED_SINGLE / ASSEMBLED_MULTI preview, whitespace provenance ledger, exact frozen string | Semantic correction, SR-based choice, post-review cleanup, reject a semantically valid split for style |
+| `host/` | Compile prompts, validate schemas/quotes/hashes, bounded G0-R0-G1-R1 flow, same-snapshot commit or exact fallback | Add a chief reviewer, call online goal switches, change AwareVLN internals |
+| `shared/` | The one semantic acceptance contract and identity/hash helpers | Duplicate or contradict role-specific standards |
+| `generator/templates/` and `reviewer/templates/` | 35 examples per role/profile; default 8 selected once per role/task | Serve as hidden route facts or unique gold segmentations |
+| `evaluation/` | Paired full-denominator summaries and technical smoke cases | Feed scores into Generator/Reviewer or delete failures from the denominator |
+| `provenance/` | Input lineage, evidence summary, source analyses and build hashes | Claim new navigation results or unverified causal explanations |
 
-## 接口怎样接到导航循环
+## Acceptance principles
 
-1. **每集 reset。** 宿主通过 `make_vector_factory` 绑定对应的 VectorEnv 环境。提供方建立新会话，即使再次运行同一 episode，也用新的 `episode_instance` 区分。模拟器进程通过位姿 RPC 返回本集相对机体位姿。[宿主与模拟器桥接](SimulatorAdapter/host_bridge.py)
-2. **每个实际观测端点。** 宿主的 `PoseBridge` 通过 `PoseReader.capture` 绑定会话、帧号和时间戳。模拟器分支只向提供方传递帧标识与时钟。返回的 `PoseFrame` 带来源、有效性、地图版本和机体变换，GraphAdapter 再用静态外参得到相机位姿，将其与同帧 RGB-D 绑定。无有效位姿时不填造坐标。[统一 DTO 与读取接口](graphAdapter/interfaces/pose/contracts.py) · [观测桥](graphAdapter/observation_pose/pose_bridge.py)
-3. **建图与发布。** 几何和对象分支使用同一帧的观测身份。建图服务提交更新后发布快照；检索固定读取当时可见的快照和观测截止点。001 只做影子建图与保存。[建图服务](graphAdapter/map_memory/service.py)
-4. **每次实际模型生成前。** 002 的宿主调用 `HostInjection.begin`，私有进程通过 `WorkerRetrieval.read` 选择证据，宿主再执行 `compile`、`preprocess`，在 `generation` 的审计范围内调用原模型。上次 REASON 可用作线索。附加材料走独立通道，原指令和八个 RGB 槽保留；原 parser、动作队列、执行器和 STOP 继续处理生成结果。执行队列里的 primitive 不额外触发模型调用。关闭 hook 时走宿主原生路径。[宿主决策接口](graphAdapter/map_memory/retrieval/host_decision.py) · [读取会话](graphAdapter/map_memory/retrieval/session.py)
+Each stage must preserve five semantic properties: entry context, prescribed process, target/identifying information, completion or terminal objective, and conditions/constraints. The roles also share five dependency families: until; after/once/when/then; before; while/keep/stay; if/otherwise/either/or. Both roles use the same C01–C12 checklist and the same evidence hierarchy S1/S2/S3; S4 (layout guesses, GT, scores or another episode) is prohibited.
 
-## 验证到了哪一步
+A useful split requires a supported previous exit, a supported next entry, a distinct next objective, and no broken condition/entity/count/frame. Short instructions are not automatically single-stage; a multi-action maneuver is not automatically multi-stage. `toward X` may be a terminal goal directive when it is the final source command, but this never means the agent reached or entered X.
 
-| 范围 | 已有证据 | 尚待确认 |
-|---|---|---|
-| 001 建图与存储 | R2R 7 集、RxR-US 8 集；检查最终图保留、冷加载及逐集计算缓存回收。 | 结论适用于该批 15 集。 |
-| 位姿边界 | 候选的提供方测试 77 项、宿主观测与位姿测试 74 项通过；6 集 469 个封存端点逐帧对应。 | 469 个端点是原档案兼容核查。 |
-| 002 输入与导航 | 固定状态核对了真实 prompt、原生八图及额外视觉材料进入语言模型的路径。1953 的真实闭环两侧都成功，但候选 SPL 从原生的 1.000 降至 0.291。 | 1561 的正确 STOP 会被整图干扰；282 的 A33 原图及排名已核实，新增生成因共享 GPU 显存不足未完成。双域导航效果门槛仍未过。 |
+## Renderer and format contract
 
-上述数字来自服务器相应版本的运行与归档。建议先沿接口代码检查数据边界，再按 [plan.md](docs/plan.md) 的顺序检查 1561 的 STOP 和 282 的来源绑定。服务器审阅目录为 `/data/zy/vln/case2/docs/stages/graphAdapter/002/`。
+- Unchanged/fallback source is returned byte-for-byte after UTF-8 decoding/encoding; no global `strip`, `splitlines`, `split/join`, `unicode_escape`, NFC/NFKC or case normalization.
+- `BOUNDARY_ONLY` replaces only the source whitespace at approved stage cuts with LF; copied stage interiors remain untouched.
+- `ASSEMBLED_SINGLE` and `ASSEMBLED_MULTI` keep reliable source COPY/MOVE spans and record EDIT/EDIT_SEAM explicitly. Ambiguous repeated spans are not assigned arbitrarily.
+- The source prefix/suffix are preserved exactly. Dataset-specific statistics are descriptive; there is no hard-coded “R2R must add one trailing space” or “RxR must trim” rule.
+- Stage count comes from the array/metadata, not `splitlines()`; native LF/CRLF inside a stage may remain.
+- The same frozen `rendered_instruction` reviewed by R0/R1 is the string committed to the existing actor input slot.
+
+## Offline verification
+
+Python 3.10+; install `requirements.txt`, then run:
+
+```bash
+python -m host.compile
+python -B -m unittest discover -s tests -p test_entry_diagnostics.py -v
+python -B -m unittest discover -s tests -p test_closed_loop_35.py -v
+python -B -m unittest discover -s tests -p test_roles_repair.py -v
+python -B -m unittest discover -s tests -p test_release_transaction.py -v
+# Run the complete inherited suite separately and compare known baseline failures:
+python -B -m unittest discover -s tests -v
+python -m examples.demo
+python -m evaluation.smoke24
+python verify_package.py
+```
+
+The demo uses explicitly labeled fixtures and does not call a real LLM or run navigation. Real model integration requires an existing transport callback that reports actual model, effort and request ID. Do not treat a requested alias as a verified provider receipt.
+
+## Evidence limits
+
+The source analysis reports 1,839 uploaded R2R evaluation records and 1,223 uploaded RxR en-US evaluation records. Their whitespace statistics are descriptive for those files, not universal dataset rules. The report documents previous runs (R2R baseline 1207/1839, current tested p1/v2 1197/1839; RxR old D 848/1223 vs baseline 827/1223) but those are not results of final-best-v1. No new generator/reviewer calls, tokenizer capture, navigation rollout or independent held-out validation were run to create this package.
+
+## Entry diagnostics release 1
+
+This variant preserves the existing two-role call budget and renderer, adds one shared entry-context definition and located diagnostics, and aligns accepted Generator/Reviewer entry checks. It is an engineering revision; no new model or navigation results are claimed. `generator/acceptance.md` is a synchronized reference copy of `shared/semantic_contract.md`; only the latter is compiled.
+
+Results retain `error` and add `diagnostic` (null on success). Failures identify module, phase, host step and JSON pointer. A technical entry violation does not prove route text wrong. Call state distinguishes request construction, transport entry/return and verified versus invalid receipt. Transport failure leaves remote execution unknown and never causes an automatic retry. Source-loading failure produces `input_failed` without invented instruction or identity.
+
+Current regression commands above exercise offline fixtures only. The two inherited legacy test files are retained and still expose 18 baseline failures/errors associated with older interfaces and renderer expectations. They are not skipped or represented as passing. Full before/after evidence, exact diffs, original archive, installation journal and rollback tool are in `docs/stages/v5-entry-diagnostics-20261114-r0` under the case1 root. The release transaction test uses that companion tool.
+
+This release does not repair the known terminal-disclaimer keyword rule, change missing-split policy, alter the active-candidate unresolved branch, add retries, or modify evaluation/model/STOP/image settings. Do not replay an old result with the new prompt or compare full result dictionaries across versions as if they were identical. Use its recorded frozen original package.
