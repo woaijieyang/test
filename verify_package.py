@@ -55,7 +55,7 @@ def main() -> int:
     ok = not (missing or extra or mismatched or required_missing)
     print(json.dumps({
         "ok": ok,
-        "algorithm": "sha256",
+        "algorithm": "sha256 + Git blob SHA-1",
         "manifest_entries": len(expected),
         "actual_files": len(actual),
         "hash_algorithms": algorithms,
