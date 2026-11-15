@@ -1,8 +1,18 @@
 {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vln.local/generator/output.schema.json",
+  "title": "VLN Generator runtime output v2",
   "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "subtasks",
+    "issues",
+    "stage_audit",
+    "handoffs"
+  ],
   "properties": {
     "status": {
-      "type": "string",
       "enum": [
         "ok",
         "needs_review"
@@ -13,13 +23,18 @@
       "items": {
         "type": "string",
         "minLength": 1
-      },
-      "minItems": 0
+      }
     },
     "issues": {
       "type": "array",
       "items": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "source_quote",
+          "problem"
+        ],
         "properties": {
           "code": {
             "type": "string",
@@ -33,354 +48,75 @@
             "type": "string",
             "minLength": 1
           }
-        },
-        "required": [
-          "code",
-          "source_quote",
-          "problem"
-        ],
-        "additionalProperties": false
-      },
-      "minItems": 0
+        }
+      }
     },
     "stage_audit": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "entry": {
-            "type": "object",
-            "properties": {
-              "mode": {
-                "type": "string",
-                "enum": [
-                  "episode_start",
-                  "explicit_context",
-                  "inherited_pose",
-                  "inherited_entity",
-                  "missing",
-                  "source_unspecified"
-                ]
-              },
-              "text": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "candidate_quotes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "minItems": 0
-              }
-            },
-            "required": [
-              "mode",
-              "text",
-              "candidate_quotes"
-            ],
-            "additionalProperties": false
-          },
-          "process": {
-            "type": "object",
-            "properties": {
-              "text": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "candidate_quotes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "minItems": 0
-              }
-            },
-            "required": [
-              "text",
-              "candidate_quotes"
-            ],
-            "additionalProperties": false
-          },
-          "target": {
-            "type": "object",
-            "properties": {
-              "text": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "candidate_quotes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "minItems": 0
-              }
-            },
-            "required": [
-              "text",
-              "candidate_quotes"
-            ],
-            "additionalProperties": false
-          },
-          "ending": {
-            "type": "object",
-            "properties": {
-              "kind": {
-                "type": "string",
-                "enum": [
-                  "explicit_event",
-                  "bounded_action",
-                  "linked_trigger_or_refinement",
-                  "terminal_goal_directive",
-                  "unspecified"
-                ]
-              },
-              "text": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "candidate_quotes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "minItems": 0
-              }
-            },
-            "required": [
-              "kind",
-              "text",
-              "candidate_quotes"
-            ],
-            "additionalProperties": false
-          },
-          "conditions": {
-            "type": "object",
-            "properties": {
-              "text": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "candidate_quotes": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "minItems": 0
-              }
-            },
-            "required": [
-              "text",
-              "candidate_quotes"
-            ],
-            "additionalProperties": false
-          },
-          "source_requirement_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 1
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "supported",
-              "gap",
-              "source_limited"
-            ]
-          },
-          "source_quotes": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "carryover": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            }
-          }
-        },
-        "required": [
-          "index",
-          "entry",
-          "process",
-          "target",
-          "ending",
-          "conditions",
-          "source_requirement_ids",
-          "status",
-          "source_quotes",
-          "carryover"
-        ],
-        "additionalProperties": false
+        "$ref": "https://vln.local/shared/template_schemas_v1_5_2/stage_audit.schema.json"
       }
     },
     "handoffs": {
       "type": "array",
       "items": {
-        "type": "object",
+        "$ref": "https://vln.local/shared/template_schemas_v1_5_2/handoff.schema.json"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
         "properties": {
-          "left": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "right": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "entry_binding": {
-            "type": "string",
-            "enum": [
-              "explicit_context",
-              "inherited_pose",
-              "inherited_entity",
-              "coupled_unresolved"
-            ]
-          },
-          "previous_exit": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "next_entry": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "carryover": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 0
-          },
-          "left_quote": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "right_quote": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "source_requirement_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 1
-          },
           "status": {
-            "type": "string",
-            "enum": [
-              "supported",
-              "gap",
-              "source_limited"
-            ]
+            "const": "ok"
           }
         },
         "required": [
-          "left",
-          "right",
-          "entry_binding",
-          "previous_exit",
-          "next_entry",
-          "carryover",
-          "left_quote",
-          "right_quote",
-          "source_requirement_ids",
           "status"
-        ],
-        "additionalProperties": false
+        ]
       },
-      "minItems": 0
+      "then": {
+        "properties": {
+          "subtasks": {
+            "minItems": 1
+          },
+          "issues": {
+            "maxItems": 0
+          },
+          "stage_audit": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "needs_review"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "subtasks": {
+            "maxItems": 0
+          },
+          "stage_audit": {
+            "maxItems": 0
+          },
+          "handoffs": {
+            "maxItems": 0
+          },
+          "issues": {
+            "minItems": 1
+          }
+        }
+      }
     }
-  },
-  "required": [
-    "status",
-    "subtasks",
-    "issues",
-    "stage_audit",
-    "handoffs"
-  ],
-  "additionalProperties": false
+  ]
 }
