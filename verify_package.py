@@ -36,9 +36,20 @@ def main() -> int:
     missing = sorted(expected - actual)
     extra = sorted(actual - expected)
     mismatched = []
+    algorithms = {"sha256": 0, "gitblob-sha1": 0}
     for rel in sorted(expected & actual):
-        got = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
-        if got != hashes[rel]:
+        data = (ROOT / rel).read_bytes()
+        recorded = hashes[rel]
+        if isinstance(recorded, str) and recorded.startswith("gitblob-sha1:"):
+            algorithms["gitblob-sha1"] += 1
+            git_header = f"blob {len(data)}\0".encode("ascii")
+            got = hashlib.sha1(git_header + data).hexdigest()
+            wanted = recorded.split(":", 1)[1]
+        else:
+            algorithms["sha256"] += 1
+            wanted = recorded.split(":", 1)[1] if isinstance(recorded, str) and recorded.startswith("sha256:") else recorded
+            got = hashlib.sha256(data).hexdigest()
+        if got != wanted:
             mismatched.append(rel)
     required_missing = [rel for rel in REQUIRED if not (ROOT / rel).is_file()]
     ok = not (missing or extra or mismatched or required_missing)
@@ -47,6 +58,7 @@ def main() -> int:
         "algorithm": "sha256",
         "manifest_entries": len(expected),
         "actual_files": len(actual),
+        "hash_algorithms": algorithms,
         "missing": missing,
         "extra": extra,
         "hash_mismatches": mismatched,
