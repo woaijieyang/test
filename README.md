@@ -122,3 +122,8 @@ The Host now passes R1 the exact frozen R0 review, R0 candidate and R0 rendered 
 ## Validation scope for this revision
 
 The runtime schema and host files were edited on the `LLM-decompose` branch from the pinned baseline commit. The three active schema files are Draft 2020-12 and their JSON syntax was re-read after commit. The new offline regression suite is `tests/test_runtime_contract_v2.py`; it covers status gates, cross-stage evidence with a one-stage repair target, G1 one-to-one responses and R1 prior-finding resolution. No provider calls or navigation runs were made. The full Python suite has not been executed in this environment, so no post-change unit-test pass is claimed.
+
+
+## Full-tree integrity manifest
+
+`FILE_HASHES.json` now covers all 381 tracked files in this branch (excluding the manifest itself). It retains SHA-256 for the 82 files already recorded in the release manifest and uses the exact Git blob SHA-1 for the remaining 299 tracked files, including archived snapshots and per-example templates. `verify_package.py` verifies both forms and rejects missing or extra files. The Git blob value is computed as SHA-1 over `blob <byte-length>\0<file-bytes>`; it is not a plain SHA-1 of file contents.
