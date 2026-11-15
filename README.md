@@ -59,7 +59,7 @@ Committed instruction ─► existing AwareVLN instruction slot
 | `renderer/` | SOURCE_EXACT / BOUNDARY_ONLY / ASSEMBLED_SINGLE / ASSEMBLED_MULTI preview, whitespace provenance ledger, exact frozen string | Semantic correction, SR-based choice, post-review cleanup, reject a semantically valid split for style |
 | `host/` | Compile prompts, validate schemas/quotes/hashes, bounded G0-R0-G1-R1 flow, same-snapshot commit or exact fallback | Add a chief reviewer, call online goal switches, change AwareVLN internals |
 | `shared/` | The one semantic acceptance contract and identity/hash helpers | Duplicate or contradict role-specific standards |
-| `generator/templates/` and `reviewer/templates/` | 35 examples per role/profile; default 8 selected once per role/task | Serve as hidden route facts or unique gold segmentations |
+| `generator/templates/` and `reviewer/templates/` | Generator: 35 val_seen examples per dataset. Reviewer: 35 paired examples plus dataset diagnostics (R2R 26, RxR 29); default 8–12 selected once per role/task | Serve as hidden route facts or unique gold segmentations |
 | `evaluation/` | Paired full-denominator summaries and technical smoke cases | Feed scores into Generator/Reviewer or delete failures from the denominator |
 | `provenance/` | Input lineage, evidence summary, source analyses and build hashes | Claim new navigation results or unverified causal explanations |
 
@@ -117,3 +117,8 @@ This release does not repair the known terminal-disclaimer keyword rule, change 
 The active wire schemas are `generator/output.schema.json`, `reviewer/output.schema.json`, and `generator/repair.schema.json` (Draft 2020-12). The shared `stage_audit.schema.json` and `handoff.schema.json` remain the nested teaching/runtime references. Runtime names are canonical: Generator stage index is `subtask_index`; Reviewer dimension is `source_fidelity`; candidate evidence uses `{subtask_index, quote}`. R0 requires an empty `prior_finding_reviews`; R1 must disposition every R0 blocking finding exactly once.
 
 The Host now passes R1 the exact frozen R0 review, R0 candidate and R0 rendered instruction in addition to the new candidate/rendered text. Cross-stage findings may cite evidence from both sides of a handoff while targeting only one stage for repair. G1 responses are one-to-one with R0 findings and the repaired candidate is a complete Generator output, not a text patch. See `host/README.md` for the field contract, null/empty semantics, verdict gates and fallback policy.
+
+
+## Validation scope for this revision
+
+The runtime schema and host files were edited on the `LLM-decompose` branch from the pinned baseline commit. The three active schema files are Draft 2020-12 and their JSON syntax was re-read after commit. The new offline regression suite is `tests/test_runtime_contract_v2.py`; it covers status gates, cross-stage evidence with a one-stage repair target, G1 one-to-one responses and R1 prior-finding resolution. No provider calls or navigation runs were made. The full Python suite has not been executed in this environment, so no post-change unit-test pass is claimed.
