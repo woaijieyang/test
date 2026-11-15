@@ -77,7 +77,7 @@
   "shared/semantic_contract.md": "gitblob-sha1:47b195dbefa35ff782d7dc45bcf153bb735fbf12",
   "tests/test_final_best_contract.py": "gitblob-sha1:467a6c9088a45e6a9589627bbf523bb836a05333",
   "tests/test_patch.py": "gitblob-sha1:e18cdb4cccd3c63437968345a69b2d87864cfeaa",
-  "validation.json": "gitblob-sha1:6917c203e6c250f4ddf095d3406c25013f091f10",
+  "validation.json": "gitblob-sha1:b817417928f8ae389bca1f62a917aed3ef28cc86",
   "verify_package.py": "gitblob-sha1:8e5f8335462fc2c0f4077b3df06bdf3ce8b2087e",
   "generator/repair_examples.json": "gitblob-sha1:4739568da3833ac21d5ecf07432b4ace4d22f57a",
   "tests/test_runtime_contract_v2.py": "gitblob-sha1:0d430c91630d71809881d12b5c4f73351e9cd636",
