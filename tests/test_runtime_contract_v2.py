@@ -92,7 +92,7 @@ def generator_candidate(repaired=False):
             {
                 "from_subtask_index": 0,
                 "to_subtask_index": 1,
-                "status": "supported" if repaired else "gap",
+                "status": "supported",
                 "preceding_exit": {
                     "text": "The first stage completes the kitchen exit and right turn.",
                     "candidate_quote": "turn right"
