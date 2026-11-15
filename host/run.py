@@ -21,7 +21,7 @@ from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "final-best-v1-closed-loop-schema-r1-evidence-2"
+VERSION = "final-best-v1-runtime-contract-v2"
 
 
 def request(role, phase, payload, pin, profile, selected_ids):
