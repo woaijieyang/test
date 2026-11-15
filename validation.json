@@ -39,13 +39,17 @@
       "sha256": 82,
       "gitblob_sha1": 299
     },
-    "full_tree_integrity_manifest_verified_by_runtime_script": false
+    "full_tree_integrity_manifest_verified_by_runtime_script": false,
+    "r1_resolved_and_partially_resolved_prior_findings_require_new_candidate_evidence": true,
+    "requires_review_source_rows_require_source_ambiguity_finding": true,
+    "candidate_defect_findings_require_affected_stage_unless_source_ambiguity": true
   },
   "tests": {
     "new_offline_regression_suite": "tests/test_runtime_contract_v2.py",
     "python_test_execution": "not_run",
     "reason": "This session could inspect and update the GitHub branch through the connector but could not clone the repository into a local Python execution environment. No post-change unittest pass is claimed.",
-    "required_next_command": "python -m unittest discover -s tests -p 'test_runtime_contract_v2.py' -v"
+    "required_next_command": "python -m unittest discover -s tests -p 'test_runtime_contract_v2.py' -v",
+    "end_to_end_run_record_test_added": true
   },
   "new_model_calls": 0,
   "new_navigation_runs": 0,
@@ -55,7 +59,8 @@
     "Existing legacy test files against the updated runtime schema",
     "Production transport recovery adapter lookup behavior",
     "Actual model response conformance, semantic quality, and navigation performance",
-    "Execution of verify_package.py against a local checkout; manifest path set was compared to the live Git tree, but file bytes were not materialized in this environment."
+    "Execution of verify_package.py against a local checkout; manifest path set was compared to the live Git tree, but file bytes were not materialized in this environment.",
+    "The final Host protocol changes and offline end-to-end regression test have not been executed in a local Python environment."
   ],
   "important_runtime_rules": {
     "g0_needs_review_and_r0_unresolved": "direct exact-source fallback; do not generate partial plan",
