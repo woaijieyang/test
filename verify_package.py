@@ -12,7 +12,8 @@ REQUIRED = [
     "generator/prompt.md", "generator/repair.md", "generator/output.schema.json",
     "reviewer/prompt.md", "reviewer/checklist.md", "reviewer/output.schema.json",
     "adapter/source.py", "adapter/profiles.json", "renderer/freeze.py",
-    "host/run.py", "host/protocol.py", "shared/semantic_contract.md",
+    "host/run.py", "host/protocol.py", "host/README.md", "shared/semantic_contract.md",
+    "generator/repair.schema.json", "tests/test_runtime_contract_v2.py",
     "templates/01.json", "templates/15.json", "tests/test_patch.py",
     "tests/test_final_best_contract.py", "validation.json",
 ]
