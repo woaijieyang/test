@@ -18,8 +18,7 @@ LAYERS = (
     "L3_stage_checks", "L4_handoffs", "L5_grouping", "L6_route_readback",
 )
 DIMENSIONS = ("source_fidelity", "closure_handoff", "segmentation_adequacy")
-COVERAGE_STATES = ("covered", "omitted", "altered_or_missing", "superseded", "requires_review")
-STOP_WORDS = re.compile(r"\b(stop|wait|halt|stand|standing|remain|staying)\b", re.I)
+COVERAGE_STATES = ("covered", "omitted", "altered_or_missing", "superseded", "requires_review", "not_assessed_no_candidate")
 
 
 def pointer(parts):
@@ -87,6 +86,12 @@ def quote(q, text, *, path="", target="source", stage_index=None):
         details["stage_index"] = stage_index
     check(isinstance(q, str) and bool(q.strip()), "Empty or invalid exact quotation",
           path=path, code="EXACT_QUOTE_INVALID", **details)
+    if q not in text:
+        pattern = "".join(r"\s+" if bit.isspace() else re.escape(bit) for bit in re.split(r"(\s+)", q))
+        matches = re.finditer(pattern, text)
+        first = next(matches, None)
+        if first is not None and next(matches, None) is None:
+            details["unique_whitespace_equivalent_hint"] = first.group()
     check(q in text, "Unverifiable exact quotation",
           path=path, code="EXACT_QUOTE_NOT_FOUND", **details)
 
@@ -111,12 +116,14 @@ def _entry(value, index, path, *, enforce_mode=True):
               path=path + "/text", stage_index=index)
 
 
-def _field_quotes(fields, candidate_stage, path, index):
+def _field_quotes(fields, candidate_stage, path, index, *, missing_ending=False):
     for field_name in ("entry", "target", "process", "ending", "conditions"):
         field = fields[field_name]
         for j, q in enumerate(field["candidate_quotes"]):
             quote(q, candidate_stage, path=f"{path}/{field_name}/candidate_quotes/{j}",
                   target="candidate_stage", stage_index=index)
+        if field_name == "ending" and missing_ending:
+            continue  # Absence is established by the source and a linked blocking finding.
         if field_name in ("process", "ending"):
             check(bool(field["text"]) and bool(field["candidate_quotes"]),
                   f"Stage requires grounded {field_name} in executable English",
@@ -135,13 +142,9 @@ def _stop_scope(ending, index, stage_count, path):
     if scope == "intermediate":
         check(index < stage_count - 1,
               "intermediate stop_scope is only valid before a later stage", path=path)
-        check(bool(STOP_WORDS.search(" ".join(ending["candidate_quotes"]))),
-              "intermediate stop_scope requires quoted stationary/stop evidence", path=path)
     elif scope == "terminal":
         check(index == stage_count - 1,
               "terminal stop_scope is only valid on the final stage", path=path)
-        check(bool(STOP_WORDS.search(" ".join(ending["candidate_quotes"]))),
-              "terminal stop_scope requires quoted stationary/stop evidence", path=path)
 
 
 def _check_handoff(h, parts, path, *, accepted):
@@ -201,11 +204,8 @@ def generator(source, candidate, *, prefix=""):
               "An accepted stage needs a supported ending basis",
               path=loc + "/ending/kind", stage_index=i)
         if audit["ending"]["kind"] == "terminal_goal_directive":
-            wording = audit["ending"]["text"].casefold()
-            check(i == n - 1 and (re.search(r"(?:does not (?:specify|state)|do not invent|no further)\b[^.;]*\b(?:arrival|stop|stopping)\b", wording) or any(term in wording for term in (
-                "no arrival", "arrival is not", "not asserted", "no explicit",
-                "unspecified", "not specified", "no stop", "stop is not"
-            ))), "terminal_goal_directive must be final-only and disclaim arrival/STOP",
+            check(i == n - 1 and audit["ending"]["stop_scope"] == "none",
+                  "A target-directed approach must be final and cannot assert a stop",
                   path=loc + "/ending", stage_index=i)
     for j, handoff in enumerate(candidate["handoffs"]):
         _check_handoff(handoff, parts, f"{prefix}/handoffs/{j}", accepted=True)
@@ -321,6 +321,13 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
         quote(row["source_quote"], source, path=loc + "/source_quote")
         check(row["status"] in COVERAGE_STATES, "Unknown source coverage status",
               path=loc + "/status")
+        if row["status"] == "not_assessed_no_candidate":
+            cited = any(row["requirement_id"] in finding["source_requirement_ids"]
+                        for finding in review["findings"])
+            check(candidate["status"] == "needs_review" and not parts and verdict != "pass"
+                  and not row["candidate_evidence"] and not cited,
+                  "Only an uncited, clear source requirement with an inactive empty candidate "
+                  "may be not_assessed_no_candidate", path=loc + "/status")
         for k, ev in enumerate(row["candidate_evidence"]):
             idx = ev["subtask_index"]
             check(0 <= idx < n, "Coverage evidence stage index is out of range",
@@ -351,7 +358,21 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
               path=loc + "/source_requirement_ids", stage_index=i)
         for j, q in enumerate(stage_check["source_quotes"]):
             quote(q, source, path=f"{loc}/source_quotes/{j}", stage_index=i)
-        _field_quotes(stage_check, parts[i], loc, i)
+        missing_ending = (
+            verdict == "revise" and stage_check["status"] == "gap"
+            and stage_check["ending"]["kind"] == "unspecified"
+            and stage_check["ending"]["stop_scope"] == "none"
+            and not stage_check["ending"]["candidate_quotes"]
+            and any(
+                finding["code"] in ("OMISSION", "OPEN_INTERMEDIATE_STAGE")
+                and i in finding["affected_subtask_indices"]
+                and row["status"] in ("omitted", "altered_or_missing")
+                and row["requirement_id"] in finding["source_requirement_ids"]
+                and row["requirement_id"] in stage_check["source_requirement_ids"]
+                for finding in review["findings"] for row in coverage
+            )
+        )
+        _field_quotes(stage_check, parts[i], loc, i, missing_ending=missing_ending)
         _entry(stage_check["entry"], i, loc + "/entry", enforce_mode=(verdict == "pass"))
         _stop_scope(stage_check["ending"], i, n, loc + "/ending/stop_scope")
         if stage_check["status"] in ("gap", "source_limited"):
@@ -396,7 +417,11 @@ def reviewer(source, candidate, review, *, rendered_instruction=None,
         check(all(0 <= idx < n for idx in affected),
               "Finding affected-stage index is out of range",
               path=loc + "/affected_subtask_indices")
-        if finding["code"] != "SOURCE_AMBIGUITY":
+        task_level_rejection = (candidate["status"] == "needs_review" and not parts
+                                and verdict == "revise" and finding["code"] == "OVERREJECTION"
+                                and finding["source_requirement_ids"] and not finding["candidate_evidence"]
+                                and not finding["repair"]["affected_subtask_indices"])
+        if finding["code"] != "SOURCE_AMBIGUITY" and not task_level_rejection:
             check(bool(affected),
                   "A candidate defect finding must identify at least one affected stage",
                   path=loc + "/affected_subtask_indices")

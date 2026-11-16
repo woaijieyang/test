@@ -102,7 +102,7 @@ Each row requires `finding_index`, `status` (`resolved`, `partially_resolved`, `
 
 ## 5. Deterministic workflow and release gates
 
-`run_record(src, transport, *, pins, separator, example_count, selection_mode)` remains the public entry point. The call budget is bounded to G0 → R0 → optional G1 → R1.
+`run_record(src, transport, *, pins, separator, example_count, selection_mode)` remains the public entry point. The semantic workflow is G0 → R0 → optional G1 → R1, plus at most one generator quotation correction per record.
 
 1. **G0** receives only the complete original instruction. Host validates the active Generator schema, source quotations, one audit per stage, exact adjacent handoff coverage and stage indices.
 2. **Freeze** renders the exact candidate, records source/whitespace ledger and hashes, and binds candidate + rendered text into one immutable snapshot.
@@ -131,3 +131,46 @@ Each row requires `finding_index`, `status` (`resolved`, `partially_resolved`, `
 - Preserve the existing selector/compiler ownership. `compile.py` must use the phase matrix above; `template_selector.py` remains source-driven and freezes selected IDs per task.
 
 This Host performs structural and provenance checks only. It does not prove semantic entailment, path/viewpoint alignment, physical completion or navigation success.
+
+## Targeted quotation feedback and paired selection
+
+G0/R0/G1/R1 remain the semantic phases. Each record has two generator technical corrections in total across G0/G1 (exact quotations or parsed objects with missing, extra or wrongly typed fields). One reviewer-requested semantic repair has a separate budget. Reviewer corrections have a separate two-call allowance; the combined worst case is eight role calls. Its request retains the original phase schema, frozen template IDs, previous output and technical_feedback; the failed event keeps validation_error. Unknown execution is lookup-only. A valid semantic verdict does not itself trigger technical correction.
+
+For revise/gap only, a documented omission at the same stage and source requirement can explain an absent ending quote. Final-stage placement and exact quotations remain mechanical; semantic stop synonyms and arrival disclaimers are reviewed rather than phrase-matched. Adaptive selection uses 6-8 generator examples and the matching reviewer examples plus 2-4 diagnostic cases. An explicit count overrides the base size for controlled ablations. Full-library mode is unchanged.
+
+Teaching injection keeps the selected IDs fixed. Each case includes source/candidate, the authored decision or judgment, a transfer lesson and anti-pattern if available. The first case includes extended evidence. Source-triggered scope questions are placed by the current task. These are questions, not hard segmentation rules.
+
+
+## Symmetric technical feedback and inactive candidates
+
+Each episode has **two generator corrections, two reviewer corrections and one semantic repair**.
+G0/G1 share their two corrections, and R0/R1 share their separate two. At most eight role calls
+(including repairs); provider execution attempts are counted separately. An invalid response
+retains its raw output, exact diagnostic path and previous snapshot. The reviewer can correct its
+review only; the candidate, its source, stage indices and the R0 context are frozen. A proposed
+verdict is usable only after validation; inspect validation_state, final disposition and binding.
+Receipt/transport/renderer/old-snapshot errors are not semantic review retries.
+
+With zero stages and needs_review, not_assessed_no_candidate is only for clear, uncited source
+requirements with no candidate evidence. A route-critical ambiguity still needs an explicit
+SOURCE_AMBIGUITY finding. Only task-level revise/OVERREJECTION can dispute an empty refusal
+without affected stage or repair indices; active plans retain their usual index requirements.
+
+## CLI recovery
+
+For a new local-CLI run, use python -m host.run --record RECORD --output NEW_RESULT --cli-ledger LEDGER.
+Use a private ledger outside the source tree. If an earlier result recorded an interruption, use
+the same source, pins, package and ledger with a fresh output filename. Already sealed requests
+are replayed from their own journals; inspect an unknown attempt before any further submission.
+External transports remain supported. For split Windows CLI/Linux engine deployments use
+python -m host.cli_journal --ledger LEDGER --task-key TASK_KEY on the CLI machine with the JSON
+request on stdin (use --lookup for lookup-only recovery). Existing frozen batch dispatchers
+continue to use the implementation they launched with.
+
+Per request/task the ledger stores request, stdout events, stderr, raw answer and exit status.
+A confirmed routing-discovery failure with no answer is retried at most twice, with backoff.
+A verified completed response containing malformed JSON is returned as raw text with its real
+receipt for the role's bounded format correction. No other ambiguous execution is regenerated.
+Incomplete or mismatched receipts and unknown transport states are ineligible for navigation;
+queue consumers must inspect navigation_eligible. CLI journals contain prompts, so keep them
+private and do not include them in source archives.

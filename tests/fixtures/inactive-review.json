@@ -1,0 +1,268 @@
+{
+  "1416": {
+    "source": "Make a right and head down hallway,  make a right and head toward the staircase, and wait and second step. ",
+    "payload": {
+      "candidate": {
+        "issues": [
+          {
+            "code": "AMBIGUOUS_COMPLETION_STATE",
+            "problem": "The final wording does not establish whether the agent must wait at the second step or perform a separate, missing action involving the second step; resolving it would change the required completion state.",
+            "source_quote": "wait and second step"
+          }
+        ],
+        "status": "needs_review",
+        "subtasks": []
+      },
+      "original_instruction": "Make a right and head down hallway,  make a right and head toward the staircase, and wait and second step. ",
+      "rendered_instruction": "Make a right and head down hallway,  make a right and head toward the staircase, and wait and second step. "
+    },
+    "review": {
+      "verdict": "unresolved",
+      "dimensions": {
+        "source_fidelity": "not_assessable",
+        "closure_handoff": "source_limited",
+        "segmentation_adequacy": "not_assessable"
+      },
+      "source_coverage": [
+        {
+          "requirement_id": "SRC-01",
+          "source_quote": "Make a right and head down hallway",
+          "requirement": "Turn right and proceed down the hallway.",
+          "candidate_evidence": [],
+          "status": "requires_review"
+        },
+        {
+          "requirement_id": "SRC-02",
+          "source_quote": "make a right and head toward the staircase",
+          "requirement": "Then turn right and proceed toward the staircase.",
+          "candidate_evidence": [],
+          "status": "requires_review"
+        },
+        {
+          "requirement_id": "SRC-03",
+          "source_quote": "wait and second step",
+          "requirement": "Preserve the source-defined final waiting or step-related completion, whose intended action and placement cannot be determined from the supplied wording.",
+          "candidate_evidence": [],
+          "status": "requires_review"
+        }
+      ],
+      "layer_checks": [
+        {
+          "layer": "L0_integrity",
+          "status": "pass",
+          "finding_indices": [],
+          "conclusion": "The candidate contains no subtasks, and the rendered instruction lexically matches the original instruction; no host-integrity mismatch is present."
+        },
+        {
+          "layer": "L1_source_coverage",
+          "status": "source_limited",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "The two turns and directed movements are linguistically identifiable, but the final clause does not determine the required completion event; the inactive needs_review candidate therefore supplies no executable stage evidence."
+        },
+        {
+          "layer": "L2_dependencies",
+          "status": "source_limited",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "The order of the two right turns and movements is clear, but the relation between waiting and the second step is route-critically undecidable from the original wording."
+        },
+        {
+          "layer": "L3_stage_checks",
+          "status": "not_applicable",
+          "finding_indices": [],
+          "conclusion": "There are no actual candidate stages to audit for entry, process, target, ending, or conditions."
+        },
+        {
+          "layer": "L4_handoffs",
+          "status": "not_applicable",
+          "finding_indices": [],
+          "conclusion": "There are no adjacent candidate stages and therefore no handoffs to inspect."
+        },
+        {
+          "layer": "L5_grouping",
+          "status": "not_applicable",
+          "finding_indices": [],
+          "conclusion": "The candidate proposes no segmentation, so grouping adequacy cannot be assessed."
+        },
+        {
+          "layer": "L6_route_readback",
+          "status": "source_limited",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "A complete executable readback cannot be established because the source does not determine whether the final requirement is waiting at the second step or waiting followed by a separate second-step action."
+        }
+      ],
+      "findings": [
+        {
+          "code": "SOURCE_AMBIGUITY",
+          "failed_layer": "L2_dependencies",
+          "c_check": "C11",
+          "dimension": "closure_handoff",
+          "related_dimensions": [],
+          "affected_subtask_indices": [],
+          "source_requirement_ids": [
+            "SRC-03"
+          ],
+          "source_quote": "wait and second step",
+          "candidate_evidence": [],
+          "evidence_level": "S1",
+          "problem": "The original final clause is grammatically incomplete and supports materially different completion states: it may intend waiting at the second step, or it may coordinate waiting with an unstated action involving a second step. The empty candidate does not select either interpretation, and the surrounding route provides no fact that resolves the distinction.",
+          "execution_consequence": "The agent cannot determine the required final placement or action: interpreting the phrase as waiting at the staircase's second step would require reaching that step, while interpreting it as a separate step-related action could require a different movement and endpoint.",
+          "repair": {
+            "operation": "abstain",
+            "affected_subtask_indices": [],
+            "instruction": "Do not invent an executable completion or generate a partial route; retain the source-limited needs_review outcome unless the original final clause is clarified by the source provider.",
+            "protected_requirements": [
+              "Preserve the first right turn and movement down the hallway.",
+              "Preserve the subsequent right turn and movement toward the staircase.",
+              "Do not silently replace \"and\" with \"at\" or invent a missing step-related action."
+            ]
+          }
+        }
+      ],
+      "stage_checks": [],
+      "handoffs": [],
+      "prior_finding_reviews": []
+    }
+  },
+  "8797": {
+    "source": "You are standing on the threshold of a empty closet, turn left and you should be facing a bed and the mat on the floor, walk towards the mat or step on the mat and you are done.",
+    "payload": {
+      "candidate": {
+        "issues": [
+          {
+            "code": "AMBIGUOUS_COMPLETION_STATE",
+            "problem": "The source permits two materially different terminal conditions—merely moving toward the mat or stepping onto it—without specifying which one completes the route.",
+            "source_quote": "walk towards the mat or step on the mat and you are done"
+          }
+        ],
+        "status": "needs_review",
+        "subtasks": []
+      },
+      "original_instruction": "You are standing on the threshold of a empty closet, turn left and you should be facing a bed and the mat on the floor, walk towards the mat or step on the mat and you are done.",
+      "rendered_instruction": "You are standing on the threshold of a empty closet, turn left and you should be facing a bed and the mat on the floor, walk towards the mat or step on the mat and you are done."
+    },
+    "review": {
+      "verdict": "revise",
+      "dimensions": {
+        "source_fidelity": "issue",
+        "closure_handoff": "issue",
+        "segmentation_adequacy": "not_assessable"
+      },
+      "source_coverage": [
+        {
+          "requirement_id": "SRC-01",
+          "source_quote": "You are standing on the threshold of a empty closet",
+          "requirement": "Begin from the stated position on the threshold of the empty closet.",
+          "candidate_evidence": [],
+          "status": "omitted"
+        },
+        {
+          "requirement_id": "SRC-02",
+          "source_quote": "turn left and you should be facing a bed and the mat on the floor",
+          "requirement": "Turn left, with the bed and floor mat providing the resulting orientation and target context.",
+          "candidate_evidence": [],
+          "status": "omitted"
+        },
+        {
+          "requirement_id": "SRC-03",
+          "source_quote": "walk towards the mat or step on the mat and you are done",
+          "requirement": "Complete the route using either source-authorized alternative: walk toward the mat or step onto the mat.",
+          "candidate_evidence": [],
+          "status": "omitted"
+        }
+      ],
+      "layer_checks": [
+        {
+          "layer": "L0_integrity",
+          "status": "pass",
+          "finding_indices": [],
+          "conclusion": "The rendered instruction lexically matches the original instruction; there is no host integrity failure."
+        },
+        {
+          "layer": "L1_source_coverage",
+          "status": "issue",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "The candidate supplies no executable stages, so none of the source route requirements is represented."
+        },
+        {
+          "layer": "L2_dependencies",
+          "status": "pass",
+          "finding_indices": [],
+          "conclusion": "The source itself gives an executable left turn followed by two expressly permitted, compatible terminal alternatives; the word 'or' does not create an undecidable route requirement."
+        },
+        {
+          "layer": "L3_stage_checks",
+          "status": "issue",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "No actual stage is present to express the episode-start threshold, left turn, mat selection, or either authorized completion alternative."
+        },
+        {
+          "layer": "L4_handoffs",
+          "status": "not_applicable",
+          "finding_indices": [],
+          "conclusion": "There are no candidate stages and therefore no adjacent stage handoffs to inspect."
+        },
+        {
+          "layer": "L5_grouping",
+          "status": "not_applicable",
+          "finding_indices": [],
+          "conclusion": "Segmentation cannot be evaluated because the candidate contains no subtasks."
+        },
+        {
+          "layer": "L6_route_readback",
+          "status": "issue",
+          "finding_indices": [
+            0
+          ],
+          "conclusion": "The empty candidate cannot be read back as the source route, and its source-ambiguity refusal is unsupported because the source explicitly authorizes either terminal alternative."
+        }
+      ],
+      "findings": [
+        {
+          "code": "OVERREJECTION",
+          "failed_layer": "L1_source_coverage",
+          "c_check": "C01",
+          "dimension": "source_fidelity",
+          "related_dimensions": [
+            "closure_handoff"
+          ],
+          "affected_subtask_indices": [],
+          "source_requirement_ids": [
+            "SRC-01",
+            "SRC-02",
+            "SRC-03"
+          ],
+          "source_quote": "You are standing on the threshold of a empty closet, turn left and you should be facing a bed and the mat on the floor, walk towards the mat or step on the mat and you are done.",
+          "candidate_evidence": [],
+          "evidence_level": "S1",
+          "problem": "The candidate rejects the instruction as having an ambiguous completion state and emits no route stages. The source does not require choosing one unknowable terminal condition: it explicitly permits either walking toward the mat or stepping onto it, after the same threshold start and left turn.",
+          "execution_consequence": "There is no executable navigation plan, so the threshold entry state, left turn, bed-and-mat orientation cue, mat target, and both source-authorized completion alternatives are all lost.",
+          "repair": {
+            "operation": "correct_refusal",
+            "affected_subtask_indices": [],
+            "instruction": "Replace the false needs-review refusal with an executable source-grounded route that retains the threshold start and left turn, identifies the floor mat using the stated view of the bed and mat, and preserves 'walk towards the mat or step on the mat' as source-authorized terminal alternatives without forcing one alternative, inventing arrival, or adding a STOP.",
+            "protected_requirements": [
+              "Preserve the initial position on the threshold of the empty closet.",
+              "Preserve the left turn and the resulting view of the bed and floor mat.",
+              "Preserve the mat as the navigation target.",
+              "Preserve both source-authorized terminal alternatives and their original disjunctive scope.",
+              "Do not strengthen walking toward the mat into mandatory arrival, stepping onto it, or stopping."
+            ]
+          }
+        }
+      ],
+      "stage_checks": [],
+      "handoffs": [],
+      "prior_finding_reviews": []
+    }
+  }
+}

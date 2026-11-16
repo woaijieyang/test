@@ -14,5 +14,6 @@
     8,
     12
   ],
-  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07"
+  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07",
+  "selection": "same base via pair_id plus 2-4 unique diagnostics"
 }

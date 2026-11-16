@@ -1,9 +1,10 @@
 """Compile role-specific teaching material separately from the active response schema."""
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 from shared.identity import canonical,text_hash
-from host.template_selector import select_examples,library,DEFAULT_EXAMPLES,PROFILES
+from host.template_selector import select_examples,library,DEFAULT_EXAMPLES,PROFILES,write_type_index
 ROOT=Path(__file__).resolve().parents[1]
 
 def wire_schema(path):
@@ -35,6 +36,43 @@ def wire_schema(path):
     uri = 'https://vln.local/' + path.relative_to(ROOT).as_posix()
     return expand(json.loads(path.read_bytes()), uri, {uri})
 
+def transfer_checks(text):
+    """Ask about scope without supplying a new instruction or choosing a boundary."""
+    questions = []
+    if len(re.findall(r"\b(?:stop|wait|stand|stay|remain)\b", text, re.I)) > 1:
+        questions.append("Compare two readings of the stop clauses: one destination refined by a "
+                         "more precise position, or two distinct stops. What source event requires "
+                         "motion between them? If uncertain, preserve the source relationship.")
+    if re.search(r",\s*(?:veering|turning|keeping|facing|passing)\b", text, re.I):
+        questions.append("Compare the timing of the participial action before and after a proposed "
+                         "cut. Does the source actually authorize turning an ongoing action into "
+                         "an action beginning only AFTER the prior stage? Retain the original scope "
+                         "where an example's handoff would impose a new order.")
+    return questions
+
+
+def teaching_card(example, role, detailed):
+    """Show the authored decision and its textual evidence in a compact demonstration."""
+    notes = example["teaching_notes"]
+    if role == "generator":
+        out = example["output"]
+        card = dict(source=example["input"]["original_instruction"], decision=example["decision"],
+                    stages=out["subtasks"], handoffs=out["handoffs"], issues=out["issues"])
+        if detailed:
+            card["stage_evidence"] = out["stage_audit"]
+        lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters")
+    else:
+        audit = example["expected_review"]
+        card = dict(review_case=example["review_input"], verdict=audit["verdict"],
+                    dimensions=audit["dimensions"], findings=audit["findings"])
+        if detailed:
+            card["coverage_evidence"] = audit["source_coverage"]
+            card["handoffs"] = audit["handoffs"]
+        lesson = notes.get("case_specific_focus") or notes.get("review_principle") or notes.get("reuse_rule")
+    return dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
+                avoid=notes.get("anti_pattern"))
+
+
 def compile_prompt(role,phase='initial',*,profile,examples=True,
                    original_instruction=None,example_count=DEFAULT_EXAMPLES,
                    selected_ids=None,selection_mode='adaptive'):
@@ -59,29 +97,33 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         byid={r['template_id']:r for r in rows}
         if any(x not in byid for x in chosen):raise ValueError('Selected template ID not in this dataset/role library')
         parts.append(f'CURATED {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} v1.5.2 teaching cases. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected example IDs in order: '+', '.join(chosen))
-        for eid in chosen:
-            example=byid[eid]
-            # Teach route decisions without presenting a different schema as wire output.
-            if role == 'generator':
-                teaching = dict(source=example['input']['original_instruction'],
-                                decision=example['decision'], stages=example['output']['subtasks'],
-                                stage_evidence=example['output']['stage_audit'],
-                                handoffs=example['output']['handoffs'], issues=example['output']['issues'])
-            else:
-                audit = example['expected_review']
-                teaching = dict(review_case=example['review_input'], verdict=audit['verdict'],
-                                coverage_evidence=audit['source_coverage'], teaching_findings=audit['findings'],
-                                stage_evidence=audit['stage_checks'], handoffs=audit['handoffs'],
-                                layer_observations=audit['layer_checks'], dimensions=audit['dimensions'])
-            parts.append(canonical(dict(template_id=eid, teaching=teaching, notes=example['teaching_notes'])))
+        for position, eid in enumerate(chosen):
+            example = byid[eid]
+            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))
         if repair:
             parts.append('TWO REPAIR-ENVELOPE EXAMPLES — active repair Schema, unlike initial-output examples. They teach accepting supported critique and rejecting unsupported advice.')
             parts.extend(canonical(e) for e in json.loads((ROOT/'generator/repair_examples.json').read_text(encoding='utf-8')))
+        parts.append(
+            "APPLY THE EXAMPLES TO THE CURRENT SOURCE. Compare the closest example's decision with "
+            "the current action order, reference frame, and completion event. Transfer its rule only "
+            "when the current wording supports the same relation. A different relation can require "
+            "the opposite decision. " +
+            ("Check whether a later location refines the same endpoint or starts a new objective."
+             if role == "generator" else
+             "Judge this candidate from its source and stage quotations; a paired example's pass "
+             "or diagnostic example's revise is not a vote. Check that any alleged defect is present.")
+            + " Express the result through the existing schema; do not output a template commentary."
+        )
+        checks = transfer_checks(original_instruction or "")
+        if checks:
+            parts.append("When comparing the cases above with this instruction, check: " + " ".join(checks))
     parts.append('ACTUAL INPUT: process only the current independent user message. Do not import a training example into this route. Return the ACTIVE schema JSON object.')
     return '\n\n'.join(parts)+'\n',schema
 
 def build():
     out={}
+    for role in ("generator","reviewer"):
+        write_type_index(role)
     for profile in PROFILES:
         for role,phase,file in [('generator','initial','compiled_'+profile+'.txt'),('reviewer','review','compiled_'+profile+'.txt'),('generator','repair','compiled_repair_'+profile+'.txt')]:
             selected=select_examples(role,profile,'',count=DEFAULT_EXAMPLES)

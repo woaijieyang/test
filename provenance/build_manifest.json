@@ -1,115 +1,107 @@
 {
   "generator/compiled_r2r-en.txt": {
-    "compiled_sha256": "b25e8bd8f6aec3f43743da8dff84646b1ba94bd7d7af11193ba495d28fdeee80",
+    "compiled_sha256": "ab48ab4afda7f4a93ecd54f3f7656f3809bb54667789abddf9de81b92682f7ff",
     "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 81905,
-    "default_examples": 8,
+    "bytes": 50225,
+    "default_examples": 6,
     "library_count": 35,
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
       "R2R-GEN-033",
-      "R2R-GEN-003",
-      "R2R-GEN-004",
-      "R2R-GEN-013",
-      "R2R-GEN-016",
-      "R2R-GEN-017",
-      "R2R-GEN-022"
+      "R2R-GEN-026",
+      "R2R-GEN-019",
+      "R2R-GEN-028",
+      "R2R-GEN-018"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "466f7942e72526b61ef41fe5f6130ae59c0fbdd8168fe41641a25a811d63531e",
-    "schema_sha256": "f73dd96b9a4db37121825e3a7f24cd0345e0e11920e2014fd24544a363af7130",
-    "bytes": 91084,
+    "compiled_sha256": "02acf15f45d65bdcdc15049e256b6cb6d85c6bb82c816d789ac82cb9bdaae63d",
+    "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
+    "bytes": 56419,
     "default_examples": 8,
     "library_count": 61,
     "profile": "r2r-en",
     "example_ids": [
-      "R2R-REV-017",
-      "R2R-DIAG-03",
-      "R2R-REV-031",
+      "R2R-REV-032",
       "R2R-REV-033",
-      "R2R-DIAG-17",
-      "R2R-DIAG-23",
       "R2R-REV-026",
-      "R2R-REV-032"
+      "R2R-REV-019",
+      "R2R-REV-028",
+      "R2R-REV-018",
+      "R2R-DIAG-03",
+      "R2R-DIAG-17"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_r2r-en.txt": {
-    "compiled_sha256": "ad8782b34869b6d03ad67cd8e6778e3492739b3844322b9c64f129b6e6748018",
+    "compiled_sha256": "eb9e2b9adf4340d684998be02b2a7c7fb0fbaac2fbc01fad63293de3c4f9ab75",
     "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 96961,
-    "default_examples": 8,
+    "bytes": 65281,
+    "default_examples": 6,
     "library_count": 35,
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
       "R2R-GEN-033",
-      "R2R-GEN-003",
-      "R2R-GEN-004",
-      "R2R-GEN-013",
-      "R2R-GEN-016",
-      "R2R-GEN-017",
-      "R2R-GEN-022"
+      "R2R-GEN-026",
+      "R2R-GEN-019",
+      "R2R-GEN-028",
+      "R2R-GEN-018"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "7bb7df0cb16fc58289dffd127ef9b68257f4445a82dc79c93952b90855720f8c",
+    "compiled_sha256": "17aaae544f161c72a8af3fd23304947e6872831c6119eec179afd1872ab0f54f",
     "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 75090,
-    "default_examples": 8,
+    "bytes": 50830,
+    "default_examples": 6,
     "library_count": 45,
     "profile": "rxr-en-us",
     "example_ids": [
       "RxR-GEN-013",
-      "RxR-GEN-004",
       "RxR-GEN-022",
       "RxR-LEGACY-G06",
-      "RxR-LEGACY-G10",
       "RxR-GEN-018",
       "RxR-LEGACY-G03",
-      "RxR-GEN-005"
+      "RxR-GEN-008"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "1c9cdcebe840020c99fa90df64b78fdbd35cd21e63236864d6a82b35e89c821a",
-    "schema_sha256": "f73dd96b9a4db37121825e3a7f24cd0345e0e11920e2014fd24544a363af7130",
-    "bytes": 87246,
+    "compiled_sha256": "656761992c013e98e58fbdc11c2f4bb18a1424e5ce44afe91aa4620a7b3c4d0c",
+    "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
+    "bytes": 58329,
     "default_examples": 8,
     "library_count": 74,
     "profile": "rxr-en-us",
     "example_ids": [
-      "RxR-LEGACY-G10",
-      "RxR-REV-004",
-      "RxR-DIAG-04",
       "RxR-REV-013",
-      "RxR-DIAG-14",
-      "RxR-DIAG-15",
+      "RxR-REV-022",
+      "RxR-LEGACY-G06",
+      "RxR-REV-018",
       "RxR-LEGACY-G03",
-      "RxR-LEGACY-G06"
+      "RxR-REV-008",
+      "RxR-DIAG-04",
+      "RxR-DIAG-14"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_rxr-en-us.txt": {
-    "compiled_sha256": "cf05e1fffc7996b1a6ae291cb4a2a0f222872d9177bafab6ef22e5434961c0e1",
+    "compiled_sha256": "de337c34790ae55c1425324672bb08e8935e89f386c9c1db1df9d878afe55d48",
     "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 90146,
-    "default_examples": 8,
+    "bytes": 65886,
+    "default_examples": 6,
     "library_count": 45,
     "profile": "rxr-en-us",
     "example_ids": [
       "RxR-GEN-013",
-      "RxR-GEN-004",
       "RxR-GEN-022",
       "RxR-LEGACY-G06",
-      "RxR-LEGACY-G10",
       "RxR-GEN-018",
       "RxR-LEGACY-G03",
-      "RxR-GEN-005"
+      "RxR-GEN-008"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   }

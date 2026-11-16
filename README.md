@@ -59,7 +59,7 @@ Committed instruction ─► existing AwareVLN instruction slot
 | `renderer/` | SOURCE_EXACT / BOUNDARY_ONLY / ASSEMBLED_SINGLE / ASSEMBLED_MULTI preview, whitespace provenance ledger, exact frozen string | Semantic correction, SR-based choice, post-review cleanup, reject a semantically valid split for style |
 | `host/` | Compile prompts, validate schemas/quotes/hashes, bounded G0-R0-G1-R1 flow, same-snapshot commit or exact fallback | Add a chief reviewer, call online goal switches, change AwareVLN internals |
 | `shared/` | The one semantic acceptance contract and identity/hash helpers | Duplicate or contradict role-specific standards |
-| `generator/templates/` and `reviewer/templates/` | Generator: 35 val_seen examples per dataset. Reviewer: 35 paired examples plus dataset diagnostics (R2R 26, RxR 29); default 8–12 selected once per role/task | Serve as hidden route facts or unique gold segmentations |
+| `generator/templates/` and `reviewer/templates/` | Generator: 35 val_seen examples per dataset. Reviewer: 35 paired examples plus dataset diagnostics (R2R 26, RxR 29); generator 6–8; reviewer uses the paired examples plus 2–4 diagnostics, frozen per task | Serve as hidden route facts or unique gold segmentations |
 | `evaluation/` | Paired full-denominator summaries and technical smoke cases | Feed scores into Generator/Reviewer or delete failures from the denominator |
 | `provenance/` | Input lineage, evidence summary, source analyses and build hashes | Claim new navigation results or unverified causal explanations |
 

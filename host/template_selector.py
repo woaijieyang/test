@@ -7,7 +7,7 @@ import math
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_EXAMPLES = None  # Automatically select 8..12.
+DEFAULT_EXAMPLES = None  # Automatically select 6..8 generator examples.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
     'ordinal_target_selection': r'first|second|third|fourth|last|1st|2nd|3rd',
@@ -19,7 +19,7 @@ PATTERNS = {
     'orientation_or_reference_frame': r'left|right|behind|facing|clockwise',
     'room_transition': r'enter|exit|leave|room|hallway',
     'intermediate_stop_or_wait': r'stop|wait|stand',
-    'until': r'until', 'before': r'before', 'after': r'after|once|when',
+    'while': r'while|during', 'until': r'until', 'before': r'before', 'after': r'after|once|when',
     'correction': r'actually|sorry|i mean|instead', 'negation': r"not|never|without|don't",
     'endpoint': r'edge|end|base|bottom|top|foot|near|beside',
     'description': r'you will see|on your|there is|there are',
@@ -54,44 +54,145 @@ def library(role, profile):
     return rows
 
 
-def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode='adaptive'):
-    rows = library(role, profile)
-    if mode == 'all':
-        return [r['template_id'] for r in rows]
-    if mode != 'adaptive':
-        raise ValueError('Unknown selection mode')
-    cues, words = features(source_text)
-    if count is None:
-        count = 8 + min(4, len(cues - {'orientation_or_reference_frame', 'room_transition', 'intermediate_stop_or_wait'}) // 2
-                        + int(len(source_text.split()) >= 65))
-    if type(count) is not int or not 1 <= count <= len(rows):
-        raise ValueError('Invalid example count')
+# These features describe a local clause, not a navigation plan. They only rank demonstrations.
+MARKER = re.compile(r"\b(before|after|while|until|once|when)\b", re.I)
+ACTION = re.compile(r"\b(enter|exit|leave|pass|turn|walk|go|veer|reach|stop|wait)(?:ing|ed|s)?\b", re.I)
+TYPE_CUES = {
+    "ordinal_target_selection": {"ordinal", "count"}, "bounded_motion": {"bounded", "halfway"},
+    "return_or_revisit": {"return", "revisit"}, "before": {"before", "temporal"},
+    "after": {"after", "handoff", "temporal"}, "until": {"until", "temporal"},
+    "while": {"ongoing", "temporal"}, "conditional_observation": {"conditional", "branch"},
+    "negation": {"negation", "prohibition"}, "correction": {"correction"},
+    "room_transition": {"transition"}, "intermediate_stop_or_wait": {"stop", "endpoint"},
+    "orientation_or_reference_frame": {"orientation", "direction", "reference"},
+}
+
+
+def relations(text):
+    result = set()
+    for clause in re.split(r"[.;!?]", text.lower()):
+        for marker in MARKER.finditer(clause):
+            # A fronted condition may end at a comma. Retain the event after the
+            # marker and the turn governed by that condition as separate signals.
+            condition, comma, following = clause[marker.end():].partition(",")
+            event = ACTION.search(condition)
+            if event:
+                result.add((marker[1], "event", event[1]))
+            landmark = re.search(r"\b(doors?|doorway|stairs?|staircase|kitchen|hallway|bedroom|bathroom|landing|archway)\b", condition)
+            if landmark:
+                result.add((marker[1], "landmark", landmark[1].rstrip("s")))
+            main = following if comma else clause[:marker.start()]
+            turn = re.search(r"\b(?:turn|veer|go)\s+(?:to\s+the\s+)?(left|right)\b", main)
+            if turn:
+                result.add((marker[1], "turn", turn[1]))
+    return result
+
+
+def task_type(row):
+    notes = row["teaching_notes"]
+    return (notes.get("segmentation_pattern") or notes.get("review_pattern")
+            or (row["provenance"].get("corruption_pattern") if isinstance(row["provenance"], dict) else None)
+            or "")
+
+
+def rank_examples(rows, text, count, excluded=()):
+    cues, words = features(text)
+    query_relations = relations(text)
+    type_terms = set().union(*(TYPE_CUES.get(c, set()) for c in cues))
+    if len(re.findall(r"\b(?:stop|wait|stand|stay|remain)\b", text, re.I)) > 1:
+        type_terms.update(("refinement", "intermediate", "stop"))
+    if re.search(r",\s*(?:veering|turning|keeping|facing)\b", text, re.I):
+        type_terms.update(("temporal", "ongoing", "dependency"))
+    if len(words) < 12 and not query_relations:
+        type_terms.add("single")
+    if "room_transition" in cues and len(ACTION.findall(text)) >= 3:
+        type_terms.add("distinct")
     options = []
     df = Counter()
+    blocked = {normalized(text), *excluded}
     for row in rows:
-        text = source(row)
-        if normalized(text) == normalized(source_text):
+        identity = normalized(source(row))
+        if identity in blocked:
             continue
-        tags, terms = features(text)
-        tags.update(row.get('retrieval_tags', []))
+        tags, terms = features(source(row))
+        tags.update(row.get("retrieval_tags", []))
         df.update(tags | terms)
-        options.append((row, tags, terms, normalized(text)))
+        options.append((row, tags, terms, identity))
     weight = {t: 1 + math.log((len(options)+1)/(freq+1)) for t, freq in df.items()}
-    def relevance(item):
-        row, tags, terms, _ = item
-        return (sum(weight[t] for t in cues & tags) +
-                sum(weight[t] for t in words & terms) / math.sqrt(max(1,len(terms))) -
-                .12 * len(tags - cues))
-    chosen, covered, verdicts = [], set(), set()
-    while options and len(chosen) < count:
-        def rank(item):
-            row, tags, terms, _ = item
-            verdict = row.get('expected_review', {}).get('verdict')
-            return (relevance(item) + .8 * sum(weight[t] for t in (cues & tags) - covered)
-                    + int(role == 'reviewer' and verdict not in verdicts))
-        row, tags, _, identity = max(options, key=rank)
-        chosen.append(row['template_id'])
-        covered.update(tags)
-        verdicts.add(row.get('expected_review', {}).get('verdict'))
-        options = [x for x in options if x[3] != identity]
+    candidates = []
+    for row, tags, terms, identity in options:
+        common = cues & tags
+        relation_hits = query_relations & relations(source(row))
+        annotations = [task_type(row), *row.get("retrieval_tags", [])]
+        type_hits = type_terms & set("_".join(annotations).lower().split("_"))
+        score = (sum(weight[t] for t in common)
+                 + sum(weight[t] for t in words & terms)/math.sqrt(max(1,len(terms)))
+                 + 4*len(relation_hits) + 2*len(type_hits) - .12*len(tags-cues))
+        coverage = common | relation_hits | {("type", t) for t in type_hits}
+        candidates.append((row, identity, score, coverage))
+    chosen, covered = [], set()
+    while candidates and len(chosen) < count:
+        row, identity, _, coverage = max(candidates, key=lambda c: c[2]+1.5*len(c[3]-covered))
+        chosen.append(row)
+        covered.update(coverage)
+        candidates = [c for c in candidates if c[1] != identity]
     return chosen
+
+
+def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="adaptive"):
+    rows = library(role, profile)
+    if mode == "all":
+        return [r["template_id"] for r in rows]
+    if mode != "adaptive":
+        raise ValueError("Unknown example selection mode")
+    gen = library("generator", profile)
+    if count is not None and (type(count) is not int or not 1 <= count <= len(gen)):
+        raise ValueError("Invalid generator base count")
+    cues, _ = features(source_text)
+    distinct = cues - {"orientation_or_reference_frame","room_transition","intermediate_stop_or_wait"}
+    extra = min(2, len(distinct)//3 + int(len(source_text.split())>=65))
+    base = rank_examples(gen, source_text, 6+extra if count is None else count)
+    ids = [r["template_id"] for r in base]
+    if role == "generator":
+        return ids
+    pairs = {}
+    for row in rows:
+        pair = row.get("pair_id")
+        if pair:
+            if pair in pairs:
+                raise ValueError(f"Duplicate paired reviewer for {pair}")
+            pairs[pair] = row
+    paired = [pairs[i] for i in ids]
+    diagnostics = rank_examples([r for r in rows if not r.get("pair_id")], source_text,
+                                2+extra, excluded=[normalized(source(r)) for r in paired])
+    return [r["template_id"] for r in paired+diagnostics]
+
+
+def selection_evidence(role, profile, text, ids):
+    cues, _ = features(text)
+    anchors = relations(text)
+    by_id = {row["template_id"]: row for row in library(role,profile)}
+    result = []
+    for template_id in ids:
+        row = by_id[template_id]
+        example = source(row)
+        tags, _ = features(example)
+        result.append(dict(template_id=template_id, authored_type=task_type(row),
+                           pair_id=row.get("pair_id"), matched_cues=sorted(cues & (tags | set(row.get("retrieval_tags", [])))),
+                           matched_relations=sorted(anchors & relations(example))))
+    return result
+
+
+def write_type_index(role):
+    """Build a human-readable inventory from the same originals used at runtime."""
+    folder = ROOT/role/"templates"
+    lines = ["# Template type index", "", "|Dataset|Template|Kind|Pair|Authored pattern|Retrieval tags|",
+             "|---|---|---|---|---|---|"]
+    for profile, dataset in PROFILES.items():
+        for path in sorted((folder/dataset).glob("*/*.json")):
+            row = json.loads(path.read_bytes())
+            lines.append("|{}|[{}]({})|{}|{}|{}|{}|".format(
+                dataset, row["template_id"], path.relative_to(folder).as_posix(), path.parent.name,
+                row.get("pair_id") or "—", task_type(row) or "—",
+                ", ".join(row.get("retrieval_tags", [])) or "—"))
+    (folder/"INDEX.md").write_bytes(("\n".join(lines)+"\n").encode("utf-8"))

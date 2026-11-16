@@ -146,7 +146,11 @@ class Checks(unittest.TestCase):
      self.assertEqual(out['disposition'],'fallback_unresolved',out.get('error'))
      self.assertEqual(out['instruction'],s)
  def test_bad_quoted_candidate(self):
-    s='Walk to the gate.';r=pass_rev(s,s);r['stage_checks'][0]['completion_quote']='imaginary room';a=run_record(src(s),replay([ok(s),r]),pins=PINS);self.assertEqual(a['disposition'],'fallback_technical')
+    g,r=combo();r=copy.deepcopy(r);r['stage_checks'][0]['ending']['candidate_quotes']=['imaginary room']
+    out=run_record(src(SOURCE),replay([g,r,r,r]),pins=PINS)
+    self.assertEqual(out['disposition'],'fallback_technical')
+    self.assertEqual(out['diagnostic']['code'],'EXACT_QUOTE_NOT_FOUND')
+    self.assertEqual(out['technical_by_role'],{'generator':0,'reviewer':2})
  def test_missing_handoff(self):
     s='Go up. Wait.';r=pass_rev(s,'Go up.');r['stage_checks']*=2;r['stage_checks'][1]=dict(r['stage_checks'][1],subtask_index=1)
     with self.assertRaises(ContractError):reviewer(s,ok('Go up.','Wait.'),r)
@@ -154,8 +158,13 @@ class Checks(unittest.TestCase):
     s='Turn there.';r=pass_rev(s,s);r['stage_checks']=[]
     with self.assertRaises(ContractError):reviewer(s,limited(s),r)
  def test_native_binding(self):
-    s='Wait by the chair. ';r=run_record(src(s),replay([ok(s),pass_rev(s,s)]),pins=PINS);kw=dict(full_prompt_utf8=('Human:'+s).encode(),input_ids=[1,4,9],tokenizer_id='fixture',template_id='fixture',image_ids=['fixture-image'],truncated=False,request_id='fixture');v=receipt_for_navigation(r,instruction_seen=s,**kw);self.assertEqual(v['instruction_sha256'],text_hash(s));
-    with self.assertRaises(ContractError):receipt_for_navigation(r,instruction_seen=s.strip(),**kw)
+    g,r=combo()
+    out=run_record(src(SOURCE),replay([g,r]),pins=PINS)
+    self.assertEqual(out['disposition'],'accepted_candidate')
+    s=out['instruction']
+    kw=dict(full_prompt_utf8=('Human:'+s).encode(),input_ids=[1,4,9],tokenizer_id='fixture',template_id='fixture',request_id='fixture',image_ids=['fixture-image'],truncated=False)
+    self.assertEqual(receipt_for_navigation(out,instruction_seen=s,**kw)['instruction_sha256'],text_hash(s))
+    with self.assertRaises(ContractError):receipt_for_navigation(out,instruction_seen=s+' ',**kw)
  def test_paired_denominator(self):
     a=summarize([{'task_key':str(i),'base':{'sr':b},'candidate':{'sr':c},'disposition':d} for i,(b,c,d) in enumerate([(1,1,'fallback_unresolved'),(0,1,'accepted_candidate'),(1,0,'accepted_candidate')])]);self.assertEqual((a['n'],a['recoveries'],a['regressions'],a['sr_delta_pp']),(3,1,1,0))
  def test_model_change_is_technical(self):

@@ -1,0 +1,9 @@
+# Reviewer — independent, source-grounded L0–L6 audit
+
+Reviewer uses **exactly the same** `shared/semantic_contract.md` as Generator. Its prompt and `checklist.md` define audit order L0 rendered-text fidelity, L1 source coverage, L2 event/temporal/identity dependency, L3 every stage five elements, L4 adjacent handoffs, L5 segmentation sufficiency, L6 whole-route bidirectional source support.
+
+Input is ONLY the source instruction, candidate natural-language stage array, and Renderer-frozen text. **Never receive Generator's stage_audit or handoff self-assessment.** An audit summary may not replace missing words in a stage. Inherited pose/entity is allowed when uniquely established; a missing ordinal origin or action reference may require a source-supported anchor. Terminal 'towards' cannot be upgraded to arrival. Non-final unsupported boundary must be repaired/merged, not excused.
+
+`output.schema.json` is the canonical live review output: verdict, three dimensions, source_coverage, seven layer_checks, evidence-backed findings, stage_checks and handoffs. For each material finding provide exact source and candidate quotes, affected check/stage, concrete execution harm, local supported repair and protected actions. Advice never commands Generator; Generator may accept/partially accept/reject/unresolve one finding per index. A pass is not navigation success.
+
+`templates/r2r.json` and `templates/rxr_en_us.json` each contain **35 full-schema demonstrations** from train-only sources, both clean passes and actual source-grounded defects. R0 selects **8** (3 core+5 source-feature matches) once, reused without reselection in R1; 35 is explicit ablation. No Reviewer template is the unique gold segmentation for its source. Verify all examples under `host.protocol.reviewer` before use.

@@ -110,7 +110,8 @@
               "omitted",
               "altered_or_missing",
               "superseded",
-              "requires_review"
+              "requires_review",
+              "not_assessed_no_candidate"
             ]
           }
         }

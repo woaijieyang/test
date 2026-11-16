@@ -63,7 +63,7 @@ class CompleteContractTests(unittest.TestCase):
          for role in ('generator','reviewer'):
              a=select_examples(role,profile,SOURCE)
              self.assertEqual(a,select_examples(role,profile,SOURCE))
-             self.assertTrue(8<=len(a)<=12)
+             self.assertTrue((6 <= len(a) <= 8) if role == "generator" else (8 <= len(a) <= 12))
              self.assertEqual(len(a),len(set(a)))
  def test_11_exact_source_not_echoed_as_template(self):
      for profile in PROFILES:

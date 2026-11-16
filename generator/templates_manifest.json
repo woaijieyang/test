@@ -11,8 +11,9 @@
     }
   },
   "default_range": [
-    8,
-    12
+    6,
+    8
   ],
-  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07"
+  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07",
+  "selection": "type and local relation coverage"
 }

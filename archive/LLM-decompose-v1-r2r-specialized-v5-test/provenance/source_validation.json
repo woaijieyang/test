@@ -1,0 +1,20 @@
+{
+  "scope": "15 local extraction/consistency assertions only. No semantic oracle, LLM inference, tokenizer experiment or navigation evaluation.",
+  "checks": {
+    "r2r_record_count": true,
+    "rxr_record_count": true,
+    "r2r_suffix_one_space": true,
+    "rxr_total_LF_12": true,
+    "rxr_body_LF_3": true,
+    "rxr_suffix_LF_9": true,
+    "rxr_body_spaces_180": true,
+    "rxr_all_spaces_201": true,
+    "rxr_suffix_spaces_only_324": true,
+    "current_states_total": true,
+    "exact_split_972_plus_18": true,
+    "R2R_DE_total": true,
+    "RXR_DE_total": true,
+    "case_count": true,
+    "parse_error_zero": true
+  }
+}

@@ -17,17 +17,18 @@ from pathlib import Path
 from adapter.source import Source, load_record
 from renderer.freeze import freeze, unchanged
 from host.compile import compile_prompt
-from host.template_selector import select_examples, DEFAULT_EXAMPLES
+from host.template_selector import select_examples, selection_evidence, DEFAULT_EXAMPLES
 from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "final-best-v1-runtime-contract-v2"
+VERSION = "v5-runtime-contract-v2-symmetric-tech2-inactive"
 
 
 def request(role, phase, payload, pin, profile, selected_ids):
     text, active_schema = compile_prompt(
-        role, phase, profile=profile, selected_ids=selected_ids
+        role, phase, profile=profile, selected_ids=selected_ids,
+        original_instruction=payload.get("original_instruction")
     )
     return {
         "role": role,
@@ -46,7 +47,7 @@ def request(role, phase, payload, pin, profile, selected_ids):
 def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                separator="\n", example_count=DEFAULT_EXAMPLES,
                selection_mode="adaptive"):
-    """Run at most four calls; preserve exact source fallback on every failure."""
+    """Run at most four semantic calls plus at most two technical corrections per role; preserve exact source fallback on every failure."""
     events, snapshots = [], []
     selections = {role: [] for role in ("generator", "reviewer")}
     context = {"step": "configuration_validation", "role": None, "phase": None}
@@ -106,7 +107,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         event["receipt"] = {
             key: receipt.get(key) for key in (
                 "model", "effort", "request_id", "provider_request_sha256",
-                "input_tokens", "output_tokens"
+                "input_tokens", "output_tokens", "parse_state", "raw_sha256"
             )
         }
         event["call_state"] = "receipt_received"
@@ -125,15 +126,95 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         event["call_state"] = "receipt_verified"
         return reply["output"]
 
+    retrieval_evidence = {}
+    technical_by_role = {"generator": 0, "reviewer": 0}
+    quote_corrections = 0
+    semantic_repairs = 0
+
+    def review_feedback(error, review):
+        details = error.to_dict()
+        if details.get("path", "").startswith("/source_coverage/") and isinstance(review, dict):
+            # After schema validation the complete cross-reference table can be
+            # checked in one correction, instead of consuming a turn per row.
+            rows = review.get("source_coverage")
+            findings = review.get("findings")
+            if isinstance(rows, list) and isinstance(findings, list) and error.details.get("code") == "CONTRACT_VIOLATION":
+                details["coverage_links"] = [
+                    {"id": row["requirement_id"], "status": row["status"],
+                     "findings": [j for j, finding in enumerate(findings)
+                                  if row["requirement_id"] in finding["source_requirement_ids"]]}
+                    for row in rows
+                ]
+        return details
+
+    def validated_call(role, phase, payload, validator, binding=None):
+        nonlocal quote_corrections
+        request_payload = payload
+        while True:
+            output = call(role, phase, request_payload, binding)
+            step = {"initial": "generator_validation", "repair": "generator_repair_validation"}.get(phase, "reviewer_validation")
+            context.update(step=step, role=role, phase=phase)
+            try:
+                validator(output)
+                events[-1]["validation_state"] = "validated"
+                return output
+            except ContractError as exc:
+                code = exc.details.get("code")
+                quote_error = code in ("EXACT_QUOTE_NOT_FOUND", "EXACT_QUOTE_INVALID")
+                structural = (code == "SCHEMA_VALIDATION_FAILED" and
+                              exc.details.get("validator") in ("required", "type", "additionalProperties"))
+                events[-1]["validation_error"] = exc.to_dict()
+                events[-1]["validation_state"] = "invalid"
+                path = exc.details.get("path", "")
+                reviewer_owned = (role == "reviewer" and exc.details.get("module") == "host.protocol"
+                                  and code != "RENDERED_CANDIDATE_MISMATCH"
+                                  and not any(path == prefix or path.startswith(prefix + "/") for prefix in
+                                              ("/candidate", "/rendered_instruction", "/prior_review",
+                                               "/prior_candidate", "/prior_rendered_instruction")))
+                if technical_by_role[role] >= 2 or not (reviewer_owned or (role == "generator" and (quote_error or structural))):
+                    raise
+                technical_by_role[role] += 1
+                quote_corrections += int(quote_error)
+                request_payload = {
+                    **payload, "previous_output": output, "technical_feedback": exc.to_dict(),
+                    "technical_attempt": technical_by_role[role],
+                    "instruction": "Correct the reported field against its governing schema and evidence. "
+                                   "Copy source quotations from the immutable original and candidate quotations "
+                                   "from their own stage. If the stage itself has a transcription mistake, "
+                                   "correct it from source and refresh its evidence. Preserve unrelated content. "
+                                   "Return the complete active response object."
+                }
+                if role == "reviewer":
+                    request_payload["technical_feedback"] = review_feedback(exc, output)
+                    request_payload["instruction"] = (
+                        "Correct your review object at the reported path using its schema and the exact "
+                        "frozen source and candidate. Do not edit either text. Cite literal substrings "
+                        "of the indicated stage/source. Keep grounded objections and reassess verdict "
+                        "consistency; do not force pass. Check all rows for the same defect. For an empty plan, "
+                        "link ambiguity findings only to genuinely ambiguous requirements. Keep clear context "
+                        "out of the affected requirement IDs and use not_assessed_no_candidate where applicable. "
+                        "Return the entire corrected review."
+                    )
+
     def finish(disposition, view, detail=None, diagnostic=None):
         return {
             "version": VERSION,
+            "quote_corrections": quote_corrections,
+            "technical_corrections": sum(technical_by_role.values()),
+            "technical_by_role": dict(technical_by_role),
+            "semantic_repairs": semantic_repairs,
             "task_key": src.key,
+            "navigation_eligible": not (diagnostic and diagnostic.get("step") in
+                                        ("transport", "transport_recovery_lookup", "receipt_validation", "snapshot_commit")),
             "profile": src.profile,
             "source_sha256": src.sha,
             "example_selection": {
                 "mode": selection_mode,
+                "retrieval_evidence": retrieval_evidence,
                 "configured_example_count": example_count,
+                "reviewer_pair_count": (len(selections["generator"]) if selection_mode == "adaptive" else None),
+                "reviewer_diagnostic_ids": (selections["reviewer"][len(selections["generator"]):]
+                                           if selection_mode == "adaptive" else []),
                 "actual_generator_examples": len(selections["generator"]),
                 "actual_reviewer_examples": len(selections["reviewer"]),
                 "generator": list(selections["generator"]),
@@ -170,8 +251,10 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                                   count=example_count, mode=selection_mode)
             for role in ("generator", "reviewer")
         }
+        retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
+                              for role, ids in selections.items()}
         source_payload = {"original_instruction": src.raw}
-        g0 = call("generator", "initial", source_payload)
+        g0 = validated_call("generator", "initial", source_payload, lambda out: protocol.generator(src.raw, out))
 
         r0_review = None
         r0_candidate = None
@@ -180,7 +263,6 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         for turn in range(2):
             phase_g = "initial" if turn == 0 else "repair"
             context.update(step="generator_validation", role="generator", phase=phase_g)
-            protocol.generator(src.raw, g0)
             active = g0["status"] == "ok"
             context["step"] = "renderer_freeze"
             view = freeze(src, g0["subtasks"], separator) if active else unchanged(src)
@@ -223,15 +305,15 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                 })
 
             review_phase = "review" if turn == 0 else "recheck"
-            rv = call("reviewer", review_phase, reviewer_payload, binding)
-            context.update(step="reviewer_validation", role="reviewer", phase=review_phase)
-            protocol.reviewer(
-                src.raw, candidate, rv,
-                rendered_instruction=snapshot["rendered_instruction"],
-                prior_review=r0_review if turn == 1 else None,
-                prior_candidate=r0_candidate if turn == 1 else None,
-                prior_rendered_instruction=r0_rendered if turn == 1 else None,
-            )
+            def validate_review(output):
+                protocol.reviewer(
+                    src.raw, candidate, output, rendered_instruction=snapshot["rendered_instruction"],
+                    prior_review=r0_review if turn else None,
+                    prior_candidate=r0_candidate if turn else None,
+                    prior_rendered_instruction=r0_rendered if turn else None,
+                )
+
+            rv = validated_call("reviewer", review_phase, reviewer_payload, validate_review, binding)
 
             if turn == 0:
                 r0_review = rv
@@ -263,14 +345,11 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             if rv["verdict"] == "unresolved" and not active:
                 return finish("fallback_unresolved", unchanged(src))
 
-            answer = call(
-                "generator", "repair",
-                {**source_payload, "candidate": candidate_snapshot, "review": rv},
-                binding
+            semantic_repairs += 1
+            answer = validated_call(
+                "generator", "repair", {**source_payload, "candidate": candidate_snapshot, "review": rv},
+                lambda out: protocol.feedback(src.raw, rv, out), binding
             )
-            context.update(step="generator_repair_validation",
-                           role="generator", phase="repair")
-            protocol.feedback(src.raw, rv, answer)
             g0 = answer["candidate"]
 
     except (ContractError, KeyError, TypeError, ValueError, OSError,
@@ -300,6 +379,8 @@ def receipt_for_navigation(result, *, instruction_seen, full_prompt_utf8: bytes,
                            truncated, request_id):
     """Capture the exact released instruction in the existing navigator request."""
     import hashlib
+    need(result.get("navigation_eligible", True), "Cannot bind an unconfirmed invocation to navigation",
+         code="UNCONFIRMED_RESULT", module="host.run", path="/navigation_eligible")
     need(isinstance(instruction_seen, str) and
          text_hash(instruction_seen) == result["instruction_sha256"],
          "Navigation instruction not the released bytes")
@@ -378,22 +459,27 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--recover-command", default=None,
                         help="optional lookup-only command; receives {operation, request_sha256, request} and returns {found:false} or {found:true, reply:<original reply>}")
-    parser.add_argument("--transport", nargs=argparse.REMAINDER, required=True,
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--cli-ledger", help="durable Codex CLI journal directory")
+    group.add_argument("--transport", nargs=argparse.REMAINDER,
                         help="existing command: JSON request on stdin, reply on stdout; may incur cost")
     args = parser.parse_args()
     target = Path(args.output)
     need(not target.exists(), "Refuse to overwrite existing run")
     step = "source_loading"
     try:
-        need(args.transport, "Transport required, no built-in live endpoint",
+        need(args.cli_ledger or args.transport, "Transport required, no built-in live endpoint",
              code="CONFIGURATION_INVALID", module="host.run", path="/transport")
         source = load_record(args.record)
         step = "configuration_loading"
         pins = json.loads(Path(args.pins).read_bytes()) if args.pins else None
         recovery_argv = shlex.split(args.recover_command) if args.recover_command else None
-        result = run_record(
-            source, command_transport(args.transport, recovery_argv=recovery_argv), pins=pins
-        )
+        if args.cli_ledger:
+            from host.cli_journal import JournalCLI
+            transport = JournalCLI(args.cli_ledger, source.key)
+        else:
+            transport = command_transport(args.transport, recovery_argv=recovery_argv)
+        result = run_record(source, transport, pins=pins)
     except (ContractError, ValueError, TypeError, OSError) as exc:
         diagnostic = exc.to_dict() if isinstance(exc, ContractError) else {
             "code": "CONFIGURATION_LOAD_FAILED", "module": "host.run",

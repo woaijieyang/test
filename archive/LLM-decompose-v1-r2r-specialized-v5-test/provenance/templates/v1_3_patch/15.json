@@ -1,0 +1,26 @@
+{
+  "id": "T15",
+  "title": "Feedback is advice: repair the grammar, not the route",
+  "origin": "New teaching pair; not the historical JSON template or an experimental outcome.",
+  "source": "Cross the foyer and wait the archway.",
+  "acceptable": {
+    "status": "ok",
+    "subtasks": [
+      "Cross the foyer and wait at the archway."
+    ],
+    "issues": []
+  },
+  "contrast": {
+    "status": "ok",
+    "subtasks": [
+      "Cross the foyer, pass through the archway and wait outside it."
+    ],
+    "issues": []
+  },
+  "dimension": "fidelity",
+  "check": "C02",
+  "source_quote": "wait the archway",
+  "candidate_contrast_quote": "pass through the archway and wait outside it",
+  "execution_or_focus_difference": "An omitted preposition can be resolved locally (S3). Neither crossing nor waiting beyond is supported.",
+  "alternative_or_limit": "A generator may partially accept a review: accept the target-binding concern; reject the proposed crossing. An explicit recommendation to cross is not source evidence."
+}

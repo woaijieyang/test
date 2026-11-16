@@ -32,7 +32,7 @@ class Integration(unittest.TestCase):
                 text = source(bank[0])
                 ids = select_examples(role, profile, text)
                 self.assertNotIn(bank[0]['template_id'],ids)
-                self.assertTrue(8 <= len(ids) <= 12)
+                self.assertTrue((6 <= len(ids) <= 8) if role == "generator" else (8 <= len(ids) <= 12))
                 self.assertEqual(ids,select_examples(role, profile, text))
                 for phase in phases:
                     prompt,spec=compile_prompt(role,phase,profile=profile,selected_ids=ids)
