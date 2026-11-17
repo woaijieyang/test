@@ -1,4 +1,4 @@
-"""Deterministic source-only retrieval for uploaded v1.5.2 teaching examples."""
+"""Deterministic source-only retrieval for v6 dynamic teaching examples."""
 from collections import Counter
 from functools import lru_cache
 from pathlib import Path
@@ -7,7 +7,7 @@ import math
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_EXAMPLES = None  # Automatically select 6..8 generator examples.
+DEFAULT_EXAMPLES = None  # Profile-aware: R2R 6-8; RxR 2-4 in addition to its fixed core.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
     'ordinal_target_selection': r'first|second|third|fourth|last|1st|2nd|3rd',
