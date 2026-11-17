@@ -152,8 +152,12 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
     gen = library("generator", profile)
-    if count is not None and (type(count) is not int or not 1 <= count <= len(gen)):
-        raise ValueError("Invalid generator base count")
+    if count is not None:
+        minimum, maximum = (2, 4) if profile == "rxr-en-us" else (1, len(gen))
+        if type(count) is not int or not minimum <= count <= maximum:
+            raise ValueError(
+                f"Invalid {profile} dynamic Generator count; expected {minimum}..{maximum}"
+            )
     cues, _ = features(source_text)
     distinct = cues - {"orientation_or_reference_frame","room_transition","intermediate_stop_or_wait"}
     extra = min(2, len(distinct)//3 + int(len(source_text.split())>=65))
