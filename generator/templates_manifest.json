@@ -1,19 +1,39 @@
 {
-  "version": "1.5.2",
-  "profiles": {
+  "version": "6.0",
+  "dataset_profiles": {
     "r2r-en": {
-      "directory": "templates/R2R",
-      "count": 35
+      "dynamic_directory": "templates/R2R/val_seen",
+      "dynamic_count": 35,
+      "fixed_core_directory": null,
+      "fixed_core_count": 0
     },
     "rxr-en-us": {
-      "directory": "templates/RxR",
-      "count": 45
+      "dynamic_directory": "templates/RxR/val_seen",
+      "dynamic_count": 35,
+      "fixed_core_directory": "templates/RxR/core",
+      "fixed_core_count": 10,
+      "fixed_core_source": "v1 original G01-G10 migrated to v5 template schema"
     }
   },
-  "default_range": [
-    6,
-    8
-  ],
-  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07",
-  "selection": "type and local relation coverage"
+  "runtime_policy": {
+    "r2r-en": {
+      "dynamic_generator_examples": [
+        6,
+        8
+      ],
+      "fixed_core": 0
+    },
+    "rxr-en-us": {
+      "dynamic_generator_examples": [
+        2,
+        4
+      ],
+      "fixed_core": 10,
+      "core_order": "G01-G10",
+      "core_is_unconditional": true
+    }
+  },
+  "legacy_directory": "templates/RxR/legacy",
+  "legacy_runtime_use": false,
+  "selection": "fixed RxR core plus source-feature-matched dynamic examples; legacy migration copies are excluded"
 }
