@@ -121,4 +121,22 @@ class CompleteContractTests(unittest.TestCase):
      for role in ('generator','reviewer'):
          for row in library(role,'r2r-en'):
              self.assertNotEqual(row['source']['split'],'val_unseen')
+ def test_18_every_reviewer_core_passes_runtime_protocol_after_projection(self):
+  from host.compile import core_library, runtime_review_output
+  for row in core_library('reviewer','rxr-en-us'):
+   audit=runtime_review_output(row)
+   candidate=row['review_input']['candidate']
+   with self.subTest(template=row['template_id']):
+    protocol.reviewer(
+      row['review_input']['original_instruction'],
+      candidate,
+      audit
+    )
+    self.assertEqual(len(audit['stage_checks']),len(candidate['subtasks']))
+    self.assertEqual([x['layer'] for x in audit['layer_checks']],
+                     list(protocol.LAYERS))
+    self.assertEqual([(x['from_subtask_index'],x['to_subtask_index'])
+                      for x in audit['handoffs']],
+                     [(i,i+1) for i in range(max(0,len(candidate['subtasks'])-1))])
+
 if __name__=='__main__':unittest.main()
