@@ -111,8 +111,10 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     parts=['BUILD: v6 / v5 common contract retained. The source instruction remains the only route authority; RxR core examples are fixed and dynamic examples are source-feature-matched and frozen per record.',
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
     if profile == 'rxr-en-us':
-        parts.append((ROOT/'shared/dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
-        parts.append((d/'dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
+        parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\\n' +
+                     (ROOT/'shared/dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
+        parts.append(f'RXR ROLE GUIDANCE [{role}/dataset_rules/rxr_en_us.md]:\\n' +
+                     (d/'dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
     if role=='reviewer':parts.append((d/'checklist.md').read_text(encoding='utf-8'))
     if repair:parts.append((d/'repair.md').read_text(encoding='utf-8'))
     schema=wire_schema(d/('repair.schema.json' if repair else 'output.schema.json'))
