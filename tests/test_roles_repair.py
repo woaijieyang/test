@@ -53,8 +53,7 @@ class RolesRepairTests(unittest.TestCase):
              candidate = {'status':'ok','subtasks':[candidate],'issues':[]}
          elif isinstance(candidate, list):
              candidate = {'status':'ok','subtasks':candidate,'issues':[]}
-         expected = dict(row['expected_review'])
-         expected.setdefault('prior_finding_reviews', [])
+         expected = runtime_review_output(row)
          protocol.reviewer(review_input['original_instruction'], candidate, expected)
      for profile in PROFILES:
          for row in library('reviewer',profile):
