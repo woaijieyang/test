@@ -44,6 +44,34 @@ class RxRV6ProfileTests(unittest.TestCase):
             self.assertNotIn(source_text, [source(x) for x in library("generator", "rxr-en-us")
                                           if x["template_id"] in g])
 
+    def test_rxr_explicit_dynamic_count_is_bounded(self):
+        with self.assertRaises(ValueError):
+            select_examples("generator", "rxr-en-us", "Walk.", count=1)
+        with self.assertRaises(ValueError):
+            select_examples("generator", "rxr-en-us", "Walk.", count=5)
+        self.assertEqual(len(select_examples("generator", "rxr-en-us", "Walk.", count=2)), 2)
+        self.assertEqual(len(select_examples("generator", "rxr-en-us", "Walk.", count=4)), 4)
+
+    def test_fixed_core_load_failure_returns_exact_source_without_model_call(self):
+        from unittest.mock import patch
+        from adapter.source import Source
+        from host.run import run_record
+        source_text = "Walk to the second doorway and stop."
+        src = Source("rxr-smoke", "RxR", "en-US", source_text)
+        calls = []
+        def transport(req):
+            calls.append(req)
+            raise AssertionError("Transport must not be entered when core loading fails")
+        with patch("host.run.core_library", side_effect=ValueError("synthetic core corruption")):
+            result = run_record(src, transport,
+                                pins={role: {"model": "fixture", "effort": "low"}
+                                      for role in ("generator", "reviewer")})
+        self.assertEqual(result["disposition"], "fallback_technical")
+        self.assertEqual(result["instruction"], source_text)
+        self.assertEqual(result["fixed_core_template_ids"] if "fixed_core_template_ids" in result else
+                         result["example_selection"]["fixed_core_generator_ids"], [])
+        self.assertEqual(calls, [])
+
     def test_r2r_dynamic_retrieval_is_unchanged(self):
         g = select_examples("generator", "r2r-en", "Walk to the door and turn left.")
         r = select_examples("reviewer", "r2r-en", "Walk to the door and turn left.")
