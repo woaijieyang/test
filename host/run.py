@@ -16,7 +16,7 @@ from pathlib import Path
 
 from adapter.source import Source, load_record
 from renderer.freeze import freeze, unchanged
-from host.compile import compile_prompt
+from host.compile import compile_prompt, core_library
 from host.template_selector import select_examples, selection_evidence, DEFAULT_EXAMPLES
 from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
@@ -25,14 +25,41 @@ Transport = Callable[[dict], dict]
 VERSION = "v5-runtime-contract-v2-symmetric-tech2-inactive"
 
 
+def dataset_rules_metadata(profile):
+    """Immutable per-task record of common and dataset-specific rule bytes."""
+    paths = [Path(__file__).resolve().parents[1]/"shared/semantic_contract.md"]
+    version = "v5-common"
+    if profile == "rxr-en-us":
+        root = Path(__file__).resolve().parents[1]
+        paths.extend([
+            root/"shared/dataset_rules/rxr_en_us.md",
+            root/"generator/dataset_rules/rxr_en_us.md",
+            root/"reviewer/dataset_rules/rxr_en_us.md",
+        ])
+        version = "v6-rxr-en-us"
+    material = "\\n".join(
+        f"## {path.relative_to(Path(__file__).resolve().parents[1]).as_posix()}\\n{path.read_text(encoding='utf-8')}"
+        for path in paths
+    )
+    return {
+        "version": version,
+        "sha256": text_hash(material),
+        "files": [path.relative_to(Path(__file__).resolve().parents[1]).as_posix() for path in paths],
+    }
+
+
 def request(role, phase, payload, pin, profile, selected_ids):
     text, active_schema = compile_prompt(
         role, phase, profile=profile, selected_ids=selected_ids,
         original_instruction=payload.get("original_instruction")
     )
+    rules = dataset_rules_metadata(profile)
+    fixed = core_library(role, profile)
     return {
         "role": role,
         "phase": phase,
+        "dataset_rules": rules,
+        "fixed_core_template_ids": [row["template_id"] for row in fixed],
         "model": pin["model"],
         "effort": pin["effort"],
         "messages": [
@@ -55,6 +82,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
     def call(role, phase, payload, candidate_digest=None):
         context.update(step="request_construction", role=role, phase=phase)
         req = request(role, phase, payload, pins[role], src.profile, selections[role])
+        need(req["dataset_rules"] == rules_frozen,
+             "Dataset-specific rule bundle changed during the task",
+             code="RULE_BUNDLE_MUTATED", module="host.run", path="/dataset_rules")
         system, user = req["messages"]
         event = {
             "role": role, "phase": phase, "request": req,
@@ -208,8 +238,11 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                                         ("transport", "transport_recovery_lookup", "receipt_validation", "snapshot_commit")),
             "profile": src.profile,
             "source_sha256": src.sha,
+            "dataset_rules": rules_frozen,
             "example_selection": {
                 "mode": selection_mode,
+                "fixed_core_generator_ids": [x["template_id"] for x in core_library("generator", src.profile)],
+                "fixed_core_reviewer_ids": [x["template_id"] for x in core_library("reviewer", src.profile)],
                 "retrieval_evidence": retrieval_evidence,
                 "configured_example_count": example_count,
                 "reviewer_pair_count": (len(selections["generator"]) if selection_mode == "adaptive" else None),
@@ -246,6 +279,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             code="CONFIGURATION_INVALID", module="host.run", path="/pins"
         )
         context["step"] = "example_selection"
+        rules_frozen = dataset_rules_metadata(src.profile)
         selections = {
             role: select_examples(role, src.profile, src.raw,
                                   count=example_count, mode=selection_mode)
