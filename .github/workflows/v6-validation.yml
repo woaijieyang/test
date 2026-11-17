@@ -22,6 +22,8 @@ jobs:
         run: python -B verify_package.py
       - name: Build all profile prompts and template indexes
         run: python -B -m host.compile
+      - name: Validate Host profile dispatch and dataset isolation
+        run: python -B -m unittest discover -s tests -p "test_host_dispatch_profiles.py" -v
       - name: Validate RxR v6 profile
         run: python -B -m unittest discover -s tests -p "test_rxr_v6_profile.py" -v
       - name: Validate paired retrieval
