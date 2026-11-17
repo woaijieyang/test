@@ -342,7 +342,7 @@
   "host/README.md": "gitblob-sha1:c20c2ad610c3b180f4eb6fe2f153bb33c23d2dc8",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
   "host/run.py": "gitblob-sha1:4b1f66f8ea5c1494d56e16bafced2fe2431a13e5",
-  "host/template_selector.py": "gitblob-sha1:931715340b6341c6a1fc60ae5d4dd57b1d89002f",
+  "host/template_selector.py": "gitblob-sha1:9867e6dde3377d768963bf8c2166b6a672ff5c54",
   "IMPLEMENTATION.md": "gitblob-sha1:7f72988538adca8a233e85886d353ff16a8d0f4c",
   "provenance/build_manifest.json": "gitblob-sha1:90bc099c130723003a99a0fb2bf6b01b57b80519",
   "provenance/CHANGE_MATRIX.implementation.csv": "gitblob-sha1:6034b0b59f0f39ecc19582756b8d553ab41827a0",
@@ -567,6 +567,6 @@
   "verify_package.py": "gitblob-sha1:2e5f33794a7a1600bb8375e6ab9d8d5e3faccbc4",
   "VERSION": "gitblob-sha1:4abf5af798c6b77180e6a8fc408c006af06f0556",
   "WORKFLOW.md": "gitblob-sha1:a0103ad56d920fecd7714947b7117ca1d9aa3117",
-  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:6171c5e31489d06dfbb0fbae56622993b3b30b81",
+  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:21cbd9bf701a0115eb7b18ec58dab25041e43781",
   "provenance/r2r_v5_compatibility.json": "gitblob-sha1:61bbdf3c2328439478d8b2e8a40935806b89f76e"
 }
