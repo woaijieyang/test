@@ -121,7 +121,9 @@
         },
         "code": "SOURCE_AMBIGUITY",
         "dimension": "source_fidelity",
-        "related_dimensions": [],
+        "related_dimensions": [
+          "segmentation_adequacy"
+        ],
         "affected_subtask_indices": []
       }
     ],
