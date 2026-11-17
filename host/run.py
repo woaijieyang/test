@@ -76,6 +76,7 @@ def request(role, phase, payload, pin, profile, selected_ids):
     return {
         "role": role,
         "phase": phase,
+        "profile": profile,
         "dataset_rules": rules,
         "template_bundle": bundle,
         "fixed_core_template_ids": bundle["fixed_core_ids"],
