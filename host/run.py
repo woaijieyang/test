@@ -17,12 +17,12 @@ from pathlib import Path
 from adapter.source import Source, load_record
 from renderer.freeze import freeze, unchanged
 from host.compile import compile_prompt, core_library
-from host.template_selector import select_examples, selection_evidence, DEFAULT_EXAMPLES
+from host.template_selector import select_examples, selection_evidence, library, DEFAULT_EXAMPLES
 from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "v5-runtime-contract-v2-symmetric-tech2-inactive"
+VERSION = "v6-rxr-en-us-v1"
 
 
 def dataset_rules_metadata(profile):
@@ -48,18 +48,37 @@ def dataset_rules_metadata(profile):
     }
 
 
+
+def template_bundle_metadata(role, profile, selected_ids):
+    """Hash the fixed core and selected dynamic templates for task-level freezing."""
+    fixed = core_library(role, profile)
+    dynamic_by_id = {row["template_id"]: row for row in library(role, profile)}
+    missing = [template_id for template_id in selected_ids if template_id not in dynamic_by_id]
+    need(not missing, f"Selected template IDs disappeared: {missing}",
+         code="TEMPLATE_BUNDLE_INVALID", module="host.run", path="/selected_example_ids")
+    bundle = {
+        "fixed_core": fixed,
+        "dynamic": [dynamic_by_id[template_id] for template_id in selected_ids],
+    }
+    return {
+        "fixed_core_ids": [row["template_id"] for row in fixed],
+        "dynamic_ids": list(selected_ids),
+        "sha256": text_hash(canonical(bundle)),
+    }
+
 def request(role, phase, payload, pin, profile, selected_ids):
     text, active_schema = compile_prompt(
         role, phase, profile=profile, selected_ids=selected_ids,
         original_instruction=payload.get("original_instruction")
     )
     rules = dataset_rules_metadata(profile)
-    fixed = core_library(role, profile)
+    bundle = template_bundle_metadata(role, profile, selected_ids)
     return {
         "role": role,
         "phase": phase,
         "dataset_rules": rules,
-        "fixed_core_template_ids": [row["template_id"] for row in fixed],
+        "template_bundle": bundle,
+        "fixed_core_template_ids": bundle["fixed_core_ids"],
         "model": pin["model"],
         "effort": pin["effort"],
         "messages": [
@@ -82,6 +101,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
     def call(role, phase, payload, candidate_digest=None):
         context.update(step="request_construction", role=role, phase=phase)
         req = request(role, phase, payload, pins[role], src.profile, selections[role])
+        need(req["template_bundle"] == template_bundles[role],
+             "Selected template content changed during the task",
+             code="TEMPLATE_BUNDLE_MUTATED", module="host.run", path="/template_bundle")
         need(req["dataset_rules"] == rules_frozen,
              "Dataset-specific rule bundle changed during the task",
              code="RULE_BUNDLE_MUTATED", module="host.run", path="/dataset_rules")
@@ -239,6 +261,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             "profile": src.profile,
             "source_sha256": src.sha,
             "dataset_rules": rules_frozen,
+            "template_bundles": template_bundles,
             "example_selection": {
                 "mode": selection_mode,
                 "fixed_core_generator_ids": [x["template_id"] for x in core_library("generator", src.profile)],
@@ -287,6 +310,10 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         }
         retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                               for role, ids in selections.items()}
+        template_bundles = {
+            role: template_bundle_metadata(role, src.profile, ids)
+            for role, ids in selections.items()
+        }
         source_payload = {"original_instruction": src.raw}
         g0 = validated_call("generator", "initial", source_payload, lambda out: protocol.generator(src.raw, out))
 
