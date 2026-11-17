@@ -199,3 +199,13 @@ At task start, `run_record` freezes:
 Each request recomputes these values. A mismatch during G0/R0/G1/R1 raises a technical contract error and follows the existing exact-source fallback. The output record includes `dataset_rules`, `template_bundles`, fixed core IDs, dynamic IDs, and the compiled system prompt hash already recorded per call. This does not alter the public `run_record` signature or the Actor instruction slot.
 
 No schema, common semantic rule, verdict, call budget, Renderer, Adapter or AwareVLN behavior is changed by the RxR profile extension.
+
+## 8. Host dispatch and profile isolation checks
+
+`run_record` takes the profile only from the validated `Source.profile` returned by Adapter. It passes that same profile into selection, prompt compilation, rule metadata, template-bundle hashing and every role request. Each request now carries an explicit `profile` field so transports and journals can audit the dispatch decision without inferring it from prompt text.
+
+R2R continues to use the shared v5 role prompts, common semantic contract, active schemas, and R2R dynamic selector. It receives no RxR rule files, no RxR role guidance and no fixed core. The common v5 prompt may name both supported input profiles; that is not an RxR-specific instruction. The v6 BUILD header itself is profile-scoped and does not inject RxR claims into R2R.
+
+For RxR en-US, the Host preloads and validates both fixed cores before G0, chooses the Generator dynamic IDs once, and obtains Reviewer paired IDs from those same Generator IDs plus up to two Diagnostics. G0/G1 and R0/R1 reuse the corresponding frozen selections. Each request checks the profile, rule bundle, prompt-source component hashes and complete fixed+dynamic template-bundle hash before entering transport. A mismatch fails closed to the exact original source.
+
+`prompt_components` records the hashes of the actual role prompt, common semantic contract, profile-specific rule files, applicable checklist, active phase schema and (for Generator repair) repair instructions/examples. Phase-specific component bundles are frozen separately for G0, G1, R0 and R1 because repair and recheck are different request phases. The final actor still receives only the accepted rendered instruction string.
