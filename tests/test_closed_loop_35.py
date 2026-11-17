@@ -12,11 +12,16 @@ ROOT=Path(__file__).resolve().parents[1]
 def g(dataset):return library('generator','r2r-en' if dataset=='r2r.json' else 'rxr-en-us')
 class CompleteContractTests(unittest.TestCase):
  def test_01_curated_libraries_by_role_and_profile(self):
-     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(45,74))]:
+     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(35,64))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
              self.assertEqual(len({r['template_id'] for r in rows}),n)
+     from host.compile import core_library
+     self.assertEqual(len(core_library('generator','rxr-en-us')),10)
+     self.assertEqual(len(core_library('reviewer','rxr-en-us')),10)
+     self.assertEqual(core_library('generator','r2r-en'),[])
+     self.assertEqual(core_library('reviewer','r2r-en'),[])
  def test_02_paired_sources_preserve_identity(self):
      for profile in PROFILES:
          gs={r['template_id']:r for r in library('generator',profile)}
@@ -39,6 +44,9 @@ class CompleteContractTests(unittest.TestCase):
          validator=Draft202012Validator(schemas[role+'_template.schema.json'],registry=registry)
          for profile in PROFILES:
              for row in library(role,profile):
+                 validator.validate(row)
+             from host.compile import core_library
+             for row in core_library(role,profile):
                  validator.validate(row)
  def test_05_generator_cannot_omit_audit(self):
   e=g('r2r.json')[20];o=copy.deepcopy(e['output']);o.pop('stage_audit')
@@ -63,7 +71,12 @@ class CompleteContractTests(unittest.TestCase):
          for role in ('generator','reviewer'):
              a=select_examples(role,profile,SOURCE)
              self.assertEqual(a,select_examples(role,profile,SOURCE))
-             self.assertTrue((6 <= len(a) <= 8) if role == "generator" else (8 <= len(a) <= 12))
+             if profile == "rxr-en-us":
+                 self.assertTrue((2 <= len(a) <= 4) if role == "generator" else
+                                 (2 <= len(a) <= 6))
+             else:
+                 self.assertTrue((6 <= len(a) <= 8) if role == "generator" else
+                                 (8 <= len(a) <= 12))
              self.assertEqual(len(a),len(set(a)))
  def test_11_exact_source_not_echoed_as_template(self):
      for profile in PROFILES:
