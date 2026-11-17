@@ -35,6 +35,11 @@ class CompleteContractTests(unittest.TestCase):
     protocol.generator(e['input']['original_instruction'],e['output'])
     self.assertEqual(len(e['output']['stage_audit']),len(e['output']['subtasks']))
     self.assertEqual(len(e['output']['handoffs']),max(0,len(e['output']['subtasks'])-1))
+  from host.compile import core_library
+  for e in core_library('generator','rxr-en-us'):
+   protocol.generator(e['input']['original_instruction'],e['output'])
+   self.assertEqual(len(e['output']['stage_audit']),len(e['output']['subtasks']))
+   self.assertEqual(len(e['output']['handoffs']),max(0,len(e['output']['subtasks'])-1))
  def test_04_uploaded_examples_match_teaching_schemas(self):
      from jsonschema import Draft202012Validator
      from referencing import Registry,Resource
