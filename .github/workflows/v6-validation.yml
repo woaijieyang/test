@@ -28,3 +28,14 @@ jobs:
         run: python -B -m unittest discover -s tests -p "test_closed_loop_35.py" -v
       - name: Validate runtime v2 contracts
         run: python -B -m unittest discover -s tests -p "test_runtime_contract_v2.py" -v
+      - name: Validate existing prompt injection and role repair paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_example_injection.py" -v
+          python -B -m unittest discover -s tests -p "test_roles_repair.py" -v
+      - name: Validate existing adapter, workflow and release paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_entry_diagnostics.py" -v
+          python -B -m unittest discover -s tests -p "test_workflow_integration.py" -v
+          python -B -m unittest discover -s tests -p "test_targeted_feedback.py" -v
+          python -B -m unittest discover -s tests -p "test_final_best_contract.py" -v
+          python -B -m unittest discover -s tests -p "test_release_transaction.py" -v
