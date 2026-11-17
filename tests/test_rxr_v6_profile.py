@@ -76,7 +76,11 @@ class RxRV6ProfileTests(unittest.TestCase):
         self.assertIn("reviewer/dataset_rules/rxr_en_us.md", prompt)
         self.assertIn("FIXED RXR REVIEWER CORE: exactly 10", prompt)
         self.assertIn("DYNAMIC RXR-EN-US REVIEWER EXAMPLES", prompt)
-        self.assertEqual(len(ids), len(reviewer_ids) - max(0, len(reviewer_ids) - len(ids)))
+        reviewer_by_id = {x["template_id"]: x for x in library("reviewer", "rxr-en-us")}
+        self.assertEqual([reviewer_by_id[x]["pair_id"] for x in reviewer_ids[:len(ids)]], ids)
+        diagnostics = reviewer_ids[len(ids):]
+        self.assertLessEqual(len(diagnostics), 2)
+        self.assertTrue(all(reviewer_by_id[x].get("pair_id") is None for x in diagnostics))
         for row in core_library("reviewer", "rxr-en-us"):
             self.assertIn(row["template_id"], prompt)
         for template_id in reviewer_ids:
