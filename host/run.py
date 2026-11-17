@@ -182,6 +182,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         return reply["output"]
 
     retrieval_evidence = {}
+    reviewer_rows_by_id = {}
     technical_by_role = {"generator": 0, "reviewer": 0}
     quote_corrections = 0
     semantic_repairs = 0
@@ -265,15 +266,23 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             "source_sha256": src.sha,
             "dataset_rules": rules_frozen,
             "template_bundles": template_bundles,
+            "fixed_core_template_ids": {
+                role: list(ids) for role, ids in fixed_core_ids.items()
+            },
             "example_selection": {
                 "mode": selection_mode,
                 "fixed_core_generator_ids": list(fixed_core_ids["generator"]),
                 "fixed_core_reviewer_ids": list(fixed_core_ids["reviewer"]),
                 "retrieval_evidence": retrieval_evidence,
                 "configured_example_count": example_count,
-                "reviewer_pair_count": (len(selections["generator"]) if selection_mode == "adaptive" else None),
-                "reviewer_diagnostic_ids": (selections["reviewer"][len(selections["generator"]):]
-                                           if selection_mode == "adaptive" else []),
+                "reviewer_pair_count": sum(
+                    1 for template_id in selections["reviewer"]
+                    if reviewer_rows_by_id.get(template_id, {}).get("pair_id")
+                ),
+                "reviewer_diagnostic_ids": [
+                    template_id for template_id in selections["reviewer"]
+                    if not reviewer_rows_by_id.get(template_id, {}).get("pair_id")
+                ],
                 "actual_generator_examples": len(selections["generator"]),
                 "actual_reviewer_examples": len(selections["reviewer"]),
                 "generator": list(selections["generator"]),
@@ -319,6 +328,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         }
         retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                               for role, ids in selections.items()}
+        reviewer_rows_by_id = {
+            row["template_id"]: row for row in library("reviewer", src.profile)
+        }
         template_bundles = {
             role: template_bundle_metadata(role, src.profile, ids)
             for role, ids in selections.items()
