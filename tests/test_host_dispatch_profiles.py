@@ -142,6 +142,44 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertEqual(requests[1]["fixed_core_template_ids"],
                          requests[3]["fixed_core_template_ids"])
 
+    def test_r2r_v5_compatibility_assets_are_byte_identical(self):
+        import hashlib
+        import json
+        from pathlib import Path
+        from host.compile import ROOT
+
+        manifest = json.loads(
+            (ROOT / "provenance/r2r_v5_compatibility.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest["baseline_commit"],
+                         "c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3")
+        self.assertEqual(manifest["file_count"], len(manifest["files"]))
+        for entry in manifest["files"]:
+            path = ROOT / entry["path"]
+            data = path.read_bytes()
+            blob = hashlib.sha1(
+                b"blob " + str(len(data)).encode("ascii") + b"\\0" + data
+            ).hexdigest()
+            with self.subTest(path=entry["path"]):
+                self.assertEqual(blob, entry["git_blob_sha1"])
+
+    def test_r2r_prompt_restores_v5_build_and_curated_header(self):
+        source_text = "Walk through the doorway and stop beside the table."
+        ids = select_examples("generator", "r2r-en", source_text)
+        prompt, _ = compile_prompt(
+            "generator", "initial", profile="r2r-en",
+            selected_ids=ids, original_instruction=source_text
+        )
+        self.assertTrue(prompt.startswith(
+            "BUILD: v1.5.2 / runtime-contract-v2. Selected few-shot examples are "
+            "source-feature-matched and frozen per record; the source instruction "
+            "remains the only route authority.\\n\\n"
+        ))
+        self.assertIn("CURATED R2R-EN GENERATOR EXAMPLES:", prompt)
+        self.assertNotIn("FIXED RXR", prompt)
+        self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
+        self.assertNotIn("RXR ROLE GUIDANCE", prompt)
+
     def test_r2r_never_receives_rxr_core_or_rules(self):
         src = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "dispatch-r2r",
