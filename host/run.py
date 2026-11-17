@@ -52,7 +52,14 @@ def dataset_rules_metadata(profile):
 def prompt_components_metadata(role, phase, profile):
     """Freeze all source files that contribute to this role's compiled prompt."""
     root = Path(__file__).resolve().parents[1]
-    paths = [root/role/"prompt.md", root/"shared/semantic_contract.md"]
+    # Include compiler/selector implementation so the frozen task record identifies
+    # not only prompt text assets but also the code that assembles and selects them.
+    paths = [
+        root/role/"prompt.md",
+        root/"shared/semantic_contract.md",
+        root/"host/compile.py",
+        root/"host/template_selector.py",
+    ]
     if role == "reviewer":
         paths.append(root/"reviewer/checklist.md")
     if role == "generator" and phase == "repair":
