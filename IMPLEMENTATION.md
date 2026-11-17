@@ -1,4 +1,4 @@
-# final-best-v1 implementation rationale
+# LLM-decompose-v6 implementation rationale
 
 ## What was preserved
 
@@ -24,3 +24,24 @@ No new primary reviewer, trained model, online goal-switch hook, graph/map memor
 The uploaded source analysis covers 1,839 R2R evaluation instructions and 1,223 RxR en-US evaluation instructions, alongside the supplied train/eval instruction corpora and episode-level audit records. These counts describe the uploaded files only. No new model calls, navigation replay, tokenizer capture or frame-level causal analysis were performed while assembling final-best-v1. The package therefore makes no new navigation-performance claim.
 
 The current tests cover schema validation, source identity, renderer provenance, source-exact fallback, bounded two-role workflow and smoke cases. Passing them is not proof of language correctness, tokenizer invariance or navigation improvement. A new fixed-model, blind-review and held-out navigation evaluation is still required.
+
+
+## v6 RxR en-US extension and preservation boundary
+
+The implementation baseline is the exact `LLM-decompose-v5` branch commit `c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3`. The extension does not replace the v5 common prompt, semantic contract, active runtime schemas, Stage Audit/Handoff fields, C01–C12 checklist, L0–L6 review, Adapter, Renderer, G0–R0–G1–R1 workflow, or the existing AwareVLN actor boundary.
+
+Only the `rxr-en-us` Adapter profile loads:
+- one shared semantic rule file defining RxR long-instruction event reconstruction, action/observation/target/reference distinctions, late target-description binding, temporal scope, global coreference, route history, spatial reference frames, ordinal/count origins, endpoint refinement, conditional branches, and executable handoff requirements;
+- separate Generator and Reviewer execution guidance, which share the same semantic definitions but use role-specific reasoning and audit order;
+- ten fixed v5-format Generator teaching templates migrated from the original v1 G01–G10 cases;
+- ten independent fixed v5-format Reviewer teaching templates migrated from the original v1 R01–R10 cases.
+
+The fixed core is injected unconditionally for normal runtime calls and remains in stable order. It is not passed through retrieval, cannot be replaced by dynamic examples, and is reused unchanged in G0/G1 and R0/R1. Original v1-format files remain in the legacy provenance directories and are not runtime inputs. The migrated core JSON keeps per-case lineage; not all ten cases are raw RxR corpus records, and they must not be described as official human annotations or navigation ground truth.
+
+RxR dynamic retrieval is deliberately complementary: 2–4 Generator examples from the 35-case val_seen pool; the corresponding 2–4 paired Reviewer examples; and 0–2 relevant Reviewer Diagnostics from the 29-case pool. R2R remains on its v5 dynamic pools and 6–8 Generator / paired Reviewer plus 2–4 Diagnostics policy. R2R receives no RxR rules or fixed core. The selector enforces the RxR range even when a caller supplies an explicit count.
+
+At task start Host freezes the profile-specific rule-file digest and each role's complete fixed-core plus selected-dynamic template digest. G1 and R1 use the same frozen selections; every request recomputes and compares the bundle metadata before transport. Fixed-core loading and identity/pairing validation occur before the first model call. A missing, corrupted, reordered or mismatched core is a technical failure and returns the exact original source without entering model transport.
+
+## Engineering validation status
+
+GitHub Actions on `LLM-decompose-v6` has passed the profile compiler build, fixed-core and pairing tests, dynamic retrieval tests, teaching-schema and Generator protocol checks, runtime-contract v2 tests, prompt injection tests, role repair tests, adapter/workflow/targeted-feedback tests, and reviewer recovery/journal tests. These are offline engineering tests. No real-model semantic accuracy, navigation rollout, SR/SPL/nDTW improvement, or tokenizer invariance is claimed.
