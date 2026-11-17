@@ -1,10 +1,10 @@
 {
   "schema_version": "reviewer-v1.5.1-template",
-  "template_id": "RxR-LEGACY-G01",
+  "template_id": "RXR-CORE-R01",
   "role": "reviewer",
   "dataset_scope": "RxR",
   "language": "en-US",
-  "pair_id": "RxR-LEGACY-G01",
+  "pair_id": "RXR-CORE-G01",
   "source": {
     "split": "train",
     "role": "guide",
