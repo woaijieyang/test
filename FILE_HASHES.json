@@ -337,7 +337,7 @@
   "generator/VERSION": "gitblob-sha1:c11f44f809454b51ead60ccf7085f5dedd1a9fca",
   "host/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "host/cli_journal.py": "gitblob-sha1:91d8f51f988af1ea06dc38b7116d5b6bed222979",
-  "host/compile.py": "gitblob-sha1:8c3de280d95ddcda09f03dbdc9b6f318f2dd0658",
+  "host/compile.py": "gitblob-sha1:3cba81edd6d7a8605b1f7d9b923f23907243ba87",
   "host/protocol.py": "gitblob-sha1:87105017ad1bb551889ad707d139ef58c8e3fac4",
   "host/README.md": "gitblob-sha1:c3ced49ecae62d92cc307740bcc099c538068a3d",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
