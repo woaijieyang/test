@@ -1,4 +1,4 @@
-# final-best-v1｜VLN 子任务生成、审核、装配与格式冻结
+# LLM-decompose-v6｜v5 通用体系 + RxR en-US 专属增强
 
 **定位：** 这是基于完整 R2R/RxR 轨迹审计、用户分析和 v1.3 语义基线整理出的最终综合版本，面向 **R2R English** 与 **RxR en-US**。Generator 仍是唯一语义作者；Reviewer 是独立诊断者；Adapter 只读取原始记录；Renderer 只做来源可追溯的机械装配与冻结；Host 只编排两角色调用并执行技术合同。
 
@@ -59,7 +59,7 @@ Committed instruction ─► existing AwareVLN instruction slot
 | `renderer/` | SOURCE_EXACT / BOUNDARY_ONLY / ASSEMBLED_SINGLE / ASSEMBLED_MULTI preview, whitespace provenance ledger, exact frozen string | Semantic correction, SR-based choice, post-review cleanup, reject a semantically valid split for style |
 | `host/` | Compile prompts, validate schemas/quotes/hashes, bounded G0-R0-G1-R1 flow, same-snapshot commit or exact fallback | Add a chief reviewer, call online goal switches, change AwareVLN internals |
 | `shared/` | The one semantic acceptance contract and identity/hash helpers | Duplicate or contradict role-specific standards |
-| `generator/templates/` and `reviewer/templates/` | Generator: 35 val_seen examples per dataset. Reviewer: 35 paired examples plus dataset diagnostics (R2R 26, RxR 29); generator 6–8; reviewer uses the paired examples plus 2–4 diagnostics, frozen per task | Serve as hidden route facts or unique gold segmentations |
+| `generator/templates/` and `reviewer/templates/` | R2R keeps v5 dynamic pools (35 Generator; 35 paired + 26 diagnostics). RxR uses 10 fixed v5-format core cases per role plus 2–4 dynamic examples; Reviewer adds 0–2 diagnostics. v1-format files are not runtime inputs | Serve as hidden route facts or unique gold segmentations |
 | `evaluation/` | Paired full-denominator summaries and technical smoke cases | Feed scores into Generator/Reviewer or delete failures from the denominator |
 | `provenance/` | Input lineage, evidence summary, source analyses and build hashes | Claim new navigation results or unverified causal explanations |
 
@@ -131,3 +131,33 @@ The runtime schema and host files were edited on the `LLM-decompose` branch from
 ## Default role models
 
 Generator and reviewer both use `gpt-5.6-sol` with `high` reasoning effort from `host/role-pins.json`. Omitting `--pins` (CLI) or `pins` (Python) uses these defaults. An explicit run configuration overrides them.
+
+
+## v6 RxR en-US profile
+
+v6 is based on the exact `LLM-decompose-v5` branch commit and preserves its common Generator/Reviewer prompts, active schemas, five-element Stage Audit, Handoff, L0–L6 review, G0–R0–G1–R1 workflow, Adapter, Renderer and AwareVLN actor boundary. Only the RxR en-US profile receives dataset-specific semantic rules and fixed core examples. R2R en continues to use the v5 common rules, v5 dynamic templates and original selection ranges.
+
+### RxR prompt composition
+
+- Generator: v5 Generator prompt + v5 shared semantic contract + shared RxR en-US rules + Generator RxR guidance + unchanged active Generator schema + fixed Generator core G01–G10 + 2–4 dynamic val_seen examples.
+- Reviewer: v5 Reviewer prompt + v5 shared semantic contract + shared RxR en-US rules + Reviewer RxR guidance + unchanged active Reviewer schema + fixed independent Reviewer core R01–R10 + 2–4 paired dynamic Reviewer examples + 0–2 relevant diagnostics.
+- G1 reuses the exact Generator core/dynamic selection from G0. R1 reuses the exact Reviewer core/dynamic/diagnostic selection from R0. The Host records a content hash for the rule bundle and each role's complete fixed+dynamic template bundle, and rejects mid-task mutation.
+- Fixed core cases are loaded in stable G01–G10 / R01–R10 order. They are not ranked, replaced, or removed by retrieval. The `legacy/` directories are provenance archives; runtime loads the v5-format copies under `core/`, never the original v1 JSON.
+- The 10 Generator and 10 Reviewer core files are v5-format migrations of the original v1 examples. Their `legacy_reference` and provenance fields preserve lineage. Reviewer core cases remain independent review examples and pair with the corresponding Generator core IDs.
+
+### RxR rule responsibilities
+
+`shared/dataset_rules/rxr_en_us.md` is the single semantic authority for long-instruction event reconstruction, action/observation distinction, late target-description binding, temporal scope, coreference, route history, spatial reference frames, ordinals/count origins, endpoint refinement, conditions and handoff semantics. `generator/dataset_rules/rxr_en_us.md` defines the Generator's execution order; `reviewer/dataset_rules/rxr_en_us.md` defines the independent audit order and false-positive controls. These role files may operationalize the shared definitions but may not contradict them.
+
+### Fixed and dynamic template inventory
+
+- Generator RxR: 10 fixed core + 35 dynamic val_seen.
+- Reviewer RxR: 10 fixed core + 35 paired dynamic + 29 diagnostics available for retrieval.
+- Generator R2R: 35 dynamic val_seen; no fixed core.
+- Reviewer R2R: 35 paired dynamic + 26 diagnostics; no fixed core.
+
+The active dynamic selection ranges are profile-specific: R2R retains 6–8 Generator and paired Reviewer examples plus 2–4 diagnostics; RxR selects 2–4 Generator examples, the corresponding 2–4 paired Reviewer examples, and 0–2 diagnostics. Explicit `selection_mode='all'` remains an evaluation/debug override, not the default runtime policy.
+
+### Validation status
+
+`tests/test_rxr_v6_profile.py` covers fixed core loading, role pairing, dynamic ranges, prompt profile isolation, and per-task rule/template hash metadata. `tests/test_closed_loop_35.py` also validates every core and dynamic example against the existing teaching schemas. No navigation success, SR/SPL improvement, or real-model semantic accuracy is claimed by these engineering changes.
