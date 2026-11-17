@@ -37,7 +37,7 @@ def dataset_rules_metadata(profile):
             root/"reviewer/dataset_rules/rxr_en_us.md",
         ])
         version = "v6-rxr-en-us"
-    material = "\\n".join(
+    material = "\n".join(
         f"## {path.relative_to(Path(__file__).resolve().parents[1]).as_posix()}\\n{path.read_text(encoding='utf-8')}"
         for path in paths
     )
