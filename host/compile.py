@@ -1,4 +1,4 @@
-"""Compile role-specific teaching material separately from the active response schema."""
+"""Compile v5 common contracts and v6 profile-specific teaching material separately from active schemas."""
 from __future__ import annotations
 import json
 import re
