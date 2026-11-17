@@ -1,0 +1,379 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-LEGACY-G04",
+  "role": "reviewer",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "pair_id": "RxR-LEGACY-G04",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G04",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Enter the kitchen after you have walked to the end of the hallway. Before walking down the hallway, turn right. Once inside the kitchen, cross it and go through the archway into the dining room. Cross the dining room and enter the study through the door beside the bookcase. In the study, walk around the desk and stop at the window.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn right, then walk down the hallway to its end and enter the kitchen.",
+        "Once inside the kitchen, cross it and go through the archway into the dining room.",
+        "Cross the dining room and enter the study through the door beside the bookcase.",
+        "In the study, walk around the desk and stop at the window."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Enter the kitchen after you have walked to the end of the hallway.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Turn right, then walk down the hallway to its end and enter the kitchen."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Before walking down the hallway, turn right.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Turn right, then walk down the hallway to its end and enter the kitchen."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Once inside the kitchen, cross it and go through the archway into the dining room."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Cross the dining room and enter the study through the door beside the bookcase.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Cross the dining room and enter the study through the door beside the bookcase."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "In the study, walk around the desk and stop at the window.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "In the study, walk around the desk and stop at the window."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn right, then walk down the hallway to its end and enter the kitchen.",
+          "candidate_quotes": [
+            "Turn right, then walk down the hallway to its end and enter the kitchen."
+          ]
+        },
+        "process": {
+          "text": "Turn right, then walk down the hallway to its end and enter the kitchen.",
+          "candidate_quotes": [
+            "Turn right, then walk down the hallway to its end and enter the kitchen."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn right, then walk down the hallway to its end and enter the kitchen.",
+          "candidate_quotes": [
+            "Turn right, then walk down the hallway to its end and enter the kitchen."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: right",
+          "candidate_quotes": [
+            "then",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "Before walking down the hallway, turn right.",
+          "Enter the kitchen after you have walked to the end of the hallway.",
+          "In the study, walk around the desk and stop at the window.",
+          "Cross the dining room and enter the study through the door beside the bookcase."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room",
+          "candidate_quotes": [
+            "Once inside the kitchen, cross it and go through the archway into the dining room"
+          ]
+        },
+        "target": {
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "candidate_quotes": [
+            "Once inside the kitchen, cross it and go through the archway into the dining room."
+          ]
+        },
+        "process": {
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "candidate_quotes": [
+            "Once inside the kitchen, cross it and go through the archway into the dining room."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "candidate_quotes": [
+            "Once inside the kitchen, cross it and go through the archway into the dining room."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once; manner_or_constraint: through",
+          "candidate_quotes": [
+            "Once",
+            "through"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "Cross the dining room and enter the study through the door beside the bookcase.",
+          "In the study, walk around the desk and stop at the window.",
+          "Enter the kitchen after you have walked to the end of the hallway."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Cross the dining room and enter the study through the door beside the bookcase.",
+          "candidate_quotes": [
+            "Cross the dining room and enter the study through the door beside the bookcase."
+          ]
+        },
+        "process": {
+          "text": "Cross the dining room and enter the study through the door beside the bookcase.",
+          "candidate_quotes": [
+            "Cross the dining room and enter the study through the door beside the bookcase."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Cross the dining room and enter the study through the door beside the bookcase.",
+          "candidate_quotes": [
+            "Cross the dining room and enter the study through the door beside the bookcase."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "manner_or_constraint: through",
+          "candidate_quotes": [
+            "through"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "Cross the dining room and enter the study through the door beside the bookcase.",
+          "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "In the study, walk around the desk and stop at the window.",
+          "Enter the kitchen after you have walked to the end of the hallway."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 3,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "In the study, walk around the desk and stop at the window.",
+          "candidate_quotes": [
+            "In the study, walk around the desk and stop at the window."
+          ]
+        },
+        "process": {
+          "text": "In the study, walk around the desk and stop at the window.",
+          "candidate_quotes": [
+            "In the study, walk around the desk and stop at the window."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "In the study, walk around the desk and stop at the window.",
+          "candidate_quotes": [
+            "In the study, walk around the desk and stop at the window."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "manner_or_constraint: around",
+          "candidate_quotes": [
+            "around"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-05"
+        ],
+        "source_quotes": [
+          "In the study, walk around the desk and stop at the window.",
+          "Cross the dining room and enter the study through the door beside the bookcase.",
+          "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "Before walking down the hallway, turn right."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn right, then walk down the hallway to its end and enter the kitchen.",
+          "candidate_quote": "Turn right, then walk down the hallway to its end and enter the kitchen."
+        },
+        "next_entry": {
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room",
+          "candidate_quote": "Once inside the kitchen, cross it and go through the archway into the dining room"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "candidate_quote": "Once inside the kitchen, cross it and go through the archway into the dining room."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Cross the dining room and enter the study through the door beside the bookcase"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 2,
+        "to_subtask_index": 3,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Cross the dining room and enter the study through the door beside the bookcase.",
+          "candidate_quote": "Cross the dining room and enter the study through the door beside the bookcase."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "In the study, walk around the desk and stop at the window"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "temporal_order_reversal_and_multileg_route",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+  }
+}

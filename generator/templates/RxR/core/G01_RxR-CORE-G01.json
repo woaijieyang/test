@@ -1,0 +1,179 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-LEGACY-G01",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "0",
+    "episode_id": "1",
+    "instruction_id": "0",
+    "scene_id": "mp3d/SN83YJsR3w2/SN83YJsR3w2.glb"
+  },
+  "provenance": {
+    "kind": "uploaded_RxR_train_record",
+    "source_status": "actual_source_instruction_with_curated_teaching_output",
+    "source_reference": "rxr_train.md; en-US; guide; instruction_id=0; episode_id=1"
+  },
+  "input": {
+    "original_instruction": "You will start by standing in front of a glass door and on your right is a doorway. Turn around and you will see a doorway to the washroom. Walk towards the doorway and inside the washroom. Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
+      "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk towards that doorway and enter the washroom.",
+          "candidate_quotes": [
+            "Walk towards that doorway and enter the washroom."
+          ]
+        },
+        "process": {
+          "text": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
+          "candidate_quotes": [
+            "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Walk towards that doorway and enter the washroom.",
+          "candidate_quotes": [
+            "Walk towards that doorway and enter the washroom."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: in front of, on your, right; manner_or_constraint: around",
+          "candidate_quotes": [
+            "in front of",
+            "on your",
+            "right",
+            "around"
+          ]
+        },
+        "source_quotes": [
+          "Turn around and you will see a doorway to the washroom.",
+          "Walk towards the doorway and inside the washroom.",
+          "You will start by standing in front of a glass door and on your right is a doorway.",
+          "Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once inside the washroom, stand between the sink and the bathtub",
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub"
+          ]
+        },
+        "target": {
+          "text": "Once inside the washroom, stand between the sink and the bathtub.",
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub."
+          ]
+        },
+        "process": {
+          "text": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination.",
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Once inside the washroom, stand between the sink and the bathtub.",
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: Once; spatial_frame: between",
+          "candidate_quotes": [
+            "Once",
+            "between"
+          ]
+        },
+        "source_quotes": [
+          "Once you're there, stand in between the sink and the bathtub and once you're there, you're done.",
+          "Walk towards the doorway and inside the washroom.",
+          "Turn around and you will see a doorway to the washroom.",
+          "You will start by standing in front of a glass door and on your right is a doorway."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk towards that doorway and enter the washroom.",
+          "candidate_quote": "Walk towards that doorway and enter the washroom."
+        },
+        "next_entry": {
+          "text": "Once inside the washroom, stand between the sink and the bathtub",
+          "candidate_quote": "Once inside the washroom, stand between the sink and the bathtub"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "initial_context_plus_room_entry",
+    "why_this_case_matters": "Keep the initial doorway relation as context, execute the turn before selecting the washroom doorway, and split only after entering the washroom.",
+    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not convert the initial right-hand doorway into the washroom doorway; the turn changes the reference frame."
+  },
+  "retrieval_tags": [
+    "doorway_selection_and_crossing",
+    "landmark_conditioned_navigation",
+    "temporal_dependency",
+    "orientation_or_reference_frame",
+    "multi_stage_split",
+    "initial_context_plus_room_entry",
+    "legacy_user_uploaded_json"
+  ],
+  "legacy_reference": {
+    "original_template_id": "G01",
+    "title": "Initial context and an ordinary room transition",
+    "original_provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input traces to uploaded RxR train/guide/en-US instruction_id=0.",
+    "original_output": {
+      "status": "ok",
+      "subtasks": [
+        "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
+        "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+      ],
+      "issues": []
+    },
+    "upgrade_note": "The original output is retained for traceability. The active output above is restructured to satisfy the uploaded v1.3 five-element stage_audit and adjacent handoff contract."
+  }
+}
