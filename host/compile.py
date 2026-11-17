@@ -122,6 +122,14 @@ def runtime_review_output(example):
     audit["findings"] = convert(audit.get("findings", []), "/findings")
     audit["prior_finding_reviews"] = convert(audit.get("prior_finding_reviews", []), "/prior_finding_reviews")
     audit.setdefault("prior_finding_reviews", [])
+    # Runtime v2 requires every L0-L6 row to explicitly link its findings.
+    # Preserve authored links when present; otherwise derive only the direct
+    # failed_layer relation from the authored finding records.
+    for layer in audit.get("layer_checks", []):
+        layer.setdefault("finding_indices", [
+            i for i, finding in enumerate(audit["findings"])
+            if finding.get("failed_layer") == layer.get("layer")
+        ])
     return audit
 
 
