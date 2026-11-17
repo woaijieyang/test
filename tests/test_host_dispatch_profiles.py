@@ -77,6 +77,11 @@ class HostDispatchProfileTests(unittest.TestCase):
             role_requests = [r for r in requests if r["role"] == role]
             self.assertEqual(len(role_requests), 1)
             self.assertEqual(len(role_requests[0]["fixed_core_template_ids"]), 10)
+            self.assertTrue(2 <= len(role_requests[0]["selected_example_ids"]) <=
+                            (4 if role == "generator" else 6))
+            self.assertEqual(role_requests[0]["prompt_components"],
+                             result["prompt_components"][role][
+                                 "initial" if role == "generator" else "review"])
             self.assertEqual(role_requests[0]["template_bundle"]["sha256"],
                              result["template_bundles"][role]["sha256"])
 
