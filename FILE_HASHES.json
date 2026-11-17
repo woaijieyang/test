@@ -1,5 +1,5 @@
 {
-  ".github/workflows/v6-validation.yml": "gitblob-sha1:d70f6bb1e97ba54b22016077a39055605a3676a6",
+  ".github/workflows/v6-validation.yml": "gitblob-sha1:5c39af3174b78868f902613aedff10f579cee8f4",
   "adapter/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "adapter/profiles.json": "gitblob-sha1:812f63b8f58ffd686832b4fca515c5ce3bcf941f",
   "adapter/README.md": "gitblob-sha1:164f6467b5a53ca51013ef79f879f6e06a411ea7",
@@ -337,11 +337,11 @@
   "generator/VERSION": "gitblob-sha1:c11f44f809454b51ead60ccf7085f5dedd1a9fca",
   "host/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "host/cli_journal.py": "gitblob-sha1:91d8f51f988af1ea06dc38b7116d5b6bed222979",
-  "host/compile.py": "gitblob-sha1:3cba81edd6d7a8605b1f7d9b923f23907243ba87",
+  "host/compile.py": "gitblob-sha1:c086a45968c072d887cfb17b5554eda65066df08",
   "host/protocol.py": "gitblob-sha1:87105017ad1bb551889ad707d139ef58c8e3fac4",
   "host/README.md": "gitblob-sha1:c3ced49ecae62d92cc307740bcc099c538068a3d",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
-  "host/run.py": "gitblob-sha1:25746cf2ffb6352f65387aeb335e808b55be8600",
+  "host/run.py": "gitblob-sha1:9fe92556ae372ed3d75186586f0e06162052ba35",
   "host/template_selector.py": "gitblob-sha1:931715340b6341c6a1fc60ae5d4dd57b1d89002f",
   "IMPLEMENTATION.md": "gitblob-sha1:7f72988538adca8a233e85886d353ff16a8d0f4c",
   "provenance/build_manifest.json": "gitblob-sha1:90bc099c130723003a99a0fb2bf6b01b57b80519",
@@ -566,5 +566,6 @@
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
   "verify_package.py": "gitblob-sha1:2e5f33794a7a1600bb8375e6ab9d8d5e3faccbc4",
   "VERSION": "gitblob-sha1:4abf5af798c6b77180e6a8fc408c006af06f0556",
-  "WORKFLOW.md": "gitblob-sha1:a0103ad56d920fecd7714947b7117ca1d9aa3117"
+  "WORKFLOW.md": "gitblob-sha1:a0103ad56d920fecd7714947b7117ca1d9aa3117",
+  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:8305140b1833abfe908cd0446d5c15d78a081528"
 }
