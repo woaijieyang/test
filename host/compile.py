@@ -82,6 +82,49 @@ def transfer_checks(text):
     return questions
 
 
+def runtime_review_output(example):
+    """Convert authored teaching evidence to the active Reviewer Runtime v2 wire shape.
+
+    Historical template files retain their original teaching representation. The
+    compiler performs this lossless, source-grounded projection only at prompt
+    assembly time; it never invents a stage index.
+    """
+    audit = json.loads(canonical(example["expected_review"]))
+    stages = example["review_input"]["candidate"].get("subtasks", [])
+
+    def convert(rows, path):
+        converted = []
+        for row_index, row in enumerate(rows or []):
+            if isinstance(row, dict):
+                item = dict(row)
+                evidence = item.get("candidate_evidence", [])
+                mapped = []
+                for evidence_index, evidence_item in enumerate(evidence):
+                    if isinstance(evidence_item, dict):
+                        mapped.append(evidence_item)
+                        continue
+                    if not isinstance(evidence_item, str) or not evidence_item:
+                        raise ValueError(f"Invalid Reviewer teaching evidence at {path}/{row_index}/{evidence_index}")
+                    matches = [i for i, stage in enumerate(stages) if evidence_item in stage]
+                    if not matches:
+                        raise ValueError(
+                            f"Reviewer teaching evidence is not grounded in a candidate stage at "
+                            f"{path}/{row_index}/{evidence_index}: {evidence_item!r}"
+                        )
+                    mapped.extend({"subtask_index": i, "quote": evidence_item} for i in matches)
+                item["candidate_evidence"] = mapped
+                converted.append(item)
+            else:
+                converted.append(row)
+        return converted
+
+    audit["source_coverage"] = convert(audit.get("source_coverage", []), "/source_coverage")
+    audit["findings"] = convert(audit.get("findings", []), "/findings")
+    audit["prior_finding_reviews"] = convert(audit.get("prior_finding_reviews", []), "/prior_finding_reviews")
+    audit.setdefault("prior_finding_reviews", [])
+    return audit
+
+
 def teaching_card(example, role, detailed):
     """Show the authored decision and its textual evidence in a compact demonstration."""
     notes = example["teaching_notes"]
@@ -93,7 +136,7 @@ def teaching_card(example, role, detailed):
             card["stage_evidence"] = out["stage_audit"]
         lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters")
     else:
-        audit = example["expected_review"]
+        audit = runtime_review_output(example)
         card = dict(review_case=example["review_input"], verdict=audit["verdict"],
                     dimensions=audit["dimensions"], findings=audit["findings"])
         if detailed:
