@@ -97,6 +97,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
     events, snapshots = [], []
     rules_frozen = None
     template_bundles = {}
+    fixed_core_ids = {role: [] for role in ("generator", "reviewer")}
     selections = {role: [] for role in ("generator", "reviewer")}
     context = {"step": "configuration_validation", "role": None, "phase": None}
 
@@ -266,8 +267,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             "template_bundles": template_bundles,
             "example_selection": {
                 "mode": selection_mode,
-                "fixed_core_generator_ids": [x["template_id"] for x in core_library("generator", src.profile)],
-                "fixed_core_reviewer_ids": [x["template_id"] for x in core_library("reviewer", src.profile)],
+                "fixed_core_generator_ids": list(fixed_core_ids["generator"]),
+                "fixed_core_reviewer_ids": list(fixed_core_ids["reviewer"]),
                 "retrieval_evidence": retrieval_evidence,
                 "configured_example_count": example_count,
                 "reviewer_pair_count": (len(selections["generator"]) if selection_mode == "adaptive" else None),
@@ -305,6 +306,12 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         )
         context["step"] = "example_selection"
         rules_frozen = dataset_rules_metadata(src.profile)
+        # Resolve and validate fixed core once before any model invocation.
+        # finish() reports cached IDs and remains safe if core loading fails.
+        fixed_core_ids = {
+            role: [row["template_id"] for row in core_library(role, src.profile)]
+            for role in ("generator", "reviewer")
+        }
         selections = {
             role: select_examples(role, src.profile, src.raw,
                                   count=example_count, mode=selection_mode)
