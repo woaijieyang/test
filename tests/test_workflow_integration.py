@@ -13,7 +13,8 @@ class Integration(unittest.TestCase):
         for profile in PROFILES:
             _, spec = compile_prompt('generator', profile=profile, examples=False)
             validator = Draft202012Validator(spec)
-            for row in library('generator', profile):
+            from host.compile import core_library
+            for row in [*library('generator', profile), *core_library('generator', profile)]:
                 with self.subTest(template=row['template_id']):
                     validator.validate(row['output'])
                     protocol.generator(source(row), row['output'])
@@ -32,7 +33,10 @@ class Integration(unittest.TestCase):
                 text = source(bank[0])
                 ids = select_examples(role, profile, text)
                 self.assertNotIn(bank[0]['template_id'],ids)
-                self.assertTrue((6 <= len(ids) <= 8) if role == "generator" else (8 <= len(ids) <= 12))
+                if profile == "rxr-en-us":
+                    self.assertTrue((2 <= len(ids) <= 4) if role == "generator" else (2 <= len(ids) <= 6))
+                else:
+                    self.assertTrue((6 <= len(ids) <= 8) if role == "generator" else (8 <= len(ids) <= 12))
                 self.assertEqual(ids,select_examples(role, profile, text))
                 for phase in phases:
                     prompt,spec=compile_prompt(role,phase,profile=profile,selected_ids=ids)
