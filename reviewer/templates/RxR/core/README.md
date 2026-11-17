@@ -20,3 +20,7 @@ The core is injected in R01–R10 order on every RxR en-US Reviewer call (R0 and
 ## Provenance caution
 
 These ten cases are authored Reviewer demonstrations migrated from v1. They are not official RxR human review annotations, not model-generated empirical reviews, and not navigation ground truth. Their value is to teach evidence-grounded PASS/REVISE/UNRESOLVED distinctions and common semantic failure modes. Preserve the provenance on each case.
+
+## Identifier convention
+
+`R01`–`R10` are Reviewer core slot labels and file suffixes, not a separate template-ID namespace. Each Reviewer case retains the corresponding Generator core `template_id` (`RxR-LEGACY-G01`–`G10`) so its `pair_id` is an exact stable link to that Generator case. Role scoping keeps the Generator and Reviewer JSON files independent; do not infer that they share teaching content.
