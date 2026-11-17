@@ -16,3 +16,7 @@ These are the v5-format migrations of the ten original v1 Generator teaching cas
 | G10 | `G10_RxR-CORE-G10.json` | Abstain when a route-critical reference and turn direction are not source-resolvable |
 
 The core is injected in G01–G10 order on every RxR en-US Generator call (G0 and G1). It is not retrieved, ranked, truncated by selector logic, or replaced by dynamic examples. Dynamic retrieval adds 2–4 examples from the separate val_seen pool.
+
+## Provenance caution
+
+These are teaching examples, not ten official RxR subtask annotations. Each JSON file retains its own `provenance` and `legacy_reference`. G01 traces to the uploaded RxR train en-US guide record described in its provenance; the other original v1 cases include synthetic/adapted or user-supplied teaching material as individually recorded. Do not describe the complete core as ten raw RxR dataset records or as navigation ground truth.
