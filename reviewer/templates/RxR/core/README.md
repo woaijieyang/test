@@ -16,3 +16,7 @@ These are the v5-format migrations of the ten original v1 Reviewer teaching case
 | R10 | `G10_RxR-CORE-R10.json` | PASS for an alternative valid cut with bounded orientation |
 
 The core is injected in R01–R10 order on every RxR en-US Reviewer call (R0 and R1). It is independent from the paired dynamic Reviewer cases. Dynamic retrieval adds 2–4 Reviewer cases paired to the Generator's dynamic IDs, then 0–2 relevant Diagnostics.
+
+## Provenance caution
+
+These ten cases are authored Reviewer demonstrations migrated from v1. They are not official RxR human review annotations, not model-generated empirical reviews, and not navigation ground truth. Their value is to teach evidence-grounded PASS/REVISE/UNRESOLVED distinctions and common semantic failure modes. Preserve the provenance on each case.
