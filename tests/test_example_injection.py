@@ -18,19 +18,26 @@ class InjectionTests(unittest.TestCase):
                 ids=select_examples(role,profile,source)
                 text,schema=compile_prompt(role,phase,profile=profile,selected_ids=ids,original_instruction=source)
                 cards=[json.loads(line) for line in text.splitlines() if line.startswith('{') and '"applicable_lesson"' in line]
-                self.assertEqual([c['template_id'] for c in cards],ids)
-                originals={r['template_id']:r for r in library(role,profile)}
-                for j,c in enumerate(cards):
+                from host.compile import core_library
+                fixed=core_library(role,profile)
+                expected=[r['template_id'] for r in fixed]+ids
+                self.assertEqual([c['template_id'] for c in cards],expected)
+                originals={r['template_id']:r for r in [*fixed,*library(role,profile)]}
+                for c in cards:
                     e=originals[c['template_id']];self.assertTrue(c['applicable_lesson'])
                     t=c['teaching']
+                    is_first_in_group = c['template_id'] in (
+                        (fixed[0]['template_id'] if fixed else None),
+                        (library(role,profile)[0]['template_id'] if library(role,profile) else None)
+                    )
                     if role=='generator':
                         self.assertEqual(t['stages'],e['output']['subtasks'])
                         self.assertEqual(t['handoffs'],e['output']['handoffs'])
-                        self.assertEqual('stage_evidence' in t,j==0)
+                        self.assertEqual('stage_evidence' in t,is_first_in_group)
                     else:
                         self.assertEqual(t['findings'],e['expected_review']['findings'])
                         self.assertEqual(t['review_case'],e['review_input'])
-                        self.assertEqual('coverage_evidence' in t,j==0)
+                        self.assertEqual('coverage_evidence' in t,is_first_in_group)
                 self.assertIn('two distinct stops',text)
                 blank,other_schema=compile_prompt(role,phase,profile=profile,original_instruction=source,examples=False)
                 self.assertEqual(other_schema,schema);self.assertNotIn('APPLY THE EXAMPLES',blank)
