@@ -5,7 +5,7 @@ import json,sys,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from host.compile import compile_prompt
+from host.compile import compile_prompt, runtime_review_output
 from host.protocol import generator,reviewer
 class RolesRepairTests(unittest.TestCase):
  def test_role_specific_profile_counts(self):
@@ -48,14 +48,12 @@ class RolesRepairTests(unittest.TestCase):
  def test_reviewer_examples_validate(self):
      for profile in PROFILES:
          for row in library('reviewer',profile):
-             review = dict(row['expected_review'])
-             review.setdefault('prior_finding_reviews', [])
+             review = runtime_review_output(row)
              protocol.reviewer(row['review_input']['original_instruction'],
                                row['review_input']['candidate'],review)
      from host.compile import core_library
      for row in core_library('reviewer','rxr-en-us'):
-         review = dict(row['expected_review'])
-         review.setdefault('prior_finding_reviews', [])
+         review = runtime_review_output(row)
          protocol.reviewer(row['review_input']['original_instruction'],
                            row['review_input']['candidate'],review)
  def test_r2r_regression_suite_has_six_distinct_cases(self):
