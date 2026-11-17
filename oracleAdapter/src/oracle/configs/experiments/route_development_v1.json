@@ -1,0 +1,46 @@
+{
+  "study_id": "route-development-v1",
+  "scope": "development_not_blind_generalization",
+  "implementation": "oracle.research.route_study:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "protocol_config": "configs/protocols/current_linear.json",
+  "methods": [
+    {"id": "quantized_control", "state_key": "rounded_pose_forward_bit"},
+    {"id": "lossless_labels", "state_key": "lossless_pose"}
+  ],
+  "common_method": {
+    "max_expansions_per_search": 5000,
+    "max_transition_calls_per_search": 15000,
+    "max_search_wall_seconds": 60,
+    "max_task_wall_seconds": 180,
+    "max_native_preview_calls": 150000,
+    "max_searches_per_task": 64,
+    "max_actions_per_reference": 1500,
+    "max_task_actions": 10000,
+    "greedy_visit_threshold": 3,
+    "action_costs": {"1": 1.0, "2": 0.15, "3": 0.15},
+    "heuristic": "geodesic_distance_divided_by_forward_step_not_optimality_claim",
+    "dominance": "cost_and_actions_pareto_common_to_both_arms"
+  },
+  "selection": {
+    "endpoint_success_controls_per_dataset": 2,
+    "control_rule": "ascending_numeric_episode_id_with_unique_scene_targets_and_rotation",
+    "endpoint_failures": [["r2r", "4"], ["r2r", "184"], ["rxr", "8311"], ["rxr", "9319"]],
+    "landmark_alias_tasks": ["train:39659", "train:36008", "train:36009"],
+    "landmark_source_clear_control": "train:60012"
+  },
+  "expected_tasks": 12,
+  "expected_executions": 24,
+  "max_workers": 4,
+  "development_cpu_hours_cap": 24,
+  "study_wall_seconds_cap": 14400,
+  "per_worker_process_wall_seconds_cap": 900,
+  "mapping_changes_in_this_study": false,
+  "actual_full_route_reexecution_required": true,
+  "independent_replay_process_required": true,
+  "history_results_are_not_new_passes": true,
+  "native_call_comparison_limit": "Python adapter calls measured; native greedy internal dummy-node probes not instrumented. Wall and CPU costs reported separately.",
+  "stop_on_infrastructure_or_audit_disagreement": true,
+  "limits": "Only state-key choice differs between arms; cost/depth correctness fix is shared and not credited to lossless labels. All selected tasks have historical exposure; no blinded generalization claim. New caps and implementation are not byte-identical historical RobustOracle. No new baseline model evaluation or publication."
+}

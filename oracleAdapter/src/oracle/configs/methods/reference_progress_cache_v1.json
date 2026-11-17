@@ -1,0 +1,8 @@
+{
+  "id": "reference_scoped_prefix_with_exact_query_cache_v1",
+  "planning_query_cache": {"cell_size_m": 0.5, "max_regions": 1024, "max_queries": 16384},
+  "reference_progress_guard": {"max_excess_distance_m": 1.0, "max_nonprogress_actions": 12},
+  "scope": "Only planning-query acceleration and fixed one-way source-prefix fallback. No goal, source-contact, physical, search or actual-action budget changes.",
+  "selection_basis": "The 2026-10-19 read-only audit found legal source prefixes moving far beyond a still-unvisited reference. A one-metre excursion allowance and twelve primitive non-improving suggestions bound detours/turns without enforcing monotone descent. These are initial development policy constants, not optimized per validation record; outcomes unproven.",
+  "evaluation": "Separate unchanged control, cache-only control, and cache-plus-progress candidate; no retrospective union. Original R2R/RxR runs remain sealed. Landmark only for subsequent native development."
+}

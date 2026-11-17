@@ -1,0 +1,11 @@
+{
+  "parent_run": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "input_records": "outputs/oracleAdapter/same-id-static-bounds-v2/records153.json",
+  "input_sha256": "75c15fc332dc34c2a6772208c628ca80702c38b7023966d3b9623c4281c81cd6",
+  "budget_admission": "outputs/oracleAdapter/next-stage-development-budget-review-v1/reservation-admission.json",
+  "budget_admission_sha256": "3613d567e2b76acc712dd00993451429009ea5c54272498fa2659ea44fd6f5d9",
+  "cpu_reservation_seconds": 900,
+  "query_cache": {"cell_size_m": 0.5, "max_regions": 1024, "max_queries": 16384},
+  "scope": "Fixed153 numerical opportunity ledger, only69eligible tasks in4scenes get native static queries. Old current/anchor control versus additional exact same-ID successful-coordinate seeds, with original snap/bounds/body rules. No new rings, grids, movements, label adoption, R2R/RxR reruns or publication. Source coordinates may be grounded by the original snap rule; seed and final coordinate are both retained. Static positives need independent review and actual uninterrupted motion/replay before acceptance."
+}

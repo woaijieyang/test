@@ -1,0 +1,13 @@
+{
+  "parent_run": "outputs/oracleAdapter/reference-priority-development-v2/runs/reference_priority1_control",
+  "selection": "outputs/oracleAdapter/next-bounded-stage-plan-v1/selection16.json",
+  "selection_sha256": "a16e3bfc93617baaa6772f654a75c74370255343b6996b67b370b04cb3e10f92",
+  "budget_receipt": "outputs/oracleAdapter/next-stage-development-budget-review-v1/reservation-admission.json",
+  "budget_sha256": "3613d567e2b76acc712dd00993451429009ea5c54272498fa2659ea44fd6f5d9",
+  "subsequent_reserved_seconds": 3600,
+  "cpu_reservation_seconds": 900,
+  "closed_runs": ["outputs/oracleAdapter/olb-start-repair-scene741-v1", "outputs/oracleAdapter/landmark-global-source-priority-v1"],
+  "scope": "Only8already-declared train development failures, one terminal search each, unchanged primitives/goal/body/source checks. No full navigation, model use, data edit, key merging or promotion. Observe exact and report-only rounded occupancy; rounded groups do not prove transition equivalence.",
+  "resources": "8observed idle CPU workers within64, noGPU; each100CPU/110wall hard envelope; total900CPU seconds reserved cumulatively. One attempt, no automatic repeat.",
+  "stop": "After8diagnostics, inspect native outcome replication and state concentration before any algorithm proposal. Infrastructure mismatch is retained, not retried. No weight/coordinate sweep."
+}

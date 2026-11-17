@@ -1,0 +1,16 @@
+{
+  "parent_run": "outputs/oracleAdapter/reference-priority-development-v2/runs/reference_priority1_control",
+  "parent_manifest_sha256": "b4e3f462055ab96420bfb525f48f24715899f336ccc1fdfc05ca37ab5783111b",
+  "selection": "outputs/oracleAdapter/next-bounded-stage-plan-v1/selection16.json",
+  "selection_sha256": "a16e3bfc93617baaa6772f654a75c74370255343b6996b67b370b04cb3e10f92",
+  "budget_receipt": "outputs/oracleAdapter/soft-duplicate-budget-v1/validation.json",
+  "budget_sha256": "989cc2154b990c01f6d691f66a953e437a01843991205efb040e0daed80dd8ae",
+  "soft_duplicate_priority": {"position_cell_m": 0.001, "yaw_cell_degrees": 0.001, "maximum_priority_weight": 2.0},
+  "closed_runs": ["outputs/oracleAdapter/search-space-probe-v1", "outputs/oracleAdapter/olb-start-repair-scene741-v1", "outputs/oracleAdapter/landmark-global-source-priority-v1"],
+  "scope": "One fixed priority-only occupancy candidate versus exact-key priority1 control on all16previously selected Landmark train tasks. No new observations, target/source changes, state merging, extra native queries or per-task selection. Independent actual execution and replay for both arms; ordinary failures remain. Not blind generalization or model SR.",
+  "selection_reason": "Eight frozen failures showed5000expansions on16-163positions and thousands of opposite-turn labels. Occupancy changes priority only; genuine successor differences remain represented. Parameters frozen before candidate navigation, no sweep after outcome.",
+  "prior_art": "Soft duplicate detection, Maray et al ICRA2022 arXiv2109.12427. This occupancy-only deterministic hint is not their subtree-overlap algorithm, no completeness/optimality theorem transferred, no copied third-party code.",
+  "budget": "21600CPU seconds reserved cumulatively; sequential3CPUh arms share one verified controller lifetime3605second reservation:17995maximum combined plus3605preparation/tests. Same task5000expansion/15000calls/60s and1500segment/10000task action caps.",
+  "resources": "Controller max32 observed idle CPUs, each arm has16tasks so at most16workers; <=64logicalCPU total, noGPU. One infrastructure attempt, no automatic retry.",
+  "stop": "After complete32executions and independent review, require >=1recovery, no regression, all8old success controls retained. Failure ends this candidate; do not tune bucket size/weight or extend budget. Success permits considering broad validation, not automatic acceptance or push."
+}

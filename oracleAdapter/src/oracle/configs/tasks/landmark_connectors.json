@@ -1,0 +1,10 @@
+{
+  "purpose": "landmark_order_alignment",
+  "identity_run": "outputs/oracleAdapter/identity-review-v1",
+  "source_passes": 1,
+  "native_actions": 0,
+  "keep_full_source_path": true,
+  "allow_implicit_teleport": false,
+  "claim_motion_acceptance": false,
+  "implementation": "oracle.adapters.landmark_rxr.connector_audit:audit"
+}

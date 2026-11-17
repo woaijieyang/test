@@ -1,0 +1,9 @@
+{
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "continuation_manifest_sha256": "04db815594c8e89c095eba6ab7b6b4a1cfa28dbff7a2ccfec35e8523bcb7c31a",
+  "original_task_count": 37016,
+  "original_datasets": {"r2r": 1839, "rxr": 1223, "landmark_rxr": 33954},
+  "retained_parent_records": 5144,
+  "continuation_records": 31872,
+  "scope": "Only the reviewed geometry-receipt compatibility continuation; never accept a small fixture or an unrelated run as the original full experiment"
+}

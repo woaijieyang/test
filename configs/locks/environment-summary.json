@@ -1,0 +1,105 @@
+{
+  "python": "3.10.14 | packaged by conda-forge | (main, Mar 20 2024, 12:45:18) [GCC 12.3.0]",
+  "prefix": "/data/zy/vln/case2/runtime/awarevln",
+  "modules": {
+    "habitat_sim": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/habitat_sim/__init__.py",
+      "version": "0.1.7"
+    },
+    "habitat": {
+      "origin": "/data/zy/vln/case2/upstream/habitat-lab/habitat/__init__.py",
+      "version": "0.1.7"
+    },
+    "habitat_baselines": {
+      "origin": "/data/zy/vln/case2/upstream/habitat-lab/habitat_baselines/__init__.py",
+      "version": "unversioned"
+    },
+    "torch": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/torch/__init__.py",
+      "version": "2.3.0+cu121"
+    },
+    "transformers": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/transformers/__init__.py",
+      "version": "4.37.2"
+    },
+    "flash_attn": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/flash_attn/__init__.py",
+      "version": "2.5.8"
+    },
+    "magnum": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/magnum/__init__.py",
+      "version": "unversioned"
+    },
+    "corrade": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/corrade/__init__.py",
+      "version": "unversioned"
+    },
+    "numpy": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/numpy/__init__.py",
+      "version": "1.26.0"
+    },
+    "quaternion": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/quaternion/__init__.py",
+      "version": "2023.0.4"
+    },
+    "fastdtw": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/fastdtw/__init__.py",
+      "version": "unversioned"
+    },
+    "PIL": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/PIL/__init__.py",
+      "version": "12.3.0"
+    },
+    "tokenizers": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/tokenizers/__init__.py",
+      "version": "0.15.2"
+    },
+    "torchvision": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/torchvision/__init__.py",
+      "version": "0.18.0+cu121"
+    },
+    "accelerate": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/accelerate/__init__.py",
+      "version": "0.27.2"
+    },
+    "peft": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/peft/__init__.py",
+      "version": "0.9.0"
+    },
+    "deepspeed": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/deepspeed/__init__.py",
+      "version": "0.9.5"
+    },
+    "llava": {
+      "origin": "/data/zy/vln/case2/src/llava/__init__.py",
+      "version": "unversioned"
+    },
+    "habitat_extensions": {
+      "origin": "/data/zy/vln/case2/src/habitat_extensions/__init__.py",
+      "version": "unversioned"
+    },
+    "vlnce_baselines": {
+      "origin": "/data/zy/vln/case2/src/vlnce_baselines/__init__.py",
+      "version": "unversioned"
+    },
+    "_corrade": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/_corrade.cpython-310-x86_64-linux-gnu.so",
+      "version": "native-extension"
+    },
+    "_magnum": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/_magnum.cpython-310-x86_64-linux-gnu.so",
+      "version": "native-extension"
+    },
+    "flash_attn_2_cuda": {
+      "origin": "/data/zy/vln/case2/runtime/awarevln/lib/python3.10/site-packages/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+      "version": "native-extension"
+    }
+  },
+  "environment_sha256": "adc5d88d4f7d0b2159099114f9fb5784b6e374e4afa93ee4b67d80159d2f5ac5",
+  "file_count": 4995,
+  "upstream_commits": {
+    "habitat-sim": "856d4b08c1a2632626bf0d205bf46471a99502b7",
+    "habitat-lab": "d6ed1c0a0e786f16f261de2beafe347f4186d0d8"
+  },
+  "runtime_files_manifest_sha256": "4a7bee0d5c80160b592ff6cb9609051db9eec2738f20c24e95919e58e5b0abb7"
+}

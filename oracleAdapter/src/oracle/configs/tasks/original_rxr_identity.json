@@ -1,0 +1,10 @@
+{
+  "purpose": "landmark_order_alignment",
+  "identity_run": "outputs/oracleAdapter/identity-review-v1",
+  "raw_guide_source_receipt": "outputs/oracleAdapter/rxr-guide-source-v1/validation.json",
+  "source_passes": 1,
+  "native_actions": 0,
+  "text_similarity_identity_substitution": false,
+  "unknown_CE_conversion_reason_is_not_filter_proof": true,
+  "implementation": "oracle.adapters.rxr.original_identity:audit"
+}

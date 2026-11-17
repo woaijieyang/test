@@ -1,0 +1,14 @@
+{
+  "parent": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "contacts": "outputs/oracleAdapter/contact-surface209-v1/validation.json",
+  "attribution": "outputs/oracleAdapter/endpoint-mapping209-attribution-v1/records.json",
+  "profile": "data/derived/navmeshes/landmark-recast626-mjx-v12/profile.json",
+  "profile_sha256": "92e1daf809e500375d9242f8464e3b8e0d40b2d67574565a82076c621c37e86f",
+  "maximum_zero_step_queries": 3,
+  "budget_admission": "outputs/oracleAdapter/soft-duplicate-budget-v1/validation.json",
+  "budget_sha256": "989cc2154b990c01f6d691f66a953e437a01843991205efb040e0daed80dd8ae",
+  "scope": "Exactly61existing source-contact positions covering209already-connected tasks. Check native zero-displacement fixed points, snap, original source bounds and unchanged float/rational body predicate. No simulator action, target adoption, mesh rebuild, arbitrary height offset or all-route claim. Original geometry/settings unchanged, including unknown original build settings.",
+  "resources": "One observed idle CPU, noGPU;600CPU/wall seconds maximum, charged within existing24h development and720h total without resetting either.",
+  "stop": "After61finite queries, stop; no added iterations or height/radius scans. Point passes would still require per-task source bounds, full ordered-route static verification and fresh native execution/replay before any accepted recovery."
+}

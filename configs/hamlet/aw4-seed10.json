@@ -1,0 +1,18 @@
+{
+  "method": "HAMLET-Z V2 / CBEM aw4 seed10",
+  "historical_run": "r2r_full1839_candidate_cbem_prefilter52_aw4_seed10_20260801_v1",
+  "base_model": "models/awarevln",
+  "adapter": "models/hamlet-v2/adapter",
+  "router": "models/hamlet-v2/router/checkpoint",
+  "base_attestation": "models/hamlet-v2/base-attestation.json",
+  "base_attestation_sha256": "de0fd2ddb1e6bc59d11248281eac233e67c07eeaaddd70274b94d3f7360d6e63",
+  "parameters": {
+    "condition": "archive",
+    "mode_lock": true,
+    "read_threshold": 0.0,
+    "alpha_scale": 0.5,
+    "write_threshold": 0.8,
+    "turn_fallback_after": 3,
+    "turn_fallback_calls": 2
+  }
+}

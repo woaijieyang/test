@@ -1,0 +1,17 @@
+{
+  "implementation": "oracle.research.route_study:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "lineage": "outputs/oracleAdapter/logical-full-review-v1/all-task-lineage.json",
+  "lineage_sha256": "943b859c8cdc3822485e228ae70d7d30d0550f6e4b989a08219aa55f8e5120fb",
+  "cache_gate": "outputs/oracleAdapter/cache-equivalence71-v2/validation.json",
+  "selection_counts": {"source_exhausted_budget_failure": 0, "proposal_rejected_budget_failure": 8, "success_control": 8},
+  "selection": "Lexicographic task_key, distinct scene/targets/initial-rotation, original Landmark train only, same compatible official-action privilege and endpoint gate already true. Prior outcomes define development strata before new outcomes. No R2R/RxR task or held record is deleted/relabelled.",
+  "max_workers": 4,
+  "study_wall_seconds_cap": 3600,
+  "per_worker_process_wall_seconds_cap": 900,
+  "development_cpu_hours_cap": 24,
+  "budget_note": "At most four idle CPU workers; fixed study admission3600s plus owned final-worker900s is a conservative five CPU-hour cap. Existing per-task/search/action limits unchanged. Charged to existing development budget; not a fresh24h allowance. No GPU.",
+  "selection_correction": "Before any new navigation, fixed selection found0 eligible distinct train source-exhausted failures. Preserve this negative transfer finding; do not fill the absent stratum with sealed RxR or change gate eligibility. Select the actual8 rejected-prefix failures and8 controls only.",
+  "scope": "Known Landmark train development only,16tasks x3arms. Re-execute all arms and independently replay. Mapping fixed, original R2R/RxR results sealed; not90percent/full33954 acceptance. Stop on infrastructure or audit mismatch. No tuning/restart based on success counts."
+}

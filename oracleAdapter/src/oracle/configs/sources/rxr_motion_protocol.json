@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/jacobkrantz/VLN-CE",
+  "commit": "729d141b2ee10628061ada74dd3a5b9f70faeba5",
+  "path": "habitat_extensions/config/rxr_vlnce_english_task.yaml",
+  "git_blob_sha1": "3cf6c95c336c9e7bd68385c540314405ea04dd7f",
+  "sha256": "698478619a7678cc0f07fa0d846426d749526f4cee294d6367a707262211fbfb",
+  "bytes": 1198,
+  "license": "MIT",
+  "explicit_parameters": {"turn_angle": 30, "tilt_angle": 30, "height": 0.88, "radius": 0.18, "allow_sliding": false, "sensor_height": 0.88, "hfov": 79},
+  "reuse": "Protocol comparison only; no adoption into frozen target motion or model configuration",
+  "forward_step_size": "Not explicitly set in this YAML; do not infer solely from this file"
+}

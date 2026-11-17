@@ -1,0 +1,11 @@
+{
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "original_task_count": 37016,
+  "original_datasets": {"r2r": 1839, "rxr": 1223, "landmark_rxr": 33954},
+  "allowed_incident": "native_geometry_path",
+  "compatibility_fix": "Explicit frozen-catalog binding for the historical native-stage triangle receipt",
+  "completed_navigation_results_reexecuted": false,
+  "scene_or_annotation_or_physics_changes": false,
+  "new_execution_attempts_per_remaining_phase": 1,
+  "retry_note": "The interrupted task already used one execution attempt. This continuation grants one new phase attempt; any further infrastructure failure stops for review rather than silently exceeding the prior limit."
+}

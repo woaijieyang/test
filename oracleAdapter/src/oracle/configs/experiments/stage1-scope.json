@@ -1,0 +1,36 @@
+{
+  "stage": "source_review_contracts_identity_and_counterexamples",
+  "status": "DEVELOPMENT_NOT_FULL_EVALUATION",
+  "active_root": "oracleAdapter/src/oracle",
+  "candidate_hypotheses": [
+    "H1_lossless_native_state_labels_remove_recorded_rounding_alias",
+    "H2_source_identity_and_occurrence_order_official_reference_guidance"
+  ],
+  "max_planning_improvements": 2,
+  "max_portfolios": 1,
+  "development_cpu_hours_cap": 24,
+  "full_comparisons_cpu_hours_cap": 720,
+  "cpu_workers_initial": 4,
+  "cpu_workers_max": 16,
+  "global_logical_cpu_cap": 64,
+  "gpu_allowed": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "max_gpu": 4,
+  "training_authorized": false,
+  "raw_data_or_scene_edits": false,
+  "automatic_formal_model_run": false,
+  "automatic_push": false,
+  "new_motion_protocol_adoption": false,
+  "stop_conditions": [
+    "identity or import binding drift",
+    "unexplained predicted/actual transition mismatch",
+    "a valid counterexample or verification disagreement not resolved",
+    "candidate/full experiment budget exhausted",
+    "predeclared comparable full runs complete"
+  ],
+  "development_and_evaluation": "Explicit lists must be frozen before native candidate experiments. Existing val episodes have been inspected historically; no blind-generalization claim."
+}

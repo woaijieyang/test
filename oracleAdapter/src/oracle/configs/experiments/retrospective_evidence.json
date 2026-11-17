@@ -1,0 +1,14 @@
+{
+  "implementation": "oracle.verification.retrospective_evidence:audit",
+  "runs": [
+    "outputs/oracleAdapter/route-development-v1-serialization-retry",
+    "outputs/oracleAdapter/official-reexecution-strict-v1",
+    "outputs/oracleAdapter/guarded-prefix-development-v1",
+    "outputs/oracleAdapter/matched-search-ablation-v1"
+  ],
+  "expected_records": 556,
+  "task_objective": "retrospective_raw_stream_and_input_pose_consistency_not_new_navigation",
+  "privileges": ["frozen_tasks", "recorded_execution_streams", "accepted_run_bindings"],
+  "native_actions": 0,
+  "rewrite_old_results": false
+}

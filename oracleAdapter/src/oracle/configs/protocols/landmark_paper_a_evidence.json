@@ -1,0 +1,26 @@
+{
+  "purpose": "source_protocol_readiness_audit_only",
+  "execution_adopted": false,
+  "paper_url": "https://proceedings.neurips.cc/paper/2021/file/0602940f23884f782058efac46f64b0f-Paper.pdf",
+  "source_sections": ["Table 1", "4.1", "4.2", "6.1"],
+  "reported_complete_tasks": {"train": 26464, "val_seen": 2939, "val_unseen": 4551},
+  "reported_subinstructions": {"train": 133602, "val_seen": 13591, "val_unseen": 19547},
+  "landmark_radius_m": 3,
+  "maximum_subtrajectory_steps": 10,
+  "action_space": "panoramic discrete viewpoint navigation",
+  "intermediate_failure": "reinitialize at failed landmark and use remaining subinstructions",
+  "final_goal": "STOP required near final landmark",
+  "metrics": ["SA", "SSA", "LN"],
+  "unresolved_implementation_details": [
+    "Reset heading/elevation and recurrent-policy state are not specified by released evaluator code",
+    "STOP accounting at the final ten-step boundary lacks released implementation",
+    "Exact per-subtrajectory trace slicing and episode/subtrajectory aggregation lack released implementation",
+    "Released subinstruction counts differ from paper; no per-record revision history was found"
+  ],
+  "prohibited_inferences": [
+    "Ten viewpoint actions are not ten 0.25m Habitat steps",
+    "Source subpath longer than ten edges does not prove failure within the three-metre success region",
+    "Graph adjacency is not native continuous body feasibility",
+    "Current whole-reference continuous run is not the original reinitialization protocol"
+  ]
+}

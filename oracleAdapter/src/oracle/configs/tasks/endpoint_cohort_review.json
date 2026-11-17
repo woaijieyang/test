@@ -1,0 +1,6 @@
+{
+  "datasets": {"r2r": 1839, "rxr": 1223},
+  "parent_task_count": 37016,
+  "parent_manifest_sha256": "1e2d9c826aa71f04ad3d5bd9c123fbae2ce339dffd14047d9a187c9ae534f125",
+  "scope": "Read-only reconciliation of the completed endpoint cohort inside the unchanged full run; not a replacement parent manifest or full-run acceptance"
+}

@@ -1,0 +1,130 @@
+{
+  "status": "BOTH_FULL_AUDITS_PASS",
+  "method_scope": "Historical HAMLET-Z V2+CBEM adapted to AwareVLN baseline, not paper-equivalent HAMLET",
+  "records": [
+    {
+      "dataset": "r2r",
+      "run_id": "case2-hamlet-abc-20261031-v2-r2r",
+      "scope": "full",
+      "status": "PASS",
+      "source_sha256": "ed8461301ce972ba9684e49fe199cf9b8295529859c0582a8b2d5d49c61b118a",
+      "model_sha256": "e15ef26d8d1d528cc556ba082e358b2067fbc079490a17e8f3aacd7ddd54addc",
+      "base_model_sha256": "3c50532541ffdf32838bc2cd32e2dd981bd29f3f72750de0d7c530ef5cd98db9",
+      "policy_sha256": "9a8b69a7bedd0de404fd9afff04f1238dee018c8d2399c9fdb5944c94f346b9e",
+      "summary": {
+        "expected": 1839,
+        "completed": 1839,
+        "navigation_failures": 641,
+        "valid": {
+          "sr": 1839,
+          "spl": 1839,
+          "ndtw": 1839,
+          "ne": 1839,
+          "oracle_sr": 1839
+        },
+        "nonfinite": {
+          "sr": 0,
+          "spl": 0,
+          "ndtw": 0,
+          "ne": 0,
+          "oracle_sr": 0
+        },
+        "metrics": {
+          "sr": 0.6514410005437737,
+          "spl": 0.5662483497917151,
+          "ndtw": 0.6527290774113298,
+          "ne": 3.972517142264763,
+          "oracle_sr": 0.7558455682436107
+        }
+      },
+      "memory_dataflow_counts": {
+        "episodes": 1839,
+        "calls": 83980,
+        "selected_memory_calls": 25047,
+        "nonzero_prompt_delta_calls": 25047,
+        "consumed_memory_calls": 25047,
+        "fallback_calls": 15294,
+        "primitive_actions": 194901
+      },
+      "validation_sha256": "18eb5d45f128dfdc35470c68e440dd3e6a02fe7f76fcc625997a7302688efbc2",
+      "results_sha256": "0d5d11594234c41430fdbe2ee7cbb5b72a85caf073bd88dcc32c8fd5e18a317f",
+      "native_original_run": "/data/zy/vln/case2/outputs/case2-hamlet-abc-20261031-v2-r2r",
+      "independent_snapshot": "/data/zy/vln/case2/outputs/independent-r2r-full-audit-20261101",
+      "same_raw_result_bytes": true
+    },
+    {
+      "dataset": "rxr",
+      "run_id": "case2-hamlet-abc-20261031-v2-rxr",
+      "scope": "full",
+      "status": "PASS",
+      "source_sha256": "ed8461301ce972ba9684e49fe199cf9b8295529859c0582a8b2d5d49c61b118a",
+      "model_sha256": "e15ef26d8d1d528cc556ba082e358b2067fbc079490a17e8f3aacd7ddd54addc",
+      "base_model_sha256": "3c50532541ffdf32838bc2cd32e2dd981bd29f3f72750de0d7c530ef5cd98db9",
+      "policy_sha256": "9a8b69a7bedd0de404fd9afff04f1238dee018c8d2399c9fdb5944c94f346b9e",
+      "summary": {
+        "expected": 1223,
+        "completed": 1223,
+        "navigation_failures": 398,
+        "valid": {
+          "sr": 1223,
+          "spl": 1223,
+          "ndtw": 1223,
+          "ne": 1223,
+          "oracle_sr": 1223
+        },
+        "nonfinite": {
+          "sr": 0,
+          "spl": 0,
+          "ndtw": 0,
+          "ne": 0,
+          "oracle_sr": 0
+        },
+        "metrics": {
+          "sr": 0.6745707277187244,
+          "spl": 0.5588154685735661,
+          "ndtw": 0.6724031954148612,
+          "ne": 4.346312300217561,
+          "oracle_sr": 0.7563368765331153
+        },
+        "annotation_subgroups": {
+          "corrected_9": {
+            "completed": 9,
+            "metrics": {
+              "sr": 0.6666666666666666,
+              "spl": 0.6407238505262374,
+              "ndtw": 0.8056647434556705,
+              "ne": 1.9670594533284504,
+              "oracle_sr": 0.6666666666666666
+            }
+          },
+          "unchanged_1214": {
+            "completed": 1214,
+            "metrics": {
+              "sr": 0.6746293245469522,
+              "spl": 0.5582082400417918,
+              "ndtw": 0.6714152597209837,
+              "ne": 4.363950912756278,
+              "oracle_sr": 0.757001647446458
+            }
+          }
+        }
+      },
+      "memory_dataflow_counts": {
+        "episodes": 1223,
+        "calls": 80886,
+        "selected_memory_calls": 30200,
+        "nonzero_prompt_delta_calls": 30200,
+        "consumed_memory_calls": 30200,
+        "fallback_calls": 12427,
+        "primitive_actions": 175781
+      },
+      "validation_sha256": "6f952e7aad7c5971ead73b27eac068797cbdea35d68a2b8d9579d4c8f5599124",
+      "results_sha256": "a3bd338d51cb970df27ea328ff5cc40842121aab828c0e14e4887a6e8f3362df",
+      "native_original_run": "/data/zy/vln/case2/outputs/case2-hamlet-abc-20261031-v2-rxr",
+      "independent_snapshot": "/data/zy/vln/case2/outputs/independent-rxr-full-audit-20261101",
+      "same_raw_result_bytes": true
+    }
+  ],
+  "failure_policy": "Ordinary navigation failures retained; user-interrupted initial v1 not included in v2 totals",
+  "audit_method": "Unmodified audits; RxR semantic auditing parallelized over disjoint original shards with exact full union verification"
+}

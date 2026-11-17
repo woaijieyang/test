@@ -1,0 +1,13 @@
+--- a/src/vlnce_baselines/common/environments.py
++++ b/src/vlnce_baselines/common/environments.py
+@@ -11,6 +11,10 @@
+     def __init__(self, config: Config, dataset: Optional[Dataset] = None):
+         super().__init__(config.TASK_CONFIG, dataset)
+ 
++    def case1_evaluator_state(self):
++        state = self._env.sim.get_agent_state()
++        return {"position": state.position.tolist(), "rotation_xyzw": [float(state.rotation.x), float(state.rotation.y), float(state.rotation.z), float(state.rotation.w)], "elapsed_steps": self._env._elapsed_steps, "episode_over": self._env.episode_over, "collided": bool(self._env.sim.previous_step_collided)}
++
+     def get_reward_range(self) -> Tuple[float, float]:
+         return (0.0, 0.0)
+ 

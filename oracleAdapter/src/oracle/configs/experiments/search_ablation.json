@@ -1,0 +1,20 @@
+{
+  "study_id": "matched-initial-search-ablation-v1",
+  "implementation": "oracle.research.route_study:dispatch",
+  "teacher": "oracle.teachers.ordered:execute",
+  "auditor": "oracle.verification.route_replay:audit",
+  "source_run": "outputs/oracleAdapter/guarded-prefix-development-v1",
+  "shared_public_method_config": "configs/experiments/guarded_portfolio.json",
+  "protocol_config": "configs/protocols/current_linear.json",
+  "comparison_factor": "search_without_official_action_information",
+  "expected_tasks": 133,
+  "method_id": "lossless_search_without_official_actions",
+  "official_policy": "none",
+  "max_workers": 4,
+  "study_wall_seconds_cap": 5400,
+  "per_worker_process_wall_seconds_cap": 900,
+  "development_cpu_hours_cap": 24,
+  "selection": "All same133 physical tasks with source-available counterparts; no selection by new90/43 results. The other59 parent records remain in provenance but are not attempted in this matched development control, since they lack the reference-method counterpart, not because pure search needs GT.",
+  "scope": "Pure search ablation on identical initial states/targets/profile, with official action payload and privilege removed. A different actual information condition, reported separately from same-information portfolio table.",
+  "limits": "Not full33954 acceptance or blind generalization. No new budget, mapping, annotations, geometry, model evaluation or publication."
+}

@@ -1,0 +1,480 @@
+{
+  "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+  "source_files": [
+    {
+      "path": "/data/zy/vln/case2/data/.shared-ro/raw_data/eval_annotations/rxr_vlnce_v0/val_unseen/val_unseen_guide.json.gz",
+      "sha256": "93abddce58e8232867a8738daa8107eb82953693a9d5e70779d1eb00386b222a"
+    },
+    {
+      "path": "/data/zy/vln/case2/data/.shared-ro/raw_data/eval_annotations/rxr_vlnce_v0/val_unseen/val_unseen_guide_gt.json.gz",
+      "sha256": "bdfbb624132501bf297eb0ea16a99e38682668ba5e9ce1554ca5cdcde6b65a0d"
+    },
+    {
+      "path": "/data/zy/vln/case2/data/.shared-ro/raw_data/eval_annotations/rxr_vlnce_v0/val_unseen/val_unseen_follower_gt.json.gz",
+      "sha256": "efe95c4be13ee93222fc524d651d2e76078a2e8a3c98bf77b304cd702dd3ce56"
+    }
+  ],
+  "derived_files": [
+    {
+      "path": "/data/zy/vln/case2/data/derived/annotations/rxr-endpoint9-v1/val_unseen/val_unseen_guide.json.gz",
+      "sha256": "ae2765efb148529c9a26b8dadf580404d43f1b4b41e39da02686f04d827d30ea"
+    },
+    {
+      "path": "/data/zy/vln/case2/data/derived/annotations/rxr-endpoint9-v1/val_unseen/val_unseen_guide_gt.json.gz",
+      "sha256": "c44f7b7eb45986e7e5944fb0485069551b6bb8456e50aa08886acd036a8867c2"
+    },
+    {
+      "path": "/data/zy/vln/case2/data/derived/annotations/rxr-endpoint9-v1/val_unseen/val_unseen_follower_gt.json.gz",
+      "sha256": "efe95c4be13ee93222fc524d651d2e76078a2e8a3c98bf77b304cd702dd3ce56"
+    }
+  ],
+  "protocol_sha256": "c9021d5ebac95d2e78680228e3b1d2e771701862f1fe7d73fe8acc7b7f4449c6",
+  "all_guide_episodes": 11006,
+  "en_us_episodes": 1223,
+  "changed_episodes": 9,
+  "changed_gt_records": 5,
+  "all_other_episode_and_gt_values_identical": true,
+  "changes": [
+    {
+      "episode_id": "3888",
+      "instruction_id": "77339",
+      "roles": [
+        "start"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/start_position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/start_position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/start_position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": [
+        {
+          "field": "/locations/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/locations/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/locations/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ]
+    },
+    {
+      "episode_id": "6171",
+      "instruction_id": "102140",
+      "roles": [
+        "goal"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/4/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/4/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/4/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/goals/0/position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/goals/0/position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/goals/0/position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": []
+    },
+    {
+      "episode_id": "6243",
+      "instruction_id": "61865",
+      "roles": [
+        "goal"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/1/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/1/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/1/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/goals/0/position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/goals/0/position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/goals/0/position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": []
+    },
+    {
+      "episode_id": "7963",
+      "instruction_id": "94175",
+      "roles": [
+        "start"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/start_position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/start_position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/start_position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": [
+        {
+          "field": "/locations/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/locations/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/locations/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ]
+    },
+    {
+      "episode_id": "8829",
+      "instruction_id": "114001",
+      "roles": [
+        "start"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/start_position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/start_position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/start_position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": [
+        {
+          "field": "/locations/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/locations/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/locations/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ]
+    },
+    {
+      "episode_id": "10116",
+      "instruction_id": "57767",
+      "roles": [
+        "start"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/start_position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/start_position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/start_position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": [
+        {
+          "field": "/locations/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/locations/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/locations/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ]
+    },
+    {
+      "episode_id": "10287",
+      "instruction_id": "61413",
+      "roles": [
+        "start"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/start_position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/start_position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/start_position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": [
+        {
+          "field": "/locations/0/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/locations/0/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/locations/0/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ]
+    },
+    {
+      "episode_id": "10646",
+      "instruction_id": "118981",
+      "roles": [
+        "goal"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/3/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/3/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/3/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/goals/0/position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/goals/0/position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/goals/0/position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": []
+    },
+    {
+      "episode_id": "10757",
+      "instruction_id": "79459",
+      "roles": [
+        "goal"
+      ],
+      "annotation_changes": [
+        {
+          "field": "/reference_path/3/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/reference_path/3/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/reference_path/3/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        },
+        {
+          "field": "/goals/0/position/0",
+          "before": 5.300414085388184,
+          "after": 5.370209217071533
+        },
+        {
+          "field": "/goals/0/position/1",
+          "before": 0.04583600163459778,
+          "after": 0.009996652603149414
+        },
+        {
+          "field": "/goals/0/position/2",
+          "before": 2.102294683456421,
+          "after": 2.14882493019104
+        }
+      ],
+      "gt_changes": []
+    }
+  ],
+  "status": "DIFFERENCE_VALIDATED_PENDING_RUNTIME"
+}

@@ -1,0 +1,1158 @@
+{
+  "records": [
+    {
+      "dataset": "r2r",
+      "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+      "status": "retracted",
+      "origin": "historical_reaggregation_not_new_inference",
+      "manifest_sha256": "389ccee468a2882642e343679873dd5293cc809c2e1f6a96e91a228f9aad4024",
+      "source_sha256": "c2280a04c33b972034de5660954513b922e334fc55c2ef2b9d7e338e3ece6026",
+      "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+      "profile_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+      "partition_sha256": "145ef1a58ac1c7dce3b1f7673e40ba1cbf8877c71297976ee34d9df6e83be75b",
+      "subsets": {
+        "A1": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 123,
+              "completed": 123,
+              "navigation_failures": 39,
+              "valid": {
+                "sr": 123,
+                "spl": 123,
+                "ndtw": 123,
+                "ne": 123,
+                "oracle_sr": 123
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6829268292682927,
+                "spl": 0.5944340416963448,
+                "ndtw": 0.6664188732479415,
+                "ne": 3.719197909764158,
+                "oracle_sr": 0.7804878048780488
+              }
+            }
+          }
+        },
+        "A2": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 183,
+              "completed": 183,
+              "navigation_failures": 66,
+              "valid": {
+                "sr": 183,
+                "spl": 183,
+                "ndtw": 183,
+                "ne": 183,
+                "oracle_sr": 183
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.639344262295082,
+                "spl": 0.5529398737110285,
+                "ndtw": 0.6291477768451792,
+                "ne": 3.911781156730782,
+                "oracle_sr": 0.73224043715847
+              }
+            }
+          }
+        },
+        "A3": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 306,
+              "completed": 306,
+              "navigation_failures": 108,
+              "valid": {
+                "sr": 306,
+                "spl": 306,
+                "ndtw": 306,
+                "ne": 306,
+                "oracle_sr": 306
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6470588235294118,
+                "spl": 0.5734571913750691,
+                "ndtw": 0.6505453577702678,
+                "ne": 4.035818643551441,
+                "oracle_sr": 0.7516339869281046
+              }
+            }
+          }
+        },
+        "B1": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 123,
+              "completed": 123,
+              "navigation_failures": 30,
+              "valid": {
+                "sr": 123,
+                "spl": 123,
+                "ndtw": 123,
+                "ne": 123,
+                "oracle_sr": 123
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.7560975609756098,
+                "spl": 0.6372197954813495,
+                "ndtw": 0.6622988706625078,
+                "ne": 2.986677532455301,
+                "oracle_sr": 0.8536585365853658
+              }
+            }
+          }
+        },
+        "B2": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 183,
+              "completed": 183,
+              "navigation_failures": 61,
+              "valid": {
+                "sr": 183,
+                "spl": 183,
+                "ndtw": 183,
+                "ne": 183,
+                "oracle_sr": 183
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6666666666666666,
+                "spl": 0.5713413323736051,
+                "ndtw": 0.6606464141444209,
+                "ne": 3.7770604036056277,
+                "oracle_sr": 0.7486338797814208
+              }
+            }
+          }
+        },
+        "B3": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 306,
+              "completed": 306,
+              "navigation_failures": 111,
+              "valid": {
+                "sr": 306,
+                "spl": 306,
+                "ndtw": 306,
+                "ne": 306,
+                "oracle_sr": 306
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6372549019607843,
+                "spl": 0.5569893321268199,
+                "ndtw": 0.6478962781929275,
+                "ne": 4.436875795817697,
+                "oracle_sr": 0.7352941176470589
+              }
+            }
+          }
+        },
+        "Remaining": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 615,
+              "completed": 615,
+              "navigation_failures": 217,
+              "valid": {
+                "sr": 615,
+                "spl": 615,
+                "ndtw": 615,
+                "ne": 615,
+                "oracle_sr": 615
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6471544715447154,
+                "spl": 0.5694180700828007,
+                "ndtw": 0.6591183037273818,
+                "ne": 4.052369615544634,
+                "oracle_sr": 0.7382113821138211
+              }
+            }
+          }
+        },
+        "A1+A2": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 306,
+              "completed": 306,
+              "navigation_failures": 105,
+              "valid": {
+                "sr": 306,
+                "spl": 306,
+                "ndtw": 306,
+                "ne": 306,
+                "oracle_sr": 306
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6568627450980392,
+                "spl": 0.5696189020188517,
+                "ndtw": 0.6441292959874664,
+                "ne": 3.834370243734394,
+                "oracle_sr": 0.7516339869281046
+              }
+            }
+          }
+        },
+        "A": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 612,
+              "completed": 612,
+              "navigation_failures": 213,
+              "valid": {
+                "sr": 612,
+                "spl": 612,
+                "ndtw": 612,
+                "ne": 612,
+                "oracle_sr": 612
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6519607843137255,
+                "spl": 0.5715380466969603,
+                "ndtw": 0.6473373268788666,
+                "ne": 3.935094443642918,
+                "oracle_sr": 0.7516339869281046
+              }
+            }
+          }
+        },
+        "B1+B2": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 306,
+              "completed": 306,
+              "navigation_failures": 91,
+              "valid": {
+                "sr": 306,
+                "spl": 306,
+                "ndtw": 306,
+                "ne": 306,
+                "oracle_sr": 306
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.7026143790849673,
+                "spl": 0.5978218910737771,
+                "ndtw": 0.6613106368624758,
+                "ne": 3.459357484809908,
+                "oracle_sr": 0.7908496732026143
+              }
+            }
+          }
+        },
+        "B": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 612,
+              "completed": 612,
+              "navigation_failures": 202,
+              "valid": {
+                "sr": 612,
+                "spl": 612,
+                "ndtw": 612,
+                "ne": 612,
+                "oracle_sr": 612
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6699346405228758,
+                "spl": 0.5774056116002982,
+                "ndtw": 0.6546034575277023,
+                "ne": 3.9481166403138026,
+                "oracle_sr": 0.7630718954248366
+              }
+            }
+          }
+        },
+        "Full": {
+          "schema_version": 1,
+          "run_id": "awarevln-r2r-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "r2r": {
+              "expected": 1839,
+              "completed": 1839,
+              "navigation_failures": 632,
+              "valid": {
+                "sr": 1839,
+                "spl": 1839,
+                "ndtw": 1839,
+                "ne": 1839,
+                "oracle_sr": 1839
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6563349646547036,
+                "spl": 0.5727817465899102,
+                "ndtw": 0.6536952239527778,
+                "ne": 3.9786473610339654,
+                "oracle_sr": 0.7509516041326808
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "rxr",
+      "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+      "status": "complete",
+      "origin": "historical_reaggregation_not_new_inference",
+      "manifest_sha256": "c775a735b6a31f30fb08d33a860c245350373777faa35bd5e4cf0c16875e7310",
+      "source_sha256": "c2280a04c33b972034de5660954513b922e334fc55c2ef2b9d7e338e3ece6026",
+      "model_sha256": "f467265fc17f68cbc256ef4a65b8d196e8317a316cb858102d72095f2cdf8df5",
+      "profile_sha256": "85328a019b541b1336c7f2d7ae6d50341d68a9b0fe20f3ee719070918e4d036c",
+      "partition_sha256": "145ef1a58ac1c7dce3b1f7673e40ba1cbf8877c71297976ee34d9df6e83be75b",
+      "subsets": {
+        "A1": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 81,
+              "completed": 81,
+              "navigation_failures": 29,
+              "valid": {
+                "sr": 81,
+                "spl": 81,
+                "ndtw": 81,
+                "ne": 81,
+                "oracle_sr": 81
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6419753086419753,
+                "spl": 0.5252201536982296,
+                "ndtw": 0.6781301156676541,
+                "ne": 4.612453973587648,
+                "oracle_sr": 0.7407407407407407
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 0,
+                  "metrics": {
+                    "sr": null,
+                    "spl": null,
+                    "ndtw": null,
+                    "ne": null,
+                    "oracle_sr": null
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 81,
+                  "metrics": {
+                    "sr": 0.6419753086419753,
+                    "spl": 0.5252201536982296,
+                    "ndtw": 0.6781301156676541,
+                    "ne": 4.612453973587648,
+                    "oracle_sr": 0.7407407407407407
+                  }
+                }
+              }
+            }
+          }
+        },
+        "A2": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 122,
+              "completed": 122,
+              "navigation_failures": 48,
+              "valid": {
+                "sr": 122,
+                "spl": 122,
+                "ndtw": 122,
+                "ne": 122,
+                "oracle_sr": 122
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6065573770491803,
+                "spl": 0.5121021144262244,
+                "ndtw": 0.6469916176632228,
+                "ne": 5.495662946925789,
+                "oracle_sr": 0.6475409836065574
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 2,
+                  "metrics": {
+                    "sr": 1.0,
+                    "spl": 0.883257327368068,
+                    "ndtw": 0.8412904043940053,
+                    "ne": 1.5661093890666962,
+                    "oracle_sr": 1.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 120,
+                  "metrics": {
+                    "sr": 0.6,
+                    "spl": 0.505916194210527,
+                    "ndtw": 0.643753304551043,
+                    "ne": 5.56115550622344,
+                    "oracle_sr": 0.6416666666666667
+                  }
+                }
+              }
+            }
+          }
+        },
+        "A3": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 204,
+              "completed": 204,
+              "navigation_failures": 65,
+              "valid": {
+                "sr": 204,
+                "spl": 204,
+                "ndtw": 204,
+                "ne": 204,
+                "oracle_sr": 204
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6813725490196079,
+                "spl": 0.5699831934936138,
+                "ndtw": 0.6659978280632849,
+                "ne": 4.773115781501081,
+                "oracle_sr": 0.7401960784313726
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 0,
+                  "metrics": {
+                    "sr": null,
+                    "spl": null,
+                    "ndtw": null,
+                    "ne": null,
+                    "oracle_sr": null
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 204,
+                  "metrics": {
+                    "sr": 0.6813725490196079,
+                    "spl": 0.5699831934936138,
+                    "ndtw": 0.6659978280632849,
+                    "ne": 4.773115781501081,
+                    "oracle_sr": 0.7401960784313726
+                  }
+                }
+              }
+            }
+          }
+        },
+        "B1": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 81,
+              "completed": 81,
+              "navigation_failures": 28,
+              "valid": {
+                "sr": 81,
+                "spl": 81,
+                "ndtw": 81,
+                "ne": 81,
+                "oracle_sr": 81
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.654320987654321,
+                "spl": 0.5194484782643953,
+                "ndtw": 0.6625836802476146,
+                "ne": 3.457539135383235,
+                "oracle_sr": 0.7901234567901234
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 0,
+                  "metrics": {
+                    "sr": null,
+                    "spl": null,
+                    "ndtw": null,
+                    "ne": null,
+                    "oracle_sr": null
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 81,
+                  "metrics": {
+                    "sr": 0.654320987654321,
+                    "spl": 0.5194484782643953,
+                    "ndtw": 0.6625836802476146,
+                    "ne": 3.457539135383235,
+                    "oracle_sr": 0.7901234567901234
+                  }
+                }
+              }
+            }
+          }
+        },
+        "B2": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 122,
+              "completed": 122,
+              "navigation_failures": 39,
+              "valid": {
+                "sr": 122,
+                "spl": 122,
+                "ndtw": 122,
+                "ne": 122,
+                "oracle_sr": 122
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.680327868852459,
+                "spl": 0.5631929514667677,
+                "ndtw": 0.7000468090150513,
+                "ne": 3.9401906361101102,
+                "oracle_sr": 0.7459016393442623
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 1,
+                  "metrics": {
+                    "sr": 0.0,
+                    "spl": 0.0,
+                    "ndtw": 0.5581679039584866,
+                    "ne": 4.089447975158691,
+                    "oracle_sr": 0.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 121,
+                  "metrics": {
+                    "sr": 0.6859504132231405,
+                    "spl": 0.5678474386689725,
+                    "ndtw": 0.701219361949403,
+                    "ne": 3.9389571043824363,
+                    "oracle_sr": 0.7520661157024794
+                  }
+                }
+              }
+            }
+          }
+        },
+        "B3": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 204,
+              "completed": 204,
+              "navigation_failures": 65,
+              "valid": {
+                "sr": 204,
+                "spl": 204,
+                "ndtw": 204,
+                "ne": 204,
+                "oracle_sr": 204
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6813725490196079,
+                "spl": 0.55767304062945,
+                "ndtw": 0.6871554464190363,
+                "ne": 4.194697219020157,
+                "oracle_sr": 0.75
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 2,
+                  "metrics": {
+                    "sr": 1.0,
+                    "spl": 1.0,
+                    "ndtw": 0.8225387537209755,
+                    "ne": 1.4017677903175354,
+                    "oracle_sr": 1.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 202,
+                  "metrics": {
+                    "sr": 0.6782178217821783,
+                    "spl": 0.5532935657841971,
+                    "ndtw": 0.6858150176338684,
+                    "ne": 4.222349985640975,
+                    "oracle_sr": 0.7475247524752475
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Remaining": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 409,
+              "completed": 409,
+              "navigation_failures": 122,
+              "valid": {
+                "sr": 409,
+                "spl": 409,
+                "ndtw": 409,
+                "ne": 409,
+                "oracle_sr": 409
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.7017114914425427,
+                "spl": 0.5824824168178308,
+                "ndtw": 0.680993301267696,
+                "ne": 3.910427316094232,
+                "oracle_sr": 0.784841075794621
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 4,
+                  "metrics": {
+                    "sr": 0.5,
+                    "spl": 0.5,
+                    "ndtw": 0.8412891177281465,
+                    "ne": 1.919583186507225,
+                    "oracle_sr": 0.5
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 405,
+                  "metrics": {
+                    "sr": 0.7037037037037037,
+                    "spl": 0.5832970579715872,
+                    "ndtw": 0.6794101327100619,
+                    "ne": 3.930089974164227,
+                    "oracle_sr": 0.7876543209876543
+                  }
+                }
+              }
+            }
+          }
+        },
+        "A1+A2": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 203,
+              "completed": 203,
+              "navigation_failures": 77,
+              "valid": {
+                "sr": 203,
+                "spl": 203,
+                "ndtw": 203,
+                "ne": 203,
+                "oracle_sr": 203
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6206896551724138,
+                "spl": 0.5173364059584035,
+                "ndtw": 0.6594163385418382,
+                "ne": 5.143249514214511,
+                "oracle_sr": 0.6847290640394089
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 2,
+                  "metrics": {
+                    "sr": 1.0,
+                    "spl": 0.883257327368068,
+                    "ndtw": 0.8412904043940053,
+                    "ne": 1.5661093890666962,
+                    "oracle_sr": 1.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 201,
+                  "metrics": {
+                    "sr": 0.6169154228855721,
+                    "spl": 0.5136954017652725,
+                    "ndtw": 0.6576066463443041,
+                    "ne": 5.178842948295584,
+                    "oracle_sr": 0.681592039800995
+                  }
+                }
+              }
+            }
+          }
+        },
+        "A": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 407,
+              "completed": 407,
+              "navigation_failures": 142,
+              "valid": {
+                "sr": 407,
+                "spl": 407,
+                "ndtw": 407,
+                "ne": 407,
+                "oracle_sr": 407
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6511056511056511,
+                "spl": 0.5437244763691729,
+                "ndtw": 0.662715168670524,
+                "ne": 4.957727938112448,
+                "oracle_sr": 0.7125307125307125
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 2,
+                  "metrics": {
+                    "sr": 1.0,
+                    "spl": 0.883257327368068,
+                    "ndtw": 0.8412904043940053,
+                    "ne": 1.5661093890666962,
+                    "oracle_sr": 1.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 405,
+                  "metrics": {
+                    "sr": 0.6493827160493827,
+                    "spl": 0.5420477709321412,
+                    "ndtw": 0.6618333156546056,
+                    "ne": 4.974476671687983,
+                    "oracle_sr": 0.7111111111111111
+                  }
+                }
+              }
+            }
+          }
+        },
+        "B1+B2": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 203,
+              "completed": 203,
+              "navigation_failures": 67,
+              "valid": {
+                "sr": 203,
+                "spl": 203,
+                "ndtw": 203,
+                "ne": 203,
+                "oracle_sr": 203
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6699507389162561,
+                "spl": 0.5457382601889738,
+                "ndtw": 0.685098466994547,
+                "ne": 3.7476055545392883,
+                "oracle_sr": 0.7635467980295566
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 1,
+                  "metrics": {
+                    "sr": 0.0,
+                    "spl": 0.0,
+                    "ndtw": 0.5581679039584866,
+                    "ne": 4.089447975158691,
+                    "oracle_sr": 0.0
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 202,
+                  "metrics": {
+                    "sr": 0.6732673267326733,
+                    "spl": 0.5484399347443647,
+                    "ndtw": 0.6857268361184881,
+                    "ne": 3.745913265328301,
+                    "oracle_sr": 0.7673267326732673
+                  }
+                }
+              }
+            }
+          }
+        },
+        "B": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 407,
+              "completed": 407,
+              "navigation_failures": 132,
+              "valid": {
+                "sr": 407,
+                "spl": 407,
+                "ndtw": 407,
+                "ne": 407,
+                "oracle_sr": 407
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6756756756756757,
+                "spl": 0.5517203123016452,
+                "ndtw": 0.6861294837085402,
+                "ne": 3.97170063943879,
+                "oracle_sr": 0.7567567567567568
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 3,
+                  "metrics": {
+                    "sr": 0.6666666666666666,
+                    "spl": 0.6666666666666666,
+                    "ndtw": 0.7344151371334792,
+                    "ne": 2.2976611852645874,
+                    "oracle_sr": 0.6666666666666666
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 404,
+                  "metrics": {
+                    "sr": 0.6757425742574258,
+                    "spl": 0.5508667502642812,
+                    "ndtw": 0.6857709268761769,
+                    "ne": 3.9841316254846384,
+                    "oracle_sr": 0.7574257425742574
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Full": {
+          "schema_version": 1,
+          "run_id": "awarevln-rxr-valunseen-endpoint9-20261015-v2",
+          "claim_scope": "online_navigation",
+          "complete": true,
+          "missing": [],
+          "runtime_errors": [],
+          "datasets": {
+            "rxr": {
+              "expected": 1223,
+              "completed": 1223,
+              "navigation_failures": 396,
+              "valid": {
+                "sr": 1223,
+                "spl": 1223,
+                "ndtw": 1223,
+                "ne": 1223,
+                "oracle_sr": 1223
+              },
+              "nonfinite": {
+                "sr": 0,
+                "spl": 0,
+                "ndtw": 0,
+                "ne": 0,
+                "oracle_sr": 0
+              },
+              "metrics": {
+                "sr": 0.6762060506950123,
+                "spl": 0.5593469644051637,
+                "ndtw": 0.6766198149932673,
+                "ne": 4.279347672400568,
+                "oracle_sr": 0.7514309076042518
+              },
+              "annotation_subgroups": {
+                "corrected_9": {
+                  "completed": 9,
+                  "metrics": {
+                    "sr": 0.6666666666666666,
+                    "spl": 0.6407238505262374,
+                    "ndtw": 0.8056647434556705,
+                    "ne": 1.9670594533284504,
+                    "oracle_sr": 0.6666666666666666
+                  }
+                },
+                "unchanged_1214": {
+                  "completed": 1214,
+                  "metrics": {
+                    "sr": 0.6762767710049423,
+                    "spl": 0.5587436761225527,
+                    "ndtw": 0.6756631392468406,
+                    "ne": 4.2964898420642,
+                    "oracle_sr": 0.7520593080724877
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

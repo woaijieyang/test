@@ -1,0 +1,14 @@
+{
+  "implementation": "oracle.adapters.unified_inventory:audit",
+  "endpoint_run": "outputs/connectivity/endpoint115-full-motion-v3",
+  "landmark_manifest": "outputs/landmark-connectivity/full-native-v11/manifest.json",
+  "identity_run": "outputs/oracleAdapter/identity-review-v1",
+  "heading_run": "outputs/oracleAdapter/source-heading-audit-v1",
+  "geometry_catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "protocol_config": "configs/protocols/current_linear.json",
+  "expected": {"r2r": 1839, "rxr": 1223, "landmark_rxr": 33954},
+  "task_objective": "complete_source_bound_input_inventory_not_navigation_acceptance",
+  "privileges": ["frozen_endpoint115_inputs", "original_landmark_annotations", "legacy_derived_mapping", "verified_CE_pose_correspondence"],
+  "native_actions": 0,
+  "alter_coordinates_or_heading": false
+}

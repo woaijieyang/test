@@ -1,0 +1,16 @@
+{
+  "inputs": {
+    "parent": {"path": "outputs/landmark-connectivity/full-native-v11/manifest.json", "sha256": "9a1e7cfe40071b71c44d80f7461f0d063100a5280c47690a675bfdcaa058c07a"},
+    "blockers": {"path": "outputs/oracleAdapter/landmark-followup-source-scope-v1/records6274.json", "sha256": "c63fddfec01045fe8850f7c10c84ce16d09d12a58320feb8da1b34333e664937"},
+    "held": {"path": "outputs/landmark-connectivity/constraint-blockers.json", "sha256": "a2dcdd6fdb4cd0a886597e47d02a60b1c53fbde5246ee0ee0551b8ddada1c519"},
+    "published": {"path": "outputs/landmark-connectivity/published-identity-nodes.json", "sha256": "8eb4fdbe0a7cb2030d4fd1701a612ba3221c731b05dd2c97f0aa112e1d5909ca"},
+    "native": {"path": "outputs/landmark-connectivity/native-mapping.json", "sha256": "4b135a395f9755fda7d050e6dc9d3e756672f7ae839a1f22769b959baf7eae8a"},
+    "catalog": {"path": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json", "sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727"},
+    "D7_audit": {"path": "outputs/oracleAdapter/d7-reused-bounded-static-audit-v1/validation.json", "sha256": "d9a18c3920fdd314fcb7b2acc925a4b2a5690fccf191c72ca8bdb48ab69fa848"}
+  },
+  "rings": [[0.1,18],[0.15,30],[0.2,36],[0.25,48],[0.3,60],[0.35,72]],
+  "query_cache": {"cell_size_m": 0.5,"max_regions": 1024,"max_queries": 16384},
+  "wall_seconds_cap": 7200,
+  "scope": "Complete fixed6274 blocker accounting within full33954, held114 original/failure unchanged. Two-stage old source candidate family (current/anchor then same historical rings) with body filtering before per-component rank choice. Preserve already-valid current coordinates. Same-profile D7 existing audited coordinates are reused as proposals, old unresolved cases not blindly resampled. No nearest-ID matching, new meshes or parameters, new movement, label overwrite or adoption.",
+  "resources": "One freshly observed idle CPU, noGPU; hard7200s launcher wall cap, charged to existing24hdevelopment accounting. Source/config freeze during execution."
+}

@@ -1,0 +1,11 @@
+{
+  "cases": "outputs/oracleAdapter/initial-frontier-selection-v1/cases27.json",
+  "cases_sha256": "e53d4a6bd1188609a02f1c3d26b93c92909603a2131ea5601437144006653fc1",
+  "parent_run": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "budget_admission": "outputs/oracleAdapter/next-stage-development-budget-review-v1/reservation-admission.json",
+  "budget_admission_sha256": "3613d567e2b76acc712dd00993451429009ea5c54272498fa2659ea44fd6f5d9",
+  "prior_extra_reservation_seconds": 900,
+  "cpu_reservation_seconds": 900,
+  "scope": "Fixed27original zero-action frontier failures at one oLBMNvg9in8 start. All3primitive actions x direct initial state versus extra pose snapshot/restore =162diagnostic steps. Fresh matching adapters per action, explicit resets, no navigation recovery or benchmark rerun. Record matrices, physical admission and zero-displacement native height behavior. No simulator/data/gate changes."
+}

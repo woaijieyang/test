@@ -1,0 +1,36 @@
+{
+  "source_document": "https://github.com/google-research-datasets/RxR/blob/d22df5940a0486a42b703cd445937210ce21e9f5/README.md",
+  "license": "CC-BY-4.0",
+  "cache_relative_path": "outputs/oracleAdapter/reference-cache/rxr-original-guides",
+  "maximum_file_bytes": 100000000,
+  "maximum_total_bytes": 130000000,
+  "socket_timeout_seconds": 60,
+  "wall_seconds": 600,
+  "files": [
+    {
+      "split": "train",
+      "url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+      "expected_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+      "expected_bytes": 75628389,
+      "generation": "1602190759966596",
+      "source_last_modified": "Thu, 08 Oct 2020 20:59:19 GMT"
+    },
+    {
+      "split": "val_seen",
+      "url": "https://storage.googleapis.com/rxr-data/rxr_val_seen_guide.jsonl.gz",
+      "expected_sha256": "69f0e5c91183a1f39849b26366c9ca4b2983c6f78a7ca06ca0ecce9eabe167ab",
+      "expected_bytes": 8347604,
+      "generation": "1602190797565657",
+      "source_last_modified": "Thu, 08 Oct 2020 20:59:57 GMT"
+    },
+    {
+      "split": "val_unseen",
+      "url": "https://storage.googleapis.com/rxr-data/rxr_val_unseen_guide.jsonl.gz",
+      "expected_sha256": "6019223c1192a837fe8192eeab48c69249fe8bb0d2649db783a084c9448dca00",
+      "expected_bytes": 12531576,
+      "generation": "1602190836417658",
+      "source_last_modified": "Thu, 08 Oct 2020 21:00:36 GMT"
+    }
+  ],
+  "implementation": "oracle.adapters.rxr.reference_sources:fetch"
+}

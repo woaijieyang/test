@@ -1,0 +1,20 @@
+{
+  "purpose": "feasibility_verification",
+  "objective": "recheck_archived_state_aliases_not_complete_route_search",
+  "historical_receipt": "outputs/landmark-connectivity/source-guard-key-alias-v1/validation.json",
+  "historical_receipt_sha256": "4c3cb452e89c12b8c2559d638698b65576a66b0c55e11186294a3e73653a3826",
+  "profile": "data/derived/navmeshes/landmark-recast626-mjx-v12/profile.json",
+  "profile_sha256": "92e1daf809e500375d9242f8464e3b8e0d40b2d67574565a82076c621c37e86f",
+  "geometry_catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "scene": "mJXqzFtmKg4",
+  "expected_pairs": 25,
+  "rotation_source_order": "wxyz",
+  "native_action": 1,
+  "max_native_calls": 100,
+  "max_wall_seconds": 180,
+  "source_protocol_config": "configs/protocols/current_linear.json",
+  "historical_protocol": "trimesh_transformed_geometry_and_005m_sampled_guard",
+  "current_protocol": "native_exported_geometry_and_exact_linear_sweep",
+  "direct_route_gain_comparison_allowed": false,
+  "implementation": "oracle.verification.alias_probe:run"
+}

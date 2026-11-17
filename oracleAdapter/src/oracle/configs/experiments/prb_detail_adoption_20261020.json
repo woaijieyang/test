@@ -1,0 +1,25 @@
+{
+  "schema": "case1_research_adoption_v1",
+  "recorded_at": "2026-10-20T11:22:40.210785+08:00",
+  "status": "ADOPTED_FOR_CONTINUED_RESEARCH_WITH_KNOWN_REGRESSIONS",
+  "authorization": "User: 可以先采纳 (2026-10-20), following explicit request to publish current snapshot before further Landmark repairs.",
+  "scope": "pRbA3pwrgk9 Landmark research only; no sealed R2R/RxR or original model changes",
+  "profile_path": "outputs/oracleAdapter/prb-detail-scene660-v2/profile.json",
+  "profile_sha256": "b482e820b915fef455cf8ae450cbab3f55d0e8d9c7b1f7f3da046df8c41e3942",
+  "run": "outputs/oracleAdapter/prb-detail-scene660-v2",
+  "manifest_sha256": "2eded760227035839f589bb36e10a0b92064b966fb57962affe552f5b6390024",
+  "cohort": 660,
+  "strict_pass": 98,
+  "failed": 562,
+  "old_pass": 69,
+  "retained": 67,
+  "recovered": 31,
+  "regressed": [
+    "train:23751",
+    "train:23752"
+  ],
+  "zero_regression_gate_passed": false,
+  "full_scientific_acceptance": false,
+  "automatic_runtime_override": false,
+  "usage": "Explicitly bind this profile and its matching task mapping in a new frozen research manifest. This decision descriptor does not rewrite any prior run, global profile, baseline or PASS record."
+}

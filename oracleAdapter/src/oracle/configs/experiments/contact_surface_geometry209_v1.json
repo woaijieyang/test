@@ -1,0 +1,11 @@
+{
+  "parent_run": "outputs/oracleAdapter/landmark-global-source-priority-v1",
+  "parent_manifest_sha256": "a25ecda574fa6e5bc7d69746b4a1705f9a0798100bca9d48a6fd6790c904474d",
+  "catalog": "outputs/landmark-connectivity/native-source-catalog-v1/catalog.json",
+  "catalog_sha256": "6178cf2da73f31ff2cf0be5f53ff9eabf49ce6fba5bb49399c37df51dcf16727",
+  "contacts": "outputs/oracleAdapter/endpoint-mapping209-attribution-v1/all209-unique-contacts.json",
+  "expected_contacts": 61,
+  "expected_occurrences": 209,
+  "scope": "Full209recorded blocked occurrences across7source viewpoint IDs but61distinct derived positions. Every occurrence bound to its original preflight contact, exact shared native geometry and source certificate. No assumption that identical viewpoint IDs imply identical derived coordinates. No simulator or target/geometry/acceptance changes.",
+  "cpu_reservation_seconds": 120
+}

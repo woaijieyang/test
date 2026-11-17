@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "protocol_id": "awarevln-scene-minimal-endpoint9-v2",
+  "status": "AUTHORIZED_PENDING_VALIDATION",
+  "authorization": "2026-10-15 用户明确同意派生标注，仅修正9条并保留全局原始数据；全部验收后完整测评及push",
+  "dataset_roots": {
+    "rxr": "data/derived/annotations/rxr-endpoint9-v1"
+  },
+  "old_position": [
+    5.300414085388184,
+    0.04583600163459778,
+    2.102294683456421
+  ],
+  "new_position": [
+    5.370209217071533,
+    0.009996652603149414,
+    2.14882493019104
+  ],
+  "start_episode_ids": [
+    "3888",
+    "7963",
+    "8829",
+    "10116",
+    "10287"
+  ],
+  "goal_episode_ids": [
+    "6171",
+    "6243",
+    "10646",
+    "10757"
+  ],
+  "scene_id": "mp3d/oLBMNvg9in8/oLBMNvg9in8.glb",
+  "mesh_profile": "data/derived/navmeshes/awarevln-scene-minimal-endpoint9-v2/profile.json",
+  "claim": "Derived annotations and repaired mesh; not unchanged official benchmark",
+  "mesh_recipe": "configs/navmesh-recipe.json"
+}
