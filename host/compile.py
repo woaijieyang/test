@@ -171,10 +171,11 @@ def runtime_review_output(example):
         # Runtime v2 names that same non-applicable condition explicitly.
         if layer.get("status") == "not_assessable":
             layer["status"] = "not_applicable"
-        layer.setdefault("finding_indices", [
-            i for i, finding in enumerate(audit["findings"])
-            if finding.get("failed_layer") == layer.get("layer")
-        ])
+        if not layer.get("finding_indices"):
+            layer["finding_indices"] = [
+                i for i, finding in enumerate(audit["findings"])
+                if finding.get("failed_layer") == layer.get("layer")
+            ]
     return audit
 
 
