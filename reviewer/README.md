@@ -27,3 +27,10 @@ A finding is advisory; Generator may reject it when the source does not support 
 - `templates/RxR/legacy/`: 10 provenance-labelled legacy Reviewer examples.
 
 The 35 paired examples per dataset are not unique gold segmentations. Diagnostics teach material defects and must not be treated as positive examples. Retrieve 8–12 source-matched cases once for R0 and reuse the same Reviewer IDs in R1. Full schema, evidence and verdict gates are defined in `host/README.md`.
+
+
+## v6 RxR en-US core and guidance
+
+For `rxr-en-us`, the compiler always loads the ten independent migrated v5-format Reviewer cases in `templates/RxR/core/` (R01–R10), followed by the 2–4 Reviewer examples paired with the Generator's dynamic IDs and 0–2 relevant Diagnostics. The fixed Reviewer core is not derived from Generator outputs by changing role labels; each case retains its own expected review and source evidence.
+
+`dataset_rules/rxr_en_us.md` defines the independent long-route audit order and false-positive controls. It must agree with `shared/dataset_rules/rxr_en_us.md`. R0 and R1 reuse the same fixed core, paired examples, diagnostics and content hash. R2R does not load RxR rules or core cases.
