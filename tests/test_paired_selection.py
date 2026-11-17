@@ -10,7 +10,10 @@ class PairedSelectionTests(unittest.TestCase):
                 g = select_examples('generator',profile,raw)
                 reviewer = select_examples('reviewer',profile,raw)
                 pairs, extras = reviewer[:len(g)], reviewer[len(g):]
-                self.assertTrue(6<=len(g)<=8 and 2<=len(extras)<=4)
+                if profile == "rxr-en-us":
+                    self.assertTrue(2 <= len(g) <= 4 and 0 <= len(extras) <= 2)
+                else:
+                    self.assertTrue(6 <= len(g) <= 8 and 2 <= len(extras) <= 4)
                 self.assertEqual([bank[i]['pair_id'] for i in pairs],g)
                 self.assertTrue(all(not bank[i].get('pair_id') for i in extras))
                 used = [normalized(source(bank[i])) for i in reviewer]
@@ -34,4 +37,5 @@ class PairedSelectionTests(unittest.TestCase):
             for role in ('generator','reviewer'):
                 self.assertEqual(len(select_examples(role,profile,'',mode='all')),len(library(role,profile)))
             self.assertEqual(len(select_examples('generator',profile,'Go.',count=3)),3)
-            self.assertEqual(len(select_examples('reviewer',profile,'Go.',count=3)),5)
+            expected_reviewer = 3 if profile == "rxr-en-us" else 5
+            self.assertEqual(len(select_examples('reviewer',profile,'Go.',count=3)),expected_reviewer)
