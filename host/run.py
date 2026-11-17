@@ -95,6 +95,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                selection_mode="adaptive"):
     """Run at most four semantic calls plus at most two technical corrections per role; preserve exact source fallback on every failure."""
     events, snapshots = [], []
+    rules_frozen = None
+    template_bundles = {}
     selections = {role: [] for role in ("generator", "reviewer")}
     context = {"step": "configuration_validation", "role": None, "phase": None}
 
