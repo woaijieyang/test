@@ -137,6 +137,14 @@ def runtime_review_output(example):
     audit["findings"] = convert(audit.get("findings", []), "/findings")
     audit["prior_finding_reviews"] = convert(audit.get("prior_finding_reviews", []), "/prior_finding_reviews")
     audit.setdefault("prior_finding_reviews", [])
+    # Map the legacy source-limited disposition to the active Runtime v2
+    # source-ambiguity state without changing its evidence or verdict.
+    for row in audit["source_coverage"]:
+        if row.get("status") == "source_limited":
+            row["status"] = "requires_review"
+    for finding in audit["findings"]:
+        if finding.get("code") == "UNRESOLVED_ROUTE_CHOICE":
+            finding["code"] = "SOURCE_AMBIGUITY"
     # Runtime v2 requires every L0-L6 row to explicitly link its findings.
     # Preserve authored links when present; otherwise derive only the direct
     # failed_layer relation from the authored finding records.
