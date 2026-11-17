@@ -146,6 +146,20 @@ def runtime_review_output(example):
         if finding.get("code") == "UNRESOLVED_ROUTE_CHOICE" or (
                 audit.get("verdict") == "unresolved" and not finding.get("code")):
             finding["code"] = "SOURCE_AMBIGUITY"
+        if audit.get("verdict") == "unresolved":
+            finding.setdefault("dimension", "source_fidelity")
+            finding.setdefault("related_dimensions", [])
+            finding.setdefault(
+                "affected_subtask_indices",
+                finding.get("repair", {}).get("affected_stage_indices", [])
+            )
+            repair = finding.get("repair", {})
+            if repair.get("operation") == "retain_source_ambiguity_and_request_resolution":
+                repair["operation"] = "preserve_uncertainty"
+            repair.setdefault(
+                "affected_subtask_indices",
+                repair.get("affected_stage_indices", finding.get("affected_subtask_indices", []))
+            )
     # Runtime v2 requires every L0-L6 row to explicitly link its findings.
     # Preserve authored links when present; otherwise derive only the direct
     # failed_layer relation from the authored finding records.
