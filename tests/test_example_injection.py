@@ -1,5 +1,5 @@
 import unittest,json
-from host.compile import compile_prompt
+from host.compile import compile_prompt, runtime_review_output
 from host.template_selector import PROFILES,select_examples,library
 
 class InjectionTests(unittest.TestCase):
@@ -35,7 +35,7 @@ class InjectionTests(unittest.TestCase):
                         self.assertEqual(t['handoffs'],e['output']['handoffs'])
                         self.assertEqual('stage_evidence' in t,is_first_in_group)
                     else:
-                        self.assertEqual(t['findings'],e['expected_review']['findings'])
+                        self.assertEqual(t['findings'],runtime_review_output(e)['findings'])
                         self.assertEqual(t['review_case'],e['review_input'])
                         self.assertEqual('coverage_evidence' in t,is_first_in_group)
                 self.assertIn('two distinct stops',text)
