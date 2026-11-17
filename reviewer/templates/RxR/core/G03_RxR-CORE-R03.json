@@ -103,7 +103,9 @@
         "ending": {
           "kind": "terminal_goal_directive",
           "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "candidate_quotes": [
+            "go into the open area."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
