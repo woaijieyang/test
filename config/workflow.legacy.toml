@@ -1,0 +1,43 @@
+# Shared parent-level configuration. Freeze per run; original prompts/templates remain unchanged.
+version = "1.0"
+max_review_rounds = 2
+# Includes initial review. Maximum semantic repairs = max_review_rounds - 1.
+max_technical_retries = 1
+max_parallel_agents = 6
+execution_lanes = 2
+one_record_per_input = true
+allow_session_reuse = true
+rotate_before_context_fraction = 0.75
+failure_policy = "original_instruction_unsplit"
+primary_role = "final_review_aggregation_acceptance_only"
+primary_requests_repairs = false
+prompt_modification = false
+
+[generator]
+directory = "generator"
+prompt = "generator/prompt.md"
+examples_manifest = "generator/manifest.json"
+reuse_wrapper = "generator/single_record_reuse_wrapper.md"
+review_limit = "shared:max_review_rounds"
+feedback_policy = "independently_verify_reviewer_against_source_before_edit"
+
+[reviewer]
+directory = "reviewer"
+prompt = "reviewer/prompt.md"
+examples_manifest = "reviewer/manifest.json"
+review_limit = "shared:max_review_rounds"
+policy = "global_source_fidelity_not_adversarial_accept_valid_alternatives"
+
+[desktop]
+model = "gpt-6.1-sol"
+reasoning_effort = "medium"
+
+[cli]
+model = "gpt-5.6-sol"
+reasoning_effort = "high"
+
+[evaluation]
+cohort = "original_train_pilot40"
+variants = ["baseline", "A", "B", "C"]
+fallback = "raw_original_no_split_no_added_context"
+fresh100_gate = "one_variant_SR_non_decreasing_in_both_datasets_and_increasing_in_at_least_one"

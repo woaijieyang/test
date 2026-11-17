@@ -1,0 +1,51 @@
+{
+  "id": "R01",
+  "title": "Pass: coherent stages with complete handoff",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Exit the bedroom into the hall. Turn right and enter the kitchen. Stop beside the sink.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Exit the bedroom into the hall.",
+        "In the hall, turn right and enter the kitchen. Stop beside the sink."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "pass",
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "The described bedroom.",
+        "required_history": [
+          "Exit the bedroom into the hall."
+        ],
+        "completion_condition": "In the hall after exiting the bedroom.",
+        "carryover_requirements": [
+          "Arrival pose in the hall."
+        ],
+        "source_quotes": [
+          "Exit the bedroom into the hall."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "The hall reached by the first stage.",
+        "required_history": [
+          "Turn right.",
+          "Enter the kitchen.",
+          "Go beside the sink and stop."
+        ],
+        "completion_condition": "Stopped beside the sink.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Turn right and enter the kitchen.",
+          "Stop beside the sink."
+        ]
+      }
+    ]
+  }
+}

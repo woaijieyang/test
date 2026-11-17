@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "revise",
+        "unresolved"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "OMISSION",
+              "UNSUPPORTED_ADDITION",
+              "WRONG_ORDER",
+              "WRONG_SCOPE",
+              "WRONG_ATTACHMENT",
+              "BROKEN_HANDOFF",
+              "BAD_GRANULARITY",
+              "UNRESOLVED_SOURCE",
+              "OTHER"
+            ]
+          },
+          "subtask_indices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "source_quote": {
+            "type": "string"
+          },
+          "problem": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "subtask_indices",
+          "source_quote",
+          "problem"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stage_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "subtask_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "entry_context": {
+            "type": "string"
+          },
+          "required_history": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "completion_condition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "carryover_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_quotes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "subtask_index",
+          "entry_context",
+          "required_history",
+          "completion_condition",
+          "carryover_requirements",
+          "source_quotes"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "verdict",
+    "findings",
+    "stage_checks"
+  ],
+  "additionalProperties": false
+}

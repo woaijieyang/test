@@ -1,0 +1,48 @@
+{
+  "id": "R10",
+  "title": "Pass: an alternative valid cut including bounded orientation",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Turn left to face the window. Walk to the window and wait there.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn left to face the window.",
+        "Walk to the window you are now facing and wait there."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "pass",
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Current source starting orientation.",
+        "required_history": [
+          "Turn left until facing the window."
+        ],
+        "completion_condition": "Facing the window after a left turn.",
+        "carryover_requirements": [
+          "Identity of that window and the resulting orientation."
+        ],
+        "source_quotes": [
+          "Turn left to face the window."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "Facing the window selected in stage 0.",
+        "required_history": [
+          "Walk to that window and wait."
+        ],
+        "completion_condition": "At the window and waiting.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Walk to the window and wait there."
+        ]
+      }
+    ]
+  }
+}

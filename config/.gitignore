@@ -1,0 +1,4 @@
+*.local.json
+credentials.json
+.env
+.env.*

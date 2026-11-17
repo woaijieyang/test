@@ -1,0 +1,19 @@
+{
+  "id": "G10",
+  "title": "An unsupported boundary must not be fabricated",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Walk forward, then turn there and stop."
+  },
+  "output": {
+    "status": "needs_review",
+    "subtasks": [],
+    "issues": [
+      {
+        "source_quote": "Walk forward, then turn there and stop.",
+        "problem": "The text does not identify where 'there' is or which direction to turn. A supported movement endpoint and turn cannot be determined.",
+        "code": "UNRESOLVED_REFERENCE"
+      }
+    ]
+  }
+}

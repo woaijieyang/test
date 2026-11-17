@@ -1,0 +1,16 @@
+{
+  "id": "G09",
+  "title": "Intermediate stop and conditional alternatives with an explicit common exit state",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Enter the kitchen and stop beside the counter. From the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Enter the kitchen and stop beside the counter.",
+      "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+    ],
+    "issues": []
+  }
+}

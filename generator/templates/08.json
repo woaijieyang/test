@@ -1,0 +1,17 @@
+{
+  "id": "G08",
+  "title": "Correction, ongoing constraint, and an explicit return visit",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Turn left, sorry, turn right, and walk to the blue door next to the stairs. Go through it into the lounge. Keep the sofa on your left as you cross the lounge and stop beside the window. Then return through the same blue door and stop beside the stairs."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
+      "Cross the lounge with the sofa on your left and stop beside the window.",
+      "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+    ],
+    "issues": []
+  }
+}

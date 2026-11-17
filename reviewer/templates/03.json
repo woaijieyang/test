@@ -1,0 +1,55 @@
+{
+  "id": "R03",
+  "title": "Revise: invented threshold stop",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Walk toward the dining room but turn left before entering it and go into the open area.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk toward the dining room and stop at its entrance.",
+        "Turn left and enter the open area."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "UNSUPPORTED_ADDITION",
+        "subtask_indices": [
+          0
+        ],
+        "source_quote": "turn left before entering it",
+        "problem": "The source requires a turn before entry, not a stop exactly at the entrance; preserve the coupled approach and turn condition."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Current route position.",
+        "required_history": [
+          "Approach the dining room without crossing into it before the left turn."
+        ],
+        "completion_condition": null,
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Walk toward the dining room but turn left before entering it and go into the open area."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "Before dining-room entry, not at an invented exact threshold.",
+        "required_history": [
+          "Turn left and go into the open area."
+        ],
+        "completion_condition": "In the open area after the required turn.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "turn left before entering it and go into the open area."
+        ]
+      }
+    ]
+  }
+}

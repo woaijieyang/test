@@ -1,0 +1,11 @@
+{
+  "original_instruction": "Exit the bedroom into the hall. Turn right and enter the kitchen. Stop beside the sink.",
+  "candidate": {
+    "status": "ok",
+    "subtasks": [
+      "Exit the bedroom into the hall.",
+      "In the hall, turn right and enter the kitchen. Stop beside the sink."
+    ],
+    "issues": []
+  }
+}

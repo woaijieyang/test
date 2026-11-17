@@ -1,0 +1,31 @@
+{
+  "id": "R08",
+  "title": "Unresolved: source ambiguity is not a request for guessing",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Walk forward, then turn there and stop.",
+    "candidate": {
+      "status": "needs_review",
+      "subtasks": [],
+      "issues": [
+        {
+          "code": "UNRESOLVED_REFERENCE",
+          "source_quote": "Walk forward, then turn there and stop.",
+          "problem": "No identified turning location or direction."
+        }
+      ]
+    }
+  },
+  "output": {
+    "verdict": "unresolved",
+    "findings": [
+      {
+        "code": "UNRESOLVED_SOURCE",
+        "subtask_indices": [],
+        "source_quote": "Walk forward, then turn there and stop.",
+        "problem": "The source does not supply the referent for there or a turn direction."
+      }
+    ],
+    "stage_checks": []
+  }
+}

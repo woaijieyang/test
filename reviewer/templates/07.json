@@ -1,0 +1,44 @@
+{
+  "id": "R07",
+  "title": "Revise: an endpoint match does not replace route history",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Leave the kitchen, walk around the island in the lounge, and return to the kitchen doorway. Stop there.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go to the kitchen doorway and stop."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "OMISSION",
+        "subtask_indices": [
+          0
+        ],
+        "source_quote": "Leave the kitchen, walk around the island in the lounge, and return to the kitchen doorway.",
+        "problem": "The candidate drops departure, the route around the island and the return event. An initial doorway match cannot complete them."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "The starting kitchen state.",
+        "required_history": [
+          "Leave the kitchen.",
+          "Walk around the island in the lounge.",
+          "Return to the kitchen doorway and stop."
+        ],
+        "completion_condition": "Stopped at the kitchen doorway after the required excursion and return.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Leave the kitchen, walk around the island in the lounge, and return to the kitchen doorway. Stop there."
+        ]
+      }
+    ]
+  }
+}

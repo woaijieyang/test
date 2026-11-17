@@ -1,0 +1,18 @@
+{
+  "id": "G04",
+  "title": "Long route with four stages and clause-order reversal",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Enter the kitchen after you have walked to the end of the hallway. Before walking down the hallway, turn right. Once inside the kitchen, cross it and go through the archway into the dining room. Cross the dining room and enter the study through the door beside the bookcase. In the study, walk around the desk and stop at the window."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right, then walk down the hallway to its end and enter the kitchen.",
+      "Once inside the kitchen, cross it and go through the archway into the dining room.",
+      "Cross the dining room and enter the study through the door beside the bookcase.",
+      "In the study, walk around the desk and stop at the window."
+    ],
+    "issues": []
+  }
+}

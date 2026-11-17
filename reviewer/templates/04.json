@@ -1,0 +1,59 @@
+{
+  "id": "R04",
+  "title": "Revise: a target description is supplied too late",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Enter the bathroom through the first door on your right. The bathroom door is in the dark wall. Inside, turn left and stop by the sink.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Enter the bathroom through the first door on your right.",
+        "The bathroom door is in the dark wall. Inside, turn left and stop by the sink."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "WRONG_ATTACHMENT",
+        "subtask_indices": [
+          0,
+          1
+        ],
+        "source_quote": "The bathroom door is in the dark wall.",
+        "problem": "This cue is needed to choose the door in stage 0; stage 1 supplies it only after entry."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Before selecting the bathroom door.",
+        "required_history": [
+          "Select the first right-hand door identified by the dark wall and enter."
+        ],
+        "completion_condition": "Inside the bathroom.",
+        "carryover_requirements": [
+          "Bathroom reached via the identified door."
+        ],
+        "source_quotes": [
+          "Enter the bathroom through the first door on your right.",
+          "The bathroom door is in the dark wall."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "Inside the bathroom.",
+        "required_history": [
+          "Turn left and go by the sink; stop."
+        ],
+        "completion_condition": "Stopped by the sink.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Inside, turn left and stop by the sink."
+        ]
+      }
+    ]
+  }
+}

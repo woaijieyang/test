@@ -1,0 +1,15 @@
+{
+  "id": "G06",
+  "title": "A subsequent sentence refines the same endpoint",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Go down the staircase. Go about halfway down and then stop. Wait there."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Go about halfway down the staircase, then stop and wait there."
+    ],
+    "issues": []
+  }
+}

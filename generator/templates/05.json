@@ -1,0 +1,16 @@
+{
+  "id": "G05",
+  "title": "A later description identifies an earlier target",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together. The bathroom doorway is in the darker-painted wall. Inside the bathroom, turn left and stop in front of the toilet."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
+      "Inside the bathroom, turn left and stop in front of the toilet."
+    ],
+    "issues": []
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "R06",
+  "title": "Revise: explicitly corrected action must not execute",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Turn left, sorry, turn right and enter the lounge.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn left. Turn right and enter the lounge."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "UNSUPPORTED_ADDITION",
+        "subtask_indices": [
+          0
+        ],
+        "source_quote": "Turn left, sorry, turn right",
+        "problem": "The left turn is superseded by the explicit correction; it is not an additional active action."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "The source starting pose.",
+        "required_history": [
+          "Turn right and enter the lounge."
+        ],
+        "completion_condition": "Inside the lounge.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Turn left, sorry, turn right and enter the lounge."
+        ]
+      }
+    ]
+  }
+}

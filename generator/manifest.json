@@ -1,0 +1,21 @@
+{
+  "version": "1.3",
+  "role": "generator",
+  "prompt": "prompt.md",
+  "schema": "output.schema.json",
+  "examples": [
+    "templates/01.json",
+    "templates/02.json",
+    "templates/03.json",
+    "templates/04.json",
+    "templates/05.json",
+    "templates/06.json",
+    "templates/07.json",
+    "templates/08.json",
+    "templates/09.json",
+    "templates/10.json"
+  ],
+  "input_example": "input.example.json",
+  "repair_prompt": "repair.md",
+  "execution_owner": "codex_child"
+}

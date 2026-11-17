@@ -1,0 +1,7 @@
+# Reviewer：Codex主对话本人执行
+
+这不是另一个子代理。主对话在生成子线程完成后，先读完整原文，再读candidate，按prompt.md及10个模板逐条输出review.json，记录review_owner=primary、实际主会话ID及所审candidate hash。生成子线程的自检查不能代替此审核。
+
+审查只做源文本的语义完整性和阶段划分检查，不判断导航实况；stage_checks不注入在线模型，不作为独立完成monitor。pass只是未发现重大文字问题，不是用户批准或SR。revise给可由原文支持的修复点；unresolved保留原文的实质歧义。正确的不同切法不因措辞不一致被判错。
+
+全部40及后续100都要主审。记录原文引用和受影响子任务，保留首轮输出；共同错误由主对话汇总后精修prompt，在新轨迹上验证。结构/引用检查用workbench工具，但语义判断仍由主对话负责。

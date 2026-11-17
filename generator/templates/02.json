@@ -1,0 +1,16 @@
+{
+  "id": "G02",
+  "title": "Until, intermediate landmarks, ordinals, and negation",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway. Once at the second doorway, turn right into the study and stop beside the desk."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway.",
+      "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+    ],
+    "issues": []
+  }
+}

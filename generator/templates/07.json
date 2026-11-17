@@ -1,0 +1,16 @@
+{
+  "id": "G07",
+  "title": "Expected-state narration and final orientation",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input is synthetic or adapted; do not relabel it as a raw dataset record.",
+  "input": {
+    "original_instruction": "You start facing a wall. Turn left and walk towards the white table. Now you are standing next to the white table, with the table on your left. Turn right and walk through the open doorway into the kitchen. Stop just inside, facing the sink."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
+      "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+    ],
+    "issues": []
+  }
+}

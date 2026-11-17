@@ -1,0 +1,21 @@
+{
+  "backend": "codex_cli",
+  "codex_cli": {
+    "executable": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "responses": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "api_key_env": "VLN_SPLITTER_API_KEY",
+    "api_key_file": "",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "timeout_seconds": 300,
+    "max_output_tokens": 8192,
+    "structured_output": false
+  },
+  "generator_workers": 4,
+  "reviewer_workers": 4,
+  "max_review_rounds": 3
+}

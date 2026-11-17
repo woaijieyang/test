@@ -1,0 +1,57 @@
+{
+  "id": "R05",
+  "title": "Revise: textual mention order is not execution order",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Enter the kitchen after reaching the end of the hallway. Stop beside the sink.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Enter the kitchen.",
+        "Reach the end of the hallway and stop beside the sink."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "WRONG_ORDER",
+        "subtask_indices": [
+          0,
+          1
+        ],
+        "source_quote": "Enter the kitchen after reaching the end of the hallway.",
+        "problem": "The hallway endpoint must precede kitchen entry, not follow it."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "After reaching the hallway end, which the candidate has not yet required.",
+        "required_history": [
+          "Reach the hallway end before entering the kitchen."
+        ],
+        "completion_condition": "Inside the kitchen after the required prior arrival.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Enter the kitchen after reaching the end of the hallway."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "The source provides no supported post-kitchen hallway traversal.",
+        "required_history": [
+          "Stop beside the sink after the correctly ordered kitchen entry."
+        ],
+        "completion_condition": null,
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Enter the kitchen after reaching the end of the hallway.",
+          "Stop beside the sink."
+        ]
+      }
+    ]
+  }
+}

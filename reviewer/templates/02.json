@@ -1,0 +1,58 @@
+{
+  "id": "R02",
+  "title": "Revise: orphaned until endpoint",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Walk down the hallway until you reach the second doorway on the right. Enter that doorway and stop just inside.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk down the hallway.",
+        "Enter the second doorway on the right and stop just inside."
+      ],
+      "issues": []
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "WRONG_SCOPE",
+        "subtask_indices": [
+          0,
+          1
+        ],
+        "source_quote": "Walk down the hallway until you reach the second doorway on the right.",
+        "problem": "The first stage loses its termination condition; reaching the counted doorway must complete that movement before the next entry stage."
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "The current hallway.",
+        "required_history": [
+          "Traverse the hallway toward the counted doorway."
+        ],
+        "completion_condition": null,
+        "carryover_requirements": [
+          "Door-count origin and selected doorway."
+        ],
+        "source_quotes": [
+          "Walk down the hallway until you reach the second doorway on the right."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "At the second right-hand doorway, but the candidate does not establish this as the previous completion.",
+        "required_history": [
+          "Enter the selected doorway and stop."
+        ],
+        "completion_condition": "Stopped just inside that doorway.",
+        "carryover_requirements": [],
+        "source_quotes": [
+          "Enter that doorway and stop just inside."
+        ]
+      }
+    ]
+  }
+}

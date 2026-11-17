@@ -1,0 +1,15 @@
+{
+  "id": "G03",
+  "title": "Before entering: no invented stop and no unwanted entry",
+  "provenance": "Inherited authored teaching target from supplied V1.1, not an API output or dataset subtask annotation. Input was supplied by the user as a SkillNav example.",
+  "input": {
+    "original_instruction": "Walk toward the dining room but turn left before entering it and go into the open area."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Walk toward the dining room, but turn left before entering it and go into the open area."
+    ],
+    "issues": []
+  }
+}

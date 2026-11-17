@@ -1,0 +1,31 @@
+{
+  "id": "R09",
+  "title": "Revise: ordinary visual grounding is not a textual failure",
+  "provenance": "Authored review demonstration; not an empirical API result or runtime completion evidence.",
+  "input": {
+    "original_instruction": "Walk to the doorway beside the mirror, go through it, and stop just inside.",
+    "candidate": {
+      "status": "needs_review",
+      "subtasks": [],
+      "issues": [
+        {
+          "code": "UNRESOLVED_REFERENCE",
+          "source_quote": "the doorway beside the mirror",
+          "problem": "The image is absent, so the doorway cannot be selected."
+        }
+      ]
+    }
+  },
+  "output": {
+    "verdict": "revise",
+    "findings": [
+      {
+        "code": "OTHER",
+        "subtask_indices": [],
+        "source_quote": "the doorway beside the mirror",
+        "problem": "The source supplies a target description. Missing imagery is not a textual defect; a faithful phase can preserve the visual reference without guessing coordinates."
+      }
+    ],
+    "stage_checks": []
+  }
+}
