@@ -339,9 +339,9 @@
   "host/cli_journal.py": "gitblob-sha1:91d8f51f988af1ea06dc38b7116d5b6bed222979",
   "host/compile.py": "gitblob-sha1:c086a45968c072d887cfb17b5554eda65066df08",
   "host/protocol.py": "gitblob-sha1:87105017ad1bb551889ad707d139ef58c8e3fac4",
-  "host/README.md": "gitblob-sha1:c3ced49ecae62d92cc307740bcc099c538068a3d",
+  "host/README.md": "gitblob-sha1:9d28689051763253b509c0c9640098a2011817a4",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
-  "host/run.py": "gitblob-sha1:9fe92556ae372ed3d75186586f0e06162052ba35",
+  "host/run.py": "gitblob-sha1:798977c99348ed642b090e6579f77d281d73c2c9",
   "host/template_selector.py": "gitblob-sha1:931715340b6341c6a1fc60ae5d4dd57b1d89002f",
   "IMPLEMENTATION.md": "gitblob-sha1:7f72988538adca8a233e85886d353ff16a8d0f4c",
   "provenance/build_manifest.json": "gitblob-sha1:90bc099c130723003a99a0fb2bf6b01b57b80519",
@@ -567,5 +567,5 @@
   "verify_package.py": "gitblob-sha1:2e5f33794a7a1600bb8375e6ab9d8d5e3faccbc4",
   "VERSION": "gitblob-sha1:4abf5af798c6b77180e6a8fc408c006af06f0556",
   "WORKFLOW.md": "gitblob-sha1:a0103ad56d920fecd7714947b7117ca1d9aa3117",
-  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:8305140b1833abfe908cd0446d5c15d78a081528"
+  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:323a953932d7c529f6f61d829a56e2557b105530"
 }
