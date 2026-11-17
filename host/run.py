@@ -49,16 +49,17 @@ def dataset_rules_metadata(profile):
 
 
 
-def prompt_components_metadata(role, profile):
+def prompt_components_metadata(role, phase, profile):
     """Freeze all source files that contribute to this role's compiled prompt."""
     root = Path(__file__).resolve().parents[1]
     paths = [root/role/"prompt.md", root/"shared/semantic_contract.md"]
     if role == "reviewer":
         paths.append(root/"reviewer/checklist.md")
-    if role == "generator":
-        paths.append(root/"generator/acceptance.md")
-    if role == "generator" and profile == "rxr-en-us":
-        paths.append(root/"generator/repair.md")
+    if role == "generator" and phase == "repair":
+        paths.extend([root/"generator/repair.md", root/"generator/repair_examples.json"])
+    schema_path = root/role/("repair.schema.json" if role == "generator" and phase == "repair"
+                            else "output.schema.json")
+    paths.append(schema_path)
     if profile == "rxr-en-us":
         paths.extend([
             root/"shared/dataset_rules/rxr_en_us.md",
@@ -104,7 +105,7 @@ def request(role, phase, payload, pin, profile, selected_ids):
         "phase": phase,
         "profile": profile,
         "dataset_rules": rules,
-        "prompt_components": prompt_components_metadata(role, profile),
+        "prompt_components": prompt_components_metadata(role, phase, profile),
         "template_bundle": bundle,
         "fixed_core_template_ids": bundle["fixed_core_ids"],
         "model": pin["model"],
@@ -349,7 +350,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         context["step"] = "example_selection"
         rules_frozen = dataset_rules_metadata(src.profile)
         prompt_components_frozen = {
-            role: prompt_components_metadata(role, src.profile)
+            role: prompt_components_metadata(role, 'initial' if role == 'generator' else 'review', src.profile)
             for role in ("generator", "reviewer")
         }
         # Resolve and validate fixed core once before any model invocation.
