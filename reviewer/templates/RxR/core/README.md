@@ -23,4 +23,4 @@ These ten cases are authored Reviewer demonstrations migrated from v1. They are 
 
 ## Identifier convention
 
-`R01`–`R10` are Reviewer core slot labels and file suffixes, not a separate template-ID namespace. Each Reviewer case retains the corresponding Generator core `template_id` (`RxR-LEGACY-G01`–`G10`) so its `pair_id` is an exact stable link to that Generator case. Role scoping keeps the Generator and Reviewer JSON files independent; do not infer that they share teaching content.
+Reviewer core records use their own canonical IDs `RXR-CORE-R01`–`RXR-CORE-R10`. Their `pair_id` values point one-to-one to Generator IDs `RXR-CORE-G01`–`RXR-CORE-G10`. The R01–R10 slot labels and filenames are not the pairing mechanism; the explicit `pair_id` is. Role scoping keeps the Generator and Reviewer JSON files independent; do not infer that they share teaching content.
