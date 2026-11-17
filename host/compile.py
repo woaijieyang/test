@@ -163,7 +163,16 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if role=='reviewer' and phase not in ('review','recheck'):raise ValueError('Unsupported review phase')
     if role=='generator' and phase not in ('initial','repair'):raise ValueError('Unsupported generator phase')
     d=ROOT/role;repair=role=='generator' and phase=='repair'
-    parts=['BUILD: v6 / v5 common contract retained. The source instruction remains the only route authority; RxR core examples are fixed and dynamic examples are source-feature-matched and frozen per record.',
+    # Keep the R2R system prompt byte-for-byte free of RxR profile messaging.
+    # RxR-only claims belong exclusively to the RxR profile branch below.
+    build_message = (
+        'BUILD: v6 / v5 common contract retained. The source instruction remains the only route authority.'
+        if profile == 'r2r-en' else
+        'BUILD: v6 / v5 common contract retained with the RxR en-US extension. '
+        'The source instruction remains the only route authority; ten fixed RxR core examples '
+        'and source-feature-matched dynamic examples are frozen per record.'
+    )
+    parts=[build_message,
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
     if profile == 'rxr-en-us':
         parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\\n' +
