@@ -141,6 +141,10 @@ def runtime_review_output(example):
     # Preserve authored links when present; otherwise derive only the direct
     # failed_layer relation from the authored finding records.
     for layer in audit.get("layer_checks", []):
+        # v1 teaching used not_assessable when no rendered artifact existed.
+        # Runtime v2 names that same non-applicable condition explicitly.
+        if layer.get("status") == "not_assessable":
+            layer["status"] = "not_applicable"
         layer.setdefault("finding_indices", [
             i for i, finding in enumerate(audit["findings"])
             if finding.get("failed_layer") == layer.get("layer")
