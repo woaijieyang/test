@@ -169,6 +169,21 @@ class RxRV6ProfileTests(unittest.TestCase):
         self.assertEqual(bundle["dynamic_ids"], ids)
         self.assertEqual(len(bundle["sha256"]), 64)
 
+    def test_rule_metadata_uses_real_section_separators(self):
+        metadata = dataset_rules_metadata("rxr-en-us")
+        self.assertEqual(metadata["version"], "v6-rxr-en-us")
+        self.assertEqual(len(metadata["files"]), 4)
+        self.assertEqual(len(metadata["sha256"]), 64)
+        from pathlib import Path
+        root = ROOT
+        expected = "\n".join(
+            f"## {Path(path).as_posix()}\n{(root/path).read_text(encoding='utf-8')}"
+            for path in metadata["files"]
+        )
+        from shared.identity import text_hash
+        self.assertEqual(metadata["sha256"], text_hash(expected))
+        self.assertNotIn("\\n", expected)
+
     def test_request_records_fixed_core_and_dynamic_bundle(self):
         source_text = "Walk into the kitchen and stop at the counter."
         ids = select_examples("generator", "rxr-en-us", source_text)
