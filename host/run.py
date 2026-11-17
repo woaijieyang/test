@@ -140,7 +140,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         need(req["dataset_rules"] == rules_frozen,
              "Dataset-specific rule bundle changed during the task",
              code="RULE_BUNDLE_MUTATED", module="host.run", path="/dataset_rules")
-        need(req["prompt_components"] == prompt_components_frozen[role],
+        need(req["prompt_components"] == prompt_components_frozen[role][phase],
              "Compiled prompt source components changed during the task",
              code="PROMPT_COMPONENTS_MUTATED", module="host.run", path="/prompt_components")
         system, user = req["messages"]
@@ -350,8 +350,14 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         context["step"] = "example_selection"
         rules_frozen = dataset_rules_metadata(src.profile)
         prompt_components_frozen = {
-            role: prompt_components_metadata(role, 'initial' if role == 'generator' else 'review', src.profile)
-            for role in ("generator", "reviewer")
+            "generator": {
+                phase: prompt_components_metadata("generator", phase, src.profile)
+                for phase in ("initial", "repair")
+            },
+            "reviewer": {
+                phase: prompt_components_metadata("reviewer", phase, src.profile)
+                for phase in ("review", "recheck")
+            },
         }
         # Resolve and validate fixed core once before any model invocation.
         # finish() reports cached IDs and remains safe if core loading fails.
