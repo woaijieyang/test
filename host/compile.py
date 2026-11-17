@@ -160,6 +160,9 @@ def runtime_review_output(example):
                 "affected_subtask_indices",
                 repair.get("affected_stage_indices", finding.get("affected_subtask_indices", []))
             )
+            repair.pop("affected_stage_indices", None)
+            if finding.get("c_check") == "C2_SUPPORT":
+                finding["c_check"] = "C05"
     # Runtime v2 requires every L0-L6 row to explicitly link its findings.
     # Preserve authored links when present; otherwise derive only the direct
     # failed_layer relation from the authored finding records.
