@@ -22,3 +22,10 @@ Before accepting a boundary, verify the previous stage's actual supported ending
 Templates are prompt-development demonstrations, not official subtask labels or trajectory-verified ground truth. Retrieve 8–12 source-matched examples once per task; reuse the same Generator IDs in G1. G1 receives the complete R0 review and returns a complete candidate plus exactly one indexed response per blocking finding. It may reject unsupported Reviewer advice with source quotes. No reviewer patch is applied automatically.
 
 Run `python -m host.compile` after changing role prompts, shared contract, schemas or examples. The Host/compile owner should regenerate compiled prompts and build manifests before model evaluation.
+
+
+## v6 RxR en-US core and guidance
+
+For `rxr-en-us`, the compiler always loads the ten migrated v5-format cases in `templates/RxR/core/` (G01–G10), followed by 2–4 dynamically retrieved cases from `templates/RxR/val_seen/`. The old v1 JSON is not loaded. The copied core files retain v1 lineage in `legacy_reference` while satisfying the v5 Generator Template Schema.
+
+`dataset_rules/rxr_en_us.md` is role-specific execution guidance; `shared/dataset_rules/rxr_en_us.md` supplies the common RxR semantic definitions. G0 and G1 reuse the same core and dynamic IDs and their content hash. R2R does not load these files or core examples.
