@@ -174,3 +174,28 @@ receipt for the role's bounded format correction. No other ambiguous execution i
 Incomplete or mismatched receipts and unknown transport states are ineligible for navigation;
 queue consumers must inspect navigation_eligible. CLI journals contain prompts, so keep them
 private and do not include them in source archives.
+
+
+## 7. v6 RxR en-US profile contract
+
+The profile switch comes only from Adapter output:
+
+- `r2r-en`: no RxR rules and no fixed core; retain the v5 R2R common prompts, schema, renderer and dynamic selector ranges.
+- `rxr-en-us`: append the shared RxR semantic rules and the role-specific RxR guidance; always inject ten fixed core examples for each role; then append the selected dynamic examples.
+
+The fixed core files are:
+- Generator: `generator/templates/RxR/core/G01_RxR-CORE-G01.json` … `G10_RxR-CORE-G10.json`.
+- Reviewer: `reviewer/templates/RxR/core/G01_RxR-CORE-R01.json` … `G10_RxR-CORE-R10.json`.
+
+Their contents retain the v5 template schema and the v1 migration provenance. The `legacy/` copies are not read by `library()`, `select_examples()`, or the compiler. The active dynamic pools contain 35 RxR Generator val_seen cases and 35 paired Reviewer + 29 Diagnostics cases.
+
+For RxR, adaptive selection chooses 2–4 Generator dynamic examples. Reviewer receives the corresponding 2–4 paired examples and 0–2 Diagnostics. The ten core examples are not included in the selector's candidate pool and cannot be replaced by retrieval. For R2R, the existing 6–8 Generator, paired Reviewer and 2–4 Diagnostic policy is retained.
+
+At task start, `run_record` freezes:
+- the common semantic contract and, for RxR, all three RxR rule-file hashes;
+- each role's fixed core IDs and selected dynamic IDs;
+- a SHA-256 over the complete parsed fixed+dynamic template bundle for each role.
+
+Each request recomputes these values. A mismatch during G0/R0/G1/R1 raises a technical contract error and follows the existing exact-source fallback. The output record includes `dataset_rules`, `template_bundles`, fixed core IDs, dynamic IDs, and the compiled system prompt hash already recorded per call. This does not alter the public `run_record` signature or the Actor instruction slot.
+
+No schema, common semantic rule, verdict, call budget, Renderer, Adapter or AwareVLN behavior is changed by the RxR profile extension.
