@@ -9,11 +9,14 @@ from host.compile import compile_prompt
 from host.protocol import generator,reviewer
 class RolesRepairTests(unittest.TestCase):
  def test_role_specific_profile_counts(self):
-     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(45,74))]:
+     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(35,64))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
              self.assertEqual(len({r['template_id'] for r in rows}),n)
+     from host.compile import core_library
+     self.assertEqual(len(core_library('generator','rxr-en-us')),10)
+     self.assertEqual(len(core_library('reviewer','rxr-en-us')),10)
  def test_r2r_and_rxr_examples_are_not_mixed(self):
      for profile,ds in PROFILES.items():
          for role in ('generator','reviewer'):
@@ -32,9 +35,15 @@ class RolesRepairTests(unittest.TestCase):
          for profile in PROFILES:
              for row in library(role,profile):
                  validator.validate(row)
+             from host.compile import core_library
+             for row in core_library(role,profile):
+                 validator.validate(row)
  def test_generator_examples_validate(self):
      for profile in PROFILES:
          for row in library('generator',profile):
+             protocol.generator(source(row),row['output'])
+         from host.compile import core_library
+         for row in core_library('generator',profile):
              protocol.generator(source(row),row['output'])
  def test_r2r_regression_suite_has_six_distinct_cases(self):
   x=json.loads((ROOT/'generator/tests/r2r_regressions.json').read_text(encoding='utf-8'))
