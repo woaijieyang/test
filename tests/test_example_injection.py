@@ -26,18 +26,17 @@ class InjectionTests(unittest.TestCase):
                 for c in cards:
                     e=originals[c['template_id']];self.assertTrue(c['applicable_lesson'])
                     t=c['teaching']
-                    is_first_in_group = c['template_id'] in (
-                        (fixed[0]['template_id'] if fixed else None),
-                        (ids[0] if ids else None)
-                    )
+                    is_fixed_core = c['template_id'] in {x['template_id'] for x in fixed}
+                    is_first_dynamic = c['template_id'] == (ids[0] if ids else None)
+                    expects_detailed = is_fixed_core or is_first_dynamic
                     if role=='generator':
                         self.assertEqual(t['stages'],e['output']['subtasks'])
                         self.assertEqual(t['handoffs'],e['output']['handoffs'])
-                        self.assertEqual('stage_evidence' in t,is_first_in_group)
+                        self.assertEqual('stage_evidence' in t,expects_detailed)
                     else:
                         self.assertEqual(t['findings'],runtime_review_output(e)['findings'])
                         self.assertEqual(t['review_case'],e['review_input'])
-                        self.assertEqual('coverage_evidence' in t,is_first_in_group)
+                        self.assertEqual('coverage_evidence' in t,expects_detailed)
                 self.assertIn('two distinct stops',text)
                 blank,other_schema=compile_prompt(role,phase,profile=profile,original_instruction=source,examples=False)
                 self.assertEqual(other_schema,schema);self.assertNotIn('APPLY THE EXAMPLES',blank)
