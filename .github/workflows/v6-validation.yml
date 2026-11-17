@@ -1,0 +1,28 @@
+name: v6 RxR profile and regression validation
+
+on:
+  push:
+    branches:
+      - LLM-decompose-v6
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Validate RxR v6 profile
+        run: python -B -m unittest discover -s tests -p "test_rxr_v6_profile.py" -v
+      - name: Validate paired retrieval
+        run: python -B -m unittest discover -s tests -p "test_paired_selection.py" -v
+      - name: Validate teaching schemas and closed-loop contracts
+        run: python -B -m unittest discover -s tests -p "test_closed_loop_35.py" -v
+      - name: Validate runtime v2 contracts
+        run: python -B -m unittest discover -s tests -p "test_runtime_contract_v2.py" -v
