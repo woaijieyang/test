@@ -16,7 +16,7 @@
       "diagnostics_count": 29,
       "fixed_core_directory": "templates/RxR/core",
       "fixed_core_count": 10,
-      "fixed_core_source": "v1 original R01-R10 reviewer cases migrated to v5 reviewer template schema"
+      "fixed_core_source": "v1 original R01-R10 reviewer cases migrated to v5 reviewer template schema; runtime IDs RXR-CORE-R01..R10 paired by RXR-CORE-G01..G10"
     }
   },
   "runtime_policy": {
