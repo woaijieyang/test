@@ -12,7 +12,7 @@
       "dynamic_count": 35,
       "fixed_core_directory": "templates/RxR/core",
       "fixed_core_count": 10,
-      "fixed_core_source": "v1 original G01-G10 migrated to v5 template schema"
+      "fixed_core_source": "v1 original G01-G10 migrated to v5 template schema; runtime IDs RXR-CORE-G01..G10"
     }
   },
   "runtime_policy": {
