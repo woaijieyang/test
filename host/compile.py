@@ -143,7 +143,8 @@ def runtime_review_output(example):
         if row.get("status") == "source_limited":
             row["status"] = "requires_review"
     for finding in audit["findings"]:
-        if finding.get("code") == "UNRESOLVED_ROUTE_CHOICE":
+        if finding.get("code") == "UNRESOLVED_ROUTE_CHOICE" or (
+                audit.get("verdict") == "unresolved" and not finding.get("code")):
             finding["code"] = "SOURCE_AMBIGUITY"
     # Runtime v2 requires every L0-L6 row to explicitly link its findings.
     # Preserve authored links when present; otherwise derive only the direct
