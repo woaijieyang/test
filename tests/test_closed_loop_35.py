@@ -139,4 +139,22 @@ class CompleteContractTests(unittest.TestCase):
                       for x in audit['handoffs']],
                      [(i,i+1) for i in range(max(0,len(candidate['subtasks'])-1))])
 
+ def test_19_rxr_core_pairs_share_exact_source_and_candidate(self):
+  from host.compile import core_library
+  generators={row["template_id"]:row for row in core_library("generator","rxr-en-us")}
+  reviewers=core_library("reviewer","rxr-en-us")
+  self.assertEqual(len(generators),10)
+  self.assertEqual(len(reviewers),10)
+  for reviewer_row in reviewers:
+   generator_row=generators[reviewer_row["pair_id"]]
+   with self.subTest(template=reviewer_row["template_id"]):
+    self.assertEqual(
+      reviewer_row["review_input"]["original_instruction"],
+      generator_row["input"]["original_instruction"]
+    )
+    candidate=reviewer_row["review_input"]["candidate"]
+    self.assertEqual(candidate["status"],generator_row["output"]["status"])
+    self.assertEqual(candidate["subtasks"],generator_row["output"]["subtasks"])
+    self.assertEqual(candidate["issues"],generator_row["output"]["issues"])
+
 if __name__=='__main__':unittest.main()
