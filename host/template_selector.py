@@ -47,7 +47,13 @@ def features(text):
 def library(role, profile):
     if role not in ('generator', 'reviewer') or profile not in PROFILES:
         raise ValueError('Unsupported role/profile')
-    files = sorted((ROOT/role/'templates'/PROFILES[profile]).glob('*/*.json'))
+    folder = ROOT/role/'templates'/PROFILES[profile]
+    # Legacy migration sources and fixed RxR core are deliberately excluded
+    # from dynamic retrieval. They have separate deterministic loading paths.
+    if role == 'generator':
+        files = sorted((folder/'val_seen').glob('*.json'))
+    else:
+        files = sorted((folder/'paired').glob('*.json')) + sorted((folder/'diagnostics').glob('*.json'))
     rows = [json.loads(f.read_bytes()) for f in files]
     if not rows or len({r['template_id'] for r in rows}) != len(rows):
         raise ValueError('Empty library or duplicate template IDs')
@@ -151,7 +157,17 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     cues, _ = features(source_text)
     distinct = cues - {"orientation_or_reference_frame","room_transition","intermediate_stop_or_wait"}
     extra = min(2, len(distinct)//3 + int(len(source_text.split())>=65))
-    base = rank_examples(gen, source_text, 6+extra if count is None else count)
+    if profile == "rxr-en-us":
+        # RxR receives a smaller, complementary dynamic set because ten
+        # fixed core cases are always injected by the compiler.
+        base_count = (2 + extra) if count is None else count
+        if type(base_count) is not int or not 2 <= base_count <= 4:
+            raise ValueError("RxR dynamic Generator count must be between 2 and 4")
+        diagnostic_count = min(2, int(len(distinct) >= 3) + int(len(source_text.split()) >= 65))
+    else:
+        base_count = 6 + extra if count is None else count
+        diagnostic_count = 2 + extra
+    base = rank_examples(gen, source_text, base_count)
     ids = [r["template_id"] for r in base]
     if role == "generator":
         return ids
@@ -162,9 +178,12 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
             if pair in pairs:
                 raise ValueError(f"Duplicate paired reviewer for {pair}")
             pairs[pair] = row
+    missing = [i for i in ids if i not in pairs]
+    if missing:
+        raise ValueError(f"Missing paired Reviewer templates for Generator IDs: {missing}")
     paired = [pairs[i] for i in ids]
     diagnostics = rank_examples([r for r in rows if not r.get("pair_id")], source_text,
-                                2+extra, excluded=[normalized(source(r)) for r in paired])
+                                diagnostic_count, excluded=[normalized(source(r)) for r in paired])
     return [r["template_id"] for r in paired+diagnostics]
 
 
