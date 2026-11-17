@@ -61,8 +61,9 @@ def core_library(role, profile):
             raise ValueError('RxR Reviewer core must have ten unique Generator core pair IDs')
         gen_folder = ROOT/'generator'/'templates'/'RxR'/'core'
         gen_rows = [json.loads(path.read_bytes()) for path in sorted(gen_folder.glob('*.json'))]
-        if set(pairs) != {row['template_id'] for row in gen_rows}:
-            raise ValueError('RxR Reviewer core pair IDs do not match the ten Generator core IDs')
+        gen_ids = [row['template_id'] for row in gen_rows]
+        if pairs != gen_ids:
+            raise ValueError('RxR Reviewer core pair IDs must match Generator core IDs in G01-G10 order')
     return rows
 
 
