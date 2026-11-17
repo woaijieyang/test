@@ -187,7 +187,7 @@ The fixed core files are:
 - Generator: `generator/templates/RxR/core/G01_RxR-CORE-G01.json` … `G10_RxR-CORE-G10.json`.
 - Reviewer: `reviewer/templates/RxR/core/G01_RxR-CORE-R01.json` … `G10_RxR-CORE-R10.json`.
 
-Their contents retain the v5 template schema and the v1 migration provenance. The `legacy/` copies are not read by `library()`, `select_examples()`, or the compiler. The active dynamic pools contain 35 RxR Generator val_seen cases and 35 paired Reviewer + 29 Diagnostics cases.
+The runtime template IDs are `RXR-CORE-G01`–`RXR-CORE-G10` for Generator and `RXR-CORE-R01`–`RXR-CORE-R10` for Reviewer. Each Reviewer core `pair_id` points to the corresponding Generator core ID. Their contents retain the v5 template schema and v1 migration provenance. The `legacy/` copies are not read by `library()`, `select_examples()`, or the compiler. The active dynamic pools contain 35 RxR Generator val_seen cases and 35 paired Reviewer + 29 Diagnostics cases.
 
 For RxR, adaptive selection chooses 2–4 Generator dynamic examples. Reviewer receives the corresponding 2–4 paired examples and 0–2 Diagnostics. The ten core examples are not included in the selector's candidate pool and cannot be replaced by retrieval. For R2R, the existing 6–8 Generator, paired Reviewer and 2–4 Diagnostic policy is retained.
 
