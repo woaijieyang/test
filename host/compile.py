@@ -175,9 +175,9 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     parts=[build_message,
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
     if profile == 'rxr-en-us':
-        parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\\n' +
+        parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\n' +
                      (ROOT/'shared/dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
-        parts.append(f'RXR ROLE GUIDANCE [{role}/dataset_rules/rxr_en_us.md]:\\n' +
+        parts.append(f'RXR ROLE GUIDANCE [{role}/dataset_rules/rxr_en_us.md]:\n' +
                      (d/'dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
     if role=='reviewer':parts.append((d/'checklist.md').read_text(encoding='utf-8'))
     if repair:parts.append((d/'repair.md').read_text(encoding='utf-8'))
