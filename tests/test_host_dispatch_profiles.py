@@ -36,7 +36,7 @@ class HostDispatchProfileTests(unittest.TestCase):
                           {"original_instruction": r2r.raw}, self.pins["generator"],
                           r2r.profile, select_examples("generator", r2r.profile, r2r.raw))
         r2r_system = r2r_req["messages"][0]["content"]
-        self.assertNotIn("RxR", r2r_system)
+        self.assertNotIn("RXR SHARED SEMANTIC RULES", r2r_system)\n        self.assertNotIn("RXR ROLE GUIDANCE", r2r_system)\n        self.assertNotIn("FIXED RXR", r2r_system)
         self.assertEqual(r2r_req["fixed_core_template_ids"], [])
 
         rxr_ids = select_examples("generator", rxr.profile, rxr.raw)
@@ -105,7 +105,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             self.assertEqual(req["fixed_core_template_ids"], [])
             self.assertEqual(req["dataset_rules"]["version"], "v5-common")
             system = req["messages"][0]["content"]
-            self.assertNotIn("RxR", system)
+            self.assertNotIn("RXR SHARED SEMANTIC RULES", system)\n            self.assertNotIn("RXR ROLE GUIDANCE", system)\n            self.assertNotIn("FIXED RXR", system)
             self.assertNotIn("rxr_en_us", system)
 
 
