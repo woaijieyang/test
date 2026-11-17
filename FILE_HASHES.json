@@ -558,7 +558,7 @@
   "tests/test_patch.py": "gitblob-sha1:174acf490a46a697dbff5a1c24d955d796f68585",
   "tests/test_release_transaction.py": "gitblob-sha1:7184fc6a1dcafca62bb7ac77d71f1b99a831940e",
   "tests/test_reviewer_recovery.py": "gitblob-sha1:ad4faf2ea47193c62fa06c91fbe4fa0172280120",
-  "tests/test_roles_repair.py": "gitblob-sha1:f7ad0c611d5db33647c9cffe2c70f1066aad3a86",
+  "tests/test_roles_repair.py": "gitblob-sha1:61fa4723cf6c407c7feb53ccc4962c404e64f636",
   "tests/test_runtime_contract_v2.py": "gitblob-sha1:4f36c68c5fbd7457c41ed9a62fcbec21dc2275b1",
   "tests/test_rxr_v6_profile.py": "gitblob-sha1:df4f431753be0415cd7ec81b3aacf78c491f339b",
   "tests/test_targeted_feedback.py": "gitblob-sha1:c08d5a9d407084083f6a2e2486b8f78a4ce21eac",
