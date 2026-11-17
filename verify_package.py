@@ -41,8 +41,8 @@ def main() -> int:
     actual = {
         p.relative_to(ROOT).as_posix()
         for p in ROOT.rglob("*")
-        if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"
-        and p.relative_to(ROOT).as_posix() != "FILE_HASHES.json"
+        if p.is_file() and ".git" not in p.parts and "__pycache__" not in p.parts
+        and p.suffix != ".pyc" and p.relative_to(ROOT).as_posix() != "FILE_HASHES.json"
     }
     expected = set(hashes)
     missing = sorted(expected - actual)
