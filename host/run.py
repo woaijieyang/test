@@ -49,6 +49,32 @@ def dataset_rules_metadata(profile):
 
 
 
+def prompt_components_metadata(role, profile):
+    """Freeze all source files that contribute to this role's compiled prompt."""
+    root = Path(__file__).resolve().parents[1]
+    paths = [root/role/"prompt.md", root/"shared/semantic_contract.md"]
+    if role == "reviewer":
+        paths.append(root/"reviewer/checklist.md")
+    if role == "generator":
+        paths.append(root/"generator/acceptance.md")
+    if role == "generator" and profile == "rxr-en-us":
+        paths.append(root/"generator/repair.md")
+    if profile == "rxr-en-us":
+        paths.extend([
+            root/"shared/dataset_rules/rxr_en_us.md",
+            root/role/"dataset_rules/rxr_en_us.md",
+        ])
+    files = []
+    for path in paths:
+        data = path.read_bytes()
+        files.append({
+            "path": path.relative_to(root).as_posix(),
+            "sha256": text_hash(data.decode("utf-8")),
+        })
+    return {"role": role, "profile": profile, "files": files,
+            "sha256": obj_hash(files)}
+
+
 def template_bundle_metadata(role, profile, selected_ids):
     """Hash the fixed core and selected dynamic templates for task-level freezing."""
     fixed = core_library(role, profile)
@@ -78,6 +104,7 @@ def request(role, phase, payload, pin, profile, selected_ids):
         "phase": phase,
         "profile": profile,
         "dataset_rules": rules,
+        "prompt_components": prompt_components_metadata(role, profile),
         "template_bundle": bundle,
         "fixed_core_template_ids": bundle["fixed_core_ids"],
         "model": pin["model"],
@@ -97,6 +124,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
     """Run at most four semantic calls plus at most two technical corrections per role; preserve exact source fallback on every failure."""
     events, snapshots = [], []
     rules_frozen = None
+    prompt_components_frozen = {}
     template_bundles = {}
     fixed_core_ids = {role: [] for role in ("generator", "reviewer")}
     selections = {role: [] for role in ("generator", "reviewer")}
@@ -111,6 +139,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         need(req["dataset_rules"] == rules_frozen,
              "Dataset-specific rule bundle changed during the task",
              code="RULE_BUNDLE_MUTATED", module="host.run", path="/dataset_rules")
+        need(req["prompt_components"] == prompt_components_frozen[role],
+             "Compiled prompt source components changed during the task",
+             code="PROMPT_COMPONENTS_MUTATED", module="host.run", path="/prompt_components")
         system, user = req["messages"]
         event = {
             "role": role, "phase": phase, "request": req,
@@ -266,6 +297,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             "profile": src.profile,
             "source_sha256": src.sha,
             "dataset_rules": rules_frozen,
+            "prompt_components": prompt_components_frozen,
             "template_bundles": template_bundles,
             "fixed_core_template_ids": {
                 role: list(ids) for role, ids in fixed_core_ids.items()
@@ -316,6 +348,10 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         )
         context["step"] = "example_selection"
         rules_frozen = dataset_rules_metadata(src.profile)
+        prompt_components_frozen = {
+            role: prompt_components_metadata(role, src.profile)
+            for role in ("generator", "reviewer")
+        }
         # Resolve and validate fixed core once before any model invocation.
         # finish() reports cached IDs and remains safe if core loading fails.
         fixed_core_ids = {
