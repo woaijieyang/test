@@ -46,16 +46,22 @@ class RolesRepairTests(unittest.TestCase):
          for row in core_library('generator',profile):
              protocol.generator(source(row),row['output'])
  def test_reviewer_examples_validate(self):
+     def validate(row):
+         review_input = row['review_input']
+         candidate = review_input['candidate']
+         if isinstance(candidate, str):
+             candidate = {'status':'ok','subtasks':[candidate],'issues':[]}
+         elif isinstance(candidate, list):
+             candidate = {'status':'ok','subtasks':candidate,'issues':[]}
+         expected = dict(row['expected_review'])
+         expected.setdefault('prior_finding_reviews', [])
+         protocol.reviewer(review_input['original_instruction'], candidate, expected)
      for profile in PROFILES:
          for row in library('reviewer',profile):
-             review = runtime_review_output(row)
-             protocol.reviewer(row['review_input']['original_instruction'],
-                               row['review_input']['candidate'],review)
+             validate(row)
      from host.compile import core_library
      for row in core_library('reviewer','rxr-en-us'):
-         review = runtime_review_output(row)
-         protocol.reviewer(row['review_input']['original_instruction'],
-                           row['review_input']['candidate'],review)
+         validate(row)
  def test_r2r_regression_suite_has_six_distinct_cases(self):
   x=json.loads((ROOT/'generator/tests/r2r_regressions.json').read_text(encoding='utf-8'))
   self.assertEqual({r['episode'] for r in x},{'1099','1148','1149','115','1330','406'})
