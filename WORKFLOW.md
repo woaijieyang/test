@@ -61,3 +61,29 @@ For tokenizer/input provenance, instrument the existing navigator after it const
 ## 8. Runtime wire-schema v2
 
 G0 and G1 use `generator/output.schema.json`; G1 wraps it in `generator/repair.schema.json` with a one-to-one `responses` list. R0 and R1 use `reviewer/output.schema.json`. Generator stage audits use `subtask_index` and required `ending.stop_scope`; Reviewer dimensions use `source_fidelity`. R0's `prior_finding_reviews` is empty; R1's contains exactly one disposition per R0 finding. The complete field table and empty/null semantics are in `host/README.md`.
+
+
+## 9. v6 dataset-profile extension
+
+The Adapter profile is the sole switch for dataset-specific compilation. No source-language heuristic in the Generator or Reviewer chooses the profile.
+
+### R2R English
+
+For `r2r-en`, compile the unchanged v5 common Generator/Reviewer prompts and shared contract. Load the existing R2R dynamic pools and retain the existing adaptive selection ranges (6–8 Generator examples; matching 6–8 Reviewer paired examples plus 2–4 Diagnostics). Load no RxR rule file and no fixed core templates. This is the preservation path.
+
+### RxR en-US
+
+For `rxr-en-us`, compile the same v5 common prompts and schemas, then append in order:
+1. `shared/dataset_rules/rxr_en_us.md`;
+2. the role-specific `generator/dataset_rules/rxr_en_us.md` or `reviewer/dataset_rules/rxr_en_us.md`;
+3. the unchanged role-specific acceptance/checklist/repair content and active v5 schema;
+4. the ten fixed v5-format core examples in stable order;
+5. the selected dynamic examples.
+
+Generator dynamic selection is 2–4 from the 35 RxR val_seen Generator templates. Reviewer first loads the 10 independent Reviewer core cases, then the 2–4 paired Reviewer examples corresponding to the Generator dynamic IDs, then 0–2 relevant Diagnostics from the 29-case pool. The 10 original v1 cases are migrated v5-format examples under `templates/RxR/core/`; `templates/RxR/legacy/` is provenance-only and excluded from runtime retrieval.
+
+### Selection and freeze semantics
+
+The dynamic selection is made once at task start. G0 and G1 use the same Generator selection. R0 and R1 use the same Reviewer selection. Core order is deterministic and independent of retrieval. At task start Host hashes the shared and role-specific RxR rule files and each role's combined fixed-core + selected-dynamic template content. Every later role request recomputes and compares these hashes; a mid-task file change is a technical contract failure, not permission to silently use a different rule/example set.
+
+The final Actor input remains only the existing rendered natural-language instruction. Dataset rules, templates, stage audits, evidence, template IDs and hashes remain Host-side metadata. No AwareVLN Reason/Act, STOP, goal switching, memory, image input or navigation budget behavior is changed.
