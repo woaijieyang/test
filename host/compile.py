@@ -111,7 +111,13 @@ def runtime_review_output(example):
                             f"Reviewer teaching evidence is not grounded in a candidate stage at "
                             f"{path}/{row_index}/{evidence_index}: {evidence_item!r}"
                         )
-                    mapped.extend({"subtask_index": i, "quote": evidence_item} for i in matches)
+                    if len(matches) != 1:
+                        raise ValueError(
+                            f"Ambiguous Reviewer teaching evidence must declare subtask_index at "
+                            f"{path}/{row_index}/{evidence_index}: {evidence_item!r}; "
+                            f"matches stages {matches}"
+                        )
+                    mapped.append({"subtask_index": matches[0], "quote": evidence_item})
                 item["candidate_evidence"] = mapped
                 converted.append(item)
             else:
@@ -140,6 +146,8 @@ def teaching_card(example, role, detailed):
         out = example["output"]
         card = dict(source=example["input"]["original_instruction"], decision=example["decision"],
                     stages=out["subtasks"], handoffs=out["handoffs"], issues=out["issues"])
+        # Every fixed core card carries the complete five-element stage audit.
+        # Dynamic cards may use the compact form selected by the caller.
         if detailed:
             card["stage_evidence"] = out["stage_audit"]
         lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters")
@@ -149,6 +157,8 @@ def teaching_card(example, role, detailed):
                     dimensions=audit["dimensions"], findings=audit["findings"])
         if detailed:
             card["coverage_evidence"] = audit["source_coverage"]
+            card["stage_checks"] = audit.get("stage_checks", [])
+            card["layer_checks"] = audit.get("layer_checks", [])
             card["handoffs"] = audit["handoffs"]
         lesson = notes.get("case_specific_focus") or notes.get("review_principle") or notes.get("reuse_rule")
     return dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
@@ -197,7 +207,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             core_ids=[r['template_id'] for r in fixed]
             parts.append(f'FIXED RXR {role.upper()} CORE: exactly 10 v5-format examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
             for position, example in enumerate(fixed):
-                parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))
+                parts.append(canonical(teaching_card(example, role, detailed=True)))
         parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic v5 teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
             example = byid[eid]
