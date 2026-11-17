@@ -180,6 +180,17 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
         self.assertNotIn("RXR ROLE GUIDANCE", prompt)
 
+    def test_r2r_dynamic_library_order_matches_v5_path_order(self):
+        from pathlib import Path
+        from host.compile import ROOT
+        for role in ("generator", "reviewer"):
+            folder = ROOT / role / "templates" / "R2R"
+            expected_paths = sorted(folder.glob("*/*.json"))
+            expected_ids = [__import__("json").loads(p.read_bytes())["template_id"]
+                            for p in expected_paths]
+            actual_ids = [row["template_id"] for row in library(role, "r2r-en")]
+            self.assertEqual(actual_ids, expected_ids)
+
     def test_r2r_never_receives_rxr_core_or_rules(self):
         src = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "dispatch-r2r",
