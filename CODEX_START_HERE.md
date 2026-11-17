@@ -1,4 +1,4 @@
-# Codex start here｜final-best-v1 integration contract
+# Codex start here｜LLM-decompose-v6 integration contract
 
 ## Hard constraints
 
@@ -65,3 +65,18 @@ No result from this package should be called a gain until the corresponding mode
 ## Runtime schema v2 integration checks
 
 Before connecting a paid transport, verify the three runtime schemas are Draft 2020-12 and the host uses their exact names. In particular, do not regress `subtask_index` to `index`, or `source_fidelity` to `fidelity`. Confirm the Generator output schema reuses the shared Stage Audit/Handoff schemas; confirm Reviewer findings allow evidence indices across stages independent of repair-target indices; confirm R0/R1 both use the Reviewer schema and R1 receives `prior_review`, `prior_candidate`, and `prior_rendered_instruction`. Read `host/README.md` as the source of truth for the runtime field table and final verdict/fallback rules.
+
+
+## v6 RxR profile-specific integration requirements
+
+The repository branch `LLM-decompose-v6` already contains the v6 profile implementation. When integrating this package into AwareVLN, preserve the profile dispatch and do not recreate it inside the actor:
+
+- R2R English remains on the v5 common rules and dynamic selection path. It must not load any RxR-specific rule or fixed core.
+- RxR en-US loads the shared RxR semantic rules and the role-specific Generator or Reviewer guidance.
+- Every normal RxR Generator call injects the ten fixed v5-format core cases in G01–G10 order, then 2–4 dynamic examples. G0 and G1 reuse the same IDs and content hash.
+- Every normal RxR Reviewer call injects the ten independent fixed Reviewer cases R01–R10, then the paired dynamic Reviewer cases corresponding to Generator IDs, then 0–2 Diagnostics. R0 and R1 reuse the same IDs and content hash.
+- The original v1 JSON files under `legacy/` are provenance only. Runtime reads the migrated v5-format `core/` copies. Do not copy v1 output schemas or prompt wording into the live contract.
+- Fixed-core identity, role, language, dataset scope, count, order and Reviewer pair linkage are validated before G0. Failure must be a technical exact-source fallback before transport.
+- The Host freezes RxR rule hashes and per-role fixed+dynamic template hashes for the full G0–R1 task. Do not reload a changed template set midway through repair/review.
+
+The actor still receives only the final rendered instruction string. No fixed core ID, dataset rule, audit field, reviewer finding, template annotation or template hash is passed into AwareVLN Reason/Act.
