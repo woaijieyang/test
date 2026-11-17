@@ -1,6 +1,6 @@
 {
   "schema_version": "generator-v1.5.1-template",
-  "template_id": "RxR-LEGACY-G01",
+  "template_id": "RXR-CORE-G01",
   "role": "generator",
   "dataset_scope": "RxR",
   "language": "en-US",
