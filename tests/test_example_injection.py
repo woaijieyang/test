@@ -28,7 +28,7 @@ class InjectionTests(unittest.TestCase):
                     t=c['teaching']
                     is_first_in_group = c['template_id'] in (
                         (fixed[0]['template_id'] if fixed else None),
-                        (library(role,profile)[0]['template_id'] if library(role,profile) else None)
+                        (ids[0] if ids else None)
                     )
                     if role=='generator':
                         self.assertEqual(t['stages'],e['output']['subtasks'])
