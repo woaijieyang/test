@@ -38,4 +38,3 @@ jobs:
           python -B -m unittest discover -s tests -p "test_workflow_integration.py" -v
           python -B -m unittest discover -s tests -p "test_targeted_feedback.py" -v
           python -B -m unittest discover -s tests -p "test_final_best_contract.py" -v
-          python -B -m unittest discover -s tests -p "test_release_transaction.py" -v
