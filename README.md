@@ -87,7 +87,10 @@ python -m host.compile
 python -B -m unittest discover -s tests -p test_entry_diagnostics.py -v
 python -B -m unittest discover -s tests -p test_closed_loop_35.py -v
 python -B -m unittest discover -s tests -p test_roles_repair.py -v
-python -B -m unittest discover -s tests -p test_release_transaction.py -v
+python -B -m unittest discover -s tests -p test_rxr_v6_profile.py -v
+python -B -m unittest discover -s tests -p test_reviewer_recovery.py -v
+# The release-transaction fixture requires the separate case1 companion directory;
+# it is not included in this repository branch.
 # Run the complete inherited suite separately and compare known baseline failures:
 python -B -m unittest discover -s tests -v
 python -m examples.demo
@@ -126,7 +129,7 @@ The runtime schema and host files were edited on the `LLM-decompose` branch from
 
 ## Full-tree integrity manifest
 
-`FILE_HASHES.json` now covers all 381 tracked files in this branch (excluding the manifest itself). It retains SHA-256 for the 82 files already recorded in the release manifest and uses the exact Git blob SHA-1 for the remaining 299 tracked files, including archived snapshots and per-example templates. `verify_package.py` verifies both forms and rejects missing or extra files. The Git blob value is computed as SHA-1 over `blob <byte-length>\0<file-bytes>`; it is not a plain SHA-1 of file contents.
+`FILE_HASHES.json` covers all 568 tracked files in the v6 branch (excluding the manifest itself), using the exact Git blob SHA-1 for each file, including archived snapshots, fixed core templates, dynamic examples, rules and tests. `verify_package.py` verifies the complete tracked tree and rejects missing or extra files. The Git blob value is computed as SHA-1 over `blob <byte-length>\0<file-bytes>`; it is not a plain SHA-1 of file contents.
 
 ## Default role models
 
