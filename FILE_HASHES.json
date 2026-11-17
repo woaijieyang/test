@@ -552,7 +552,7 @@
   "tests/fixtures/targeted-feedback.json": "gitblob-sha1:19a3c3269b9f3fbb5da7e486a82c6c4ea6eb2eff",
   "tests/test_closed_loop_35.py": "gitblob-sha1:ae2dc4fbbd57c1adaa14bf7a25a60210f3bf2dd5",
   "tests/test_entry_diagnostics.py": "gitblob-sha1:70390a07c52e1d55e265f6fdd72bb813008293a2",
-  "tests/test_example_injection.py": "gitblob-sha1:977390e314907b14fa0aca955013ddbc8ecc0da8",
+  "tests/test_example_injection.py": "gitblob-sha1:9ff4e3875651628244b8fb346003af5088b79c47",
   "tests/test_final_best_contract.py": "gitblob-sha1:d4dd27443b31accb4ceaf56634e795ea5e21f27b",
   "tests/test_paired_selection.py": "gitblob-sha1:f2ca40bbc1abab91fbfe5a1ed99b1e84f85bddd0",
   "tests/test_patch.py": "gitblob-sha1:174acf490a46a697dbff5a1c24d955d796f68585",
