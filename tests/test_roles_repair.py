@@ -48,12 +48,16 @@ class RolesRepairTests(unittest.TestCase):
  def test_reviewer_examples_validate(self):
      for profile in PROFILES:
          for row in library('reviewer',profile):
+             review = dict(row['expected_review'])
+             review.setdefault('prior_finding_reviews', [])
              protocol.reviewer(row['review_input']['original_instruction'],
-                               row['review_input']['candidate'],row['expected_review'])
+                               row['review_input']['candidate'],review)
      from host.compile import core_library
      for row in core_library('reviewer','rxr-en-us'):
+         review = dict(row['expected_review'])
+         review.setdefault('prior_finding_reviews', [])
          protocol.reviewer(row['review_input']['original_instruction'],
-                           row['review_input']['candidate'],row['expected_review'])
+                           row['review_input']['candidate'],review)
  def test_r2r_regression_suite_has_six_distinct_cases(self):
   x=json.loads((ROOT/'generator/tests/r2r_regressions.json').read_text(encoding='utf-8'))
   self.assertEqual({r['episode'] for r in x},{'1099','1148','1149','115','1330','406'})
