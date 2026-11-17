@@ -14,6 +14,12 @@ class RxRV6ProfileTests(unittest.TestCase):
         self.assertEqual(len(rev), 10)
         self.assertEqual([x["template_id"] for x in gen],
                          [f"RXR-CORE-G{i:02d}" for i in range(1, 11)])
+        self.assertEqual([x["template_id"] for x in rev],
+                         [f"RXR-CORE-R{i:02d}" for i in range(1, 11)])
+        self.assertEqual([x["pair_id"] for x in rev],
+                         [x["template_id"] for x in gen])
+        self.assertEqual([x["template_id"] for x in gen],
+                         [f"RXR-CORE-G{i:02d}" for i in range(1, 11)])
         self.assertEqual([x["pair_id"] for x in rev],
                          [x["template_id"] for x in gen])
         self.assertEqual(core_library("generator", "r2r-en"), [])
