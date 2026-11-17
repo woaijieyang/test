@@ -217,7 +217,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         diagnostics = rank_examples(
             [row for row in reviewer_rows if not row.get("pair_id")],
             text, 2 + extra,
-            excluded=[normalized(row["input"]["original_instruction"])
+            excluded=[normalized((row.get("input") or row["review_input"])["original_instruction"])
                       for row in (pairs[item] for item in expected_generator)]
         )
         expected_reviewer = expected_paired + [row["template_id"] for row in diagnostics]
