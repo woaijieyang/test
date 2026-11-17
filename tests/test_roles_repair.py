@@ -68,4 +68,47 @@ class RolesRepairTests(unittest.TestCase):
  def test_compiler_rejects_missing_or_wrong_profile(self):
   with self.assertRaises(TypeError):compile_prompt('generator')
   with self.assertRaises(ValueError):compile_prompt('generator',profile='rxr-en')
+ def test_reviewer_evidence_projection_rejects_ambiguous_stage_mapping(self):
+     example = {
+         "expected_review": {
+             "verdict": "revise",
+             "source_coverage": [{
+                 "requirement_id": "SRC-1",
+                 "candidate_evidence": ["Turn right"]
+             }],
+             "findings": [], "prior_finding_reviews": [],
+             "layer_checks": []
+         },
+         "review_input": {
+             "candidate": {
+                 "subtasks": ["Turn right and continue.", "Turn right and stop."]
+             }
+         }
+     }
+     with self.assertRaisesRegex(ValueError, "Ambiguous Reviewer teaching evidence"):
+         runtime_review_output(example)
+
+ def test_reviewer_evidence_projection_accepts_unique_and_explicit_stage(self):
+     example = {
+         "expected_review": {
+             "verdict": "revise",
+             "source_coverage": [{
+                 "requirement_id": "SRC-1",
+                 "candidate_evidence": ["Turn left"]
+             }],
+             "findings": [{
+                 "candidate_evidence": [{"subtask_index": 1, "quote": "Turn right"}]
+             }],
+             "prior_finding_reviews": [], "layer_checks": []
+         },
+         "review_input": {
+             "candidate": {"subtasks": ["Turn left and continue.", "Turn right and stop."]}
+         }
+     }
+     audit = runtime_review_output(example)
+     self.assertEqual(audit["source_coverage"][0]["candidate_evidence"],
+                      [{"subtask_index": 0, "quote": "Turn left"}])
+     self.assertEqual(audit["findings"][0]["candidate_evidence"],
+                      [{"subtask_index": 1, "quote": "Turn right"}])
+
 if __name__=='__main__':unittest.main()
