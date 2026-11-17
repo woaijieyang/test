@@ -83,7 +83,7 @@ class HostDispatchProfileTests(unittest.TestCase):
     def test_r2r_never_receives_rxr_core_or_rules(self):
         src = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "dispatch-r2r",
-            "instruction_text": "Walk through the doorway and stop."
+            "instruction_text": SOURCE
         })
         candidate = generator_candidate(repaired=True)
         review = reviewer_output(candidate, repaired=True)
