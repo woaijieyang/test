@@ -68,9 +68,36 @@ class RxRV6ProfileTests(unittest.TestCase):
                                       for role in ("generator", "reviewer")})
         self.assertEqual(result["disposition"], "fallback_technical")
         self.assertEqual(result["instruction"], source_text)
-        self.assertEqual(result["fixed_core_template_ids"] if "fixed_core_template_ids" in result else
-                         result["example_selection"]["fixed_core_generator_ids"], [])
+        self.assertEqual(result["fixed_core_template_ids"]["generator"], [])
+        self.assertEqual(result["fixed_core_template_ids"]["reviewer"], [])
         self.assertEqual(calls, [])
+
+    def test_run_record_reports_all_mode_pairs_and_diagnostics(self):
+        from adapter.source import Source
+        from host.run import run_record
+        from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+        candidate = generator_candidate(True)
+        review = reviewer_output(candidate, repaired=True)
+        def transport(req):
+            output = candidate if req["role"] == "generator" else review
+            return {"output": output,
+                    "receipt": {"model": req["model"], "effort": req["effort"],
+                                "request_id": req["phase"] + "-fixture"}}
+        result = run_record(
+            Source("rxr-all-mode", "RxR", "en-US", SOURCE),
+            transport,
+            pins={role: {"model": "fixture", "effort": "low"}
+                  for role in ("generator", "reviewer")},
+            selection_mode="all",
+        )
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual(len(result["fixed_core_template_ids"]["generator"]), 10)
+        self.assertEqual(len(result["fixed_core_template_ids"]["reviewer"]), 10)
+        selection = result["example_selection"]
+        self.assertEqual(selection["actual_generator_examples"], 35)
+        self.assertEqual(selection["actual_reviewer_examples"], 64)
+        self.assertEqual(selection["reviewer_pair_count"], 35)
+        self.assertEqual(len(selection["reviewer_diagnostic_ids"]), 29)
 
     def test_r2r_dynamic_retrieval_is_unchanged(self):
         g = select_examples("generator", "r2r-en", "Walk to the door and turn left.")
