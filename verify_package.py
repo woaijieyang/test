@@ -1,4 +1,4 @@
-"""Verify the final-best-v1 source tree against FILE_HASHES.json."""
+"""Verify the LLM-decompose-v6 source tree against FILE_HASHES.json."""
 from __future__ import annotations
 import hashlib
 import json
@@ -20,7 +20,14 @@ REQUIRED = [
     "reviewer/templates/RxR/paired/001_RxR-REV-001.json",
     "shared/template_schemas_v1_5_2/stage_audit.schema.json",
     "shared/template_schemas_v1_5_2/handoff.schema.json",
-    "tests/test_patch.py", "tests/test_final_best_contract.py", "validation.json",
+    "tests/test_patch.py", "tests/test_final_best_contract.py", "tests/test_rxr_v6_profile.py",
+    "shared/dataset_rules/rxr_en_us.md", "generator/dataset_rules/rxr_en_us.md",
+    "reviewer/dataset_rules/rxr_en_us.md",
+    "generator/templates/RxR/core/G01_RxR-CORE-G01.json",
+    "generator/templates/RxR/core/G10_RxR-CORE-G10.json",
+    "reviewer/templates/RxR/core/G01_RxR-CORE-R01.json",
+    "reviewer/templates/RxR/core/G10_RxR-CORE-R10.json",
+    ".github/workflows/v6-validation.yml", "validation.json",
 ]
 
 def main() -> int:
