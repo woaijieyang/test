@@ -209,6 +209,8 @@ def write_type_index(role):
              "|---|---|---|---|---|---|"]
     for profile, dataset in PROFILES.items():
         for path in sorted((folder/dataset).glob("*/*.json")):
+            if path.parent.name == "legacy":
+                continue
             row = json.loads(path.read_bytes())
             lines.append("|{}|[{}]({})|{}|{}|{}|{}|".format(
                 dataset, row["template_id"], path.relative_to(folder).as_posix(), path.parent.name,
