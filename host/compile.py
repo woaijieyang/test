@@ -48,7 +48,9 @@ def core_library(role, profile):
     if len({row['template_id'] for row in rows}) != 10:
         raise ValueError(f'RxR {role} fixed core contains duplicate template IDs')
     for row in rows:
-        if row.get('role') != role or row.get('dataset_scope') != 'RxR' or row.get('language') != 'en-US':
+        if (row.get('role') != role or
+                row.get('dataset_scope') not in ('RxR', 'RxR_prompt_teaching_example') or
+                row.get('language') != 'en-US'):
             raise ValueError(f'Invalid RxR {role} core template identity: {row.get("template_id")}')
     if role == 'reviewer':
         pairs = [row.get('pair_id') for row in rows]
