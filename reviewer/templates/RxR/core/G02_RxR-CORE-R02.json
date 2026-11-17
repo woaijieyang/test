@@ -1,10 +1,10 @@
 {
   "schema_version": "reviewer-v1.5.1-template",
-  "template_id": "RxR-LEGACY-G02",
+  "template_id": "RXR-CORE-R02",
   "role": "reviewer",
   "dataset_scope": "RxR_prompt_teaching_example",
   "language": "en-US",
-  "pair_id": "RxR-LEGACY-G02",
+  "pair_id": "RXR-CORE-G02",
   "source": {
     "split": "synthetic_or_adapted",
     "role": "prompt_example",
