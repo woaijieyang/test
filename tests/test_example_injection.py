@@ -37,6 +37,12 @@ class InjectionTests(unittest.TestCase):
                         self.assertEqual(t['findings'],runtime_review_output(e)['findings'])
                         self.assertEqual(t['review_case'],e['review_input'])
                         self.assertEqual('coverage_evidence' in t,expects_detailed)
+                        if is_fixed_core:
+                            self.assertIn('stage_checks',t)
+                            self.assertIn('layer_checks',t)
+                            self.assertEqual(len(t['stage_checks']),
+                                             len(e['review_input']['candidate']['subtasks']))
+                            self.assertEqual(len(t['layer_checks']),7)
                 self.assertIn('two distinct stops',text)
                 blank,other_schema=compile_prompt(role,phase,profile=profile,original_instruction=source,examples=False)
                 self.assertEqual(other_schema,schema);self.assertNotIn('APPLY THE EXAMPLES',blank)
