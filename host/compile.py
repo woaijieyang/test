@@ -47,6 +47,9 @@ def core_library(role, profile):
         raise ValueError(f'RxR {role} fixed core must contain exactly 10 templates; found {len(rows)}')
     if len({row['template_id'] for row in rows}) != 10:
         raise ValueError(f'RxR {role} fixed core contains duplicate template IDs')
+    expected_ids = [f'RxR-LEGACY-G{i:02d}' for i in range(1, 11)]
+    if [row['template_id'] for row in rows] != expected_ids:
+        raise ValueError(f'RxR {role} fixed core IDs/order must be exactly G01-G10')
     for row in rows:
         if (row.get('role') != role or
                 row.get('dataset_scope') not in ('RxR', 'RxR_prompt_teaching_example') or
