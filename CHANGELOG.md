@@ -21,3 +21,17 @@
 - Update Host run to pass the frozen R0 review, old candidate and old rendered text to independent R1; preserve the four-call maximum, request receipts, snapshot hashes and exact-source technical fallback.
 - Migrate G1 repair teaching examples to the new runtime envelope.
 - No model inference or navigation experiment was run during this schema/host update.
+
+
+## LLM-decompose-v6
+
+- Branch baseline: exact `LLM-decompose-v5` commit `c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3`.
+- Preserve the v5 common Generator/Reviewer prompts, semantic contract, runtime schemas, Stage Audit, Handoff, L0–L6 review, Adapter, Renderer, Host call flow and AwareVLN actor boundary.
+- Add shared RxR en-US semantic rules plus separate Generator and Reviewer operational guidance.
+- Add ten fixed v5-format Generator core examples and ten independent fixed v5-format Reviewer core examples migrated from the original v1 G01–G10/R01–R10 cases. Preserve v1 lineage in template provenance; do not load v1 JSON at runtime.
+- Exclude RxR legacy provenance copies from dynamic retrieval.
+- RxR dynamic retrieval: 2–4 Generator examples; corresponding 2–4 paired Reviewer examples; 0–2 Diagnostics. R2R selection ranges remain unchanged.
+- Extend the profile-aware compiler to load RxR rules and fixed core only for `rxr-en-us`.
+- Freeze rule bundle hashes and each role's fixed+dynamic template bundle hashes across G0/G1 and R0/R1.
+- Add offline tests for fixed core size/pairing, dynamic pool separation, profile isolation, prompt injection and metadata hashes.
+- No model calls or navigation runs are claimed as part of this engineering release.
