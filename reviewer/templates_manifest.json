@@ -1,19 +1,51 @@
 {
-  "version": "1.5.2",
-  "profiles": {
+  "version": "6.0",
+  "dataset_profiles": {
     "r2r-en": {
-      "directory": "templates/R2R",
-      "count": 61
+      "paired_directory": "templates/R2R/paired",
+      "diagnostics_directory": "templates/R2R/diagnostics",
+      "paired_count": 35,
+      "diagnostics_count": 26,
+      "fixed_core_directory": null,
+      "fixed_core_count": 0
     },
     "rxr-en-us": {
-      "directory": "templates/RxR",
-      "count": 74
+      "paired_directory": "templates/RxR/paired",
+      "diagnostics_directory": "templates/RxR/diagnostics",
+      "paired_count": 35,
+      "diagnostics_count": 29,
+      "fixed_core_directory": "templates/RxR/core",
+      "fixed_core_count": 10,
+      "fixed_core_source": "v1 original R01-R10 reviewer cases migrated to v5 reviewer template schema"
     }
   },
-  "default_range": [
-    8,
-    12
-  ],
-  "zip_sha256": "8d1ad270fc9c556fa23f1f04610209e1e73bbb446d486f84ff194110c12e1a07",
-  "selection": "same base via pair_id plus 2-4 unique diagnostics"
+  "runtime_policy": {
+    "r2r-en": {
+      "paired_dynamic_examples": [
+        6,
+        8
+      ],
+      "diagnostic_dynamic_examples": [
+        2,
+        4
+      ],
+      "fixed_core": 0
+    },
+    "rxr-en-us": {
+      "paired_dynamic_examples": [
+        2,
+        4
+      ],
+      "diagnostic_dynamic_examples": [
+        0,
+        2
+      ],
+      "fixed_core": 10,
+      "core_order": "R01-R10",
+      "core_is_unconditional": true
+    }
+  },
+  "legacy_directory": "templates/RxR/legacy",
+  "legacy_runtime_use": false,
+  "selection": "fixed independent Reviewer core plus paired dynamic examples matching Generator IDs and up to two relevant Diagnostics"
 }
