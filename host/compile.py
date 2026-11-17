@@ -101,6 +101,15 @@ def runtime_review_output(example):
                 mapped = []
                 for evidence_index, evidence_item in enumerate(evidence):
                     if isinstance(evidence_item, dict):
+                        stage_index = evidence_item.get("subtask_index")
+                        quote = evidence_item.get("quote")
+                        if (type(stage_index) is not int or not 0 <= stage_index < len(stages)
+                                or not isinstance(quote, str) or not quote
+                                or quote not in stages[stage_index]):
+                            raise ValueError(
+                                f"Reviewer teaching evidence has invalid stage/quote at "
+                                f"{path}/{row_index}/{evidence_index}: {evidence_item!r}"
+                            )
                         mapped.append(evidence_item)
                         continue
                     if not isinstance(evidence_item, str) or not evidence_item:
