@@ -146,7 +146,7 @@ v6 is based on the exact `LLM-decompose-v5` branch commit and preserves its comm
 - Reviewer: v5 Reviewer prompt + v5 shared semantic contract + shared RxR en-US rules + Reviewer RxR guidance + unchanged active Reviewer schema + fixed independent Reviewer core R01–R10 + 2–4 paired dynamic Reviewer examples + 0–2 relevant diagnostics.
 - G1 reuses the exact Generator core/dynamic selection from G0. R1 reuses the exact Reviewer core/dynamic/diagnostic selection from R0. The Host records a content hash for the rule bundle and each role's complete fixed+dynamic template bundle, and rejects mid-task mutation.
 - Fixed core cases are loaded in stable G01–G10 / R01–R10 order. They are not ranked, replaced, or removed by retrieval. The `legacy/` directories are provenance archives; runtime loads the v5-format copies under `core/`, never the original v1 JSON.
-- The 10 Generator and 10 Reviewer core files are v5-format migrations of the original v1 examples. Their `legacy_reference` and provenance fields preserve lineage. Reviewer core cases remain independent review examples and pair with the corresponding Generator core IDs. Reviewer filenames use R01–R10 slot labels, while their `template_id` intentionally remains the paired Generator ID for exact one-to-one linkage.
+- The 10 Generator and 10 Reviewer core files are v5-format migrations of the original v1 examples. Their `legacy_reference` and provenance fields preserve lineage. Reviewer core cases remain independent review examples and pair with the corresponding Generator core IDs. Reviewer files use `RXR-CORE-R01`–`RXR-CORE-R10` as their own `template_id`; `pair_id` points to the corresponding `RXR-CORE-G01`–`RXR-CORE-G10` Generator case.
 
 ### RxR rule responsibilities
 
