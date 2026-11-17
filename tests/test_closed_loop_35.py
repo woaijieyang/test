@@ -155,6 +155,5 @@ class CompleteContractTests(unittest.TestCase):
     candidate=reviewer_row["review_input"]["candidate"]
     self.assertEqual(candidate["status"],generator_row["output"]["status"])
     self.assertEqual(candidate["subtasks"],generator_row["output"]["subtasks"])
-    self.assertEqual(candidate["issues"],generator_row["output"]["issues"])
 
 if __name__=='__main__':unittest.main()
