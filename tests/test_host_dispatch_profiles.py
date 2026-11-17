@@ -87,6 +87,61 @@ class HostDispatchProfileTests(unittest.TestCase):
             self.assertEqual(role_requests[0]["template_bundle"]["sha256"],
                              result["template_bundles"][role]["sha256"])
 
+    def test_rxr_g0_r0_g1_r1_reuses_frozen_profile_rules_and_templates(self):
+        from test_runtime_contract_v2 import reviewer_output
+        src = from_record({
+            "dataset": "RxR", "language": "en-US", "split": "val_seen",
+            "instruction_id": "dispatch-four-phase", "instruction": SOURCE
+        })
+        old = generator_candidate(repaired=False)
+        new = generator_candidate(repaired=True)
+        r0 = reviewer_output(old, repaired=False)
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        repair = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The source explicitly requires the omitted hallway traversal."
+            }]
+        }
+        replies = [old, r0, repair, r1]
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            return {
+                "output": replies.pop(0),
+                "receipt": {
+                    "model": req["model"], "effort": req["effort"],
+                    "request_id": f"rxr-four-phase-{len(requests)}"
+                }
+            }
+
+        result = run_record(src, transport, pins=self.pins)
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual([(x["role"], x["phase"]) for x in requests], [
+            ("generator", "initial"), ("reviewer", "review"),
+            ("generator", "repair"), ("reviewer", "recheck")
+        ])
+        for req in requests:
+            self.assertEqual(req["profile"], "rxr-en-us")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+        for role, phase in (("generator", "initial"), ("reviewer", "review"),
+                            ("generator", "repair"), ("reviewer", "recheck")):
+            req = next(x for x in requests if x["role"] == role and x["phase"] == phase)
+            self.assertEqual(req["prompt_components"],
+                             result["prompt_components"][role][phase])
+            self.assertEqual(req["template_bundle"]["sha256"],
+                             result["template_bundles"][role]["sha256"])
+        self.assertEqual(requests[0]["selected_example_ids"], requests[2]["selected_example_ids"])
+        self.assertEqual(requests[1]["selected_example_ids"], requests[3]["selected_example_ids"])
+        self.assertEqual(requests[0]["fixed_core_template_ids"],
+                         requests[2]["fixed_core_template_ids"])
+        self.assertEqual(requests[1]["fixed_core_template_ids"],
+                         requests[3]["fixed_core_template_ids"])
+
     def test_r2r_never_receives_rxr_core_or_rules(self):
         src = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "dispatch-r2r",
