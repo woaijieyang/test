@@ -220,8 +220,15 @@ def teaching_card(example, role, detailed):
             card["layer_checks"] = audit.get("layer_checks", [])
             card["handoffs"] = audit["handoffs"]
         lesson = notes.get("case_specific_focus") or notes.get("review_principle") or notes.get("reuse_rule")
-    return dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
-                avoid=notes.get("anti_pattern"))
+    result = dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
+                  avoid=notes.get("anti_pattern"))
+    if example.get("template_id", "").startswith("R2R-CORE-"):
+        result.update(
+            semantic_pattern=notes["semantic_pattern"],
+            decision_reason=notes["decision_reason"],
+            transfer_rule=notes["transfer_rule"],
+        )
+    return result
 
 
 def compile_prompt(role,phase='initial',*,profile,examples=True,
@@ -235,7 +242,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     # Keep the R2R system prompt byte-for-byte free of RxR profile messaging.
     # RxR-only claims belong exclusively to the RxR profile branch below.
     build_message = (
-        'BUILD: Selected examples are source-feature-matched and frozen per record. The original instruction is the only route authority.'
+        'BUILD: Ten fixed R2R core examples are loaded in stable order; selected dynamic examples are source-feature-matched and frozen per record. The original instruction is the only route authority.'
         if profile == 'r2r-en' else
         'BUILD: The shared semantic contract is supplemented by the RxR en-US guidance below. '
         'The original instruction is the only route authority; ten fixed RxR core examples '
@@ -274,7 +281,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             for position, example in enumerate(fixed):
                 parts.append(canonical(teaching_card(example, role, detailed=True)))
         if profile == 'r2r-en':
-            parts.append(f'CURATED {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} curated teaching cases. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected example IDs in order: '+', '.join(chosen))
+            parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed Core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         else:
             parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
