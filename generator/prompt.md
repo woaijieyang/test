@@ -1,4 +1,4 @@
-# Faithful VLN subtask generator — v1.5
+# Faithful VLN subtask generator
 
 Transform ONE complete R2R English or RxR en-US instruction into ordered, coherent English navigation subtasks. Jointly choose boundaries and assemble required context. Do not summarize the route or produce symbolic actions. Read the complete original before editing.
 
@@ -10,7 +10,9 @@ The current experiment presents all approved stages together as natural English 
 ## Choose supported stages
 A subtask has a supported entry context (including continuation from a preceding endpoint), its complete required process, a supported boundary outcome (or the permitted final terminal directive), and the conditions needed for that process. These are semantic checks, NOT labels to print. Do not invent missing slots, distances, angles, places, or tolerance thresholds. A bounded turn or specified movement can itself be a stage.
 
-Priority: preserve meaning and dependencies; ensure completion and handoff; obtain useful local focus; minimize rewriting. Split at a completed source-supported transition where the next leg has a distinct objective and the cut improves local focus, unless this detaches a tightly coupled maneuver. An explicit intermediate stop/stand/wait is a possible boundary, not an automatic reason to split: split there only if a distinct later objective exists, the handoff is supported, and keeping both legs together would materially weaken focus. Keep preparatory turns with the movement when a separate turn would not provide useful focus. Multiple sentences can form one stage; one sentence can contain several. Do not impose a fixed stage count, word limit, one-verb-per-stage rule, or whole-route copying rule.
+Priority: preserve meaning and dependencies; ensure completion and handoff; obtain useful local focus; minimize rewriting.
+
+For compact instructions, reconstruct the complete event sequence before choosing boundaries. Preserve independent completed objectives while keeping tightly coupled movements together when their intermediate outcome is not source-supported. Split at a completed source-supported transition where the next leg has a distinct objective and the cut improves local focus, unless this detaches a tightly coupled maneuver. An explicit intermediate stop/stand/wait is a possible boundary, not an automatic reason to split: split there only if a distinct later objective exists, the handoff is supported, and keeping both legs together would materially weaken focus. Keep preparatory turns with the movement when a separate turn would not provide useful focus. Multiple sentences can form one stage; one sentence can contain several. Do not impose a fixed stage count, word limit, one-verb-per-stage rule, or whole-route copying rule.
 
 Before accepting a cut, check that both sides remain meaningful, the prior completion is supported, the next entry is supported, and no condition, entity identity, count origin or reference frame is lost. Otherwise move the cut or merge. Do not isolate unbounded 'walk toward X' when a later clause supplies its endpoint or turn-before-entry condition. A boundary does NOT add a physical stop.
 
@@ -74,7 +76,7 @@ Each adjacent handoff states what the preceding stage actually completes, what t
 **Mandatory correction before output:** If any of the five elements is not source-supported or a boundary cannot hand off, revise the stage plan in this order: (1) bind a minimal source-supported description/trigger, (2) move the cut, (3) merge coupled actions. After every change, reconstruct all stage_audit and handoffs and recheck the entire source. Do NOT submit an `ok` candidate with missing/gap audits. A genuinely source-limited instruction may return `needs_review`, but a flawed cut alone is not a source limitation. The Host will enforce structure/linkage but cannot prove semantic entailment; an independent Reviewer still checks the actual English.
 
 
-## v1.5 semantic calibration 
+## Semantic Calibration
 
 ### Ending must describe the actual terminal event, not a lexical pattern
 - `explicit_event`: a source-prescribed transition/arrival/position/stop/wait, including `enter the room`, `turn into the living room`, `arrive at the side of the stairs`, or `stop before exiting while remaining indoors`. Entry/through/exit and an explicitly stated destination count as completion events; they do not require an additional STOP.
@@ -88,7 +90,7 @@ Each adjacent handoff states what the preceding stage actually completes, what t
 - Record only operative constraints and their scope. `around`, `over`, `past`, `through`, `straight`, side relations and viewpoint can be Conditions when they constrain the path/selection. Do not fill Conditions with every incidental preposition. Empty is valid only after checking the full stage.
 
 ### Handoff is event-level, not region-name matching
-A next stage can inherit a uniquely established pose/entity. Do not move the handoff beyond a not-yet-performed action. In GEN-035, the handoff is after passing the chair; hallway entry remains in stage 2. In GEN-034, hallway entry is already completed in stage 1, so stage 2 may start from the hallway. A visible doorway is an observation/target cue, not proof that the agent has reached its threshold.
+A handoff must reflect the event actually completed by the preceding stage. Carry forward only the state genuinely established at that point. Passing a reference landmark does not imply entering the next region, and seeing a target does not imply reaching its threshold. Any transition that remains unperformed belongs to the next stage.
 
 ### Evidence quality
 Use exact, stage-relevant source fragments, usually one to four event-level quotes, rather than copying the entire instruction into every stage. Reviewer source coverage should group meaningful route events/clauses, not one giant whole-instruction row and not one row per token. Link each event to the actual candidate stage(s). Reviewer independently checks the candidate text and cross-checks L1 coverage, L3 stage semantics and L4 handoffs; a populated Generator audit is never proof.
