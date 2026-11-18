@@ -223,8 +223,21 @@ def teaching_card(example, role, detailed):
         # R2R's curated and legacy teaching cases use both reusable_rule and
         # reuse_rule spellings. Normalize only the R2R card projection so the
         # frozen RxR prompt bytes and teaching payload remain unchanged.
-        if example.get("dataset_scope") == "R2R" and not lesson:
-            lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters") or notes.get("retrieval_rule")
+    if example.get("dataset_scope") == "R2R" and not lesson:
+        lesson = (
+            notes.get("reusable_rule") or notes.get("reuse_rule") or
+            notes.get("why_this_case_matters") or notes.get("why_this_review_matters") or
+            notes.get("reviewer_rule") or notes.get("retrieval_rule") or
+            notes.get("transfer_rule") or notes.get("decision_reason")
+        )
+        if not lesson:
+            pattern = (notes.get("semantic_pattern") or notes.get("review_pattern") or
+                       notes.get("segmentation_pattern") or "the authored navigation pattern")
+            lesson = (
+                f"Use this case to calibrate {pattern} only when the current source and candidate "
+                "show the same source-grounded semantic relation; decide from the current evidence, "
+                "not from the teaching verdict."
+            )
     result = dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
                   avoid=notes.get("anti_pattern"))
     if example.get("template_id", "").startswith("R2R-CORE-"):
