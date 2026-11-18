@@ -89,10 +89,18 @@ def library(role, profile):
         # Reviewer paired examples for every promoted Generator Core ID are
         # also removed from dynamic retrieval, even when that Core Reviewer
         # case itself came from Diagnostics. This keeps paired pools aligned.
-        core_pair_ids = {row.get('pair_id') for row in core_rows if row.get('pair_id')}
+        generator_core_folder = ROOT/'generator'/'templates'/'R2R'/'core'
+        generator_core_rows = [json.loads(path.read_bytes())
+                               for path in sorted(generator_core_folder.glob('*.json'))]
+        promoted_generator_ids = {
+            row.get('provenance', {}).get('core_curated_from')
+            for row in generator_core_rows
+        }
+        if len(promoted_generator_ids) != 10 or None in promoted_generator_ids:
+            raise ValueError('R2R Generator Core provenance must identify ten Dynamic source IDs')
         rows = [row for row in rows
                 if row['template_id'] not in promoted_ids
-                and not (role == 'reviewer' and row.get('pair_id') in core_pair_ids)]
+                and not (role == 'reviewer' and row.get('pair_id') in promoted_generator_ids)]
         # Revalidate the effective dynamic pool after provenance promotion.
         # Core copies are not dynamic replacements and cannot be selected twice.
         if not rows or any(row['template_id'].startswith('R2R-CORE-') for row in rows):
