@@ -22,13 +22,13 @@ from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "v6.3-r2r-core-hardening-rxr-frozen"
+VERSION = "current"
 
 
 def dataset_rules_metadata(profile):
     """Immutable per-task record of common and dataset-specific rule bytes."""
     paths = [Path(__file__).resolve().parents[1]/"shared/semantic_contract.md"]
-    version = "v5-common"
+    version = "shared-semantic-contract"
     if profile == "rxr-en-us":
         root = Path(__file__).resolve().parents[1]
         paths.extend([
@@ -36,11 +36,11 @@ def dataset_rules_metadata(profile):
             root/"generator/dataset_rules/rxr_en_us.md",
             root/"reviewer/dataset_rules/rxr_en_us.md",
         ])
-        version = "v6-rxr-en-us"
+        version = "rxr-en-us-profile"
     elif profile == "r2r-en":
         root = Path(__file__).resolve().parents[1]
         paths.append(root/"shared/dataset_rules/r2r_en.md")
-        version = "v6.2-r2r-en"
+        version = "r2r-en-profile"
     material = "\n".join(
         f"## {path.relative_to(Path(__file__).resolve().parents[1]).as_posix()}\n{path.read_text(encoding='utf-8')}"
         for path in paths

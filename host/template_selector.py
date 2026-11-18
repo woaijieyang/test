@@ -1,4 +1,4 @@
-"""Deterministic source-only retrieval for v6 dynamic teaching examples."""
+"""Deterministic source-only retrieval for profile-scoped teaching examples."""
 from collections import Counter
 from functools import lru_cache
 from pathlib import Path
@@ -308,17 +308,30 @@ def selection_evidence(role, profile, text, ids):
 
 
 def write_type_index(role):
-    """Build a human-readable inventory from the same originals used at runtime."""
+    """Build an explicit fixed-core / dynamic inventory from runtime-eligible assets."""
     folder = ROOT/role/"templates"
-    lines = ["# Template type index", "", "|Dataset|Template|Kind|Pair|Authored pattern|Retrieval tags|",
-             "|---|---|---|---|---|---|"]
+    lines = ["# Template Library Index", "",
+             "Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eligible for profile-scoped retrieval. Legacy entries are provenance-only and are not runtime inputs.",
+             "", "## Fixed Core", "",
+             "|Dataset|Template|Pair|Authored pattern|Retrieval tags|",
+             "|---|---|---|---|---|"]
     for profile, dataset in PROFILES.items():
-        for path in sorted((folder/dataset).glob("*/*.json")):
-            if path.parent.name == "legacy":
-                continue
+        for path in sorted((folder/dataset/"core").glob("*.json")):
             row = json.loads(path.read_bytes())
-            lines.append("|{}|[{}]({})|{}|{}|{}|{}|".format(
-                dataset, row["template_id"], path.relative_to(folder).as_posix(), path.parent.name,
+            lines.append("|{}|[{}]({})|{}|{}|{}|".format(
+                dataset, row["template_id"], path.relative_to(folder).as_posix(),
                 row.get("pair_id") or "—", task_type(row) or "—",
                 ", ".join(row.get("retrieval_tags", [])) or "—"))
+    lines.extend(["", "## Dynamic Library", "",
+                  "|Dataset|Template|Kind|Pair|Authored pattern|Retrieval tags|",
+                  "|---|---|---|---|---|---|"])
+    for profile, dataset in PROFILES.items():
+        allowed = ("val_seen",) if role == "generator" else ("paired", "diagnostics")
+        for kind in allowed:
+            for path in sorted((folder/dataset/kind).glob("*.json")):
+                row = json.loads(path.read_bytes())
+                lines.append("|{}|[{}]({})|{}|{}|{}|{}|".format(
+                    dataset, row["template_id"], path.relative_to(folder).as_posix(), kind,
+                    row.get("pair_id") or "—", task_type(row) or "—",
+                    ", ".join(row.get("retrieval_tags", [])) or "—"))
     (folder/"INDEX.md").write_bytes(("\n".join(lines)+"\n").encode("utf-8"))

@@ -161,9 +161,9 @@ class RxRV6ProfileTests(unittest.TestCase):
     def test_rule_and_template_hashes_are_recordable_and_profile_scoped(self):
         r2r = dataset_rules_metadata("r2r-en")
         rxr = dataset_rules_metadata("rxr-en-us")
-        self.assertEqual(r2r["version"], "v6.2-r2r-en")
+        self.assertEqual(r2r["version"], "r2r-en-profile")
         self.assertEqual(r2r["files"], ["shared/semantic_contract.md", "shared/dataset_rules/r2r_en.md"])
-        self.assertEqual(rxr["version"], "v6-rxr-en-us")
+        self.assertEqual(rxr["version"], "rxr-en-us-profile")
         self.assertEqual(len(rxr["files"]), 4)
         ids = select_examples("generator", "rxr-en-us", "Go to the kitchen.")
         bundle = template_bundle_metadata("generator", "rxr-en-us", ids)

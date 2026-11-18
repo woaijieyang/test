@@ -10,7 +10,7 @@ from host.template_selector import library, select_examples
 from host import protocol
 
 
-class R2RV62CoreTests(unittest.TestCase):
+class R2RCoreTests(unittest.TestCase):
     def test_fixed_core_identity_order_and_note_contract(self):
         gen = core_library("generator", "r2r-en")
         rev = core_library("reviewer", "r2r-en")
@@ -142,7 +142,7 @@ class R2RV62CoreTests(unittest.TestCase):
         self.assertEqual(req["template_bundle"]["fixed_core_ids"], req["fixed_core_template_ids"])
         self.assertEqual(req["template_bundle"]["dynamic_ids"], ids)
         self.assertFalse(set(ids) & set(req["fixed_core_template_ids"]))
-        self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+        self.assertEqual(req["dataset_rules"]["version"], "r2r-en-profile")
         self.assertIn("shared/dataset_rules/r2r_en.md", req["dataset_rules"]["files"])
         bundle = template_bundle_metadata("reviewer", "r2r-en",
                                           select_examples("reviewer", "r2r-en", source_text))
@@ -172,8 +172,8 @@ class R2RV62CoreTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertEqual(actual, expected)
 
-    def test_rxr_v61_files_match_frozen_manifest(self):
-        manifest = json.loads((ROOT / "provenance/rxr_v61_frozen.json").read_bytes())
+    def test_rxr_profile_assets_match_integrity_manifest(self):
+        manifest = json.loads((ROOT / "provenance/rxr_profile_integrity.json").read_bytes())
         for entry in manifest["files"]:
             path = ROOT / entry["path"]
             data = path.read_bytes()
@@ -184,7 +184,7 @@ class R2RV62CoreTests(unittest.TestCase):
 
     def test_r2r_g0_r0_g1_r1_freezes_core_dynamic_rules_and_prompt(self):
         from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
-        src = Source("r2r-v62-four-phase", "R2R", "en", SOURCE)
+        src = Source("r2r-four-phase", "R2R", "en", SOURCE)
         old = generator_candidate(repaired=False)
         new = generator_candidate(repaired=True)
         r0 = reviewer_output(old, repaired=False)
@@ -207,7 +207,7 @@ class R2RV62CoreTests(unittest.TestCase):
                 "output": replies.pop(0),
                 "receipt": {
                     "model": req["model"], "effort": req["effort"],
-                    "request_id": f"r2r-v62-{len(requests)}"
+                    "request_id": f"r2r-{len(requests)}"
                 }
             }
 
@@ -291,6 +291,47 @@ class R2RV62CoreTests(unittest.TestCase):
         self.assertIn("FIXED RXR REVIEWER CORE: exactly 10", prompt)
         self.assertIn("RXR-CORE-R10", prompt)
         self.assertNotIn("DYNAMIC RXR-EN-US REVIEWER EXAMPLES:", prompt)
+
+    def test_compiled_prompts_and_manifest_match_fixed_core_contract(self):
+        cases = [
+            ("generator/compiled_r2r-en.txt", "R2R", "R2R", "generator", "G"),
+            ("generator/compiled_repair_r2r-en.txt", "R2R", "R2R", "generator", "G"),
+            ("reviewer/compiled_r2r-en.txt", "R2R", "R2R", "reviewer", "R"),
+            ("generator/compiled_rxr-en-us.txt", "RxR", "RXR", "generator", "G"),
+            ("generator/compiled_repair_rxr-en-us.txt", "RxR", "RXR", "generator", "G"),
+            ("reviewer/compiled_rxr-en-us.txt", "RxR", "RXR", "reviewer", "R"),
+        ]
+        for path, dataset, id_prefix, role, prefix in cases:
+            prompt = (ROOT / path).read_text(encoding="utf-8")
+            label = "R2R-EN" if dataset == "R2R" else "RXR"
+            self.assertIn(f"FIXED {label} {role.upper()} CORE: exactly 10", prompt, path)
+            for i in range(1, 11):
+                self.assertIn(f"{id_prefix}-CORE-{prefix}{i:02d}", prompt, (path, i))
+            selected_line = next((line for line in prompt.splitlines()
+                                  if "Selected dynamic example IDs in order:" in line), "")
+            self.assertNotIn("LEGACY", selected_line, path)
+        manifest = json.loads((ROOT / "provenance/build_manifest.json").read_bytes())
+        for entry in manifest.values():
+            self.assertEqual(entry["fixed_core_count"], 10)
+            self.assertEqual(len(entry["fixed_core_ids"]), 10)
+
+    def test_generator_core_cards_expose_primary_boundary_and_case_rationale(self):
+        from host.compile import teaching_card
+        for row in core_library("generator", "r2r-en"):
+            card = teaching_card(row, "generator", detailed=True)
+            self.assertTrue(card.get("primary_decision_boundary"), row["template_id"])
+            self.assertTrue(card.get("case_rationale"), row["template_id"])
+            self.assertTrue(card.get("transfer_rule"), row["template_id"])
+
+    def test_r09_r10_reviewer_teaching_metadata_matches_case_shape(self):
+        rows = {row["template_id"]: row for row in core_library("reviewer", "r2r-en")}
+        self.assertNotIn("single_stage_keep", rows["R2R-CORE-R09"]["teaching_notes"]["retrieval_tags"])
+        r10 = rows["R2R-CORE-R10"]
+        self.assertFalse(r10["provenance"]["candidate_corruption_is_authored_not_model_output"])
+        self.assertEqual(r10["review_input"]["candidate"]["subtasks"], [])
+        principle = r10["teaching_notes"]["review_principle"].lower()
+        self.assertNotIn("check each stage", principle)
+        self.assertNotIn("preceding exit", principle)
 
     def test_runtime_library_loads_only_schema_validated_templates(self):
         from host.template_selector import validate_template

@@ -142,17 +142,15 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertEqual(requests[1]["fixed_core_template_ids"],
                          requests[3]["fixed_core_template_ids"])
 
-    def test_r2r_v5_compatibility_assets_are_byte_identical(self):
+    def test_r2r_profile_assets_match_integrity_manifest(self):
         import hashlib
         import json
         from pathlib import Path
         from host.compile import ROOT
 
         manifest = json.loads(
-            (ROOT / "provenance/r2r_v5_compatibility.json").read_text(encoding="utf-8")
+            (ROOT / "provenance/r2r_profile_integrity.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(manifest["baseline_commit"],
-                         "c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3")
         self.assertEqual(manifest["file_count"], len(manifest["files"]))
         for entry in manifest["files"]:
             path = ROOT / entry["path"]
@@ -273,7 +271,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         for req in requests:
             self.assertEqual(req["profile"], "r2r-en")
             self.assertEqual(len(req["fixed_core_template_ids"]), 10)
-            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertEqual(req["dataset_rules"]["version"], "r2r-en-profile")
             self.assertEqual(req["template_bundle"]["fixed_core_ids"], req["fixed_core_template_ids"])
             self.assertNotIn("RXR SHARED SEMANTIC RULES", req["messages"][0]["content"])
             self.assertNotIn("RXR ROLE GUIDANCE", req["messages"][0]["content"])

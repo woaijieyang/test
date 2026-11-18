@@ -153,8 +153,15 @@
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not detach 'once/when/until' from its action or treat every temporal connective as a stage boundary.",
     "semantic_pattern": "temporal_condition_closes_target_action",
-    "decision_reason": "The 'once you reach the bench' clause closes the approach and governs the stop/stand placement. The condition belongs with the action it controls.",
-    "transfer_rule": "Keep temporal triggers and their governed actions attached. A condition can refine an endpoint or completion event without automatically creating a new stage."
+    "decision_reason": "The stair descent and right turn establish a completed transition and orientation. The subsequent forward approach and bench-relative terminal placement form a distinct objective. The 'once you reach' condition remains attached to the stop/stand action in the same stage.",
+    "transfer_rule": "Keep temporal triggers and their governed actions attached. A condition can refine an endpoint or completion event without automatically creating a new stage.",
+    "primary_decision_boundary": "completed_stair_descent_and_turn_then_bench_approach",
+    "case_rationale": "The first stage completes the bounded stair descent and the explicitly ordered right turn. The second stage begins the still-unperformed forward approach toward the leather chairs and table, then keeps the once-you-reach trigger attached to the bench-relative stop/stand placement. The boundary does not detach the temporal condition or invent a stop at the stair base.",
+    "secondary_semantic_focus": [
+      "temporal_condition_scope",
+      "terminal_placement",
+      "no_invented_intermediate_stop"
+    ]
   },
   "retrieval_tags": [
     "stairs_or_level_change",

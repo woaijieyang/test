@@ -1,7 +1,5 @@
 {
-  "baseline_branch": "LLM-decompose-v5",
-  "baseline_commit": "c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3",
-  "description": "Immutable Git blob fingerprints for R2R-specific runtime assets, schemas and R2R template pools inherited unchanged from v5. Shared Prompt, Acceptance, Reviewer Checklist and Semantic Contract assets were intentionally calibrated in v6.1 and are frozen against the v6.1 baseline in provenance/rxr_v61_frozen.json; they are not claimed as byte-identical to v5. Host compiler/selector are validated by behavior tests.",
+  "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
   "file_count": 112,
   "files": [
     {

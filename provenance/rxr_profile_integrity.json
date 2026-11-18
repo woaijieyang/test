@@ -1,6 +1,4 @@
 {
-  "baseline_branch": "LLM-decompose-v6.1-prompt-only",
-  "baseline_commit": "d48752c5261769cb76b3b6d8c47826ab94a277fe",
   "file_count": 155,
   "files": [
     {
@@ -637,5 +635,6 @@
       "path": "reviewer/compiled_rxr-en-us.txt",
       "git_blob_sha1": "8409df1e242ee19fc6721ebc4da28e88772edf14"
     }
-  ]
+  ],
+  "description": "Content fingerprints for the independent RxR Profile assets. These hashes protect the current RxR rules, templates, schemas and prompt assets from accidental R2R-side edits."
 }

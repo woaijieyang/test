@@ -1,4 +1,4 @@
-"""Compile v5 common contracts and v6 profile-specific teaching material separately from active schemas."""
+"""Compile shared semantic contracts and profile-specific teaching material separately from active schemas."""
 from __future__ import annotations
 import json
 import re
@@ -211,7 +211,7 @@ def teaching_card(example, role, detailed):
         # Dynamic cards may use the compact form selected by the caller.
         if detailed:
             card["stage_evidence"] = out["stage_audit"]
-        lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters")
+        lesson = notes.get("case_rationale") or notes.get("reusable_rule") or notes.get("why_this_case_matters")
     else:
         audit = runtime_review_output(example)
         card = dict(review_case=example["review_input"], verdict=audit["verdict"],
@@ -244,6 +244,10 @@ def teaching_card(example, role, detailed):
                   avoid=notes.get("anti_pattern"))
     if example.get("template_id", "").startswith("R2R-CORE-"):
         result.update(
+            primary_decision_boundary=notes.get("primary_decision_boundary", notes["semantic_pattern"]),
+            secondary_semantic_focus=notes.get("secondary_semantic_focus", []),
+            case_rationale=notes.get("case_rationale", notes.get("why_this_case_matters", "")),
+            reusable_rule=notes.get("reusable_rule", ""),
             semantic_pattern=notes["semantic_pattern"],
             decision_reason=notes["decision_reason"],
             transfer_rule=notes["transfer_rule"],
@@ -281,7 +285,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if role=='reviewer':parts.append((d/'checklist.md').read_text(encoding='utf-8'))
     if repair:parts.append((d/'repair.md').read_text(encoding='utf-8'))
     schema=wire_schema(d/('repair.schema.json' if repair else 'output.schema.json'))
-    # RxR keeps its v6.1 assembly position byte-for-byte. R2R places the
+    # RxR preserves its established assembly position. R2R places the
     # active schema after its fixed Core and dynamic teaching examples.
     if profile == 'rxr-en-us':
         parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))

@@ -152,7 +152,14 @@
     "anti_pattern": "Do not promote a visually salient observation into a navigation target or treat visibility as reaching/entering.",
     "semantic_pattern": "expected_observation_as_reference_not_destination",
     "decision_reason": "The chandelier/table description is an expected orientation cue after turning. The open door on the far wall is the selected transition target; the observation must not replace it.",
-    "transfer_rule": "Use expected observations and salient scene descriptions to disambiguate a source-selected target, while preserving the actual action and transition that the source requires."
+    "transfer_rule": "Use expected observations and salient scene descriptions to disambiguate a source-selected target, while preserving the actual action and transition that the source requires.",
+    "primary_decision_boundary": "completed_far_wall_doorway_crossing_then_hallway_and_room_entry",
+    "case_rationale": "The chandelier/table is an expected orientation observation, not a destination. Stage 1 preserves the far-wall door identity, approaches it, and completes the crossing. Only after that completed transition does stage 2 begin the hallway traversal and destination-room entry.",
+    "secondary_semantic_focus": [
+      "expected_observation_is_not_destination",
+      "doorway_identity",
+      "crossing_completion"
+    ]
   },
   "retrieval_tags": [
     "room_transition",

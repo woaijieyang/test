@@ -21,7 +21,8 @@
     "candidate_corruption_is_authored_not_model_output": false,
     "corruption_pattern": "completed_transition_then_distinct_objective",
     "core_curated_from": "R2R-REV-002",
-    "curation_basis": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.; semantic decision-boundary coverage; semantic provenance pair only"
+    "curation_basis": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.; semantic decision-boundary coverage; semantic provenance pair only",
+    "pairing_rationale": "The pair_id identifies the closest Generator Core teaching pattern for temporal trigger and terminal endpoint scope. It is a semantic teaching association, not the original Dynamic source pair and not a runtime selection dependency."
   },
   "review_input": {
     "original_instruction": "Go down the stairs, and take a right . walk forward towards the leather chairs next to the table. Once you reach the bench on your right stop and stand on the wood between the bench and the carpet. ",
@@ -236,8 +237,7 @@
       "landmark_conditioned_navigation",
       "temporal_dependency",
       "intermediate_stop_or_wait",
-      "orientation_or_reference_frame",
-      "single_stage_keep"
+      "orientation_or_reference_frame"
     ],
     "review_principle": "Verify the stair descent and right turn, the forward approach toward the leather chairs beside the table, and the once-triggered stop/stand placement on the wood between the bench and carpet.",
     "case_specific_focus": "The boundary is between a completed stair-descent/turn maneuver and a distinct subsequent bench-approach and terminal-placement objective; it is not a room or doorway transition.",

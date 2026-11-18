@@ -152,8 +152,14 @@
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not create a new stage for a later phrase that merely specifies the same endpoint. Do not drop the ordinal or reference origin.",
     "semantic_pattern": "terminal_position_refines_final_route_endpoint",
-    "decision_reason": "The final tile position is a precise terminal placement reached after the stair ascent; it refines the final objective rather than creating another movement phase.",
-    "transfer_rule": "Attach endpoint-identifying detail, ordinal position, and final placement to the movement that establishes them. Keep the full terminal condition in the stage that executes it."
+    "decision_reason": "The dining-table pass-by is a completed source-supported event. The stair ascent and entryway transition form the next distinct route objective. The final third-tile instruction refines the endpoint of that same second stage; it is not a third stage.",
+    "transfer_rule": "Attach endpoint-identifying detail, ordinal position, and final placement to the movement that establishes them. Keep the full terminal condition in the stage that executes it.",
+    "primary_decision_boundary": "completed_dining_table_pass_by_then_distinct_stair_entry_objective",
+    "case_rationale": "The boundary follows the completed pass-by of the dining-room table. The next unperformed objective is to ascend the stairs, enter the entryway, and execute the exact terminal placement. The third tile from the left at the top step refines that final objective and remains attached to the stair/entryway stage.",
+    "secondary_semantic_focus": [
+      "terminal_position_refines_final_route_endpoint",
+      "ordinal_origin_preservation"
+    ]
   },
   "retrieval_tags": [
     "room_transition",

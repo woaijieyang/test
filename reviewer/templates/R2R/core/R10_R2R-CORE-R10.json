@@ -18,10 +18,11 @@
   "provenance": {
     "kind": "reviewer_teaching_case_rebuilt_from_r2r_source",
     "source_status": "source_instruction_from_uploaded_val_seen",
-    "candidate_corruption_is_authored_not_model_output": true,
+    "candidate_corruption_is_authored_not_model_output": false,
     "corruption_pattern": "source_level_ambiguity_abstention",
     "core_curated_from": "R2R-REV-031",
-    "curation_basis": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.; semantic decision-boundary coverage; semantic provenance pair only"
+    "curation_basis": "Source-level route-target ambiguity; no Candidate corruption is present because the authored expected candidate is needs_review with an empty subtask list.",
+    "pairing_rationale": "The pair_id associates this source-abstention teaching case with the Generator's source-ambiguity boundary. It is a semantic teaching association, not a claim that a Candidate was authored or corrupted."
   },
   "review_input": {
     "original_instruction": "Go towards the back of the church, between the long pew on the left and rows of pews on the right  Go towards the pack exit.  Stop to the left of the of the wall which is to the left of the exit, with a brass handrail. ",
@@ -131,17 +132,17 @@
   },
   "teaching_notes": {
     "review_pattern": "source_level_ambiguity_abstention",
-    "why_this_review_matters": "This is not a failed cut: the source itself contains an unresolved route target.",
-    "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
+    "why_this_review_matters": "The source itself contains an unresolved route-defining exit phrase. No Candidate stages are produced, so this case teaches source-level abstention rather than stage or handoff review.",
+    "reviewer_rule": "Use UNRESOLVED only when a route-critical target in the original instruction remains ambiguous after full-context resolution. Do not infer a typo correction or use Candidate defects as evidence of Source ambiguity.",
     "retrieval_tags": [
       "source_limited_ambiguity",
       "needs_review",
       "route_target_ambiguity"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: The route-defining landmark phrase is unclear and may be a transcription error; changing it would change the destination.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "The route-defining landmark phrase is unclear and may be a transcription error; changing it would change the destination.",
+    "review_principle": "Inspect the complete original instruction to determine whether 'pack exit' can be uniquely resolved from its own context. Because the phrase identifies the route-critical exit and the source does not uniquely establish its intended meaning, preserve uncertainty rather than guessing a correction.",
+    "case_specific_focus": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
     "semantic_pattern": "unresolved_route_critical_source_referent",
-    "decision_reason": "The phrase 'pack exit' is the route-defining target. The surrounding instruction does not establish with sufficient certainty whether this means 'back exit' or another exit, so normalizing it would risk changing the selected destination.",
+    "decision_reason": "The phrase 'pack exit' identifies the route-critical target. The surrounding pew and wall/handrail relations do not uniquely establish whether 'pack' means 'back' or another exit. The correct response is to preserve uncertainty and request source clarification.",
     "transfer_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
     "anti_pattern": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."

@@ -1,0 +1,110 @@
+name: Profile integrity and regression validation
+
+on:
+  push:
+    branches:
+      - LLM-decompose-v6.3
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Verify committed source tree integrity
+        run: python -B verify_package.py
+      - name: Compile all profile prompts and template indexes
+        run: python -B -m host.compile
+      - name: Refresh generated-file integrity and persist compiled artifacts
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          generated = [
+              "generator/compiled_r2r-en.txt",
+              "generator/compiled_repair_r2r-en.txt",
+              "reviewer/compiled_r2r-en.txt",
+              "generator/compiled_rxr-en-us.txt",
+              "generator/compiled_repair_rxr-en-us.txt",
+              "reviewer/compiled_rxr-en-us.txt",
+              "generator/templates/INDEX.md",
+              "reviewer/templates/INDEX.md",
+              "provenance/build_manifest.json",
+          ]
+          manifest_path = Path("FILE_HASHES.json")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          for name in generated:
+              data = Path(name).read_bytes()
+              digest = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+              manifest[name] = "gitblob-sha1:" + digest
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          python -B verify_package.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate compiled prompts, template indexes and build manifest"
+            git push origin "HEAD:\${GITHUB_REF_NAME}"
+          fi
+      - name: Verify committed build artifacts match the compiler
+        run: |
+          python -B -m host.compile
+          git diff --exit-code -- generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+      - name: Validate R2R Core quality, runtime contracts, prompt assembly and RxR isolation
+        run: python -B -m unittest discover -s tests -p "test_r2r_core.py" -v
+      - name: Validate Host profile dispatch and dataset isolation
+        run: python -B -m unittest discover -s tests -p "test_host_dispatch_profiles.py" -v
+      - name: Validate RxR profile and frozen assets
+        run: python -B -m unittest discover -s tests -p "test_rxr_profile.py" -v
+      - name: Validate paired dynamic retrieval
+        run: python -B -m unittest discover -s tests -p "test_paired_selection.py" -v
+      - name: Validate teaching schemas and closed-loop contracts
+        run: python -B -m unittest discover -s tests -p "test_closed_loop_35.py" -v
+      - name: Validate runtime wire contracts
+        run: python -B -m unittest discover -s tests -p "test_runtime_contract_v2.py" -v
+      - name: Validate prompt injection and repair paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_example_injection.py" -v
+          python -B -m unittest discover -s tests -p "test_roles_repair.py" -v
+      - name: Validate adapter, workflow, recovery and release paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_entry_diagnostics.py" -v
+          python -B -m unittest discover -s tests -p "test_workflow_integration.py" -v
+          python -B -m unittest discover -s tests -p "test_targeted_feedback.py" -v
+          python -B -m unittest discover -s tests -p "test_final_best_contract.py" -v
+          python -B -m unittest discover -s tests -p "test_reviewer_recovery.py" -v
+      - name: Run remaining regression suite
+        # One historical integration test requires an external absolute-path fixture
+        # that is not part of this repository or the hosted runner.
+        run: |
+          python - <<'PY'
+          import unittest
+
+          discovered = unittest.defaultTestLoader.discover("tests")
+          selected = unittest.TestSuite()
+
+          def collect(suite):
+              for test in suite:
+                  if isinstance(test, unittest.TestSuite):
+                      collect(test)
+                  elif "test_release_transaction" not in test.id():
+                      selected.addTest(test)
+
+          collect(discovered)
+          result = unittest.TextTestRunner(verbosity=2).run(selected)
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
+      - name: Run renderer smoke evaluation
+        run: python -m evaluation.smoke24
+      - name: Run the current integration demo
+        run: python -m examples.demo

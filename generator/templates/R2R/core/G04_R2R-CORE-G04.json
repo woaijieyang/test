@@ -159,7 +159,14 @@
     "anti_pattern": "Do not promote an expected observation into a required visit, or treat approaching/seeing a doorway as crossing or entering it.",
     "semantic_pattern": "observation_vs_transition_and_target_binding",
     "decision_reason": "The anticipated glass-window observation is not itself the goal. The source separately directs movement toward the window and through a doorway, then identifies the hallway context and final arrival condition.",
-    "transfer_rule": "Classify each salient entity by its role in the source event: target, reference landmark, or expected observation. A transition boundary is supported by the completed crossing, not by seeing a cue."
+    "transfer_rule": "Classify each salient entity by its role in the source event: target, reference landmark, or expected observation. A transition boundary is supported by the completed crossing, not by seeing a cue.",
+    "primary_decision_boundary": "completed_doorway_crossing_then_hallway_route",
+    "case_rationale": "The split is after the commanded doorway crossing, not after merely seeing the glass-window cue. Stage 1 completes the approach and crossing; stage 2 begins with the hallway context and performs the right turn, landmark-guided continuation, and final arrival at the side of the stairs.",
+    "secondary_semantic_focus": [
+      "expected_observation_is_not_destination",
+      "doorway_approach_is_not_crossing",
+      "hallway_entry_context"
+    ]
   },
   "retrieval_tags": [
     "room_transition",
