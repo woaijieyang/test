@@ -74,13 +74,15 @@ def core_library(role, profile):
     if role == 'reviewer':
         pairs = [row.get('pair_id') for row in rows]
         expected_pairs = [f'{prefix}-CORE-G{i:02d}' for i in range(1, 11)]
-        if pairs != expected_pairs:
-            raise ValueError(f'{dataset} Reviewer Core pair_id values must align with Generator G01-G10 in order')
+        if len(set(pairs)) != 10 or set(pairs) != set(expected_pairs):
+            raise ValueError(f'{dataset} Reviewer Core pair_id values must uniquely cover all Generator Core IDs')
         gen_folder = ROOT/'generator'/'templates'/dataset/'core'
         gen_rows = [json.loads(path.read_bytes()) for path in sorted(gen_folder.glob('*.json'))]
         gen_ids = [row.get('template_id') for row in gen_rows]
-        if pairs != gen_ids:
-            raise ValueError(f'{dataset} Reviewer Core pair IDs must match Generator Core IDs in G01-G10 order')
+        if set(pairs) != set(gen_ids):
+            raise ValueError(f'{dataset} Reviewer Core pair IDs must cover Generator Core IDs exactly once')
+        if profile == 'rxr-en-us' and pairs != gen_ids:
+            raise ValueError('RxR Reviewer Core pair IDs must retain the frozen G01-G10 order')
     return rows
 
 
