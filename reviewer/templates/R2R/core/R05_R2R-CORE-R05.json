@@ -252,7 +252,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The candidate keeps the final tile position with the stair ascent and entryway transition; the ordinal endpoint refines the same terminal objective rather than requiring another stage."
+        "conclusion": "The first stage completes the living-room/couch route and dining-table pass-by; the next stage has a distinct stair-ascent and entryway objective. The exact third-tile position remains attached to the final stage."
       },
       {
         "layer": "L6_route_readback",
@@ -385,7 +385,7 @@
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
-    "why_this_review_matters": "The candidate keeps the final third-tile placement attached to the stair ascent and entryway arrival. The review case teaches that a precise terminal position refines the final objective rather than creating a separate stage.",
+    "why_this_review_matters": "The first stage completes the living-room traversal, couch-relative left turn, and pass-by of the dining-room table. The next stage begins the distinct stair ascent into the entryway and preserves the exact third-tile terminal placement.",
     "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
     "retrieval_tags": [
       "room_transition",
@@ -395,12 +395,13 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Verify the couch-relative left turn, dining-table pass-by, stair ascent, entryway transition, and exact third-tile terminal position. Do not infer a new stage merely because the final position is more specific.",
-    "case_specific_focus": "The ordinal tile position is a refinement of the final stair-top objective and must remain attached to the stage that performs the ascent.",
+    "review_principle": "Verify the living-room entry, chair/couch pass-by, left turn behind the couch, dining-table pass-by, stair ascent, entryway entry, and exact third-tile position at the top step. The cut is justified by the completed dining-table pass-by followed by a distinct stair/entryway objective, not by the final tile detail alone.",
+    "case_specific_focus": "The boundary follows the completed dining-table pass-by. The next stage executes the distinct stair ascent and entryway transition; the third-tile position remains attached to that final stage as its terminal refinement.",
     "semantic_pattern": "hard_pass_terminal_position_and_ordinal_preservation",
     "decision_reason": "The candidate preserves the route through the intermediate landmark and keeps the exact ordinal terminal tile position with the stair-top reference. The final position is a refinement of the same terminal objective, not a separate stage.",
     "transfer_rule": "PASS when a detailed terminal position or ordinal refines the same final movement and remains attached to the stage that executes it.",
     "anti_pattern": "Do not detach endpoint details, reset the ordinal origin, or create a new stage solely because the final target is described more precisely.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "reusable_rule": "A completed landmark pass-by can support a boundary when a distinct subsequent transition/target follows and the handoff retains the same route frame. Keep ordinal terminal placement attached to the stage that reaches it."
   }
 }

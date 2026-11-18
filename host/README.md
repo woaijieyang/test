@@ -209,3 +209,8 @@ R2R continues to use the shared v5 role prompts, common semantic contract, activ
 For RxR en-US, the Host preloads and validates both fixed cores before G0, chooses the Generator dynamic IDs once, and obtains Reviewer paired IDs from those same Generator IDs plus up to two Diagnostics. G0/G1 and R0/R1 reuse the corresponding frozen selections. Each request checks the profile, rule bundle, prompt-source component hashes and complete fixed+dynamic template-bundle hash before entering transport. A mismatch fails closed to the exact original source.
 
 `prompt_components` records the hashes of the actual role prompt, common semantic contract, profile-specific rule files, applicable checklist, active phase schema and (for Generator repair) repair instructions/examples. Phase-specific component bundles are frozen separately for G0, G1, R0 and R1 because repair and recheck are different request phases. The final actor still receives only the accepted rendered instruction string.
+
+
+## v6.3 integrity notes
+
+Run records include the complete Adapter `source_identity`. Technical and input fallback dispositions are never navigation-eligible. If a transport supplies `provider_request_sha256`, Host verifies it against the canonical current request hash. R2R Dynamic paths are explicitly allowlisted; RxR selection paths remain unchanged.

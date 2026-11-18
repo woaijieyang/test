@@ -156,11 +156,16 @@ v6 is based on the exact `LLM-decompose-v5` branch commit and preserves its comm
 
 - Generator RxR: 10 fixed core + 35 dynamic val_seen.
 - Reviewer RxR: 10 fixed core + 35 paired dynamic + 29 diagnostics available for retrieval.
-- Generator R2R: 35 dynamic val_seen; no fixed core.
-- Reviewer R2R: 35 paired dynamic + 26 diagnostics; no fixed core.
+- Generator R2R: 10 fixed Core + 25 Dynamic-eligible val_seen cases (6–8 selected per task).
+- Reviewer R2R: 10 fixed Core + 29 paired Dynamic-eligible cases + 23 Diagnostics (paired selection follows non-Core Generator IDs; 2–4 diagnostics selected per task).
 
 The active dynamic selection ranges are profile-specific: R2R retains 6–8 Generator and paired Reviewer examples plus 2–4 diagnostics; RxR selects 2–4 Generator examples, the corresponding 2–4 paired Reviewer examples, and 0–2 diagnostics. Explicit `selection_mode='all'` remains an evaluation/debug override, not the default runtime policy.
 
 ### Validation status
 
 `tests/test_rxr_v6_profile.py` covers fixed core loading, role pairing, dynamic ranges, prompt profile isolation, and per-task rule/template hash metadata. `tests/test_closed_loop_35.py` also validates every core and dynamic example against the existing teaching schemas. No navigation success, SR/SPL improvement, or real-model semantic accuracy is claimed by these engineering changes.
+
+
+## v6.3 R2R hardening
+
+R2R Dynamic loading is restricted to explicit `val_seen/`, `paired/`, and `diagnostics/` allowlisted directories. Reviewer Core evidence/provenance fixes and Host integrity changes are recorded in the v6.3 release history. RxR assets and runtime selection behavior remain frozen against v6.1.

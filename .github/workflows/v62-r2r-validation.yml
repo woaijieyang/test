@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - LLM-decompose-v6.2-r2r-core
+      - LLM-decompose-v6.3
 
 jobs:
   validate:
