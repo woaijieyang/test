@@ -1,9 +1,10 @@
-name: v6 RxR profile and regression validation
+name: v6.2 R2R Core and frozen RxR regression validation
 
 on:
   push:
     branches:
       - LLM-decompose-v6
+      - LLM-decompose-v6.2-r2r-core
   workflow_dispatch:
 
 jobs:
@@ -24,6 +25,8 @@ jobs:
         run: python -B -m host.compile
       - name: Validate Host profile dispatch and dataset isolation
         run: python -B -m unittest discover -s tests -p "test_host_dispatch_profiles.py" -v
+      - name: Validate R2R v6.2 Core, Dynamic isolation, and prompt assembly
+        run: python -B -m unittest discover -s tests -p "test_r2r_v62_core.py" -v
       - name: Validate RxR v6 profile
         run: python -B -m unittest discover -s tests -p "test_rxr_v6_profile.py" -v
       - name: Validate paired retrieval
