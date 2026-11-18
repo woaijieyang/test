@@ -93,6 +93,20 @@ def library(role, profile):
         rows = [row for row in rows
                 if row['template_id'] not in promoted_ids
                 and not (role == 'reviewer' and row.get('pair_id') in core_pair_ids)]
+        # Revalidate the effective dynamic pool after provenance promotion.
+        # Core copies are not dynamic replacements and cannot be selected twice.
+        if not rows or any(row['template_id'].startswith('R2R-CORE-') for row in rows):
+            raise ValueError(f'Invalid R2R {role} Dynamic pool after Core exclusion')
+        if role == 'reviewer':
+            paired_ids = {row.get('pair_id') for row in rows if row.get('pair_id')}
+            diagnostic_rows = [row for row in rows if not row.get('pair_id')]
+            expected_dynamic_pairs = {
+                f'R2R-GEN-{i:03d}' for i in range(1, 36)
+            } - core_pair_ids
+            if paired_ids != expected_dynamic_pairs:
+                raise ValueError('R2R Reviewer Dynamic paired pool is not aligned to non-Core Generator examples')
+            if len(diagnostic_rows) != 23:
+                raise ValueError(f'R2R Reviewer Dynamic Diagnostics must contain 23 unpromoted cases; found {len(diagnostic_rows)}')
     return rows
 
 
