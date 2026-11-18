@@ -234,7 +234,7 @@
   "generator/compiled_rxr-en-us.txt": "gitblob-sha1:88afa21992a5480e57105fa6c9546d3120e6cf71",
   "generator/dataset_rules/rxr_en_us.md": "gitblob-sha1:d26040bcaf182c998a2beb68438fae48227e4327",
   "generator/output.schema.json": "gitblob-sha1:9c0d7f4c7705505bd3efc3e4fc95472a1f8288c3",
-  "generator/prompt.md": "gitblob-sha1:84cbccf11556a50613ba97526d2bd0fa17383fce",
+  "generator/prompt.md": "gitblob-sha1:f661ba6c1fdcb0b5437c325e5b19023c7d799cfe",
   "generator/README.md": "gitblob-sha1:4ac7fb838af2a3ee73e6a0b1350572813c146735",
   "generator/repair_examples.json": "gitblob-sha1:4739568da3833ac21d5ecf07432b4ace4d22f57a",
   "generator/repair.md": "gitblob-sha1:f6d2a4980eea0b208c906fc250f1fd67bac1e28b",
