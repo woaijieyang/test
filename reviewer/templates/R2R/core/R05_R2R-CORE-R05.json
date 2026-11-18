@@ -252,7 +252,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The candidate keeps the final tile position with the stair ascent and entryway transition; the ordinal endpoint refines the same terminal objective rather than requiring another stage."
       },
       {
         "layer": "L6_route_readback",
@@ -385,7 +385,7 @@
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
-    "why_this_review_matters": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective.",
+    "why_this_review_matters": "The candidate keeps the final third-tile placement attached to the stair ascent and entryway arrival. The review case teaches that a precise terminal position refines the final objective rather than creating a separate stage.",
     "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
     "retrieval_tags": [
       "room_transition",
@@ -395,8 +395,8 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the…; Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining…; Preserve the spatial transition and region/threshold: up the stairs into the entry way. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the…; Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining…; Preserve the spatial transition and region/threshold: up the stairs into the entry way",
+    "review_principle": "Verify the couch-relative left turn, dining-table pass-by, stair ascent, entryway transition, and exact third-tile terminal position. Do not infer a new stage merely because the final position is more specific.",
+    "case_specific_focus": "The ordinal tile position is a refinement of the final stair-top objective and must remain attached to the stage that performs the ascent.",
     "semantic_pattern": "hard_pass_terminal_position_and_ordinal_preservation",
     "decision_reason": "The candidate preserves the route through the intermediate landmark and keeps the exact ordinal terminal tile position with the stair-top reference. The final position is a refinement of the same terminal objective, not a separate stage.",
     "transfer_rule": "PASS when a detailed terminal position or ordinal refines the same final movement and remains attached to the stage that executes it.",

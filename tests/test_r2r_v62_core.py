@@ -259,5 +259,28 @@ class R2RV62CoreTests(unittest.TestCase):
                 self.assertLess(prompt.index("DYNAMIC R2R-EN"),
                                 prompt.index("ACTIVE OUTPUT SCHEMA"))
 
+
+    def test_r02_coverage_evidence_is_requirement_specific(self):
+        row = next(x for x in core_library("reviewer", "r2r-en") if x["template_id"] == "R2R-CORE-R02")
+        coverage = row["expected_review"]["source_coverage"]
+        self.assertEqual(coverage[1]["candidate_evidence"], ["In the hallway take a right and go down the hall, keeping straight."])
+        self.assertEqual(coverage[2]["candidate_evidence"], ["the next door on your right"])
+        self.assertEqual(coverage[3]["candidate_evidence"], ["Stop in the room just past the door on the inside of the doorway."])
+        self.assertEqual(coverage[2]["status"], "altered_or_missing")
+
+    def test_reviewer_core_provenance_is_structured(self):
+        for row in core_library("reviewer", "r2r-en"):
+            provenance = row.get("provenance", {})
+            self.assertFalse(any(str(k).isdigit() for k in provenance), row["template_id"])
+            self.assertTrue(provenance.get("kind"), row["template_id"])
+            self.assertTrue(provenance.get("source_status"), row["template_id"])
+            self.assertTrue(provenance.get("curation_basis"), row["template_id"])
+
+    def test_r01_teaching_notes_do_not_invent_stairs_or_doorway_stop(self):
+        row = next(x for x in core_library("reviewer", "r2r-en") if x["template_id"] == "R2R-CORE-R01")
+        notes = json.dumps(row["teaching_notes"]).lower()
+        self.assertNotIn("stairs", notes)
+        self.assertNotIn("stop in the doorway", notes)
+
 if __name__ == "__main__":
     unittest.main()

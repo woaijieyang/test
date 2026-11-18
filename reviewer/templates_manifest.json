@@ -1,5 +1,5 @@
 {
-  "version": "6.0",
+  "version": "6.3",
   "dataset_profiles": {
     "r2r-en": {
       "paired_directory": "templates/R2R/paired",
@@ -77,5 +77,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "R2R Core is unconditional; promoted Reviewer source copies are excluded from Dynamic retrieval. Core pair_id records semantic provenance only. Dynamic paired examples are selected only for selected non-Core Generator Dynamic IDs; unpaired Diagnostics supplement them."
+  "selection": "R2R Core is unconditional; promoted Reviewer source copies are excluded from Dynamic retrieval. Core pair_id records semantic provenance only. Dynamic paired examples are selected only for selected non-Core Generator Dynamic IDs; unpaired Diagnostics supplement them. v6.3: R2R dynamic loading is restricted to the explicit val_seen/paired/diagnostics allowlist; RxR runtime behavior is frozen."
 }

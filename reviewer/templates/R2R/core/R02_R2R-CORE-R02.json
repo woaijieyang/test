@@ -51,27 +51,27 @@
       {
         "requirement_id": "SRC-02",
         "source_quote": "In the hallway take a right and go down the hall, keeping straight.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: In the hallway take a right and go down the hall, keeping straight.",
+        "requirement": "Preserve the hallway-relative right turn and the straight hallway traversal.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          "In the hallway take a right and go down the hall, keeping straight."
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Then take a right into the bedroom that is the first door on your right.",
-        "requirement": "Preserve the ordinal target and its counting origin: Then take a right into the bedroom that is the first door on your right.",
+        "requirement": "Preserve the first-door ordinal and its right-side counting origin; the candidate says next door, which changes the selected ordinal target.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          "the next door on your right"
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Stop in the room just past the door on the inside of the doorway.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Stop in the room just past the door on the inside of the doorway.",
+        "requirement": "Preserve the specified stopping position just inside the doorway.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          "Stop in the room just past the door on the inside of the doorway."
         ],
         "status": "covered"
       }
@@ -147,14 +147,14 @@
           }
         ],
         "evidence_level": "S1",
-        "problem": "The candidate changes the source ordinal from the first right-side door to the next door, changing the selected target.",
-        "execution_consequence": "The ordinal changes which door is selected; the navigator may enter the wrong room or count from the wrong item.",
+        "problem": "The candidate changes the source ordinal from the first right-side door to the next door on the right. This changes which bedroom is selected even though the surrounding route remains present.",
+        "execution_consequence": "The navigator may enter a different bedroom because the selected door ordinal has changed.",
         "repair": {
           "operation": "restore",
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact first-door ordinal and preserve its right-side counting origin.",
+          "instruction": "Restore 'the first door on your right' exactly, preserving the hallway as the counting origin, and retain the specified stop just inside the doorway.",
           "protected_requirements": [
             "Preserve the preceding route and direction.",
             "Preserve the original ordinal and its counting origin.",
@@ -224,7 +224,7 @@
     "anti_pattern": "Do not infer a defect from harmless rewording of the same ordinal or from a landmark description that leaves the counted target unchanged.",
     "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
     "semantic_pattern": "revise_ordinal_target_identity_omission",
-    "decision_reason": "The candidate changes the source ordinal from the first right-side door to the next door, which changes target identity even though the rest of the route remains fluent.",
+    "decision_reason": "The candidate preserves the hallway traversal and terminal position but changes the ordinal target from the first right-side door to the next door on the right. This is a route-critical target-identity error.",
     "transfer_rule": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
   }

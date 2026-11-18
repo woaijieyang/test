@@ -50,8 +50,12 @@ def library(role, profile):
     folder = ROOT/role/'templates'/PROFILES[profile]
     # Legacy migration sources and fixed RxR core remain outside Dynamic retrieval.
     if profile == 'r2r-en':
-        files = sorted(path for path in folder.glob('*/*.json')
-                       if path.parent.name != 'core')
+        # Explicit R2R allowlist: archive directories must never enter retrieval.
+        if role == 'generator':
+            files = sorted((folder/'val_seen').glob('*.json'))
+        else:
+            files = (sorted((folder/'paired').glob('*.json')) +
+                     sorted((folder/'diagnostics').glob('*.json'))
     elif role == 'generator':
         files = sorted((folder/'val_seen').glob('*.json'))
     else:

@@ -11,8 +11,12 @@
     "source_type": "semantic_boundary_case"
   },
   "provenance": {
+    "kind": "reviewer_teaching_case_rebuilt_from_r2r_source",
+    "source_status": "source_instruction_from_uploaded_val_seen",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "TARGET_LANDMARK_EXPECTED_OBSERVATION_CONFUSION",
     "core_curated_from": "R2R-REV-004",
-    "curation_basis": "target versus expected-observation distinction; semantic provenance pair only"
+    "curation_basis": "Target versus expected-observation distinction; semantic provenance pair only"
   },
   "review_input": {
     "original_instruction": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM. ",

@@ -243,7 +243,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The first stage completes the stair descent and right turn. The next stage has a distinct forward approach and bench-relative terminal placement; this is a movement/endpoint boundary, not a room or doorway transition."
       },
       {
         "layer": "L6_route_readback",
@@ -374,7 +374,7 @@
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
-    "why_this_review_matters": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective.",
+    "why_this_review_matters": "The candidate separates the completed stair descent and right turn from the subsequent approach to the leather chairs and the bench-relative terminal placement.",
     "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
     "retrieval_tags": [
       "stairs_or_level_change",
@@ -384,8 +384,8 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Go down the stairs, and take a right .; Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the…; Preserve the directional/spatial relation and its reference frame: Once you reach the bench on your right stop and…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Go down the stairs, and take a right .; Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the…; Preserve the directional/spatial relation and its reference frame: Once you reach the bench on your right stop and…",
+    "review_principle": "Verify the stair descent and right turn, the forward approach toward the leather chairs beside the table, and the once-triggered stop/stand placement on the wood between the bench and carpet.",
+    "case_specific_focus": "The boundary is between a completed stair-descent/turn maneuver and a distinct subsequent bench-approach and terminal-placement objective; it is not a room or doorway transition.",
     "semantic_pattern": "hard_pass_temporal_condition_and_endpoint_scope",
     "decision_reason": "The candidate preserves the 'once you reach' trigger and the stop/stand placement it governs. The condition remains attached to the approach endpoint.",
     "transfer_rule": "PASS when temporal triggers retain their original scope and remain attached to the action or endpoint they govern.",

@@ -1,7 +1,7 @@
 {
   "baseline_branch": "LLM-decompose-v6.1-prompt-only",
   "baseline_commit": "d48752c5261769cb76b3b6d8c47826ab94a277fe",
-  "purpose": "R2R-only fixed Core curation. RxR assets and runtime behavior remain frozen.",
+  "purpose": "R2R-only hardening of Reviewer Core evidence/provenance and Host reliability; RxR assets and runtime behavior remain frozen.",
   "runtime": {
     "generator": {
       "source_library_on_disk": 35,
@@ -197,5 +197,14 @@
     ],
     "v6_2_scope": "Restore a fixed, curated ten-example R2R Core per role while retaining v6.1 shared prompts, schemas, runtime workflow, and the existing v6 dynamic ranking algorithm/count. Promoted source copies are excluded from Dynamic to avoid duplicate injection.",
     "causal_status": "Plausible structural drift and a testable recovery hypothesis, not a proven cause of the observed navigation metric drop. Only paired model/data evaluation can establish causal impact."
-  }
+  },
+  "version": "v6.3",
+  "v6_3_repairs": [
+    "R01 unsupported stairs/doorway-stop claims removed",
+    "R02 SRC-02/SRC-03/SRC-04 Candidate Evidence mapped to correct phrases and ordinal mismatch made explicit",
+    "R05 terminal-tile refinement rationale corrected",
+    "R09 stair-descent/right-turn and bench-terminal rationale corrected",
+    "R01-R10 malformed stringified provenance normalized; R08 provenance completed",
+    "Host navigation eligibility, source identity, provider request hash binding and R2R dynamic directory allowlist hardened"
+  ]
 }

@@ -1,8 +1,0 @@
-{
-  "disposition": "accepted_candidate",
-  "render_mode": "BOUNDARY_ONLY",
-  "instruction": "Cross  the lobby to the stairway.\nClimb to the landing and wait by the clock. ",
-  "instruction_sha256": "5427811787d0564ac5e23ee65dbd29d95e0bb3235d181ff0e6efff3c1ff95e11",
-  "semantic_correctness_verified": false,
-  "navigation_evaluated": false
-}

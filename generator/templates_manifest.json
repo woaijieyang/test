@@ -1,5 +1,5 @@
 {
-  "version": "6.0",
+  "version": "6.3",
   "dataset_profiles": {
     "r2r-en": {
       "dynamic_directory": "templates/R2R/val_seen",
@@ -52,5 +52,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "ten fixed R2R Core examples are unconditional; promoted Core source copies are excluded from the R2R Dynamic retrieval pool, while their original files remain available for provenance"
+  "selection": "ten fixed R2R Core examples are unconditional; promoted Core source copies are excluded from the R2R Dynamic retrieval pool, while their original files remain available for provenance v6.3: R2R dynamic loading is restricted to the explicit val_seen/paired/diagnostics allowlist; RxR runtime behavior is frozen."
 }

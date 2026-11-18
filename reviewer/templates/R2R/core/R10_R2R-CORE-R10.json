@@ -286,9 +286,9 @@
     "review_principle": "Independently verify this case's source-specific requirements: The route-defining landmark phrase is unclear and may be a transcription error; changing it would change the destination.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
     "case_specific_focus": "The route-defining landmark phrase is unclear and may be a transcription error; changing it would change the destination.",
     "semantic_pattern": "unresolved_route_critical_source_referent",
-    "decision_reason": "The phrase 'pack exit' is a route-defining target phrase and cannot be uniquely normalized from the available instruction. Guessing a likely correction would change the destination.",
-    "transfer_rule": "Use UNRESOLVED only when ambiguity is in the source itself and changes a route-critical target, branch, or completion requirement after contextual resolution.",
-    "anti_pattern": "Do not use UNRESOLVED for candidate-created omissions, ordinary visual uncertainty, or a plausible typo whose intended referent is uniquely established by context.",
+    "decision_reason": "The phrase 'pack exit' is the route-defining target. The surrounding instruction does not establish with sufficient certainty whether this means 'back exit' or another exit, so normalizing it would risk changing the selected destination.",
+    "transfer_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
+    "anti_pattern": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
   }
 }

@@ -22,7 +22,7 @@ from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "v6-rxr-en-us-v1"
+VERSION = "v6.3-r2r-core-hardening-rxr-frozen"
 
 
 def dataset_rules_metadata(profile):
@@ -215,7 +215,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         valid = (
             receipt.get("model") == req["model"] and
             receipt.get("effort") == req["effort"] and
-            bool(receipt.get("request_id"))
+            bool(receipt.get("request_id")) and
+            (receipt.get("provider_request_sha256") is None or
+             receipt.get("provider_request_sha256") == obj_hash(req))
         )
         if not valid:
             event["call_state"] = "receipt_invalid"
@@ -306,8 +308,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             "technical_by_role": dict(technical_by_role),
             "semantic_repairs": semantic_repairs,
             "task_key": src.key,
-            "navigation_eligible": not (diagnostic and diagnostic.get("step") in
-                                        ("transport", "transport_recovery_lookup", "receipt_validation", "snapshot_commit")),
+            "source_identity": src.identity(),
+            "navigation_eligible": disposition not in ("fallback_technical", "input_failed"),
             "profile": src.profile,
             "source_sha256": src.sha,
             "dataset_rules": rules_frozen,

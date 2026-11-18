@@ -252,7 +252,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The cut follows the completed far-wall doorway crossing; the next stage has a distinct hallway-traversal and destination-room-entry objective."
       },
       {
         "layer": "L6_route_readback",
@@ -384,10 +384,11 @@
   },
   "teaching_notes": {
     "semantic_pattern": "hard_pass_surface_paraphrase_and_supported_doorway_target",
-    "decision_reason": "The candidate preserves the completed pass-by and turn, the source-selected doorway relative to the stairs, and the explicit stop in the doorway. It changes wording without changing the target, route order, or terminal event.",
-    "transfer_rule": "PASS when paraphrase changes surface form but preserves the same source-supported target, ordered movement, spatial relation, transition completion, and terminal condition.",
-    "anti_pattern": "Do not reject wording differences that preserve route semantics. Do not transfer PASS when the candidate changes the doorway selection, weakens approach/crossing, or moves the explicit stop.",
+    "decision_reason": "The candidate preserves the initial left turn and expected chandelier/table orientation cue, selects the source-specified open door on the far wall, completes the crossing, traverses the hallway, and enters the room with the blue patterned carpet. The wording changes do not alter the selected target or route order.",
+    "transfer_rule": "PASS when a paraphrase preserves the source-selected target, ordered approach and crossing, subsequent traversal, destination entry, and terminal condition without promoting an observation into a goal.",
+    "anti_pattern": "Do not reject harmless paraphrase. Do not invent stairs, a doorway stop, or any other event absent from the source; do not treat the chandelier observation as the destination.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
-    "reviewer_rule": "Independently map the current source requirements to candidate evidence before consulting this example."
+    "reviewer_rule": "Map each source requirement to the candidate stage that actually expresses it. Distinguish the expected chandelier observation from the far-wall doorway target and the room-entry requirement.",
+    "review_principle": "Verify the initial orientation cue, far-wall door selection, approach, completed crossing, hallway traversal, and destination-room entry."
   }
 }
