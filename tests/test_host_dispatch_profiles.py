@@ -171,12 +171,12 @@ class HostDispatchProfileTests(unittest.TestCase):
             selected_ids=ids, original_instruction=source_text
         )
         self.assertTrue(prompt.startswith(
-            "BUILD: Selected examples are source-feature-matched and frozen per record. "
+            "BUILD: Ten fixed R2R core examples are loaded in stable order; selected dynamic examples are source-feature-matched and frozen per record. "
             "The original instruction is the only route authority.\n\n"
         ))
         self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
         self.assertIn("FIXED R2R-EN GENERATOR CORE: exactly 10", prompt)
-        self.assertIn("CURATED R2R-EN GENERATOR EXAMPLES:", prompt)
+        self.assertIn("DYNAMIC R2R-EN GENERATOR EXAMPLES:", prompt)
         self.assertNotIn("FIXED RXR", prompt)
         self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
         self.assertNotIn("RXR ROLE GUIDANCE", prompt)
