@@ -1,36 +1,32 @@
-# Reviewer — independent, source-grounded L0–L6 audit
+# Reviewer — independent source-grounded audit
 
-Reviewer uses exactly the same `shared/semantic_contract.md` as Generator. `prompt.md` and `checklist.md` define L0 rendered-text integrity, L1 source coverage, L2 dependencies, L3 five-element stage checks, L4 adjacent handoffs, L5 grouping, and L6 whole-route readback. The active `output.schema.json` is Draft 2020-12 and is shared by R0 and R1.
+Reviewer uses the same `shared/semantic_contract.md` as Generator. `prompt.md` and `checklist.md` define independent L0–L6 review. The active `output.schema.json` is used for both R0 and R1.
 
-## Input independence
+## Input Independence
 
-R0 receives the original instruction, frozen candidate stage strings and exact rendered text. It never receives Generator's `stage_audit` or Handoff self-assessment. R1 is a fresh independent session; it receives the new source/candidate/rendered text plus the frozen R0 review, exact R0 candidate and exact R0 rendered text so it can verify each prior blocking finding. It does not receive G1's response as proof and must independently re-audit the complete new candidate.
+R0 receives the original instruction, frozen Candidate stages and exact rendered text. It does not receive Generator Stage Audit or Handoff self-assessment. R1 receives the new Source/Candidate/rendered text plus the frozen R0 Review, old Candidate and old rendered text. It independently rechecks every prior blocking Finding and the entire new Candidate.
 
-## Runtime output
+## Review Output
 
-- Dimensions are exactly `source_fidelity`, `closure_handoff`, `segmentation_adequacy`; do not use `fidelity`.
-- `source_coverage` is event-level and candidate evidence is `{subtask_index, quote}`.
-- `layer_checks` must report L0–L6 exactly once and in order.
-- Each `stage_checks` item uses `subtask_index`, all five structured elements, source requirement IDs, source quotes and carryover.
-- Each finding contains source evidence, candidate evidence, failed layer/check, dimension, affected stage indices, separate repair-target indices, concrete execution consequence and a local repair option.
-- Candidate evidence may cite both sides of a handoff even when the repair target is only one stage. Evidence indices are validated independently from repair indices.
-- R0 returns `prior_finding_reviews: []`. R1 returns exactly one `resolved/partially_resolved/unresolved` disposition for each R0 finding, with evidence from the new candidate. R1 may PASS only if all prior blockers are resolved and no new blocker exists.
+- Dimensions: `source_fidelity`, `closure_handoff`, `segmentation_adequacy`.
+- `source_coverage`: event-level requirements and exact Candidate Evidence.
+- `layer_checks`: L0–L6 exactly once and in order.
+- `stage_checks`: every actual stage and its five elements.
+- `handoffs`: every adjacent pair.
+- `findings`: material, evidence-backed defects with execution consequence and a local nonbinding repair.
+- R0 `prior_finding_reviews` is empty; R1 must disposition each R0 blocker exactly once.
 
-A finding is advisory; Generator may reject it when the source does not support the proposed action. A PASS is not navigation success.
+PASS requires all material source requirements preserved, no unsupported additions, complete executable stages, supported handoffs and adequate grouping. REVISE requires a material repairable Candidate defect. UNRESOLVED is only for route-critical ambiguity in the original Source that cannot be resolved from context. Style preference is not a Finding. A PASS is not navigation success.
 
-## Teaching corpus
+## Fixed Core and Dynamic Library
 
-- `templates/R2R/paired/`: 35 paired R2R Reviewer examples.
-- `templates/R2R/diagnostics/`: 26 R2R adversarial diagnostics.
-- `templates/RxR/paired/`: 35 paired RxR Reviewer examples.
-- `templates/RxR/diagnostics/`: 29 RxR adversarial diagnostics.
-- `templates/RxR/legacy/`: 10 provenance-labelled legacy Reviewer examples.
+| Profile | Fixed Reviewer Core | Paired Dynamic | Diagnostics |
+|---|---:|---:|---:|
+| R2R English | R01–R10 (10) | 29 eligible; select 6–8 | 23 eligible; select 2–4 |
+| RxR en-US | R01–R10 (10) | 35 eligible; select 2–4 | 29 eligible; select 0–2 |
 
-The 35 paired examples per dataset are not unique gold segmentations. Diagnostics teach material defects and must not be treated as positive examples. Retrieve 8–12 source-matched cases once for R0 and reuse the same Reviewer IDs in R1. Full schema, evidence and verdict gates are defined in `host/README.md`.
+Core is always loaded in stable order. Paired Dynamic is linked to selected non-Core Generator Dynamic IDs; Diagnostics supplement it. Pair IDs describe teaching lineage, not a verdict or forced runtime order. R2R and RxR libraries are isolated. Legacy is provenance only.
 
+## Teaching Quality
 
-## v6 RxR en-US core and guidance
-
-For `rxr-en-us`, the compiler always loads the ten independent migrated v5-format Reviewer cases in `templates/RxR/core/` (R01–R10), followed by the 2–4 Reviewer examples paired with the Generator's dynamic IDs and 0–2 relevant Diagnostics. The fixed Reviewer core is not derived from Generator outputs by changing role labels; each case retains its own expected review and source evidence.
-
-`dataset_rules/rxr_en_us.md` defines the independent long-route audit order and false-positive controls. It must agree with `shared/dataset_rules/rxr_en_us.md`. R0 and R1 reuse the same fixed core, paired examples, diagnostics and content hash. R2R does not load RxR rules or core cases.
+Each case must have a source-grounded requirement map, Candidate Evidence from the correct stage, accurate semantic relation, defensible Verdict, material consequence and actionable local repair where applicable. Curated cases are not official human review labels or navigation ground truth. Schema and quote validation do not replace semantic review.

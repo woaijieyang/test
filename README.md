@@ -1,171 +1,117 @@
-# LLM-decompose-v6｜v5 通用体系 + RxR en-US 专属增强
+# LLM-decompose-v6.3｜R2R / RxR 统一导航指令分割系统
 
-**定位：** 这是基于完整 R2R/RxR 轨迹审计、用户分析和 v1.3 语义基线整理出的最终综合版本，面向 **R2R English** 与 **RxR en-US**。Generator 仍是唯一语义作者；Reviewer 是独立诊断者；Adapter 只读取原始记录；Renderer 只做来源可追溯的机械装配与冻结；Host 只编排两角色调用并执行技术合同。
+**当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
-本包没有运行新的模型或导航实验。单元测试通过只能证明接口、来源追踪和技术合同可运行，不能证明分割语义准确或 SR/SPL/nDTW 提升。
+本仓库的工程测试不等于真实模型语义准确率或导航性能。没有明确记录的实验结果，不得表述为 SR、SPL、nDTW 或导航成功率提升。
 
-## 先看什么
+## 入口文档
 
-1. `WORKFLOW.md`：完整数据流、模块顺序和失败回退。
-2. `IMPLEMENTATION.md`：最终设计取舍、关键边界和实验顺序。
-3. `CODEX_START_HERE.md`：交给 Codex 的逐步接入合同。
-4. `shared/semantic_contract.md`：Generator/Reviewer 唯一共同验收标准。
-5. `generator/prompt.md`、`reviewer/prompt.md`：两角色可维护提示词；实际调用文本由 `host/compile.py` 编译。
+- `WORKFLOW.md`：端到端数据流、阶段输入输出、状态和失败回退。
+- `IMPLEMENTATION.md`：模块职责、关键设计约束和可维护性原则。
+- `CODEX_START_HERE.md`：开发、集成和验收步骤。
+- `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
+- `shared/semantic_contract.md`：Generator/Reviewer 共用的唯一语义验收标准。
+- `generator/prompt.md`、`reviewer/prompt.md`：角色提示词源文件；运行时文本由 `host/compile.py` 编译。
 
-## 工作流
+## 系统工作流
 
 ```text
-R2R en / RxR en-US source row
-        │
-        ▼
-adapter: exact source + task identity + SHA-256 + source envelope
-        │  (only original_instruction is sent to semantic roles)
-        ▼
-Generator G0 ── one candidate JSON
-        │
-        ▼
-Renderer: freeze exact stage strings + source provenance + LF join
-        │
-        ▼
-Reviewer R0: layered C01–C12 audit + per-stage checks + adjacent handoffs
-        │
-        ├── pass ───────────────────────────────► commit the same frozen snapshot
-        │
-        ├── unresolved/source-limited ──────────► exact original source fallback
-        │
-        └── revise ─► Generator G1 independently accepts / partially accepts /
-                      rejects / leaves findings unresolved
-                      │
-                      ▼
-                Renderer: freeze new snapshot
-                      │
-                      ▼
-                Reviewer R1 in a fresh context; receives the frozen R0 findings, old candidate and old rendered text for one-to-one recheck
-                      │
-                      ├── pass ─► commit that exact snapshot
-                      └── otherwise ─► exact original source fallback
-
-Committed instruction ─► existing AwareVLN instruction slot
-                         (no new goal switch, memory, STOP hook or state reset)
+Dataset record
+  │
+  ▼
+Adapter: exact source + task identity + profile + SHA-256
+  │
+  ▼
+Host: freeze profile, rules, core IDs, dynamic IDs and hashes
+  │
+  ▼
+Generator G0 → schema/protocol validation
+  │
+  ▼
+Renderer: freeze exact candidate snapshot
+  │
+  ▼
+Reviewer R0: source-grounded L0–L6 independent review
+  ├── PASS → release the exact reviewed snapshot
+  ├── UNRESOLVED → exact original-source fallback
+  └── REVISE → Generator G1 receives findings and protected requirements
+                    │
+                    ▼
+              Renderer freezes new snapshot
+                    │
+                    ▼
+              Reviewer R1 rechecks old findings and new defects
+                    ├── PASS → release the exact R1-reviewed snapshot
+                    └── otherwise → exact original-source fallback
 ```
 
-## Directory responsibilities
+G0/R0/G1/R1 均绑定同一个 Source Identity。G0/G1 使用同一 Generator Core 和 Dynamic IDs；R0/R1 使用同一 Reviewer Core 和 Dynamic IDs。R1 必须核验 R0 的每一条阻塞 Finding，不能只根据 G1 的自述接受修复。
 
-| Directory | Owns | Must not do |
+## 两个数据集的 Profile
+
+| 配置 | R2R English | RxR en-US |
+|---|---:|---:|
+| Generator Fixed Core | 10（G01–G10） | 10（G01–G10） |
+| Reviewer Fixed Core | 10（R01–R10） | 10（R01–R10） |
+| Generator Dynamic Eligible | 25 | 35 |
+| Generator Dynamic per task | 6–8 | 2–4 |
+| Reviewer Paired Dynamic Eligible | 29 | 35 |
+| Reviewer Paired per task | 6–8 | 2–4 |
+| Reviewer Diagnostics Eligible | 23 | 29 |
+| Reviewer Diagnostics per task | 2–4 | 0–2 |
+
+磁盘来源数、Core 数、Dynamic Eligible 数和单任务实际选择数是不同概念，禁止混用。固定 Core 无条件加载且顺序稳定；Dynamic 只从当前 Profile 的白名单目录检索；Legacy 仅用于来源追溯，不进入运行时。
+
+R2R 只加载 R2R Rules/Core/Library；RxR 只加载 RxR Rules/Core/Library。共享合同只保存两个数据集共同遵守的语义标准，不承载数据集专属例外。
+
+## 模块边界
+
+| 模块 | 唯一职责 | 禁止事项 |
 |---|---|---|
-| `generator/` | Full-source interpretation, boundary selection, local-context assembly, only candidate author, one independent repair decision | Read scores/GT, trust reviewer suggestions automatically, claim actions completed |
-| `reviewer/` | Independent source-grounded C01–C12 audit, each stage and each handoff, factual findings and local repair options | Rewrite candidate, author a replacement route, see navigation scores, act as a third/primary reviewer |
-| `adapter/` | R2R/RxR English schema intake, task key, exact decoded string, UTF-8 hash, read-only prefix/body/suffix features | Trim/normalize, segment, infer a route, pass trajectory/GT/score to LLM |
-| `renderer/` | SOURCE_EXACT / BOUNDARY_ONLY / ASSEMBLED_SINGLE / ASSEMBLED_MULTI preview, whitespace provenance ledger, exact frozen string | Semantic correction, SR-based choice, post-review cleanup, reject a semantically valid split for style |
-| `host/` | Compile prompts, validate schemas/quotes/hashes, bounded G0-R0-G1-R1 flow, same-snapshot commit or exact fallback | Add a chief reviewer, call online goal switches, change AwareVLN internals |
-| `shared/` | The one semantic acceptance contract and identity/hash helpers | Duplicate or contradict role-specific standards |
-| `generator/templates/` and `reviewer/templates/` | R2R keeps v5 dynamic pools (35 Generator; 35 paired + 26 diagnostics). RxR uses 10 fixed v5-format core cases per role plus 2–4 dynamic examples; Reviewer adds 0–2 diagnostics. v1-format files are not runtime inputs | Serve as hidden route facts or unique gold segmentations |
-| `evaluation/` | Paired full-denominator summaries and technical smoke cases | Feed scores into Generator/Reviewer or delete failures from the denominator |
-| `provenance/` | Input lineage, evidence summary, source analyses and build hashes | Claim new navigation results or unverified causal explanations |
+| Adapter | 识别数据集、语言、Split、稳定任务身份，保留原始指令 | 改写、切分、推断路线或传递 GT/轨迹给模型 |
+| Generator | 阅读完整 Source，决定 KEEP/SPLIT，输出完整 Candidate 和 Stage Audit | 读取导航分数、把 Reviewer 建议当命令 |
+| Reviewer | 独立核对 Source/Candidate、阶段、依赖和 Handoff | 自己重写 Candidate、引入 Source 外事实 |
+| Renderer | 来源可追溯的字符串装配、冻结和哈希 | 语义纠错、审核后改写 |
+| Host | Profile 派发、Prompt 编译、调用、校验、修复和 Release | 跨数据集回退、跳过审查或技术失败时释放候选 |
+| Shared | 语义合同、身份和哈希工具 | 复制或覆盖数据集专属规则 |
 
-## Acceptance principles
+## 关键语义约束
 
-Each stage must preserve five semantic properties: entry context, prescribed process, target/identifying information, completion or terminal objective, and conditions/constraints. The roles also share five dependency families: until; after/once/when/then; before; while/keep/stay; if/otherwise/either/or. Both roles use the same C01–C12 checklist and the same evidence hierarchy S1/S2/S3; S4 (layout guesses, GT, scores or another episode) is prohibited.
+每个 Stage 都要有可执行的 Entry、Target、Process、Ending 和 Conditions。切分必须有来源支持的前一阶段完成事件、下一阶段尚未执行的目标、连续 Handoff 和明确的局部焦点收益。动作动词数量、句子数量、房间名或标点不能单独决定切分。
 
-A useful split requires a supported previous exit, a supported next entry, a distinct next objective, and no broken condition/entity/count/frame. Short instructions are not automatically single-stage; a multi-action maneuver is not automatically multi-stage. `toward X` may be a terminal goal directive when it is the final source command, but this never means the agent reached or entered X.
+观察线索不能自动变成导航目标；看到门不等于穿过门；靠近目标不等于到达；阶段边界不等于 STOP。Ordinal、方向参照、时间条件、否定、数量、目标身份和最终位置必须保留其原始作用域。
 
-## Renderer and format contract
+Reviewer 的 PASS/REVISE/UNRESOLVED 必须来自当前 Source 和 Candidate 的证据。教学案例的 Verdict 不是当前任务的投票。只有 Source 本身存在影响路线选择且无法消解的关键歧义，才允许 UNRESOLVED。
 
-- Unchanged/fallback source is returned byte-for-byte after UTF-8 decoding/encoding; no global `strip`, `splitlines`, `split/join`, `unicode_escape`, NFC/NFKC or case normalization.
-- `BOUNDARY_ONLY` replaces only the source whitespace at approved stage cuts with LF; copied stage interiors remain untouched.
-- `ASSEMBLED_SINGLE` and `ASSEMBLED_MULTI` keep reliable source COPY/MOVE spans and record EDIT/EDIT_SEAM explicitly. Ambiguous repeated spans are not assigned arbitrarily.
-- The source prefix/suffix are preserved exactly. Dataset-specific statistics are descriptive; there is no hard-coded “R2R must add one trailing space” or “RxR must trim” rule.
-- Stage count comes from the array/metadata, not `splitlines()`; native LF/CRLF inside a stage may remain.
-- The same frozen `rendered_instruction` reviewed by R0/R1 is the string committed to the existing actor input slot.
+## Renderer 与交付边界
 
-## Offline verification
+- 原始 Source 解码后精确保留；不得全局 `strip`、Unicode 规范化、`split/join` 或改写换行。
+- `BOUNDARY_ONLY` 只在批准的阶段边界替换分隔空白；阶段内部文本保持原样。
+- `ASSEMBLED_SINGLE/MULTI` 必须记录 COPY/MOVE/EDIT/EDIT_SEAM 来源。
+- Reviewer 审查的冻结字符串必须与最终 Release 字符串完全一致。
+- 技术失败和输入失败不能标记为 navigation-eligible；有效 Source 存在时回退到精确原文。
+- AwareVLN 只接收最终 `instruction` 字符串，不接收 Template、Finding、Stage Audit 或 Profile 元数据。
 
-Python 3.10+; install `requirements.txt`, then run:
+## 构建与验证
+
+在 Python 3.11 环境安装 `requirements.txt` 后执行：
 
 ```bash
-python -m host.compile
-python -B -m unittest discover -s tests -p test_entry_diagnostics.py -v
-python -B -m unittest discover -s tests -p test_closed_loop_35.py -v
-python -B -m unittest discover -s tests -p test_roles_repair.py -v
-python -B -m unittest discover -s tests -p test_rxr_v6_profile.py -v
-python -B -m unittest discover -s tests -p test_reviewer_recovery.py -v
-# The release-transaction fixture requires the separate case1 companion directory;
-# it is not included in this repository branch.
-# Run the complete inherited suite separately and compare known baseline failures:
+python -B -m host.compile
+python -B verify_package.py
 python -B -m unittest discover -s tests -v
 python -m examples.demo
 python -m evaluation.smoke24
-python verify_package.py
 ```
 
-The demo uses explicitly labeled fixtures and does not call a real LLM or run navigation. Real model integration requires an existing transport callback that reports actual model, effort and request ID. Do not treat a requested alias as a verified provider receipt.
+编译后必须检查六份 Compiled Prompt 和 Build Manifest：每个 Profile/Role 都应有十条固定 Core；R2R/RxR Dynamic IDs 只能来自本 Profile 的允许目录；Legacy 不得进入 RxR 运行时；Schema 必须处于约定的 Prompt 位置。所有编译产物必须提交并通过完整性校验。
 
-## Evidence limits
+真实模型调用、盲审语义评估、Tokenizer 捕获和导航 Rollout 属于独立实验。离线 Fixture、Smoke 和 CI 不能替代这些实验。
 
-The source analysis reports 1,839 uploaded R2R evaluation records and 1,223 uploaded RxR en-US evaluation records. Their whitespace statistics are descriptive for those files, not universal dataset rules. The report documents previous runs (R2R baseline 1207/1839, current tested p1/v2 1197/1839; RxR old D 848/1223 vs baseline 827/1223) but those are not results of final-best-v1. No new generator/reviewer calls, tokenizer capture, navigation rollout or independent held-out validation were run to create this package.
+## 数据来源与评测
 
-## Entry diagnostics release 1
+R2R 固定 Core 与 Dynamic 教学材料包含 val_seen 来源。评测前必须核对 Episode、Instruction 和 Scan 的重叠；不得把包含教学来源样本的评测结果称为无泄漏的独立验证。优先采用与教学来源隔离的评测 Split，并保留完整分母、Fallback 和技术失败记录。
 
-This variant preserves the existing two-role call budget and renderer, adds one shared entry-context definition and located diagnostics, and aligns accepted Generator/Reviewer entry checks. It is an engineering revision; no new model or navigation results are claimed. `generator/acceptance.md` is a synchronized reference copy of `shared/semantic_contract.md`; only the latter is compiled.
+## 当前工程状态
 
-Results retain `error` and add `diagnostic` (null on success). Failures identify module, phase, host step and JSON pointer. A technical entry violation does not prove route text wrong. Call state distinguishes request construction, transport entry/return and verified versus invalid receipt. Transport failure leaves remote execution unknown and never causes an automatic retry. Source-loading failure produces `input_failed` without invented instruction or identity.
-
-Current regression commands above exercise offline fixtures only. The two inherited legacy test files are retained and still expose 18 baseline failures/errors associated with older interfaces and renderer expectations. They are not skipped or represented as passing. Full before/after evidence, exact diffs, original archive, installation journal and rollback tool are in `docs/stages/v5-entry-diagnostics-20261114-r0` under the case1 root. The release transaction test uses that companion tool.
-
-This release does not repair the known terminal-disclaimer keyword rule, change missing-split policy, alter the active-candidate unresolved branch, add retries, or modify evaluation/model/STOP/image settings. Do not replay an old result with the new prompt or compare full result dictionaries across versions as if they were identical. Use its recorded frozen original package.
-
-
-## Runtime contract v2 (2026-11-15)
-
-The active wire schemas are `generator/output.schema.json`, `reviewer/output.schema.json`, and `generator/repair.schema.json` (Draft 2020-12). The shared `stage_audit.schema.json` and `handoff.schema.json` remain the nested teaching/runtime references. Runtime names are canonical: Generator stage index is `subtask_index`; Reviewer dimension is `source_fidelity`; candidate evidence uses `{subtask_index, quote}`. R0 requires an empty `prior_finding_reviews`; R1 must disposition every R0 blocking finding exactly once.
-
-The Host now passes R1 the exact frozen R0 review, R0 candidate and R0 rendered instruction in addition to the new candidate/rendered text. Cross-stage findings may cite evidence from both sides of a handoff while targeting only one stage for repair. G1 responses are one-to-one with R0 findings and the repaired candidate is a complete Generator output, not a text patch. See `host/README.md` for the field contract, null/empty semantics, verdict gates and fallback policy.
-
-
-## Validation scope for this revision
-
-The runtime schema and host files were edited on the `LLM-decompose` branch from the pinned baseline commit. The three active schema files are Draft 2020-12 and their JSON syntax was re-read after commit. The new offline regression suite is `tests/test_runtime_contract_v2.py`; it covers status gates, cross-stage evidence with a one-stage repair target, G1 one-to-one responses and R1 prior-finding resolution. Installed validation: 105 offline tests passed. R2R 188 and RxR 1509 completed real G0/R0 calls. Navigation was not run. See provenance/runtime-verification.json.
-
-
-## Full-tree integrity manifest
-
-`FILE_HASHES.json` covers all 568 tracked files in the v6 branch (excluding the manifest itself), using the exact Git blob SHA-1 for each file, including archived snapshots, fixed core templates, dynamic examples, rules and tests. `verify_package.py` verifies the complete tracked tree and rejects missing or extra files. The Git blob value is computed as SHA-1 over `blob <byte-length>\0<file-bytes>`; it is not a plain SHA-1 of file contents.
-
-## Default role models
-
-Generator and reviewer both use `gpt-5.6-sol` with `high` reasoning effort from `host/role-pins.json`. Omitting `--pins` (CLI) or `pins` (Python) uses these defaults. An explicit run configuration overrides them.
-
-
-## v6 RxR en-US profile
-
-v6 is based on the exact `LLM-decompose-v5` branch commit and preserves its common Generator/Reviewer prompts, active schemas, five-element Stage Audit, Handoff, L0–L6 review, G0–R0–G1–R1 workflow, Adapter, Renderer and AwareVLN actor boundary. Only the RxR en-US profile receives dataset-specific semantic rules and fixed core examples. R2R en continues to use the v5 common rules, v5 dynamic templates and original selection ranges.
-
-### RxR prompt composition
-
-- Generator: v5 Generator prompt + v5 shared semantic contract + shared RxR en-US rules + Generator RxR guidance + unchanged active Generator schema + fixed Generator core G01–G10 + 2–4 dynamic val_seen examples.
-- Reviewer: v5 Reviewer prompt + v5 shared semantic contract + shared RxR en-US rules + Reviewer RxR guidance + unchanged active Reviewer schema + fixed independent Reviewer core R01–R10 + 2–4 paired dynamic Reviewer examples + 0–2 relevant diagnostics.
-- G1 reuses the exact Generator core/dynamic selection from G0. R1 reuses the exact Reviewer core/dynamic/diagnostic selection from R0. The Host records a content hash for the rule bundle and each role's complete fixed+dynamic template bundle, and rejects mid-task mutation.
-- Fixed core cases are loaded in stable G01–G10 / R01–R10 order. They are not ranked, replaced, or removed by retrieval. The `legacy/` directories are provenance archives; runtime loads the v5-format copies under `core/`, never the original v1 JSON.
-- The 10 Generator and 10 Reviewer core files are v5-format migrations of the original v1 examples. Their `legacy_reference` and provenance fields preserve lineage. Reviewer core cases remain independent review examples and pair with the corresponding Generator core IDs. Reviewer files use `RXR-CORE-R01`–`RXR-CORE-R10` as their own `template_id`; `pair_id` points to the corresponding `RXR-CORE-G01`–`RXR-CORE-G10` Generator case.
-
-### RxR rule responsibilities
-
-`shared/dataset_rules/rxr_en_us.md` is the single semantic authority for long-instruction event reconstruction, action/observation distinction, late target-description binding, temporal scope, coreference, route history, spatial reference frames, ordinals/count origins, endpoint refinement, conditions and handoff semantics. `generator/dataset_rules/rxr_en_us.md` defines the Generator's execution order; `reviewer/dataset_rules/rxr_en_us.md` defines the independent audit order and false-positive controls. These role files may operationalize the shared definitions but may not contradict them.
-
-### Fixed and dynamic template inventory
-
-- Generator RxR: 10 fixed core + 35 dynamic val_seen.
-- Reviewer RxR: 10 fixed core + 35 paired dynamic + 29 diagnostics available for retrieval.
-- Generator R2R: 10 fixed Core + 25 Dynamic-eligible val_seen cases (6–8 selected per task).
-- Reviewer R2R: 10 fixed Core + 29 paired Dynamic-eligible cases + 23 Diagnostics (paired selection follows non-Core Generator IDs; 2–4 diagnostics selected per task).
-
-The active dynamic selection ranges are profile-specific: R2R retains 6–8 Generator and paired Reviewer examples plus 2–4 diagnostics; RxR selects 2–4 Generator examples, the corresponding 2–4 paired Reviewer examples, and 0–2 diagnostics. Explicit `selection_mode='all'` remains an evaluation/debug override, not the default runtime policy.
-
-### Validation status
-
-`tests/test_rxr_v6_profile.py` covers fixed core loading, role pairing, dynamic ranges, prompt profile isolation, and per-task rule/template hash metadata. `tests/test_closed_loop_35.py` also validates every core and dynamic example against the existing teaching schemas. No navigation success, SR/SPL improvement, or real-model semantic accuracy is claimed by these engineering changes.
-
-
-## v6.3 R2R hardening
-
-R2R Dynamic loading is restricted to explicit `val_seen/`, `paired/`, and `diagnostics/` allowlisted directories. Reviewer Core evidence/provenance fixes and Host integrity changes are recorded in the v6.3 release history. RxR assets and runtime selection behavior remain frozen against v6.1.
+当前分支包含双 Profile 固定 Core、数据集专属规则、动态检索、完整双角色闭环、Snapshot Release、来源追踪和离线回归测试。任何后续改动必须保持 R2R/RxR 隔离，并以可复现的构建和行为测试证明未改变既有功能。
