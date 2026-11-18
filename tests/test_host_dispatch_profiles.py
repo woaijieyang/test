@@ -186,7 +186,16 @@ class HostDispatchProfileTests(unittest.TestCase):
         from host.compile import ROOT
         for role in ("generator", "reviewer"):
             folder = ROOT / role / "templates" / "R2R"
-            expected_paths = sorted(p for p in folder.glob("*/*.json") if p.parent.name != "core")
+            core_folder = folder / "core"
+            promoted = {
+                __import__("json").loads(p.read_bytes())["provenance"]["core_curated_from"]
+                for p in core_folder.glob("*.json")
+            }
+            expected_paths = sorted(
+                p for p in folder.glob("*/*.json")
+                if p.parent.name != "core"
+                and __import__("json").loads(p.read_bytes())["template_id"] not in promoted
+            )
             expected_ids = [__import__("json").loads(p.read_bytes())["template_id"]
                             for p in expected_paths]
             actual_ids = [row["template_id"] for row in library(role, "r2r-en")]
