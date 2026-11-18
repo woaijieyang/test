@@ -4,7 +4,7 @@
   "role": "reviewer",
   "dataset_scope": "R2R",
   "language": "en",
-  "pair_id": "R2R-CORE-G07",
+  "pair_id": "R2R-CORE-G03",
   "source": {
     "split": "val_seen",
     "role": "standard",
