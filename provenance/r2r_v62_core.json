@@ -116,14 +116,14 @@
       "R2R-REV-019",
       "pass",
       "hard_pass_coupled_movement_without_false_boundary",
-      "R2R-CORE-G05"
+      "R2R-CORE-G01"
     ],
     [
       "R2R-CORE-R04",
       "R2R-DIAG-25",
       "revise",
       "revise_oversegmentation_orientation_only_stage",
-      "R2R-CORE-G01"
+      "R2R-CORE-G05"
     ],
     [
       "R2R-CORE-R05",
@@ -148,7 +148,7 @@
     ],
     [
       "R2R-CORE-R08",
-      "R2R-GEN-004",
+      "R2R-REV-004",
       "revise",
       "target_landmark_expected_observation_confusion",
       "R2R-CORE-G04"
