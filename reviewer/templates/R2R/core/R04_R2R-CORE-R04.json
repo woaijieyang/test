@@ -294,7 +294,46 @@
         "carryover": []
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The first stage completes the coach pass-by.",
+          "candidate_quote": "Move forward past the white coach."
+        },
+        "next_entry": {
+          "text": "The next stage begins with the left turn.",
+          "candidate_quote": "Turn left."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The event sequence is continuous and the next stage follows from the preceding pose; the defect is that the isolated turn is not an independent local objective."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The second stage completes the preparatory left turn.",
+          "candidate_quote": "Turn left."
+        },
+        "next_entry": {
+          "text": "The third stage continues with the stair ascent.",
+          "candidate_quote": "Continue up the stairs and stop."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The left turn can precede the stair ascent without a physical gap, but isolating it as a standalone stage creates an orientation-only micro-goal."
+      }
+    ],
     "prior_finding_reviews": []
   },
   "teaching_notes": {
