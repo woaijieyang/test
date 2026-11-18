@@ -13,9 +13,10 @@
     },
     "reviewer": {
       "paired_source_library_on_disk": 35,
-      "promoted_to_core": 3,
-      "dynamic_paired_eligible": 29,
+      "promoted_core_pair_ids": 10,
+      "dynamic_paired_eligible": 25,
       "diagnostics_source_library_on_disk": 26,
+      "promoted_core_diagnostics": 3,
       "dynamic_diagnostics_eligible": 23,
       "fixed_core": 10,
       "core_order": "R01-R10",
@@ -25,7 +26,7 @@
     "schemas": "unchanged",
     "workflow": "unchanged",
     "rxr": "frozen v6.1",
-    "note": "Promoted source cases remain on disk and are recorded for provenance, but are excluded from Dynamic retrieval to prevent fixed/dynamic duplicate teaching. Dynamic scoring and selection counts remain unchanged."
+    "note": "Promoted Core source cases remain on disk for provenance but are excluded from Dynamic retrieval. Reviewer paired examples for all ten promoted Generator Core IDs are excluded even when the corresponding Reviewer Core case was curated from Diagnostics; this preserves exact Generator/Reviewer dynamic pair alignment. Three diagnostic sources promoted to Reviewer Core are also excluded."
   },
   "generator_core": [
     [
