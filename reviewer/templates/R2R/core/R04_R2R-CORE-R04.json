@@ -74,64 +74,92 @@
       {
         "layer": "L0_integrity",
         "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed."
+        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "All source actions remain present in the candidate."
+        "conclusion": "All source actions remain present in the candidate.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The original order is preserved; the issue is the usefulness of the boundary, not a temporal inversion."
+        "conclusion": "The original order is preserved; the issue is the usefulness of the boundary, not a temporal inversion.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each isolated action can be textually executed; the defect is that the middle turn is not a useful independent navigation subgoal."
+        "conclusion": "Each isolated action can be textually executed; the defect is that the middle turn is not a useful independent navigation subgoal.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "The event order is continuous; no physical handoff gap is claimed. The unsupported aspect is the usefulness of the extra boundary."
+        "conclusion": "The event order is continuous; no physical handoff gap is claimed. The unsupported aspect is the usefulness of the extra boundary.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "issue",
-        "conclusion": "A preparatory turn is isolated without an independent local objective; merge it with the stair ascent."
+        "conclusion": "A preparatory turn is isolated without an independent local objective; merge it with the stair ascent.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L6_route_readback",
-        "status": "pass",
-        "conclusion": "All source route events remain represented in order; only the grouping is materially over-fragmented."
+        "status": "issue",
+        "conclusion": "All source route events remain represented in order; only the grouping is materially over-fragmented.",
+        "finding_indices": [
+          0
+        ]
       }
     ],
     "findings": [
       {
-        "source_quote": "Move forward past the white coach and then turn left. Continue up the stairs and stop.",
+        "code": "OVERSEGMENTED",
+        "failed_layer": "L5_grouping",
+        "c_check": "C12",
+        "dimension": "segmentation_adequacy",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0,
+          1,
+          2
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
+        "source_quote": "Move forward past the white coach and then turn left. Continue up the stairs and stop.",
         "candidate_evidence": [
-          "Move forward past the white coach.",
-          "Turn left.",
-          "Continue up the stairs and stop."
+          {
+            "subtask_index": 0,
+            "quote": "Move forward past the white coach."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Turn left."
+          },
+          {
+            "subtask_index": 2,
+            "quote": "Continue up the stairs and stop."
+          }
         ],
-        "failed_layer": "L5_grouping",
-        "c_check": "C_SEGMENT_GRANULARITY",
         "evidence_level": "S2",
         "problem": "The candidate isolates the preparatory left turn as a standalone stage with no independent destination or useful local objective. The source couples the turn to the subsequent stair ascent; the cut adds a task boundary without exposing a separately completed navigation goal.",
         "execution_consequence": "The navigator receives an orientation-only micro-goal with no distinct destination, creating an unnecessary subtask transition before the stair approach and weakening focus on the coupled turn-and-climb leg.",
         "repair": {
-          "operation": "merge_coupled_action",
-          "affected_stage_indices": [
+          "operation": "merge",
+          "affected_subtask_indices": [
             1,
             2
           ],
-          "instruction": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
+          "instruction": "Merge the left turn with the subsequent stair ascent and explicit stop, preserving the coach pass-by as the preceding reference.",
           "protected_requirements": [
             "Keep the coach pass-by before the left turn.",
             "Keep the left turn before stair ascent.",
@@ -266,7 +294,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_principle": "Judge the boundary from source event order and actual stage text; do not infer a segmentation defect from sentence count alone.",
