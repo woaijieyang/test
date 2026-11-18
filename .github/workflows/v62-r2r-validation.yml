@@ -56,8 +56,28 @@ jobs:
           python -B -m unittest discover -s tests -p "test_targeted_feedback.py" -v
           python -B -m unittest discover -s tests -p "test_final_best_contract.py" -v
           python -B -m unittest discover -s tests -p "test_reviewer_recovery.py" -v
-      - name: Run complete regression suite
-        run: python -B -m unittest discover -s tests -v
+      - name: Run remaining regression suite
+        # test_release_transaction imports an external absolute-path checkout
+        # at /home/runner/docs/stages/v5-entry-diagnostics-20261114-r0; that
+        # historical release harness is not part of this repository or runner.
+        run: |
+          python - <<'PY'
+          import unittest
+
+          discovered = unittest.defaultTestLoader.discover("tests")
+          selected = unittest.TestSuite()
+
+          def collect(suite):
+              for test in suite:
+                  if isinstance(test, unittest.TestSuite):
+                      collect(test)
+                  elif not test.id().startswith("test_release_transaction."):
+                      selected.addTest(test)
+
+          collect(discovered)
+          result = unittest.TextTestRunner(verbosity=2).run(selected)
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
       - name: Run executable demo and smoke evaluation
         run: |
           python -m examples.demo
