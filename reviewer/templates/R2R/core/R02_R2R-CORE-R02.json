@@ -95,9 +95,7 @@
         "layer": "L2_dependencies",
         "status": "issue",
         "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": [
-          0
-        ]
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
@@ -128,28 +126,37 @@
     ],
     "findings": [
       {
-        "source_quote": "first",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-03"
         ],
+        "source_quote": "first door on your right",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "the next door on your right"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate removes the source ordinal identity and changes which landmark is selected.",
-        "execution_consequence": "The ordinal changes which door/landmark is selected; the agent may enter the wrong room or count from the wrong item.",
+        "problem": "The candidate changes the source ordinal from the first right-side door to the next door, changing the selected target.",
+        "execution_consequence": "The ordinal changes which door is selected; the navigator may enter the wrong room or count from the wrong item.",
         "repair": {
-          "operation": "ordinal",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact ordinal and preserve its counting origin.",
+          "instruction": "Restore the exact first-door ordinal and preserve its right-side counting origin.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the preceding route and direction.",
+            "Preserve the original ordinal and its counting origin.",
+            "Do not add unsupported stops or route segments."
           ]
         }
       }
@@ -206,7 +213,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "ordinal",
