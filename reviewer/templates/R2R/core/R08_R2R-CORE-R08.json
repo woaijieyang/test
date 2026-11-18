@@ -1,0 +1,190 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-CORE-R08",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": "R2R-CORE-G04",
+  "source": {
+    "dataset": "R2R",
+    "split": "curated_core",
+    "source_type": "semantic_boundary_case"
+  },
+  "provenance": {
+    "core_curated_from": "R2R-GEN-004",
+    "curation_basis": "target versus expected-observation distinction; semantic provenance pair only"
+  },
+  "review_input": {
+    "original_instruction": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn left and stop facing the chandelier above the green table."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Turn left",
+        "requirement": "Execute the initial orientation change.",
+        "candidate_evidence": [
+          "Turn left"
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "You face a chandelier above a green table",
+        "requirement": "Use the chandelier/table as an expected orientation observation, not as the route destination.",
+        "candidate_evidence": [
+          "facing the chandelier above the green table"
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "walk towards the open door on the far wall",
+        "requirement": "Approach the source-selected far-wall doorway.",
+        "candidate_evidence": [],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "walk through the door and down the hallway into a room with a blue patterned carpet",
+        "requirement": "Complete the doorway crossing, hallway traversal, and room entry.",
+        "candidate_evidence": [],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered instruction is supplied; assess only the actual candidate text."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The candidate omits the selected far-wall doorway approach, crossing, hallway traversal, and destination-room entry."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "No temporal inversion is present; the failure is target promotion and omitted route events."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "The candidate terminates at an expected observation and does not execute the source-required target-directed process."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_assessable",
+        "conclusion": "The candidate has one stage and no adjacent-stage handoff."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "No boundary is being evaluated; do not manufacture a segmentation finding."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The route readback stops at the chandelier observation and omits the actual doorway, hallway, and room-entry route."
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "You face a chandelier above a green table ... walk towards the open door on the far wall, walk though the door and down the hallway into a room with a blue patterned carpet",
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "candidate_evidence": [
+          "stop facing the chandelier above the green table"
+        ],
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C05",
+        "evidence_level": "S1",
+        "problem": "The candidate promotes an expected orientation observation (the chandelier/table seen after turning) into the terminal navigation target, while omitting the source-selected far-wall doorway approach, crossing, hallway traversal, and room entry.",
+        "execution_consequence": "The navigator may stop at the initial observation point and never reach or enter the source-required destination room.",
+        "repair": {
+          "operation": "restore_source_requirements",
+          "affected_stage_indices": [
+            0
+          ],
+          "instruction": "Retain the chandelier/table only as the expected orientation cue, then restore the approach to the open door on the far wall, the completed doorway crossing, hallway traversal, and entry into the room with the blue patterned carpet. Do not add an unsupported stop at the chandelier.",
+          "protected_requirements": [
+            "Preserve the initial left turn.",
+            "Do not promote the chandelier or green table into the destination.",
+            "Preserve the far-wall doorway identity and crossing.",
+            "Preserve hallway traversal and destination-room entry."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "gap",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The source-directed route continues through the far-wall doorway and hallway into the room with the blue patterned carpet.",
+          "candidate_quotes": []
+        },
+        "process": {
+          "text": "The candidate only turns left and stops facing the chandelier; the required doorway approach, crossing, hallway traversal, and room entry are absent.",
+          "candidate_quotes": [
+            "Turn left and stop facing the chandelier above the green table."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate adds an unsupported stop at the observation point; the source does not instruct stopping there.",
+          "candidate_quotes": [
+            "stop facing the chandelier"
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "You face a chandelier above a green table",
+          "walk towards the open door on the far wall",
+          "walk though the door and down the hallway into a room with a blue patterned carpet"
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "target_landmark_expected_observation_confusion",
+    "semantic_pattern": "expected_observation_promoted_to_navigation_target",
+    "decision_reason": "The chandelier is an expected orientation observation after turning; the far-wall doorway is the selected target and the hallway/room entry are required subsequent events. The candidate stops at the observation and omits the route.",
+    "transfer_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately.",
+    "anti_pattern": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case, not a prior or vote. Independently inventory the current source requirements and candidate evidence before deciding.",
+    "reviewer_rule": "Read source and candidate independently, map each requirement to exact candidate evidence, then consult this case only if the same target/landmark/observation relation is present."
+  }
+}
