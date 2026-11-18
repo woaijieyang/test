@@ -257,7 +257,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     # RxR keeps its v6.1 assembly position byte-for-byte. R2R places the
     # active schema after its fixed Core and dynamic teaching examples.
     if profile == 'rxr-en-us':
-        parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\\n'+canonical(schema))
+        parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     if examples:
         rows=library(role,profile)
         fixed=core_library(role,profile)
@@ -298,7 +298,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if checks:
             parts.append("When comparing the cases above with this instruction, check: " + " ".join(checks))
     if profile == 'r2r-en':
-        parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\\n'+canonical(schema))
+        parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     parts.append('ACTUAL INPUT: process only the current independent user message. Do not import a training example into this route. Return the ACTIVE schema JSON object.')
     return '\n\n'.join(parts)+'\n',schema
 
