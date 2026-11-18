@@ -187,14 +187,14 @@ class HostDispatchProfileTests(unittest.TestCase):
         for role in ("generator", "reviewer"):
             folder = ROOT / role / "templates" / "R2R"
             core_folder = folder / "core"
-            promoted = {
-                __import__("json").loads(p.read_bytes())["provenance"]["core_curated_from"]
-                for p in core_folder.glob("*.json")
-            }
+            core_rows = [__import__("json").loads(p.read_bytes()) for p in core_folder.glob("*.json")]
+            promoted = {row["provenance"]["core_curated_from"] for row in core_rows}
+            core_pairs = {row.get("pair_id") for row in core_rows if row.get("pair_id")}
             expected_paths = sorted(
                 p for p in folder.glob("*/*.json")
                 if p.parent.name != "core"
-                and __import__("json").loads(p.read_bytes())["template_id"] not in promoted
+                and (row := __import__("json").loads(p.read_bytes()))["template_id"] not in promoted
+                and not (role == "reviewer" and row.get("pair_id") in core_pairs)
             )
             expected_ids = [__import__("json").loads(p.read_bytes())["template_id"]
                             for p in expected_paths]
