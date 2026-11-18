@@ -1,4 +1,4 @@
-"""Verify the LLM-decompose-v6 source tree against FILE_HASHES.json."""
+"""Verify the current LLM-decompose source tree against FILE_HASHES.json."""
 from __future__ import annotations
 import hashlib
 import json
@@ -20,14 +20,14 @@ REQUIRED = [
     "generator/templates/R2R/core/G10_R2R-CORE-G10.json",
     "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json",
     "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json",
-    "tests/test_r2r_v62_core.py",
+    "tests/test_r2r_core.py",
     "generator/templates/R2R/val_seen/001_R2R-GEN-001.json",
     "generator/templates/RxR/val_seen/001_RxR-GEN-001.json",
     "reviewer/templates/R2R/paired/001_R2R-REV-001.json",
     "reviewer/templates/RxR/paired/001_RxR-REV-001.json",
     "shared/template_schemas_v1_5_2/stage_audit.schema.json",
     "shared/template_schemas_v1_5_2/handoff.schema.json",
-    "tests/test_patch.py", "tests/test_final_best_contract.py", "tests/test_rxr_v6_profile.py",
+    "tests/test_patch.py", "tests/test_final_best_contract.py", "tests/test_rxr_profile.py",
     "shared/dataset_rules/rxr_en_us.md", "generator/dataset_rules/rxr_en_us.md",
     "reviewer/dataset_rules/rxr_en_us.md",
     "generator/templates/RxR/core/G01_RxR-CORE-G01.json",
@@ -35,8 +35,9 @@ REQUIRED = [
     "reviewer/templates/RxR/core/G01_RxR-CORE-R01.json",
     "reviewer/templates/RxR/core/G10_RxR-CORE-R10.json",
     ".github/workflows/v6-validation.yml",
-    ".github/workflows/v62-r2r-validation.yml",
-    "provenance/r2r_v62_core.json", "provenance/rxr_v61_frozen.json",
+    ".github/workflows/validate.yml",
+    "provenance/r2r_core_provenance.json", "provenance/rxr_profile_integrity.json",
+    "provenance/r2r_profile_integrity.json",
     "validation.json",
 ]
 

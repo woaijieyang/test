@@ -563,7 +563,7 @@
   "tests/test_targeted_feedback.py": "gitblob-sha1:c08d5a9d407084083f6a2e2486b8f78a4ce21eac",
   "tests/test_workflow_integration.py": "gitblob-sha1:40d333d1e424ffe2fc4bea1c45d708d19b30fe5a",
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
-  "verify_package.py": "gitblob-sha1:422669b1ef01c3d5a67498e96ee9239ab4a8534b",
+  "verify_package.py": "gitblob-sha1:27ce9e9b5d20a1cb85ebf3feb9ee2cce8d07921b",
   "VERSION": "gitblob-sha1:4d82121ef61b5762734ecde3a990212fe32f9d4b",
   "WORKFLOW.md": "gitblob-sha1:131f108e166d8b0af8816d2759ed22e5f5079cd3",
   "tests/test_host_dispatch_profiles.py": "gitblob-sha1:d1730da34abd024ee8bf6bcdc006db90f2ee2a5f",
