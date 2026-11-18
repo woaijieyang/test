@@ -8,7 +8,22 @@
       "diagnostics_count": 26,
       "fixed_core_directory": "templates/R2R/core",
       "fixed_core_count": 10,
-      "fixed_core_source": "Curated R2R semantic decision-boundary Reviewer Core R01-R10; pair_id records semantic provenance only"
+      "fixed_core_source": "Curated R2R semantic decision-boundary Reviewer Core R01-R10; pair_id records semantic provenance only",
+      "runtime_paired_dynamic_count": 29,
+      "runtime_diagnostics_count": 23,
+      "promoted_core_source_count": 9,
+      "fixed_core_source_template_ids": [
+        "R2R-REV-004",
+        "R2R-DIAG-01",
+        "R2R-REV-019",
+        "R2R-DIAG-25",
+        "R2R-REV-020",
+        "R2R-REV-005",
+        "R2R-DIAG-26",
+        "R2R-REV-004",
+        "R2R-REV-002",
+        "R2R-REV-031"
+      ]
     },
     "rxr-en-us": {
       "paired_directory": "templates/RxR/paired",
@@ -50,5 +65,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "fixed independent Reviewer Core plus paired dynamic examples matching Generator dynamic IDs and up to four relevant Diagnostics; Core pair_id is provenance only"
+  "selection": "ten independent Reviewer Core cases are unconditional; promoted source cases are excluded from dynamic retrieval, and remaining paired dynamic cases still align to selected Generator Dynamic IDs"
 }
