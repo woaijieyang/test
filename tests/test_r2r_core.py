@@ -151,7 +151,7 @@ class R2RCoreTests(unittest.TestCase):
     def test_r2r_rule_metadata_is_profile_scoped_and_not_shared_contract(self):
         metadata = dataset_rules_metadata("r2r-en")
         self.assertEqual(metadata["files"], ["shared/semantic_contract.md", "shared/dataset_rules/r2r_en.md"])
-        self.assertEqual(metadata["version"], "v6.2-r2r-en")
+        self.assertEqual(metadata["version"], "r2r-en-profile")
         shared = (ROOT / "shared/semantic_contract.md").read_text(encoding="utf-8")
         rxr = (ROOT / "shared/dataset_rules/rxr_en_us.md").read_text(encoding="utf-8")
         self.assertNotIn("R2R-specific", shared)
@@ -225,7 +225,7 @@ class R2RCoreTests(unittest.TestCase):
         for req in requests:
             self.assertEqual(req["profile"], "r2r-en")
             self.assertEqual(len(req["fixed_core_template_ids"]), 10)
-            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertEqual(req["dataset_rules"]["version"], "r2r-en-profile")
             self.assertIn("shared/dataset_rules/r2r_en.md", req["dataset_rules"]["files"])
             self.assertNotIn("RXR SHARED SEMANTIC RULES", req["messages"][0]["content"])
             self.assertNotIn("RXR ROLE GUIDANCE", req["messages"][0]["content"])
