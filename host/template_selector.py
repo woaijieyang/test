@@ -63,6 +63,13 @@ def library(role, profile):
     if not rows or len({r['template_id'] for r in rows}) != len(rows):
         raise ValueError('Empty library or duplicate template IDs')
     if profile == 'r2r-en':
+        for row in rows:
+            if (row.get('role') != role or
+                    row.get('dataset_scope') not in ('R2R', 'R2R_prompt_teaching_example') or
+                    row.get('language') != 'en'):
+                raise ValueError(
+                    f'Invalid R2R {role} Dynamic template identity: {row.get("template_id")}'
+                )
         # R2R identity is a hard boundary: fail closed rather than silently
         # filtering a foreign dataset/role row into or out of the library.
         for row in rows:
