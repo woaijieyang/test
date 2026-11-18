@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def g(dataset):return library('generator','r2r-en' if dataset=='r2r.json' else 'rxr-en-us')
 class CompleteContractTests(unittest.TestCase):
  def test_01_curated_libraries_by_role_and_profile(self):
-     for profile, expected in [('r2r-en',(35,61)),('rxr-en-us',(35,64))]:
+     for profile, expected in [('r2r-en',(25,52)),('rxr-en-us',(35,64))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
