@@ -593,5 +593,5 @@
   "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json": "gitblob-sha1:c617b9f0ceb4fd8b9992afbcc61fef0fa0ffd0d7",
   "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json": "gitblob-sha1:8f0513eeb0ae1a34f25d8a540f102caedad23d47",
   "shared/dataset_rules/r2r_en.md": "gitblob-sha1:080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980",
-  "tests/test_r2r_v62_core.py": "gitblob-sha1:16cf5606a875312d075af5e5d591323b1e4ead63"
+  "tests/test_r2r_v62_core.py": "gitblob-sha1:ce92c9df882048fe44b45de062d1b5773829bb83"
 }
