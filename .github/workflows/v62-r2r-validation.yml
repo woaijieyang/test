@@ -21,6 +21,18 @@ jobs:
         run: python -B verify_package.py
       - name: Compile all profile prompts and template indexes
         run: python -B -m host.compile
+      - name: Check out frozen v6.1 baseline
+        uses: actions/checkout@v4
+        with:
+          ref: d48752c5261769cb76b3b6d8c47826ab94a277fe
+          path: v61-baseline
+      - name: Compile frozen v6.1 prompts
+        run: cd v61-baseline && python -B -m host.compile
+      - name: Compare all RxR compiled prompts with v6.1
+        run: |
+          cmp v61-baseline/generator/compiled_rxr-en-us.txt generator/compiled_rxr-en-us.txt
+          cmp v61-baseline/generator/compiled_repair_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt
+          cmp v61-baseline/reviewer/compiled_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt
       - name: Validate R2R Core quality, runtime contracts, prompt assembly and RxR freeze
         run: python -B -m unittest discover -s tests -p "test_r2r_v62_core.py" -v
       - name: Validate Host profile dispatch and dataset isolation
