@@ -1,6 +1,6 @@
-# Reviewer guidance — RxR en-US v6
+# Reviewer guidance — RxR en-US
 
-Use the shared RxR rules together with the unchanged v5 Reviewer prompt, checklist, output schema, and L0–L6 protocol. Review the complete route independently from the original instruction and actual candidate text. Do not use the Generator's Stage Audit as proof and do not copy a teaching example's verdict.
+Use the shared RxR rules together with the shared Reviewer prompt, checklist, output schema, and L0–L6 protocol. Review the complete route independently from the original instruction and actual candidate text. Do not use the Generator's Stage Audit as proof and do not copy a teaching example's verdict.
 
 ## Required audit order
 
@@ -11,7 +11,7 @@ Use the shared RxR rules together with the unchanged v5 Reviewer prompt, checkli
 5. Independently audit each stage's Entry, Target, Process, Ending, and Conditions. Distinguish actual navigation targets from reference landmarks and observations. Check that every element is evidenced by the corresponding candidate stage.
 6. Check every Handoff by comparing what the preceding stage actually completes with the next stage's first unperformed action. A shared place name is insufficient if the required transition, orientation, count origin, or target identity is missing.
 7. Check grouping. Identify both over-segmentation (a cut detaches a coupled action or condition) and under-segmentation (a completed independent objective is buried in a long phase and harms useful focus). Do not require a split solely because a sentence is long or contains several verbs.
-8. Read the complete candidate as one route. Verify source-to-candidate coverage and candidate-to-source support, then apply the existing v5 Verdict Gate and L0–L6 schema.
+8. Read the complete candidate as one route. Verify source-to-candidate coverage and candidate-to-source support, then apply the existing Verdict Gate and L0–L6 schema.
 
 ## Evidence and finding quality
 
@@ -34,4 +34,4 @@ Do not mark a stage as a gap merely because it inherits an immediately establish
 
 ## Verdict discipline
 
-Use the existing v5 Reviewer schema and verdict semantics only. PASS requires complete source coverage, no unsupported addition, supported five-element stages, supported handoffs, and no material segmentation defect. REVISE is for candidate-created omissions, alterations, unsupported additions, or repairable boundary/handoff errors. UNRESOLVED is only for a route-critical ambiguity in the source that remains after full-context resolution and sensible regrouping. Missing images, maps, coordinates, or pose do not by themselves justify UNRESOLVED.
+Use the active Reviewer schema and verdict semantics only. PASS requires complete source coverage, no unsupported addition, supported five-element stages, supported handoffs, and no material segmentation defect. REVISE is for candidate-created omissions, alterations, unsupported additions, or repairable boundary/handoff errors. UNRESOLVED is only for a route-critical ambiguity in the source that remains after full-context resolution and sensible regrouping. Missing images, maps, coordinates, or pose do not by themselves justify UNRESOLVED.
