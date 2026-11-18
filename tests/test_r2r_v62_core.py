@@ -179,5 +179,83 @@ class R2RV62CoreTests(unittest.TestCase):
             with self.subTest(path=entry["path"]):
                 self.assertEqual(actual, entry["git_blob_sha1"])
 
+
+    def test_r2r_g0_r0_g1_r1_freezes_core_dynamic_rules_and_prompt(self):
+        from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+        src = Source("r2r-v62-four-phase", "R2R", "en", SOURCE)
+        old = generator_candidate(repaired=False)
+        new = generator_candidate(repaired=True)
+        r0 = reviewer_output(old, repaired=False)
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        repair = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The source explicitly requires the omitted hallway traversal."
+            }]
+        }
+        replies = [old, r0, repair, r1]
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            return {
+                "output": replies.pop(0),
+                "receipt": {
+                    "model": req["model"], "effort": req["effort"],
+                    "request_id": f"r2r-v62-{len(requests)}"
+                }
+            }
+
+        from host.run import run_record
+        result = run_record(
+            src, transport,
+            pins={role: {"model": "fixture", "effort": "low"}
+                  for role in ("generator", "reviewer")}
+        )
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual([(x["role"], x["phase"]) for x in requests], [
+            ("generator", "initial"), ("reviewer", "review"),
+            ("generator", "repair"), ("reviewer", "recheck")
+        ])
+        for req in requests:
+            self.assertEqual(req["profile"], "r2r-en")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertIn("shared/dataset_rules/r2r_en.md", req["dataset_rules"]["files"])
+            self.assertNotIn("RXR SHARED SEMANTIC RULES", req["messages"][0]["content"])
+            self.assertNotIn("RXR ROLE GUIDANCE", req["messages"][0]["content"])
+        self.assertEqual(requests[0]["selected_example_ids"], requests[2]["selected_example_ids"])
+        self.assertEqual(requests[1]["selected_example_ids"], requests[3]["selected_example_ids"])
+        self.assertEqual(requests[0]["fixed_core_template_ids"], requests[2]["fixed_core_template_ids"])
+        self.assertEqual(requests[1]["fixed_core_template_ids"], requests[3]["fixed_core_template_ids"])
+        self.assertEqual(
+            requests[0]["template_bundle"]["sha256"],
+            requests[2]["template_bundle"]["sha256"]
+        )
+        self.assertEqual(
+            requests[1]["template_bundle"]["sha256"],
+            requests[3]["template_bundle"]["sha256"]
+        )
+
+    def test_all_four_r2r_phases_compile_with_fixed_core_and_dynamic_examples(self):
+        source = "Walk through the first doorway, turn left, enter the second room, and stop beside the desk."
+        for role, phases in (("generator", ("initial", "repair")),
+                             ("reviewer", ("review", "recheck"))):
+            selected = select_examples(role, "r2r-en", source)
+            for phase in phases:
+                prompt, _ = compile_prompt(role, phase, profile="r2r-en",
+                                           selected_ids=selected,
+                                           original_instruction=source)
+                self.assertIn("FIXED R2R-EN", prompt)
+                self.assertIn("DYNAMIC R2R-EN", prompt)
+                self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
+                self.assertLess(prompt.index("FIXED R2R-EN"),
+                                prompt.index("DYNAMIC R2R-EN"))
+                self.assertLess(prompt.index("DYNAMIC R2R-EN"),
+                                prompt.index("ACTIVE OUTPUT SCHEMA"))
+
 if __name__ == "__main__":
     unittest.main()
