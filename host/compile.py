@@ -258,8 +258,6 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if profile not in PROFILES:raise ValueError('Unsupported dataset profile')
     if role=='reviewer' and phase not in ('review','recheck'):raise ValueError('Unsupported review phase')
     if role=='generator' and phase not in ('initial','repair'):raise ValueError('Unsupported generator phase')
-    if not examples:
-        raise ValueError('Fixed dataset Core is mandatory; examples=False cannot disable Core loading')
     d=ROOT/role;repair=role=='generator' and phase=='repair'
     # Keep the R2R system prompt byte-for-byte free of RxR profile messaging.
     # RxR-only claims belong exclusively to the RxR profile branch below.
@@ -287,6 +285,15 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     # active schema after its fixed Core and dynamic teaching examples.
     if profile == 'rxr-en-us':
         parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
+    if not examples:
+        # The flag disables only optional Dynamic examples. Fixed dataset Core
+        # remains mandatory for both supported profiles and both semantic roles.
+        fixed = core_library(role, profile)
+        core_ids = [r['template_id'] for r in fixed]
+        core_label = 'R2R-EN' if profile == 'r2r-en' else 'RXR'
+        parts.append(f'FIXED {core_label} {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: ' + ', '.join(core_ids))
+        for example in fixed:
+            parts.append(canonical(teaching_card(example, role, detailed=True)))
     if examples:
         rows=library(role,profile)
         fixed=core_library(role,profile)

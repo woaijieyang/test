@@ -282,11 +282,15 @@ class R2RV62CoreTests(unittest.TestCase):
         self.assertNotIn("source-selected doorway relative to the stairs", notes)
         self.assertNotIn("stop in the doorway", notes)
 
-    def test_compile_cannot_bypass_fixed_core(self):
-        with self.assertRaisesRegex(ValueError, "Fixed dataset Core is mandatory"):
-            compile_prompt("generator", "initial", profile="r2r-en", examples=False)
-        with self.assertRaisesRegex(ValueError, "Fixed dataset Core is mandatory"):
-            compile_prompt("reviewer", "review", profile="rxr-en-us", examples=False)
+    def test_examples_false_disables_dynamic_but_never_fixed_core(self):
+        prompt, _ = compile_prompt("generator", "initial", profile="r2r-en", examples=False)
+        self.assertIn("FIXED R2R-EN GENERATOR CORE: exactly 10", prompt)
+        self.assertIn("R2R-CORE-G10", prompt)
+        self.assertNotIn("DYNAMIC R2R-EN GENERATOR EXAMPLES:", prompt)
+        prompt, _ = compile_prompt("reviewer", "review", profile="rxr-en-us", examples=False)
+        self.assertIn("FIXED RXR REVIEWER CORE: exactly 10", prompt)
+        self.assertIn("RXR-CORE-R10", prompt)
+        self.assertNotIn("DYNAMIC RXR-EN-US REVIEWER EXAMPLES:", prompt)
 
     def test_runtime_library_loads_only_schema_validated_templates(self):
         from host.template_selector import validate_template
