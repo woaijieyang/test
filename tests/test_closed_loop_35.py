@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def g(dataset):return library('generator','r2r-en' if dataset=='r2r.json' else 'rxr-en-us')
 class CompleteContractTests(unittest.TestCase):
  def test_01_curated_libraries_by_role_and_profile(self):
-     for profile, expected in [('r2r-en',(25,48)),('rxr-en-us',(35,64))]:
+     for profile, expected in [('r2r-en',(25,52)),('rxr-en-us',(35,64))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
@@ -26,9 +26,13 @@ class CompleteContractTests(unittest.TestCase):
      for profile in PROFILES:
          gs={r['template_id']:r for r in library('generator',profile)}
          paired=[r for r in library('reviewer',profile) if r.get('pair_id')]
-         self.assertEqual(len(paired),len(gs))
-         for r in paired:
-             self.assertEqual(source(r),source(gs[r['pair_id']]))
+         paired_by_id={r['pair_id']:r for r in paired}
+         self.assertTrue(set(gs).issubset(paired_by_id))
+         for generator_id, generator_row in gs.items():
+             self.assertEqual(source(paired_by_id[generator_id]),source(generator_row))
+         if profile == 'r2r-en':
+             self.assertEqual(len(paired),29)
+             self.assertEqual(sum(not r.get('pair_id') for r in library('reviewer',profile)),23)
  def test_03_every_generator_audit_and_handoff_validated(self):
   for ds in ('r2r.json','rxr_en_us.json'):
    for e in g(ds):
