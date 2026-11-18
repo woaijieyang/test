@@ -102,7 +102,7 @@
       "R2R-REV-004",
       "pass",
       "hard_pass_surface_paraphrase_and_target_binding",
-      "R2R-CORE-G08"
+      "R2R-CORE-G04"
     ],
     [
       "R2R-CORE-R02",
@@ -151,7 +151,7 @@
       "R2R-REV-004",
       "revise",
       "target_landmark_expected_observation_confusion",
-      "R2R-CORE-G04"
+      "R2R-CORE-G08"
     ],
     [
       "R2R-CORE-R09",
