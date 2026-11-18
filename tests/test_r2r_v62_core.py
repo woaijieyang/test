@@ -41,6 +41,8 @@ class R2RV62CoreTests(unittest.TestCase):
         for role, expected in (("generator", 25), ("reviewer", 52)):
             rows = library(role, "r2r-en")
             self.assertEqual(len(rows), expected)
+            self.assertTrue(all(x["role"] == role and x["dataset_scope"] == "R2R"
+                                and x["language"] == "en" for x in rows))
             self.assertFalse(any(x["template_id"].startswith("R2R-CORE-") for x in rows))
             core_rows = core_library(role, "r2r-en")
             promoted = {x["provenance"]["core_curated_from"] for x in core_rows}
