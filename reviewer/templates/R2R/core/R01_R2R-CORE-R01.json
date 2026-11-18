@@ -8,12 +8,12 @@
   "source": {
     "split": "val_seen",
     "role": "standard",
-    "record_id": "8",
-    "episode_id": "8",
+    "record_id": "4",
+    "episode_id": "4",
     "instruction_id": null,
-    "scene_id": "mp3d/r1Q1Z4BcV1o/r1Q1Z4BcV1o.glb",
-    "trajectory_id": "111",
-    "source_key": "R2R|val_seen|standard|record_id=8|episode_id=8|trajectory_id=111"
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "trajectory_id": "93",
+    "source_key": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93"
   },
   "provenance": {
     "0": "P",
@@ -165,16 +165,16 @@
     "146": "n",
     "147": "t",
     "148": ".",
-    "core_curated_from": "R2R-REV-008",
-    "curation_basis": "semantic decision-boundary coverage; hard PASS paraphrase"
+    "core_curated_from": "R2R-REV-004",
+    "curation_basis": "semantic decision-boundary coverage; contrastive hard PASS with R08 hard REVISE"
   },
   "review_input": {
-    "original_instruction": "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. ",
+    "original_instruction": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM. ",
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Walk past the water fountain and turn left.",
-        "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
+        "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it.",
+        "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
       ]
     }
   },
@@ -188,28 +188,37 @@
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
-        "source_quote": "Walk past the water fountain and turn left.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Walk past the water fountain and turn left.",
+        "source_quote": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL",
         "candidate_evidence": [
-          "Walk past the water fountain and turn left."
+          "You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall."
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
-        "source_quote": "Walk to the doorway directly across from the stairs.",
-        "requirement": "Preserve the spatial transition and region/threshold: Walk to the doorway directly across from the stairs.",
+        "source_quote": "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR",
+        "requirement": "Preserve the spatial transition and region/threshold: WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR",
         "candidate_evidence": [
-          "After passing the water fountain and turning left, walk to the doorway directly across from the stairs."
+          "Walk towards the open door on the far wall and go through it."
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
-        "source_quote": "Stop in the doorway.",
-        "requirement": "Preserve the completion or stationary-position condition: Stop in the doorway.",
+        "source_quote": "DOWN THE HALLWAY",
+        "requirement": "Preserve the spatial transition and region/threshold: DOWN THE HALLWAY",
         "candidate_evidence": [
-          "Stop in the doorway."
+          "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM",
+        "requirement": "Preserve the spatial transition and region/threshold: INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM",
+        "candidate_evidence": [
+          "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
         ],
         "status": "covered"
       }
@@ -243,7 +252,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route has a completed turn or region/waypoint transition that supports a useful next local objective."
+        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
       },
       {
         "layer": "L6_route_readback",
@@ -262,37 +271,43 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk past the water fountain and turn left.",
+          "text": "Walk towards the open door on the far wall and go through it.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left."
+            "Walk towards the open door on the far wall and go through it."
           ]
         },
         "process": {
-          "text": "Walk past the water fountain and turn left.",
+          "text": "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left."
+            "Turn left.",
+            "You should now be facing the chandelier above the green table",
+            "with a doorway to the left and an open door on the far wall",
+            "Walk towards the open door on the far wall and go through it."
           ]
         },
         "ending": {
           "kind": "explicit_event",
           "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left."
+            "Walk towards the open door on the far wall and go through it."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; past",
+          "text": "conditional_observation/expected_state: after turning left, the chandelier/table and door layout is expected to be visible; spatial frame: doorway left, open door on far wall.",
           "candidate_quotes": [
-            "left",
-            "past"
+            "You should now be facing the chandelier above the green table",
+            "doorway to the left",
+            "open door on the far wall"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
-          "Walk past the water fountain and turn left."
+          "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL",
+          "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR"
         ],
         "carryover": [
           "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
@@ -305,45 +320,40 @@
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
           "candidate_quotes": [
-            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
           ]
         },
         "target": {
-          "text": "Stop in the doorway.",
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle.",
           "candidate_quotes": [
-            "Stop in the doorway."
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ]
         },
         "process": {
-          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway.",
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle.",
           "candidate_quotes": [
-            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
           "candidate_quotes": [
-            "Stop in the doorway."
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ],
-          "stop_scope": "terminal"
+          "stop_scope": "none"
         },
         "conditions": {
-          "text": "After; left",
-          "candidate_quotes": [
-            "After",
-            "left"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quotes": [
-          "Walk past the water fountain and turn left.",
-          "Walk to the doorway directly across from the stairs.",
-          "Stop in the doorway."
+          "DOWN THE HALLWAY",
+          "INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM"
         ],
         "carryover": []
       }
@@ -354,20 +364,21 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk past the water fountain and turn left.",
-          "candidate_quote": "Walk past the water fountain and turn left."
+          "text": "Walk towards the open door on the far wall and go through it.",
+          "candidate_quote": "Walk towards the open door on the far wall and go through it."
         },
         "next_entry": {
-          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs",
-          "candidate_quote": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle",
+          "candidate_quote": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
         },
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
-          "SRC-03"
+          "SRC-03",
+          "SRC-04"
         ],
-        "handoff_rationale": "The first stage ends at the source-supported event 'Walk past the water fountain and turn left.'; the next stage begins with 'After passing the water fountain and turning left, walk to the doorway directly across from the stairs'. No physical stop is added."
+        "handoff_rationale": "The previous stage explicitly ends with 'Walk towards the open door on the far wall and go through it.'; the next stage begins with 'From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle'. The handoff carries the established location/reference frame without adding a physical stop."
       }
     ]
   },
