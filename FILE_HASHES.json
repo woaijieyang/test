@@ -342,7 +342,7 @@
   "host/README.md": "gitblob-sha1:c20c2ad610c3b180f4eb6fe2f153bb33c23d2dc8",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
   "host/run.py": "gitblob-sha1:b1ff4d35a25ecabb147daf121761e99d3655f537",
-  "host/template_selector.py": "gitblob-sha1:08a3e047d98d943c0f86bfa4c461846b3d020b91",
+  "host/template_selector.py": "gitblob-sha1:6516f9d6bfa7bb93fbdad08b755bcdc3e2d31836",
   "IMPLEMENTATION.md": "gitblob-sha1:7f72988538adca8a233e85886d353ff16a8d0f4c",
   "provenance/build_manifest.json": "gitblob-sha1:90bc099c130723003a99a0fb2bf6b01b57b80519",
   "provenance/CHANGE_MATRIX.implementation.csv": "gitblob-sha1:6034b0b59f0f39ecc19582756b8d553ab41827a0",
@@ -593,5 +593,5 @@
   "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json": "gitblob-sha1:8b9c34218e8580e22ab8909a4a321c5661bc8796",
   "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json": "gitblob-sha1:9d83b4af58a20c6191e0dbad3a6e753e636c2d92",
   "shared/dataset_rules/r2r_en.md": "gitblob-sha1:080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980",
-  "tests/test_r2r_v62_core.py": "gitblob-sha1:2b52a3bb3c3f7318181a440c52a3dde6935eaeb6"
+  "tests/test_r2r_v62_core.py": "gitblob-sha1:4331b145c3074a1f2de45214fe80367227e813ba"
 }
