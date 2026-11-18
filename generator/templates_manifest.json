@@ -6,7 +6,21 @@
       "dynamic_count": 35,
       "fixed_core_directory": "templates/R2R/core",
       "fixed_core_count": 10,
-      "fixed_core_source": "Curated R2R semantic decision-boundary Core G01-G10"
+      "fixed_core_source": "Curated R2R semantic decision-boundary Core G01-G10",
+      "runtime_dynamic_count": 25,
+      "promoted_core_source_count": 10,
+      "fixed_core_source_template_ids": [
+        "R2R-GEN-019",
+        "R2R-GEN-005",
+        "R2R-GEN-021",
+        "R2R-GEN-023",
+        "R2R-GEN-029",
+        "R2R-GEN-007",
+        "R2R-GEN-020",
+        "R2R-GEN-004",
+        "R2R-GEN-002",
+        "R2R-GEN-031"
+      ]
     },
     "rxr-en-us": {
       "dynamic_directory": "templates/RxR/val_seen",
@@ -38,5 +52,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "fixed dataset-specific Core plus source-feature-matched dynamic examples; Core is excluded from retrieval"
+  "selection": "ten fixed R2R Core examples are unconditional; promoted Core source copies are excluded from the R2R Dynamic retrieval pool, while their original files remain available for provenance"
 }
