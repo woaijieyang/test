@@ -51,9 +51,10 @@ def library(role, profile):
     # Legacy migration sources and fixed RxR core are deliberately excluded
     # from dynamic retrieval. They have separate deterministic loading paths.
     if profile == 'r2r-en':
-        # Preserve v5's globally sorted dynamic library order exactly. Stable
-        # tie-breaking in rank_examples depends on this order.
-        files = sorted(folder.glob('*/*.json'))
+        # R2R Core is loaded through the independent fixed-core path. Never
+        # expose it to dynamic retrieval; retain v5 global ordering elsewhere.
+        files = sorted(path for path in folder.glob('*/*.json')
+                       if path.parent.name != 'core')
     elif role == 'generator':
         files = sorted((folder/'val_seen').glob('*.json'))
     else:
