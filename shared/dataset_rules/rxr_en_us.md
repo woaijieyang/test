@@ -1,8 +1,8 @@
-# RxR en-US shared semantic rules — v6
+# RxR en-US shared semantic rules
 
 ## Authority and scope
 
-These rules apply only when the Adapter resolves the record to `rxr-en-us`. They refine how the v5 common semantic contract is applied to long, multi-sentence RxR instructions. They do not replace the v5 common contract, five-element Stage Audit, Handoff schema, evidence rules, Reviewer dimensions, L0–L6 checks, or output schemas. The original instruction is the only authority for route facts. No map, pose, image, trajectory, or environment truth is available to Generator or Reviewer.
+These rules apply only when the Adapter resolves the record to `rxr-en-us`. They refine how the shared semantic contract is applied to long, multi-sentence RxR instructions. They do not replace the shared semantic contract, five-element Stage Audit, Handoff schema, evidence rules, Reviewer dimensions, L0–L6 checks, or output schemas. The original instruction is the only authority for route facts. No map, pose, image, trajectory, or environment truth is available to Generator or Reviewer.
 
 Priority is: (1) source fidelity and no unsupported additions; (2) preserve action/condition/temporal/spatial semantics; (3) complete executable stages and supported handoffs; (4) useful segmentation; (5) concise wording. A lower priority must never override a higher one.
 
@@ -72,7 +72,7 @@ Preserve prohibitions and negative constraints over their exact scope. A prohibi
 
 ## 10. Stage and handoff test
 
-A proposed stage must be executable as a natural-language navigation instruction and auditable under the existing v5 five elements:
+A proposed stage must be executable as a natural-language navigation instruction and auditable under the existing five elements:
 
 1. Entry: episode start or source-supported context/continuation.
 2. Target: the actual local navigation target or state transition, not merely a nearby reference.
