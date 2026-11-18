@@ -1,8 +1,8 @@
 {
   "baseline_branch": "LLM-decompose-v5",
   "baseline_commit": "c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3",
-  "description": "Immutable Git blob fingerprints for shared R2R runtime assets and R2R template pools inherited by v6. Host compiler/selector are profile-aware code and are validated by behavior tests rather than byte equality.",
-  "file_count": 117,
+  "description": "Immutable Git blob fingerprints for R2R-specific runtime assets, schemas and R2R template pools inherited unchanged from v5. Shared Prompt, Acceptance, Reviewer Checklist and Semantic Contract assets were intentionally calibrated in v6.1 and are frozen against the v6.1 baseline in provenance/rxr_v61_frozen.json; they are not claimed as byte-identical to v5. Host compiler/selector are validated by behavior tests.",
+  "file_count": 112,
   "files": [
     {
       "path": "adapter/README.md",
@@ -21,16 +21,8 @@
       "git_blob_sha1": "83022f6cf5383b9a98bc11302dcec0d4c5055b56"
     },
     {
-      "path": "generator/acceptance.md",
-      "git_blob_sha1": "47b195dbefa35ff782d7dc45bcf153bb735fbf12"
-    },
-    {
       "path": "generator/output.schema.json",
       "git_blob_sha1": "9c0d7f4c7705505bd3efc3e4fc95472a1f8288c3"
-    },
-    {
-      "path": "generator/prompt.md",
-      "git_blob_sha1": "6ee30061989f850e1204573ead3a12b51597196d"
     },
     {
       "path": "generator/repair.md",
@@ -193,16 +185,8 @@
       "git_blob_sha1": "7e117c5b1f821e2fd2063af2fb843a065a6c5da3"
     },
     {
-      "path": "reviewer/checklist.md",
-      "git_blob_sha1": "a9de3a269294eb4ec85dbf4b7fbc483cefa94021"
-    },
-    {
       "path": "reviewer/output.schema.json",
       "git_blob_sha1": "0ee3f4bce3a02e8a527d63189461069959eb3b22"
-    },
-    {
-      "path": "reviewer/prompt.md",
-      "git_blob_sha1": "89364f620ebe6324d6f66f8ee3abd4526560032a"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/01_R2R-DIAG-01.json",
@@ -451,10 +435,6 @@
     {
       "path": "shared/identity.py",
       "git_blob_sha1": "3513723f2110d2b3b5626374c0ea12815f4e1d0c"
-    },
-    {
-      "path": "shared/semantic_contract.md",
-      "git_blob_sha1": "47b195dbefa35ff782d7dc45bcf153bb735fbf12"
     },
     {
       "path": "shared/template_schemas_v1_5_2/generator_template.schema.json",
