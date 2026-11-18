@@ -66,10 +66,11 @@ def core_library(role, profile):
         if (row.get('role') != role or scope not in allowed_scope or
                 row.get('language') != language):
             raise ValueError(f'Invalid {dataset} {role} core identity: {row.get("template_id")}')
-        notes = row.get('teaching_notes') or {}
-        for field in ('semantic_pattern', 'decision_reason', 'transfer_rule', 'anti_pattern'):
-            if not isinstance(notes.get(field), str) or not notes[field].strip():
-                raise ValueError(f'{dataset} {role} Core {row["template_id"]} missing teaching_notes.{field}')
+        if profile == 'r2r-en':
+            notes = row.get('teaching_notes') or {}
+            for field in ('semantic_pattern', 'decision_reason', 'transfer_rule', 'anti_pattern'):
+                if not isinstance(notes.get(field), str) or not notes[field].strip():
+                    raise ValueError(f'R2R {role} Core {row["template_id"]} missing teaching_notes.{field}')
     if role == 'reviewer':
         pairs = [row.get('pair_id') for row in rows]
         expected_pairs = [f'{prefix}-CORE-G{i:02d}' for i in range(1, 11)]
