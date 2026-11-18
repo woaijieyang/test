@@ -1,0 +1,149 @@
+{
+  "baseline_branch": "LLM-decompose-v6.1-prompt-only",
+  "baseline_commit": "d48752c5261769cb76b3b6d8c47826ab94a277fe",
+  "purpose": "R2R-only fixed Core curation. RxR assets and runtime behavior remain frozen.",
+  "runtime": {
+    "generator": {
+      "fixed_core": 10,
+      "core_order": "G01-G10",
+      "dynamic_library": 35,
+      "dynamic_selection": "existing source-feature retrieval; 6-8 examples"
+    },
+    "reviewer": {
+      "fixed_core": 10,
+      "core_order": "R01-R10",
+      "paired_dynamic_library": 35,
+      "diagnostics_library": 26,
+      "dynamic_selection": "existing paired 6-8 examples plus 2-4 diagnostics"
+    },
+    "shared_contract": "unchanged",
+    "schemas": "unchanged",
+    "workflow": "unchanged",
+    "rxr": "frozen v6.1"
+  },
+  "generator_core": [
+    [
+      "R2R-CORE-G01",
+      "R2R-GEN-019",
+      "coupled_turn_and_continuation"
+    ],
+    [
+      "R2R-CORE-G02",
+      "R2R-GEN-005",
+      "multiple_completed_objectives_with_supported_handoffs"
+    ],
+    [
+      "R2R-CORE-G03",
+      "R2R-GEN-021",
+      "bounded_movement_and_terminal_wait"
+    ],
+    [
+      "R2R-CORE-G04",
+      "R2R-GEN-023",
+      "observation_vs_transition_and_target_binding"
+    ],
+    [
+      "R2R-CORE-G05",
+      "R2R-GEN-029",
+      "multi_verb_route_without_intermediate_objective"
+    ],
+    [
+      "R2R-CORE-G06",
+      "R2R-GEN-007",
+      "completed_region_entry_then_new_objective"
+    ],
+    [
+      "R2R-CORE-G07",
+      "R2R-GEN-020",
+      "terminal_position_refines_final_route_endpoint"
+    ],
+    [
+      "R2R-CORE-G08",
+      "R2R-GEN-004",
+      "expected_observation_as_reference_not_destination"
+    ],
+    [
+      "R2R-CORE-G09",
+      "R2R-GEN-002",
+      "temporal_condition_closes_target_action"
+    ],
+    [
+      "R2R-CORE-G10",
+      "R2R-GEN-031",
+      "route_critical_source_ambiguity"
+    ]
+  ],
+  "reviewer_core": [
+    [
+      "R2R-CORE-R01",
+      "R2R-REV-004",
+      "pass",
+      "hard_pass_surface_paraphrase_and_target_binding",
+      "R2R-CORE-G08"
+    ],
+    [
+      "R2R-CORE-R02",
+      "R2R-DIAG-01",
+      "revise",
+      "revise_ordinal_target_identity_omission",
+      "R2R-CORE-G02"
+    ],
+    [
+      "R2R-CORE-R03",
+      "R2R-REV-019",
+      "pass",
+      "hard_pass_coupled_movement_without_false_boundary",
+      "R2R-CORE-G05"
+    ],
+    [
+      "R2R-CORE-R04",
+      "R2R-DIAG-25",
+      "revise",
+      "revise_oversegmentation_orientation_only_stage",
+      "R2R-CORE-G01"
+    ],
+    [
+      "R2R-CORE-R05",
+      "R2R-REV-020",
+      "pass",
+      "hard_pass_terminal_position_and_ordinal_preservation",
+      "R2R-CORE-G07"
+    ],
+    [
+      "R2R-CORE-R06",
+      "R2R-REV-005",
+      "revise",
+      "undersegmentation_multiple_completed_objectives",
+      "R2R-CORE-G03"
+    ],
+    [
+      "R2R-CORE-R07",
+      "R2R-DIAG-26",
+      "revise",
+      "revise_premature_handoff_missing_region_entry",
+      "R2R-CORE-G06"
+    ],
+    [
+      "R2R-CORE-R08",
+      "R2R-GEN-004",
+      "revise",
+      "target_landmark_expected_observation_confusion",
+      "R2R-CORE-G04"
+    ],
+    [
+      "R2R-CORE-R09",
+      "R2R-REV-002",
+      "pass",
+      "hard_pass_temporal_condition_and_endpoint_scope",
+      "R2R-CORE-G09"
+    ],
+    [
+      "R2R-CORE-R10",
+      "R2R-REV-031",
+      "unresolved",
+      "unresolved_route_critical_source_referent",
+      "R2R-CORE-G10"
+    ]
+  ],
+  "reviewer_pair_semantics": "pair_id is provenance only; Reviewer Core order R01-R10 is independent of Generator Core order. Runtime Core loading never selects or gates Reviewer cases by Generator Core selection."
+}
