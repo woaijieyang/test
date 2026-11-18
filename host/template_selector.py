@@ -86,9 +86,9 @@ def library(role, profile):
         if not set(promoted).issubset({row['template_id'] for row in rows}):
             raise ValueError(f'R2R {role} Core provenance references missing Dynamic source templates')
         promoted_ids = set(promoted)
-        # Reviewer paired examples for every promoted Generator Core ID are
-        # also removed from dynamic retrieval, even when that Core Reviewer
-        # case itself came from Diagnostics. This keeps paired pools aligned.
+        # Core pair_id records semantic provenance only. Dynamic paired retrieval
+        # remains keyed by the selected non-Core Generator IDs; do not remove
+        # unrelated paired examples merely because a Core cites that G ID.
         generator_core_folder = ROOT/'generator'/'templates'/'R2R'/'core'
         generator_core_rows = [json.loads(path.read_bytes())
                                for path in sorted(generator_core_folder.glob('*.json'))]
@@ -98,11 +98,7 @@ def library(role, profile):
         }
         if len(promoted_generator_ids) != 10 or None in promoted_generator_ids:
             raise ValueError('R2R Generator Core provenance must identify ten Dynamic source IDs')
-        rows = [row for row in rows
-                if row['template_id'] not in promoted_ids
-                and not (role == 'reviewer' and row.get('pair_id') in promoted_generator_ids)]
-        # Revalidate the effective dynamic pool after provenance promotion.
-        # Core copies are not dynamic replacements and cannot be selected twice.
+        rows = [row for row in rows if row['template_id'] not in promoted_ids]
         if not rows or any(row['template_id'].startswith('R2R-CORE-') for row in rows):
             raise ValueError(f'Invalid R2R {role} Dynamic pool after Core exclusion')
         if role == 'reviewer':
@@ -110,9 +106,9 @@ def library(role, profile):
             diagnostic_rows = [row for row in rows if not row.get('pair_id')]
             expected_dynamic_pairs = {
                 f'R2R-GEN-{i:03d}' for i in range(1, 36)
-            } - core_pair_ids
-            if paired_ids != expected_dynamic_pairs:
-                raise ValueError('R2R Reviewer Dynamic paired pool is not aligned to non-Core Generator examples')
+            } - promoted_generator_ids
+            if not expected_dynamic_pairs.issubset(paired_ids):
+                raise ValueError('R2R Reviewer Dynamic pool is missing a non-Core Generator pair')
             if len(diagnostic_rows) != 23:
                 raise ValueError(f'R2R Reviewer Dynamic Diagnostics must contain 23 unpromoted cases; found {len(diagnostic_rows)}')
     return rows
