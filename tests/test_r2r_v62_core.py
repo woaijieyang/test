@@ -38,7 +38,7 @@ class R2RV62CoreTests(unittest.TestCase):
         self.assertNotEqual(pairs, [x["template_id"] for x in core_library("generator", "r2r-en")])
 
     def test_core_is_excluded_from_dynamic_libraries_and_selection(self):
-        for role, expected in (("generator", 25), ("reviewer", 48)):
+        for role, expected in (("generator", 25), ("reviewer", 52)):
             rows = library(role, "r2r-en")
             self.assertEqual(len(rows), expected)
             self.assertFalse(any(x["template_id"].startswith("R2R-CORE-") for x in rows))
@@ -46,13 +46,12 @@ class R2RV62CoreTests(unittest.TestCase):
             promoted = {x["provenance"]["core_curated_from"] for x in core_rows}
             self.assertFalse(promoted & {x["template_id"] for x in rows})
             if role == "reviewer":
-                promoted_generator_ids = {
-                    x["provenance"]["core_curated_from"]
-                    for x in core_library("generator", "r2r-en")
+                dynamic_generator_ids = {
+                    x["template_id"] for x in library("generator", "r2r-en")
                 }
-                self.assertFalse(
-                    promoted_generator_ids & {x.get("pair_id") for x in rows if x.get("pair_id")}
-                )
+                dynamic_pair_ids = {x.get("pair_id") for x in rows if x.get("pair_id")}
+                self.assertTrue(dynamic_generator_ids.issubset(dynamic_pair_ids))
+                self.assertEqual(sum(not x.get("pair_id") for x in rows), 23)
             ids = select_examples(role, "r2r-en", "Walk through the doorway and stop beside the table.")
             self.assertFalse(any(x.startswith("R2R-CORE-") for x in ids))
             self.assertTrue(all(x in {r["template_id"] for r in rows} for x in ids))
