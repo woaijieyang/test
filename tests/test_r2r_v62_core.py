@@ -46,8 +46,13 @@ class R2RV62CoreTests(unittest.TestCase):
             promoted = {x["provenance"]["core_curated_from"] for x in core_rows}
             self.assertFalse(promoted & {x["template_id"] for x in rows})
             if role == "reviewer":
-                core_pairs = {x["pair_id"] for x in core_rows}
-                self.assertFalse(core_pairs & {x.get("pair_id") for x in rows if x.get("pair_id")})
+                promoted_generator_ids = {
+                    x["provenance"]["core_curated_from"]
+                    for x in core_library("generator", "r2r-en")
+                }
+                self.assertFalse(
+                    promoted_generator_ids & {x.get("pair_id") for x in rows if x.get("pair_id")}
+                )
             ids = select_examples(role, "r2r-en", "Walk through the doorway and stop beside the table.")
             self.assertFalse(any(x.startswith("R2R-CORE-") for x in ids))
             self.assertTrue(all(x in {r["template_id"] for r in rows} for x in ids))
