@@ -14,31 +14,35 @@
     "reviewer": {
       "paired_source_library_on_disk": 35,
       "promoted_core_pair_ids": 10,
-      "dynamic_paired_eligible": 25,
+      "dynamic_paired_eligible": 29,
       "diagnostics_source_library_on_disk": 26,
       "promoted_core_diagnostics": 3,
       "dynamic_diagnostics_eligible": 23,
       "fixed_core": 10,
       "core_order": "R01-R10",
-      "dynamic_selection": "existing paired 6-8 examples plus 2-4 diagnostics",
-      "excluded_dynamic_pair_ids": [
-        "R2R-GEN-019",
-        "R2R-GEN-005",
-        "R2R-GEN-021",
-        "R2R-GEN-023",
-        "R2R-GEN-029",
-        "R2R-GEN-007",
-        "R2R-GEN-020",
-        "R2R-GEN-004",
-        "R2R-GEN-002",
-        "R2R-GEN-031"
-      ]
+      "dynamic_selection": "existing paired 6-8 examples for selected non-Core Generator Dynamic IDs plus 2-4 Diagnostics",
+      "dynamic_total_eligible": 52,
+      "excluded_dynamic_reviewer_source_ids": [
+        "R2R-REV-002",
+        "R2R-REV-004",
+        "R2R-REV-005",
+        "R2R-REV-019",
+        "R2R-REV-020",
+        "R2R-REV-031",
+        "R2R-DIAG-01",
+        "R2R-DIAG-25",
+        "R2R-DIAG-26"
+      ],
+      "promoted_core_source_count": 9,
+      "paired_dynamic_count": 29,
+      "dynamic_diagnostics_count": 23,
+      "runtime_dynamic_total": 52
     },
     "shared_contract": "unchanged",
     "schemas": "unchanged",
     "workflow": "unchanged",
     "rxr": "frozen v6.1",
-    "note": "Promoted Core source cases remain on disk for provenance but are excluded from Dynamic retrieval. Reviewer paired examples are excluded by the original promoted Generator source IDs (R2R-GEN-*), even when the corresponding Reviewer Core case was curated from Diagnostics; this preserves exact Generator/Reviewer dynamic pair alignment. Three diagnostic source cases promoted to Reviewer Core are also excluded."
+    "note": "Promoted Reviewer source cases are excluded by their own template_id. Reviewer Core pair_id is semantic provenance only and does not remove unrelated paired Dynamic examples. The runtime selects paired Dynamic examples only for selected non-Core Generator Dynamic IDs; remaining unselected Core-related paired records may stay in the pool but are not eligible for a current task unless their Generator source is selected."
   },
   "generator_core": [
     [
