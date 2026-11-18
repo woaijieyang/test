@@ -216,6 +216,8 @@
     "transfer_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately.",
     "anti_pattern": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case, not a prior or vote. Independently inventory the current source requirements and candidate evidence before deciding.",
-    "reviewer_rule": "Read source and candidate independently, map each requirement to exact candidate evidence, then consult this case only if the same target/landmark/observation relation is present."
+    "reviewer_rule": "Read source and candidate independently, map each requirement to exact candidate evidence, then consult this case only if the same target/landmark/observation relation is present.",
+    "review_principle": "Independently identify the commanded destination from the source action. The chandelier/table is an expected observation after turning; the far-wall doorway and the room beyond it remain the route target and required transition.",
+    "case_specific_focus": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry."
   }
 }
