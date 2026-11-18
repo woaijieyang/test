@@ -186,7 +186,7 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "pack exit",
-        "requirement": "Preserve the spatial transition and region/threshold: pack exit",
+        "requirement": "Resolve the route-defining exit target before planning the final approach and stop.",
         "candidate_evidence": [],
         "status": "requires_review"
       }
@@ -194,68 +194,85 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No candidate is produced because the source target is unresolved; this is not a renderer failure."
       },
       {
         "layer": "L1_source_coverage",
         "status": "source_limited",
-        "conclusion": "The route-defining phrase 'pack exit' is unclear; no supported target normalization is available."
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The route-defining exit phrase is ambiguous and cannot be uniquely resolved from the supplied source."
       },
       {
         "layer": "L2_dependencies",
         "status": "source_limited",
-        "conclusion": "The final exit target cannot be identified from the supplied wording."
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The final approach and stop relation depend on identifying the intended exit; guessing would change route execution."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "not_assessable",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No partial stages are generated while the route-critical target remains unresolved."
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "finding_indices": [],
+        "conclusion": "No candidate stages exist, so there is no inter-stage handoff to assess."
       },
       {
         "layer": "L5_grouping",
-        "status": "not_assessable",
-        "conclusion": "This is not a failed cut: the source itself contains an unresolved route target."
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This is a source-level target ambiguity, not a segmentation-boundary decision."
       },
       {
         "layer": "L6_route_readback",
         "status": "source_limited",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "A reliable route readback cannot select the final exit without a source correction."
       }
     ],
     "findings": [
       {
-        "code": "UNRESOLVED_ROUTE_REFERENT",
-        "layer": "L1_source_coverage",
-        "check_id": "C05",
+        "code": "SOURCE_AMBIGUITY",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C05",
         "dimension": "source_fidelity",
-        "related_dimensions": [],
-        "subtask_indices": [],
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [],
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-01"
         ],
         "source_quote": "pack exit",
         "candidate_evidence": [],
         "evidence_level": "S1",
-        "problem": "The route-defining landmark phrase is unclear and may be a transcription error; changing it would change the destination.",
-        "consequence": "The navigator could be sent toward a different exit if the phrase is guessed.",
+        "problem": "The route-defining landmark phrase 'pack exit' is unclear and may be a transcription error; changing it to a likely alternative would change the destination.",
+        "execution_consequence": "The navigator could be sent toward a different exit if the phrase is guessed.",
         "repair": {
-          "operation": "abstain",
-          "indices": [],
-          "instruction": "Keep needs_review and request a source correction; do not silently rewrite 'pack' as 'back'.",
-          "preserve": [
-            "The pew-relative route and final stop relation."
+          "operation": "preserve_uncertainty",
+          "affected_subtask_indices": [],
+          "instruction": "Keep the candidate inactive and request a source correction; do not silently rewrite 'pack' as 'back' or infer another exit.",
+          "protected_requirements": [
+            "Preserve the pew-relative approach.",
+            "Preserve the final left-of-wall and brass-handrail relation once the intended exit is clarified."
           ]
         }
       }
     ],
     "stage_checks": [],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "source_level_ambiguity_abstention",
