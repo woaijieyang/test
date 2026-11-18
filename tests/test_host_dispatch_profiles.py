@@ -39,7 +39,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertNotIn("RXR SHARED SEMANTIC RULES", r2r_system)
         self.assertNotIn("RXR ROLE GUIDANCE", r2r_system)
         self.assertNotIn("FIXED RXR", r2r_system)
-        self.assertEqual(r2r_req["fixed_core_template_ids"], [])
+        self.assertEqual(r2r_req["fixed_core_template_ids"], [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
 
         rxr_ids = select_examples("generator", rxr.profile, rxr.raw)
         rxr_req = request("generator", "initial",
@@ -171,10 +171,11 @@ class HostDispatchProfileTests(unittest.TestCase):
             selected_ids=ids, original_instruction=source_text
         )
         self.assertTrue(prompt.startswith(
-            "BUILD: v1.5.2 / runtime-contract-v2. Selected few-shot examples are "
-            "source-feature-matched and frozen per record; the source instruction "
-            "remains the only route authority.\n\n"
+            "BUILD: Selected examples are source-feature-matched and frozen per record. "
+            "The original instruction is the only route authority.\n\n"
         ))
+        self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
+        self.assertIn("FIXED R2R-EN GENERATOR CORE: exactly 10", prompt)
         self.assertIn("CURATED R2R-EN GENERATOR EXAMPLES:", prompt)
         self.assertNotIn("FIXED RXR", prompt)
         self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
@@ -185,7 +186,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         from host.compile import ROOT
         for role in ("generator", "reviewer"):
             folder = ROOT / role / "templates" / "R2R"
-            expected_paths = sorted(folder.glob("*/*.json"))
+            expected_paths = sorted(p for p in folder.glob("*/*.json") if p.parent.name != "core")
             expected_ids = [__import__("json").loads(p.read_bytes())["template_id"]
                             for p in expected_paths]
             actual_ids = [row["template_id"] for row in library(role, "r2r-en")]
@@ -264,9 +265,9 @@ class HostDispatchProfileTests(unittest.TestCase):
         ])
         for req in requests:
             self.assertEqual(req["profile"], "r2r-en")
-            self.assertEqual(req["fixed_core_template_ids"], [])
-            self.assertEqual(req["dataset_rules"]["version"], "v5-common")
-            self.assertEqual(req["template_bundle"]["fixed_core_ids"], [])
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertEqual(req["template_bundle"]["fixed_core_ids"], req["fixed_core_template_ids"])
             self.assertNotIn("RXR SHARED SEMANTIC RULES", req["messages"][0]["content"])
             self.assertNotIn("RXR ROLE GUIDANCE", req["messages"][0]["content"])
         self.assertEqual(requests[0]["selected_example_ids"], requests[2]["selected_example_ids"])
@@ -316,6 +317,8 @@ class HostDispatchProfileTests(unittest.TestCase):
             self.assertNotIn("RXR SHARED SEMANTIC RULES", system)
             self.assertNotIn("RXR ROLE GUIDANCE", system)
             self.assertNotIn("FIXED RXR", system)
+            self.assertIn("FIXED R2R-EN", system)
+            self.assertIn("shared/dataset_rules/r2r_en.md", system)
             self.assertNotIn("rxr_en_us", system)
 
 
