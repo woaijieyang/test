@@ -4,8 +4,9 @@
     "r2r-en": {
       "dynamic_directory": "templates/R2R/val_seen",
       "dynamic_count": 35,
-      "fixed_core_directory": null,
-      "fixed_core_count": 0
+      "fixed_core_directory": "templates/R2R/core",
+      "fixed_core_count": 10,
+      "fixed_core_source": "Curated R2R semantic decision-boundary Core G01-G10"
     },
     "rxr-en-us": {
       "dynamic_directory": "templates/RxR/val_seen",
@@ -21,7 +22,9 @@
         6,
         8
       ],
-      "fixed_core": 0
+      "fixed_core": 10,
+      "core_order": "G01-G10",
+      "core_is_unconditional": true
     },
     "rxr-en-us": {
       "dynamic_generator_examples": [
@@ -35,5 +38,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "fixed RxR core plus source-feature-matched dynamic examples; legacy migration copies are excluded"
+  "selection": "fixed dataset-specific Core plus source-feature-matched dynamic examples; Core is excluded from retrieval"
 }
