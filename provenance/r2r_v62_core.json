@@ -4,22 +4,28 @@
   "purpose": "R2R-only fixed Core curation. RxR assets and runtime behavior remain frozen.",
   "runtime": {
     "generator": {
+      "source_library_on_disk": 35,
+      "promoted_to_core": 10,
+      "dynamic_eligible": 25,
       "fixed_core": 10,
       "core_order": "G01-G10",
-      "dynamic_library": 35,
       "dynamic_selection": "existing source-feature retrieval; 6-8 examples"
     },
     "reviewer": {
+      "paired_source_library_on_disk": 35,
+      "promoted_to_core": 3,
+      "dynamic_paired_eligible": 29,
+      "diagnostics_source_library_on_disk": 26,
+      "dynamic_diagnostics_eligible": 23,
       "fixed_core": 10,
       "core_order": "R01-R10",
-      "paired_dynamic_library": 35,
-      "diagnostics_library": 26,
       "dynamic_selection": "existing paired 6-8 examples plus 2-4 diagnostics"
     },
     "shared_contract": "unchanged",
     "schemas": "unchanged",
     "workflow": "unchanged",
-    "rxr": "frozen v6.1"
+    "rxr": "frozen v6.1",
+    "note": "Promoted source cases remain on disk and are recorded for provenance, but are excluded from Dynamic retrieval to prevent fixed/dynamic duplicate teaching. Dynamic scoring and selection counts remain unchanged."
   },
   "generator_core": [
     [
