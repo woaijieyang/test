@@ -370,6 +370,8 @@
     "anti_pattern": "Do not force splits at every clause or room reference. A single continuous maneuver with no independently supported intermediate completion remains one stage.",
     "why_this_review_matters": "This is a grouping defect rather than a source-fidelity omission: the words remain, but the stage organization obscures distinct local navigation focus.",
     "reviewer_rule": "Independently inventory source events and inspect the candidate before consulting teaching cases. The verdict is local to this example, never a vote for the current task.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "review_principle": "Independently verify that every source-supported objective and completed transition remains represented, then assess whether merging distinct objectives removes useful local navigation focus. Require all four L5 under-segmentation conditions; do not infer a defect from length or verb count.",
+    "case_specific_focus": "The single candidate stage preserves the words but collapses the office traversal, completed doorway crossing, hallway-to-room transition, and final circular-table approach into one broad objective."
   }
 }
