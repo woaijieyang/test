@@ -25,17 +25,17 @@
         "R2R-REV-031"
       ],
       "runtime_dynamic_count": 48,
-      "excluded_core_pair_ids": [
-        "R2R-CORE-G01",
-        "R2R-CORE-G02",
-        "R2R-CORE-G03",
-        "R2R-CORE-G04",
-        "R2R-CORE-G05",
-        "R2R-CORE-G06",
-        "R2R-CORE-G07",
-        "R2R-CORE-G08",
-        "R2R-CORE-G09",
-        "R2R-CORE-G10"
+      "excluded_dynamic_pair_ids": [
+        "R2R-GEN-019",
+        "R2R-GEN-005",
+        "R2R-GEN-021",
+        "R2R-GEN-023",
+        "R2R-GEN-029",
+        "R2R-GEN-007",
+        "R2R-GEN-020",
+        "R2R-GEN-004",
+        "R2R-GEN-002",
+        "R2R-GEN-031"
       ]
     },
     "rxr-en-us": {
