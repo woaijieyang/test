@@ -220,6 +220,11 @@ def teaching_card(example, role, detailed):
             card["layer_checks"] = audit.get("layer_checks", [])
             card["handoffs"] = audit["handoffs"]
         lesson = notes.get("case_specific_focus") or notes.get("review_principle") or notes.get("reuse_rule")
+        # R2R's curated and legacy teaching cases use both reusable_rule and
+        # reuse_rule spellings. Normalize only the R2R card projection so the
+        # frozen RxR prompt bytes and teaching payload remain unchanged.
+        if example.get("dataset_scope") == "R2R" and not lesson:
+            lesson = notes.get("reusable_rule") or notes.get("why_this_case_matters") or notes.get("retrieval_rule")
     result = dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
                   avoid=notes.get("anti_pattern"))
     if example.get("template_id", "").startswith("R2R-CORE-"):
