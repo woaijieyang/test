@@ -1,0 +1,350 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-012",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-012",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "2438",
+    "episode_id": "283",
+    "instruction_id": "2438",
+    "scene_id": "mp3d/7y3sRwLe3Va/7y3sRwLe3Va.glb",
+    "trajectory_id": "1014"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "You are facing a vanity which has towels and lilies in a vase. Walk towards the go near the end of this room and enter a closet in front of you. Turn left from this closet. And exit and enter the open door which will take you inside a hall way where their are hanging lights black lights on your right and a railing and on your left their will be another room with brown furniture. Go across this hall way. Crossing the stairs on your left. Going towards the open door on your left. Enter this room which has camel color carpet and white furniture with blue throw on the bed. Go near the washroom door and turn around now from this point go near the blue throw and this is where your destination ends. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You are facing a vanity which has towels and lilies in a vase. Walk towards the end of this room and enter a closet in front of you. Turn left from this closet, exit, and enter the open door which will take you inside a hallway. There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+        "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left. Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed.",
+        "Go near the washroom door and turn around. From this point, go near the blue throw. This is where your destination ends."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk towards the go near the end of this room and enter a closet in front of you.",
+        "requirement": "Preserve the spatial transition and region/threshold: Walk towards the go near the end of this room and enter a closet in front of you.",
+        "candidate_evidence": [
+          "Walk towards the end of this room and enter a closet in front of you."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn left from this closet.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left from this closet.",
+        "candidate_evidence": [
+          "Turn left from this closet, exit, and enter the open door which will take you inside a hallway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "And exit and enter the open door which will take you inside a hall way where their are hanging lights black lights on your right and a railing and on your left their will be another room with brown furniture.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And exit and enter the open door which will take you inside a hall way where their are hanging lights black lights on your right and a railing and on your left their will be another room with brown furniture.",
+        "candidate_evidence": [
+          "Turn left from this closet, exit, and enter the open door which will take you inside a hallway.",
+          "There are hanging black lights on your right and a railing"
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Go across this hall way.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Go across this hall way.",
+        "candidate_evidence": [
+          "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "Crossing the stairs on your left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Crossing the stairs on your left.",
+        "candidate_evidence": [
+          "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Going towards the open door on your left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Going towards the open door on your left.",
+        "candidate_evidence": [
+          "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "Enter this room which has camel color carpet and white furniture with blue throw on the bed.",
+        "requirement": "Preserve the spatial transition and region/threshold: Enter this room which has camel color carpet and white furniture with blue throw on the bed.",
+        "candidate_evidence": [
+          "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "Go near the washroom door and turn around now from this point go near the blue throw and this is where your destination ends.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Go near the washroom door and turn around now from this point go near the blue throw and this is where your destination ends.",
+        "candidate_evidence": [
+          "From this point, go near the blue throw.",
+          "Go near the washroom door and turn around."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "candidate_quotes": [
+            "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+          ]
+        },
+        "process": {
+          "text": "You are facing a vanity which has towels and lilies in a vase. Walk towards the end of this room and enter a closet in front of you. Turn left from this closet, exit, and enter the open door which will take you inside a hallway. There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "candidate_quotes": [
+            "You are facing a vanity which has towels and lilies in a vase. Walk towards the end of this room and enter a closet in front of you. Turn left from this closet, exit, and enter the open door which will take you inside a hallway. There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "candidate_quotes": [
+            "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: facing, in front of, left, on your, right",
+          "candidate_quotes": [
+            "facing",
+            "in front of",
+            "left",
+            "on your",
+            "right"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Turn left from this closet.",
+          "You are facing a vanity which has towels and lilies in a vase.",
+          "Going towards the open door on your left.",
+          "Walk towards the go near the end of this room and enter a closet in front of you."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed.",
+          "candidate_quotes": [
+            "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed."
+          ]
+        },
+        "process": {
+          "text": "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left. Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed.",
+          "candidate_quotes": [
+            "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left. Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed.",
+          "candidate_quotes": [
+            "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: on your, left",
+          "candidate_quotes": [
+            "on your",
+            "left"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
+        ],
+        "source_quotes": [
+          "Crossing the stairs on your left.",
+          "Enter this room which has camel color carpet and white furniture with blue throw on the bed.",
+          "Going towards the open door on your left.",
+          "Go across this hall way."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "From this point, go near the blue throw.",
+          "candidate_quotes": [
+            "From this point, go near the blue throw."
+          ]
+        },
+        "process": {
+          "text": "Go near the washroom door and turn around. From this point, go near the blue throw. This is where your destination ends.",
+          "candidate_quotes": [
+            "Go near the washroom door and turn around. From this point, go near the blue throw. This is where your destination ends."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The destination is the position near the blue throw; no extra STOP is added.",
+          "candidate_quotes": [
+            "go near the blue throw",
+            "This is where your destination ends."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "manner_or_constraint: around",
+          "candidate_quotes": [
+            "around"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-08"
+        ],
+        "source_quotes": [
+          "Go near the washroom door and turn around now from this point go near the blue throw and this is where your destination ends.",
+          "Turn left from this closet.",
+          "Go across this hall way.",
+          "Going towards the open door on your left."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "candidate_quote": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Go across this hallway, crossing the stairs on your left, and go towards the open door on your left"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed.",
+          "candidate_quote": "Enter this room, which has camel-coloured carpet and white furniture with a blue throw on the bed."
+        },
+        "next_entry": {
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
+          "candidate_quote": "Go near the washroom door and turn around"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Walk towards the go near the end of this room and enter a closet…; Preserve the directional/spatial relation and its reference frame: Turn left from this closet.; Preserve the directional/spatial relation and its reference frame: And exit and enter the open door which will take…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the spatial transition and region/threshold: Walk towards the go near the end of this room and enter a closet…; Preserve the directional/spatial relation and its reference frame: Turn left from this closet.; Preserve the directional/spatial relation and its reference frame: And exit and enter the open door which will take…"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-019",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "3561",
+    "episode_id": "522",
+    "instruction_id": "3561",
+    "scene_id": "mp3d/7y3sRwLe3Va/7y3sRwLe3Va.glb",
+    "trajectory_id": "1476"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You're standing in a living room. On the left you can see a blue sofa with a picture above it. If you turn around you'll see two double doors that are white that are open. Walk through this doorway. You'll be standing in front of two white chairs. To your left you'll see a white sofa, walk towards this white sofa. To your left you'll see a large opening to another room and a white table in the middle. Walk towards this white table. And look towards the left you can see a white bench with some pillows on it, walk towards this bench. And to the left you'll see a door that's open walk towards this door. And to the right you'll see a stairway, go up the first two stairs. Once you're standing on the first two stairs you've reached the end. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You are standing in a living room. On the left you can see a blue sofa with a picture above it. If you turn around, you will see two white double doors that are open. Walk through this doorway. You will be standing in front of two white chairs.",
+      "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "You will be standing in front of two white chairs.",
+          "candidate_quotes": [
+            "You will be standing in front of two white chairs."
+          ]
+        },
+        "process": {
+          "text": "You are standing in a living room. On the left you can see a blue sofa with a picture above it. If you turn around, you will see two white double doors that are open. Walk through this doorway. You will be standing in front of two white chairs.",
+          "candidate_quotes": [
+            "You are standing in a living room. On the left you can see a blue sofa with a picture above it. If you turn around, you will see two white double doors that are open. Walk through this doorway. You will be standing in front of two white chairs."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "You will be standing in front of two white chairs.",
+          "candidate_quotes": [
+            "You will be standing in front of two white chairs."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "conditional_observation: if you turn around, two open double doors become visible; this is an expected visual cue, not an alternative route.",
+          "candidate_quotes": [
+            "If you turn around",
+            "two white double doors that are open"
+          ]
+        },
+        "source_quotes": [
+          "Walk through this doorway.",
+          "On the left you can see a blue sofa with a picture above it.",
+          "If you turn around you'll see two double doors that are white that are open.",
+          "You'll be standing in front of two white chairs."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "From in front of the two white chairs, walk towards the white sofa on your left",
+          "candidate_quotes": [
+            "From in front of the two white chairs, walk towards the white sofa on your left"
+          ]
+        },
+        "target": {
+          "text": "Once you are standing on the first two stairs, you have reached the end.",
+          "candidate_quotes": [
+            "Once you are standing on the first two stairs, you have reached the end."
+          ]
+        },
+        "process": {
+          "text": "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end.",
+          "candidate_quotes": [
+            "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Once you are standing on the first two stairs, you have reached the end.",
+          "candidate_quotes": [
+            "Once you are standing on the first two stairs, you have reached the end."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: Once; ordinal_or_count: two, first; spatial_frame: in front of, on your, left, right",
+          "candidate_quotes": [
+            "Once",
+            "two",
+            "first",
+            "in front of",
+            "on your",
+            "left",
+            "right"
+          ]
+        },
+        "source_quotes": [
+          "And look towards the left you can see a white bench with some pillows on it, walk towards this bench.",
+          "Walk towards this white table.",
+          "To your left you'll see a large opening to another room and a white table in the middle.",
+          "And to the right you'll see a stairway, go up the first two stairs."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "You will be standing in front of two white chairs.",
+          "candidate_quote": "You will be standing in front of two white chairs."
+        },
+        "next_entry": {
+          "text": "From in front of the two white chairs, walk towards the white sofa on your left",
+          "candidate_quote": "From in front of the two white chairs, walk towards the white sofa on your left"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'You will be standing in front of two white chairs.'; stage 2 begins from 'From in front of the two white chairs, walk towards the white sofa on your left'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: conditional_observation: if you turn around, two open double doors become visible; this is an expected… Stage 2: temporal: Once; ordinal_or_count: two, first; spatial_frame: in front of, on your, left, right",
+    "handoff_focus": "Stage 1 ends with 'You will be standing in front of two white chairs.'; stage 2 begins from 'From in front of the two white chairs, walk towards the white sofa on your left'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "ordinal_target_selection",
+    "temporal_dependency",
+    "orientation_or_reference_frame",
+    "bounded_motion",
+    "multi_stage_split",
+    "conditional_observation"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "generator": {
+    "status": "ok",
+    "subtasks": [
+      "Cross  the lobby to the stairway.",
+      "Climb to the landing and wait by the clock."
+    ],
+    "issues": []
+  },
+  "reviewer": {
+    "verdict": "pass",
+    "dimensions": {
+      "fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry_context": "Actual starting point for the lobby crossing",
+        "required_history": [
+          "Cross the lobby to the stairway"
+        ],
+        "completion_condition": "At the stairway after the crossing",
+        "completion_basis": "explicit_event",
+        "source_quotes": [
+          "Cross  the lobby to the stairway."
+        ],
+        "candidate_quotes": [
+          "Cross  the lobby to the stairway."
+        ],
+        "completion_quote": "to the stairway",
+        "carryover_requirements": [
+          "The stairway reached from the lobby"
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry_context": "At the stairway reached from the lobby",
+        "required_history": [
+          "Climb to the landing",
+          "Wait by the clock"
+        ],
+        "completion_condition": "On the landing, waiting by the clock",
+        "completion_basis": "explicit_event",
+        "source_quotes": [
+          "Climb to the landing and wait by the clock."
+        ],
+        "candidate_quotes": [
+          "Climb to the landing and wait by the clock."
+        ],
+        "completion_quote": "wait by the clock",
+        "carryover_requirements": []
+      }
+    ],
+    "handoffs": [
+      {
+        "left": 0,
+        "right": 1,
+        "previous_exit": "At the stairway after crossing the lobby",
+        "next_required_entry": "At this stairway before ascent",
+        "shared_referent": "The stairway",
+        "completion_evidence": "The lobby crossing ends at the stairway, and the next movement is the ascent to the landing.",
+        "status": "supported",
+        "source_quotes": [
+          "Cross  the lobby to the stairway.",
+          "Climb to the landing and wait by the clock."
+        ],
+        "left_quote": "to the stairway",
+        "right_quote": "Climb to the landing"
+      }
+    ]
+  }
+}

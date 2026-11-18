@@ -1,0 +1,244 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-028",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5555",
+    "episode_id": "888",
+    "instruction_id": "5555",
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "trajectory_id": "2289"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "Our starting point is in seating area, and we're facing towards beside the window there's a chair and a bench, turn around and exit through the door that's between the two curtains... We're now facing a living room, walk towards the chair that's in the centre of the room, walk towards the chair that's on your left, and then, walk towards the threshold of the door that's towards the right, turn slightly to the left and enter the room that's n front of you... We're now facing towards a table with books on top, turn right... You'll come across, actually, two doorways, walk towards the doorway that's on your right and walk pass the hallway, turn towards the left, leaving the small round table towards the right, and you'll come across a staircase, do not go down, walk pass the staircase towards the right, on your right there's a hallway, do not walk into the hallway, then towards the left, and in front of you there' will be a long window, walk towards the right side of the window, and that is your destination.   "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains.",
+      "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+      "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Turn around and exit through the door between the two curtains."
+          ]
+        },
+        "process": {
+          "text": "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Our starting point is in a seating area. We are facing a window, with a chair and a bench beside it. Turn around and exit through the door between the two curtains."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quotes": [
+            "Turn around and exit through the door between the two curtains."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "ordinal_or_count: two; spatial_frame: facing, between; manner_or_constraint: around, through",
+          "candidate_quotes": [
+            "two",
+            "facing",
+            "between",
+            "around",
+            "through"
+          ]
+        },
+        "source_quotes": [
+          "Our starting point is in seating area",
+          "turn around and exit through the door that's between the two curtains...",
+          "and we're facing towards beside the window there's a chair and a bench",
+          "turn towards the left"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Now you are facing a living room",
+          "candidate_quotes": [
+            "Now you are facing a living room"
+          ]
+        },
+        "target": {
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ]
+        },
+        "process": {
+          "text": "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Now you are facing a living room. Walk towards the chair in the centre of the room, then towards the chair on your left. Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quotes": [
+            "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: facing, on your, left, right, in front of",
+          "candidate_quotes": [
+            "then",
+            "facing",
+            "on your",
+            "left",
+            "right",
+            "in front of"
+          ]
+        },
+        "source_quotes": [
+          "then towards the left",
+          "turn towards the left",
+          "and then",
+          "walk towards the chair that's in the centre of the room"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Now you are facing a table with books on top",
+          "candidate_quotes": [
+            "Now you are facing a table with books on top"
+          ]
+        },
+        "target": {
+          "text": "The right side of the long window; final approach is directed toward it without an explicit arrival threshold.",
+          "candidate_quotes": [
+            "Walk towards the right side of the window"
+          ]
+        },
+        "process": {
+          "text": "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination.",
+          "candidate_quotes": [
+            "Now you are facing a table with books on top. Turn right. You will come across two doorways; walk towards the doorway on your right and walk past the hallway. Turn left, leaving the small round table on your right. You will come across a staircase; do not go down. Walk past the staircase towards the right. There is a hallway on your right; do not walk into the hallway. Then move towards the left. In front of you there will be a long window. Walk towards the right side of the window. That is your destination."
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "Move toward the right side of the long window as the final directed goal. The source does not state a separate arrival threshold or stationary position.",
+          "candidate_quotes": [
+            "Walk towards the right side of the window."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Then; ordinal_or_count: two; negation: do not; spatial_frame: facing, right, on your, left, In front of; manner_or_constraint: past",
+          "candidate_quotes": [
+            "Then",
+            "two",
+            "do not",
+            "facing",
+            "right",
+            "on your",
+            "left",
+            "In front of",
+            "past"
+          ]
+        },
+        "source_quotes": [
+          "and that is your destination.",
+          "walk towards the right side of the window",
+          "then towards the left",
+          "do not walk into the hallway"
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Turn around and exit through the door between the two curtains.",
+          "candidate_quote": "Turn around and exit through the door between the two curtains."
+        },
+        "next_entry": {
+          "text": "Now you are facing a living room",
+          "candidate_quote": "Now you are facing a living room"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you.",
+          "candidate_quote": "Walk towards the threshold of the door on the right, turn slightly to the left, and enter the room in front of you."
+        },
+        "next_entry": {
+          "text": "Now you are facing a table with books on top",
+          "candidate_quote": "Now you are facing a table with books on top"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 3 stages. Stage 1 ends with 'Turn around and exit through the door between the two curtains.'; stage 2 begins from 'Now you are facing a living room'. Stage 2 ends with 'Walk towards the threshold of the door on the right, turn slightly to the left, and enter the…'; stage 3 begins from 'Now you are facing a table with books on top'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: ordinal_or_count: two; spatial_frame: facing, between; manner_or_constraint: around, through Stage 2: temporal: then; spatial_frame: facing, on your, left, right, in front of Stage 3: temporal: Then; ordinal_or_count: two; negation: do not; spatial_frame: facing, right, on your, left, In…",
+    "handoff_focus": "Stage 1 ends with 'Turn around and exit through the door between the two curtains.'; stage 2 begins from 'Now you are facing a living room'. Stage 2 ends with 'Walk towards the threshold of the door on the right, turn slightly to the left, and enter the…'; stage 3 begins from 'Now you are facing a table with books on top'."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "landmark_conditioned_navigation",
+    "orientation_or_reference_frame",
+    "multi_stage_split"
+  ]
+}

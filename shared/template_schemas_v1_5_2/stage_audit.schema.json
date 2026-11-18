@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VLN Stage Audit v1.5.1",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subtask_index",
+        "entry",
+        "target",
+        "process",
+        "ending",
+        "conditions",
+        "source_quotes",
+        "carryover"
+      ],
+      "properties": {
+        "subtask_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "entry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "text",
+            "candidate_quotes"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "episode_start",
+                "explicit_context",
+                "inherited_pose",
+                "inherited_entity",
+                "missing",
+                "source_unspecified"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidate_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "candidate_quotes"
+          ],
+          "properties": {
+            "text": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "candidate_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "process": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "candidate_quotes"
+          ],
+          "properties": {
+            "text": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "candidate_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "ending": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "text",
+            "candidate_quotes",
+            "stop_scope"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "explicit_event",
+                "bounded_action",
+                "linked_trigger_or_refinement",
+                "terminal_goal_directive",
+                "unspecified"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidate_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "stop_scope": {
+              "type": "string",
+              "enum": [
+                "none",
+                "intermediate",
+                "terminal"
+              ],
+              "description": "Distinguishes an explicitly requested physical stop/wait from a mere subtask boundary. none means no source stop/wait is prescribed at this stage ending."
+            }
+          }
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "text",
+            "candidate_quotes"
+          ],
+          "properties": {
+            "text": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "candidate_quotes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "source_quotes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "carryover": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

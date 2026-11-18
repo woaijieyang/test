@@ -1,0 +1,1218 @@
+[
+  {
+    "id": "1",
+    "partition": "B",
+    "source": "Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. ",
+    "old_subtasks": [
+      "Exit the bedroom and turn left.",
+      "Walk straight, passing the gray couch, and stop near the rug."
+    ],
+    "current_subtasks": [
+      "Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. "
+    ],
+    "state": "accepted_source_exact",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.80282,
+        "ndtw": 0.79027,
+        "ne": 1.8994,
+        "steps": 57,
+        "calls": 32
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.94301,
+        "ndtw": 0.91874,
+        "ne": 0.5145,
+        "steps": 45,
+        "calls": 21
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.93634,
+        "ndtw": 0.83916,
+        "ne": 0.6914,
+        "steps": 47,
+        "calls": 21
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.80282,
+        "ndtw": 0.79027,
+        "ne": 1.8994,
+        "steps": 57,
+        "calls": 32
+      }
+    },
+    "source_lines": [
+      47,
+      683
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "2",
+    "partition": "B",
+    "source": "Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. ",
+    "old_subtasks": [
+      "Walk out of the bedroom through the open door into the hallway.",
+      "Turn the corner and walk into the dining area.",
+      "Pass the dining table and walk into the living room area towards the television. Stop near the chair and open sliding doors to outside."
+    ],
+    "current_subtasks": [
+      "Walk out of the bedroom through the open door into the hallway.",
+      "Turn the corner and walk into the dining area.",
+      "Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.88409,
+        "ndtw": 0.82357,
+        "ne": 0.7579,
+        "steps": 49,
+        "calls": 25
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.88409,
+        "ndtw": 0.82357,
+        "ne": 0.7579,
+        "steps": 49,
+        "calls": 25
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.88409,
+        "ndtw": 0.82357,
+        "ne": 0.7579,
+        "steps": 49,
+        "calls": 25
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.88489,
+        "ne": 1.0041,
+        "steps": 41,
+        "calls": 18
+      }
+    },
+    "source_lines": [
+      683,
+      1445
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "19",
+    "partition": "B",
+    "source": "Walk through the living room around the backside of the couches. Walk into the kitchen area and walk along the barstools and countertop. Continue ahead towards the arched entryway that leads to a hall beside the stairs. ",
+    "old_subtasks": [
+      "Walk through the living room around the backside of the couches, then walk into the kitchen area.",
+      "In the kitchen area, walk along the barstools and countertop. Continue ahead towards the arched entryway that leads to a hall beside the stairs."
+    ],
+    "current_subtasks": [
+      "Walk through the living room around the backside of the couches. Walk into the kitchen area.",
+      "Walk along the barstools and countertop. Continue ahead towards the arched entryway that leads to a hall beside the stairs."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.65866,
+        "ndtw": 0.52317,
+        "ne": 1.4413,
+        "steps": 116,
+        "calls": 47
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.29842,
+        "ne": 6.3075,
+        "steps": 98,
+        "calls": 38
+      },
+      "E": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.30334,
+        "ne": 4.304,
+        "steps": 107,
+        "calls": 41
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.42576,
+        "ne": 7.3103,
+        "steps": 115,
+        "calls": 49
+      }
+    },
+    "source_lines": [
+      13178,
+      13877
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "53",
+    "partition": "B",
+    "source": "Exit the living room and turn right into the kitchen. Turn left at the end of the counter and wait in the room across the hallway slightly to the left. ",
+    "old_subtasks": [
+      "Exit the living room and turn right into the kitchen.",
+      "In the kitchen, turn left at the end of the counter and wait in the room across the hallway, slightly to the left."
+    ],
+    "current_subtasks": [
+      "Exit the living room and turn right into the kitchen.",
+      "Turn left at the end of the counter and wait in the room across the hallway slightly to the left."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.99402,
+        "ndtw": 0.9073,
+        "ne": 0.9966,
+        "steps": 82,
+        "calls": 33
+      },
+      "D": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.88336,
+        "ne": 1.7789,
+        "steps": 82,
+        "calls": 36
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.99402,
+        "ndtw": 0.9073,
+        "ne": 0.9966,
+        "steps": 100,
+        "calls": 44
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.47684,
+        "ne": 10.6502,
+        "steps": 110,
+        "calls": 46
+      }
+    },
+    "source_lines": [
+      38527,
+      39195
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "98",
+    "partition": "B",
+    "source": "Walk to the oven, turn left, walk to the lattice gate, turn right, enter the office, wait at the desk. ",
+    "old_subtasks": [
+      "Walk to the oven.",
+      "From the oven, turn left and walk to the lattice gate.",
+      "From the lattice gate, turn right, enter the office, and wait at the desk."
+    ],
+    "current_subtasks": [
+      "Walk to the oven.",
+      "Turn left, walk to the lattice gate, turn right, enter the office, wait at the desk."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.31173,
+        "ndtw": 0.15181,
+        "ne": 0.7241,
+        "steps": 188,
+        "calls": 83
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.99092,
+        "ndtw": 0.90471,
+        "ne": 1.0185,
+        "steps": 53,
+        "calls": 25
+      },
+      "E": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.94231,
+        "ne": 0.7853,
+        "steps": 50,
+        "calls": 23
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.0,
+        "ne": 29.8809,
+        "steps": 235,
+        "calls": 101
+      }
+    },
+    "source_lines": [
+      75595,
+      76326
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "137",
+    "partition": "B",
+    "source": "Walk down the tiled floor passed the kitchen counter. Continue passed the living room area and into the hallway ahead. Continue walking ahead towards the front door of the home with wall art hanging up. ",
+    "old_subtasks": [
+      "Walk down the tiled floor past the kitchen counter. Continue past the living room area and into the hallway ahead.",
+      "From the hallway, continue walking ahead towards the front door of the home with wall art hanging up."
+    ],
+    "current_subtasks": [],
+    "state": "fallback_unresolved",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.89441,
+        "ndtw": 0.91247,
+        "ne": 0.8375,
+        "steps": 41,
+        "calls": 15
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.89441,
+        "ndtw": 0.91247,
+        "ne": 0.8375,
+        "steps": 41,
+        "calls": 15
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.89441,
+        "ndtw": 0.91247,
+        "ne": 0.8375,
+        "steps": 41,
+        "calls": 15
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.89441,
+        "ndtw": 0.91247,
+        "ne": 0.8375,
+        "steps": 41,
+        "calls": 15
+      }
+    },
+    "source_lines": [
+      104694,
+      105604
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "149",
+    "partition": "A",
+    "source": "TURN RIGHT TO FACE THE END OF THE BED AND WALK TOWARDS THE CHAIR, TURN RIGHT AND WALK TOWARDS THE OPEN DOOR AND THE HALLWAY, WALK ACROSS THE HALLWAY AND TO THE NEXT OPEN DOORWAY, WALK THROUGH THE DOOR AND INTO THE CLOSET. ",
+    "old_subtasks": [
+      "Turn right to face the end of the bed, walk towards the chair, then turn right and walk towards the open door and the hallway.",
+      "Walk across the hallway to the next open doorway, then walk through that doorway and into the closet."
+    ],
+    "current_subtasks": [
+      "TURN RIGHT TO FACE THE END OF THE BED AND WALK TOWARDS THE CHAIR, TURN RIGHT AND WALK TOWARDS THE OPEN DOOR AND THE HALLWAY, WALK ACROSS THE HALLWAY AND TO THE NEXT OPEN DOORWAY, WALK THROUGH THE DOOR AND INTO THE CLOSET. "
+    ],
+    "state": "accepted_source_exact",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.82198,
+        "ndtw": 0.80504,
+        "ne": 0.0406,
+        "steps": 270,
+        "calls": 119
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.95395,
+        "ndtw": 0.85846,
+        "ne": 0.3373,
+        "steps": 262,
+        "calls": 123
+      },
+      "specialized D": {
+        "sr": 1,
+        "spl": 0.91479,
+        "ndtw": 0.8037,
+        "ne": 0.1522,
+        "steps": 146,
+        "calls": 77
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.82198,
+        "ndtw": 0.80504,
+        "ne": 0.0406,
+        "steps": 270,
+        "calls": 119
+      }
+    },
+    "source_lines": [
+      113215,
+      114462
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "188",
+    "partition": "Remaining",
+    "source": "continue forward past the first tdoor to your right\r\ncontinue walking past the door down the small hallways infront of you. \r\ngo in the room\r\ngo down the steps \r\ncontinue forward and go up 1 2 steps. ",
+    "old_subtasks": [
+      "continue forward past the first tdoor to your right\r\ncontinue walking past the door down the small hallways infront of you. \r\ngo in the room\r\ngo down the steps \r\ncontinue forward and go up 1 2 steps. "
+    ],
+    "current_subtasks": [],
+    "state": "fallback_unresolved",
+    "metrics": {
+      "baseline": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.662,
+        "ne": 4.4607,
+        "steps": 89,
+        "calls": 37
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.662,
+        "ne": 4.4607,
+        "steps": 89,
+        "calls": 37
+      },
+      "E": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.662,
+        "ne": 4.4607,
+        "steps": 89,
+        "calls": 37
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.662,
+        "ne": 4.4607,
+        "steps": 89,
+        "calls": 37
+      }
+    },
+    "source_lines": [
+      143953,
+      144959
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "336",
+    "partition": "A",
+    "source": "Turn around and exit the exercise room. Turn left and walk across the wooden hallway. Walk across the kitchen towards the doors the exit the house. Wait there. ",
+    "old_subtasks": [
+      "Turn around and exit the exercise room. Turn left and walk across the wooden hallway. Walk across the kitchen towards the doors the exit the house. Wait there. "
+    ],
+    "current_subtasks": [
+      "Turn around and exit the exercise room.",
+      "Turn left and walk across the wooden hallway.",
+      "Walk across the kitchen towards the doors that lead out of the house. Wait there."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.94485,
+        "ne": 0.5958,
+        "steps": 55,
+        "calls": 24
+      },
+      "D": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.94485,
+        "ne": 0.5958,
+        "steps": 55,
+        "calls": 24
+      },
+      "specialized D": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.94485,
+        "ne": 0.5958,
+        "steps": 55,
+        "calls": 24
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.94485,
+        "ne": 0.5958,
+        "steps": 55,
+        "calls": 24
+      }
+    },
+    "source_lines": [
+      256502,
+      257646
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "472",
+    "partition": "Remaining",
+    "source": "Leave the living room and take the first left into the hall. Take a left past the stairs and walk down a hallway. take the first right in the hall and enter the art room. Stop inside the art room next tot he door. ",
+    "old_subtasks": [
+      "Leave the living room and take the first left into the hall.",
+      "Take a left past the stairs and walk down the hallway to the first right in the hall. Take that right and enter the art room. Stop inside the art room next to the door."
+    ],
+    "current_subtasks": [
+      "Leave the living room and take the first left into the hall.",
+      "Take a left past the stairs and walk down a hallway. Take the first right in the hall and enter the art room. Stop inside the art room next to the door."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.98809,
+        "ndtw": 0.9224,
+        "ne": 0.8027,
+        "steps": 55,
+        "calls": 26
+      },
+      "D": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.92439,
+        "ne": 0.8859,
+        "steps": 52,
+        "calls": 24
+      },
+      "E": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.92399,
+        "ne": 0.8622,
+        "steps": 51,
+        "calls": 24
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.92836,
+        "ne": 0.9531,
+        "steps": 53,
+        "calls": 25
+      }
+    },
+    "source_lines": [
+      358144,
+      359035
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "630",
+    "partition": "Remaining",
+    "source": "walk across living room, at hallway on the right turn right and go down, Turn right at first door, enter pantry and stop in the middle of counter. ",
+    "old_subtasks": [
+      "Walk across the living room to the hallway on the right, turn right into the hallway, and go down it to the first door.",
+      "At the first door, turn right, enter the pantry, and stop in the middle of the counter."
+    ],
+    "current_subtasks": [
+      "Walk across the living room to the hallway on the right.",
+      "Turn right and go down the hallway. Turn right at the first door, enter the pantry and stop in the middle of the counter."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.91682,
+        "ne": 1.324,
+        "steps": 40,
+        "calls": 19
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.81905,
+        "ndtw": 0.8904,
+        "ne": 0.795,
+        "steps": 46,
+        "calls": 22
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.45081,
+        "ndtw": 0.44509,
+        "ne": 1.5035,
+        "steps": 96,
+        "calls": 51
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.92545,
+        "ne": 1.0984,
+        "steps": 41,
+        "calls": 19
+      }
+    },
+    "source_lines": [
+      473293,
+      474198
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "700",
+    "partition": "B",
+    "source": "Go into the gym area. Exit the gym area and stop next to the two giraffes. ",
+    "old_subtasks": [
+      "Go into the gym area.",
+      "From inside the gym area, exit it and stop next to the two giraffes."
+    ],
+    "current_subtasks": [
+      "Go into the gym area.",
+      "Exit the gym area and stop next to the two giraffes."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.51688,
+        "ne": 6.2309,
+        "steps": 78,
+        "calls": 33
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.01487,
+        "ne": 7.6344,
+        "steps": 257,
+        "calls": 123
+      },
+      "E": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.5056,
+        "ne": 5.9755,
+        "steps": 79,
+        "calls": 36
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.90234,
+        "ne": 0.3664,
+        "steps": 49,
+        "calls": 23
+      }
+    },
+    "source_lines": [
+      530160,
+      530821
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "856",
+    "partition": "B",
+    "source": "Turn left and walk across the lawn towards the dark grey fence. Turn left again and walk down the side of the house. Stop before the second stair step on the walkway. ",
+    "old_subtasks": [
+      "Turn left and walk across the lawn towards the dark grey fence.",
+      "Then turn left again and walk down the side of the house. Stop before the second stair step on the walkway."
+    ],
+    "current_subtasks": [
+      "Turn left and walk across the lawn towards the dark grey fence.",
+      "Turn left again and walk down the side of the house. Stop before the second stair step on the walkway."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.90708,
+        "ndtw": 0.64037,
+        "ne": 1.0105,
+        "steps": 63,
+        "calls": 23
+      },
+      "D": {
+        "sr": 1,
+        "spl": 0.90708,
+        "ndtw": 0.64037,
+        "ne": 1.0105,
+        "steps": 63,
+        "calls": 23
+      },
+      "E": {
+        "sr": 1,
+        "spl": 0.90708,
+        "ndtw": 0.64037,
+        "ne": 1.0105,
+        "steps": 63,
+        "calls": 23
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.11498,
+        "ne": 10.0415,
+        "steps": 153,
+        "calls": 61
+      }
+    },
+    "source_lines": [
+      644727,
+      645392
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "1148",
+    "partition": "A",
+    "source": "walk towards fireplace, walk on the left side of the brown couch, turn right after couch, turn left after four person table and stop in front of barstools. ",
+    "old_subtasks": [
+      "Walk towards the fireplace on the left side of the brown couch, then turn right after the couch.",
+      "After turning right past the brown couch, turn left after the four-person table and stop in front of the barstools."
+    ],
+    "current_subtasks": [
+      "walk towards fireplace, walk on the left side of the brown couch, turn right after couch, turn left after four person table and stop in front of barstools. "
+    ],
+    "state": "accepted_source_exact",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.40467,
+        "ndtw": 0.06658,
+        "ne": 0.0963,
+        "steps": 165,
+        "calls": 89
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.11262,
+        "ne": 5.1494,
+        "steps": 133,
+        "calls": 63
+      },
+      "specialized D": {
+        "sr": 1,
+        "spl": 0.51095,
+        "ndtw": 0.46083,
+        "ne": 2.7048,
+        "steps": 256,
+        "calls": 103
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.40467,
+        "ndtw": 0.06658,
+        "ne": 0.0963,
+        "steps": 165,
+        "calls": 89
+      }
+    },
+    "source_lines": [
+      860878,
+      861808
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "1205",
+    "partition": "A",
+    "source": "Walk across kitchen, turn left and stop under the stairs. ",
+    "old_subtasks": [
+      "Walk across the kitchen, turn left, and stop under the stairs."
+    ],
+    "current_subtasks": [
+      "Walk across kitchen, turn left and stop under the stairs. "
+    ],
+    "state": "accepted_source_exact",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 0.49435,
+        "ndtw": 0.33882,
+        "ne": 1.3507,
+        "steps": 98,
+        "calls": 46
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.50997,
+        "ne": 4.006,
+        "steps": 100,
+        "calls": 45
+      },
+      "specialized D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.00101,
+        "ne": 13.3174,
+        "steps": 500,
+        "calls": 202
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.49435,
+        "ndtw": 0.33882,
+        "ne": 1.3507,
+        "steps": 98,
+        "calls": 46
+      }
+    },
+    "source_lines": [
+      905060,
+      905864
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "1464",
+    "partition": "B",
+    "source": "Go down the hallway to the right of the four pictures side of the hallway, turn right into the first archway and go straight, at the end of the hallway turn right and take a step into the room and stop. ",
+    "old_subtasks": [
+      "Go down the hallway to the right of the side of the hallway with four pictures. Turn right into the first archway and continue straight to the end of the hallway.",
+      "At the end of the hallway, turn right, take a step into the room, and stop."
+    ],
+    "current_subtasks": [
+      "Go down the hallway to the right of the four pictures side of the hallway, turn right into the first archway.",
+      "Go straight to the end of the hallway, turn right and take a step into the room and stop."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.27302,
+        "ne": 11.4095,
+        "steps": 33,
+        "calls": 13
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.27302,
+        "ne": 11.4095,
+        "steps": 33,
+        "calls": 13
+      },
+      "E": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.27302,
+        "ne": 11.4095,
+        "steps": 33,
+        "calls": 13
+      },
+      "v2": {
+        "sr": 1,
+        "spl": 0.44065,
+        "ndtw": 0.39133,
+        "ne": 1.807,
+        "steps": 104,
+        "calls": 48
+      }
+    },
+    "source_lines": [
+      1095472,
+      1096185
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "1483",
+    "partition": "B",
+    "source": "Turn around and walk along the wooden hallway.Wait the the wooden doorway. ",
+    "old_subtasks": [
+      "Turn around and walk along the wooden hallway to the wooden doorway. Wait there."
+    ],
+    "current_subtasks": [
+      "Turn around and walk along the wooden hallway. Wait at the wooden doorway."
+    ],
+    "state": "accepted_candidate",
+    "metrics": {
+      "baseline": {
+        "sr": 1,
+        "spl": 1.0,
+        "ndtw": 0.91947,
+        "ne": 1.1692,
+        "steps": 45,
+        "calls": 18
+      },
+      "D": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.79704,
+        "ne": 3.1985,
+        "steps": 26,
+        "calls": 10
+      },
+      "E": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.79704,
+        "ne": 3.1985,
+        "steps": 26,
+        "calls": 10
+      },
+      "v2": {
+        "sr": 0,
+        "spl": 0.0,
+        "ndtw": 0.15485,
+        "ne": 9.8635,
+        "steps": 180,
+        "calls": 72
+      }
+    },
+    "source_lines": [
+      1109521,
+      1110252
+    ],
+    "dataset": "R2R"
+  },
+  {
+    "id": "1509",
+    "instruction_id": "70405",
+    "partition": "A",
+    "dataset": "RxR",
+    "source": "You will start by standing in the living room area. Turn around and take one step in front of the staircase. To the right of the staircase you will see an opening and you will also see from here another staircase leading down. Walk towards that staircase. Make your way down the stairs. Once you're in front of the bench turn to your right and take one step there. Turn right once again and you will see a hallway. Walk down this hallway. Turn right and you will see an opening. Walk towards this opening. You will see it is a lounge room. There will be two arm chairs on the left corner of this room. Walk towards those chairs. It's a weirdly patterned chairs. There are plants in between the chairs and also behind one of the chairs. Once you've facing these chairs then you're done.",
+    "old_subtasks": [
+      "You start standing in the living room area. Turn around and take one step in front of the staircase.",
+      "To the right of the staircase, you should see an opening, and from there you should also see another staircase leading down. Walk towards that descending staircase and make your way down the stairs until you are in front of the bench.",
+      "Once you are in front of the bench, turn right and take one step. Turn right again; you should see a hallway. Walk down this hallway, then turn right; you should see an opening.",
+      "Walk towards the opening into the lounge room, then walk towards the two weirdly patterned armchairs in the left corner of the room. There are plants between the chairs and behind one of them. Once you are facing the chairs, you are at your final destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 1.0,
+        "spl": 0.5565728523536712,
+        "ndtw": 0.6030548243159846,
+        "ne": 0.9356819987297058,
+        "steps": 301,
+        "calls": 139,
+        "end": "stop",
+        "hash": "c6b9bf5dbceb064e8a52d5da50fcaa2dee557e2b58395386cf575c1864a7a207"
+      },
+      "D": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.41024871017171716,
+        "ne_m": 22.357418060302734,
+        "oracle_sr": 0.0,
+        "sdtw": 0.0,
+        "oracle_ne_m": 16.567241668701172,
+        "path_length_m": 31.78295374661684,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.225483457694187,
+        "ne_m": 9.321186065673828,
+        "oracle_sr": 0.0,
+        "sdtw": 0.0,
+        "oracle_ne_m": 6.156501293182373,
+        "path_length_m": 53.32949107140303,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "4879",
+    "instruction_id": "17340",
+    "partition": "A",
+    "dataset": "RxR",
+    "source": "You are facing some brown double doors ahead of us in a bedroom. Turn to the right and exit the bedroom going across the bed. Now you are in a hall,turn to your right. Continue forward and you are in a bathroom. Continue walking between the bathtub and the sink that is on the left going straight. Stop right in front of the doorway heading into the little room. You are standing with the medicine cabinet that has light bulbs on it and a toothbrush on your left. You are done.",
+    "old_subtasks": [
+      "You start in a bedroom facing some brown double doors ahead of you. Turn right and exit the bedroom, going across the bed. You should then be in a hall.",
+      "In the hall, turn right and continue forward into the bathroom.",
+      "Continue walking straight through the bathroom between the bathtub and the sink on your left. Stop directly in front of the doorway leading into the little room. At that position, the medicine cabinet that has light bulbs on it and a toothbrush should be on your left. This is your final destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.6187023199060626,
+        "ne": 4.741280555725098,
+        "steps": 310,
+        "calls": 145,
+        "end": "stop",
+        "hash": "e41c955291f59baf69305b64d96473776d74d6ffbb041a973ab45255232fc44e"
+      },
+      "D": {
+        "sr": 1.0,
+        "spl": 0.9402951868153668,
+        "ndtw": 0.9048639775231111,
+        "ne_m": 0.5412310361862183,
+        "oracle_sr": 1.0,
+        "sdtw": 0.9048639775231111,
+        "oracle_ne_m": 0.5412310361862183,
+        "path_length_m": 12.04820467531681,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 1.0,
+        "spl": 0.9402951868153668,
+        "ndtw": 0.9048639775231111,
+        "ne_m": 0.5412310361862183,
+        "oracle_sr": 1.0,
+        "sdtw": 0.9048639775231111,
+        "oracle_ne_m": 0.5412310361862183,
+        "path_length_m": 12.04820467531681,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "5512",
+    "instruction_id": "47822",
+    "partition": "B",
+    "dataset": "RxR",
+    "source": "We'll begin by facing some frames that have quotes inside of them. We're going to walk in between the large dining table to our left and the frames that were mentioned before. We are going to be looking now at the kitchen area of the house. To the left of the kitchen area there's a narrow pathway that's in between a living room. We're going to walk through this pathway all the way down until we come across a pathway that leads us to multiple rooms: we're going to enter the room that's on our left. This room is a restroom, so let's get in the restroom. When you're facing the narrow mirror, this would be our destination. ",
+    "old_subtasks": [
+      "You begin facing some frames that have quotes inside them. Walk between the large dining table on your left and the frames until you are looking at the kitchen area of the house.",
+      "To the left of the kitchen area, take the narrow pathway that is in between a living room. Walk all the way down this narrow pathway until you come across a pathway that leads to multiple rooms.",
+      "From the pathway leading to multiple rooms, enter the room on your left, which is a restroom. Once inside the restroom, face the narrow mirror. This is your final destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 1.0,
+        "spl": 0.7883477064856248,
+        "ndtw": 0.8741993912308547,
+        "ne": 1.133196473121643,
+        "steps": 124,
+        "calls": 57,
+        "end": "stop",
+        "hash": "ced524ee23ded6eba31d78c1cfb134b3b16cc6f0a304b6c922c2d37f5bfc512e"
+      },
+      "D": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.1507908732880055,
+        "ne_m": 11.771045684814453,
+        "oracle_sr": 0.0,
+        "sdtw": 0.0,
+        "oracle_ne_m": 10.071820259094238,
+        "path_length_m": 22.385363951325417,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.030549369744169892,
+        "ne_m": 13.411829948425293,
+        "oracle_sr": 0.0,
+        "sdtw": 0.0,
+        "oracle_ne_m": 10.071820259094238,
+        "path_length_m": 38.89714375138283,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "2590",
+    "instruction_id": "85441",
+    "partition": "pilot40",
+    "dataset": "RxR",
+    "source": "We'll start by being in a living room area. We're going to walk to the right side of the kitchen table, jumping over the sofas and the couches that we see. As we're now in the kitchen area, we're going to turn our heads slightly to the right, and notice that there's some pictures hanging on a wall. Let's walk towards these pictures, turn our heads slightly to the right and walk down the hallway. Now, let's enter the room to our left, jump over the bed in order to reach the door in the corner, look to the front, walk to the restroom and then walk to the tub. We have reached our destination.",
+    "old_subtasks": [
+      "You start in a living room area. Walk to the right side of the kitchen table, jumping over the sofas and the couches that you see. You should now be in the kitchen area.",
+      "From the kitchen area, turn your head slightly to the right and notice the pictures hanging on a wall. Walk towards these pictures, turn your head slightly to the right and walk down the hallway. Enter the room to your left.",
+      "Inside the room you have just entered on the left of the hallway, jump over the bed in order to reach the door in the corner.",
+      "From the door in the corner of the room with the bed, look to the front, walk to the restroom and then walk to the tub. This is your destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 1.0,
+        "spl": 0.39503240302728393,
+        "ndtw": 0.2979450189087519,
+        "ne": 0.5088868737220764,
+        "steps": 210,
+        "calls": 92,
+        "end": "stop",
+        "hash": "3ebb9b4d75db781d065354912520a6bbf558596536aeb1461f3858cd69cbb349"
+      },
+      "D": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.0015497108068726207,
+        "ne_m": 29.619108200073242,
+        "oracle_sr": 0.0,
+        "sdtw": 0.0,
+        "oracle_ne_m": 9.440139770507812,
+        "path_length_m": 50.782863170652305,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 1.0,
+        "spl": 1.0,
+        "ndtw": 0.8324641457939238,
+        "ne_m": 0.982778012752533,
+        "oracle_sr": 1.0,
+        "sdtw": 0.8324641457939238,
+        "oracle_ne_m": 0.982778012752533,
+        "path_length_m": 14.905753133164106,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "8593",
+    "instruction_id": "5237",
+    "partition": "pilot40",
+    "dataset": "RxR",
+    "source": "Look around, you're currently outside a white house. Right behind you, you see a silver grill. Walk straight towards the blue sofas furthest to you, and turn right to walk through white sliding doors and enter the living room. Once you're at the living room, walk straight down the pathway, passing the black table to your left and the beige sofas to your right. Keep walking north passing the white archway in front of you, and as you keep walking down, you'll see a black staircase to your right. Pass the black staircase to your right, and walk northeast towards the white door, and now you'll be standing in front gold narrow paintings. Turn around, and face left. You will see a room with a brown couch, and two black-framed pictures. Walk straight into that room. Okay, now veer around this green soft table to the right, and once you're standing at the entrance the white bathroom, you're done.",
+    "old_subtasks": [
+      "Look around. You're currently outside a white house, with a silver grill right behind you. Walk straight towards the blue sofas furthest from you, and turn right to walk through the white sliding doors and enter the living room.",
+      "Once in the living room, walk straight down the pathway, passing the black table to your left and the beige sofas to your right. Keep walking north, passing the white archway in front of you.",
+      "As you keep walking down, you should see a black staircase to your right. Pass the black staircase to your right, and walk northeast towards the white door. You should now be standing in front of gold narrow paintings.",
+      "From in front of the gold narrow paintings, turn around and face left. You should see a room with a brown couch and two black-framed pictures. Walk straight into that room.",
+      "Inside the room with the brown couch and two black-framed pictures, veer around the green soft table to the right until you're standing at the entrance to the white bathroom. This is your final destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 1.0,
+        "spl": 0.8146832132915098,
+        "ndtw": 0.8417252409498939,
+        "ne": 0.6756090521812439,
+        "steps": 143,
+        "calls": 61,
+        "end": "stop",
+        "hash": "f92e457070e390f07712cfc5a7af18aa122afb2b905aa2794361b1cbdaa5418c"
+      },
+      "D": {
+        "sr": 1.0,
+        "spl": 0.8619615792029388,
+        "ndtw": 0.866535530595381,
+        "ne_m": 0.5576421618461609,
+        "oracle_sr": 1.0,
+        "sdtw": 0.866535530595381,
+        "oracle_ne_m": 0.5576421618461609,
+        "path_length_m": 25.847440882348494,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 1.0,
+        "spl": 0.859209539107302,
+        "ndtw": 0.8626595250971971,
+        "ne_m": 0.5643314123153687,
+        "oracle_sr": 1.0,
+        "sdtw": 0.8626595250971971,
+        "oracle_ne_m": 0.5643314123153687,
+        "path_length_m": 25.930229993083614,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "9708",
+    "instruction_id": "123931",
+    "partition": "pilot40",
+    "dataset": "RxR",
+    "source": "You'll start with a bathroom to your left, to your right looks like a bedroom. You're going to look right and take a step towards the bed. Now there should be a cabinet your right as you stand between the bed. You're going to walk towards that open door in front of you. When you get here, look left and you'll see the lamp on top of the desk next to the chair. You're going to walk between the lamp and the chair and stop. ",
+    "old_subtasks": [
+      "You start with a bathroom to your left; to your right looks like a bedroom. Look right and take a step towards the bed. There should now be a cabinet on your right; the position is described as 'between the bed,' without another boundary specified. Walk towards the open door in front of you until you reach it.",
+      "When you reach the open door, look left; you should see the lamp on top of the desk next to the chair. Walk between that lamp and the chair and stop."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 0.0,
+        "spl": 0.0,
+        "ndtw": 0.6116620040600568,
+        "ne": 4.612138271331787,
+        "steps": 53,
+        "calls": 28,
+        "end": "stop",
+        "hash": "0a3485c3f2d5de71c60d730ae0d4c0bfeef766e29b1742a6a6672bfdfa10a1ca"
+      },
+      "D": {
+        "sr": 1.0,
+        "spl": 1.0,
+        "ndtw": 0.9260926989283869,
+        "ne_m": 0.7587878704071045,
+        "oracle_sr": 1.0,
+        "sdtw": 0.9260926989283869,
+        "oracle_ne_m": 0.7587878704071045,
+        "path_length_m": 3.5000020765197006,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 1.0,
+        "spl": 1.0,
+        "ndtw": 0.9260926989283869,
+        "ne_m": 0.7587878704071045,
+        "oracle_sr": 1.0,
+        "sdtw": 0.9260926989283869,
+        "oracle_ne_m": 0.7587878704071045,
+        "path_length_m": 3.5000020765197006,
+        "oracle_spl": null
+      }
+    }
+  },
+  {
+    "id": "11287",
+    "instruction_id": "101827",
+    "partition": "pilot40",
+    "dataset": "RxR",
+    "source": "We start off looking partially into the restroom and partially into another open doorway. Take a step towards that open doorway that's not the restroom and turn to your right. Walk straight. Passing the steps on your left and into the room that is directly in front of you. Once in the room turn to the right. Walk in between the tv and the bed. Once at the end of that walkway turn to your right and you are now looking into a restroom. Take two steps into the restroom and stop you are done. ",
+    "old_subtasks": [
+      "You start looking partially into the restroom and partially into another open doorway. Take a step toward the open doorway that is not the restroom, then turn right.",
+      "Walk straight, passing the steps on your left, and enter the room directly in front of you.",
+      "Once inside the room, turn right and walk between the TV and the bed until you reach the end of that walkway.",
+      "At the end of the walkway, turn right; you should now be looking into a restroom. Take two steps into the restroom and stop. This is your final destination."
+    ],
+    "metrics": {
+      "baseline": {
+        "sr": 1.0,
+        "spl": 0.9778879527497885,
+        "ndtw": 0.9557382691538129,
+        "ne": 0.8142057061195374,
+        "steps": 53,
+        "calls": 25,
+        "end": "stop",
+        "hash": "695ebbb7b1a27fa81fd075da4430fe8a82f9d6f6f9c159614aa8c997b02f9a5f"
+      },
+      "D": {
+        "sr": 1.0,
+        "spl": 1.0,
+        "ndtw": 0.949578978890034,
+        "ne_m": 1.059776782989502,
+        "oracle_sr": 1.0,
+        "sdtw": 0.949578978890034,
+        "oracle_ne_m": 1.059776782989502,
+        "path_length_m": 7.754130693460658,
+        "oracle_spl": null
+      },
+      "E": {
+        "sr": 1.0,
+        "spl": 1.0,
+        "ndtw": 0.949578978890034,
+        "ne_m": 1.059776782989502,
+        "oracle_sr": 1.0,
+        "sdtw": 0.949578978890034,
+        "oracle_ne_m": 1.059776782989502,
+        "path_length_m": 7.754130693460658,
+        "oracle_spl": null
+      }
+    }
+  }
+]

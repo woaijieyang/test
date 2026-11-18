@@ -1,0 +1,156 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RXR-CORE-R06",
+  "role": "reviewer",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "pair_id": "RXR-CORE-G06",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G06",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Go down the staircase. Go about halfway down and then stop. Wait there.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go about halfway down the staircase, then stop and wait there."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Go down the staircase.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Go about halfway down the staircase, then stop and wait there."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Go about halfway down and then stop.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Go about halfway down the staircase, then stop and wait there."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Wait there.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Go about halfway down the staircase, then stop and wait there."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Go about halfway down the staircase, then stop and wait there.",
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ]
+        },
+        "process": {
+          "text": "Go about halfway down the staircase, then stop and wait there.",
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Go about halfway down the staircase, then stop and wait there.",
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: then; ordinal_or_count: halfway",
+          "candidate_quotes": [
+            "then",
+            "halfway"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Wait there.",
+          "Go about halfway down and then stop.",
+          "Go down the staircase."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "endpoint_refinement_and_bounded_motion",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+  }
+}

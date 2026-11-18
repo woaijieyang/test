@@ -1,0 +1,163 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "R2R-CORE-G08",
+  "role": "generator",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "4",
+    "episode_id": "4",
+    "instruction_id": null,
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "trajectory_id": "93",
+    "source_key": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "core_curated_from": "R2R-GEN-004",
+    "curation_basis": "semantic decision-boundary coverage"
+  },
+  "input": {
+    "original_instruction": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it.",
+      "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk towards the open door on the far wall and go through it.",
+          "candidate_quotes": [
+            "Walk towards the open door on the far wall and go through it."
+          ]
+        },
+        "process": {
+          "text": "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it.",
+          "candidate_quotes": [
+            "Turn left.",
+            "You should now be facing the chandelier above the green table",
+            "with a doorway to the left and an open door on the far wall",
+            "Walk towards the open door on the far wall and go through it."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "Walk towards the open door on the far wall and go through it."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "conditional_observation/expected_state: after turning left, the chandelier/table and door layout is expected to be visible; spatial frame: doorway left, open door on far wall.",
+          "candidate_quotes": [
+            "You should now be facing the chandelier above the green table",
+            "doorway to the left",
+            "open door on the far wall"
+          ]
+        },
+        "source_quotes": [
+          "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM."
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
+          ]
+        },
+        "target": {
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle.",
+          "candidate_quotes": [
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+          ]
+        },
+        "process": {
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle.",
+          "candidate_quotes": [
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_quotes": [
+          "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk towards the open door on the far wall and go through it.",
+          "candidate_quote": "Walk towards the open door on the far wall and go through it."
+        },
+        "next_entry": {
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle",
+          "candidate_quote": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'Walk towards the open door on the far wall and go through it.'; the next stage begins with 'From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle'. The handoff carries the established location/reference frame without adding a physical stop."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk towards the open door on the far wall and go through it.'; stage 2 begins from 'From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: conditional_observation/expected_state: after turning left, the chandelier/table and door layout is expected…",
+    "handoff_focus": "Stage 1 ends with 'Walk towards the open door on the far wall and go through it.'; stage 2 begins from 'From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet…'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "anti_pattern": "Do not promote a visually salient observation into a navigation target or treat visibility as reaching/entering.",
+    "semantic_pattern": "expected_observation_as_reference_not_destination",
+    "decision_reason": "The chandelier/table description is an expected orientation cue after turning. The open door on the far wall is the selected transition target; the observation must not replace it.",
+    "transfer_rule": "Use expected observations and salient scene descriptions to disambiguate a source-selected target, while preserving the actual action and transition that the source requires."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "orientation_or_reference_frame"
+  ]
+}

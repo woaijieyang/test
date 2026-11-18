@@ -1,0 +1,27 @@
+{
+  "id": "T12",
+  "title": "Legal compact maneuver; avoid a manufactured precondition",
+  "origin": "New teaching pair; not the historical JSON template or an experimental outcome.",
+  "source": "Walk across the porch, bear left and stop beside the planter. ",
+  "acceptable": {
+    "status": "ok",
+    "subtasks": [
+      "Walk across the porch, bear left and stop beside the planter. "
+    ],
+    "issues": []
+  },
+  "contrast": {
+    "status": "ok",
+    "subtasks": [
+      "Walk across the porch and stop at its left edge.",
+      "From the left edge, bear left and stop beside the planter."
+    ],
+    "issues": []
+  },
+  "dimension": "fidelity",
+  "check": "C02",
+  "source_quote": "Walk across the porch, bear left",
+  "candidate_contrast_quote": "stop at its left edge",
+  "execution_or_focus_difference": "No intermediate stop or left-edge position is authorized. Preserve the genuine terminal placement without inventing a boundary.",
+  "alternative_or_limit": "One exact stage is appropriate AFTER analyzing the source, not because it is short."
+}

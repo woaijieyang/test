@@ -1,0 +1,91 @@
+{
+  "release": "final-best-v1-runtime-contract-v2",
+  "baseline_commit": "62d80dc1d869b6f660dd1dfb680af0f570ae9111",
+  "scope": "Runtime schema, Host protocol/workflow, prompt wire-contract documentation, G1 examples, offline regression tests.",
+  "updated_files": [
+    "generator/output.schema.json",
+    "reviewer/output.schema.json",
+    "generator/repair.schema.json",
+    "generator/prompt.md",
+    "generator/repair.md",
+    "generator/repair_examples.json",
+    "reviewer/prompt.md",
+    "shared/semantic_contract.md",
+    "host/protocol.py",
+    "host/run.py",
+    "host/README.md",
+    "README.md",
+    "WORKFLOW.md",
+    "CODEX_START_HERE.md",
+    "CHANGELOG.md",
+    "VERSION",
+    "verify_package.py",
+    "tests/test_runtime_contract_v2.py"
+  ],
+  "static_checks": {
+    "runtime_schema_files_retrieved_and_json_parsed": true,
+    "draft_2020_12_declared_on_all_three_runtime_schemas": true,
+    "generator_stage_audit_ref_points_to_shared_stage_audit_schema": true,
+    "generator_and_reviewer_handoff_refs_point_to_shared_handoff_schema": true,
+    "repair_candidate_ref_points_to_generator_output_schema": true,
+    "repair_examples_migrated_to_subtask_index_stop_scope_and_source_fidelity": true,
+    "host_protocol_uses_canonical_dimension_and_stage_names": true,
+    "host_run_passes_prior_r0_review_candidate_and_render_to_r1": true,
+    "cross_stage_candidate_evidence_not_restricted_to_repair_target": true,
+    "lookup_only_transport_recovery_hook_added_no_generation_retry": true,
+    "full_tree_integrity_manifest_entries": 381,
+    "full_tree_integrity_manifest_exact_path_set": true,
+    "full_tree_integrity_manifest_algorithms": {
+      "sha256": 82,
+      "gitblob_sha1": 299
+    },
+    "full_tree_integrity_manifest_verified_by_runtime_script": false,
+    "r1_resolved_and_partially_resolved_prior_findings_require_new_candidate_evidence": true,
+    "requires_review_source_rows_require_source_ambiguity_finding": true,
+    "candidate_defect_findings_require_affected_stage_unless_source_ambiguity": true
+  },
+  "tests": {
+    "result": "PASS",
+    "count": 105
+  },
+  "new_model_calls": 4,
+  "new_navigation_runs": 0,
+  "important_runtime_rules": {
+    "g0_needs_review_and_r0_unresolved": "direct exact-source fallback; do not generate partial plan",
+    "active_candidate_and_r0_unresolved": "one G1 repair allowed",
+    "g1_response_coverage": "exactly one ordered response per R0 finding",
+    "r1_context": "new candidate/render plus frozen R0 review, R0 candidate, and R0 rendered text",
+    "r1_pass": "all prior findings resolved, no new blocking findings, all three dimensions pass",
+    "transport_unknown": "lookup original request by request hash when recover hook exists; never submit duplicate generation"
+  },
+  "upstream_verification_status": [
+    "Python syntax/import execution of updated Host modules in the complete repository environment",
+    "Full Draft 2020-12 reference resolution with the installed jsonschema/referencing versions",
+    "Existing legacy test files against the updated runtime schema",
+    "Production transport recovery adapter lookup behavior",
+    "Actual model response conformance, semantic quality, and navigation performance",
+    "Execution of verify_package.py against a local checkout; manifest path set was compared to the live Git tree, but file bytes were not materialized in this environment.",
+    "The final Host protocol changes and offline end-to-end regression test have not been executed in a local Python environment."
+  ],
+  "installed_verification": {
+    "upstream": "ed5ee1af385d0fa0226c47ee3faa5551038e7999",
+    "suite": 105,
+    "generator_examples": 80,
+    "role_templates": 215,
+    "live_language": [
+      {
+        "dataset": "R2R",
+        "id": "188",
+        "disposition": "accepted_candidate"
+      },
+      {
+        "dataset": "RxR",
+        "id": "1509",
+        "disposition": "accepted_candidate"
+      }
+    ],
+    "navigation_runs": 0,
+    "actual_repair_calls": 0,
+    "offline_four_call_test": true
+  }
+}

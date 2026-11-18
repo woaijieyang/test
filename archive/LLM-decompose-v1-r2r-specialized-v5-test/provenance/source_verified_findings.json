@@ -1,0 +1,530 @@
+{
+  "scope": "Exact strings from supplied audit JSON. Current R2R results from rounded tables; no repeated navigation or tokenization performed. Metadata model names are reported receipts, not independently verified service identities.",
+  "R2R_format": {
+    "counts": {
+      "n": 1839,
+      "has_prefix": 0,
+      "has_suffix": 1839,
+      "suffix_exact_ASCII_one_space": 1839,
+      "suffix_any_ASCII_space": 1839,
+      "suffix_none": 0,
+      "body_multiple_ASCII_spaces": 268,
+      "body_has_LF": 9,
+      "suffix_has_LF": 0,
+      "suffix_only_ASCII_spaces": 1839,
+      "any_multiple_ASCII_spaces": 268,
+      "has_CRLF": 9,
+      "has_bare_LF": 0,
+      "has_bare_CR": 0,
+      "has_TAB": 0,
+      "has_non_ASCII": 0,
+      "has_literal_backslash_n": 0,
+      "has_sentence_punctuation_no_space": 21
+    },
+    "prefix_distribution": {
+      "''": 1839
+    },
+    "suffix_distribution": {
+      "' '": 1839
+    },
+    "unusual_characters": {},
+    "examples": {
+      "has_suffix": [
+        {
+          "id": "1",
+          "text_repr": "'Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. '"
+        },
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "4",
+          "text_repr": "'Walk up the flight of stairs to the top. Turn and follow the railing into the bedroom area. Walk towards the closet. '"
+        }
+      ],
+      "suffix_exact_ASCII_one_space": [
+        {
+          "id": "1",
+          "text_repr": "'Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. '"
+        },
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "4",
+          "text_repr": "'Walk up the flight of stairs to the top. Turn and follow the railing into the bedroom area. Walk towards the closet. '"
+        }
+      ],
+      "suffix_any_ASCII_space": [
+        {
+          "id": "1",
+          "text_repr": "'Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. '"
+        },
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "4",
+          "text_repr": "'Walk up the flight of stairs to the top. Turn and follow the railing into the bedroom area. Walk towards the closet. '"
+        }
+      ],
+      "suffix_only_ASCII_spaces": [
+        {
+          "id": "1",
+          "text_repr": "'Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. '"
+        },
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "4",
+          "text_repr": "'Walk up the flight of stairs to the top. Turn and follow the railing into the bedroom area. Walk towards the closet. '"
+        }
+      ],
+      "body_multiple_ASCII_spaces": [
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "7",
+          "text_repr": "\"Go straight past the pool. Walk between the bar and chairs.  Stop when you get to the corner of the bar.  That's where you will wait. \""
+        },
+        {
+          "id": "12",
+          "text_repr": "'Move forward to the doorway on the opposite side of the hall.  Stop in the archway. '"
+        }
+      ],
+      "any_multiple_ASCII_spaces": [
+        {
+          "id": "2",
+          "text_repr": "'Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. '"
+        },
+        {
+          "id": "3",
+          "text_repr": "\"Go out of the room you're in.  Turn left.  Go poast the dining room and into the living room.  Wait right by the coffee table. \""
+        },
+        {
+          "id": "7",
+          "text_repr": "\"Go straight past the pool. Walk between the bar and chairs.  Stop when you get to the corner of the bar.  That's where you will wait. \""
+        },
+        {
+          "id": "12",
+          "text_repr": "'Move forward to the doorway on the opposite side of the hall.  Stop in the archway. '"
+        }
+      ],
+      "body_has_LF": [
+        {
+          "id": "9",
+          "text_repr": "'Go forward one meter\\r\\nGo to the chairs\\r\\nGo to the steps\\r\\nGo to the endtable\\r\\nGo to the tan door. '"
+        },
+        {
+          "id": "14",
+          "text_repr": "'Move to the far left corner of the table\\r\\nProceed to the doorway to your right\\r\\nwalk into the kitchen with the stove on your right\\r\\nproceed forward until the fridge is on your left\\r\\nproceed forward once more until there is a small sink on your left and shelves on your right. '"
+        },
+        {
+          "id": "31",
+          "text_repr": "'Go to the plant\\r\\nGo to the rope\\r\\nGo to the steamroom door\\r\\nGo to the table. '"
+        },
+        {
+          "id": "161",
+          "text_repr": "'Go to the 4 panel window\\r\\nGo to the gold rug\\r\\nGo to the white rug\\r\\nGo to the third chair on the left\\r\\nGo to the electrical receptacle. '"
+        }
+      ],
+      "has_CRLF": [
+        {
+          "id": "9",
+          "text_repr": "'Go forward one meter\\r\\nGo to the chairs\\r\\nGo to the steps\\r\\nGo to the endtable\\r\\nGo to the tan door. '"
+        },
+        {
+          "id": "14",
+          "text_repr": "'Move to the far left corner of the table\\r\\nProceed to the doorway to your right\\r\\nwalk into the kitchen with the stove on your right\\r\\nproceed forward until the fridge is on your left\\r\\nproceed forward once more until there is a small sink on your left and shelves on your right. '"
+        },
+        {
+          "id": "31",
+          "text_repr": "'Go to the plant\\r\\nGo to the rope\\r\\nGo to the steamroom door\\r\\nGo to the table. '"
+        },
+        {
+          "id": "161",
+          "text_repr": "'Go to the 4 panel window\\r\\nGo to the gold rug\\r\\nGo to the white rug\\r\\nGo to the third chair on the left\\r\\nGo to the electrical receptacle. '"
+        }
+      ],
+      "has_sentence_punctuation_no_space": [
+        {
+          "id": "32",
+          "text_repr": "'Go through the single door on the right.Turn left and go through the door on the left.  Stand by the bottom right side of the massage table. '"
+        },
+        {
+          "id": "181",
+          "text_repr": "'Walk up stairs. At top of stairs turn right. Walk straight to bedroom. Turn left and walk to bed lamp.Turn left and enter closet. Stop at rug. '"
+        },
+        {
+          "id": "481",
+          "text_repr": "'Leave the toilet closet and take a left. Enter the closet through the first door on the right.Stop just inside the door. '"
+        },
+        {
+          "id": "644",
+          "text_repr": "'At the foot of the stairs, turn left to walk into lobby area.Walk across the lobby area to enter the pool room and wait near the pool table. '"
+        }
+      ]
+    }
+  },
+  "RxR_format": {
+    "counts": {
+      "n": 1223,
+      "has_prefix": 3,
+      "has_suffix": 333,
+      "suffix_exact_ASCII_one_space": 260,
+      "suffix_any_ASCII_space": 331,
+      "suffix_none": 890,
+      "body_multiple_ASCII_spaces": 180,
+      "body_has_LF": 3,
+      "suffix_has_LF": 9,
+      "suffix_only_ASCII_spaces": 324,
+      "any_multiple_ASCII_spaces": 201,
+      "has_CRLF": 0,
+      "has_bare_LF": 12,
+      "has_bare_CR": 0,
+      "has_TAB": 0,
+      "has_non_ASCII": 6,
+      "has_literal_backslash_n": 0,
+      "has_sentence_punctuation_no_space": 35
+    },
+    "prefix_distribution": {
+      "''": 1220,
+      "' '": 3
+    },
+    "suffix_distribution": {
+      "' '": 260,
+      "''": 890,
+      "'      '": 5,
+      "'  '": 33,
+      "' \\n'": 4,
+      "'     '": 4,
+      "'       '": 3,
+      "'   '": 10,
+      "'\\n'": 2,
+      "'         '": 1,
+      "'    '": 5,
+      "'  \\n'": 2,
+      "'        '": 2,
+      "'                    '": 1,
+      "'    \\n'": 1
+    },
+    "unusual_characters": {
+      "U+2019 '’'": 8
+    },
+    "examples": {
+      "has_suffix": [
+        {
+          "id": "6",
+          "text_repr": "\"We start off looking into an open archway down a flight of stairs. Take a step down to the bottom step. Take the open doorway to the right. You will now see a circular rug on the floor. Take a step onto the circular rug. And take one more step past the circular rug right in front of the books. You'll see a globe on the left. You're done. \""
+        },
+        {
+          "id": "27",
+          "text_repr": "'You are standing on a pink runner rug.  You are going to turn and go thru the wood double doors closest to you and continue straight on the pink runner rug.  Continue on the runner.  And you are going to take it straight all the way down.  And once you enter some wood double doors you are going to stop right in  between that doorway on the pink rug.  You are done.      '"
+        },
+        {
+          "id": "48",
+          "text_repr": "\"We're facing towards a seating area, on your left there's a pillar, walk towards that pillar, turn slightly to the right, take three steps further, walk towards the front of the coffee table that's in the middle of some chairs and sofas, turn around... Walk towards the kitchen area, on your right there's a wooden table and on your left there's a shelf with decorations on top and in the middle, turn around... Walk towards the gap between the pillar and the lamp, turn slightly to the right... Take five steps further, and you'll be facing towards three glass doors and you've reached your destination. \""
+        },
+        {
+          "id": "127",
+          "text_repr": "\"Facing the front door, just to the left is a mirror. Walk towards the mirror that's just above the table with a plant on it. Once you've reached the mirror, stay to the left and walk towards the downstairs. Don't go down the stairs, instead, veer to the right and go straight through the open doorway, keeping the railing of the stairs going down to the left, to the right is several paintings stacked right next to each other. Keep going straight you'll see an open door just ahead of you to the right with a bathroom and a mirror on the wall. Just before that, hop into the room on the left. You'll see a sink above some white cabinets, also below some white cabinets. Once you've stepped once in the room, turn back around, directly across from you should be another room with two, with an open, with two open doors and some pictures that are visible on the wall on the right. Jump into that room. That room looks like a classroom. On the left is a chalkboard with the word 'ART' above it. On the ground in front of you, a circular carpet with two stools on it, walk and stand next to the stool that is closest to the chalkboard and once you've done that, you're finished.  \""
+        }
+      ],
+      "suffix_exact_ASCII_one_space": [
+        {
+          "id": "6",
+          "text_repr": "\"We start off looking into an open archway down a flight of stairs. Take a step down to the bottom step. Take the open doorway to the right. You will now see a circular rug on the floor. Take a step onto the circular rug. And take one more step past the circular rug right in front of the books. You'll see a globe on the left. You're done. \""
+        },
+        {
+          "id": "48",
+          "text_repr": "\"We're facing towards a seating area, on your left there's a pillar, walk towards that pillar, turn slightly to the right, take three steps further, walk towards the front of the coffee table that's in the middle of some chairs and sofas, turn around... Walk towards the kitchen area, on your right there's a wooden table and on your left there's a shelf with decorations on top and in the middle, turn around... Walk towards the gap between the pillar and the lamp, turn slightly to the right... Take five steps further, and you'll be facing towards three glass doors and you've reached your destination. \""
+        },
+        {
+          "id": "469",
+          "text_repr": "\"Directly in front of you, you will see a wall light, a wall shelf with flowers and a couple of other items. Directly to the left of that there are glass doors.Walk towards your left. You will see black chairs, do not pass the black chairs up, take your first left before that. Your in what looks to be a kitchen area. Directly to the left of you, you will see glasses in a cabinet.Where the cabinet ends you will see on the counter, two  orange bowls. You will need to go over the counter, between the two bowls on your right and where the cabinet ends on your left. Once you go over the counter you will see an orange couch, a glass table and chairs to your right. To the left of that there's an open area with many chairs and a table. Walk in to that room, as you pass the table up on your right you will be looking at a candle holder, you will see mirrors behind it. Walk in between the table on your right and the shelf. Directly in front of you you will lights on the wall and a plant, walk towards this plant directly in front of you. To the left of you there will be an open window to the side of this open window is a curtain with flowers. Stop directly beside the curtain tn your left of the window. \""
+        },
+        {
+          "id": "484",
+          "text_repr": "\"Our starting point is in front of a door, turn towards the right... We're now facing a hallway, on the left there's a staircase, walk past the staircase and walk down the hall towards the door that's in front of you, and that's your destination. \""
+        }
+      ],
+      "suffix_any_ASCII_space": [
+        {
+          "id": "6",
+          "text_repr": "\"We start off looking into an open archway down a flight of stairs. Take a step down to the bottom step. Take the open doorway to the right. You will now see a circular rug on the floor. Take a step onto the circular rug. And take one more step past the circular rug right in front of the books. You'll see a globe on the left. You're done. \""
+        },
+        {
+          "id": "27",
+          "text_repr": "'You are standing on a pink runner rug.  You are going to turn and go thru the wood double doors closest to you and continue straight on the pink runner rug.  Continue on the runner.  And you are going to take it straight all the way down.  And once you enter some wood double doors you are going to stop right in  between that doorway on the pink rug.  You are done.      '"
+        },
+        {
+          "id": "48",
+          "text_repr": "\"We're facing towards a seating area, on your left there's a pillar, walk towards that pillar, turn slightly to the right, take three steps further, walk towards the front of the coffee table that's in the middle of some chairs and sofas, turn around... Walk towards the kitchen area, on your right there's a wooden table and on your left there's a shelf with decorations on top and in the middle, turn around... Walk towards the gap between the pillar and the lamp, turn slightly to the right... Take five steps further, and you'll be facing towards three glass doors and you've reached your destination. \""
+        },
+        {
+          "id": "127",
+          "text_repr": "\"Facing the front door, just to the left is a mirror. Walk towards the mirror that's just above the table with a plant on it. Once you've reached the mirror, stay to the left and walk towards the downstairs. Don't go down the stairs, instead, veer to the right and go straight through the open doorway, keeping the railing of the stairs going down to the left, to the right is several paintings stacked right next to each other. Keep going straight you'll see an open door just ahead of you to the right with a bathroom and a mirror on the wall. Just before that, hop into the room on the left. You'll see a sink above some white cabinets, also below some white cabinets. Once you've stepped once in the room, turn back around, directly across from you should be another room with two, with an open, with two open doors and some pictures that are visible on the wall on the right. Jump into that room. That room looks like a classroom. On the left is a chalkboard with the word 'ART' above it. On the ground in front of you, a circular carpet with two stools on it, walk and stand next to the stool that is closest to the chalkboard and once you've done that, you're finished.  \""
+        }
+      ],
+      "suffix_only_ASCII_spaces": [
+        {
+          "id": "6",
+          "text_repr": "\"We start off looking into an open archway down a flight of stairs. Take a step down to the bottom step. Take the open doorway to the right. You will now see a circular rug on the floor. Take a step onto the circular rug. And take one more step past the circular rug right in front of the books. You'll see a globe on the left. You're done. \""
+        },
+        {
+          "id": "27",
+          "text_repr": "'You are standing on a pink runner rug.  You are going to turn and go thru the wood double doors closest to you and continue straight on the pink runner rug.  Continue on the runner.  And you are going to take it straight all the way down.  And once you enter some wood double doors you are going to stop right in  between that doorway on the pink rug.  You are done.      '"
+        },
+        {
+          "id": "48",
+          "text_repr": "\"We're facing towards a seating area, on your left there's a pillar, walk towards that pillar, turn slightly to the right, take three steps further, walk towards the front of the coffee table that's in the middle of some chairs and sofas, turn around... Walk towards the kitchen area, on your right there's a wooden table and on your left there's a shelf with decorations on top and in the middle, turn around... Walk towards the gap between the pillar and the lamp, turn slightly to the right... Take five steps further, and you'll be facing towards three glass doors and you've reached your destination. \""
+        },
+        {
+          "id": "127",
+          "text_repr": "\"Facing the front door, just to the left is a mirror. Walk towards the mirror that's just above the table with a plant on it. Once you've reached the mirror, stay to the left and walk towards the downstairs. Don't go down the stairs, instead, veer to the right and go straight through the open doorway, keeping the railing of the stairs going down to the left, to the right is several paintings stacked right next to each other. Keep going straight you'll see an open door just ahead of you to the right with a bathroom and a mirror on the wall. Just before that, hop into the room on the left. You'll see a sink above some white cabinets, also below some white cabinets. Once you've stepped once in the room, turn back around, directly across from you should be another room with two, with an open, with two open doors and some pictures that are visible on the wall on the right. Jump into that room. That room looks like a classroom. On the left is a chalkboard with the word 'ART' above it. On the ground in front of you, a circular carpet with two stools on it, walk and stand next to the stool that is closest to the chalkboard and once you've done that, you're finished.  \""
+        }
+      ],
+      "suffix_none": [
+        {
+          "id": "18",
+          "text_repr": "'You are looking out a window. Turn to the right and head down this tiled hallway, going one step and two, steps, until we get to the last opening on your right. Turn and you will see an open brown door ahead of you and on the right is a white counter top. Go through the open door ahead of you and continue straight going through the next hall. You just passed an open door on our left and a sink on our right.  Turn left when you get to the grill on your right. You will see a couch. Walk in front of the white chair. Then turn around to your left and you will see two brown doors with glass in them. Go through the doors and you are facing a hallway and a kitchen area. Walk on the red flowery square area rug in front of the two grey couches. Walk to the middle of the couch, staying on the area rug. Stand in front of  the couch closet to the window. it is the smaller of the two.  You are at your destination.'"
+        },
+        {
+          "id": "28",
+          "text_repr": "'Starting at a doorway looking into a dinning room that has a table and some chairs. You see there is a red carpet, to the right step on the corner of the red carpet going through these doors. Once you are at the corner of this red carpet,you went through the doors, the table should be to your left. There is an opened door way directly ahead of you, step though that doorway. Onced you stepped throught the doorway directly ahead of you is a window with white curtains. Step towards that window and there should be a door opened to the left before that window. Step in front of that door way, it should be opened. Where you should be standing the window to your right and the doorway is in front of you and you are done.'"
+        },
+        {
+          "id": "43",
+          "text_repr": "'Starting in the billiards room walk through the open glass door on the right hand side and behind the pink chair towards the dining area. Take one step onto the right far end of the rug of the dining area and turn right and go through the third archway from the left. Walk towards  the round foyer and towards the brown staircase. Turn through the first open archway right next to the stair case and then through the left most archway inside of there continue down the hall with the runner rugs passing all the curtains when you get to the curtain that is at the foot of the master bed. take one step in front of the television stop.'"
+        },
+        {
+          "id": "99",
+          "text_repr": "\"You're starting in a hallway with stairs to your right and a door at the end. Take three steps toward the door. On the third step, you will turn right and go up the stairs. At the top of the stairs, turn left. Follow the banister. You'll follow it all the way (left again), and you will pass two doors on the right. One is a bathroom with a large white tub and the other one- it looks like a bedroom. There's a white bedside table. Continue going down this little hallway until you get to an empty room. Take a step into this empty room. You'll see a window and a milky glass closet door to the right. You're done.\""
+        }
+      ],
+      "body_multiple_ASCII_spaces": [
+        {
+          "id": "18",
+          "text_repr": "'You are looking out a window. Turn to the right and head down this tiled hallway, going one step and two, steps, until we get to the last opening on your right. Turn and you will see an open brown door ahead of you and on the right is a white counter top. Go through the open door ahead of you and continue straight going through the next hall. You just passed an open door on our left and a sink on our right.  Turn left when you get to the grill on your right. You will see a couch. Walk in front of the white chair. Then turn around to your left and you will see two brown doors with glass in them. Go through the doors and you are facing a hallway and a kitchen area. Walk on the red flowery square area rug in front of the two grey couches. Walk to the middle of the couch, staying on the area rug. Stand in front of  the couch closet to the window. it is the smaller of the two.  You are at your destination.'"
+        },
+        {
+          "id": "27",
+          "text_repr": "'You are standing on a pink runner rug.  You are going to turn and go thru the wood double doors closest to you and continue straight on the pink runner rug.  Continue on the runner.  And you are going to take it straight all the way down.  And once you enter some wood double doors you are going to stop right in  between that doorway on the pink rug.  You are done.      '"
+        },
+        {
+          "id": "43",
+          "text_repr": "'Starting in the billiards room walk through the open glass door on the right hand side and behind the pink chair towards the dining area. Take one step onto the right far end of the rug of the dining area and turn right and go through the third archway from the left. Walk towards  the round foyer and towards the brown staircase. Turn through the first open archway right next to the stair case and then through the left most archway inside of there continue down the hall with the runner rugs passing all the curtains when you get to the curtain that is at the foot of the master bed. take one step in front of the television stop.'"
+        },
+        {
+          "id": "169",
+          "text_repr": "'You are standing inside a kitchen, facing the windows, turn around and now you should be walking in between the dining table and the kitchen counters in front of you, so walk straight ahead. Once you are near the iron chair and the consul table which has several pots on it, turn left and now you should be facing a trolley with several wine bottles and a lamp , so walk towards the lamp and once  you are at the lamp, you should be looking straight more towards the right side and walk towards the cabinets on your right which has several pots inside it and a step ladder beside it, once you are near the big cabinet on your right look in front of it, towards the brown single seat sofa with a foot rest in front of it, once you are near that, turn on your left, you should be standing inside a living room, which has fire place on your right sofa on  your left and a coffee table on the middle. Jump over the coffee table and walk towards the pool table in front of you now, once you are at the left side of the coffee table just before the barrel and the two closed doors, you are done.'"
+        }
+      ],
+      "any_multiple_ASCII_spaces": [
+        {
+          "id": "18",
+          "text_repr": "'You are looking out a window. Turn to the right and head down this tiled hallway, going one step and two, steps, until we get to the last opening on your right. Turn and you will see an open brown door ahead of you and on the right is a white counter top. Go through the open door ahead of you and continue straight going through the next hall. You just passed an open door on our left and a sink on our right.  Turn left when you get to the grill on your right. You will see a couch. Walk in front of the white chair. Then turn around to your left and you will see two brown doors with glass in them. Go through the doors and you are facing a hallway and a kitchen area. Walk on the red flowery square area rug in front of the two grey couches. Walk to the middle of the couch, staying on the area rug. Stand in front of  the couch closet to the window. it is the smaller of the two.  You are at your destination.'"
+        },
+        {
+          "id": "27",
+          "text_repr": "'You are standing on a pink runner rug.  You are going to turn and go thru the wood double doors closest to you and continue straight on the pink runner rug.  Continue on the runner.  And you are going to take it straight all the way down.  And once you enter some wood double doors you are going to stop right in  between that doorway on the pink rug.  You are done.      '"
+        },
+        {
+          "id": "43",
+          "text_repr": "'Starting in the billiards room walk through the open glass door on the right hand side and behind the pink chair towards the dining area. Take one step onto the right far end of the rug of the dining area and turn right and go through the third archway from the left. Walk towards  the round foyer and towards the brown staircase. Turn through the first open archway right next to the stair case and then through the left most archway inside of there continue down the hall with the runner rugs passing all the curtains when you get to the curtain that is at the foot of the master bed. take one step in front of the television stop.'"
+        },
+        {
+          "id": "127",
+          "text_repr": "\"Facing the front door, just to the left is a mirror. Walk towards the mirror that's just above the table with a plant on it. Once you've reached the mirror, stay to the left and walk towards the downstairs. Don't go down the stairs, instead, veer to the right and go straight through the open doorway, keeping the railing of the stairs going down to the left, to the right is several paintings stacked right next to each other. Keep going straight you'll see an open door just ahead of you to the right with a bathroom and a mirror on the wall. Just before that, hop into the room on the left. You'll see a sink above some white cabinets, also below some white cabinets. Once you've stepped once in the room, turn back around, directly across from you should be another room with two, with an open, with two open doors and some pictures that are visible on the wall on the right. Jump into that room. That room looks like a classroom. On the left is a chalkboard with the word 'ART' above it. On the ground in front of you, a circular carpet with two stools on it, walk and stand next to the stool that is closest to the chalkboard and once you've done that, you're finished.  \""
+        }
+      ],
+      "has_sentence_punctuation_no_space": [
+        {
+          "id": "469",
+          "text_repr": "\"Directly in front of you, you will see a wall light, a wall shelf with flowers and a couple of other items. Directly to the left of that there are glass doors.Walk towards your left. You will see black chairs, do not pass the black chairs up, take your first left before that. Your in what looks to be a kitchen area. Directly to the left of you, you will see glasses in a cabinet.Where the cabinet ends you will see on the counter, two  orange bowls. You will need to go over the counter, between the two bowls on your right and where the cabinet ends on your left. Once you go over the counter you will see an orange couch, a glass table and chairs to your right. To the left of that there's an open area with many chairs and a table. Walk in to that room, as you pass the table up on your right you will be looking at a candle holder, you will see mirrors behind it. Walk in between the table on your right and the shelf. Directly in front of you you will lights on the wall and a plant, walk towards this plant directly in front of you. To the left of you there will be an open window to the side of this open window is a curtain with flowers. Stop directly beside the curtain tn your left of the window. \""
+        },
+        {
+          "id": "549",
+          "text_repr": "\"Facing a T.V.slightly look left. You'll see a chair in the corner. Take a step towards the chair keeping to the left. Now with that chair behind you take a few steps forward passing that dining room table on your right and turn left. Now with that dining table behind you, you'll see to your left looks like another seating area and a sink. Walk straight . You'll be in the kitchen area passing the fridge on your left and some shelves on your right. When you get to the end of this kitchen, shelves on your right. In front of you looks like a bathroom, and if you slightly look to the right you can kind of peak between that corner taking you to another room. You're going to jump over there to that corner. Now it'll have you facing a bedroom. From here turn right and you'll see there's a open doorway to your left . Take a step into that doorway. Looks like it's another bedroom. From here you're going to jump over the bed to the fare right corner and stop. \""
+        },
+        {
+          "id": "1755",
+          "text_repr": "\" We start off looking in a room. The right hand side of the room is filled with a bookshelf with books. We're going to turn to the right of that wall and exit through the door. Just outside of this door, we'll see a small hallway. Step into the hallway and turn right. The ladder will be on your left hand side. Take a step forward onto the area rug in front of you. Now take a left when you are at the top of the stairs. Enter into this room onto another large area rug. Here...when you take this step into the room you are at your final destination. There will be a bathtub on your right hand side. \""
+        },
+        {
+          "id": "3121",
+          "text_repr": "\"You begin in a very wooden room on top of a circular rug, looking into a corner. Turn around to your left and see the wooden archway leading out. Step through that archway, you should see a staircase to your left through another arched entryway. Move up those stairs. They curve left, just so you know.Once you've reached the top of the stairs continue to follow the banister across this second story area, until you are at the middle of the rectangular rug. Once you are in the middle of the rectangular rug, you're done.\""
+        }
+      ],
+      "suffix_has_LF": [
+        {
+          "id": "1588",
+          "text_repr": "'We are facing a sink. Let’s turn around leaving this room. Take one step into the hallway. Take another step where you are walking beside the stairs that are going down and continue walking in the direction of the stairs going up. Go past the stairs. Jumping over the pug and the chair with the orange pillow. Now you will be beside the dining room table and you will take one more step when you are on the far side of the dining room table closest to the windows. Stop when you are beside the large plant. \\n'"
+        },
+        {
+          "id": "5752",
+          "text_repr": "'Starting at the edge of the bedroom, step towards the staircase and walk down stairs. Once you reach the bottom, make a sharp left around the corner, past the next staircase and into the living area. Pass the couch on your right and all the way to the dining room table and the corner behind the table, next to the door. Stop.\\n'"
+        },
+        {
+          "id": "9507",
+          "text_repr": "\"Turn around and walk through this archway that has these big red colored - orange/red colored potted vases. And that’s the best description I'm going to give you. Go through that archway and walk towards that grey/green velvet arm seat. There will be this over-sized wooden framed - a wood framed - mirror leaning on the wall to the right. You will make your way through the archway on the left - the one that is right beside the bed and into a small space.  Step onto that white rug. And go into the room with the tasseled zig-zag patterned rug. You will take another step inside the room and you will stop facing this rectangular.. Storage cabinet thingy majigy? I don't know whatever that is, it has a knob - a cute little black knob. and a dresser on the right.  \\n\""
+        },
+        {
+          "id": "9545",
+          "text_repr": "\"We are going to start facing a window on the left side and a china cabinet on the right side. We are going to turn to our right, and walk between the dining table and the console table. We should see an archway right in front of us with two lamps on the sides. We're going to take one step towards that archway that leads into a hallway area. We should now be facing a small picture on the left side and a base with flowers on the right side, we're going to take a left there. Now, we should see another archway that leads to a fireplace in the background, we're going to take two steps towards that fireplace. When we see the rectangular table behind the couch, we're going to take a left turn, and now we're going to enter the dining room area towards the big chandelier that we have in front. Now, we are facing the other side of the place we started at. We're looking at a mirror, a big chandelier on top of the dining table with 10 chairs, a beige carpet. If we turn around, we are going to see an oval glass table and a red couch. That would be our destination.\\n\""
+        }
+      ],
+      "has_bare_LF": [
+        {
+          "id": "1588",
+          "text_repr": "'We are facing a sink. Let’s turn around leaving this room. Take one step into the hallway. Take another step where you are walking beside the stairs that are going down and continue walking in the direction of the stairs going up. Go past the stairs. Jumping over the pug and the chair with the orange pillow. Now you will be beside the dining room table and you will take one more step when you are on the far side of the dining room table closest to the windows. Stop when you are beside the large plant. \\n'"
+        },
+        {
+          "id": "5752",
+          "text_repr": "'Starting at the edge of the bedroom, step towards the staircase and walk down stairs. Once you reach the bottom, make a sharp left around the corner, past the next staircase and into the living area. Pass the couch on your right and all the way to the dining room table and the corner behind the table, next to the door. Stop.\\n'"
+        },
+        {
+          "id": "6229",
+          "text_repr": "\"We start in the lounge area of a cabin in front of a fireplace.\\nImmediately on our left, we see a small study desk with a wooden/glass cabinet. \\nWe walk towards it and make a right towards the stairs that lead to the basement. \\nWe go down the stairs and there will be a small window on the left with three figures on the sill, almost at the bottom of the stairs. \\nThen we will find ourselves into a plain area with an entry table on the left and a couch with three pillows directly in front of us.\\nThen we will steer right towards a restroom, there's a toilet on the right and a sink on the left with pictures hanging right in front of us.\\nWe will stop right here. \""
+        },
+        {
+          "id": "9507",
+          "text_repr": "\"Turn around and walk through this archway that has these big red colored - orange/red colored potted vases. And that’s the best description I'm going to give you. Go through that archway and walk towards that grey/green velvet arm seat. There will be this over-sized wooden framed - a wood framed - mirror leaning on the wall to the right. You will make your way through the archway on the left - the one that is right beside the bed and into a small space.  Step onto that white rug. And go into the room with the tasseled zig-zag patterned rug. You will take another step inside the room and you will stop facing this rectangular.. Storage cabinet thingy majigy? I don't know whatever that is, it has a knob - a cute little black knob. and a dresser on the right.  \\n\""
+        }
+      ],
+      "has_non_ASCII": [
+        {
+          "id": "1588",
+          "text_repr": "'We are facing a sink. Let’s turn around leaving this room. Take one step into the hallway. Take another step where you are walking beside the stairs that are going down and continue walking in the direction of the stairs going up. Go past the stairs. Jumping over the pug and the chair with the orange pillow. Now you will be beside the dining room table and you will take one more step when you are on the far side of the dining room table closest to the windows. Stop when you are beside the large plant. \\n'"
+        },
+        {
+          "id": "5733",
+          "text_repr": "'We start off looking at a sign with letters. We are going to turn left to where that sign would be behind us and to the right. Take a step forward. You will see a shelving unit on your right hand side. Before you get to that unit, we’ll turn right. Going into a small hallway, take a left going into the first room that you will see which will be a bathroom. Take one step in and now go back out of the bathroom going into the open doorway on your left. This will be a bedroom. Take a step to the foot of the bed. And now walk toward the furniture that is to the left of the window. This is where we will stop. '"
+        },
+        {
+          "id": "6921",
+          "text_repr": "'We are facing a shower. Let’s turn to the left and exit this room. Take one step into the hallway and now we will turn to the left. Taking one step toward the foot of the twin bed. We will again turn left and we will walk out of the open doorway. A large mirror will be on your right side. Out here, we’ll take one step past a closed door and we will take a step just inside the open door that is on the left. This will be another room with a twin bed. When we are at  the threshold of this room, we have reached our final stop. '"
+        },
+        {
+          "id": "9507",
+          "text_repr": "\"Turn around and walk through this archway that has these big red colored - orange/red colored potted vases. And that’s the best description I'm going to give you. Go through that archway and walk towards that grey/green velvet arm seat. There will be this over-sized wooden framed - a wood framed - mirror leaning on the wall to the right. You will make your way through the archway on the left - the one that is right beside the bed and into a small space.  Step onto that white rug. And go into the room with the tasseled zig-zag patterned rug. You will take another step inside the room and you will stop facing this rectangular.. Storage cabinet thingy majigy? I don't know whatever that is, it has a knob - a cute little black knob. and a dresser on the right.  \\n\""
+        }
+      ],
+      "has_prefix": [
+        {
+          "id": "1755",
+          "text_repr": "\" We start off looking in a room. The right hand side of the room is filled with a bookshelf with books. We're going to turn to the right of that wall and exit through the door. Just outside of this door, we'll see a small hallway. Step into the hallway and turn right. The ladder will be on your left hand side. Take a step forward onto the area rug in front of you. Now take a left when you are at the top of the stairs. Enter into this room onto another large area rug. Here...when you take this step into the room you are at your final destination. There will be a bathtub on your right hand side. \""
+        },
+        {
+          "id": "2886",
+          "text_repr": "\" We're facing some armchairs and a couch. Let's turn to our right and go straight. And go down the stairs. On this floor we should be able to see a white open door. Go through the open door. We are in a bathroom and we can stop here.\""
+        },
+        {
+          "id": "7447",
+          "text_repr": "' Walk to the end of this wallwat. Walking to the cabinet that has a vase on top. Now you will turn into the kitchen. Once you are just inside the kitchen, turn left again. This will have the refrigerator on your left side and the island on your right. Take another right inside the kitchen. Now you will have sinks on your left and right side. Walk to the end of the kitchen and once you are at the island that has the fine china, you will hop over that counter and go into the dining area with the glass table top. Now turn toward your left and walk toward the more formal dining table. When you are at the head of the table furthest away from the window, you will turn left and you will find you are going back into the kitchen. Take two large steps in the kitchen. When you are beside the four barstools, right in the middle of the four, and an outside door you have reached your final destination. '"
+        }
+      ],
+      "body_has_LF": [
+        {
+          "id": "6229",
+          "text_repr": "\"We start in the lounge area of a cabin in front of a fireplace.\\nImmediately on our left, we see a small study desk with a wooden/glass cabinet. \\nWe walk towards it and make a right towards the stairs that lead to the basement. \\nWe go down the stairs and there will be a small window on the left with three figures on the sill, almost at the bottom of the stairs. \\nThen we will find ourselves into a plain area with an entry table on the left and a couch with three pillows directly in front of us.\\nThen we will steer right towards a restroom, there's a toilet on the right and a sink on the left with pictures hanging right in front of us.\\nWe will stop right here. \""
+        },
+        {
+          "id": "9674",
+          "text_repr": "'Starting at the corner of the pool table, step towards the long glass double doors in front of you. make a left around those doors and around the corner into this living room walk behind the two hairs towards the staircase and the kitchen. Walk between the stove and the kitchen table towards the sink. Walk around the table with the sink now on your right hand side and walk down the length of the table circling around the other end. \\nWhen you reach a mall little decorative buffet table, continue around that  corner to the right to reach the staircase going down, Descend the stairs. When you reach the bottom of the staircase step onto  the rug. Stop.'"
+        },
+        {
+          "id": "9684",
+          "text_repr": "'You are standing on some stairs facing a glass green plant picture. Go to your right, down the stairs. Once you reach the bottom  of the the stairs on the landing go far right. \\nRight after the stairs to your right there are two room and your want to go the the far right room. There is a circle in the middle on the floor and you will see an opening straight ahead. You will be passing a large mirror on your right as you enter into a bedroom.  Now your on the path between the bed and the drape on your left. The bed is on your right. Now toward the left at the end you will see another opening. You are in a walk in closet. You walk straight to the bottom row of that has a few some hangers with some slippers on the your left. You are probably standing on the throw rug.  You have reached your destination.'"
+        }
+      ]
+    }
+  },
+  "R2R_DE": {
+    "D1_E1": 1076,
+    "D_remove_all_LF_equals_E": 1838,
+    "D0_E1": 114,
+    "D0_E0": 535,
+    "D1_E0": 114
+  },
+  "RxR_DE": {
+    "D1_E0": 117,
+    "D_remove_all_LF_equals_E": 1223,
+    "D1_E1": 731,
+    "D0_E0": 265,
+    "D0_E1": 110
+  },
+  "current_states": {
+    "accepted_source_exact": 972,
+    "accepted_candidate": 849,
+    "fallback_unresolved": 18
+  },
+  "exact_output_candidate_types": {
+    "('ok', 1, True)": 972,
+    "('needs_review', 0, False)": 18
+  },
+  "old_R2R_model_receipts": {
+    "('generator', 'gpt-5.6-sol', 'high')": 1877,
+    "('reviewer', 'gpt-5.6-sol', 'high')": 1875,
+    "('reviewer', None, None)": 2
+  },
+  "current_R2R_model_receipts": {
+    "('gpt-6.1-sol', 'high')": 3711
+  },
+  "old_RxR_model_receipts": {
+    "('generator', 'gpt-5.6-sol', 'high')": 1371,
+    "('reviewer', 'gpt-5.6-sol', 'high')": 1369,
+    "('reviewer', None, None)": 2
+  },
+  "old_R2R_reviewer_verdicts_all_rounds": {
+    "pass": 1823,
+    "revise": 20,
+    "unresolved": 32,
+    "null": 2
+  },
+  "current_R2R_reviewer_verdicts_all_rounds": {
+    "pass": 1821,
+    "unresolved": 29,
+    "revise": 1
+  },
+  "old_RxR_reviewer_verdicts_all_rounds": {
+    "pass": 1199,
+    "revise": 123,
+    "unresolved": 47,
+    "null": 2
+  },
+  "prompt_hashes": {
+    "/mnt/data/tmp_version_compare/v13_g.md": "32e854d377fb582e4be7ec14c86933b5e2d7b4e734e39f6b54dff923cee2fcf1",
+    "/mnt/data/tmp_version_compare/v13_r.md": "24a8e581e2b185d6c90b5022786967d07ce5750ac23ec12267e35be1fa67866d",
+    "/mnt/data/RXR_base_R2R_targeted_patch/generator/compiled.txt": "842082109ed8b18d3824a618d33f559946fd0ba71a9bf4ab4387304ec66c017e",
+    "/mnt/data/RXR_base_R2R_targeted_patch/reviewer/compiled.txt": "ec77a881a262c03d4d02541d373ce1ef31aca3aaf7bb0345be1b0ff5850fc815",
+    "/mnt/data/R2R_evidence_boundary_p2/generator/compiled.txt": "6a7bad937b112d25458df828400d6f1dfe909f82e8ece979a5705cfdf0b7ecd0"
+  }
+}

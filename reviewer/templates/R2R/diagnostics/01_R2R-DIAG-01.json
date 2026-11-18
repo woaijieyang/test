@@ -1,0 +1,215 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-01",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "37",
+    "episode_id": "37",
+    "instruction_id": null,
+    "scene_id": null,
+    "source_key": "R2R|val_seen|standard|record_id=37|episode_id=37|scene_id=unknown"
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_uploaded_val_seen",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "ORDINAL"
+  },
+  "review_input": {
+    "original_instruction": "With the bed on your left go forward and out of the room into the hallway. In the hallway take a right and go down the hall, keeping straight. Then take a right into the bedroom that is the first door on your right. Stop in the room just past the door on the inside of the doorway. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "With the bed on your left go forward and out of the room into the hallway. In the hallway take a right and go down the hall, keeping straight. Then take a right into the bedroom that is the next door on your right. Stop in the room just past the door on the inside of the doorway. "
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "With the bed on your left go forward and out of the room into the hallway.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: With the bed on your left go forward and out of the room into the hallway.",
+        "candidate_evidence": [
+          "With the bed on your left go forward and out of the room into the hallway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "In the hallway take a right and go down the hall, keeping straight.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: In the hallway take a right and go down the hall, keeping straight.",
+        "candidate_evidence": [
+          "With the bed on your left go forward and out of the room into the hallway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Then take a right into the bedroom that is the first door on your right.",
+        "requirement": "Preserve the ordinal target and its counting origin: Then take a right into the bedroom that is the first door on your right.",
+        "candidate_evidence": [
+          "With the bed on your left go forward and out of the room into the hallway."
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Stop in the room just past the door on the inside of the doorway.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Stop in the room just past the door on the inside of the doorway.",
+        "candidate_evidence": [
+          "With the bed on your left go forward and out of the room into the hallway."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_assessable",
+        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "first",
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "candidate_evidence": [
+          "With the bed on your left go forward and out of the room into the hallway."
+        ],
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C4_CONTINUITY",
+        "evidence_level": "S1",
+        "problem": "The candidate removes the source ordinal identity and changes which landmark is selected.",
+        "execution_consequence": "The ordinal changes which door/landmark is selected; the agent may enter the wrong room or count from the wrong item.",
+        "repair": {
+          "operation": "ordinal",
+          "affected_stage_indices": [
+            0
+          ],
+          "instruction": "Restore the exact ordinal and preserve its counting origin.",
+          "protected_requirements": [
+            "Preserve all other source-supported actions and landmarks.",
+            "Do not add unsupported stops or route segments.",
+            "Keep original conditions, directions, counts, and spatial relations."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "gap",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Stop in the room just past the door on the inside of the doorway.",
+          "candidate_quotes": [
+            "Stop in the room just past the door on the inside of the doorway."
+          ]
+        },
+        "process": {
+          "text": "With the bed on your left go forward and out of the room into the hallway. In the hallway take a right and go down the hall, keeping straight. Then take a right into the bedroom that is the next door on your right. Stop in the room just past the door on the inside of the doorway. ",
+          "candidate_quotes": [
+            "With the bed on your left go forward and out of the room into the hallway. In the hallway take a right and go down the hall, keeping straight. Then take a right into the bedroom that is the next door on your right. Stop in the room just past the door on the inside of the doorway. "
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Stop in the room just past the door on the inside of the doorway.",
+          "candidate_quotes": [
+            "Stop in the room just past the door on the inside of the doorway."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "temporal: Then; spatial_frame: on your, left, right; manner_or_constraint: keeping, past",
+          "candidate_quotes": [
+            "Then",
+            "on your",
+            "left",
+            "right",
+            "keeping",
+            "past"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Stop in the room just past the door on the inside of the doorway.",
+          "In the hallway take a right and go down the hall, keeping straight.",
+          "With the bed on your left go forward and out of the room into the hallway.",
+          "Then take a right into the bedroom that is the first door on your right."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "ordinal",
+    "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
+    "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
+    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+  }
+}

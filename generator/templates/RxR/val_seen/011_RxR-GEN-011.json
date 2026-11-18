@@ -1,0 +1,170 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-011",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "2426",
+    "episode_id": "265",
+    "instruction_id": "2426",
+    "scene_id": "mp3d/D7N2EKCX4Sj/D7N2EKCX4Sj.glb",
+    "trajectory_id": "1009"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You're standing facing some wooden portraits that are hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Now walk in between it and the round dining tables and head int he direction of the wooden doorway with the off white curtains that will be on your right. oh and now take a small step inside this room and walk back out from the place you came and turn right into this wooden doorless doorway and into a small hall. You will see a pink stalled restroom and an open door at the end of the hall on the right. Which turns out to be a men's restroom. Stop at the entrance of it and for reference, there will be a fire extinguisher on the wall next to you. You're done. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+      "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop at the entrance of it. There will be a fire extinguisher on the wall next to you. You are done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "Take a small step inside this room, then walk back out from the place you came."
+          ]
+        },
+        "process": {
+          "text": "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "You are standing facing some wooden portraits hanging on the wall. Turn to the left and step towards the stone edge of the fireplace. Walk in between it and the round dining tables and head in the direction of the wooden doorway with the off-white curtains on your right. Take a small step inside this room, then walk back out from the place you came."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quotes": [
+            "Take a small step inside this room, then walk back out from the place you came."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: then; spatial_frame: facing, left, between, on your, right",
+          "candidate_quotes": [
+            "then",
+            "facing",
+            "left",
+            "between",
+            "on your",
+            "right"
+          ]
+        },
+        "source_quotes": [
+          "Turn to the left and step towards the stone edge of the fireplace.",
+          "You're standing facing some wooden portraits that are hanging on the wall.",
+          "oh and now take a small step inside this room and walk back out from the place you came and turn right into this wooden doorless doorway and into a small hall.",
+          "Now walk in between it and the round dining tables and head int he direction of the wooden doorway with the off white curtains that will be on your right."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall"
+          ]
+        },
+        "target": {
+          "text": "The entrance to the identified men's restroom; the fire extinguisher is only a nearby reference landmark.",
+          "candidate_quotes": [
+            "Stop at the entrance of it"
+          ]
+        },
+        "process": {
+          "text": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop at the entrance of it. There will be a fire extinguisher on the wall next to you. You are done.",
+          "candidate_quotes": [
+            "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall. You will see a pink-stalled restroom and an open door at the end of the hall on the right, which turns out to be a men's restroom. Stop at the entrance of it. There will be a fire extinguisher on the wall next to you. You are done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Stop at the entrance of the men's restroom, as explicitly requested.",
+          "candidate_quotes": [
+            "Stop at the entrance of it"
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "The open door is at the end of the hall on the right; the fire extinguisher is a nearby visual reference, not the destination.",
+          "candidate_quotes": [
+            "on the right",
+            "fire extinguisher on the wall next to you"
+          ]
+        },
+        "source_quotes": [
+          "Which turns out to be a men's restroom.",
+          "You will see a pink stalled restroom and an open door at the end of the hall on the right.",
+          "Stop at the entrance of it and for reference, there will be a fire extinguisher on the wall next to you.",
+          "oh and now take a small step inside this room and walk back out from the place you came and turn right into this wooden doorless doorway and into a small hall."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Take a small step inside this room, then walk back out from the place you came.",
+          "candidate_quote": "Take a small step inside this room, then walk back out from the place you came."
+        },
+        "next_entry": {
+          "text": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall",
+          "candidate_quote": "From that wooden doorway, turn right into the wooden doorless doorway and into a small hall"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Take a small step inside this room, then walk back out from the place you came.'; stage 2 begins from 'From that wooden doorway, turn right into the wooden doorless doorway and into a small hall'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: temporal: then; spatial_frame: facing, left, between, on your, right Stage 2: The open door is at the end of the hall on the right; the fire extinguisher is a nearby visual reference,…",
+    "handoff_focus": "Stage 1 ends with 'Take a small step inside this room, then walk back out from the place you came.'; stage 2 begins from 'From that wooden doorway, turn right into the wooden doorless doorway and into a small hall'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "intermediate_stop_or_wait",
+    "orientation_or_reference_frame",
+    "multi_stage_split"
+  ]
+}

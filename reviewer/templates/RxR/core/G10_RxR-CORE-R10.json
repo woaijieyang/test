@@ -1,0 +1,137 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RXR-CORE-R10",
+  "role": "reviewer",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "pair_id": "RXR-CORE-G10",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G10",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": "Paired reviewer teaching example; independently structured from the same source instruction and candidate. Not a navigation outcome label.",
+  "review_input": {
+    "original_instruction": "Walk forward, then turn there and stop.",
+    "candidate": {
+      "status": "needs_review",
+      "subtasks": [],
+      "issues": [
+        {
+          "code": "UNRESOLVED_ROUTE_CHOICE",
+          "source_quote": "Walk forward, then turn there and stop.",
+          "problem": "The source does not identify where 'there' is or which direction to turn; the endpoint and turn cannot be grounded."
+        }
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "unresolved",
+    "dimensions": {
+      "source_fidelity": "source_limited",
+      "closure_handoff": "not_assessable",
+      "segmentation_adequacy": "source_limited"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk forward, then turn there and stop.",
+        "requirement": "Resolve the route-defining target/referent.",
+        "candidate_evidence": [],
+        "status": "requires_review"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "source_limited",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "source_limited",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "source_limited",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_assessable",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "source_limited",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "source_limited",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "Walk forward, then turn there and stop.",
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "candidate_evidence": [],
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C05",
+        "evidence_level": "S1",
+        "problem": "The source does not identify where 'there' is or which direction to turn; the endpoint and turn cannot be grounded.",
+        "execution_consequence": "The navigator cannot select the intended route target without guessing.",
+        "repair": {
+          "operation": "preserve_uncertainty",
+          "instruction": "Do not emit a speculative plan; request clarification or use an explicitly authorized correction.",
+          "protected_requirements": [
+            "Do not silently change the route-defining target.",
+            "Do not add a partial route."
+          ],
+          "affected_subtask_indices": []
+        },
+        "code": "SOURCE_AMBIGUITY",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "segmentation_adequacy"
+        ],
+        "affected_subtask_indices": []
+      }
+    ],
+    "stage_checks": [],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "source_limited_ambiguity",
+    "reuse_rule": "Use unresolved only after sensible merging still leaves an essential route choice unsupported. A weak candidate boundary is revise, not unresolved."
+  }
+}

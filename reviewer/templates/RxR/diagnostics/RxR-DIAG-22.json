@@ -1,0 +1,403 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-22",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "4861",
+    "episode_id": "714",
+    "instruction_id": "4861",
+    "scene_id": "mp3d/82sE5b5pLXE/82sE5b5pLXE.glb",
+    "trajectory_id": "2014"
+  },
+  "provenance": {
+    "kind": "reviewer_only_semantic_adversarial_example",
+    "source_status": "original_instruction_from_uploaded_val_seen_template_source",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "AUXILIARY_LANDMARK_AS_TARGET"
+  },
+  "review_input": {
+    "original_instruction": "We start off facing some brown closet doors and you will see a bathtub. Walk between the bathtub and all of the wood furniture Taking a left walking toward the bed.Exiting out of the bedroom. Walking to the left of the bed and walking down a hallway, a very long hallway. Now we will go up a few stairs. At the top of these stairs, we will turn to the right. Going down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walking out the glass doors with a pool directly in front of us. Now turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of this brick patio. You will stop when you are at the edge of the pool. There will be a potted plant on your left hand side. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+        "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+        "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "We start off facing some brown closet doors and you will see a bathtub.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Walk between the bathtub and all of the wood furniture Taking a left walking toward the bed.Exiting out of the bedroom.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Walking to the left of the bed and walking down a hallway, a very long hallway.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Now we will go up a few stairs.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "At the top of these stairs, we will turn to the right.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Walk to the left of the piano, passing a large fireplace.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "Now turn to the left.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "With the pool on the right and the home to your left, walk to the end, mostly to the end of this brick patio.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-09",
+        "source_quote": "You will stop when you are at the edge of the pool.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-10",
+        "source_quote": "There will be a potted plant on your left hand side.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The source terminal target is the pool edge; the potted plant only verifies the left-side relation."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "The source terminal target is the pool edge; the potted plant only verifies the left-side relation."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "issue",
+        "conclusion": "The altered event changes the stage completion/entry relation; the adjacent handoff must not be marked supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The source terminal target is the pool edge; the potted plant only verifies the left-side relation."
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "You will stop when you are at the edge of the pool.",
+        "source_requirement_ids": [
+          "SRC-09"
+        ],
+        "candidate_evidence": [
+          "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        ],
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C08",
+        "evidence_level": "S1",
+        "problem": "The source terminal target is the pool edge; the potted plant only verifies the left-side relation.",
+        "execution_consequence": "The agent may stop at the plant without reaching the pool edge.",
+        "repair": {
+          "operation": "restore_source_semantics",
+          "affected_stage_indices": [
+            2
+          ],
+          "instruction": "Restore the pool-edge stop; retain the plant as a left-side landmark.",
+          "protected_requirements": [
+            "Preserve all unaffected actions and source order.",
+            "Do not add a physical STOP unless the source requires it."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "At the top of these stairs, turn to the right.",
+          "candidate_quotes": [
+            "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right."
+          ]
+        },
+        "process": {
+          "text": "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
+          "candidate_quotes": [
+            "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "At the top of these stairs, turn to the right.",
+          "candidate_quotes": [
+            "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "spatial_frame: facing, between, left, right",
+          "candidate_quotes": [
+            "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "source_quotes": [
+          "You will stop when you are at the edge of the pool."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From the top of these stairs, go down a stair or two",
+          "candidate_quotes": [
+            "From the top of these stairs, go down a stair or two"
+          ]
+        },
+        "target": {
+          "text": "Walk out the glass doors with a pool directly in front of you.",
+          "candidate_quotes": [
+            "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+          ]
+        },
+        "process": {
+          "text": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
+          "candidate_quotes": [
+            "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Walk out the glass doors with a pool directly in front of you.",
+          "candidate_quotes": [
+            "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors.",
+          "candidate_quotes": [
+            "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-06"
+        ],
+        "source_quotes": [
+          "You will stop when you are at the edge of the pool."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "gap",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once outside, turn to the left",
+          "candidate_quotes": [
+            "Once outside, turn to the left"
+          ]
+        },
+        "target": {
+          "text": "The edge of the pool. The potted plant is an auxiliary left-side landmark for confirming the final position.",
+          "candidate_quotes": [
+            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+          ]
+        },
+        "process": {
+          "text": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side.",
+          "candidate_quotes": [
+            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+          ]
+        },
+        "ending": {
+          "kind": "unspecified",
+          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "candidate_quotes": [
+            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "At the terminal position, the pool is on the right, the home is on the left, and the potted plant is on the left-hand side.",
+          "candidate_quotes": [
+            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-09"
+        ],
+        "source_quotes": [
+          "You will stop when you are at the edge of the pool."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
+          "candidate_quote": "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right."
+        },
+        "next_entry": {
+          "text": "The actual next candidate stage.",
+          "candidate_quote": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "gap",
+        "preceding_exit": {
+          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
+          "candidate_quote": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you."
+        },
+        "next_entry": {
+          "text": "The actual next candidate stage.",
+          "candidate_quote": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop beside the potted plant. There will be a potted plant on your left-hand side."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "auxiliary_landmark_as_target",
+    "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "R2R-CORE-G10",
+  "role": "generator",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "31",
+    "episode_id": "31",
+    "instruction_id": null,
+    "scene_id": "mp3d/dhjEzFoUFzH/dhjEzFoUFzH.glb",
+    "trajectory_id": "355",
+    "source_key": "R2R|val_seen|standard|record_id=31|episode_id=31|trajectory_id=355"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "core_curated_from": "R2R-GEN-031",
+    "curation_basis": "semantic decision-boundary coverage"
+  },
+  "input": {
+    "original_instruction": "Go towards the back of the church, between the long pew on the left and rows of pews on the right  Go towards the pack exit.  Stop to the left of the of the wall which is to the left of the exit, with a brass handrail. "
+  },
+  "decision": {
+    "status": "needs_review",
+    "mode": "source_limited_ambiguity",
+    "rationale": "The route-defining phrase 'pack exit' is ambiguous in the source. Do not silently normalize it to 'back exit' or invent a different landmark."
+  },
+  "output": {
+    "status": "needs_review",
+    "subtasks": [],
+    "stage_audit": [],
+    "handoffs": [],
+    "issues": [
+      {
+        "code": "UNRESOLVED_ROUTE_REFERENT",
+        "source_quote": "pack exit",
+        "problem": "The route-defining landmark is unclear; a likely typo is not sufficient evidence to change the target."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "source_level_ambiguity_abstention",
+    "why_this_case_matters": "The source contains a route-defining phrase that cannot be safely normalized from language context alone. The model must preserve the ambiguity and return needs_review rather than silently correcting the landmark.",
+    "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
+    "retrieval_rule": "Retrieve for route-critical source typos or conflicting target descriptions that cannot be resolved from context.",
+    "anti_pattern": "Do not silently correct a plausible typo, infer a landmark, or generate a partial guessed route.",
+    "semantic_pattern": "route_critical_source_ambiguity",
+    "decision_reason": "The phrase 'pack exit' is route-defining and cannot be uniquely resolved from the source. Guessing 'back exit' would change target selection.",
+    "transfer_rule": "Preserve source uncertainty and use the existing needs_review path only when unresolved wording changes a route-critical target, branch, or completion requirement."
+  },
+  "retrieval_tags": [
+    "source_limited_ambiguity",
+    "needs_review",
+    "route_target_ambiguity"
+  ]
+}

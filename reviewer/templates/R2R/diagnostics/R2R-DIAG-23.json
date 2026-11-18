@@ -1,0 +1,244 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-23",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "16",
+    "episode_id": "16",
+    "instruction_id": null,
+    "scene_id": "mp3d/JeFG25nYj2p/JeFG25nYj2p.glb",
+    "trajectory_id": "180",
+    "source_key": "R2R|val_seen|standard|record_id=16|episode_id=16|trajectory_id=180"
+  },
+  "provenance": {
+    "kind": "reviewer_only_semantic_adversarial_example",
+    "source_status": "original_instruction_from_uploaded_val_seen_template_source",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "REFERENCE_RELATION_REVERSED"
+  },
+  "review_input": {
+    "original_instruction": "Walk over the star tile into the bedroom and walk towards the bed. Walk around the bed, and stop next to the left set of windows. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk over the star tile and enter the bedroom.",
+        "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk over the star tile into the bedroom and walk towards the bed.",
+        "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
+        "candidate_evidence": [
+          "Walk over the star tile and enter the bedroom.",
+          "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Walk around the bed, and stop next to the left set of windows.",
+        "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
+        "candidate_evidence": [
+          "Walk over the star tile and enter the bedroom.",
+          "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The final window-side relation is reversed."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "The final window-side relation is reversed."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "issue",
+        "conclusion": "The altered event changes the stage completion/entry relation; the adjacent handoff must not be marked supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The final window-side relation is reversed."
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "left set of windows",
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "candidate_evidence": [
+          "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+        ],
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C06",
+        "evidence_level": "S1",
+        "problem": "The final window-side relation is reversed.",
+        "execution_consequence": "The agent can stop at the opposite side of the bedroom.",
+        "repair": {
+          "operation": "restore_source_semantics",
+          "affected_stage_indices": [
+            1
+          ],
+          "instruction": "Restore the left set of windows and retain the bed-relative approach.",
+          "protected_requirements": [
+            "Preserve all unaffected actions and source order.",
+            "Do not add a physical STOP unless the source requires it."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk over the star tile and enter the bedroom.",
+          "candidate_quotes": [
+            "Walk over the star tile and enter the bedroom."
+          ]
+        },
+        "process": {
+          "text": "Walk over the star tile and enter the bedroom.",
+          "candidate_quotes": [
+            "Walk over the star tile and enter the bedroom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "Walk over the star tile and enter the bedroom."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Path constraints: cross over the star tile; enter the bedroom.",
+          "candidate_quotes": [
+            "Walk over the star tile and enter the bedroom."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "left set of windows"
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "status": "gap",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows"
+          ]
+        },
+        "target": {
+          "text": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows.",
+          "candidate_quotes": [
+            "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+          ]
+        },
+        "process": {
+          "text": "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows.",
+          "candidate_quotes": [
+            "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+          ]
+        },
+        "ending": {
+          "kind": "unspecified",
+          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "candidate_quotes": [
+            "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "Path constraints: approach the bed, go around it, and stop next to the left set of windows.",
+          "candidate_quotes": [
+            "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "left set of windows"
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "gap",
+        "preceding_exit": {
+          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
+          "candidate_quote": "Walk over the star tile and enter the bedroom."
+        },
+        "next_entry": {
+          "text": "The actual next candidate stage.",
+          "candidate_quote": "Inside the bedroom, walk towards the bed, go around it, and stop next to the right set of windows."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'Walk over the star tile and enter the bedroom.'; the next stage begins with 'Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows'. The handoff carries the established location/reference frame without adding a physical stop."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "reference_relation_reversed",
+    "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+  }
+}

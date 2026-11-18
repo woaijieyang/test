@@ -1,0 +1,20 @@
+{
+  "canonical_shared_examples": [
+    "../templates/01.json",
+    "../templates/02.json",
+    "../templates/03.json",
+    "../templates/04.json",
+    "../templates/05.json",
+    "../templates/06.json",
+    "../templates/07.json",
+    "../templates/08.json",
+    "../templates/09.json",
+    "../templates/10.json",
+    "../templates/11.json",
+    "../templates/12.json",
+    "../templates/13.json",
+    "../templates/14.json",
+    "../templates/15.json"
+  ],
+  "note": "One maintained live copy for both roles; actual content is inserted into compiled prompts. T10 is updated in final-best-v1; the previous v1.3-patch T10 is archived at ../provenance/templates/v1_3_patch/10.json. Templates are teaching pairs, not unique gold segmentations."
+}

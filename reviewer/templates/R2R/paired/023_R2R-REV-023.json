@@ -1,0 +1,299 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-REV-023",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": "R2R-GEN-023",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "23",
+    "episode_id": "23",
+    "instruction_id": null,
+    "scene_id": "mp3d/PX4nDJXEHrG/PX4nDJXEHrG.glb",
+    "trajectory_id": "193",
+    "source_key": "R2R|val_seen|standard|record_id=23|episode_id=23|trajectory_id=193"
+  },
+  "provenance": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway. When your in the hallway by the  window take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Next and finally you take a right and when you get to the side of the stairs you have arrived. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway.",
+        "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Go toward the door.",
+        "requirement": "Preserve the spatial transition and region/threshold: Go toward the door.",
+        "candidate_evidence": [
+          "Go towards the door."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn left by the black vanity.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left by the black vanity.",
+        "candidate_evidence": [
+          "Turn left by the black vanity."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "You will see an indoor glass window.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: You will see an indoor glass window.",
+        "candidate_evidence": [
+          "Go towards the indoor glass window and through the doorway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Go toward the glass window and through the doorway.",
+        "requirement": "Preserve the spatial transition and region/threshold: Go toward the glass window and through the doorway.",
+        "candidate_evidence": [
+          "Go towards the indoor glass window and through the doorway."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "When your in the hallway by the  window take a right.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: When your in the hallway by the  window take a right.",
+        "candidate_evidence": [
+          "When you are in the hallway by the window, take a right."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "Go toward the table with the pictures on it.",
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Go toward the table with the pictures on it.",
+        "candidate_evidence": [
+          "Go towards the table with the pictures on it, then towards the wall with the security box or thermostat."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "Then go toward the wall with the security box or thermostat.",
+        "requirement": "Preserve the temporal trigger/order and its scope: Then go toward the wall with the security box or thermostat.",
+        "candidate_evidence": [
+          "Go towards the table with the pictures on it, then towards the wall with the security box or thermostat."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "Next and finally you take a right and when you get to the side of the stairs you have arrived.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Next and finally you take a right and when you get to the side of the stairs you have arrived.",
+        "candidate_evidence": [
+          "You have arrived when you get to the side of the stairs."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Go towards the indoor glass window and through the doorway.",
+          "candidate_quotes": [
+            "Go towards the indoor glass window and through the doorway."
+          ]
+        },
+        "process": {
+          "text": "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway.",
+          "candidate_quotes": [
+            "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "candidate_quotes": [
+            "Go towards the indoor glass window and through the doorway."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "left; through",
+          "candidate_quotes": [
+            "left",
+            "through"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          "Go toward the door.",
+          "Turn left by the black vanity.",
+          "You will see an indoor glass window.",
+          "Go toward the glass window and through the doorway."
+        ],
+        "carryover": [
+          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "When you are in the hallway by the window, take a right"
+          ]
+        },
+        "target": {
+          "text": "You have arrived when you get to the side of the stairs.",
+          "candidate_quotes": [
+            "You have arrived when you get to the side of the stairs."
+          ]
+        },
+        "process": {
+          "text": "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs.",
+          "candidate_quotes": [
+            "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The episode reaches its stated destination at the side of the stairs; no additional STOP is required.",
+          "candidate_quotes": [
+            "You have arrived when you get to the side of the stairs."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal/order: when in the hallway by the window, take a right; then move toward the picture table, next toward the wall reference, and finally take a right. descriptive_uncertainty: 'security box or thermostat' is an alternative description of one wall-mounted reference, not two route branches. spatial_frame: hallway by window, right turn, then final side of stairs.",
+          "candidate_quotes": [
+            "When you are in the hallway by the window",
+            "then towards the wall with the security box or thermostat",
+            "Finally, take a right",
+            "security box or thermostat",
+            "side of the stairs"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
+        ],
+        "source_quotes": [
+          "When your in the hallway by the  window take a right.",
+          "Go toward the table with the pictures on it.",
+          "Then go toward the wall with the security box or thermostat.",
+          "Next and finally you take a right and when you get to the side of the stairs you have arrived."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Go towards the indoor glass window and through the doorway.",
+          "candidate_quote": "Go towards the indoor glass window and through the doorway."
+        },
+        "next_entry": {
+          "text": "When you are in the hallway by the window, take a right",
+          "candidate_quote": "When you are in the hallway by the window, take a right"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
+        ],
+        "handoff_rationale": "The previous stage explicitly ends with 'Go towards the indoor glass window and through the doorway.'; the next stage begins with 'When you are in the hallway by the window, take a right'. The handoff carries the established location/reference frame without adding a physical stop."
+      }
+    ]
+  },
+  "teaching_notes": {
+    "review_pattern": "completed_transition_then_distinct_objective",
+    "why_this_review_matters": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective.",
+    "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
+    "retrieval_tags": [
+      "room_transition",
+      "doorway_selection_and_crossing",
+      "stairs_or_level_change",
+      "temporal_dependency",
+      "orientation_or_reference_frame",
+      "multi_stage_split"
+    ],
+    "conditions_focus": "temporal/order: when in the hallway by the window, take a right; then move toward the picture table, next toward the wall reference, and finally take a right. descriptive_uncertainty: 'security box or thermostat' is an alternative description of one wall-mounted reference, not two route branches. spatial_frame: hallway by window, right turn, then final side of stairs.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Go toward the door.; Preserve the directional/spatial relation and its reference frame: Turn left by the black vanity.; Preserve the ordered route action or target-identifying landmark: You will see an indoor glass window.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the spatial transition and region/threshold: Go toward the door.; Preserve the directional/spatial relation and its reference frame: Turn left by the black vanity.; Preserve the ordered route action or target-identifying landmark: You will see an indoor glass window."
+  }
+}

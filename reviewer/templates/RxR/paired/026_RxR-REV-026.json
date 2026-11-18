@@ -1,0 +1,212 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-026",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-026",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "5371",
+    "episode_id": "843",
+    "instruction_id": "5371",
+    "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
+    "trajectory_id": "2213"
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "We are starting out outside beside a pool but we are going to turn around going inside the house. The pool and the grass will be on your right. Then when we turn to go in we will go beside the black table and then turn left. Going between the white curtain and the couch. We will continue going forward to  where we are now going back outside through a different exit. We will walk through the patio furniture, keeping the coffee table on the left hand side. When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left. You have reached your destination. \n",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "We are starting out outside beside a pool but we are going to turn around going inside the house. The pool and the grass will be on your right. Then when we turn to go in we will go beside the black table and then turn left. Going between the white curtain and the couch. We will continue going forward to  where we are now going back outside through a different exit. We will walk through the patio furniture, keeping the coffee table on the left hand side. When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left. You have reached your destination. \n"
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "We are starting out outside beside a pool but we are going to turn around going inside the house.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We are starting out outside beside a pool but we are going to turn around going inside the house.",
+        "candidate_evidence": [
+          "We are starting out outside beside a pool but we are going to turn around going inside the house."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "The pool and the grass will be on your right.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: The pool and the grass will be on your right.",
+        "candidate_evidence": [
+          "The pool and the grass will be on your right."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Then when we turn to go in we will go beside the black table and then turn left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Then when we turn to go in we will go beside the black table and then turn left.",
+        "candidate_evidence": [
+          "Then when we turn to go in we will go beside the black table and then turn left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Going between the white curtain and the couch.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Going between the white curtain and the couch.",
+        "candidate_evidence": [
+          "Going between the white curtain and the couch."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "We will continue going forward to  where we are now going back outside through a different exit.",
+        "requirement": "Preserve the spatial transition and region/threshold: We will continue going forward to  where we are now going back outside through a different exit.",
+        "candidate_evidence": [
+          "We will continue going forward to  where we are now going back outside through a different exit."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "We will walk through the patio furniture, keeping the coffee table on the left hand side.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We will walk through the patio furniture, keeping the coffee table on the left hand side.",
+        "candidate_evidence": [
+          "We will walk through the patio furniture, keeping the coffee table on the left hand side."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left.",
+        "candidate_evidence": [
+          "When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The far side of the patio, with the pillar ahead and poolway area to the left.",
+          "candidate_quotes": [
+            "far side of the patio",
+            "pillar in front of us",
+            "poolway stuff to the left"
+          ]
+        },
+        "process": {
+          "text": "We are starting out outside beside a pool but we are going to turn around going inside the house. The pool and the grass will be on your right. Then when we turn to go in we will go beside the black table and then turn left. Going between the white curtain and the couch. We will continue going forward to  where we are now going back outside through a different exit. We will walk through the patio furniture, keeping the coffee table on the left hand side. When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left. You have reached your destination. \n",
+          "candidate_quotes": [
+            "We are starting out outside beside a pool but we are going to turn around going inside the house. The pool and the grass will be on your right. Then when we turn to go in we will go beside the black table and then turn left. Going between the white curtain and the couch. We will continue going forward to  where we are now going back outside through a different exit. We will walk through the patio furniture, keeping the coffee table on the left hand side. When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left. You have reached your destination. \n"
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Reach the stated far side of the patio, identified by the pillar ahead and poolway area to the left.",
+          "candidate_quotes": [
+            "When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Then, when, then, When; spatial_frame: on your, right, left, between, in front of; manner_or_constraint: around, through, keeping",
+          "candidate_quotes": [
+            "Then",
+            "when",
+            "then",
+            "When",
+            "on your",
+            "right",
+            "left",
+            "between",
+            "in front of",
+            "around",
+            "through",
+            "keeping"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
+        ],
+        "source_quotes": [
+          "You have reached your destination.",
+          "When we are at the far side of the patio with a pillar in front of us and the poolway stuff to the left.",
+          "We will walk through the patio furniture, keeping the coffee table on the left hand side.",
+          "We will continue going forward to  where we are now going back outside through a different exit."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "single_coherent_stage",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: We are starting out outside beside a pool but we…; Preserve the directional/spatial relation and its reference frame: The pool and the grass will be on your right.; Preserve the directional/spatial relation and its reference frame: Then when we turn to go in we will go beside the…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
+    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: We are starting out outside beside a pool but we…; Preserve the directional/spatial relation and its reference frame: The pool and the grass will be on your right.; Preserve the directional/spatial relation and its reference frame: Then when we turn to go in we will go beside the…"
+  }
+}

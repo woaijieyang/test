@@ -1,0 +1,17 @@
+﻿ID,原分析指出的问题,原分析建议,对应文件,本包提供/已可检查,仍须真实模型或实验验证
+P01,版本归因,固定实际模型与effort，保存v1.3/p1/p2哈希，不把后续未测补丁当成运行版本,provenance/lineage.json; host/run.py,历史正文SHA、模型pin、源文/候选/请求版本绑定,同模型旧/新提示词及实际服务端回执
+G01,主动分析不足,每条先分析句间依赖和局部目标，不设KEEP提前返回；仍允许真实单阶段,generator/prompt.md; templates/11.json,不设 KEEP 入口；保留原三字段,盲评有真实多目标时是否漏切；程序无法证明模型思考过程
+G02,边界过碎,按完整局部过程分组，先合并依赖而非新增前提,generator/prompt.md; templates/03.json; templates/12.json,含连续局部目标及 before 的对照,切断条件、孤立等待、膨胀率，结合语义盲评而非段数配额
+G03,一律粗化/删锚点,对多个明确到达+转向保留必要阶段与短锚点，不统一删After/From,templates/11.json; evaluation/source_cases.json,单段/多段替代及B-98记录,在相同冻结执行器下比较合法多段与合法组合
+G04,不切即不编辑,支持单段语义装配；补充必须来自原文，不补场景事实,renderer/freeze.py; templates/06.json,ASSEMBLED_SINGLE保留真实编辑,测单段有据修复相对原句的收益和伤害
+G05,关系所有者变形,核对actor/event/reference/time，保持动词+空间关系,templates/13.json; reviewer/checklist.md,双侧引用可验证,盲评行进侧错绑检出与误报
+R01,闭合标准不一致,显式填写结束事件和来源类型；目标不是完成证明,reviewer/output.schema.json; host/protocol.py,未指定终点不能填伪结束条件；四种终止依据,B-19/B-137及最小替换题卡；审查不同原句完整语境
+R02,漏切永远只是可选,独立评价保真/闭合/分割充分性；具体漏切可修订但不冒充语义错误,reviewer/checklist.md; templates/11.json,三维独立；仅分割不足可返回revise且fidelity可pass,标注究竟是材料性漏切还是等价粒度
+R03,摘要修补实际候选,要求源文与候选双侧引文，报告不可代替执行文本,host/protocol.py; reviewer/prompt.md,必须引用实际候选；缺失有显式例外,引文相同但角色/时刻改变的语义识别
+R04,反馈默认具有命令权,generator独立accept/partial/reject，复审看源与新候选,generator/repair.md; host/run.py,部分接受/拒绝回执、全新R1、最多4调用，无第三角色,测正确/错误建议的净修复率
+F01,混淆原文格式统计,按prefix/body/suffix和Unicode类别分别统计来源,adapter/source.py; adapter/profiles.json,单次解码，三种空白范围与Unicode保留,在实际数据加载器上再核验全量统计
+F02,全局清理/猜测空白,copy/move保留内部空白，edit缝明确单空格，源分隔替换有ledger,renderer/freeze.py; renderer/README.md,唯一匹配、边界替换、重排、重复歧义与特殊空白测试,在大规模语料统计技术回退、人工核对编辑接缝
+F03,复审后再次改文本,规范化在审查冻结前，最终哈希与请求绑定,host/run.py; renderer/freeze.py,审查前冻结、保留绑定、字节不符拒绝原生收据,接入真实模型的完整prompt/input_ids/图像/截断
+F04,单段=原文错误捷径,区分SOURCE_EXACT/BOUNDARY_ONLY/ASSEMBLED_SINGLE/ASSEMBLED_MULTI,renderer/freeze.py; host/run.py,四类渲染；原样主动保留与回退分别计数,分别汇报每类覆盖与完整分母指标
+E01,成绩被当成语义标签,语义标注与导航成绩隔离，保存正反例，不倒推错误,host/run.py; evaluation/README.md,角色输入白名单，配对分母一致性,建立独立盲标，不用SR替代语义标签
+E02,全量已参与精修,开发/回归明确标注，冻结后再用未参与样本验证,evaluation/paired.py; evaluation/README.md,冻结任务键名单检查,未参与提示词调试的路径/场景实测

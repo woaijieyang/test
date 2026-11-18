@@ -1,0 +1,96 @@
+name: v6.2 R2R Core and frozen RxR validation
+
+on:
+  push:
+    branches:
+      - LLM-decompose-v6.2-r2r-core
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install validation dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Verify committed source tree integrity
+        run: python -B verify_package.py
+      - name: Compile all profile prompts and template indexes
+        run: python -B -m host.compile
+      - name: Check out frozen v6.1 baseline
+        uses: actions/checkout@v4
+        with:
+          ref: d48752c5261769cb76b3b6d8c47826ab94a277fe
+          path: v61-baseline
+      - name: Compile frozen v6.1 prompts
+        run: cd v61-baseline && python -B -m host.compile
+      - name: Compare all RxR compiled prompts with v6.1
+        run: |
+          cmp v61-baseline/generator/compiled_rxr-en-us.txt generator/compiled_rxr-en-us.txt
+          cmp v61-baseline/generator/compiled_repair_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt
+          cmp v61-baseline/reviewer/compiled_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt
+      - name: Validate R2R Core quality, runtime contracts, prompt assembly and RxR freeze
+        run: python -B -m unittest discover -s tests -p "test_r2r_v62_core.py" -v
+      - name: Validate Host profile dispatch and dataset isolation
+        run: python -B -m unittest discover -s tests -p "test_host_dispatch_profiles.py" -v
+      - name: Validate RxR v6 profile and frozen behavior
+        run: python -B -m unittest discover -s tests -p "test_rxr_v6_profile.py" -v
+      - name: Validate paired dynamic retrieval
+        run: python -B -m unittest discover -s tests -p "test_paired_selection.py" -v
+      - name: Validate teaching schemas and closed-loop contracts
+        run: python -B -m unittest discover -s tests -p "test_closed_loop_35.py" -v
+      - name: Validate runtime v2 contracts
+        run: python -B -m unittest discover -s tests -p "test_runtime_contract_v2.py" -v
+      - name: Validate prompt injection and repair paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_example_injection.py" -v
+          python -B -m unittest discover -s tests -p "test_roles_repair.py" -v
+      - name: Validate adapter, workflow, recovery and release paths
+        run: |
+          python -B -m unittest discover -s tests -p "test_entry_diagnostics.py" -v
+          python -B -m unittest discover -s tests -p "test_workflow_integration.py" -v
+          python -B -m unittest discover -s tests -p "test_targeted_feedback.py" -v
+          python -B -m unittest discover -s tests -p "test_final_best_contract.py" -v
+          python -B -m unittest discover -s tests -p "test_reviewer_recovery.py" -v
+      - name: Run remaining regression suite
+        # test_release_transaction imports an external absolute-path checkout
+        # at /home/runner/docs/stages/v5-entry-diagnostics-20261114-r0; that
+        # historical release harness is not part of this repository or runner.
+        run: |
+          python - <<'PY'
+          import unittest
+
+          discovered = unittest.defaultTestLoader.discover("tests")
+          selected = unittest.TestSuite()
+
+          def collect(suite):
+              for test in suite:
+                  if isinstance(test, unittest.TestSuite):
+                      collect(test)
+                  elif "test_release_transaction" not in test.id():
+                      selected.addTest(test)
+
+          collect(discovered)
+          result = unittest.TextTestRunner(verbosity=2).run(selected)
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
+      - name: Run renderer smoke evaluation
+        run: python -m evaluation.smoke24
+      - name: Compare legacy demo fixture on v6.1 and v6.2
+        run: |
+          set +e
+          (cd v61-baseline && python -m examples.demo)
+          baseline_status=$?
+          python -m examples.demo
+          current_status=$?
+          echo "v6.1 demo exit status: $baseline_status"
+          echo "v6.2 demo exit status: $current_status"
+          if [ "$baseline_status" -eq 0 ] && [ "$current_status" -ne 0 ]; then
+            echo "The demo regression is new to v6.2 and requires investigation."
+            exit 1
+          fi
+          exit 0

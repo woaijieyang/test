@@ -1,0 +1,27 @@
+{
+  "scope": "descriptive findings from the uploaded evaluation records; not character-normalization rules or a claim about every future split",
+  "r2r-en": {
+    "dataset": "R2R",
+    "language": "en",
+    "records_in_uploaded_val": 1839,
+    "suffix_exact_one_ascii_space": 1839,
+    "body_multiple_ascii_space": 268,
+    "records_with_native_CRLF": 9
+  },
+  "rxr-en-us": {
+    "dataset": "RxR",
+    "language": "en-US",
+    "records_in_uploaded_val": 1223,
+    "prefix_nonempty": 3,
+    "suffix_empty": 890,
+    "suffix_exact_one_ascii_space": 260,
+    "suffix_only_ascii_spaces": 324,
+    "body_multiple_ascii_space": 180,
+    "any_multiple_ascii_space": 201,
+    "any_LF": 12,
+    "body_LF": 3,
+    "suffix_LF": 9,
+    "records_with_non_ascii": 6
+  },
+  "policy": "Preserve actual record characters regardless of dataset. Use the stage array and renderer ledger, not splitlines(), to count stages."
+}

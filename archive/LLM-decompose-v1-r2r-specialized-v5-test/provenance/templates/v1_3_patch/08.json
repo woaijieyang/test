@@ -1,0 +1,28 @@
+{
+  "id": "T08",
+  "title": "Spoken correction, identity and ongoing constraint",
+  "origin": "New teaching pair; not the historical JSON template or an experimental outcome.",
+  "source": "Turn left, sorry, right and go through the blue door into the lounge. Cross the lounge with the sofa on your left and wait by the window.",
+  "acceptable": {
+    "status": "ok",
+    "subtasks": [
+      "Turn right and go through the blue door into the lounge.",
+      "Cross the lounge with the sofa on your left and wait by the window."
+    ],
+    "issues": []
+  },
+  "contrast": {
+    "status": "ok",
+    "subtasks": [
+      "Turn left, then right and go through the blue door into the lounge.",
+      "Cross the lounge with the sofa on your left and wait by the window."
+    ],
+    "issues": []
+  },
+  "dimension": "fidelity",
+  "check": "C03",
+  "source_quote": "Turn left, sorry, right",
+  "candidate_contrast_quote": "Turn left, then right",
+  "execution_or_focus_difference": "The superseded action is now executed. Ordinary later turns, by contrast, must not be silently removed.",
+  "alternative_or_limit": "Cross the lounge already names the region; a redundant recap is unnecessary."
+}

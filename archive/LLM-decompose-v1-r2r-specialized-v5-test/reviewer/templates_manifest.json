@@ -1,0 +1,21 @@
+{
+  "selection_key": "source.profile",
+  "profiles": {
+    "r2r-en": {
+      "file": "templates/r2r.json",
+      "examples": 35,
+      "language": "en",
+      "dataset": "R2R"
+    },
+    "rxr-en-us": {
+      "file": "templates/rxr_en_us.json",
+      "examples": 35,
+      "language": "en-US",
+      "dataset": "RxR"
+    }
+  },
+  "total_distinct_source_instructions": 70,
+  "principle": "Dataset selection chooses examples only. Generator and Reviewer share one semantic acceptance contract.",
+  "default_examples_per_call": 8,
+  "selection_policy": "3 source-independent core examples plus 5 source-feature-matched examples; deterministic and frozen across repair/recheck. Full 35 explicit ablation."
+}

@@ -1,0 +1,349 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-CORE-R04",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": "R2R-CORE-G01",
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "19",
+    "episode_id": "19",
+    "instruction_id": null,
+    "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
+    "trajectory_id": "185",
+    "source_key": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185"
+  },
+  "provenance": {
+    "kind": "reviewer_only_segmentation_adversarial_example",
+    "source_status": "source_instruction_from_uploaded_val_seen",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "C_SEGMENT_GRANULARITY",
+    "core_curated_from": "R2R-DIAG-25",
+    "curation_basis": "semantic decision-boundary coverage; semantic provenance pair only"
+  },
+  "review_input": {
+    "original_instruction": "Move forward past the white coach and then turn left. Continue up the stairs and stop. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Move forward past the white coach.",
+        "Turn left.",
+        "Continue up the stairs and stop."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "issue"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Move forward past the white coach",
+        "requirement": "Preserve the forward movement and completed coach pass-by as the route reference.",
+        "candidate_evidence": [
+          "Move forward past the white coach."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "then turn left",
+        "requirement": "Preserve the left turn in sequence with the onward stair movement; do not isolate it as a no-target stage.",
+        "candidate_evidence": [
+          "Turn left."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Continue up the stairs and stop.",
+        "requirement": "Preserve the stair ascent and explicit final stop.",
+        "candidate_evidence": [
+          "Continue up the stairs and stop."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "All source actions remain present in the candidate.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The original order is preserved; the issue is the usefulness of the boundary, not a temporal inversion.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Each isolated action can be textually executed; the defect is that the middle turn is not a useful independent navigation subgoal.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "The event order is continuous; no physical handoff gap is claimed. The unsupported aspect is the usefulness of the extra boundary.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "issue",
+        "conclusion": "A preparatory turn is isolated without an independent local objective; merge it with the stair ascent.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "All source route events remain represented in order; only the grouping is materially over-fragmented.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "code": "OVERSEGMENTED",
+        "failed_layer": "L5_grouping",
+        "c_check": "C12",
+        "dimension": "segmentation_adequacy",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0,
+          1,
+          2
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "source_quote": "Move forward past the white coach and then turn left. Continue up the stairs and stop.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Move forward past the white coach."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Turn left."
+          },
+          {
+            "subtask_index": 2,
+            "quote": "Continue up the stairs and stop."
+          }
+        ],
+        "evidence_level": "S2",
+        "problem": "The candidate isolates the preparatory left turn as a standalone stage with no independent destination or useful local objective. The source couples the turn to the subsequent stair ascent; the cut adds a task boundary without exposing a separately completed navigation goal.",
+        "execution_consequence": "The navigator receives an orientation-only micro-goal with no distinct destination, creating an unnecessary subtask transition before the stair approach and weakening focus on the coupled turn-and-climb leg.",
+        "repair": {
+          "operation": "merge",
+          "affected_subtask_indices": [
+            1,
+            2
+          ],
+          "instruction": "Merge the left turn with the subsequent stair ascent and explicit stop, preserving the coach pass-by as the preceding reference.",
+          "protected_requirements": [
+            "Keep the coach pass-by before the left turn.",
+            "Keep the left turn before stair ascent.",
+            "Preserve the explicit final stop."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "past the white coach",
+          "candidate_quotes": [
+            "past the white coach"
+          ]
+        },
+        "process": {
+          "text": "Move forward past the white coach.",
+          "candidate_quotes": [
+            "Move forward past the white coach."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "Complete the pass-by of the white coach.",
+          "candidate_quotes": [
+            "past the white coach"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Move forward past the white coach"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
+          "candidate_quotes": [
+            "Turn left."
+          ]
+        },
+        "target": {
+          "text": "Turn left",
+          "candidate_quotes": [
+            "Turn left"
+          ]
+        },
+        "process": {
+          "text": "Turn left.",
+          "candidate_quotes": [
+            "Turn left."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the left turn.",
+          "candidate_quotes": [
+            "Turn left"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "then turn left"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
+          "candidate_quotes": [
+            "Continue up the stairs and stop."
+          ]
+        },
+        "target": {
+          "text": "the stairs",
+          "candidate_quotes": [
+            "the stairs"
+          ]
+        },
+        "process": {
+          "text": "Continue up the stairs and stop.",
+          "candidate_quotes": [
+            "Continue up the stairs and stop."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Ascend the stairs and stop.",
+          "candidate_quotes": [
+            "Continue up the stairs and stop."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Continue up the stairs and stop."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The first stage completes the coach pass-by.",
+          "candidate_quote": "Move forward past the white coach."
+        },
+        "next_entry": {
+          "text": "The next stage begins with the left turn.",
+          "candidate_quote": "Turn left."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The event sequence is continuous and the next stage follows from the preceding pose; the defect is that the isolated turn is not an independent local objective."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The second stage completes the preparatory left turn.",
+          "candidate_quote": "Turn left."
+        },
+        "next_entry": {
+          "text": "The third stage continues with the stair ascent.",
+          "candidate_quote": "Continue up the stairs and stop."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The left turn can precede the stair ascent without a physical gap, but isolating it as a standalone stage creates an orientation-only micro-goal."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_principle": "Judge the boundary from source event order and actual stage text; do not infer a segmentation defect from sentence count alone.",
+    "why_this_case_matters": "The candidate isolates the preparatory left turn as a standalone stage with no independent destination or useful local objective. The source couples the turn to the subsequent stair ascent; the cut adds a task boundary without exposing a separately completed navigation goal.",
+    "reusable_rule": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
+    "anti_pattern": "Do not call every two-stage route over-segmented. A completed independent objective with a supported next entry is a valid boundary.",
+    "semantic_pattern": "revise_oversegmentation_orientation_only_stage",
+    "decision_reason": "The candidate isolates a preparatory turn as a standalone stage without an independent target or meaningful local objective; the source couples it to the subsequent stair ascent.",
+    "transfer_rule": "REVISE for under-useful fragmentation only when a stage has no independent target/process and the source supports merging it with the next coupled maneuver. Preserve the route order and explicit terminal condition.",
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+  }
+}

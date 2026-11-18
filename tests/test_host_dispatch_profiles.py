@@ -1,0 +1,333 @@
+import unittest
+
+from adapter.source import from_record
+from host.compile import compile_prompt, core_library
+from host.run import request, run_record
+from host.template_selector import select_examples, library
+from test_runtime_contract_v2 import SOURCE, generator_candidate, reviewer_output
+
+
+class HostDispatchProfileTests(unittest.TestCase):
+    def setUp(self):
+        self.pins = {
+            role: {"model": "fixture", "effort": "low"}
+            for role in ("generator", "reviewer")
+        }
+
+    def test_adapter_profile_controls_request_and_prompt_isolation(self):
+        r2r = from_record({
+            "dataset": "R2R", "split": "val_seen", "episode_id": "r2r-1",
+            "instruction_text": "Walk through the doorway and stop."
+        })
+        rxr = from_record({
+            "dataset": "RxR", "language": "en-US", "split": "val_seen",
+            "instruction_id": "rxr-1", "instruction": SOURCE
+        })
+
+        for src, expected_profile in ((r2r, "r2r-en"), (rxr, "rxr-en-us")):
+            ids = select_examples("generator", src.profile, src.raw)
+            req = request("generator", "initial",
+                          {"original_instruction": src.raw}, self.pins["generator"],
+                          src.profile, ids)
+            self.assertEqual(req["profile"], expected_profile)
+            self.assertEqual(req["selected_example_ids"], ids)
+
+        r2r_req = request("generator", "initial",
+                          {"original_instruction": r2r.raw}, self.pins["generator"],
+                          r2r.profile, select_examples("generator", r2r.profile, r2r.raw))
+        r2r_system = r2r_req["messages"][0]["content"]
+        self.assertNotIn("RXR SHARED SEMANTIC RULES", r2r_system)
+        self.assertNotIn("RXR ROLE GUIDANCE", r2r_system)
+        self.assertNotIn("FIXED RXR", r2r_system)
+        self.assertEqual(r2r_req["fixed_core_template_ids"], [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
+
+        rxr_ids = select_examples("generator", rxr.profile, rxr.raw)
+        rxr_req = request("generator", "initial",
+                          {"original_instruction": rxr.raw}, self.pins["generator"],
+                          rxr.profile, rxr_ids)
+        self.assertEqual(len(rxr_req["fixed_core_template_ids"]), 10)
+        self.assertTrue(2 <= len(rxr_req["selected_example_ids"]) <= 4)
+        self.assertIn("RXR SHARED SEMANTIC RULES", rxr_req["messages"][0]["content"])
+        self.assertIn("FIXED RXR GENERATOR CORE", rxr_req["messages"][0]["content"])
+
+    def test_host_dispatches_adapter_profile_to_both_roles(self):
+        src = from_record({
+            "dataset": "RxR", "language": "en-US", "split": "val_seen",
+            "instruction_id": "dispatch-1", "instruction": SOURCE
+        })
+        candidate = generator_candidate(repaired=True)
+        review = reviewer_output(candidate, repaired=True)
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            output = candidate if req["role"] == "generator" else review
+            return {
+                "output": output,
+                "receipt": {
+                    "model": req["model"], "effort": req["effort"],
+                    "request_id": req["phase"] + "-dispatch-fixture"
+                }
+            }
+
+        result = run_record(src, transport, pins=self.pins)
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual([(r["role"], r["phase"]) for r in requests],
+                         [("generator", "initial"), ("reviewer", "review")])
+        self.assertTrue(all(r["profile"] == "rxr-en-us" for r in requests))
+        for role in ("generator", "reviewer"):
+            role_requests = [r for r in requests if r["role"] == role]
+            self.assertEqual(len(role_requests), 1)
+            self.assertEqual(len(role_requests[0]["fixed_core_template_ids"]), 10)
+            self.assertTrue(2 <= len(role_requests[0]["selected_example_ids"]) <=
+                            (4 if role == "generator" else 6))
+            self.assertEqual(role_requests[0]["prompt_components"],
+                             result["prompt_components"][role][
+                                 "initial" if role == "generator" else "review"])
+            self.assertEqual(role_requests[0]["template_bundle"]["sha256"],
+                             result["template_bundles"][role]["sha256"])
+
+    def test_rxr_g0_r0_g1_r1_reuses_frozen_profile_rules_and_templates(self):
+        from test_runtime_contract_v2 import reviewer_output
+        src = from_record({
+            "dataset": "RxR", "language": "en-US", "split": "val_seen",
+            "instruction_id": "dispatch-four-phase", "instruction": SOURCE
+        })
+        old = generator_candidate(repaired=False)
+        new = generator_candidate(repaired=True)
+        r0 = reviewer_output(old, repaired=False)
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        repair = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The source explicitly requires the omitted hallway traversal."
+            }]
+        }
+        replies = [old, r0, repair, r1]
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            return {
+                "output": replies.pop(0),
+                "receipt": {
+                    "model": req["model"], "effort": req["effort"],
+                    "request_id": f"rxr-four-phase-{len(requests)}"
+                }
+            }
+
+        result = run_record(src, transport, pins=self.pins)
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual([(x["role"], x["phase"]) for x in requests], [
+            ("generator", "initial"), ("reviewer", "review"),
+            ("generator", "repair"), ("reviewer", "recheck")
+        ])
+        for req in requests:
+            self.assertEqual(req["profile"], "rxr-en-us")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+        for role, phase in (("generator", "initial"), ("reviewer", "review"),
+                            ("generator", "repair"), ("reviewer", "recheck")):
+            req = next(x for x in requests if x["role"] == role and x["phase"] == phase)
+            self.assertEqual(req["prompt_components"],
+                             result["prompt_components"][role][phase])
+            self.assertEqual(req["template_bundle"]["sha256"],
+                             result["template_bundles"][role]["sha256"])
+        self.assertEqual(requests[0]["selected_example_ids"], requests[2]["selected_example_ids"])
+        self.assertEqual(requests[1]["selected_example_ids"], requests[3]["selected_example_ids"])
+        self.assertEqual(requests[0]["fixed_core_template_ids"],
+                         requests[2]["fixed_core_template_ids"])
+        self.assertEqual(requests[1]["fixed_core_template_ids"],
+                         requests[3]["fixed_core_template_ids"])
+
+    def test_r2r_v5_compatibility_assets_are_byte_identical(self):
+        import hashlib
+        import json
+        from pathlib import Path
+        from host.compile import ROOT
+
+        manifest = json.loads(
+            (ROOT / "provenance/r2r_v5_compatibility.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest["baseline_commit"],
+                         "c2243fdd3f8c3ae08f1ad6837e14b17a17e228f3")
+        self.assertEqual(manifest["file_count"], len(manifest["files"]))
+        for entry in manifest["files"]:
+            path = ROOT / entry["path"]
+            data = path.read_bytes()
+            blob = hashlib.sha1(
+                b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+            ).hexdigest()
+            with self.subTest(path=entry["path"]):
+                self.assertEqual(blob, entry["git_blob_sha1"])
+
+    def test_r2r_prompt_restores_v5_build_and_curated_header(self):
+        source_text = "Walk through the doorway and stop beside the table."
+        ids = select_examples("generator", "r2r-en", source_text)
+        prompt, _ = compile_prompt(
+            "generator", "initial", profile="r2r-en",
+            selected_ids=ids, original_instruction=source_text
+        )
+        self.assertTrue(prompt.startswith(
+            "BUILD: Ten fixed R2R core examples are loaded in stable order; selected dynamic examples are source-feature-matched and frozen per record. "
+            "The original instruction is the only route authority.\n\n"
+        ))
+        self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
+        self.assertIn("FIXED R2R-EN GENERATOR CORE: exactly 10", prompt)
+        self.assertIn("DYNAMIC R2R-EN GENERATOR EXAMPLES:", prompt)
+        self.assertNotIn("FIXED RXR", prompt)
+        self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
+        self.assertNotIn("RXR ROLE GUIDANCE", prompt)
+
+    def test_r2r_dynamic_library_order_matches_v5_path_order(self):
+        from pathlib import Path
+        from host.compile import ROOT
+        for role in ("generator", "reviewer"):
+            folder = ROOT / role / "templates" / "R2R"
+            core_folder = folder / "core"
+            core_rows = [__import__("json").loads(p.read_bytes()) for p in core_folder.glob("*.json")]
+            promoted = {row["provenance"]["core_curated_from"] for row in core_rows}
+            expected_paths = sorted(
+                p for p in folder.glob("*/*.json")
+                if p.parent.name != "core"
+                and __import__("json").loads(p.read_bytes())["template_id"] not in promoted
+            )
+            expected_ids = [__import__("json").loads(p.read_bytes())["template_id"]
+                            for p in expected_paths]
+            actual_ids = [row["template_id"] for row in library(role, "r2r-en")]
+            self.assertEqual(actual_ids, expected_ids)
+
+    def test_r2r_selector_matches_v5_selection_formula(self):
+        import re
+        from host.template_selector import rank_examples, normalized, features
+        text = SOURCE
+        cues, _ = features(text)
+        distinct = cues - {
+            "orientation_or_reference_frame", "room_transition",
+            "intermediate_stop_or_wait"
+        }
+        extra = min(2, len(distinct)//3 + int(len(text.split()) >= 65))
+        generator_rows = library("generator", "r2r-en")
+        reviewer_rows = library("reviewer", "r2r-en")
+        expected_generator = [
+            row["template_id"]
+            for row in rank_examples(generator_rows, text, 6 + extra)
+        ]
+        self.assertEqual(
+            select_examples("generator", "r2r-en", text), expected_generator
+        )
+        pairs = {
+            row["pair_id"]: row for row in reviewer_rows if row.get("pair_id")
+        }
+        expected_paired = [pairs[item]["template_id"] for item in expected_generator]
+        diagnostics = rank_examples(
+            [row for row in reviewer_rows if not row.get("pair_id")],
+            text, 2 + extra,
+            excluded=[normalized((row.get("input") or row["review_input"])["original_instruction"])
+                      for row in (pairs[item] for item in expected_generator)]
+        )
+        expected_reviewer = expected_paired + [row["template_id"] for row in diagnostics]
+        self.assertEqual(
+            select_examples("reviewer", "r2r-en", text), expected_reviewer
+        )
+
+    def test_r2r_full_four_phase_workflow_uses_only_v5_profile(self):
+        src = from_record({
+            "dataset": "R2R", "split": "val_seen", "episode_id": "r2r-four-phase",
+            "instruction_text": SOURCE
+        })
+        old = generator_candidate(repaired=False)
+        new = generator_candidate(repaired=True)
+        r0 = reviewer_output(old, repaired=False)
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        repair = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The source explicitly requires the omitted hallway traversal."
+            }]
+        }
+        replies = [old, r0, repair, r1]
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            return {
+                "output": replies.pop(0),
+                "receipt": {
+                    "model": req["model"], "effort": req["effort"],
+                    "request_id": f"r2r-four-phase-{len(requests)}"
+                }
+            }
+
+        result = run_record(src, transport, pins=self.pins)
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual([(x["role"], x["phase"]) for x in requests], [
+            ("generator", "initial"), ("reviewer", "review"),
+            ("generator", "repair"), ("reviewer", "recheck")
+        ])
+        for req in requests:
+            self.assertEqual(req["profile"], "r2r-en")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertEqual(req["template_bundle"]["fixed_core_ids"], req["fixed_core_template_ids"])
+            self.assertNotIn("RXR SHARED SEMANTIC RULES", req["messages"][0]["content"])
+            self.assertNotIn("RXR ROLE GUIDANCE", req["messages"][0]["content"])
+        self.assertEqual(requests[0]["selected_example_ids"], requests[2]["selected_example_ids"])
+        self.assertEqual(requests[1]["selected_example_ids"], requests[3]["selected_example_ids"])
+        self.assertEqual(
+            requests[0]["prompt_components"],
+            result["prompt_components"]["generator"]["initial"]
+        )
+        self.assertEqual(
+            requests[2]["prompt_components"],
+            result["prompt_components"]["generator"]["repair"]
+        )
+        self.assertEqual(
+            requests[1]["prompt_components"],
+            result["prompt_components"]["reviewer"]["review"]
+        )
+        self.assertEqual(
+            requests[3]["prompt_components"],
+            result["prompt_components"]["reviewer"]["recheck"]
+        )
+
+    def test_r2r_never_receives_rxr_core_or_rules(self):
+        src = from_record({
+            "dataset": "R2R", "split": "val_seen", "episode_id": "dispatch-r2r",
+            "instruction_text": SOURCE
+        })
+        candidate = generator_candidate(repaired=True)
+        review = reviewer_output(candidate, repaired=True)
+        requests = []
+
+        def transport(req):
+            requests.append(req)
+            output = candidate if req["role"] == "generator" else review
+            return {"output": output, "receipt": {
+                "model": req["model"], "effort": req["effort"],
+                "request_id": req["phase"] + "-r2r-fixture"
+            }}
+
+        result = run_record(src, transport, pins=self.pins)
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual(len(requests), 2)
+        for req in requests:
+            self.assertEqual(req["profile"], "r2r-en")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            system = req["messages"][0]["content"]
+            self.assertNotIn("RXR SHARED SEMANTIC RULES", system)
+            self.assertNotIn("RXR ROLE GUIDANCE", system)
+            self.assertNotIn("FIXED RXR", system)
+            self.assertIn("FIXED R2R-EN", system)
+            self.assertIn("shared/dataset_rules/r2r_en.md", system)
+            self.assertNotIn("rxr_en_us", system)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,242 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-014",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "val_seen",
+    "role": "guide",
+    "record_id": "2715",
+    "episode_id": "376",
+    "instruction_id": "2715",
+    "scene_id": "mp3d/8WUmhLawc2A/8WUmhLawc2A.glb",
+    "trajectory_id": "1125"
+  },
+  "provenance": {
+    "kind": "uploaded_val_seen_source",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation"
+  },
+  "input": {
+    "original_instruction": "You will start by facing an open doorway. Turn around and you will see a hallway. Walk towards the hallway where there's a painting on the wall. Once you're there, on your right you will see the kitchen. Turn to your right and walk straight down. Standing in between the sink and the stove. Continue walking forward until you've reached the dining table. Once you're at the dining table, you will see on the right. There's a painting on the wall and another hallway on the right. Walk towards the hallway and when you're there, you will see a room. Walk inside the room. AS you can see there's a couch with purple or black cushions and the bed. Walk towards the right side of the bed and when you're at the right side of the bed, you will see on the right an open door. Walk inside the washroom, Standing at the right side of the bathtub. Keep walking all the way to the closet. Once you're in front of the closet, on your right you will see an area where it's all decorated with tiles. Small tiles. Walk inside that area and as you can see now in front of you is a shower area with black shower head and shower hose. Take another step forward until you're right underneath the shower head. Once you're there, you're done. "
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The source supports distinct completed navigation objectives. Boundaries are placed only where the preceding objective has a supported outcome and the next stage can continue from that state."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You will start by facing an open doorway. Turn around and you will see a hallway. Walk towards the hallway where there is a painting on the wall. Once you are there, on your right you will see the kitchen. Turn to your right and walk straight down. You are between the sink and the stove. Continue walking forward until you have reached the dining table.",
+      "Once you are at the dining table, you will see a painting on the right and another hallway on the right. Walk towards the hallway. When you are there, you will see a room. Walk inside the room. You will see a couch with purple or black cushions and a bed. Walk towards the right side of the bed. When you are at the right side of the bed, you will see an open door on the right. Walk inside the washroom and stand at the right side of the bathtub.",
+      "From the right side of the bathtub, keep walking all the way to the closet. Once you are in front of the closet, on your right you will see an area decorated with small tiles. Walk inside that area. In front of you is a shower area with a black shower head and shower hose. Take another step forward until you are right underneath the shower head. Once you are there, you are done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Continue walking forward until you have reached the dining table.",
+          "candidate_quotes": [
+            "Continue walking forward until you have reached the dining table."
+          ]
+        },
+        "process": {
+          "text": "You will start by facing an open doorway. Turn around and you will see a hallway. Walk towards the hallway where there is a painting on the wall. Once you are there, on your right you will see the kitchen. Turn to your right and walk straight down. You are between the sink and the stove. Continue walking forward until you have reached the dining table.",
+          "candidate_quotes": [
+            "You will start by facing an open doorway. Turn around and you will see a hallway. Walk towards the hallway where there is a painting on the wall. Once you are there, on your right you will see the kitchen. Turn to your right and walk straight down. You are between the sink and the stove. Continue walking forward until you have reached the dining table."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Continue walking forward until you have reached the dining table.",
+          "candidate_quotes": [
+            "Continue walking forward until you have reached the dining table."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once, until; spatial_frame: facing, on your, right, between; manner_or_constraint: around",
+          "candidate_quotes": [
+            "Once",
+            "until",
+            "facing",
+            "on your",
+            "right",
+            "between",
+            "around"
+          ]
+        },
+        "source_quotes": [
+          "Turn to your right and walk straight down.",
+          "Turn around and you will see a hallway.",
+          "You will start by facing an open doorway.",
+          "Once you're there, on your right you will see the kitchen."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "Once you are at the dining table, you will see a painting on the right and another hallway on the right",
+          "candidate_quotes": [
+            "Once you are at the dining table, you will see a painting on the right and another hallway on the right"
+          ]
+        },
+        "target": {
+          "text": "Walk inside the washroom and stand at the right side of the bathtub.",
+          "candidate_quotes": [
+            "Walk inside the washroom and stand at the right side of the bathtub."
+          ]
+        },
+        "process": {
+          "text": "Once you are at the dining table, you will see a painting on the right and another hallway on the right. Walk towards the hallway. When you are there, you will see a room. Walk inside the room. You will see a couch with purple or black cushions and a bed. Walk towards the right side of the bed. When you are at the right side of the bed, you will see an open door on the right. Walk inside the washroom and stand at the right side of the bathtub.",
+          "candidate_quotes": [
+            "Once you are at the dining table, you will see a painting on the right and another hallway on the right. Walk towards the hallway. When you are there, you will see a room. Walk inside the room. You will see a couch with purple or black cushions and a bed. Walk towards the right side of the bed. When you are at the right side of the bed, you will see an open door on the right. Walk inside the washroom and stand at the right side of the bathtub."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Walk inside the washroom and stand at the right side of the bathtub.",
+          "candidate_quotes": [
+            "Walk inside the washroom and stand at the right side of the bathtub."
+          ],
+          "stop_scope": "intermediate"
+        },
+        "conditions": {
+          "text": "descriptive_uncertainty: purple or black cushions describes appearance, not a route branch; temporal: once, when; spatial_frame: right side of the bed and right side of bathtub.",
+          "candidate_quotes": [
+            "purple or black cushions",
+            "When you are at the right side of the bed"
+          ]
+        },
+        "source_quotes": [
+          "Walk inside the room.",
+          "Walk towards the right side of the bed and when you're at the right side of the bed, you will see on the right an open door.",
+          "Walk towards the hallway and when you're there, you will see a room.",
+          "Once you're at the dining table, you will see on the right."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "inherited_entity",
+          "text": "From the right side of the bathtub, keep walking all the way to the closet",
+          "candidate_quotes": [
+            "From the right side of the bathtub, keep walking all the way to the closet"
+          ]
+        },
+        "target": {
+          "text": "Once you are there",
+          "candidate_quotes": [
+            "Once you are there"
+          ]
+        },
+        "process": {
+          "text": "From the right side of the bathtub, keep walking all the way to the closet. Once you are in front of the closet, on your right you will see an area decorated with small tiles. Walk inside that area. In front of you is a shower area with a black shower head and shower hose. Take another step forward until you are right underneath the shower head. Once you are there, you are done.",
+          "candidate_quotes": [
+            "From the right side of the bathtub, keep walking all the way to the closet. Once you are in front of the closet, on your right you will see an area decorated with small tiles. Walk inside that area. In front of you is a shower area with a black shower head and shower hose. Take another step forward until you are right underneath the shower head. Once you are there, you are done."
+          ]
+        },
+        "ending": {
+          "kind": "linked_trigger_or_refinement",
+          "text": "Once you are there",
+          "candidate_quotes": [
+            "Once you are there"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: Once, until; spatial_frame: right, in front of, on your, In front of; manner_or_constraint: keep",
+          "candidate_quotes": [
+            "Once",
+            "until",
+            "right",
+            "in front of",
+            "on your",
+            "In front of",
+            "keep"
+          ]
+        },
+        "source_quotes": [
+          "Small tiles.",
+          "Keep walking all the way to the closet.",
+          "Take another step forward until you're right underneath the shower head.",
+          "Once you're in front of the closet, on your right you will see an area where it's all decorated with tiles."
+        ],
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Continue walking forward until you have reached the dining table.",
+          "candidate_quote": "Continue walking forward until you have reached the dining table."
+        },
+        "next_entry": {
+          "text": "Once you are at the dining table, you will see a painting on the right and another hallway on the right",
+          "candidate_quote": "Once you are at the dining table, you will see a painting on the right and another hallway on the right"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk inside the washroom and stand at the right side of the bathtub.",
+          "candidate_quote": "Walk inside the washroom and stand at the right side of the bathtub."
+        },
+        "next_entry": {
+          "text": "From the right side of the bathtub, keep walking all the way to the closet",
+          "candidate_quote": "From the right side of the bathtub, keep walking all the way to the closet"
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "completed_transition_then_distinct_objective",
+    "why_this_case_matters": "SPLIT example with 3 stages. Stage 1 ends with 'Continue walking forward until you have reached the dining table.'; stage 2 begins from 'Once you are at the dining table, you will see a painting on the right and another hallway on…'. Stage 2 ends with 'Walk inside the washroom and stand at the right side of the bathtub.'; stage 3 begins from 'From the right side of the bathtub, keep walking all the way to the closet'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: temporal: Once, until; spatial_frame: facing, on your, right, between; manner_or_constraint: around Stage 2: descriptive_uncertainty: purple or black cushions describes appearance, not a route branch; temporal: once,… Stage 3: temporal: Once, until; spatial_frame: right, in front of, on your, In front of; manner_or_constraint: keep",
+    "handoff_focus": "Stage 1 ends with 'Continue walking forward until you have reached the dining table.'; stage 2 begins from 'Once you are at the dining table, you will see a painting on the right and another hallway on…'. Stage 2 ends with 'Walk inside the washroom and stand at the right side of the bathtub.'; stage 3 begins from 'From the right side of the bathtub, keep walking all the way to the closet'.",
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+  },
+  "retrieval_tags": [
+    "room_transition",
+    "doorway_selection_and_crossing",
+    "stairs_or_level_change",
+    "landmark_conditioned_navigation",
+    "temporal_dependency",
+    "orientation_or_reference_frame",
+    "multi_stage_split"
+  ]
+}

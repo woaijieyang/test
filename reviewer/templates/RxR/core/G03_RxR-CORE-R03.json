@@ -1,0 +1,134 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RXR-CORE-R03",
+  "role": "reviewer",
+  "dataset_scope": "RxR_prompt_teaching_example",
+  "language": "en-US",
+  "pair_id": "RXR-CORE-G03",
+  "source": {
+    "split": "synthetic_or_adapted",
+    "role": "prompt_example",
+    "record_id": "G03",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null
+  },
+  "provenance": "Paired reviewer teaching example; expected audit is curated against the uploaded reviewer contract. It is not a trajectory-ground-truth judgement.",
+  "review_input": {
+    "original_instruction": "Walk toward the dining room but turn left before entering it and go into the open area.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk towards the dining room, but turn left before entering it and go into the open area."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk toward the dining room but turn left before entering it and go into the open area.",
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "candidate_evidence": [
+          "Walk towards the dining room, but turn left before entering it and go into the open area."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk towards the dining room, but turn left before entering it and go into the open area.",
+          "candidate_quotes": [
+            "Walk towards the dining room, but turn left before entering it and go into the open area."
+          ]
+        },
+        "process": {
+          "text": "Walk towards the dining room, but turn left before entering it and go into the open area.",
+          "candidate_quotes": [
+            "Walk towards the dining room, but turn left before entering it and go into the open area."
+          ]
+        },
+        "ending": {
+          "kind": "terminal_goal_directive",
+          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "candidate_quotes": [
+            "go into the open area."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "temporal: before; spatial_frame: left",
+          "candidate_quotes": [
+            "before",
+            "left"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Walk toward the dining room but turn left before entering it and go into the open area."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "before_entry_turn",
+    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+  }
+}
