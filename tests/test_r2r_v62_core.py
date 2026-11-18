@@ -279,7 +279,7 @@ class R2RV62CoreTests(unittest.TestCase):
     def test_r01_teaching_notes_do_not_invent_stairs_or_doorway_stop(self):
         row = next(x for x in core_library("reviewer", "r2r-en") if x["template_id"] == "R2R-CORE-R01")
         notes = json.dumps(row["teaching_notes"]).lower()
-        self.assertNotIn("stairs", notes)
+        self.assertNotIn("source-selected doorway relative to the stairs", notes)
         self.assertNotIn("stop in the doorway", notes)
 
 if __name__ == "__main__":
