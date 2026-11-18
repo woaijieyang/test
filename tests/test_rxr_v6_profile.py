@@ -22,8 +22,10 @@ class RxRV6ProfileTests(unittest.TestCase):
                          [f"RXR-CORE-G{i:02d}" for i in range(1, 11)])
         self.assertEqual([x["pair_id"] for x in rev],
                          [x["template_id"] for x in gen])
-        self.assertEqual([x["template_id"] for x in core_library("generator", "r2r-en")],\n                         [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
-        self.assertEqual([x["template_id"] for x in core_library("reviewer", "r2r-en")],\n                         [f"R2R-CORE-R{i:02d}" for i in range(1, 11)])
+        self.assertEqual([x["template_id"] for x in core_library("generator", "r2r-en")],
+                         [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
+        self.assertEqual([x["template_id"] for x in core_library("reviewer", "r2r-en")],
+                         [f"R2R-CORE-R{i:02d}" for i in range(1, 11)])
 
     def test_legacy_sources_are_not_in_dynamic_retrieval(self):
         for role in ("generator", "reviewer"):
