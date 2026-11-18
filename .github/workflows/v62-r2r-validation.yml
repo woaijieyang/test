@@ -80,10 +80,17 @@ jobs:
           PY
       - name: Run renderer smoke evaluation
         run: python -m evaluation.smoke24
-      - name: Record known demo-fixture compatibility boundary
+      - name: Compare legacy demo fixture on v6.1 and v6.2
         run: |
           set +e
+          (cd v61-baseline && python -m examples.demo)
+          baseline_status=$?
           python -m examples.demo
-          status=$?
-          echo "examples.demo exit status: $status (legacy fixture uses pre-Runtime-v2 Reviewer fields; it is not modified by this R2R-only task)"
+          current_status=$?
+          echo "v6.1 demo exit status: $baseline_status"
+          echo "v6.2 demo exit status: $current_status"
+          if [ "$baseline_status" -eq 0 ] && [ "$current_status" -ne 0 ]; then
+            echo "The demo regression is new to v6.2 and requires investigation."
+            exit 1
+          fi
           exit 0
