@@ -20,8 +20,8 @@ class CompleteContractTests(unittest.TestCase):
      from host.compile import core_library
      self.assertEqual(len(core_library('generator','rxr-en-us')),10)
      self.assertEqual(len(core_library('reviewer','rxr-en-us')),10)
-     self.assertEqual(core_library('generator','r2r-en'),[])
-     self.assertEqual(core_library('reviewer','r2r-en'),[])
+     self.assertEqual(len(core_library('generator','r2r-en')),10)
+     self.assertEqual(len(core_library('reviewer','r2r-en')),10)
  def test_02_paired_sources_preserve_identity(self):
      for profile in PROFILES:
          gs={r['template_id']:r for r in library('generator',profile)}
@@ -36,10 +36,11 @@ class CompleteContractTests(unittest.TestCase):
     self.assertEqual(len(e['output']['stage_audit']),len(e['output']['subtasks']))
     self.assertEqual(len(e['output']['handoffs']),max(0,len(e['output']['subtasks'])-1))
   from host.compile import core_library
-  for e in core_library('generator','rxr-en-us'):
-   protocol.generator(e['input']['original_instruction'],e['output'])
-   self.assertEqual(len(e['output']['stage_audit']),len(e['output']['subtasks']))
-   self.assertEqual(len(e['output']['handoffs']),max(0,len(e['output']['subtasks'])-1))
+  for profile in ('r2r-en','rxr-en-us'):
+   for e in core_library('generator',profile):
+    protocol.generator(e['input']['original_instruction'],e['output'])
+    self.assertEqual(len(e['output']['stage_audit']),len(e['output']['subtasks']))
+    self.assertEqual(len(e['output']['handoffs']),max(0,len(e['output']['subtasks'])-1))
  def test_04_uploaded_examples_match_teaching_schemas(self):
      from jsonschema import Draft202012Validator
      from referencing import Registry,Resource
@@ -123,21 +124,22 @@ class CompleteContractTests(unittest.TestCase):
              self.assertNotEqual(row['source']['split'],'val_unseen')
  def test_18_every_reviewer_core_passes_runtime_protocol_after_projection(self):
   from host.compile import core_library, runtime_review_output
-  for row in core_library('reviewer','rxr-en-us'):
-   audit=runtime_review_output(row)
-   candidate=row['review_input']['candidate']
-   with self.subTest(template=row['template_id']):
-    protocol.reviewer(
-      row['review_input']['original_instruction'],
-      candidate,
-      audit
-    )
-    self.assertEqual(len(audit['stage_checks']),len(candidate['subtasks']))
-    self.assertEqual([x['layer'] for x in audit['layer_checks']],
-                     list(protocol.LAYERS))
-    self.assertEqual([(x['from_subtask_index'],x['to_subtask_index'])
-                      for x in audit['handoffs']],
-                     [(i,i+1) for i in range(max(0,len(candidate['subtasks'])-1))])
+  for profile in ('r2r-en','rxr-en-us'):
+   for row in core_library('reviewer',profile):
+    audit=runtime_review_output(row)
+    candidate=row['review_input']['candidate']
+    with self.subTest(profile=profile,template=row['template_id']):
+     protocol.reviewer(
+       row['review_input']['original_instruction'],
+       candidate,
+       audit
+     )
+     self.assertEqual(len(audit['stage_checks']),len(candidate['subtasks']))
+     self.assertEqual([x['layer'] for x in audit['layer_checks']],
+                      list(protocol.LAYERS))
+     self.assertEqual([(x['from_subtask_index'],x['to_subtask_index'])
+                       for x in audit['handoffs']],
+                      [(i,i+1) for i in range(max(0,len(candidate['subtasks'])-1))])
 
  def test_19_rxr_core_pairs_share_exact_source_and_candidate(self):
   from host.compile import core_library
