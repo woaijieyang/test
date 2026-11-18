@@ -226,67 +226,87 @@
       {
         "layer": "L0_integrity",
         "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; assess the candidate text only."
+        "conclusion": "No rendered instruction is supplied; assess the candidate text only.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "All source actions, transition cues, and final target approach remain present."
+        "conclusion": "All source actions, transition cues, and final target approach remain present.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The office-to-door-to-hall-to-room event order and target dependencies remain intact."
+        "conclusion": "The office-to-door-to-hall-to-room event order and target dependencies remain intact.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "The single stage contains the required entry, process, final target, and source-supported terminal approach."
+        "conclusion": "The single stage contains the required entry, process, final target, and source-supported terminal approach.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_assessable",
-        "conclusion": "The candidate has one stage and therefore no adjacent-stage handoff."
+        "conclusion": "The candidate has one stage and therefore no adjacent-stage handoff.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "issue",
-        "conclusion": "The candidate compresses several completed region/target transitions and a distinct final target approach into one broad phase, hiding useful local navigation focus despite source-supported intermediate completion events."
+        "conclusion": "The candidate compresses several completed region/target transitions and a distinct final target approach into one broad phase, hiding useful local navigation focus despite source-supported intermediate completion events.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route is textually faithful but the single phase spans multiple distinct navigation objectives; splitting at the completed doorway/region transitions yields more focused executable phases without inventing a state."
+        "conclusion": "The route is textually faithful but the single phase spans multiple distinct navigation objectives; splitting at the completed doorway/region transitions yields more focused executable phases without inventing a state.",
+        "finding_indices": [
+          0
+        ]
       }
     ],
     "findings": [
       {
-        "source_quote": "Walk through the office passed the table and armchairs. Walk through the door on the other side of the table swith the arched window above. Walk down the hall and into the room at the end of the hallway. Walk towards the circular tables in the middle of the large room.",
+        "code": "UNDERSEGMENTED",
+        "failed_layer": "L5_grouping",
+        "c_check": "C12",
+        "dimension": "segmentation_adequacy",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
+        "source_quote": "Walk through the office passed the table and armchairs. Walk through the door on the other side of the table swith the arched window above. Walk down the hall and into the room at the end of the hallway. Walk towards the circular tables in the middle of the large room.",
         "candidate_evidence": [
-          "Walk through the office past the table and armchairs, go through the door on the other side of the table with the arched window above, continue down the hall into the room at the end of the hallway, and walk towards the circular tables in the middle of the large room."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the office past the table and armchairs, go through the door on the other side of the table with the arched window above, continue down the hall into the room at the end of the hallway, and walk towards the circular tables in the middle of the large room."
+          }
         ],
-        "failed_layer": "L5_grouping",
-        "c_check": "C_SEGMENT_GRANULARITY",
         "evidence_level": "S2",
         "problem": "The candidate places the completed office traversal and doorway crossing, the subsequent hallway-to-room transition, and the distinct final circular-table approach in one undifferentiated stage. These are separate source-supported navigation objectives with completed transition outcomes; keeping all of them in one phase buries the later room-entry and target-selection focus.",
         "execution_consequence": "The navigator receives one broad instruction spanning multiple distinct region transitions and a later target objective, reducing local focus and making progress toward the final target harder to isolate and audit.",
         "repair": {
-          "operation": "split_at_supported_transition",
-          "affected_stage_indices": [
+          "operation": "regroup",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Separate the completed doorway crossing from the subsequent hallway-to-room transition, and keep the final circular-table approach as its own focused objective. Preserve the exact event order and only use entry context established by the preceding transition.",
+          "instruction": "Regroup the completed doorway crossing, the subsequent hallway-to-room transition, and the final circular-table approach into focused stages. Preserve exact event order and only use entry context established by the preceding transition.",
           "protected_requirements": [
-            "Preserve the office traversal and its table/armchair references.",
+            "Preserve the office traversal and table/armchair references.",
             "Preserve the far-side doorway identity and completed crossing.",
             "Preserve hallway traversal and room entry.",
-            "Preserve the final approach to the circular tables without adding arrival or STOP."
+            "Preserve the final approach without adding arrival or STOP."
           ]
         }
       }
@@ -339,7 +359,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "undersegmentation_multiple_completed_objectives",
