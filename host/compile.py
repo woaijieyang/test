@@ -251,7 +251,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     parts=[build_message,
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
     if profile == 'r2r-en':
-        parts.append('R2R DATASET-SPECIFIC RULES [shared/dataset_rules/r2r_en.md]:\\n' +
+        parts.append('R2R DATASET-SPECIFIC RULES [shared/dataset_rules/r2r_en.md]:\n' +
                      (ROOT/'shared/dataset_rules/r2r_en.md').read_text(encoding='utf-8'))
     if profile == 'rxr-en-us':
         parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\n' +
