@@ -91,57 +91,89 @@
       {
         "layer": "L0_integrity",
         "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed."
+        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "The required hallway-entry event is absent from the actual candidate stage text."
+        "conclusion": "The required hallway-entry event is absent from the actual candidate stage text.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "The ordinal door selection depends on a hallway entry that the candidate skips."
+        "conclusion": "The ordinal door selection depends on a hallway entry that the candidate skips.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "Stage 2's entry text assumes hallway occupancy without executing the required entry."
+        "conclusion": "Stage 2's entry text assumes hallway occupancy without executing the required entry.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L4_handoffs",
         "status": "issue",
-        "conclusion": "The previous stage ends after chair pass-by; the next stage assumes hallway entry, creating a gap."
+        "conclusion": "The previous stage ends after chair pass-by; the next stage assumes hallway entry, creating a gap.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The split after chair pass-by is useful; the defect is the missing transition in stage 2, not the boundary choice."
+        "conclusion": "The split after chair pass-by is useful; the defect is the missing transition in stage 2, not the boundary choice.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The candidate omits a required spatial transition and cannot be executed continuously."
+        "conclusion": "The candidate omits a required spatial transition and cannot be executed continuously.",
+        "finding_indices": [
+          0
+        ]
       }
     ],
     "findings": [
       {
-        "code": "PREMATURE_HANDOFF_REGION_ASSUMPTION",
-        "source_quote": "enter the hallway to the slight right",
+        "code": "OMISSION",
+        "failed_layer": "L4_handoffs",
+        "c_check": "C09",
+        "dimension": "closure_handoff",
+        "related_dimensions": [
+          "source_fidelity"
+        ],
+        "affected_subtask_indices": [
+          0,
+          1
+        ],
         "source_requirement_ids": [
           "SRC-03"
         ],
+        "source_quote": "enter the hallway to the slight right",
         "candidate_evidence": [
-          "From the hallway"
+          {
+            "subtask_index": 0,
+            "quote": "passing the chair"
+          },
+          {
+            "subtask_index": 1,
+            "quote": "From the hallway"
+          }
         ],
-        "failed_layer": "L4_handoffs",
-        "c_check": "C_HANDOFF_ENTRY",
         "evidence_level": "S1",
         "problem": "The first stage ends after passing the chair, but the next stage begins 'From the hallway' and omits the source-required entry into the hallway to the slight right. The next stage assumes a region that the preceding stage has not entered.",
-        "execution_consequence": "The navigator can attempt to turn right and count the third door before crossing into the correct hallway, causing a spatial discontinuity and potentially selecting the wrong doors.",
+        "execution_consequence": "The navigator may attempt to turn right and count the third door before crossing into the correct hallway, causing a spatial discontinuity and potentially selecting the wrong doors.",
         "repair": {
-          "operation": "restore_missing_transition",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             1
           ],
           "instruction": "Restore entry into the hallway to the slight right at the beginning of stage 2, before the right turn and third-door count; keep chair pass-by as stage 1's endpoint.",
@@ -272,7 +304,8 @@
         ],
         "handoff_rationale": "The source places hallway entry after passing the chair. The candidate skips that event and assumes the resulting region."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_principle": "Judge the boundary from source event order and actual stage text; do not infer a segmentation defect from sentence count alone.",
