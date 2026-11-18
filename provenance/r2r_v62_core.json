@@ -86,7 +86,7 @@
       "R2R-DIAG-01",
       "revise",
       "revise_ordinal_target_identity_omission",
-      "R2R-CORE-G02"
+      "R2R-CORE-G07"
     ],
     [
       "R2R-CORE-R03",
@@ -107,14 +107,14 @@
       "R2R-REV-020",
       "pass",
       "hard_pass_terminal_position_and_ordinal_preservation",
-      "R2R-CORE-G07"
+      "R2R-CORE-G03"
     ],
     [
       "R2R-CORE-R06",
       "R2R-REV-005",
       "revise",
       "undersegmentation_multiple_completed_objectives",
-      "R2R-CORE-G03"
+      "R2R-CORE-G02"
     ],
     [
       "R2R-CORE-R07",
