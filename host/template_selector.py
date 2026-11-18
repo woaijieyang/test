@@ -62,6 +62,19 @@ def library(role, profile):
     rows = [json.loads(f.read_bytes()) for f in files]
     if not rows or len({r['template_id'] for r in rows}) != len(rows):
         raise ValueError('Empty library or duplicate template IDs')
+    if profile == 'r2r-en':
+        # R2R identity is a hard boundary: fail closed rather than silently
+        # filtering a foreign dataset/role row into or out of the library.
+        for row in rows:
+            if (row.get('role') != role or row.get('dataset_scope') != 'R2R'
+                    or row.get('language') != 'en'):
+                raise ValueError(
+                    f"Invalid R2R {role} dynamic template identity: {row.get('template_id')}"
+                )
+            template_id = row.get('template_id', '')
+            allowed_prefixes = ('R2R-GEN-',) if role == 'generator' else ('R2R-REV-', 'R2R-DIAG-')
+            if not template_id.startswith(allowed_prefixes):
+                raise ValueError(f"Invalid R2R {role} dynamic template ID: {template_id}")
     return rows
 
 
