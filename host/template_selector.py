@@ -83,9 +83,16 @@ def library(role, profile):
         promoted = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
         if len(promoted) != 10 or any(not item for item in promoted):
             raise ValueError(f'R2R {role} Core provenance must identify ten source templates')
-        if len(set(promoted)) == 0 or not set(promoted).issubset({row['template_id'] for row in rows}):
+        if not set(promoted).issubset({row['template_id'] for row in rows}):
             raise ValueError(f'R2R {role} Core provenance references missing Dynamic source templates')
-        rows = [row for row in rows if row['template_id'] not in set(promoted)]
+        promoted_ids = set(promoted)
+        # Reviewer paired examples for every promoted Generator Core ID are
+        # also removed from dynamic retrieval, even when that Core Reviewer
+        # case itself came from Diagnostics. This keeps paired pools aligned.
+        core_pair_ids = {row.get('pair_id') for row in core_rows if row.get('pair_id')}
+        rows = [row for row in rows
+                if row['template_id'] not in promoted_ids
+                and not (role == 'reviewer' and row.get('pair_id') in core_pair_ids)]
     return rows
 
 
