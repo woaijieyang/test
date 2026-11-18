@@ -22,8 +22,10 @@ class RxRV6ProfileTests(unittest.TestCase):
                          [f"RXR-CORE-G{i:02d}" for i in range(1, 11)])
         self.assertEqual([x["pair_id"] for x in rev],
                          [x["template_id"] for x in gen])
-        self.assertEqual(core_library("generator", "r2r-en"), [])
-        self.assertEqual(core_library("reviewer", "r2r-en"), [])
+        self.assertEqual([x["template_id"] for x in core_library("generator", "r2r-en")],
+                         [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
+        self.assertEqual([x["template_id"] for x in core_library("reviewer", "r2r-en")],
+                         [f"R2R-CORE-R{i:02d}" for i in range(1, 11)])
 
     def test_legacy_sources_are_not_in_dynamic_retrieval(self):
         for role in ("generator", "reviewer"):
@@ -110,7 +112,7 @@ class RxRV6ProfileTests(unittest.TestCase):
         r = select_examples("reviewer", "r2r-en", "Walk to the door and turn left.")
         self.assertTrue(6 <= len(g) <= 8)
         self.assertTrue(8 <= len(r) <= 12)
-        self.assertEqual(len(core_library("generator", "r2r-en")), 0)
+        self.assertEqual(len(core_library("generator", "r2r-en")), 10)
 
     def test_rxr_generator_compiler_injects_core_then_dynamic(self):
         source_text = "Leave the bedroom, turn left, cross the hallway, and enter the kitchen."
@@ -154,13 +156,15 @@ class RxRV6ProfileTests(unittest.TestCase):
                                    selected_ids=ids, original_instruction=source_text)
         self.assertNotIn("RxR en-US v6", prompt)
         self.assertNotIn("FIXED RXR", prompt)
+        self.assertIn("FIXED R2R-EN GENERATOR CORE: exactly 10", prompt)
+        self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
         self.assertNotIn("dataset_rules/rxr_en_us.md", prompt)
 
     def test_rule_and_template_hashes_are_recordable_and_profile_scoped(self):
         r2r = dataset_rules_metadata("r2r-en")
         rxr = dataset_rules_metadata("rxr-en-us")
-        self.assertEqual(r2r["version"], "v5-common")
-        self.assertEqual(len(r2r["files"]), 1)
+        self.assertEqual(r2r["version"], "v6.2-r2r-en")
+        self.assertEqual(len(r2r["files"]), 2)
         self.assertEqual(rxr["version"], "v6-rxr-en-us")
         self.assertEqual(len(rxr["files"]), 4)
         ids = select_examples("generator", "rxr-en-us", "Go to the kitchen.")
