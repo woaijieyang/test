@@ -91,7 +91,7 @@ class R2RV62CoreTests(unittest.TestCase):
         prompt, _ = compile_prompt("generator", "initial", profile="r2r-en",
                                    selected_ids=ids, original_instruction=source_text)
         core_header = "FIXED R2R-EN GENERATOR CORE: exactly 10"
-        dynamic_header = "CURATED R2R-EN GENERATOR EXAMPLES:"
+        dynamic_header = "DYNAMIC R2R-EN GENERATOR EXAMPLES:"
         schema_header = "ACTIVE OUTPUT SCHEMA for this phase"
         self.assertIn("shared/dataset_rules/r2r_en.md", prompt)
         self.assertIn(core_header, prompt)
@@ -110,7 +110,7 @@ class R2RV62CoreTests(unittest.TestCase):
         prompt, _ = compile_prompt("reviewer", "review", profile="r2r-en",
                                    selected_ids=ids, original_instruction=source_text)
         core_header = "FIXED R2R-EN REVIEWER CORE: exactly 10"
-        dynamic_header = "CURATED R2R-EN REVIEWER EXAMPLES:"
+        dynamic_header = "DYNAMIC R2R-EN REVIEWER EXAMPLES:"
         schema_header = "ACTIVE OUTPUT SCHEMA for this phase"
         self.assertIn(core_header, prompt)
         self.assertIn(dynamic_header, prompt)
