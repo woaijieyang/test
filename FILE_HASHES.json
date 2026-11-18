@@ -583,15 +583,15 @@
   "provenance/r2r_v62_core.json": "gitblob-sha1:8fea736c0a55699012720f5aec6d1b312ab006d6",
   "provenance/rxr_v61_frozen.json": "gitblob-sha1:6b62935072a24dfe432fc6f4e1e78a29c6c992fb",
   "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json": "gitblob-sha1:74ef7207023bbc2a0dc9ff1cb17821e2d0247828",
-  "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json": "gitblob-sha1:2a8dd10ed96f53fb482f9efc9613af017389665d",
+  "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json": "gitblob-sha1:3c98b9289b3f78724a26c2ac6d16d352a840f1f2",
   "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json": "gitblob-sha1:9c5da1138ff7c27cf82a8ed1f7dacd15c5d0da1a",
-  "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json": "gitblob-sha1:dbedee18f22ebed08d934057053551b30f5caf06",
+  "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json": "gitblob-sha1:8400ff780c132ef148f92df4ce16c5205694a202",
   "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json": "gitblob-sha1:d9c8a3427f4f770c68a2feefaf192c6429fe5f2e",
   "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json": "gitblob-sha1:06d89ce62ae82bf7acd62d1f13207de6d2f450ea",
-  "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json": "gitblob-sha1:3736389876ce977745c1bad745b6f8ad657784c8",
-  "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json": "gitblob-sha1:3128263287910d7633e2f78526a2e3e85a14d19e",
+  "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json": "gitblob-sha1:1c3aa88b328f7e00a8f50a8c74167e904ba96a4f",
+  "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json": "gitblob-sha1:f54e2c88999a7a5af8c5fc35ca8f2dbf77e8b6bc",
   "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json": "gitblob-sha1:c617b9f0ceb4fd8b9992afbcc61fef0fa0ffd0d7",
   "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json": "gitblob-sha1:8f0513eeb0ae1a34f25d8a540f102caedad23d47",
   "shared/dataset_rules/r2r_en.md": "gitblob-sha1:080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980",
-  "tests/test_r2r_v62_core.py": "gitblob-sha1:d624e70e570efd68a5bf5056868a74b9144e8358"
+  "tests/test_r2r_v62_core.py": "gitblob-sha1:efe89a5bc5a54889ec045bf95525804061318a6f"
 }
