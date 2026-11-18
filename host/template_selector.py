@@ -54,7 +54,7 @@ def library(role, profile):
         if role == 'generator':
             files = sorted((folder/'val_seen').glob('*.json'))
         else:
-            files = sorted((folder/'paired').glob('*.json')) + sorted((folder/'diagnostics').glob('*.json'))
+            files = sorted([* (folder/'paired').glob('*.json'), * (folder/'diagnostics').glob('*.json')])
     elif role == 'generator':
         files = sorted((folder/'val_seen').glob('*.json'))
     else:
