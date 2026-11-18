@@ -216,10 +216,10 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     # Keep the R2R system prompt byte-for-byte free of RxR profile messaging.
     # RxR-only claims belong exclusively to the RxR profile branch below.
     build_message = (
-        'BUILD: v1.5.2 / runtime-contract-v2. Selected few-shot examples are source-feature-matched and frozen per record; the source instruction remains the only route authority.'
+        'BUILD: Selected examples are source-feature-matched and frozen per record. The original instruction is the only route authority.'
         if profile == 'r2r-en' else
-        'BUILD: v6 / v5 common contract retained with the RxR en-US extension. '
-        'The source instruction remains the only route authority; ten fixed RxR core examples '
+        'BUILD: The shared semantic contract is supplemented by the RxR en-US guidance below. '
+        'The original instruction is the only route authority; ten fixed RxR core examples '
         'and source-feature-matched dynamic examples are frozen per record.'
     )
     parts=[build_message,
@@ -245,13 +245,13 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
-            parts.append(f'FIXED RXR {role.upper()} CORE: exactly 10 v5-format examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
+            parts.append(f'FIXED RXR {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
             for position, example in enumerate(fixed):
                 parts.append(canonical(teaching_card(example, role, detailed=True)))
         if profile == 'r2r-en':
-            parts.append(f'CURATED {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} v1.5.2 teaching cases. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected example IDs in order: '+', '.join(chosen))
+            parts.append(f'CURATED {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} curated teaching cases. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected example IDs in order: '+', '.join(chosen))
         else:
-            parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic v5 teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
+            parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
             example = byid[eid]
             parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))
