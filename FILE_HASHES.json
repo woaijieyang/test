@@ -582,16 +582,16 @@
   "generator/templates/R2R/core/G10_R2R-CORE-G10.json": "gitblob-sha1:51813afa2a507578d1656dc14b4bf39bd9a0f95c",
   "provenance/r2r_v62_core.json": "gitblob-sha1:39a9e1475990153e2d21018865e50cd00cf815a7",
   "provenance/rxr_v61_frozen.json": "gitblob-sha1:6b62935072a24dfe432fc6f4e1e78a29c6c992fb",
-  "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json": "gitblob-sha1:0c39592d403ea39a794eaafe2986470dc96d1fa3",
+  "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json": "gitblob-sha1:cb1a2215b2dc219d831518ff4795e9e3409a376c",
   "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json": "gitblob-sha1:ab5879ee42b91b9526963529a443ac103857f0f6",
-  "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json": "gitblob-sha1:9d6536d3ff3455b92d31e87ade0bdb971193a587",
+  "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json": "gitblob-sha1:a9aa1399498638b42dcb13a03fa2ce3813bf5adc",
   "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json": "gitblob-sha1:0b6ee4d863d09bfe1cc35342d3adff87285f1aa9",
-  "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json": "gitblob-sha1:731d13797db323857519483c9359f3ec79f84cec",
-  "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json": "gitblob-sha1:f90f47fdf4d870cdbbcedf5029c1ddef731947db",
+  "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json": "gitblob-sha1:acb80f8898955e93c4b42376b4e2f2d29c6e60ae",
+  "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json": "gitblob-sha1:724f5555419b52b6c79b21a3bf10863b83d4acee",
   "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json": "gitblob-sha1:1c3aa88b328f7e00a8f50a8c74167e904ba96a4f",
   "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json": "gitblob-sha1:001457473c21eb6913ce499737e9f2c383609f8c",
-  "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json": "gitblob-sha1:144ca407f0d2d0e9bedfaf8121fe16cd4d2e684d",
-  "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json": "gitblob-sha1:1080b8bb88eae03c5d0ae9750f751eb47269e579",
+  "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json": "gitblob-sha1:b7282679626f3d97720fa78dc7d9625da5ad692b",
+  "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json": "gitblob-sha1:8050cdd39614a55018005ac936c858348635b52f",
   "shared/dataset_rules/r2r_en.md": "gitblob-sha1:080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980",
-  "tests/test_r2r_v62_core.py": "gitblob-sha1:85cee670fc2e1dc07093512dfae4414ac3abb94d"
+  "tests/test_r2r_v62_core.py": "gitblob-sha1:b7159499fea6d729ddb0cfe12b2dcaf12b4c09f5"
 }
