@@ -71,7 +71,7 @@ jobs:
               for test in suite:
                   if isinstance(test, unittest.TestSuite):
                       collect(test)
-                  elif not test.id().startswith("test_release_transaction."):
+                  elif "test_release_transaction" not in test.id():
                       selected.addTest(test)
 
           collect(discovered)
