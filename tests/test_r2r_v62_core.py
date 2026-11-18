@@ -282,5 +282,19 @@ class R2RV62CoreTests(unittest.TestCase):
         self.assertNotIn("source-selected doorway relative to the stairs", notes)
         self.assertNotIn("stop in the doorway", notes)
 
+    def test_compile_cannot_bypass_fixed_core(self):
+        with self.assertRaisesRegex(ValueError, "Fixed dataset Core is mandatory"):
+            compile_prompt("generator", "initial", profile="r2r-en", examples=False)
+        with self.assertRaisesRegex(ValueError, "Fixed dataset Core is mandatory"):
+            compile_prompt("reviewer", "review", profile="rxr-en-us", examples=False)
+
+    def test_runtime_library_loads_only_schema_validated_templates(self):
+        from host.template_selector import validate_template
+        for role in ("generator", "reviewer"):
+            for row in library(role, "r2r-en"):
+                validate_template(role, row, source_path=row["template_id"])
+            for row in core_library(role, "r2r-en"):
+                validate_template(role, row, source_path=row["template_id"])
+
 if __name__ == "__main__":
     unittest.main()

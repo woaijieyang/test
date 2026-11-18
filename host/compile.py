@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 from shared.identity import canonical,text_hash
-from host.template_selector import select_examples,library,DEFAULT_EXAMPLES,PROFILES,write_type_index
+from host.template_selector import select_examples,library,DEFAULT_EXAMPLES,PROFILES,write_type_index,validate_template
 ROOT=Path(__file__).resolve().parents[1]
 
 def wire_schema(path):
@@ -51,6 +51,8 @@ def core_library(role, profile):
         raise ValueError(f'{dataset} {role} fixed core directory is missing: {folder}')
     files = sorted(folder.glob('*.json'))
     rows = [json.loads(path.read_bytes()) for path in files]
+    for path, row in zip(files, rows):
+        validate_template(role, row, source_path=path.relative_to(ROOT).as_posix())
     if len(rows) != 10:
         raise ValueError(f'{dataset} {role} fixed core must contain exactly 10 templates; found {len(rows)}')
     expected_ids = ([f'{prefix}-CORE-G{i:02d}' for i in range(1, 11)]
@@ -256,6 +258,8 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if profile not in PROFILES:raise ValueError('Unsupported dataset profile')
     if role=='reviewer' and phase not in ('review','recheck'):raise ValueError('Unsupported review phase')
     if role=='generator' and phase not in ('initial','repair'):raise ValueError('Unsupported generator phase')
+    if not examples:
+        raise ValueError('Fixed dataset Core is mandatory; examples=False cannot disable Core loading')
     d=ROOT/role;repair=role=='generator' and phase=='repair'
     # Keep the R2R system prompt byte-for-byte free of RxR profile messaging.
     # RxR-only claims belong exclusively to the RxR profile branch below.

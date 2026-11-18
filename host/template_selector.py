@@ -7,6 +7,43 @@ import math
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+@lru_cache(maxsize=2)
+def _template_validators():
+    """Build cached Draft 2020-12 validators for the authored teaching schemas."""
+    from jsonschema import Draft202012Validator
+    from referencing import Registry, Resource
+
+    schema_dir = ROOT / "shared" / "template_schemas_v1_5_2"
+    registry = Registry()
+    resources = {}
+    for path in sorted(schema_dir.glob("*.schema.json")):
+        uri = "https://vln.local/shared/template_schemas_v1_5_2/" + path.name
+        data = json.loads(path.read_bytes())
+        resources[uri] = Resource.from_contents(data)
+        registry = registry.with_resource(uri, resources[uri])
+    validators = {}
+    for role in ("generator", "reviewer"):
+        path = schema_dir / (role + "_template.schema.json")
+        data = json.loads(path.read_bytes())
+        data["$id"] = "https://vln.local/shared/template_schemas_v1_5_2/" + path.name
+        validators[role] = Draft202012Validator(data, registry=registry)
+    return validators
+
+
+def validate_template(role, row, *, source_path=""):
+    """Fail closed on malformed teaching records before they reach Prompt Assembly."""
+    if role not in ("generator", "reviewer"):
+        raise ValueError(f"Unknown template role: {role}")
+    validator = _template_validators()[role]
+    error = next(validator.iter_errors(row), None)
+    if error is not None:
+        location = "/".join(str(part) for part in error.absolute_path)
+        raise ValueError(
+            f"Invalid {role} teaching template {row.get('template_id')} at "
+            f"{source_path or '<unknown>'}:{location}: {error.message}"
+        )
 DEFAULT_EXAMPLES = None  # Profile-aware: R2R 6-8; RxR 2-4 in addition to its fixed core.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
@@ -63,6 +100,8 @@ def library(role, profile):
     rows = [json.loads(path.read_bytes()) for path in files]
     if not rows or len({row['template_id'] for row in rows}) != len(rows):
         raise ValueError('Empty library or duplicate template IDs')
+    for path, row in zip(files, rows):
+        validate_template(role, row, source_path=path.relative_to(ROOT).as_posix())
 
     if profile == 'r2r-en':
         # Strict identity validation: a foreign dataset, role, or language is a
