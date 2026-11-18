@@ -1,6 +1,6 @@
-# Generator guidance — RxR en-US v6
+# Generator guidance — RxR en-US
 
-Use the shared RxR rules together with the unchanged v5 Generator prompt, acceptance rules, repair rules, and active output schema. This file gives the RxR-specific work order; it does not create a new output contract.
+Use the shared RxR rules together with the shared Generator prompt, shared semantic contract, repair rules, and active output schema. This file gives the RxR-specific work order; it does not create a new output contract.
 
 ## Required reasoning order
 
@@ -11,7 +11,7 @@ Use the shared RxR rules together with the unchanged v5 Generator prompt, accept
 5. Group coupled events into executable local navigation phases. Keep a maneuver together if a cut would detach its turn, approach, threshold condition, endpoint, count origin, or maintained spatial constraint.
 6. Consider a boundary only after the preceding event has a source-supported completion and the next phase has a supported entry. A new stage must begin with a meaningful entry anchor in its actual natural-language text; an audit-only carryover cannot repair missing executable wording.
 7. Write the ordered English subtasks. Preserve source semantics and natural instruction style. Make the local target and its completion event clear without inventing STOP, WAIT, distance, arrival, entry, or posture.
-8. Complete the existing v5 Stage Audit for every stage and Handoff for every adjacent pair. Source quotes must be exact original substrings; candidate quotes must be exact substrings of that stage.
+8. Complete the existing Stage Audit for every stage and Handoff for every adjacent pair. Source quotes must be exact original substrings; candidate quotes must be exact substrings of that stage.
 9. Run the two-way check: every active source requirement appears in the executable text, and every added executable requirement is supported by the source. Re-read the complete output as one route and inspect count origins, frame changes, repeated visits, and all handoffs.
 
 ## Boundary decision policy
