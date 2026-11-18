@@ -33,7 +33,7 @@
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
-        "source_quote": "Turn left",
+        "source_quote": "TURN LEFT",
         "requirement": "Execute the initial orientation change.",
         "candidate_evidence": [
           {
@@ -45,7 +45,7 @@
       },
       {
         "requirement_id": "SRC-02",
-        "source_quote": "You face a chandelier above a green table",
+        "source_quote": "YOU FACE A CHANDELIER ABOVE A GREEN TABLE",
         "requirement": "Use the chandelier/table as an expected orientation observation, not as the route destination.",
         "candidate_evidence": [
           {
@@ -57,14 +57,14 @@
       },
       {
         "requirement_id": "SRC-03",
-        "source_quote": "walk towards the open door on the far wall",
+        "source_quote": "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL",
         "requirement": "Approach the source-selected far-wall doorway.",
         "candidate_evidence": [],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
-        "source_quote": "walk though the door and down the hallway into a room with a blue patterned carpet",
+        "source_quote": "WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET",
         "requirement": "Complete the doorway crossing, hallway traversal, and room entry.",
         "candidate_evidence": [],
         "status": "altered_or_missing"
@@ -135,7 +135,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "source_quote": "You face a chandelier above a green table with a doorway to the left and an open door on the far wall, walk towards the open door on the far wall, walk though the door and down the hallway into a room with a blue patterned carpet",
+        "source_quote": "YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET",
         "candidate_evidence": [
           {
             "subtask_index": 0,
@@ -198,10 +198,10 @@
           "SRC-04"
         ],
         "source_quotes": [
-          "Turn left",
-          "You face a chandelier above a green table",
-          "walk towards the open door on the far wall",
-          "walk though the door and down the hallway into a room with a blue patterned carpet"
+          "TURN LEFT",
+          "YOU FACE A CHANDELIER ABOVE A GREEN TABLE",
+          "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL",
+          "WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET"
         ],
         "carryover": []
       }
