@@ -19,7 +19,7 @@
     "source_status": "source_instruction_from_uploaded_val_seen",
     "candidate_corruption_is_authored_not_model_output": true,
     "corruption_pattern": "ORDINAL",
-    "core_curated_from": "01_R2R-DIAG-01",
+    "core_curated_from": "R2R-DIAG-01",
     "curation_basis": "semantic decision-boundary coverage; semantic provenance pair only"
   },
   "review_input": {
