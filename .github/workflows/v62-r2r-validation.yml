@@ -1,4 +1,4 @@
-name: v6.2 R2R Core and frozen RxR validation
+name: Dataset profile integrity and regression validation
 
 on:
   push:
