@@ -75,6 +75,17 @@ def library(role, profile):
             allowed_prefixes = ('R2R-GEN-',) if role == 'generator' else ('R2R-REV-', 'R2R-DIAG-')
             if not template_id.startswith(allowed_prefixes):
                 raise ValueError(f"Invalid R2R {role} dynamic template ID: {template_id}")
+        # Promoted Core source cases remain in the source archive on disk for
+        # provenance, but must not re-enter the Dynamic pool as duplicates.
+        core_folder = folder/'core'
+        core_files = sorted(core_folder.glob('*.json'))
+        core_rows = [json.loads(path.read_bytes()) for path in core_files]
+        promoted = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
+        if len(promoted) != 10 or any(not item for item in promoted):
+            raise ValueError(f'R2R {role} Core provenance must identify ten source templates')
+        if len(set(promoted)) == 0 or not set(promoted).issubset({row['template_id'] for row in rows}):
+            raise ValueError(f'R2R {role} Core provenance references missing Dynamic source templates')
+        rows = [row for row in rows if row['template_id'] not in set(promoted)]
     return rows
 
 
