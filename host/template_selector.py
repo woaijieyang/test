@@ -48,70 +48,76 @@ def library(role, profile):
     if role not in ('generator', 'reviewer') or profile not in PROFILES:
         raise ValueError('Unsupported role/profile')
     folder = ROOT/role/'templates'/PROFILES[profile]
-    # Legacy migration sources and fixed RxR core are deliberately excluded
-    # from dynamic retrieval. They have separate deterministic loading paths.
+    # Legacy migration sources and fixed RxR core remain outside Dynamic retrieval.
     if profile == 'r2r-en':
-        # R2R Core is loaded through the independent fixed-core path. Never
-        # expose it to dynamic retrieval; retain v5 global ordering elsewhere.
         files = sorted(path for path in folder.glob('*/*.json')
                        if path.parent.name != 'core')
     elif role == 'generator':
         files = sorted((folder/'val_seen').glob('*.json'))
     else:
         files = sorted((folder/'paired').glob('*.json')) + sorted((folder/'diagnostics').glob('*.json'))
-    rows = [json.loads(f.read_bytes()) for f in files]
-    if not rows or len({r['template_id'] for r in rows}) != len(rows):
+
+    rows = [json.loads(path.read_bytes()) for path in files]
+    if not rows or len({row['template_id'] for row in rows}) != len(rows):
         raise ValueError('Empty library or duplicate template IDs')
-        # R2R identity is a hard boundary: fail closed rather than silently
-        # filtering a foreign dataset/role row into or out of the library.
+
+    if profile == 'r2r-en':
+        # Strict identity validation: a foreign dataset, role, or language is a
+        # hard failure, never silently filtered into the active R2R library.
         for row in rows:
             if (row.get('role') != role or row.get('dataset_scope') != 'R2R'
                     or row.get('language') != 'en'):
                 raise ValueError(
-                    f"Invalid R2R {role} dynamic template identity: {row.get('template_id')}"
+                    f'Invalid R2R {role} dynamic template identity: {row.get("template_id")}'
                 )
             template_id = row.get('template_id', '')
             allowed_prefixes = ('R2R-GEN-',) if role == 'generator' else ('R2R-REV-', 'R2R-DIAG-')
             if not template_id.startswith(allowed_prefixes):
-                raise ValueError(f"Invalid R2R {role} dynamic template ID: {template_id}")
-        # Promoted Core source cases remain in the source archive on disk for
-        # provenance, but must not re-enter the Dynamic pool as duplicates.
+                raise ValueError(f'Invalid R2R {role} dynamic template ID: {template_id}')
+
+        # Promoted Core source cases remain on disk for provenance but are
+        # excluded from Dynamic retrieval to prevent duplicate teaching.
         core_folder = folder/'core'
         core_files = sorted(core_folder.glob('*.json'))
         core_rows = [json.loads(path.read_bytes()) for path in core_files]
-        promoted = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
-        if len(promoted) != 10 or any(not item for item in promoted):
-            raise ValueError(f'R2R {role} Core provenance must identify ten source templates')
-        if not set(promoted).issubset({row['template_id'] for row in rows}):
+        promoted_ids = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
+        if len(core_rows) != 10 or any(not item for item in promoted_ids):
+            raise ValueError(f'R2R {role} Core provenance must identify exactly ten source templates')
+        if not set(promoted_ids).issubset({row['template_id'] for row in rows}):
             raise ValueError(f'R2R {role} Core provenance references missing Dynamic source templates')
-        promoted_ids = set(promoted)
-        # Core pair_id records semantic provenance only. Dynamic paired retrieval
-        # remains keyed by the selected non-Core Generator IDs; do not remove
-        # unrelated paired examples merely because a Core cites that G ID.
-        generator_core_folder = ROOT/'generator'/'templates'/'R2R'/'core'
-        generator_core_rows = [json.loads(path.read_bytes())
-                               for path in sorted(generator_core_folder.glob('*.json'))]
-        promoted_generator_ids = {
-            row.get('provenance', {}).get('core_curated_from')
-            for row in generator_core_rows
-        }
-        if len(promoted_generator_ids) != 10 or None in promoted_generator_ids:
-            raise ValueError('R2R Generator Core provenance must identify ten Dynamic source IDs')
-        rows = [row for row in rows if row['template_id'] not in promoted_ids]
-        if not rows or any(row['template_id'].startswith('R2R-CORE-') for row in rows):
-            raise ValueError(f'Invalid R2R {role} Dynamic pool after Core exclusion')
-        if role == 'reviewer':
-            paired_ids = {row.get('pair_id') for row in rows if row.get('pair_id')}
+
+        rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
+        if any(row['template_id'].startswith('R2R-CORE-') for row in rows):
+            raise ValueError(f'R2R {role} Core identity leaked into the Dynamic pool')
+
+        if role == 'generator':
+            if len(rows) != 25:
+                raise ValueError(f'R2R Generator Dynamic pool must contain 25 non-Core examples; found {len(rows)}')
+        else:
+            generator_core_folder = ROOT/'generator'/'templates'/'R2R'/'core'
+            generator_core_rows = [json.loads(path.read_bytes())
+                                   for path in sorted(generator_core_folder.glob('*.json'))]
+            promoted_generator_ids = {
+                row.get('provenance', {}).get('core_curated_from')
+                for row in generator_core_rows
+            }
+            if len(promoted_generator_ids) != 10 or None in promoted_generator_ids:
+                raise ValueError('R2R Generator Core provenance must identify ten Dynamic source IDs')
+            paired_rows = [row for row in rows if row.get('pair_id')]
             diagnostic_rows = [row for row in rows if not row.get('pair_id')]
+            paired_ids = [row['pair_id'] for row in paired_rows]
             expected_dynamic_pairs = {
                 f'R2R-GEN-{i:03d}' for i in range(1, 36)
             } - promoted_generator_ids
-            if not expected_dynamic_pairs.issubset(paired_ids):
-                raise ValueError('R2R Reviewer Dynamic pool is missing a non-Core Generator pair')
-            if len(diagnostic_rows) != 23:
-                raise ValueError(f'R2R Reviewer Dynamic Diagnostics must contain 23 unpromoted cases; found {len(diagnostic_rows)}')
-    return rows
+            if len(rows) != 52 or len(paired_rows) != 29 or len(diagnostic_rows) != 23:
+                raise ValueError(
+                    f'R2R Reviewer Dynamic pool must contain 29 paired + 23 diagnostics; '
+                    f'found {len(paired_rows)} paired + {len(diagnostic_rows)} diagnostics'
+                )
+            if len(set(paired_ids)) != len(paired_ids) or not expected_dynamic_pairs.issubset(set(paired_ids)):
+                raise ValueError('R2R Reviewer Dynamic pairs are duplicated or missing a non-Core Generator pair')
 
+    return rows
 
 # These features describe a local clause, not a navigation plan. They only rank demonstrations.
 MARKER = re.compile(r"\b(before|after|while|until|once|when)\b", re.I)
