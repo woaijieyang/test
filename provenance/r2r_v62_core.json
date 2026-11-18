@@ -20,13 +20,25 @@
       "dynamic_diagnostics_eligible": 23,
       "fixed_core": 10,
       "core_order": "R01-R10",
-      "dynamic_selection": "existing paired 6-8 examples plus 2-4 diagnostics"
+      "dynamic_selection": "existing paired 6-8 examples plus 2-4 diagnostics",
+      "excluded_dynamic_pair_ids": [
+        "R2R-GEN-019",
+        "R2R-GEN-005",
+        "R2R-GEN-021",
+        "R2R-GEN-023",
+        "R2R-GEN-029",
+        "R2R-GEN-007",
+        "R2R-GEN-020",
+        "R2R-GEN-004",
+        "R2R-GEN-002",
+        "R2R-GEN-031"
+      ]
     },
     "shared_contract": "unchanged",
     "schemas": "unchanged",
     "workflow": "unchanged",
     "rxr": "frozen v6.1",
-    "note": "Promoted Core source cases remain on disk for provenance but are excluded from Dynamic retrieval. Reviewer paired examples for all ten promoted Generator Core IDs are excluded even when the corresponding Reviewer Core case was curated from Diagnostics; this preserves exact Generator/Reviewer dynamic pair alignment. Three diagnostic sources promoted to Reviewer Core are also excluded."
+    "note": "Promoted Core source cases remain on disk for provenance but are excluded from Dynamic retrieval. Reviewer paired examples are excluded by the original promoted Generator source IDs (R2R-GEN-*), even when the corresponding Reviewer Core case was curated from Diagnostics; this preserves exact Generator/Reviewer dynamic pair alignment. Three diagnostic source cases promoted to Reviewer Core are also excluded."
   },
   "generator_core": [
     [
