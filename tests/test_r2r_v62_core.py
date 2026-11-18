@@ -165,7 +165,7 @@ class R2RV62CoreTests(unittest.TestCase):
         for entry in manifest["files"]:
             path = ROOT / entry["path"]
             data = path.read_bytes()
-            actual = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\\0" + data).hexdigest()
+            actual = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
             with self.subTest(path=entry["path"]):
                 self.assertEqual(actual, entry["git_blob_sha1"])
 
