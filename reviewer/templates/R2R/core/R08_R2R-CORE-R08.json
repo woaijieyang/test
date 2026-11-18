@@ -27,7 +27,7 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "issue",
+      "closure_handoff": "pass",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
@@ -36,7 +36,10 @@
         "source_quote": "Turn left",
         "requirement": "Execute the initial orientation change.",
         "candidate_evidence": [
-          "Turn left"
+          {
+            "subtask_index": 0,
+            "quote": "Turn left"
+          }
         ],
         "status": "covered"
       },
@@ -45,7 +48,10 @@
         "source_quote": "You face a chandelier above a green table",
         "requirement": "Use the chandelier/table as an expected orientation observation, not as the route destination.",
         "candidate_evidence": [
-          "facing the chandelier above the green table"
+          {
+            "subtask_index": 0,
+            "quote": "facing the chandelier above the green table"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -58,7 +64,7 @@
       },
       {
         "requirement_id": "SRC-04",
-        "source_quote": "walk through the door and down the hallway into a room with a blue patterned carpet",
+        "source_quote": "walk though the door and down the hallway into a room with a blue patterned carpet",
         "requirement": "Complete the doorway crossing, hallway traversal, and room entry.",
         "candidate_evidence": [],
         "status": "altered_or_missing"
@@ -67,59 +73,81 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
+        "status": "not_applicable",
+        "finding_indices": [],
         "conclusion": "No rendered instruction is supplied; assess only the actual candidate text."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
+        "finding_indices": [
+          0
+        ],
         "conclusion": "The candidate omits the selected far-wall doorway approach, crossing, hallway traversal, and destination-room entry."
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
+        "finding_indices": [],
         "conclusion": "No temporal inversion is present; the failure is target promotion and omitted route events."
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
+        "finding_indices": [
+          0
+        ],
         "conclusion": "The candidate terminates at an expected observation and does not execute the source-required target-directed process."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
+        "status": "not_applicable",
+        "finding_indices": [],
         "conclusion": "The candidate has one stage and no adjacent-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
+        "finding_indices": [],
         "conclusion": "No boundary is being evaluated; do not manufacture a segmentation finding."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
+        "finding_indices": [
+          0
+        ],
         "conclusion": "The route readback stops at the chandelier observation and omits the actual doorway, hallway, and room-entry route."
       }
     ],
     "findings": [
       {
-        "source_quote": "You face a chandelier above a green table ... walk towards the open door on the far wall, walk though the door and down the hallway into a room with a blue patterned carpet",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C05",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
+        "source_quote": "You face a chandelier above a green table with a doorway to the left and an open door on the far wall, walk towards the open door on the far wall, walk though the door and down the hallway into a room with a blue patterned carpet",
         "candidate_evidence": [
-          "stop facing the chandelier above the green table"
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and stop facing the chandelier above the green table."
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C05",
         "evidence_level": "S1",
         "problem": "The candidate promotes an expected orientation observation (the chandelier/table seen after turning) into the terminal navigation target, while omitting the source-selected far-wall doorway approach, crossing, hallway traversal, and room entry.",
         "execution_consequence": "The navigator may stop at the initial observation point and never reach or enter the source-required destination room.",
         "repair": {
-          "operation": "restore_source_requirements",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
           "instruction": "Retain the chandelier/table only as the expected orientation cue, then restore the approach to the open door on the far wall, the completed doorway crossing, hallway traversal, and entry into the room with the blue patterned carpet. Do not add an unsupported stop at the chandelier.",
@@ -157,18 +185,20 @@
           "candidate_quotes": [
             "stop facing the chandelier"
           ],
-          "stop_scope": "terminal"
+          "stop_scope": "none"
         },
         "conditions": {
           "text": null,
           "candidate_quotes": []
         },
         "source_requirement_ids": [
+          "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
         "source_quotes": [
+          "Turn left",
           "You face a chandelier above a green table",
           "walk towards the open door on the far wall",
           "walk though the door and down the hallway into a room with a blue patterned carpet"
@@ -176,7 +206,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "target_landmark_expected_observation_confusion",
