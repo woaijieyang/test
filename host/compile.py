@@ -37,33 +37,49 @@ def wire_schema(path):
     return expand(json.loads(path.read_bytes()), uri, {uri})
 
 def core_library(role, profile):
-    """Load the ten immutable RxR core examples in stable G01..G10 order."""
-    if profile != 'rxr-en-us':
-        return []
-    folder = ROOT/role/'templates'/'RxR'/'core'
+    """Load and validate a dataset's immutable ten-example Core in explicit order."""
+    if role not in ('generator', 'reviewer'):
+        raise ValueError('Unknown semantic role')
+    if profile not in ('r2r-en', 'rxr-en-us'):
+        raise ValueError('Unsupported dataset profile')
+    if profile == 'rxr-en-us':
+        dataset, prefix, language = 'RxR', 'RXR', 'en-US'
+    else:
+        dataset, prefix, language = 'R2R', 'R2R', 'en'
+    folder = ROOT/role/'templates'/dataset/'core'
+    if not folder.is_dir():
+        raise ValueError(f'{dataset} {role} fixed core directory is missing: {folder}')
     files = sorted(folder.glob('*.json'))
     rows = [json.loads(path.read_bytes()) for path in files]
     if len(rows) != 10:
-        raise ValueError(f'RxR {role} fixed core must contain exactly 10 templates; found {len(rows)}')
-    if len({row['template_id'] for row in rows}) != 10:
-        raise ValueError(f'RxR {role} fixed core contains duplicate template IDs')
-    expected_ids = ([f'RXR-CORE-G{i:02d}' for i in range(1, 11)] if role == 'generator' else [f'RXR-CORE-R{i:02d}' for i in range(1, 11)])
-    if [row['template_id'] for row in rows] != expected_ids:
-        raise ValueError(f'RxR {role} fixed core IDs/order must be exactly G01-G10')
+        raise ValueError(f'{dataset} {role} fixed core must contain exactly 10 templates; found {len(rows)}')
+    expected_ids = ([f'{prefix}-CORE-G{i:02d}' for i in range(1, 11)]
+                    if role == 'generator' else
+                    [f'{prefix}-CORE-R{i:02d}' for i in range(1, 11)])
+    if [row.get('template_id') for row in rows] != expected_ids:
+        raise ValueError(f'{dataset} {role} fixed core IDs/order must be exactly 01-10')
+    if len({row.get('template_id') for row in rows}) != 10:
+        raise ValueError(f'{dataset} {role} fixed core contains duplicate template IDs')
     for row in rows:
-        if (row.get('role') != role or
-                row.get('dataset_scope') not in ('RxR', 'RxR_prompt_teaching_example') or
-                row.get('language') != 'en-US'):
-            raise ValueError(f'Invalid RxR {role} core template identity: {row.get("template_id")}')
+        scope = row.get('dataset_scope')
+        allowed_scope = (dataset, f'{dataset}_prompt_teaching_example')
+        if (row.get('role') != role or scope not in allowed_scope or
+                row.get('language') != language):
+            raise ValueError(f'Invalid {dataset} {role} core identity: {row.get("template_id")}')
+        notes = row.get('teaching_notes') or {}
+        for field in ('semantic_pattern', 'decision_reason', 'transfer_rule', 'anti_pattern'):
+            if not isinstance(notes.get(field), str) or not notes[field].strip():
+                raise ValueError(f'{dataset} {role} Core {row["template_id"]} missing teaching_notes.{field}')
     if role == 'reviewer':
         pairs = [row.get('pair_id') for row in rows]
-        if any(not pair for pair in pairs) or len(set(pairs)) != 10:
-            raise ValueError('RxR Reviewer core must have ten unique Generator core pair IDs')
-        gen_folder = ROOT/'generator'/'templates'/'RxR'/'core'
+        expected_pairs = [f'{prefix}-CORE-G{i:02d}' for i in range(1, 11)]
+        if pairs != expected_pairs:
+            raise ValueError(f'{dataset} Reviewer Core pair_id values must align with Generator G01-G10 in order')
+        gen_folder = ROOT/'generator'/'templates'/dataset/'core'
         gen_rows = [json.loads(path.read_bytes()) for path in sorted(gen_folder.glob('*.json'))]
-        gen_ids = [row['template_id'] for row in gen_rows]
+        gen_ids = [row.get('template_id') for row in gen_rows]
         if pairs != gen_ids:
-            raise ValueError('RxR Reviewer core pair IDs must match Generator core IDs in G01-G10 order')
+            raise ValueError(f'{dataset} Reviewer Core pair IDs must match Generator Core IDs in G01-G10 order')
     return rows
 
 
@@ -224,6 +240,9 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     )
     parts=[build_message,
             (d/'prompt.md').read_text(encoding='utf-8'),(ROOT/'shared/semantic_contract.md').read_text(encoding='utf-8')]
+    if profile == 'r2r-en':
+        parts.append('R2R DATASET-SPECIFIC RULES [shared/dataset_rules/r2r_en.md]:\\n' +
+                     (ROOT/'shared/dataset_rules/r2r_en.md').read_text(encoding='utf-8'))
     if profile == 'rxr-en-us':
         parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\n' +
                      (ROOT/'shared/dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))
@@ -245,7 +264,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
-            parts.append(f'FIXED RXR {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
+            parts.append(f'FIXED {profile.upper()} {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
             for position, example in enumerate(fixed):
                 parts.append(canonical(teaching_card(example, role, detailed=True)))
         if profile == 'r2r-en':
