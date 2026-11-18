@@ -95,7 +95,9 @@
         "layer": "L2_dependencies",
         "status": "issue",
         "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L3_stage_checks",
