@@ -311,8 +311,8 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertEqual(len(requests), 2)
         for req in requests:
             self.assertEqual(req["profile"], "r2r-en")
-            self.assertEqual(req["fixed_core_template_ids"], [])
-            self.assertEqual(req["dataset_rules"]["version"], "v5-common")
+            self.assertEqual(len(req["fixed_core_template_ids"]), 10)
+            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
             system = req["messages"][0]["content"]
             self.assertNotIn("RXR SHARED SEMANTIC RULES", system)
             self.assertNotIn("RXR ROLE GUIDANCE", system)
