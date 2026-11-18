@@ -560,7 +560,7 @@
   "tests/test_reviewer_recovery.py": "gitblob-sha1:ad4faf2ea47193c62fa06c91fbe4fa0172280120",
   "tests/test_roles_repair.py": "gitblob-sha1:145c663932ae9e22f0a0078aa1f6b4ca8d8eb738",
   "tests/test_runtime_contract_v2.py": "gitblob-sha1:4f36c68c5fbd7457c41ed9a62fcbec21dc2275b1",
-  "tests/test_rxr_v6_profile.py": "gitblob-sha1:e7b96e0e103a66403887fc5d26a291c84fd0e89a",
+  "tests/test_rxr_v6_profile.py": "gitblob-sha1:34399e942af3385435e97e044ade57503aee0a94",
   "tests/test_targeted_feedback.py": "gitblob-sha1:c08d5a9d407084083f6a2e2486b8f78a4ce21eac",
   "tests/test_workflow_integration.py": "gitblob-sha1:40d333d1e424ffe2fc4bea1c45d708d19b30fe5a",
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
