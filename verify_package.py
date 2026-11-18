@@ -34,7 +34,10 @@ REQUIRED = [
     "generator/templates/RxR/core/G10_RxR-CORE-G10.json",
     "reviewer/templates/RxR/core/G01_RxR-CORE-R01.json",
     "reviewer/templates/RxR/core/G10_RxR-CORE-R10.json",
-    ".github/workflows/v6-validation.yml", "validation.json",
+    ".github/workflows/v6-validation.yml",
+    ".github/workflows/v62-r2r-validation.yml",
+    "provenance/r2r_v62_core.json", "provenance/rxr_v61_frozen.json",
+    "validation.json",
 ]
 
 def main() -> int:
