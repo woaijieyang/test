@@ -37,6 +37,10 @@ def dataset_rules_metadata(profile):
             root/"reviewer/dataset_rules/rxr_en_us.md",
         ])
         version = "v6-rxr-en-us"
+    elif profile == "r2r-en":
+        root = Path(__file__).resolve().parents[1]
+        paths.append(root/"shared/dataset_rules/r2r_en.md")
+        version = "v6.2-r2r-en"
     material = "\n".join(
         f"## {path.relative_to(Path(__file__).resolve().parents[1]).as_posix()}\n{path.read_text(encoding='utf-8')}"
         for path in paths
@@ -72,6 +76,8 @@ def prompt_components_metadata(role, phase, profile):
             root/"shared/dataset_rules/rxr_en_us.md",
             root/role/"dataset_rules/rxr_en_us.md",
         ])
+    elif profile == "r2r-en":
+        paths.append(root/"shared/dataset_rules/r2r_en.md")
     files = []
     for path in paths:
         data = path.read_bytes()
