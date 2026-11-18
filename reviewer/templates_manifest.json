@@ -6,8 +6,9 @@
       "diagnostics_directory": "templates/R2R/diagnostics",
       "paired_count": 35,
       "diagnostics_count": 26,
-      "fixed_core_directory": null,
-      "fixed_core_count": 0
+      "fixed_core_directory": "templates/R2R/core",
+      "fixed_core_count": 10,
+      "fixed_core_source": "Curated R2R semantic decision-boundary Reviewer Core R01-R10; pair_id records semantic provenance only"
     },
     "rxr-en-us": {
       "paired_directory": "templates/RxR/paired",
@@ -29,7 +30,9 @@
         2,
         4
       ],
-      "fixed_core": 0
+      "fixed_core": 10,
+      "core_order": "R01-R10",
+      "core_is_unconditional": true
     },
     "rxr-en-us": {
       "paired_dynamic_examples": [
@@ -47,5 +50,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "fixed independent Reviewer core plus paired dynamic examples matching Generator IDs and up to two relevant Diagnostics"
+  "selection": "fixed independent Reviewer Core plus paired dynamic examples matching Generator dynamic IDs and up to four relevant Diagnostics; Core pair_id is provenance only"
 }
