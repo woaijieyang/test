@@ -277,7 +277,8 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
-            parts.append(f'FIXED {profile.upper()} {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
+            core_label = 'R2R-EN' if profile == 'r2r-en' else 'RXR'
+            parts.append(f'FIXED {core_label} {role.upper()} CORE: exactly 10 fixed examples, always loaded in this stable order and never subject to retrieval or replacement: '+', '.join(core_ids))
             for position, example in enumerate(fixed):
                 parts.append(canonical(teaching_card(example, role, detailed=True)))
         if profile == 'r2r-en':
