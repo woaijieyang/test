@@ -5,7 +5,8 @@
     {
       "id": "room_transition",
       "patterns": [
-        "\\b(?:enter|entered|entering|exit|exited|exiting|leave|leaves|left|leaving)\\b",
+        "\\b(?:enter|entered|entering|exit|exited|exiting|leave|leaves|leaving)\\b",
+        "\\bleft\\s+(?:the\\s+)?(?:room|bedroom|bathroom|kitchen|living room|dining room|hallway|corridor|office|closet|pantry|den)\\b",
         "\\b(?:go|walk|step|move)\\s+(?:back\\s+)?(?:into|inside|out of)\\s+(?:the\\s+)?(?:room|bedroom|bathroom|kitchen|living room|dining room|hallway|corridor|office|closet|pantry|den)\\b"
       ],
       "meaning": "A commanded transition between navigable regions.",

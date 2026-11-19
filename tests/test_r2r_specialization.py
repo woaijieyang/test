@@ -29,12 +29,18 @@ class R2RSpecializationTests(unittest.TestCase):
     def test_r2r_retrieval_distinguishes_region_mentions_from_transitions(self):
         descriptive = "Wait in the room with chairs facing the fireplace."
         transition = "Leave the bedroom and enter the hallway."
+        directional = "Turn left and continue past the piano."
+        explicit_exit = "Turn left, then leave the room."
         corridor = "Walk down the hallway and turn right at its far end."
         descriptive_cues, _ = r2r_features(descriptive)
+        directional_cues, _ = r2r_features(directional)
         transition_cues, _ = r2r_features(transition)
+        explicit_exit_cues, _ = r2r_features(explicit_exit)
         corridor_cues, _ = r2r_features(corridor)
         self.assertNotIn("room_transition", descriptive_cues)
+        self.assertNotIn("room_transition", directional_cues)
         self.assertIn("room_transition", transition_cues)
+        self.assertIn("room_transition", explicit_exit_cues)
         self.assertIn("hallway_endpoint", corridor_cues)
 
     def test_r2r_dynamic_selection_ranges_and_reviewer_pairing(self):

@@ -456,7 +456,7 @@
     },
     {
       "path": "shared/dataset_rules/r2r_fragments.json",
-      "git_blob_sha1": "37d0da2416ec52cba0c245f1b8e283c513f515eb"
+      "git_blob_sha1": "045e6d97ceb61a3c38bc89228727ab9fe9a0362f"
     },
     {
       "path": "shared/identity.py",
@@ -492,7 +492,7 @@
     },
     {
       "path": "tests/test_r2r_specialization.py",
-      "git_blob_sha1": "c6099dcef2479244fae543fba65f2a13141528e0"
+      "git_blob_sha1": "6d8934bf643c1172c39a182ccf0520c6ad44c03a"
     }
   ]
 }
