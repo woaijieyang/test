@@ -6,14 +6,14 @@ Host 是唯一的 Profile 派发、Prompt 编译、模型调用、状态推进�
 
 | Profile | Rules | Generator Core | Reviewer Core |
 |---|---|---|---|
-| `r2r-en` | Shared Contract + `shared/dataset_rules/r2r_en.md` | R2R G01–G10 | R2R R01–R10 |
+| `r2r-en` | Shared Contract + R2R shared rules + role-specific R2R guidance; Host-only R2R fragments | R2R G01–G10 | R2R R01–R10 |
 | `rxr-en-us` | Shared Contract + RxR shared rules + role-specific RxR guidance | RxR G01–G10 | RxR R01–R10 |
 
 两种 Profile 均固定加载十条 Core。R2R 不得加载任何 RxR Rules、Core 或 Dynamic；RxR 不得加载任何 R2R Rules、Core 或 Dynamic。未知 Profile、缺失 Core、身份不匹配或模板 Schema 错误必须在模型调用前 fail closed。
 
 ## 2. Template 装配
 
-R2R Generator 从显式允许的 `templates/R2R/val_seen/` 检索；R2R Reviewer 从 `templates/R2R/paired/` 和 `templates/R2R/diagnostics/` 检索。Core 目录不属于 Dynamic Pool。RxR 使用其独立的 Core、val_seen、paired 和 diagnostics 目录；`legacy/` 仅用于来源追溯。
+R2R Generator 从显式允许的 `templates/R2R/val_seen/` 检索，使用 R2R-only fragment features/ranker；R2R Reviewer 从 `templates/R2R/paired/` 和 `templates/R2R/diagnostics/` 检索。Fragment 只影响教学案例排序，不决定 KEEP/SPLIT。Core 目录不属于 Dynamic Pool。RxR 使用其独立的 Core、val_seen、paired 和 diagnostics 目录；`legacy/` 仅用于来源追溯。
 
 | Profile | Generator Dynamic | Reviewer Paired | Reviewer Diagnostics |
 |---|---:|---:|---:|
@@ -24,9 +24,9 @@ R2R Generator 从显式允许的 `templates/R2R/val_seen/` 检索；R2R Reviewer
 
 ## 3. Prompt Assembly
 
-R2R Generator：common role prompt → Shared Semantic Contract → R2R Rules → Fixed Core → Dynamic → active schema → current Source。
+R2R Generator：common role prompt → Shared Semantic Contract → R2R shared rules → R2R Generator role guidance → Fixed Core → Dynamic → active schema → current Source。
 
-R2R Reviewer：common role prompt → Shared Semantic Contract → R2R Rules → Reviewer Checklist → Fixed Core → Paired Dynamic → Diagnostics → active schema → current Source/Candidate/rendered text。
+R2R Reviewer：common role prompt → Shared Semantic Contract → R2R shared rules → R2R Reviewer role guidance → Reviewer Checklist → Fixed Core → Paired Dynamic → Diagnostics → active schema → current Source/Candidate/rendered text。
 
 RxR 保留其 Profile 专属规则与角色指导的既定装配顺序；RxR 静态构建结果必须与运行时编译一致。Generator Repair 使用完整 Generator repair schema 和相同冻结的 Generator Core/Dynamic；Reviewer Recheck 使用完整 Reviewer schema 和相同冻结的 Reviewer Core/Dynamic。
 
@@ -81,3 +81,7 @@ G0/G1 和 R0/R1 各自复用冻结的规则、Core、Dynamic 与组件 Hash。�
 `python -B -m host.compile` 是 Compiled Prompt、Template Index 和 Build Manifest 的唯一生成入口。禁止手工编辑 Compiled Prompt。编译结果必须包含正确 Core、Dynamic 和 active schema，Build Manifest 必须反映生成文件的实际 SHA、字节数、Core IDs、Dynamic IDs 和 Profile。
 
 CI 必须在编译后再次运行完整性校验，并执行工作区差异检查；如果生成文件与提交文件不一致，构建失败。RxR 的 Prompt 组件、Core、Dynamic 选择和装配行为必须通过独立冻结测试。
+
+## R2R Rules and provenance
+
+R2R rules metadata freezes the shared R2R rules, Host-side fragment registry, Generator role guidance, and Reviewer role guidance. Per-role prompt metadata freezes only the role guidance that contributes to that prompt. G0/G1 reuse the same Generator bundle; R0/R1 reuse the same Reviewer bundle. The R2R fragment registry is not included in the model payload. The generic selector path and RxR feature/ranking behavior remain unchanged.

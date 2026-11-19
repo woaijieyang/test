@@ -8,6 +8,8 @@
 - Generator is the only Candidate author; Reviewer is an independent auditor.
 - Adapter Profile is the only dataset dispatch authority.
 - R2R and RxR Rules/Core/Dynamic assets must remain isolated.
+- Do not modify `shared/semantic_contract.md`, generic prompt rules, Runtime Schemas, Renderer behavior, or AwareVLN Actor behavior for an R2R-only enhancement.
+- R2R retrieval changes must remain behind `profile == "r2r-en"`; do not modify the generic selector features/ranker used by RxR.
 - Offline fixtures and CI are not real-model calls or navigation results.
 
 ## Source and Identity
@@ -19,6 +21,10 @@ Read the actual R2R/RxR source schemas and preserve original instruction text ex
 Edit source prompts, Rules, schemas or teaching Templates only when required. Never hand-edit Compiled Prompt files. Run `python -B -m host.compile`, inspect all six generated prompt files and the Build Manifest, then run `python -B verify_package.py`. Confirm each Role has exactly ten fixed Core examples and Dynamic IDs belong only to the selected Profile allowlist. Legacy is not a runtime source.
 
 For teaching examples, verify Source Requirement → Candidate Evidence → Semantic Relation → Finding/Decision → Execution Consequence → Transfer Rule. JSON Schema and quote existence alone do not prove semantic correctness. Never label a curated teaching target as official subtask annotation or navigation ground truth.
+
+## R2R-specific integration
+
+R2R rules are loaded in this order: shared semantic contract, shared R2R rules, matching role-specific R2R guidance, fixed R2R Core, selected R2R Dynamic, active schema. The R2R fragment registry is Host-side retrieval input and must not be copied into the model payload. Generator and Reviewer role guidance are separate files. Keep the R2R rule/fragment/guidance hashes in task provenance and freeze them across G0/R0/G1/R1.
 
 ## Workflow Integration
 

@@ -2,6 +2,10 @@
 
 `prompt.md` defines the Generator role. `shared/semantic_contract.md` is the single shared acceptance standard. `output.schema.json` is the active G0 schema; `repair.schema.json` wraps a complete Generator candidate and one response per blocking Reviewer Finding.
 
+## R2R English specialization
+
+When Adapter Profile is `r2r-en`, `generator/dataset_rules/r2r_en.md` is loaded after the shared R2R rules and before the fixed R2R Generator Core. It adds the R2R route-event inventory, completed-boundary test, coupled-maneuver protection, minimal-text-change policy, and R2R-specific readback sequence. It does not change the Generator schema or the generic prompt. RxR does not load this file.
+
 ## Runtime Output
 
 The response contains `status`, `subtasks`, `issues`, `stage_audit` and `handoffs`. An accepted Candidate has one five-element Stage Audit per stage and one Handoff per adjacent pair. A `needs_review` response has no executable subtasks and includes a source-grounded issue. Stage indices use `subtask_index`.

@@ -1,4 +1,4 @@
-# LLM-decompose-v6.4｜R2R / RxR 统一导航指令分割系统
+# LLM-decompose-v6.5｜R2R / RxR 统一导航指令分割系统
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -12,6 +12,7 @@
 - `CODEX_START_HERE.md`：开发、集成和验收步骤。
 - `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
 - `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
+- `docs/R2R_ENHANCEMENT.md`：R2R English 专属规则、检索、Host 接入、RxR 隔离和验收规范。
 - `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
 - `docs/V1_V5_V6_RULE_COMPARISON.md`：历史比较档案，仅用于追溯，不是当前实现规范。
 - `shared/semantic_contract.md`：Generator/Reviewer 共用的唯一语义验收标准。

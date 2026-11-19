@@ -51,3 +51,9 @@ AwareVLN 现有 instruction slot 只接收最终 instruction 字符串。不得�
 ## 10. Evaluation Hygiene
 
 教学来源必须可追溯到 Split、Episode、Instruction/Path 和 Scan。R2R Generator Core/Dynamic 及 Reviewer Core/paired 教学案例的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 池来自 val_seen。val_seen 是 seen-environment 数据，不可作为 unseen-environment 结果。正式评测前必须核对模板源记录与评测 roster 的 Instruction、Episode/Path 和 Scan 重叠；报告完整分母、Fallback、技术失败、SR/SPL/nDTW 和置信区间。离线测试不代表真实模型或导航实验。
+
+## 11. R2R-specific rules and retrieval
+
+When and only when Adapter Profile is `r2r-en`, Host loads `shared/dataset_rules/r2r_en.md`, the matching role guidance under `generator/dataset_rules/` or `reviewer/dataset_rules/`, and the R2R-only fragment registry for deterministic Dynamic retrieval. The fragment registry is Host-side metadata and never becomes route evidence or a segmentation command. R2R Generator uses the R2R-specific feature/ranking path; R2R Reviewer uses the paired R2R Dynamic examples plus diagnostics. The fixed ten-case Core remains unconditional. Adaptive quantities are 6–8 Generator, the same 6–8 paired Reviewer cases, and 2–4 Reviewer diagnostics.
+
+The R2R rule bundle hash includes the shared R2R rules, fragment registry, and both role-guidance files. Per-role prompt component hashes include only the role guidance actually compiled into that role. G0/G1 and R0/R1 reuse their respective frozen bundles. RxR continues to use the original generic `features()` and `rank_examples()` path, its existing role guidance, selection ranges, prompt order, and Core/Dynamic assets. No shared semantic contract, Runtime Schema, Renderer behavior, or Actor interface is changed.

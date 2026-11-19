@@ -1,11 +1,7 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 112,
+  "file_count": 121,
   "files": [
-    {
-      "path": "adapter/README.md",
-      "git_blob_sha1": "164f6467b5a53ca51013ef79f879f6e06a411ea7"
-    },
     {
       "path": "adapter/__init__.py",
       "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
@@ -15,8 +11,16 @@
       "git_blob_sha1": "812f63b8f58ffd686832b4fca515c5ce3bcf941f"
     },
     {
+      "path": "adapter/README.md",
+      "git_blob_sha1": "164f6467b5a53ca51013ef79f879f6e06a411ea7"
+    },
+    {
       "path": "adapter/source.py",
       "git_blob_sha1": "0694580b6f6fa3782a00dcb25826f2ba8de2613b"
+    },
+    {
+      "path": "generator/dataset_rules/r2r_en.md",
+      "git_blob_sha1": "6c85c79e0d058b02cb6d6f2dabed108d80d5ef8c"
     },
     {
       "path": "generator/output.schema.json",
@@ -171,8 +175,16 @@
       "git_blob_sha1": "e62a01fa965ff343b593e713691d14ac549da33f"
     },
     {
-      "path": "renderer/README.md",
-      "git_blob_sha1": "64f6ac41f140b9d2b21ab811873c546788994882"
+      "path": "host/compile.py",
+      "git_blob_sha1": "ba93415a430b6c0a7ef402e025727adacdfe0c6e"
+    },
+    {
+      "path": "host/run.py",
+      "git_blob_sha1": "c5e349699067a8be9d8c1b8e502174374ffd3bed"
+    },
+    {
+      "path": "host/template_selector.py",
+      "git_blob_sha1": "4f72954120872556ec32febaf58c3943612eab36"
     },
     {
       "path": "renderer/__init__.py",
@@ -181,6 +193,14 @@
     {
       "path": "renderer/freeze.py",
       "git_blob_sha1": "7e117c5b1f821e2fd2063af2fb843a065a6c5da3"
+    },
+    {
+      "path": "renderer/README.md",
+      "git_blob_sha1": "64f6ac41f140b9d2b21ab811873c546788994882"
+    },
+    {
+      "path": "reviewer/dataset_rules/r2r_en.md",
+      "git_blob_sha1": "2d96579588f6e5f35dc3a7b18473e45e852a94ca"
     },
     {
       "path": "reviewer/output.schema.json",
@@ -431,6 +451,14 @@
       "git_blob_sha1": "369ed49ba110e5d5b37a3a1869fd715a8b1a0b90"
     },
     {
+      "path": "shared/dataset_rules/r2r_en.md",
+      "git_blob_sha1": "080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980"
+    },
+    {
+      "path": "shared/dataset_rules/r2r_fragments.json",
+      "git_blob_sha1": "aea8366638c313887f599b1cf239073b85810392"
+    },
+    {
       "path": "shared/identity.py",
       "git_blob_sha1": "3513723f2110d2b3b5626374c0ea12815f4e1d0c"
     },
@@ -449,6 +477,14 @@
     {
       "path": "shared/template_schemas_v1_5_2/stage_audit.schema.json",
       "git_blob_sha1": "22b9f4c5bf837b5c08ecc97b788993043a4130ca"
+    },
+    {
+      "path": "tests/test_paired_selection.py",
+      "git_blob_sha1": "38b847505c3fc8f60a18b8732e788d8edc7bdd38"
+    },
+    {
+      "path": "tests/test_r2r_specialization.py",
+      "git_blob_sha1": "6929a0545b960d8ab2a072c221ff8325da528dd3"
     }
   ]
 }

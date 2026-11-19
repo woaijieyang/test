@@ -99,6 +99,117 @@ def features(text):
     return cues, lex
 
 
+@lru_cache(maxsize=1)
+def _r2r_fragment_specs():
+    """Load the R2R-only retrieval taxonomy; it is never consulted by RxR."""
+    path = ROOT / "shared" / "dataset_rules" / "r2r_fragments.json"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    rows = payload.get("fragments")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("R2R fragment registry must contain a non-empty fragments list")
+    seen = set()
+    compiled = []
+    for row in rows:
+        fragment_id = row.get("id")
+        patterns = row.get("patterns")
+        if (not isinstance(fragment_id, str) or not fragment_id
+                or fragment_id in seen or not isinstance(patterns, list) or not patterns
+                or not all(isinstance(pattern, str) and pattern for pattern in patterns)):
+            raise ValueError(f"Invalid or duplicate R2R fragment definition: {row!r}")
+        seen.add(fragment_id)
+        for pattern in patterns:
+            re.compile(pattern, re.I)
+        compiled.append((fragment_id, tuple(patterns)))
+    return tuple(compiled)
+
+
+def r2r_features(text):
+    """R2R-only semantic retrieval cues; signals rank lessons, never choose a cut."""
+    cues, words = features(text)
+    for fragment_id, patterns in _r2r_fragment_specs():
+        if any(re.search(pattern, text, re.I) for pattern in patterns):
+            cues.add(fragment_id)
+
+    action_count = len(ACTION.findall(text))
+    has_followup_anchor = bool(
+        re.search(r"\b(?:after|once|when|then|inside|within)\b", text, re.I)
+        or re.search(r"[.!?]\s+[A-Z]", text)
+    )
+    has_distinct_followup = bool(
+        has_followup_anchor
+        and re.search(r"\b(?:enter|exit|leave|reach|arrive|stop|wait|find|locate)\b", text, re.I)
+    )
+    # These labels describe candidate teaching patterns only. They are not
+    # segmentation decisions and must never be interpreted as a split command.
+    if "room_transition" in cues and action_count >= 3 and has_distinct_followup:
+        cues.add("multi_stage_split")
+    elif action_count >= 2:
+        cues.add("single_stage_keep")
+    return cues, words
+
+
+def rank_r2r_examples(rows, text, count, excluded=()):
+    """R2R-specific ranking over the R2R fragment taxonomy and source-only cues."""
+    cues, words = r2r_features(text)
+    query_relations = relations(text)
+    type_terms = set().union(*(TYPE_CUES.get(c, set()) for c in cues))
+    type_terms.update(
+        {"split", "multi_stage"} if "multi_stage_split" in cues else
+        {"keep", "single_stage"} if "single_stage_keep" in cues else set()
+    )
+    if len(re.findall(r"\b(?:stop|wait|stand|stay|remain)\b", text, re.I)) > 1:
+        type_terms.update(("refinement", "intermediate", "stop"))
+    if len(words) < 12 and not query_relations:
+        type_terms.add("single")
+
+    options = []
+    document_frequency = Counter()
+    blocked = {normalized(text), *excluded}
+    for row in rows:
+        identity = normalized(source(row))
+        if identity in blocked:
+            continue
+        tags, terms = r2r_features(source(row))
+        tags.update(row.get("retrieval_tags", []))
+        document_frequency.update(tags | terms)
+        options.append((row, tags, terms, identity))
+
+    weights = {
+        token: 1 + math.log((len(options) + 1) / (frequency + 1))
+        for token, frequency in document_frequency.items()
+    }
+    candidates = []
+    for row, tags, terms, identity in options:
+        common = cues & tags
+        relation_hits = query_relations & relations(source(row))
+        annotations = [
+            task_type(row),
+            row.get("decision", {}).get("mode", ""),
+            *row.get("retrieval_tags", []),
+        ]
+        annotation_tokens = set("_".join(annotations).lower().split("_"))
+        type_hits = type_terms & annotation_tokens
+        score = (
+            sum(weights[token] for token in common)
+            + sum(weights[token] for token in words & terms) / math.sqrt(max(1, len(terms)))
+            + 4 * len(relation_hits)
+            + 2 * len(type_hits)
+            - 0.12 * len(tags - cues)
+        )
+        coverage = common | relation_hits | {("type", token) for token in type_hits}
+        candidates.append((row, identity, score, coverage))
+
+    chosen, covered = [], set()
+    while candidates and len(chosen) < count:
+        row, identity, _, coverage = max(
+            candidates, key=lambda item: item[2] + 1.5 * len(item[3] - covered)
+        )
+        chosen.append(row)
+        covered.update(coverage)
+        candidates = [item for item in candidates if item[1] != identity]
+    return chosen
+
+
 @lru_cache(maxsize=4)
 def library(role, profile):
     if role not in ('generator', 'reviewer') or profile not in PROFILES:
@@ -254,30 +365,43 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
         return [r["template_id"] for r in rows]
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
+
     gen = library("generator", profile)
-    if count is not None:
-        minimum, maximum = (2, 4) if profile == "rxr-en-us" else (1, len(gen))
-        if type(count) is not int or not minimum <= count <= maximum:
-            raise ValueError(
-                f"Invalid {profile} dynamic Generator count; expected {minimum}..{maximum}"
-            )
-    cues, _ = features(source_text)
-    distinct = cues - {"orientation_or_reference_frame","room_transition","intermediate_stop_or_wait"}
-    extra = min(2, len(distinct)//3 + int(len(source_text.split())>=65))
+    minimum, maximum = (2, 4) if profile == "rxr-en-us" else (6, 8)
+    if count is not None and (type(count) is not int or not minimum <= count <= maximum):
+        raise ValueError(
+            f"Invalid {profile} dynamic Generator count; expected {minimum}..{maximum}"
+        )
+
+    cue_fn = features if profile == "rxr-en-us" else r2r_features
+    rank_fn = rank_examples if profile == "rxr-en-us" else rank_r2r_examples
+    cues, _ = cue_fn(source_text)
+    distinct = cues - {
+        "orientation_or_reference_frame", "room_transition",
+        "intermediate_stop_or_wait", "single_stage_keep", "multi_stage_split",
+    }
+    extra = min(2, len(distinct) // 3 + int(len(source_text.split()) >= 65))
+
     if profile == "rxr-en-us":
-        # RxR receives a smaller, complementary dynamic set because ten
-        # fixed core cases are always injected by the compiler.
+        # RxR retrieval policy remains unchanged: 2–4 paired cases plus 0–2 diagnostics.
         base_count = (2 + extra) if count is None else count
-        if type(base_count) is not int or not 2 <= base_count <= 4:
-            raise ValueError("RxR dynamic Generator count must be between 2 and 4")
-        diagnostic_count = min(2, int(len(distinct) >= 3) + int(len(source_text.split()) >= 65))
+        diagnostic_count = min(
+            2, int(len(distinct) >= 3) + int(len(source_text.split()) >= 65)
+        )
     else:
-        base_count = 6 + extra if count is None else count
+        # R2R uses a larger complementary set in addition to its unconditional ten-case Core.
+        base_count = (6 + extra) if count is None else count
         diagnostic_count = 2 + extra
-    base = rank_examples(gen, source_text, base_count)
-    ids = [r["template_id"] for r in base]
+
+    base = rank_fn(gen, source_text, base_count)
+    ids = [row["template_id"] for row in base]
+    if len(ids) != base_count:
+        raise ValueError(
+            f"Insufficient {profile} Generator Dynamic examples: requested {base_count}, selected {len(ids)}"
+        )
     if role == "generator":
         return ids
+
     pairs = {}
     for row in rows:
         pair = row.get("pair_id")
@@ -285,24 +409,33 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
             if pair in pairs:
                 raise ValueError(f"Duplicate paired reviewer for {pair}")
             pairs[pair] = row
-    missing = [i for i in ids if i not in pairs]
+    missing = [template_id for template_id in ids if template_id not in pairs]
     if missing:
         raise ValueError(f"Missing paired Reviewer templates for Generator IDs: {missing}")
-    paired = [pairs[i] for i in ids]
-    diagnostics = rank_examples([r for r in rows if not r.get("pair_id")], source_text,
-                                diagnostic_count, excluded=[normalized(source(r)) for r in paired])
-    return [r["template_id"] for r in paired+diagnostics]
+    paired = [pairs[template_id] for template_id in ids]
+    diagnostics = rank_fn(
+        [row for row in rows if not row.get("pair_id")],
+        source_text,
+        diagnostic_count,
+        excluded=[normalized(source(row)) for row in paired],
+    )
+    if len(diagnostics) != diagnostic_count:
+        raise ValueError(
+            f"Insufficient {profile} Reviewer diagnostics: requested {diagnostic_count}, selected {len(diagnostics)}"
+        )
+    return [row["template_id"] for row in paired + diagnostics]
 
 
 def selection_evidence(role, profile, text, ids):
-    cues, _ = features(text)
+    cue_fn = features if profile == "rxr-en-us" else r2r_features
+    cues, _ = cue_fn(text)
     anchors = relations(text)
     by_id = {row["template_id"]: row for row in library(role,profile)}
     result = []
     for template_id in ids:
         row = by_id[template_id]
         example = source(row)
-        tags, _ = features(example)
+        tags, _ = cue_fn(example)
         result.append(dict(template_id=template_id, authored_type=task_type(row),
                            pair_id=row.get("pair_id"), matched_cues=sorted(cues & (tags | set(row.get("retrieval_tags", [])))),
                            matched_relations=sorted(anchors & relations(example))))

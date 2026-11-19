@@ -36,6 +36,7 @@ class PairedSelectionTests(unittest.TestCase):
         for profile in PROFILES:
             for role in ('generator','reviewer'):
                 self.assertEqual(len(select_examples(role,profile,'',mode='all')),len(library(role,profile)))
-            self.assertEqual(len(select_examples('generator',profile,'Go.',count=3)),3)
-            expected_reviewer = 3 if profile == "rxr-en-us" else 5
-            self.assertEqual(len(select_examples('reviewer',profile,'Go.',count=3)),expected_reviewer)
+            base_count = 3 if profile == "rxr-en-us" else 6
+            self.assertEqual(len(select_examples('generator',profile,'Go.',count=base_count)),base_count)
+            expected_reviewer = 3 if profile == "rxr-en-us" else 8
+            self.assertEqual(len(select_examples('reviewer',profile,'Go.',count=base_count)),expected_reviewer)

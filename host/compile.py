@@ -277,6 +277,8 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
     if profile == 'r2r-en':
         parts.append('R2R DATASET-SPECIFIC RULES [shared/dataset_rules/r2r_en.md]:\n' +
                      (ROOT/'shared/dataset_rules/r2r_en.md').read_text(encoding='utf-8'))
+        parts.append(f'R2R ROLE GUIDANCE [{role}/dataset_rules/r2r_en.md]:\n' +
+                     (d/'dataset_rules/r2r_en.md').read_text(encoding='utf-8'))
     if profile == 'rxr-en-us':
         parts.append('RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:\n' +
                      (ROOT/'shared/dataset_rules/rxr_en_us.md').read_text(encoding='utf-8'))

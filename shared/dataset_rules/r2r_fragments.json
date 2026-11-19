@@ -1,0 +1,201 @@
+{
+  "description": "R2R-only source-text retrieval features. These features rank teaching examples; they never emit a navigation plan, select a boundary, or determine a KEEP/SPLIT verdict.",
+  "matching_policy": "A fragment is a retrieval cue only. Multiple cues may coexist. Derived multi_stage_split and single_stage_keep labels are added by the R2R selector from combined source structure and are not direct keyword rules.",
+  "fragments": [
+    {
+      "id": "room_transition",
+      "patterns": [
+        "\\b(?:enter(?:s|ed|ing)?|exit(?:s|ed|ing)?|leave|leaves|left|leaving|inside|within|room|hallway|corridor)\\b"
+      ],
+      "meaning": "A commanded transition between navigable regions.",
+      "positive_case_type": "completed_transition_then_distinct_objective",
+      "negative_case_type": "A room mentioned only as an observation.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "doorway_selection_and_crossing",
+      "patterns": [
+        "\\b(?:doors?|doorways?|archways?|entrances?|thresholds?|opening|portal)\\b"
+      ],
+      "meaning": "Doorway identity, selection, approach, crossing, or entry.",
+      "positive_case_type": "doorway_selection_and_crossing",
+      "negative_case_type": "A doorway mentioned only as an observation.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "stairs_or_level_change",
+      "patterns": [
+        "\\b(?:stairs?|staircase|stairway|steps?|landing|upstairs|downstairs|floor|level|flight)\\b"
+      ],
+      "meaning": "Vertical movement, stair flight, landing, or floor transition.",
+      "positive_case_type": "bounded_transition_then_distinct_target",
+      "negative_case_type": "Stairs used only as a distant visual landmark.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "landmark_conditioned_navigation",
+      "patterns": [
+        "\\b(?:pass(?:es|ed|ing)?|past|near|beside|along|behind|in front of|next to|opposite)\\b"
+      ],
+      "meaning": "Movement or target placement conditioned on a landmark relation.",
+      "positive_case_type": "landmark_conditioned_navigation",
+      "negative_case_type": "An object noun with no route or spatial relation.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "temporal_dependency",
+      "patterns": [
+        "\\b(?:before|after|while|until|once|when|then|during)\\b"
+      ],
+      "meaning": "Temporal ordering, trigger, or continuation dependency.",
+      "positive_case_type": "temporal_dependency",
+      "negative_case_type": "Temporal wording unrelated to route action scope.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "ordinal_target_selection",
+      "patterns": [
+        "\\b(?:first|second|third|fourth|fifth|last|1st|2nd|3rd|4th|5th)\\b"
+      ],
+      "meaning": "Ordinal selection among doors, rooms, turns, stair flights, or landmarks.",
+      "positive_case_type": "ordinal_target_selection",
+      "negative_case_type": "An ordinal used outside target selection.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "return_or_revisit",
+      "patterns": [
+        "\\b(?:return|back|again|retrace|revisit|same)\\b"
+      ],
+      "meaning": "Returning to or revisiting a previously referenced place or route.",
+      "positive_case_type": "return_or_revisit",
+      "negative_case_type": "Back used as a non-spatial discourse marker.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "bounded_motion",
+      "patterns": [
+        "\\b(?:halfway|midway|steps?|paces?|feet|meters?|metres?|yards?|until)\\b"
+      ],
+      "meaning": "Bounded movement or an explicitly limited route segment.",
+      "positive_case_type": "bounded_motion",
+      "negative_case_type": "A quantity unrelated to movement.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "orientation_or_reference_frame",
+      "patterns": [
+        "\\b(?:left|right|behind|ahead|facing|clockwise|counterclockwise|opposite)\\b"
+      ],
+      "meaning": "Direction, facing, or spatial reference frame.",
+      "positive_case_type": "orientation_or_reference_frame",
+      "negative_case_type": "A directional word with no navigational role.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "intermediate_stop_or_wait",
+      "patterns": [
+        "\\b(?:stop|wait|stand|stay|remain)\\b"
+      ],
+      "meaning": "Explicit stopping, waiting, or stationary placement event.",
+      "positive_case_type": "terminal_placement",
+      "negative_case_type": "A stage boundary or idiomatic use mistaken for STOP.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "negation",
+      "patterns": [
+        "\\b(?:not|never|without|don't|do not|doesn't|mustn't|must not)\\b"
+      ],
+      "meaning": "Negative or prohibited navigation action.",
+      "positive_case_type": "negative_constraint",
+      "negative_case_type": "Negation outside the route constraint.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "conditional_observation",
+      "patterns": [
+        "\\b(?:if|otherwise|unless)\\b"
+      ],
+      "meaning": "Conditional branch or observation-dependent instruction.",
+      "positive_case_type": "conditional_observation",
+      "negative_case_type": "Conditional phrasing unrelated to route choice.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "correction",
+      "patterns": [
+        "\\b(?:actually|instead|sorry|i mean|rather)\\b"
+      ],
+      "meaning": "Self-correction or replacement of a previously stated route event.",
+      "positive_case_type": "correction",
+      "negative_case_type": "Contrastive discourse without route correction.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "path_branch",
+      "patterns": [
+        "\\b(?:branch|fork|junction|intersection|split|crossroads?)\\b"
+      ],
+      "meaning": "A route choice at a branch or junction.",
+      "positive_case_type": "path_branch",
+      "negative_case_type": "Branch used in a non-spatial sense.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "source_limited_ambiguity",
+      "patterns": [
+        "\\b(?:unclear|ambiguous|uncertain|possibly|maybe|unknown)\\b"
+      ],
+      "meaning": "Explicit source-level uncertainty requiring careful review.",
+      "positive_case_type": "source_level_ambiguity_abstention",
+      "negative_case_type": "Ordinary linguistic noise or a recoverable typo.",
+      "review_checks": [
+        "Check the complete source and preserve the actual event, relation, and scope.",
+        "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    }
+  ]
+}

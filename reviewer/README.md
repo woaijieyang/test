@@ -2,6 +2,10 @@
 
 Reviewer uses the same `shared/semantic_contract.md` as Generator. `prompt.md` and `checklist.md` define independent L0–L6 review. The active `output.schema.json` is used for both R0 and R1.
 
+## R2R English specialization
+
+When Adapter Profile is `r2r-en`, `reviewer/dataset_rules/r2r_en.md` is loaded as role-specific R2R guidance. It strengthens independent checks for route identity, under/over-segmentation, ordinal and direction frames, terminal placement, unnecessary rewriting, and exact rendered-text differences. It does not add Reviewer dimensions or change the active schema. RxR does not load this file.
+
 ## Input Independence
 
 R0 receives the original instruction, frozen Candidate stages and exact rendered text. It does not receive Generator Stage Audit or Handoff self-assessment. R1 receives the new Source/Candidate/rendered text plus the frozen R0 Review, old Candidate and old rendered text. It independently rechecks every prior blocking Finding and the entire new Candidate.

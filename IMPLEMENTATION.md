@@ -31,3 +31,9 @@ No changes to AwareVLN Reason/Act, STOP, last_reasoning, image flow, action spac
 ## Evidence Limits
 
 Schema, protocol, regression and smoke tests verify engineering contracts only. They do not establish semantic accuracy, tokenizer invariance or navigation improvement. Real-model blind review, held-out evaluation and paired navigation rollouts are separate required experiments.
+
+## R2R-only specialization
+
+R2R English has a Profile-scoped shared rule file, Generator role guidance, Reviewer role guidance, and Host-side fragment registry. The Generator guidance operationalizes full-route event inventory, coupled-maneuver assembly, completed-boundary testing, and minimal text edits. The Reviewer guidance independently checks route-event coverage, stage/handoff validity, under/over-segmentation, and source-to-render differences. The fragment registry only ranks R2R teaching examples; it never determines a segmentation verdict.
+
+The R2R selector is isolated behind `profile == "r2r-en"` and uses `r2r_features()` plus `rank_r2r_examples()`. The RxR path continues to call the existing generic `features()` and `rank_examples()` functions. R2R adaptive selection is 6–8 Generator Dynamic, the same number of paired Reviewer Dynamic, and 2–4 Reviewer diagnostics. The ten fixed Core cases remain unconditional. No shared semantic contract, generic prompt, Runtime Schema, Renderer, Actor, or RxR rule/template is modified.
