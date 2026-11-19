@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VLN Generator Few-shot Template v1.5.1",
+  "title": "VLN Generator Few-shot Template",
   "type": "object",
   "required": [
     "schema_version",

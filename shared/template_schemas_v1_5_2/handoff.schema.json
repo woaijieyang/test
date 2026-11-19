@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VLN canonical Handoff v1.5",
+  "title": "VLN canonical Handoff",
   "type": "object",
   "additionalProperties": false,
   "required": [

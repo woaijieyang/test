@@ -203,7 +203,7 @@ The compiled RxR artifacts must match their pre-change hashes:
 - Generator repair: \`81dc6e312f6106937bafb2f317048e0bcae01e23748fc9c9749051581433894f\`;
 - Reviewer: \`18c1f6a7611086f8d9a2888390f38b9c2224d2e1f749c3ea1059a2a6a032fb7b\`.
 
-These hashes protect the compiled outputs, not the shared compiler source. The branch's CI must compile and persist all generated files on the branch itself; it must not push generated artifacts back to the v6.4 branch.
+These hashes protect the compiled outputs, not the shared compiler source. The branch's CI must compile and persist all generated files on the branch itself; it must not push generated artifacts back to an earlier release branch.
 
 ## 10. Evaluation boundary
 

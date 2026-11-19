@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vln.local/reviewer/output.schema.json",
-  "title": "VLN Reviewer runtime output v2",
+  "title": "VLN Reviewer runtime output",
   "type": "object",
   "additionalProperties": false,
   "required": [

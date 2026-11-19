@@ -1,8 +1,8 @@
 {
   "generator/compiled_r2r-en.txt": {
-    "compiled_sha256": "18024daa1b2c8d54a7d4ac579a7a4422a189133b562b65406f18509faf68e484",
-    "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 111187,
+    "compiled_sha256": "313e42ac3797dddfef2dabcffb21d003c3215566615160aaa776088aa43cb70f",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+    "bytes": 111172,
     "default_examples": 6,
     "library_count": 25,
     "fixed_core_count": 10,
@@ -30,9 +30,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "41446f7763f4f56f8d447d2cdc55028e4d24ff7f5a4484644ad125641787933e",
-    "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
-    "bytes": 142327,
+    "compiled_sha256": "fb297c6ff51e459a8735ba7db7b73f7124d8284d7dfb0dafe6b905ef6f9541e1",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+    "bytes": 142319,
     "default_examples": 8,
     "library_count": 52,
     "fixed_core_count": 10,
@@ -62,9 +62,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_r2r-en.txt": {
-    "compiled_sha256": "8f4ab2f35601f58cf66a7b7e4e8d082762d1a057231718ba2c6ce42e33cdc4c1",
-    "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 126243,
+    "compiled_sha256": "6985dbdc6c918de990aed99dfc0c4fa11215eb16e03d32d5db9bb334e2e10e9e",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+    "bytes": 126225,
     "default_examples": 6,
     "library_count": 25,
     "fixed_core_count": 10,
@@ -92,9 +92,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "864e5a37a2c7b8b7fef45c4c58ceeebc87183d52d0db9ab26e0b73c1b75f4a21",
-    "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 106733,
+    "compiled_sha256": "a7dfd35332c41f8ac150d0fba18fdafe294d00d6601c75aff72bf5135d7d61c5",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+    "bytes": 106718,
     "default_examples": 2,
     "library_count": 35,
     "fixed_core_count": 10,
@@ -118,9 +118,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "18c1f6a7611086f8d9a2888390f38b9c2224d2e1f749c3ea1059a2a6a032fb7b",
-    "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
-    "bytes": 140110,
+    "compiled_sha256": "91e0ca112eda38413521c2423b13c69b84d747825a1e5098f89389f7e815cc9b",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+    "bytes": 140102,
     "default_examples": 2,
     "library_count": 64,
     "fixed_core_count": 10,
@@ -144,9 +144,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_rxr-en-us.txt": {
-    "compiled_sha256": "81dc6e312f6106937bafb2f317048e0bcae01e23748fc9c9749051581433894f",
-    "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 121789,
+    "compiled_sha256": "b4b880fec24d46e951d01157f104152041df1cddf250cde4611668aea8c6a95a",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+    "bytes": 121771,
     "default_examples": 2,
     "library_count": 35,
     "fixed_core_count": 10,

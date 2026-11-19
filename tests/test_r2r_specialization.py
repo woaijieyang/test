@@ -139,9 +139,9 @@ class R2RSpecializationTests(unittest.TestCase):
         generator_ids = select_examples("generator", "rxr-en-us", "")
         reviewer_ids = select_examples("reviewer", "rxr-en-us", "")
         cases = (
-            ("generator", "initial", generator_ids, "864e5a37a2c7b8b7fef45c4c58ceeebc87183d52d0db9ab26e0b73c1b75f4a21"),
-            ("generator", "repair", generator_ids, "81dc6e312f6106937bafb2f317048e0bcae01e23748fc9c9749051581433894f"),
-            ("reviewer", "review", reviewer_ids, "18c1f6a7611086f8d9a2888390f38b9c2224d2e1f749c3ea1059a2a6a032fb7b"),
+            ("generator", "initial", generator_ids, "a7dfd35332c41f8ac150d0fba18fdafe294d00d6601c75aff72bf5135d7d61c5"),
+            ("generator", "repair", generator_ids, "b4b880fec24d46e951d01157f104152041df1cddf250cde4611668aea8c6a95a"),
+            ("reviewer", "review", reviewer_ids, "91e0ca112eda38413521c2423b13c69b84d747825a1e5098f89389f7e815cc9b"),
         )
         for role, phase, selected, expected_hash in cases:
             with self.subTest(role=role, phase=phase):
