@@ -16,7 +16,7 @@
     },
     {
       "path": "adapter/source.py",
-      "git_blob_sha1": "83022f6cf5383b9a98bc11302dcec0d4c5055b56"
+      "git_blob_sha1": "3facca2f0f57e1d734a76a24d932456cdaef02ea"
     },
     {
       "path": "generator/output.schema.json",
@@ -188,7 +188,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/01_R2R-DIAG-01.json",
-      "git_blob_sha1": "5b1091600c658702fe7b8dfec6f113e0e33c8847"
+      "git_blob_sha1": "88a1b2ef34d8e53c39b09bfb527f72f1f634839d"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/02_R2R-DIAG-02.json",
