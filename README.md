@@ -115,7 +115,7 @@ python -m evaluation.smoke24
 
 ## 数据来源与评测
 
-教学来源与评测 Split 必须显式区分：R2R Generator Core/Dynamic 与 Reviewer Core 的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 来自 val_seen。固定 Core 是经过整理的教学案例，不是官方子任务标注或轨迹金标；Dynamic 也不是无条件可用于所有评测 Split 的训练数据。正式评测前必须按原始 split、instruction/episode/path ID 和 scene/scan ID 做交叉审计。R2R 的 val_seen 使用训练中已见环境，val_unseen 使用未见环境；RxR 官方划分同样区分 val_seen 与 val_unseen，且数据记录包含 split、instruction_id、path_id、scan 和 language。以实际使用的数据版本及 roster 为准，不能只凭文件名推断无泄漏。参考：[R2R task data documentation](https://github.com/xjli/r2r_vln/blob/master/tasks/R2R/README.md)、[RxR dataset repository](https://github.com/google-research-datasets/RxR)、[RxR split description](https://ai.google.com/research/rxr/explore)。
+教学来源与评测 Split 必须显式区分：R2R Generator Core/Dynamic 与 Reviewer Core 的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 来自 val_seen。固定 Core 是经过整理的教学案例，不是官方子任务标注或轨迹金标；Dynamic 也不是无条件可用于所有评测 Split 的训练数据。正式评测前必须按原始 split、instruction/episode/path ID 和 scene/scan ID 做交叉审计。R2R 的 val_seen 使用训练中已见环境，val_unseen 使用未见环境；RxR 官方划分同样区分 val_seen 与 val_unseen，且数据记录包含 split、instruction_id、path_id、scan 和 language。以实际使用的数据版本及 roster 为准，不能只凭文件名推断无泄漏。参考：[R2R task data documentation](https://github.com/peteanderson80/Matterport3DSimulator/blob/master/tasks/R2R/README.md)、[RxR dataset repository](https://github.com/google-research-datasets/RxR)、[RxR split description](https://ai.google.com/research/rxr/explore)。
 
 ## 当前工程状态
 
