@@ -3,7 +3,7 @@ from pathlib import Path
 
 from host.compile import ROOT, compile_prompt, core_library
 from host.run import request, dataset_rules_metadata, template_bundle_metadata
-from host.template_selector import library, select_examples, source
+from host.template_selector import library, select_examples, source, validate_dynamic_identity
 
 
 class RxRProfileTests(unittest.TestCase):
