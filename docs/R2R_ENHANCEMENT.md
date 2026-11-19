@@ -84,7 +84,7 @@ The Host-side registry provides R2R cues for:
 - path branch/junction;
 - explicit source-level ambiguity.
 
-The selector additionally derives two task-level retrieval labels from combined source structure: \`single_stage_keep\` and \`multi_stage_split\`. They identify useful teaching patterns for retrieval only. They are not model outputs, decision thresholds, or automatic cut rules.
+The selector does not infer a KEEP/SPLIT label from the source. It retrieves teaching cases from source-grounded route features and relations only; the Generator remains solely responsible for the segmentation decision under the complete semantic contract.
 
 ### 5.2 Ranking
 

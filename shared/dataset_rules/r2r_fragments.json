@@ -1,6 +1,6 @@
 {
   "description": "R2R-only source-text retrieval features. These features rank teaching examples; they never emit a navigation plan, select a boundary, or determine a KEEP/SPLIT verdict.",
-  "matching_policy": "A fragment is a retrieval cue only. Multiple cues may coexist. Derived multi_stage_split and single_stage_keep labels are added by the R2R selector from combined source structure and are not direct keyword rules.",
+  "matching_policy": "Each fragment is a source-text retrieval cue only. Multiple cues may coexist. The selector does not derive a KEEP/SPLIT label from action count, punctuation, region mentions, or other shallow source heuristics. A fragment match never determines a boundary or a segmentation verdict.",
   "fragments": [
     {
       "id": "room_transition",
