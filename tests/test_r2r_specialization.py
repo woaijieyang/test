@@ -18,12 +18,13 @@ class R2RSpecializationTests(unittest.TestCase):
         transition_cues, _ = r2r_features(transition)
         self.assertIn("landmark_conditioned_navigation", coupled_cues)
         self.assertIn("doorway_selection_and_crossing", coupled_cues)
-        self.assertIn("single_stage_keep", coupled_cues)
+        self.assertNotIn("single_stage_keep", coupled_cues)
         self.assertNotIn("multi_stage_split", coupled_cues)
         self.assertIn("room_transition", transition_cues)
         self.assertIn("stairs_or_level_change", transition_cues)
         self.assertIn("intermediate_stop_or_wait", transition_cues)
-        self.assertIn("multi_stage_split", transition_cues)
+        self.assertNotIn("single_stage_keep", transition_cues)
+        self.assertNotIn("multi_stage_split", transition_cues)
 
     def test_r2r_dynamic_selection_ranges_and_reviewer_pairing(self):
         sources = (

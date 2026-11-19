@@ -98,7 +98,7 @@ The R2R ranker combines:
 - diversity coverage so later selections add evidence not already covered;
 - exclusion of an exact normalized source match.
 
-It does not read navigation scores, ground-truth paths, trajectory outcomes, or validation labels. It does not use B2/A1/A2/A3 partition names to choose examples. Retrieval affects which teaching cases are shown, not the truth conditions for the current decision.
+It does not derive a KEEP/SPLIT label from verb count, punctuation, room mentions, or instruction length. It does not read navigation scores, ground-truth paths, trajectory outcomes, or validation labels. It does not use B2/A1/A2/A3 partition names to choose examples. Retrieval affects which teaching cases are shown, not the truth conditions for the current decision.
 
 ### 5.3 Runtime quantities
 

@@ -184,7 +184,7 @@
     },
     {
       "path": "host/template_selector.py",
-      "git_blob_sha1": "4f72954120872556ec32febaf58c3943612eab36"
+      "git_blob_sha1": "6630b68b515cf2b9370c3780e84cf6cf54110aaa"
     },
     {
       "path": "renderer/__init__.py",
@@ -480,7 +480,7 @@
     },
     {
       "path": "tests/test_host_dispatch_profiles.py",
-      "git_blob_sha1": "4e01a43ba67103164f2929ba38041468213baf8d"
+      "git_blob_sha1": "f06fddc395f3c18145df227d53b4666f0f2228fe"
     },
     {
       "path": "tests/test_paired_selection.py",
@@ -492,7 +492,7 @@
     },
     {
       "path": "tests/test_r2r_specialization.py",
-      "git_blob_sha1": "6929a0545b960d8ab2a072c221ff8325da528dd3"
+      "git_blob_sha1": "295f62f703f41d1dfddddc463769b90a8a49de23"
     }
   ]
 }

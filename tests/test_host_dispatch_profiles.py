@@ -211,7 +211,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         cues, _ = r2r_features(text)
         distinct = cues - {
             "orientation_or_reference_frame", "room_transition",
-            "intermediate_stop_or_wait", "single_stage_keep", "multi_stage_split"
+            "intermediate_stop_or_wait"
         }
         extra = min(2, len(distinct)//3 + int(len(text.split()) >= 65))
         generator_rows = library("generator", "r2r-en")

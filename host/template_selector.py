@@ -130,21 +130,9 @@ def r2r_features(text):
         if any(re.search(pattern, text, re.I) for pattern in patterns):
             cues.add(fragment_id)
 
-    action_count = len(ACTION.findall(text))
-    has_followup_anchor = bool(
-        re.search(r"\b(?:after|once|when|then|inside|within)\b", text, re.I)
-        or re.search(r"[.!?]\s+[A-Z]", text)
-    )
-    has_distinct_followup = bool(
-        has_followup_anchor
-        and re.search(r"\b(?:enter|exit|leave|reach|arrive|stop|wait|find|locate)\b", text, re.I)
-    )
-    # These labels describe candidate teaching patterns only. They are not
-    # segmentation decisions and must never be interpreted as a split command.
-    if "room_transition" in cues and action_count >= 3 and has_distinct_followup:
-        cues.add("multi_stage_split")
-    elif action_count >= 2:
-        cues.add("single_stage_keep")
+    # Do not infer KEEP/SPLIT labels from lexical structure. The selector only
+    # retrieves examples matching source-grounded route features; segmentation
+    # remains a Generator decision under the full semantic contract.
     return cues, words
 
 
@@ -153,10 +141,6 @@ def rank_r2r_examples(rows, text, count, excluded=()):
     cues, words = r2r_features(text)
     query_relations = relations(text)
     type_terms = set().union(*(TYPE_CUES.get(c, set()) for c in cues))
-    type_terms.update(
-        {"split", "multi_stage"} if "multi_stage_split" in cues else
-        {"keep", "single_stage"} if "single_stage_keep" in cues else set()
-    )
     if len(re.findall(r"\b(?:stop|wait|stand|stay|remain)\b", text, re.I)) > 1:
         type_terms.update(("refinement", "intermediate", "stop"))
     if len(words) < 12 and not query_relations:
@@ -378,7 +362,7 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     cues, _ = cue_fn(source_text)
     distinct = cues - {
         "orientation_or_reference_frame", "room_transition",
-        "intermediate_stop_or_wait", "single_stage_keep", "multi_stage_split",
+        "intermediate_stop_or_wait",
     }
     extra = min(2, len(distinct) // 3 + int(len(source_text.split()) >= 65))
 
