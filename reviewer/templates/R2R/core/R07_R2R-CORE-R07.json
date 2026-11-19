@@ -13,7 +13,8 @@
     "instruction_id": null,
     "scene_id": "mp3d/r47D5H71a5s/r47D5H71a5s.glb",
     "trajectory_id": "356",
-    "source_key": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356"
+    "source_key": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356",
+    "scan_id": "r47D5H71a5s"
   },
   "provenance": {
     "kind": "reviewer_only_segmentation_adversarial_example",
