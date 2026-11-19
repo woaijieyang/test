@@ -1,6 +1,6 @@
 """Read-only source adapter for R2R English and RxR en-US.
 
-The adapter extracts the instruction and stable task identity only. It never
+The adapter extracts the instruction, stable task identity, and Host-only dataset provenance. It never
 normalizes whitespace, selects a cut, rewrites text, reads scores or passes GT
 and trajectory metadata to either language model.
 """
