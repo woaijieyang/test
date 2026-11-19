@@ -2,7 +2,7 @@
   "adapter/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "adapter/profiles.json": "gitblob-sha1:812f63b8f58ffd686832b4fca515c5ce3bcf941f",
   "adapter/README.md": "gitblob-sha1:164f6467b5a53ca51013ef79f879f6e06a411ea7",
-  "adapter/source.py": "gitblob-sha1:3facca2f0f57e1d734a76a24d932456cdaef02ea",
+  "adapter/source.py": "gitblob-sha1:0694580b6f6fa3782a00dcb25826f2ba8de2613b",
   "archive/LLM-decompose-v1-r2r-specialized-v5-test/adapter/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "archive/LLM-decompose-v1-r2r-specialized-v5-test/adapter/profiles.json": "gitblob-sha1:812f63b8f58ffd686832b4fca515c5ce3bcf941f",
   "archive/LLM-decompose-v1-r2r-specialized-v5-test/adapter/README.md": "gitblob-sha1:164f6467b5a53ca51013ef79f879f6e06a411ea7",
@@ -590,9 +590,9 @@
   "reviewer/templates/R2R/core/README.md": "gitblob-sha1:e108ce10aa73805a5cec099d3e9bf52d20db0ec4",
   "tests/test_r2r_core.py": "gitblob-sha1:db739a3ade0960d8f7583e91252571e1a13fc3ef",
   "tests/test_rxr_profile.py": "gitblob-sha1:4974fc4fd0e350bcc58c3d895244b5498ba170b9",
-  "provenance/r2r_core_provenance.json": "gitblob-sha1:9dbcf8cf2b7bcea44c43aeccd88e5fb1ccbf9882",
+  "provenance/r2r_core_provenance.json": "gitblob-sha1:755571faec879939e689d1d7da5a5b08edb493d5",
   "provenance/r2r_profile_integrity.json": "gitblob-sha1:e4c0b6d355124203a2decd7214181f63763b0677",
   "provenance/rxr_profile_integrity.json": "gitblob-sha1:5cdb9036b421df648df0657f8e381312e88219e0",
-  ".github/workflows/validate.yml": "gitblob-sha1:4bf2c2db29e0aa46c02819ea8723689d5309cbff",
+  ".github/workflows/validate.yml": "gitblob-sha1:151fa745fa6c0e15a390d5305fdcf960f7db341d",
   "provenance/R2R_CORE_INDEPENDENT_REVIEW.md": "gitblob-sha1:fc5bedc84fdac4d64a2a1d33fb44fe4b4dc093b5"
 }
