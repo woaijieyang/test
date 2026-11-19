@@ -564,7 +564,7 @@
   "verify_package.py": "gitblob-sha1:a0b302af1be112da4626e7fc9b12fc54df2957de",
   "VERSION": "gitblob-sha1:adce458863f3b92d7b9444d8aaf1c46894334c28",
   "WORKFLOW.md": "gitblob-sha1:18fcc192ff53e83819860a0e5150b00a9b46ef98",
-  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:387a3f04c6a84e41c08aa32e88ced8da703c542c",
+  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:58b4cc8274fc4d525b6fc6908f1588bf181ed2b6",
   "generator/templates/R2R/core/G01_R2R-CORE-G01.json": "gitblob-sha1:5764d437bc56ef0690781b80da9acfcbff27e5ad",
   "generator/templates/R2R/core/G02_R2R-CORE-G02.json": "gitblob-sha1:c9abf94acbbe541766fb3ce6fa7ee150f5e3f961",
   "generator/templates/R2R/core/G03_R2R-CORE-G03.json": "gitblob-sha1:962bc1a86897c8800b9d2749fa4715492c61181c",
@@ -591,7 +591,7 @@
   "tests/test_r2r_core.py": "gitblob-sha1:db739a3ade0960d8f7583e91252571e1a13fc3ef",
   "tests/test_rxr_profile.py": "gitblob-sha1:4974fc4fd0e350bcc58c3d895244b5498ba170b9",
   "provenance/r2r_core_provenance.json": "gitblob-sha1:755571faec879939e689d1d7da5a5b08edb493d5",
-  "provenance/r2r_profile_integrity.json": "gitblob-sha1:e4c0b6d355124203a2decd7214181f63763b0677",
+  "provenance/r2r_profile_integrity.json": "gitblob-sha1:585654b438a729dbde8d0b571672b2dcbbed40fb",
   "provenance/rxr_profile_integrity.json": "gitblob-sha1:5cdb9036b421df648df0657f8e381312e88219e0",
   ".github/workflows/validate.yml": "gitblob-sha1:151fa745fa6c0e15a390d5305fdcf960f7db341d",
   "provenance/R2R_CORE_INDEPENDENT_REVIEW.md": "gitblob-sha1:fc5bedc84fdac4d64a2a1d33fb44fe4b4dc093b5"
