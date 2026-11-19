@@ -16,7 +16,7 @@
     },
     {
       "path": "adapter/source.py",
-      "git_blob_sha1": "3facca2f0f57e1d734a76a24d932456cdaef02ea"
+      "git_blob_sha1": "0694580b6f6fa3782a00dcb25826f2ba8de2613b"
     },
     {
       "path": "generator/output.schema.json",
