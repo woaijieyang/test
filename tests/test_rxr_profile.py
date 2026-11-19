@@ -6,7 +6,7 @@ from host.run import request, dataset_rules_metadata, template_bundle_metadata
 from host.template_selector import library, select_examples, source
 
 
-class RxRV6ProfileTests(unittest.TestCase):
+class RxRProfileTests(unittest.TestCase):
     def test_fixed_core_is_exactly_ten_and_paired(self):
         gen = core_library("generator", "rxr-en-us")
         rev = core_library("reviewer", "rxr-en-us")
@@ -154,7 +154,7 @@ class RxRV6ProfileTests(unittest.TestCase):
         ids = select_examples("generator", "r2r-en", source_text)
         prompt, _ = compile_prompt("generator", "initial", profile="r2r-en",
                                    selected_ids=ids, original_instruction=source_text)
-        self.assertNotIn("RxR en-US v6", prompt)
+        self.assertNotIn("R2R DATASET-SPECIFIC RULES", prompt)
         self.assertNotIn("FIXED RXR", prompt)
         self.assertNotIn("dataset_rules/rxr_en_us.md", prompt)
 
@@ -173,7 +173,7 @@ class RxRV6ProfileTests(unittest.TestCase):
 
     def test_rule_metadata_uses_real_section_separators(self):
         metadata = dataset_rules_metadata("rxr-en-us")
-        self.assertEqual(metadata["version"], "v6-rxr-en-us")
+        self.assertEqual(metadata["version"], "rxr-en-us-profile")
         self.assertEqual(len(metadata["files"]), 4)
         self.assertEqual(len(metadata["sha256"]), 64)
         from pathlib import Path

@@ -1,5 +1,4 @@
 {
-  ".github/workflows/v6-validation.yml": "gitblob-sha1:5c39af3174b78868f902613aedff10f579cee8f4",
   "adapter/__init__.py": "gitblob-sha1:e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
   "adapter/profiles.json": "gitblob-sha1:812f63b8f58ffd686832b4fca515c5ce3bcf941f",
   "adapter/README.md": "gitblob-sha1:164f6467b5a53ca51013ef79f879f6e06a411ea7",
@@ -563,7 +562,7 @@
   "tests/test_targeted_feedback.py": "gitblob-sha1:c08d5a9d407084083f6a2e2486b8f78a4ce21eac",
   "tests/test_workflow_integration.py": "gitblob-sha1:40d333d1e424ffe2fc4bea1c45d708d19b30fe5a",
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
-  "verify_package.py": "gitblob-sha1:27ce9e9b5d20a1cb85ebf3feb9ee2cce8d07921b",
+  "verify_package.py": "gitblob-sha1:a0b302af1be112da4626e7fc9b12fc54df2957de",
   "VERSION": "gitblob-sha1:4d82121ef61b5762734ecde3a990212fe32f9d4b",
   "WORKFLOW.md": "gitblob-sha1:131f108e166d8b0af8816d2759ed22e5f5079cd3",
   "tests/test_host_dispatch_profiles.py": "gitblob-sha1:10c37949aa9a53cdf4c2c17c59a093b871e6337b",
@@ -591,7 +590,7 @@
   "generator/templates/R2R/core/README.md": "gitblob-sha1:a202c78e2aceb108979ff5eb35aa29ef1e2e21dc",
   "reviewer/templates/R2R/core/README.md": "gitblob-sha1:e108ce10aa73805a5cec099d3e9bf52d20db0ec4",
   "tests/test_r2r_core.py": "gitblob-sha1:3b3384e80f52a99eb21692b9687a16acc2074ab6",
-  "tests/test_rxr_profile.py": "gitblob-sha1:84dba34da5a3482273d4b3ef90f0467c71f964c9",
+  "tests/test_rxr_profile.py": "gitblob-sha1:fb35151a49976d103fc5b0f385eb31f76ad959b4",
   "provenance/r2r_core_provenance.json": "gitblob-sha1:105afa86bca6c649d1303a31f904354b47e447c5",
   "provenance/r2r_profile_integrity.json": "gitblob-sha1:9a2e0e34add3217318115537a92f0523c0dac06a",
   "provenance/rxr_profile_integrity.json": "gitblob-sha1:5cdb9036b421df648df0657f8e381312e88219e0",
