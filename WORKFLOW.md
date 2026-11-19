@@ -50,4 +50,4 @@ AwareVLN 现有 instruction slot 只接收最终 instruction 字符串。不得�
 
 ## 10. Evaluation Hygiene
 
-教学来源必须可追溯到 Split、Episode、Instruction 和 Scan。R2R Core/Dynamic 使用 val_seen 来源，正式评测前必须核对样本和 Scan 重叠。优先使用与教学来源隔离的评测数据。报告完整分母、Fallback、技术失败、SR/SPL/nDTW 和置信区间；离线测试不代表真实模型或导航实验。
+教学来源必须可追溯到 Split、Episode、Instruction/Path 和 Scan。R2R Generator Core/Dynamic 及 Reviewer Core/paired 教学案例的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 池来自 val_seen。val_seen 是 seen-environment 数据，不可作为 unseen-environment 结果。正式评测前必须核对模板源记录与评测 roster 的 Instruction、Episode/Path 和 Scan 重叠；报告完整分母、Fallback、技术失败、SR/SPL/nDTW 和置信区间。离线测试不代表真实模型或导航实验。

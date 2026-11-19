@@ -563,7 +563,7 @@
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
   "verify_package.py": "gitblob-sha1:a0b302af1be112da4626e7fc9b12fc54df2957de",
   "VERSION": "gitblob-sha1:4d82121ef61b5762734ecde3a990212fe32f9d4b",
-  "WORKFLOW.md": "gitblob-sha1:7166e7e3867a91a1fbabb7f5dd3a810cd7035853",
+  "WORKFLOW.md": "gitblob-sha1:cdd384b69a087c895864e201a3aa12cca0e2329a",
   "tests/test_host_dispatch_profiles.py": "gitblob-sha1:10c37949aa9a53cdf4c2c17c59a093b871e6337b",
   "generator/templates/R2R/core/G01_R2R-CORE-G01.json": "gitblob-sha1:06346e8a4d870f73eef9015664be02d574672d38",
   "generator/templates/R2R/core/G02_R2R-CORE-G02.json": "gitblob-sha1:348fd8dfde5db199e2fbbc58613372435112d0ea",
