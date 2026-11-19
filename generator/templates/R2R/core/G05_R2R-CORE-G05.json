@@ -12,7 +12,8 @@
     "instruction_id": null,
     "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
     "trajectory_id": "339",
-    "source_key": "R2R|val_seen|standard|record_id=29|episode_id=29|trajectory_id=339"
+    "source_key": "R2R|val_seen|standard|record_id=29|episode_id=29|trajectory_id=339",
+    "scan_id": "E9uDoFAP3SH"
   },
   "provenance": {
     "kind": "uploaded_val_seen_source",
