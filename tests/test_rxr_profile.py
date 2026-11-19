@@ -154,7 +154,7 @@ class RxRProfileTests(unittest.TestCase):
         ids = select_examples("generator", "r2r-en", source_text)
         prompt, _ = compile_prompt("generator", "initial", profile="r2r-en",
                                    selected_ids=ids, original_instruction=source_text)
-        self.assertNotIn("R2R DATASET-SPECIFIC RULES", prompt)
+        self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
         self.assertNotIn("FIXED RXR", prompt)
         self.assertNotIn("dataset_rules/rxr_en_us.md", prompt)
 
@@ -194,7 +194,7 @@ class RxRProfileTests(unittest.TestCase):
         self.assertEqual(len(req["fixed_core_template_ids"]), 10)
         self.assertEqual(req["selected_example_ids"], ids)
         self.assertEqual(req["template_bundle"]["dynamic_ids"], ids)
-        self.assertEqual(req["dataset_rules"]["version"], "v6-rxr-en-us")
+        self.assertEqual(req["dataset_rules"]["version"], "rxr-en-us-profile")
 
 
 if __name__ == "__main__":
