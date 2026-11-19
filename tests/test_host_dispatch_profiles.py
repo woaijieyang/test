@@ -17,13 +17,18 @@ class HostDispatchProfileTests(unittest.TestCase):
     def test_adapter_profile_controls_request_and_prompt_isolation(self):
         r2r = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "r2r-1",
+            "trajectory_id": "traj-r2r-1", "scene_id": "mp3d/scan-r2r-1/scan-r2r-1.glb",
             "instruction_text": "Walk through the doorway and stop."
         })
         rxr = from_record({
             "dataset": "RxR", "language": "en-US", "split": "val_seen",
-            "instruction_id": "rxr-1", "instruction": SOURCE
+            "instruction_id": "rxr-1", "path_id": "path-rxr-1", "scan": "scan-rxr-1", "instruction": SOURCE
         })
 
+        self.assertEqual(r2r.provenance["trajectory_id"], "traj-r2r-1")
+        self.assertEqual(r2r.provenance["scan_id"], "scan-r2r-1")
+        self.assertEqual(rxr.provenance["path_id"], "path-rxr-1")
+        self.assertEqual(rxr.provenance["scan_id"], "scan-rxr-1")
         for src, expected_profile in ((r2r, "r2r-en"), (rxr, "rxr-en-us")):
             ids = select_examples("generator", src.profile, src.raw)
             req = request("generator", "initial",
@@ -40,6 +45,8 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertNotIn("RXR ROLE GUIDANCE", r2r_system)
         self.assertNotIn("FIXED RXR", r2r_system)
         self.assertEqual(r2r_req["fixed_core_template_ids"], [f"R2R-CORE-G{i:02d}" for i in range(1, 11)])
+        self.assertNotIn("scan_id", r2r_req["messages"][1]["content"])
+        self.assertNotIn("trajectory_id", r2r_req["messages"][1]["content"])
 
         rxr_ids = select_examples("generator", rxr.profile, rxr.raw)
         rxr_req = request("generator", "initial",
