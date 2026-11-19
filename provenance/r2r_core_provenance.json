@@ -39,7 +39,7 @@
     "shared_contract": "unchanged",
     "schemas": "unchanged",
     "workflow": "unchanged",
-    "rxr": "frozen v6.1",
+    "rxr": "independent Profile assets and runtime path; R2R maintenance does not load or modify RxR-specific content",
     "note": "Promoted Reviewer source cases are excluded by their own template_id. Reviewer Core pair_id is semantic provenance only and does not remove unrelated paired Dynamic examples. The runtime selects paired Dynamic examples only for selected non-Core Generator Dynamic IDs; remaining unselected Core-related paired records may stay in the pool but are not eligible for a current task unless their Generator source is selected."
   },
   "generator_core": [
@@ -167,43 +167,14 @@
     ]
   ],
   "reviewer_pair_semantics": "pair_id is provenance only; Reviewer Core order R01-R10 is independent of Generator Core order. Runtime Core loading never selects or gates Reviewer cases by Generator Core selection.",
-  "drift_assessment": {
-    "comparison_basis": "Archived LLM-decompose-v5 host/template_selector.py and host/compile.py versus v6.1-prompt-only R2R profile behavior; this is a code-path comparison, not an empirical attribution of SR/SPL/nDTW changes.",
-    "v5_r2r_prompt_composition": {
-      "fixed_core_count": 3,
-      "fixed_core_ids": [
-        "R2R-01",
-        "R2R-05",
-        "R2R-12"
-      ],
-      "adaptive_examples": 5,
-      "default_total_examples": 8,
-      "selection": "Three stable Core examples plus five source-tag-matched examples; source-identical examples are excluded."
-    },
-    "v6_r2r_prompt_composition": {
-      "fixed_core_count": 0,
-      "adaptive_generator_examples": "6-8",
-      "adaptive_reviewer_pairs": "6-8",
-      "adaptive_reviewer_diagnostics": "2-4",
-      "selection": "All examples were task-selected; there was no unconditional R2R semantic calibration set."
-    },
-    "observed_structural_drift": [
-      "The v5 R2R prompt always had a small stable Core alongside adaptive examples; v6 removed the R2R fixed Core entirely.",
-      "The v6 R2R example mix therefore varied with source features on every task, changing which semantic decision boundaries were visible to the model.",
-      "The v5 selector used a three-Core-plus-five-adaptive composition and tag-overlap ranking; v6 used a different feature/relation/coverage ranking and 6-8 adaptive examples.",
-      "R2R Reviewer teaching was similarly task-selected, with paired examples and diagnostics, but no fixed Reviewer calibration set."
-    ],
-    "v6_2_scope": "Restore a fixed, curated ten-example R2R Core per role while retaining v6.1 shared prompts, schemas, runtime workflow, and the existing v6 dynamic ranking algorithm/count. Promoted source copies are excluded from Dynamic to avoid duplicate injection.",
-    "causal_status": "Plausible structural drift and a testable recovery hypothesis, not a proven cause of the observed navigation metric drop. Only paired model/data evaluation can establish causal impact."
-  },
-  "version": "current",
-  "v6_3_repairs": [
-    "R01 unsupported stairs/doorway-stop claims removed",
-    "R02 SRC-02/SRC-03/SRC-04 Candidate Evidence mapped to correct phrases and ordinal mismatch made explicit",
-    "R05 terminal-tile refinement rationale corrected",
-    "R09 stair-descent/right-turn and bench-terminal rationale corrected",
-    "R01-R10 malformed stringified provenance normalized; R08 provenance completed",
-    "Host navigation eligibility, source identity, provider request hash binding and R2R dynamic directory allowlist hardened"
-  ],
-  "rxr": "independent Profile assets and runtime path; no R2R-specific content is loaded"
+  "rxr": "independent Profile assets and runtime path; no R2R-specific content is loaded",
+  "maintenance_record": [
+    "Reviewer R01 teaching notes contain no unsupported stairs or doorway-stop claims.",
+    "Reviewer R02 requirement evidence is mapped to the corresponding Candidate phrases and ordinal mismatch.",
+    "Reviewer R05 terminal-tile rationale matches the authored final-stage objective.",
+    "Reviewer R09 describes the stair-descent/right-turn to bench-approach relation; its tags match the two-stage PASS case.",
+    "Reviewer R10 is a source-level abstention case with no Candidate corruption and no stage/handoff review claims.",
+    "Reviewer Core provenance and pair semantics are explicit and machine-readable.",
+    "Generator Core teaching cards expose primary decision boundary, case rationale, secondary focus and transfer rule."
+  ]
 }
