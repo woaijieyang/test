@@ -127,8 +127,10 @@ def library(role, profile):
         core_folder = folder/'core'
         core_rows = [json.loads(path.read_bytes()) for path in sorted(core_folder.glob('*.json'))]
         promoted_ids = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
-        if len(core_rows) != 10 or any(not item for item in promoted_ids) or len(set(promoted_ids)) != 10:
-            raise ValueError(f'{dataset} {role} Core provenance must identify ten unique source templates')
+        if len(core_rows) != 10 or any(not item for item in promoted_ids):
+            raise ValueError(f'{dataset} {role} Core provenance must identify ten source-template references')
+        if role == 'generator' and len(set(promoted_ids)) != 10:
+            raise ValueError(f'{dataset} Generator Core must promote ten distinct Dynamic source templates')
         if not set(promoted_ids).issubset({row['template_id'] for row in rows}):
             raise ValueError(f'{dataset} {role} Core provenance references missing Dynamic source templates')
         rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
