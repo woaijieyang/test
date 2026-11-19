@@ -9,3 +9,4 @@
 - `generator/dataset_rules/r2r_en.md` and `reviewer/dataset_rules/r2r_en.md` provide role-specific R2R guidance. They are loaded only under `r2r-en`, after the shared R2R rules; neither file is a generic prompt or shared semantic rule.
 - `shared/dataset_rules/r2r_fragments.json` is consumed only by the R2R Host selector to rank R2R teaching examples. It is not injected into RxR prompts and does not determine KEEP/SPLIT decisions.
 - R2R adaptive retrieval uses 6–8 Generator examples, the same number of paired Reviewer examples, and 2–4 Reviewer diagnostics. The ten fixed Core cases remain unconditional. RxR keeps its existing 2–4 / 2–4 / 0–2 policy.
+- R2R retrieval distinguishes completed room/region transitions and corridor endpoints from descriptive room or doorway mentions; fragment matches rank teaching cases only and never prescribe a segmentation decision.

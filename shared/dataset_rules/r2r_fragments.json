@@ -5,7 +5,8 @@
     {
       "id": "room_transition",
       "patterns": [
-        "\\b(?:enter(?:s|ed|ing)?|exit(?:s|ed|ing)?|leave|leaves|left|leaving|inside|within|room|hallway|corridor)\\b"
+        "\\b(?:enter|entered|entering|exit|exited|exiting|leave|leaves|left|leaving)\\b",
+        "\\b(?:go|walk|step|move)\\s+(?:back\\s+)?(?:into|inside|out of)\\s+(?:the\\s+)?(?:room|bedroom|bathroom|kitchen|living room|dining room|hallway|corridor|office|closet|pantry|den)\\b"
       ],
       "meaning": "A commanded transition between navigable regions.",
       "positive_case_type": "completed_transition_then_distinct_objective",
@@ -18,7 +19,8 @@
     {
       "id": "doorway_selection_and_crossing",
       "patterns": [
-        "\\b(?:doors?|doorways?|archways?|entrances?|thresholds?|opening|portal)\\b"
+        "\\b(?:through|into|past|toward|towards|before|after)\\s+(?:the\\s+)?(?:door|doorway|archway|entrance|threshold)\\b",
+        "\\b(?:first|second|third|left|right)\\s+(?:door|doorway|archway|entrance)\\b"
       ],
       "meaning": "Doorway identity, selection, approach, crossing, or entry.",
       "positive_case_type": "doorway_selection_and_crossing",
@@ -195,6 +197,21 @@
       "review_checks": [
         "Check the complete source and preserve the actual event, relation, and scope.",
         "Treat this feature as retrieval evidence only; it never determines a segmentation verdict."
+      ]
+    },
+    {
+      "id": "hallway_endpoint",
+      "patterns": [
+        "\\b(?:end|far end|opposite end)\\s+of\\s+(?:the\\s+)?(?:hallway|corridor)\\b",
+        "\\b(?:down|along|through)\\s+(?:the\\s+)?(?:hallway|corridor)\\b"
+      ],
+      "meaning": "A corridor traversal or a location explicitly bounded by the corridor endpoint.",
+      "positive_case_type": "hallway_endpoint_then_turn_or_region_transition",
+      "negative_case_type": "A hallway mentioned only as background context.",
+      "review_checks": [
+        "Bind the corridor endpoint to the movement it completes.",
+        "Do not infer arrival at the corridor end unless the source supports it.",
+        "Keep the endpoint turn with the preceding traversal when they form one coupled maneuver."
       ]
     }
   ]

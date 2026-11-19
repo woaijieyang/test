@@ -184,7 +184,7 @@
     },
     {
       "path": "host/template_selector.py",
-      "git_blob_sha1": "4100f34bb390c8df7fa5ea32921017a2f7c9e909"
+      "git_blob_sha1": "c1f563688b61b0482df2c9d088b515ddf48c1d0c"
     },
     {
       "path": "renderer/__init__.py",
@@ -456,7 +456,7 @@
     },
     {
       "path": "shared/dataset_rules/r2r_fragments.json",
-      "git_blob_sha1": "a7e3e6c542e68d1ea539f7251b10a91cf99d5629"
+      "git_blob_sha1": "37d0da2416ec52cba0c245f1b8e283c513f515eb"
     },
     {
       "path": "shared/identity.py",
@@ -492,7 +492,7 @@
     },
     {
       "path": "tests/test_r2r_specialization.py",
-      "git_blob_sha1": "529ca720e681a4297a0f15a38f6496ef6900d2b9"
+      "git_blob_sha1": "c6099dcef2479244fae543fba65f2a13141528e0"
     }
   ]
 }

@@ -126,6 +126,11 @@ def _r2r_fragment_specs():
 def r2r_features(text):
     """R2R-only semantic retrieval cues; signals rank lessons, never choose a cut."""
     cues, words = features(text)
+    # The generic room/doorway cues are intentionally broad. Replace them
+    # with the R2R registry's more specific route-event patterns so a room or
+    # doorway mentioned only descriptively does not dominate R2R retrieval.
+    cues.discard("room_transition")
+    cues.discard("doorway_selection_and_crossing")
     for fragment_id, patterns in _r2r_fragment_specs():
         if any(re.search(pattern, text, re.I) for pattern in patterns):
             cues.add(fragment_id)

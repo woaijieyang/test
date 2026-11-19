@@ -68,8 +68,9 @@ Conversely, the system must not under-segment a completed transition followed by
 
 The Host-side registry provides R2R cues for:
 
-- room transition;
-- doorway selection and crossing;
+- completed room/region transition (not a room noun alone);
+- doorway selection and crossing (not a doorway noun alone);
+- corridor traversal and explicit hallway endpoint;
 - stairs, flights, landings, and level change;
 - landmark-conditioned navigation;
 - temporal dependency;
@@ -90,7 +91,7 @@ The selector does not infer a KEEP/SPLIT label from the source. It retrieves tea
 
 The generic \`features()\`, \`PATTERNS\`, and \`rank_examples()\` path remains the RxR path and is not modified by the R2R specialization. R2R uses \`r2r_features()\` and \`rank_r2r_examples()\`.
 
-The R2R ranker combines:
+The R2R ranker replaces the generic broad room/doorway cues with stricter R2R route-event patterns, preventing a descriptive room or archway mention from automatically receiving a transition cue. It also distinguishes corridor traversal/endpoint patterns. The R2R ranker combines:
 - overlap between current-source cues and teaching-case cues/tags;
 - source-only lexical overlap with inverse document-frequency weighting;
 - matching temporal/route relations;

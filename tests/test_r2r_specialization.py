@@ -17,7 +17,7 @@ class R2RSpecializationTests(unittest.TestCase):
         coupled_cues, _ = r2r_features(coupled)
         transition_cues, _ = r2r_features(transition)
         self.assertIn("landmark_conditioned_navigation", coupled_cues)
-        self.assertIn("doorway_selection_and_crossing", coupled_cues)
+        self.assertNotIn("doorway_selection_and_crossing", coupled_cues)
         self.assertNotIn("single_stage_keep", coupled_cues)
         self.assertNotIn("multi_stage_split", coupled_cues)
         self.assertIn("room_transition", transition_cues)
@@ -25,6 +25,17 @@ class R2RSpecializationTests(unittest.TestCase):
         self.assertIn("intermediate_stop_or_wait", transition_cues)
         self.assertNotIn("single_stage_keep", transition_cues)
         self.assertNotIn("multi_stage_split", transition_cues)
+
+    def test_r2r_retrieval_distinguishes_region_mentions_from_transitions(self):
+        descriptive = "Wait in the room with chairs facing the fireplace."
+        transition = "Leave the bedroom and enter the hallway."
+        corridor = "Walk down the hallway and turn right at its far end."
+        descriptive_cues, _ = r2r_features(descriptive)
+        transition_cues, _ = r2r_features(transition)
+        corridor_cues, _ = r2r_features(corridor)
+        self.assertNotIn("room_transition", descriptive_cues)
+        self.assertIn("room_transition", transition_cues)
+        self.assertIn("hallway_endpoint", corridor_cues)
 
     def test_r2r_dynamic_selection_ranges_and_reviewer_pairing(self):
         sources = (
