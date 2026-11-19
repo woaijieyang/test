@@ -54,7 +54,7 @@ jobs:
           git add FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
           if ! git diff --cached --quiet; then
             git commit -m "Regenerate compiled prompts, template indexes and build manifest"
-            git push origin "HEAD:\${GITHUB_REF_NAME}"
+            git push origin "HEAD:refs/heads/LLM-decompose-v6.3"
           fi
       - name: Verify committed build artifacts match the compiler
         run: |
