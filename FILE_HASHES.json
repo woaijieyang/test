@@ -587,7 +587,7 @@
   "tests/test_host_dispatch_profiles.py": "gitblob-sha1:58b4cc8274fc4d525b6fc6908f1588bf181ed2b6",
   "tests/test_paired_selection.py": "gitblob-sha1:38b847505c3fc8f60a18b8732e788d8edc7bdd38",
   "tests/test_patch.py": "gitblob-sha1:174acf490a46a697dbff5a1c24d955d796f68585",
-  "tests/test_r2r_core.py": "gitblob-sha1:db739a3ade0960d8f7583e91252571e1a13fc3ef",
+  "tests/test_r2r_core.py": "gitblob-sha1:cca51ef1b1921ea5129313d0b5149d2091c51fb9",
   "tests/test_r2r_specialization.py": "gitblob-sha1:6929a0545b960d8ab2a072c221ff8325da528dd3",
   "tests/test_release_transaction.py": "gitblob-sha1:7184fc6a1dcafca62bb7ac77d71f1b99a831940e",
   "tests/test_reviewer_recovery.py": "gitblob-sha1:e644f113170a553ae046ec03910a2f255600f2e3",
