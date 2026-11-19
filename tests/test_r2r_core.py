@@ -11,6 +11,29 @@ from host import protocol
 
 
 class R2RCoreTests(unittest.TestCase):
+    def test_r2r_core_source_provenance_is_complete_and_consistent(self):
+        gen = core_library("generator", "r2r-en")
+        rev = core_library("reviewer", "r2r-en")
+        for row in [*gen, *rev]:
+            source = row["source"]
+            self.assertEqual(source["split"], "val_seen", row["template_id"])
+            self.assertIsNotNone(source.get("record_id"), row["template_id"])
+            self.assertIsNotNone(source.get("episode_id"), row["template_id"])
+            if source.get("scene_id"):
+                self.assertEqual(source.get("scan_id"),
+                                 source["scene_id"].split("/")[-1].removesuffix(".glb"),
+                                 row["template_id"])
+        by_id = {row["template_id"]: row for row in rev}
+        r02 = by_id["R2R-CORE-R02"]["source"]
+        self.assertEqual(r02["scan_id"], "D7N2EKCX4Sj")
+        self.assertIsNone(r02["trajectory_id"])  # Not exposed by the inspected source record.
+        self.assertEqual(r02["source_key"],
+                         "R2R|val_seen|standard|record_id=37|episode_id=37|scan_id=D7N2EKCX4Sj")
+        r08 = by_id["R2R-CORE-R08"]["source"]
+        r01 = by_id["R2R-CORE-R01"]["source"]
+        for field in ("split", "record_id", "episode_id", "scene_id", "scan_id", "trajectory_id", "source_key"):
+            self.assertEqual(r08[field], r01[field], ("R08/R01 source lineage", field))
+
     def test_fixed_core_identity_order_and_note_contract(self):
         gen = core_library("generator", "r2r-en")
         rev = core_library("reviewer", "r2r-en")
