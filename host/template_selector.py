@@ -115,16 +115,18 @@ def library(role, profile):
         if not template_id.startswith(allowed_prefixes):
             raise ValueError(f'Invalid {dataset} {role} dynamic template ID: {template_id}')
 
-    # Each Profile must promote ten unique source templates into its fixed Core.
-    core_folder = folder/'core'
-    core_files = sorted(core_folder.glob('*.json'))
-    core_rows = [json.loads(path.read_bytes()) for path in core_files]
-    promoted_ids = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
-    if len(core_rows) != 10 or any(not item for item in promoted_ids) or len(set(promoted_ids)) != 10:
-        raise ValueError(f'{dataset} {role} Core provenance must identify ten unique source templates')
-    if not set(promoted_ids).issubset({row['template_id'] for row in rows}):
-        raise ValueError(f'{dataset} {role} Core provenance references missing Dynamic source templates')
-    rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
+    # R2R's historical val_seen Core promotions are excluded from its Dynamic
+    # pool. RxR Core is migrated from train-guide material and is not duplicated
+    # in the val_seen Dynamic pool; the same loader still validates both.
+    if dataset == 'R2R':
+        core_folder = folder/'core'
+        core_rows = [json.loads(path.read_bytes()) for path in sorted(core_folder.glob('*.json'))]
+        promoted_ids = [row.get('provenance', {}).get('core_curated_from') for row in core_rows]
+        if len(core_rows) != 10 or any(not item for item in promoted_ids) or len(set(promoted_ids)) != 10:
+            raise ValueError(f'{dataset} {role} Core provenance must identify ten unique source templates')
+        if not set(promoted_ids).issubset({row['template_id'] for row in rows}):
+            raise ValueError(f'{dataset} {role} Core provenance references missing Dynamic source templates')
+        rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
 
     expected_counts = {
         ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,
@@ -134,11 +136,13 @@ def library(role, profile):
         raise ValueError(f'{dataset} {role} Dynamic count mismatch: expected {expected_counts[(dataset, role)]}, found {len(rows)}')
 
     if role == 'reviewer':
-        gen_core_dir = ROOT/'generator'/'templates'/dataset/'core'
-        gen_core = [json.loads(path.read_bytes()) for path in sorted(gen_core_dir.glob('*.json'))]
-        promoted_gen_ids = {row.get('provenance', {}).get('core_curated_from') for row in gen_core}
-        if len(promoted_gen_ids) != 10 or None in promoted_gen_ids:
-            raise ValueError(f'{dataset} Generator Core provenance is incomplete')
+        promoted_gen_ids = set()
+        if dataset == 'R2R':
+            gen_core_dir = ROOT/'generator'/'templates'/dataset/'core'
+            gen_core = [json.loads(path.read_bytes()) for path in sorted(gen_core_dir.glob('*.json'))]
+            promoted_gen_ids = {row.get('provenance', {}).get('core_curated_from') for row in gen_core}
+            if len(promoted_gen_ids) != 10 or None in promoted_gen_ids:
+                raise ValueError(f'{dataset} Generator Core provenance is incomplete')
         paired = [row for row in rows if row.get('pair_id')]
         diagnostics = [row for row in rows if not row.get('pair_id')]
         paired_ids = [row['pair_id'] for row in paired]
