@@ -2,9 +2,9 @@
 
 ## 1. Source Intake
 
-Adapter 只负责解析记录 Envelope、识别 Dataset/Language/Split、生成稳定 task identity、保留原始 instruction 并计算 SHA-256。当前支持 R2R English 与 RxR en-US。原始指令只解码一次，不做 trim、Unicode normalization、大小写转换、`unicode_escape` 或 split/join。模型只收到原始指令文本，不收到 GT、轨迹、路径、分数或 Scene 元数据。
+Adapter 只负责解析记录 Envelope、识别 Dataset/Language/Split、生成稳定 task identity、保留原始 instruction、提取 Host-only Path/Scan provenance 并计算 SHA-256。当前支持 R2R English 与 RxR en-US。原始指令只解码一次，不做 trim、Unicode normalization、大小写转换、`unicode_escape` 或 split/join。模型只收到原始指令文本，不收到 GT、轨迹、路径、分数或 Scene 元数据。
 
-每条 Source Identity 包含 task_key、dataset、language、split、source_sha256 和 profile。正式评测必须提供明确且合法的 Split；开发数据可以使用 unspecified，但不得冒充正式评测记录。相同 task_key 对应不同 Source Hash 时必须报告冲突。
+每条 Source Identity 包含 task_key、dataset、language、split、source_sha256、profile，以及仅供 Host 使用的 record_id、episode_id、instruction_id、path_id、trajectory_id、scene_id、scan_id 和 source_record_role。缺失字段显式保留为 null，不从指令文本推断。Host-only provenance 不进入 Generator/Reviewer 的模型消息。正式评测必须提供明确且合法的 Split；开发数据可以使用 unspecified，但不得冒充正式评测记录。相同 task_key 对应不同 Source Hash 时必须报告冲突。
 
 ## 2. Profile Dispatch and Frozen Inputs
 
@@ -16,7 +16,7 @@ Adapter Profile 是数据集规则和模板派发的唯一依据。Host 在 G0 �
 - Reviewer Paired/Diagnostics IDs/Hash；
 - Prompt Components、Schema 和 Runtime Bundle Hash。
 
-R2R/RxR 不允许跨目录、跨规则或跨 Schema 回退。固定 Core 每个 Role 十条，顺序稳定且不参与检索。Dynamic 仅来自明确的 Profile allowlist。
+R2R/RxR 使用同一 Profile-driven Dynamic loader、identity validator、Core promotion gate、数量校验和 fail-closed 错误路径；差异仅由 Profile 配置决定（语言、目录、前缀、数量及 R2R Core promotion 来源策略）。不允许跨目录、跨规则或跨 Schema 回退。固定 Core 每个 Role 十条，顺序稳定且不参与检索。Dynamic 仅来自明确的 Profile allowlist。
 
 ## 3. G0 — Candidate Authoring
 
