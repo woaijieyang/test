@@ -32,6 +32,25 @@ def _template_validators():
     return validators
 
 
+def validate_dynamic_identity(role, profile, row):
+    """Shared fail-closed identity gate for every Profile's Dynamic library."""
+    if role not in ("generator", "reviewer") or profile not in PROFILES:
+        raise ValueError("Unsupported role/profile")
+    dataset = PROFILES[profile]
+    language = "en" if profile == "r2r-en" else "en-US"
+    prefixes = {
+        ("R2R", "generator"): ("R2R-GEN-",),
+        ("R2R", "reviewer"): ("R2R-REV-", "R2R-DIAG-"),
+        ("RxR", "generator"): ("RxR-GEN-",),
+        ("RxR", "reviewer"): ("RxR-REV-", "RxR-DIAG-"),
+    }
+    if (row.get("role") != role or row.get("dataset_scope") != dataset
+            or row.get("language") != language):
+        raise ValueError(f"Invalid {dataset} {role} dynamic template identity: {row.get('template_id')}")
+    if not row.get("template_id", "").startswith(prefixes[(dataset, role)]):
+        raise ValueError(f"Invalid {dataset} {role} dynamic template ID: {row.get('template_id')}")
+
+
 def validate_template(role, row, *, source_path=""):
     """Fail closed on malformed teaching records before they reach Prompt Assembly."""
     if role not in ("generator", "reviewer"):
@@ -97,23 +116,9 @@ def library(role, profile):
     for path, row in zip(files, rows):
         validate_template(role, row, source_path=path.relative_to(ROOT).as_posix())
 
-    # Fail-closed identity validation is shared by R2R and RxR.
     dataset = PROFILES[profile]
-    language = 'en' if profile == 'r2r-en' else 'en-US'
-    prefixes = {
-        ('R2R', 'generator'): ('R2R-GEN-',),
-        ('R2R', 'reviewer'): ('R2R-REV-', 'R2R-DIAG-'),
-        ('RxR', 'generator'): ('RxR-GEN-',),
-        ('RxR', 'reviewer'): ('RxR-REV-', 'RxR-DIAG-'),
-    }
-    allowed_prefixes = prefixes[(dataset, role)]
     for row in rows:
-        if (row.get('role') != role or row.get('dataset_scope') != dataset
-                or row.get('language') != language):
-            raise ValueError(f'Invalid {dataset} {role} dynamic template identity: {row.get("template_id")}')
-        template_id = row.get('template_id', '')
-        if not template_id.startswith(allowed_prefixes):
-            raise ValueError(f'Invalid {dataset} {role} dynamic template ID: {template_id}')
+        validate_dynamic_identity(role, profile, row)
 
     # R2R's historical val_seen Core promotions are excluded from its Dynamic
     # pool. RxR Core is migrated from train-guide material and is not duplicated
