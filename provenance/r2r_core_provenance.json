@@ -176,5 +176,72 @@
     "Reviewer R10 is a source-level abstention case with no Candidate corruption and no stage/handoff review claims.",
     "Reviewer Core provenance and pair semantics are explicit and machine-readable.",
     "Generator Core teaching cards expose primary decision boundary, case rationale, secondary focus and transfer rule."
-  ]
+  ],
+  "source_metadata_audit": {
+    "scope": "all ten Generator and all ten Reviewer R2R fixed Core records",
+    "checks": [
+      "source split",
+      "record_id",
+      "episode_id",
+      "scene_id",
+      "scan_id",
+      "trajectory_id when exposed",
+      "source_key consistency",
+      "reviewer Core-to-source lineage"
+    ],
+    "findings": [
+      {
+        "template_id": "R2R-CORE-R02",
+        "status": "repaired",
+        "details": "Recovered val_seen record/episode 37 and scan D7N2EKCX4Sj from the source viewer. trajectory_id is not exposed by that source record and remains null."
+      },
+      {
+        "template_id": "R2R-CORE-R08",
+        "status": "repaired",
+        "details": "Restored val_seen record/episode 4, scene E9uDoFAP3SH and trajectory_id 93 from matching R2R-REV-004/R01 lineage."
+      },
+      {
+        "template_id": "R2R-CORE-R01",
+        "status": "verified",
+        "details": "Source lineage matches R2R-REV-004 and the contrastive R08 source."
+      },
+      {
+        "template_id": "R2R-CORE-R03",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R04",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R05",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R06",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R07",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R09",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      },
+      {
+        "template_id": "R2R-CORE-R10",
+        "status": "verified",
+        "details": "Source record/episode/scene/trajectory metadata present."
+      }
+    ],
+    "review_record": "provenance/R2R_CORE_INDEPENDENT_REVIEW.md",
+    "limitation": "Curated teaching targets are not official subtask annotations or trajectory-verified judgments; two model-assisted review passes are not human double annotation."
+  }
 }
