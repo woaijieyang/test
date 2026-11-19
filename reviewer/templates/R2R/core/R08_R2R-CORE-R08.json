@@ -6,9 +6,15 @@
   "language": "en",
   "pair_id": "R2R-CORE-G08",
   "source": {
-    "dataset": "R2R",
-    "split": "curated_core",
-    "source_type": "semantic_boundary_case"
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "4",
+    "episode_id": "4",
+    "instruction_id": null,
+    "scene_id": "mp3d/E9uDoFAP3SH/E9uDoFAP3SH.glb",
+    "scan_id": "E9uDoFAP3SH",
+    "trajectory_id": "93",
+    "source_key": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93"
   },
   "provenance": {
     "kind": "reviewer_teaching_case_rebuilt_from_r2r_source",
@@ -16,7 +22,9 @@
     "candidate_corruption_is_authored_not_model_output": true,
     "corruption_pattern": "TARGET_LANDMARK_EXPECTED_OBSERVATION_CONFUSION",
     "core_curated_from": "R2R-REV-004",
-    "curation_basis": "Target versus expected-observation distinction; semantic provenance pair only"
+    "curation_basis": "target vs expected-observation adversarial case; semantic provenance pair only",
+    "source_reference": "R2R-REV-004; val_seen; record_id=4; episode_id=4; scan E9uDoFAP3SH; trajectory_id=93",
+    "source_metadata_status": "verified against R01 and original paired R2R-REV-004 source metadata"
   },
   "review_input": {
     "original_instruction": "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL, WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR AND DOWN THE HALLWAY INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM. ",
