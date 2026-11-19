@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 121,
+  "file_count": 123,
   "files": [
     {
       "path": "adapter/__init__.py",
@@ -479,8 +479,16 @@
       "git_blob_sha1": "22b9f4c5bf837b5c08ecc97b788993043a4130ca"
     },
     {
+      "path": "tests/test_host_dispatch_profiles.py",
+      "git_blob_sha1": "4e01a43ba67103164f2929ba38041468213baf8d"
+    },
+    {
       "path": "tests/test_paired_selection.py",
       "git_blob_sha1": "38b847505c3fc8f60a18b8732e788d8edc7bdd38"
+    },
+    {
+      "path": "tests/test_r2r_core.py",
+      "git_blob_sha1": "cca51ef1b1921ea5129313d0b5149d2091c51fb9"
     },
     {
       "path": "tests/test_r2r_specialization.py",

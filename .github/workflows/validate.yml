@@ -63,6 +63,8 @@ jobs:
           git diff --exit-code -- generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
       - name: Validate R2R Core quality, runtime contracts, prompt assembly and RxR isolation
         run: python -B -m unittest discover -s tests -p "test_r2r_core.py" -v
+      - name: Validate R2R-specific guidance, fragments and isolated retrieval
+        run: python -B -m unittest discover -s tests -p "test_r2r_specialization.py" -v
       - name: Validate Host profile dispatch and dataset isolation
         run: python -B -m unittest discover -s tests -p "test_host_dispatch_profiles.py" -v
       - name: Validate RxR profile and frozen assets
