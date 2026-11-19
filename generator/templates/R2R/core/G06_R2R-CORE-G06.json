@@ -12,7 +12,8 @@
     "instruction_id": null,
     "scene_id": "mp3d/r1Q1Z4BcV1o/r1Q1Z4BcV1o.glb",
     "trajectory_id": "111",
-    "source_key": "R2R|val_seen|standard|record_id=7|episode_id=7|trajectory_id=111"
+    "source_key": "R2R|val_seen|standard|record_id=7|episode_id=7|trajectory_id=111",
+    "scan_id": "r1Q1Z4BcV1o"
   },
   "provenance": {
     "kind": "uploaded_val_seen_source",
