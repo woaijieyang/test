@@ -1,107 +1,171 @@
 {
   "generator/compiled_r2r-en.txt": {
-    "compiled_sha256": "ab48ab4afda7f4a93ecd54f3f7656f3809bb54667789abddf9de81b92682f7ff",
+    "compiled_sha256": "aa67e1a2dd01d1cfecda91931ccd5a7c34692811870c4e0e981eb0d5218dd893",
     "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 50225,
+    "bytes": 108266,
     "default_examples": 6,
-    "library_count": 35,
+    "library_count": 25,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "R2R-CORE-G01",
+      "R2R-CORE-G02",
+      "R2R-CORE-G03",
+      "R2R-CORE-G04",
+      "R2R-CORE-G05",
+      "R2R-CORE-G06",
+      "R2R-CORE-G07",
+      "R2R-CORE-G08",
+      "R2R-CORE-G09",
+      "R2R-CORE-G10"
+    ],
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
       "R2R-GEN-033",
       "R2R-GEN-026",
-      "R2R-GEN-019",
       "R2R-GEN-028",
-      "R2R-GEN-018"
+      "R2R-GEN-018",
+      "R2R-GEN-024"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "02acf15f45d65bdcdc15049e256b6cb6d85c6bb82c816d789ac82cb9bdaae63d",
+    "compiled_sha256": "668adc1a52e0ac5598efbcecde142ec63c6174a0193123dfc6e3db5329b78dcb",
     "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
-    "bytes": 56419,
+    "bytes": 139886,
     "default_examples": 8,
-    "library_count": 61,
+    "library_count": 52,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "R2R-CORE-R01",
+      "R2R-CORE-R02",
+      "R2R-CORE-R03",
+      "R2R-CORE-R04",
+      "R2R-CORE-R05",
+      "R2R-CORE-R06",
+      "R2R-CORE-R07",
+      "R2R-CORE-R08",
+      "R2R-CORE-R09",
+      "R2R-CORE-R10"
+    ],
     "profile": "r2r-en",
     "example_ids": [
       "R2R-REV-032",
       "R2R-REV-033",
       "R2R-REV-026",
-      "R2R-REV-019",
       "R2R-REV-028",
       "R2R-REV-018",
+      "R2R-REV-024",
       "R2R-DIAG-03",
       "R2R-DIAG-17"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_r2r-en.txt": {
-    "compiled_sha256": "eb9e2b9adf4340d684998be02b2a7c7fb0fbaac2fbc01fad63293de3c4f9ab75",
+    "compiled_sha256": "10c4e14561e2b1a378532d1a78a1db68f17a7e3d679e6d660ce479d70ee58fb2",
     "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 65281,
+    "bytes": 123322,
     "default_examples": 6,
-    "library_count": 35,
+    "library_count": 25,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "R2R-CORE-G01",
+      "R2R-CORE-G02",
+      "R2R-CORE-G03",
+      "R2R-CORE-G04",
+      "R2R-CORE-G05",
+      "R2R-CORE-G06",
+      "R2R-CORE-G07",
+      "R2R-CORE-G08",
+      "R2R-CORE-G09",
+      "R2R-CORE-G10"
+    ],
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
       "R2R-GEN-033",
       "R2R-GEN-026",
-      "R2R-GEN-019",
       "R2R-GEN-028",
-      "R2R-GEN-018"
+      "R2R-GEN-018",
+      "R2R-GEN-024"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "17aaae544f161c72a8af3fd23304947e6872831c6119eec179afd1872ab0f54f",
+    "compiled_sha256": "864e5a37a2c7b8b7fef45c4c58ceeebc87183d52d0db9ab26e0b73c1b75f4a21",
     "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 50830,
-    "default_examples": 6,
-    "library_count": 45,
+    "bytes": 106733,
+    "default_examples": 2,
+    "library_count": 35,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "RXR-CORE-G01",
+      "RXR-CORE-G02",
+      "RXR-CORE-G03",
+      "RXR-CORE-G04",
+      "RXR-CORE-G05",
+      "RXR-CORE-G06",
+      "RXR-CORE-G07",
+      "RXR-CORE-G08",
+      "RXR-CORE-G09",
+      "RXR-CORE-G10"
+    ],
     "profile": "rxr-en-us",
     "example_ids": [
       "RxR-GEN-013",
-      "RxR-GEN-022",
-      "RxR-LEGACY-G06",
-      "RxR-GEN-018",
-      "RxR-LEGACY-G03",
-      "RxR-GEN-008"
+      "RxR-GEN-022"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_rxr-en-us.txt": {
-    "compiled_sha256": "656761992c013e98e58fbdc11c2f4bb18a1424e5ce44afe91aa4620a7b3c4d0c",
+    "compiled_sha256": "18c1f6a7611086f8d9a2888390f38b9c2224d2e1f749c3ea1059a2a6a032fb7b",
     "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
-    "bytes": 58329,
-    "default_examples": 8,
-    "library_count": 74,
+    "bytes": 140110,
+    "default_examples": 2,
+    "library_count": 64,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "RXR-CORE-R01",
+      "RXR-CORE-R02",
+      "RXR-CORE-R03",
+      "RXR-CORE-R04",
+      "RXR-CORE-R05",
+      "RXR-CORE-R06",
+      "RXR-CORE-R07",
+      "RXR-CORE-R08",
+      "RXR-CORE-R09",
+      "RXR-CORE-R10"
+    ],
     "profile": "rxr-en-us",
     "example_ids": [
       "RxR-REV-013",
-      "RxR-REV-022",
-      "RxR-LEGACY-G06",
-      "RxR-REV-018",
-      "RxR-LEGACY-G03",
-      "RxR-REV-008",
-      "RxR-DIAG-04",
-      "RxR-DIAG-14"
+      "RxR-REV-022"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_rxr-en-us.txt": {
-    "compiled_sha256": "de337c34790ae55c1425324672bb08e8935e89f386c9c1db1df9d878afe55d48",
+    "compiled_sha256": "81dc6e312f6106937bafb2f317048e0bcae01e23748fc9c9749051581433894f",
     "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 65886,
-    "default_examples": 6,
-    "library_count": 45,
+    "bytes": 121789,
+    "default_examples": 2,
+    "library_count": 35,
+    "fixed_core_count": 10,
+    "fixed_core_ids": [
+      "RXR-CORE-G01",
+      "RXR-CORE-G02",
+      "RXR-CORE-G03",
+      "RXR-CORE-G04",
+      "RXR-CORE-G05",
+      "RXR-CORE-G06",
+      "RXR-CORE-G07",
+      "RXR-CORE-G08",
+      "RXR-CORE-G09",
+      "RXR-CORE-G10"
+    ],
     "profile": "rxr-en-us",
     "example_ids": [
       "RxR-GEN-013",
-      "RxR-GEN-022",
-      "RxR-LEGACY-G06",
-      "RxR-GEN-018",
-      "RxR-LEGACY-G03",
-      "RxR-GEN-008"
+      "RxR-GEN-022"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   }
