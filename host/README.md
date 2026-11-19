@@ -48,17 +48,19 @@ Teaching Template Schema 与 Runtime Wire Schema 不可混用。Generator 的 St
 ```text
 Source/Profile validation
   → freeze rules/core/dynamic/prompt hashes
-  → G0 → validate → render/freeze S0
+  → G0 → validate → render/freeze S0 (or exact Source if G0=needs_review)
   → R0
       PASS       → release exactly S0
-      UNRESOLVED → exact source fallback
-      REVISE     → G1 → validate → render/freeze S1
-                    → R1
-                        PASS and all old blockers resolved → release exactly S1
-                        otherwise → exact source fallback
+      REVISE     → G1 → validate → render/freeze S1 → R1
+      UNRESOLVED
+        G0=needs_review → exact source fallback
+        G0=ok           → G1 reassesses the source limitation → R1
+      R1
+        PASS and all old blockers resolved → release exactly S1
+        otherwise → exact source fallback
 ```
 
-G1 必须对每条 R0 Finding 给出 accept/partially_accept/reject/unresolved 的明确响应，并返回完整 Candidate。R1 必须重新审查整个新 Candidate，逐条验证旧 Finding 是否真正解决，并检查新增缺陷。模型自述、旧 Verdict 或修复建议都不能替代新 Candidate 证据。
+G1 由 R0=REVISE 触发；若 R0=UNRESOLVED 但 G0 Candidate 仍为 active（status=ok），Host 也允许 G1 对 Source ambiguity 作有界复核。只有 G0 本身为 inactive `needs_review` 且 R0 确认 UNRESOLVED 时才直接回退原文。G1 必须对每条 R0 Finding 给出 accept/partially_accept/reject/unresolved 的明确响应，并返回完整 Candidate。R1 必须在新 Reviewer session 中重新审查整个新 Candidate，逐条验证旧 Finding 是否真正解决，并检查新增缺陷；R1 会收到冻结的 R0 Review、旧 Candidate 和旧 rendered text，但不会收到 G1 的回复/解释作为证据。模型自述、旧 Verdict 或修复建议都不能替代新 Candidate 证据。
 
 ## 6. Snapshot、Failure 与 Fallback
 

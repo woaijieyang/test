@@ -10,6 +10,9 @@
 - `IMPLEMENTATION.md`：模块职责、关键设计约束和可维护性原则。
 - `CODEX_START_HERE.md`：开发、集成和验收步骤。
 - `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
+- `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
+- `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
+- `docs/V1_V5_V6_RULE_COMPARISON.md`：历史比较档案，仅用于追溯，不是当前实现规范。
 - `shared/semantic_contract.md`：Generator/Reviewer 共用的唯一语义验收标准。
 - `generator/prompt.md`、`reviewer/prompt.md`：角色提示词源文件；运行时文本由 `host/compile.py` 编译。
 
@@ -33,8 +36,10 @@ Renderer: freeze exact candidate snapshot
   ▼
 Reviewer R0: source-grounded L0–L6 independent review
   ├── PASS → release the exact reviewed snapshot
-  ├── UNRESOLVED → exact original-source fallback
-  └── REVISE → Generator G1 receives findings and protected requirements
+  ├── REVISE → Generator G1 receives findings and protected requirements
+  └── UNRESOLVED
+        ├── G0=needs_review (inactive) → exact original-source fallback
+        └── G0=ok (active) → G1 reassesses the source limitation
                     │
                     ▼
               Renderer freezes new snapshot
@@ -110,7 +115,7 @@ python -m evaluation.smoke24
 
 ## 数据来源与评测
 
-R2R 固定 Core 与 Dynamic 教学材料包含 val_seen 来源。评测前必须核对 Episode、Instruction 和 Scan 的重叠；不得把包含教学来源样本的评测结果称为无泄漏的独立验证。优先采用与教学来源隔离的评测 Split，并保留完整分母、Fallback 和技术失败记录。
+教学来源与评测 Split 必须显式区分：R2R Generator Core/Dynamic 与 Reviewer Core 的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 来自 val_seen。固定 Core 是经过整理的教学案例，不是官方子任务标注或轨迹金标；Dynamic 也不是无条件可用于所有评测 Split 的训练数据。正式评测前必须按原始 split、instruction/episode/path ID 和 scene/scan ID 做交叉审计。R2R 的 val_seen 使用训练中已见环境，val_unseen 使用未见环境；RxR 官方划分同样区分 val_seen 与 val_unseen，且数据记录包含 split、instruction_id、path_id、scan 和 language。以实际使用的数据版本及 roster 为准，不能只凭文件名推断无泄漏。参考：[R2R task data documentation](https://github.com/xjli/r2r_vln/blob/master/tasks/R2R/README.md)、[RxR dataset repository](https://github.com/google-research-datasets/RxR)、[RxR split description](https://ai.google.com/research/rxr/explore)。
 
 ## 当前工程状态
 

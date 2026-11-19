@@ -34,7 +34,7 @@ Reviewer 收到 Source、冻结 Candidate 和精确 rendered_instruction，不�
 
 ## 6. G1 — Bounded Repair
 
-只有 R0=REVISE 才进入 G1。Generator 接收完整 Source、旧 Candidate、R0 Findings 和受保护要求。每条 Finding 必须有一条明确响应；Generator 可以拒绝不受 Source 支持的建议。G1 必须返回完整 Candidate，不是 Patch。不得为了修一个局部问题破坏其他已满足的 Source Requirement。
+R0=REVISE 进入 G1。R0=UNRESOLVED 时要结合 G0 状态处理：如果 G0 返回的是 active Candidate（status=ok），Host 也允许进入 G1，让 Generator 基于完整 Source 独立判断该歧义是否确实无法消解，还是 Reviewer 对一个可执行 Candidate 的过度拒绝；如果 G0 已返回 inactive `needs_review`，且 R0 仍确认 Source-level ambiguity，则不生成猜测路线，直接精确原文回退。G1 接收完整 Source、旧 Candidate、R0 Findings 和受保护要求。每条 Finding 必须有一条明确响应；Generator 可以拒绝不受 Source 支持的建议。G1 必须返回完整 Candidate，不是 Patch。不得为了修一个局部问题破坏其他已满足的 Source Requirement。
 
 ## 7. R1 — Fresh Recheck
 
@@ -42,7 +42,7 @@ R1 使用新审查上下文，接收新 Candidate、新 rendered text、冻结 R
 
 ## 8. Release and Failure
 
-PASS 释放 Reviewer 实际审查的同一个 Snapshot。UNRESOLVED、R1 非 PASS、技术失败或 Snapshot/Hash 不一致均回退到精确 Source。技术失败不是语义失败诊断，Fallback 不是导航成功。所有失败保留在评测分母和运行记录中。
+R0 PASS 释放 Reviewer 实际审查的同一个 Snapshot。R0 REVISE 进入 G1；R0 UNRESOLVED 在 G0 为 active Candidate 时也可进入 G1 重新判定，在 G0 为 inactive `needs_review` 时则精确原文回退。G1 后必须经过 R1；只有 R1 PASS 且旧阻塞 Finding 全部 resolved、当前 Candidate 无新增阻塞问题时，才释放 R1 实际审查的 Snapshot。R1 非 PASS、技术失败或 Snapshot/Hash 不一致均回退到精确 Source。技术失败不是语义失败诊断，Fallback 不是导航成功。所有失败保留在评测分母和运行记录中。
 
 ## 9. Actor Boundary
 

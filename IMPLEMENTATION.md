@@ -18,7 +18,7 @@ Each stage must preserve Entry, Target, Process, Ending and Conditions. Preserve
 
 ## Review Principle
 
-Reviewer evaluates Source Fidelity, Closure/Handoff and Segmentation Adequacy independently. Findings require direct evidence and a material execution or local-focus consequence. REVISE is for a repairable Candidate defect. UNRESOLVED is reserved for route-critical ambiguity in the Source itself. PASS means the candidate satisfies the language-level contract; it does not mean navigation success.
+Reviewer evaluates Source Fidelity, Closure/Handoff and Segmentation Adequacy independently. Findings require direct evidence and a material execution or local-focus consequence. REVISE is for a repairable Candidate defect. UNRESOLVED is reserved for route-critical ambiguity in the Source itself. If R0 marks an active G0 Candidate UNRESOLVED, Host may send the structured finding to G1 for a bounded source-grounded reassessment; an inactive G0 `needs_review` candidate confirmed UNRESOLVED falls back to exact Source. PASS means the candidate satisfies the language-level contract; it does not mean navigation success.
 
 ## Runtime Integrity
 

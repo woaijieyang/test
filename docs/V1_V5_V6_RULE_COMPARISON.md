@@ -1,5 +1,7 @@
 # V1 → V5 → V6: rule and runtime comparison
 
+> **Historical archive — not a current runtime specification.** This document preserves a source-based comparison of earlier repository snapshots. Statements below such as “R2R has no fixed Core” or “only RxR loads dataset-specific rules” describe the historical snapshot being compared and are superseded by the current dual-Profile implementation. The current contract is defined by the root `README.md`, `WORKFLOW.md`, `host/README.md`, `shared/dataset_rules/README.md`, active prompt/schema files, template manifests and `provenance/build_manifest.json`. Current R2R and RxR each load ten fixed Generator Core and ten independent Reviewer Core examples, plus their own Profile-specific rules and Dynamic pools.
+
 This note records the implementation-relevant differences between the original `LLM-decompose-v1` branch, the v5 baseline, and the v6 RxR en-US extension. It is a source-based comparison, not a claim that any version has higher navigation SR/SPL without a controlled run.
 
 ## 1. What v1 contributes

@@ -13,4 +13,4 @@
 
 ## Maintainer rule
 
-The root README is the only document carrying the system release label. Other documents describe current behavior without repeating release numbers or narrating historical comparisons. Protocol/schema identifiers remain where they are required by actual filenames and machine-readable contracts.
+The root README is the only human-readable entry point that carries the current system release label. Machine-readable template manifests may retain their required `version` metadata fields. Other current documents describe behavior without repeating release numbers. Historical comparisons remain explicitly marked as archives and must not be treated as current runtime specifications. Protocol/schema identifiers remain where they are required by actual filenames and machine-readable contracts.
