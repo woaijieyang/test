@@ -11,8 +11,10 @@
     "record_id": "37",
     "episode_id": "37",
     "instruction_id": null,
-    "scene_id": null,
-    "source_key": "R2R|val_seen|standard|record_id=37|episode_id=37|scene_id=unknown"
+    "scene_id": "mp3d/D7N2EKCX4Sj/D7N2EKCX4Sj.glb",
+    "scan_id": "D7N2EKCX4Sj",
+    "trajectory_id": null,
+    "source_key": "R2R|val_seen|standard|record_id=37|episode_id=37|scan_id=D7N2EKCX4Sj"
   },
   "provenance": {
     "kind": "reviewer_only_adversarial_example",
@@ -20,7 +22,9 @@
     "candidate_corruption_is_authored_not_model_output": true,
     "corruption_pattern": "ORDINAL",
     "core_curated_from": "R2R-DIAG-01",
-    "curation_basis": "semantic decision-boundary coverage; semantic provenance pair only"
+    "curation_basis": "ordinal target identity adversarial case; semantic provenance pair only",
+    "source_reference": "VLN-CE R2R val_seen EASI viewer; row id=37; episode_id=37; scan D7N2EKCX4Sj",
+    "source_metadata_status": "scene_id/scan_id verified from source viewer; trajectory_id not exposed in this source record and intentionally null"
   },
   "review_input": {
     "original_instruction": "With the bed on your left go forward and out of the room into the hallway. In the hallway take a right and go down the hall, keeping straight. Then take a right into the bedroom that is the first door on your right. Stop in the room just past the door on the inside of the doorway. ",
