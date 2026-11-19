@@ -7,6 +7,25 @@ from host.template_selector import library, select_examples, source
 
 
 class RxRProfileTests(unittest.TestCase):
+    def test_dynamic_identity_gate_is_symmetric_and_fail_closed(self):
+        valid_r2r = {"role": "generator", "dataset_scope": "R2R", "language": "en",
+                     "template_id": "R2R-GEN-001"}
+        valid_rxr = {"role": "generator", "dataset_scope": "RxR", "language": "en-US",
+                     "template_id": "RxR-GEN-001"}
+        validate_dynamic_identity("generator", "r2r-en", valid_r2r)
+        validate_dynamic_identity("generator", "rxr-en-us", valid_rxr)
+        invalid_rows = [
+            ("rxr-en-us", {**valid_r2r}),
+            ("r2r-en", {**valid_rxr}),
+            ("rxr-en-us", {**valid_rxr, "template_id": "R2R-GEN-001"}),
+            ("rxr-en-us", {**valid_rxr, "language": "en"}),
+            ("rxr-en-us", {**valid_rxr, "role": "reviewer"}),
+        ]
+        for profile, row in invalid_rows:
+            with self.subTest(profile=profile, row=row):
+                with self.assertRaises(ValueError):
+                    validate_dynamic_identity("generator", profile, row)
+
     def test_fixed_core_is_exactly_ten_and_paired(self):
         gen = core_library("generator", "rxr-en-us")
         rev = core_library("reviewer", "rxr-en-us")
