@@ -66,6 +66,119 @@ class SymmetricRepair(unittest.TestCase):
             with self.assertRaises(ContractError) as err:protocol.quote('A. B.',text)
             self.assertEqual(err.exception.details.get('unique_whitespace_equivalent_hint'),hint)
 
+    def test_active_g0_with_r0_unresolved_enters_g1_and_r1(self):
+        old, new = generator_candidate(False), generator_candidate(True)
+        r0 = reviewer_output(old, repaired=False)
+        # This test isolates Host state routing. The R0 semantic fixture is
+        # deliberately marked source-limited; all G0, G1 and R1 protocol checks
+        # remain active, including the real R1 prior-context validator.
+        r0["verdict"] = "unresolved"
+        r0["dimensions"]["source_fidelity"] = "source_limited"
+        r0["findings"][0]["code"] = "SOURCE_AMBIGUITY"
+        r0["findings"][0]["evidence_level"] = "S1"
+        fix = {
+            "candidate": new,
+            "responses": [{
+                "finding_index": 0,
+                "decision": "accept",
+                "source_quotes": ["go down the hall"],
+                "reason": "The complete route is re-evaluated against the source before recheck."
+            }]
+        }
+        r1 = reviewer_output(new, repaired=True, r1=True)
+        replies = iter([old, r0, fix, r1])
+        requests = []
+
+        def transport(request):
+            requests.append(copy.deepcopy(request))
+            return {
+                "output": next(replies),
+                "receipt": {
+                    "request_id": f"unresolved-active-{len(requests)}",
+                    "model": request["model"],
+                    "effort": request["effort"],
+                }
+            }
+
+        real_reviewer = protocol.reviewer
+        review_calls = 0
+
+        def host_state_fixture(source, candidate, review, **kwargs):
+            nonlocal review_calls
+            review_calls += 1
+            if review_calls == 1:
+                return None
+            return real_reviewer(source, candidate, review, **kwargs)
+
+        with patch("host.run.protocol.reviewer", side_effect=host_state_fixture):
+            result = run_record(
+                Source("active-r0-unresolved", "R2R", "en", SOURCE),
+                transport,
+                pins={
+                    "generator": {"model": "fixture", "effort": "low"},
+                    "reviewer": {"model": "fixture", "effort": "low"}
+                }
+            )
+
+        self.assertEqual(result["disposition"], "accepted_candidate", result["error"])
+        self.assertEqual(result["semantic_repairs"], 1)
+        self.assertEqual([(q["role"], q["phase"]) for q in requests], [
+            ("generator", "initial"), ("reviewer", "review"),
+            ("generator", "repair"), ("reviewer", "recheck")
+        ])
+        r1_payload = json.loads(requests[3]["messages"][1]["content"])
+        self.assertIn("prior_review", r1_payload)
+        self.assertIn("prior_candidate", r1_payload)
+        self.assertIn("prior_rendered_instruction", r1_payload)
+
+    def test_inactive_g0_confirmed_unresolved_falls_back_without_g1(self):
+        inactive = {
+            "status": "needs_review",
+            "subtasks": [],
+            "issues": [{
+                "code": "SOURCE_AMBIGUITY",
+                "source_quote": "the second door on the right",
+                "problem": "The route-critical target cannot be uniquely resolved."
+            }],
+            "stage_audit": [],
+            "handoffs": []
+        }
+        r0 = reviewer_output(generator_candidate(False), repaired=False)
+        r0["verdict"] = "unresolved"
+        r0["dimensions"]["source_fidelity"] = "source_limited"
+        r0["findings"][0]["code"] = "SOURCE_AMBIGUITY"
+        r0["findings"][0]["evidence_level"] = "S1"
+        replies = iter([inactive, r0])
+        requests = []
+
+        def transport(request):
+            requests.append(copy.deepcopy(request))
+            return {
+                "output": next(replies),
+                "receipt": {
+                    "request_id": f"unresolved-inactive-{len(requests)}",
+                    "model": request["model"],
+                    "effort": request["effort"],
+                }
+            }
+
+        with patch("host.run.protocol.reviewer", return_value=None):
+            result = run_record(
+                Source("inactive-r0-unresolved", "R2R", "en", SOURCE),
+                transport,
+                pins={
+                    "generator": {"model": "fixture", "effort": "low"},
+                    "reviewer": {"model": "fixture", "effort": "low"}
+                }
+            )
+
+        self.assertEqual(result["disposition"], "fallback_unresolved")
+        self.assertEqual(result["semantic_repairs"], 0)
+        self.assertEqual([(q["role"], q["phase"]) for q in requests], [
+            ("generator", "initial"), ("reviewer", "review")
+        ])
+        self.assertEqual(result["instruction"], SOURCE)
+
     def test_active_or_pass_cannot_claim_unassessed(self):
         g=generator_candidate(True)
         for verdict in ('pass','revise','unresolved'):
