@@ -1,8 +1,8 @@
 {
   "generator/compiled_r2r-en.txt": {
-    "compiled_sha256": "9c7742ec58b30a41ce32ef4aa9b1345c447209bbefe9f88c93396e4170b55a99",
+    "compiled_sha256": "18024daa1b2c8d54a7d4ac579a7a4422a189133b562b65406f18509faf68e484",
     "schema_sha256": "f11e8fdc8fd94901ab1a3e00ca736c84bf4d7ff89e9ad3e31c8c2294fd6df97a",
-    "bytes": 111242,
+    "bytes": 111187,
     "default_examples": 6,
     "library_count": 25,
     "fixed_core_count": 10,
@@ -20,9 +20,9 @@
     ],
     "profile": "r2r-en",
     "example_ids": [
+      "R2R-GEN-032",
       "R2R-GEN-033",
       "R2R-GEN-026",
-      "R2R-GEN-032",
       "R2R-GEN-028",
       "R2R-GEN-018",
       "R2R-GEN-024"
@@ -30,9 +30,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "65f4f5c7f2d00fc0dd928aa98fa259bfcbdb61e3cd91307e62ecf9af82309514",
+    "compiled_sha256": "41446f7763f4f56f8d447d2cdc55028e4d24ff7f5a4484644ad125641787933e",
     "schema_sha256": "69387b8980c98a534f628c01a8584098eaaefb1e6c8a4c49104aca253eb41bf5",
-    "bytes": 142771,
+    "bytes": 142327,
     "default_examples": 8,
     "library_count": 52,
     "fixed_core_count": 10,
@@ -50,21 +50,21 @@
     ],
     "profile": "r2r-en",
     "example_ids": [
+      "R2R-REV-032",
       "R2R-REV-033",
       "R2R-REV-026",
-      "R2R-REV-032",
       "R2R-REV-028",
       "R2R-REV-018",
       "R2R-REV-024",
-      "R2R-DIAG-09",
-      "R2R-DIAG-03"
+      "R2R-DIAG-04",
+      "R2R-DIAG-09"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_r2r-en.txt": {
-    "compiled_sha256": "a27cc2ab319199177cd1881fa66a3a09365884188bb65c3b65e9741ed21b1dd9",
+    "compiled_sha256": "8f4ab2f35601f58cf66a7b7e4e8d082762d1a057231718ba2c6ce42e33cdc4c1",
     "schema_sha256": "1e9142304561b052a75e814c835feb1764414510b58ba78078ede8bdb5629e90",
-    "bytes": 126298,
+    "bytes": 126243,
     "default_examples": 6,
     "library_count": 25,
     "fixed_core_count": 10,
@@ -82,9 +82,9 @@
     ],
     "profile": "r2r-en",
     "example_ids": [
+      "R2R-GEN-032",
       "R2R-GEN-033",
       "R2R-GEN-026",
-      "R2R-GEN-032",
       "R2R-GEN-028",
       "R2R-GEN-018",
       "R2R-GEN-024"
