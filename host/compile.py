@@ -18,7 +18,7 @@ def wire_schema(path):
             return node
         base = urljoin(base, node.get('$id', ''))
         result = {key: expand(value, base, ancestors) for key, value in node.items()
-                  if key not in ('$ref', '$id', '$defs')}
+                  if key not in ('$ref', '$id', '$defs', '$schema')}
         if '$ref' in node:
             uri = urljoin(base, node['$ref'])
             address = urlsplit(uri)

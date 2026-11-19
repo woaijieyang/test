@@ -22,7 +22,6 @@ from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
 Transport = Callable[[dict], dict]
-VERSION = "current"
 
 
 def dataset_rules_metadata(profile):
@@ -302,7 +301,6 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
 
     def finish(disposition, view, detail=None, diagnostic=None):
         return {
-            "version": VERSION,
             "quote_corrections": quote_corrections,
             "technical_corrections": sum(technical_by_role.values()),
             "technical_by_role": dict(technical_by_role),
@@ -628,7 +626,7 @@ def main():
         }
         diagnostic.update(step=step, role=None, phase=None, reviewer_status="not_requested")
         result = {
-            "version": VERSION, "disposition": "input_failed",
+            "disposition": "input_failed",
             "error": str(exc), "diagnostic": diagnostic,
             "calls": [], "navigation_evaluated": False,
             "semantic_correctness_verified": False,
