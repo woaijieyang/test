@@ -13,7 +13,8 @@
     "instruction_id": null,
     "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
     "trajectory_id": "185",
-    "source_key": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185"
+    "source_key": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185",
+    "scan_id": "kEZ7cmS4wCh"
   },
   "provenance": {
     "kind": "reviewer_teaching_case_rebuilt_from_r2r_source",
