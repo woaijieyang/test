@@ -206,19 +206,19 @@ class HostDispatchProfileTests(unittest.TestCase):
 
     def test_r2r_selector_matches_declared_selection_contract(self):
         import re
-        from host.template_selector import rank_examples, normalized, features
+        from host.template_selector import rank_r2r_examples, r2r_features, normalized
         text = SOURCE
-        cues, _ = features(text)
+        cues, _ = r2r_features(text)
         distinct = cues - {
             "orientation_or_reference_frame", "room_transition",
-            "intermediate_stop_or_wait"
+            "intermediate_stop_or_wait", "single_stage_keep", "multi_stage_split"
         }
         extra = min(2, len(distinct)//3 + int(len(text.split()) >= 65))
         generator_rows = library("generator", "r2r-en")
         reviewer_rows = library("reviewer", "r2r-en")
         expected_generator = [
             row["template_id"]
-            for row in rank_examples(generator_rows, text, 6 + extra)
+            for row in rank_r2r_examples(generator_rows, text, 6 + extra)
         ]
         self.assertEqual(
             select_examples("generator", "r2r-en", text), expected_generator
@@ -227,7 +227,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             row["pair_id"]: row for row in reviewer_rows if row.get("pair_id")
         }
         expected_paired = [pairs[item]["template_id"] for item in expected_generator]
-        diagnostics = rank_examples(
+        diagnostics = rank_r2r_examples(
             [row for row in reviewer_rows if not row.get("pair_id")],
             text, 2 + extra,
             excluded=[normalized((row.get("input") or row["review_input"])["original_instruction"])
