@@ -173,7 +173,13 @@ class R2RCoreTests(unittest.TestCase):
 
     def test_r2r_rule_metadata_is_profile_scoped_and_not_shared_contract(self):
         metadata = dataset_rules_metadata("r2r-en")
-        self.assertEqual(metadata["files"], ["shared/semantic_contract.md", "shared/dataset_rules/r2r_en.md"])
+        self.assertEqual(metadata["files"], [
+            "shared/semantic_contract.md",
+            "shared/dataset_rules/r2r_en.md",
+            "shared/dataset_rules/r2r_fragments.json",
+            "generator/dataset_rules/r2r_en.md",
+            "reviewer/dataset_rules/r2r_en.md",
+        ])
         self.assertEqual(metadata["version"], "r2r-en-profile")
         shared = (ROOT / "shared/semantic_contract.md").read_text(encoding="utf-8")
         rxr = (ROOT / "shared/dataset_rules/rxr_en_us.md").read_text(encoding="utf-8")
