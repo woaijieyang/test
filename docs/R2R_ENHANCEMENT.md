@@ -94,7 +94,7 @@ The R2R ranker combines:
 - overlap between current-source cues and teaching-case cues/tags;
 - source-only lexical overlap with inverse document-frequency weighting;
 - matching temporal/route relations;
-- authored semantic pattern and KEEP/SPLIT teaching annotations;
+- authored segmentation/review pattern and retrieval tags;
 - diversity coverage so later selections add evidence not already covered;
 - exclusion of an exact normalized source match.
 

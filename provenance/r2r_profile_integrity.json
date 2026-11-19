@@ -184,7 +184,7 @@
     },
     {
       "path": "host/template_selector.py",
-      "git_blob_sha1": "6630b68b515cf2b9370c3780e84cf6cf54110aaa"
+      "git_blob_sha1": "4100f34bb390c8df7fa5ea32921017a2f7c9e909"
     },
     {
       "path": "renderer/__init__.py",

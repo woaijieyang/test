@@ -166,11 +166,7 @@ def rank_r2r_examples(rows, text, count, excluded=()):
     for row, tags, terms, identity in options:
         common = cues & tags
         relation_hits = query_relations & relations(source(row))
-        annotations = [
-            task_type(row),
-            row.get("decision", {}).get("mode", ""),
-            *row.get("retrieval_tags", []),
-        ]
+        annotations = [task_type(row), *row.get("retrieval_tags", [])]
         annotation_tokens = set("_".join(annotations).lower().split("_"))
         type_hits = type_terms & annotation_tokens
         score = (
