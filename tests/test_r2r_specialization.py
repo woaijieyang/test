@@ -84,6 +84,19 @@ class R2RSpecializationTests(unittest.TestCase):
         self.assertNotIn("R2R ROLE GUIDANCE", rxr_prompt)
         self.assertNotIn("generator/dataset_rules/r2r_en.md", rxr_prompt)
 
+    def test_r2r_shared_and_role_guidance_have_non_overlapping_responsibilities(self):
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[1]
+        shared = (root / "shared/dataset_rules/r2r_en.md").read_text(encoding="utf-8")
+        generator = (root / "generator/dataset_rules/r2r_en.md").read_text(encoding="utf-8")
+        reviewer = (root / "reviewer/dataset_rules/r2r_en.md").read_text(encoding="utf-8")
+        self.assertNotIn("## Role-specific execution order", shared)
+        self.assertIn("## Required decision sequence", generator)
+        self.assertIn("## Independent review sequence", reviewer)
+        self.assertNotIn("Reviewer must independently", generator)
+        self.assertNotIn("Generator alone authors", reviewer)
+
     def test_r2r_metadata_freezes_all_profile_rules_and_role_guidance(self):
         metadata = dataset_rules_metadata("r2r-en")
         self.assertEqual(

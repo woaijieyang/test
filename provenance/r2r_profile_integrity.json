@@ -452,7 +452,7 @@
     },
     {
       "path": "shared/dataset_rules/r2r_en.md",
-      "git_blob_sha1": "080dbf0e9d1d2ba5eecb9a6d16ec1f3e44bd3980"
+      "git_blob_sha1": "0409648992badaaeb9f0b7d7b6d88ff1f270a8be"
     },
     {
       "path": "shared/dataset_rules/r2r_fragments.json",
@@ -492,7 +492,7 @@
     },
     {
       "path": "tests/test_r2r_specialization.py",
-      "git_blob_sha1": "295f62f703f41d1dfddddc463769b90a8a49de23"
+      "git_blob_sha1": "529ca720e681a4297a0f15a38f6496ef6900d2b9"
     }
   ]
 }
