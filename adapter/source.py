@@ -63,10 +63,13 @@ class Source:
     language: str
     raw: str
     split: str = 'unspecified'
+    provenance: dict | None = None  # Host-only IDs; never added to the LLM payload.
 
     def __post_init__(self):
         need((self.dataset, self.language) in PROFILES, 'Unsupported dataset/language profile', code='SOURCE_PROFILE_UNSUPPORTED', path='/language', actual=[self.dataset,self.language])
         need(isinstance(self.key, str) and self.key.strip(), 'Missing task key', code='SOURCE_ID_MISSING', path='/task_key')
+        if self.provenance is None:
+            object.__setattr__(self, 'provenance', {})
         need(isinstance(self.raw, str) and self.raw.strip(), 'Empty/blank source', code='SOURCE_TEXT_INVALID', path='/original_instruction')
         try:
             self.raw.encode('utf-8', errors='strict')
@@ -108,7 +111,8 @@ class Source:
 
     def identity(self):
         return {'task_key': self.key, 'dataset': self.dataset, 'language': self.language,
-                'split': self.split, 'source_sha256': self.sha, 'profile': self.profile}
+                'split': self.split, 'source_sha256': self.sha, 'profile': self.profile,
+                'provenance': dict(self.provenance or {})}
 
     def features(self):
         body, suffix = self.body, self.suffix
@@ -161,7 +165,23 @@ def from_record(row: dict, *, dataset: str | None = None, split: str | None = No
     need(supplied is None or supplied == digest, 'Source SHA-256 mismatch', code='SOURCE_HASH_MISMATCH', path=hash_path, actual=supplied, expected=digest, source_path=location)
     sp = str(split if split is not None else row.get('split', 'unspecified'))
     key = _task_key(row, ds, language, sp)
-    return Source(key, ds, language, text, sp)
+    # Host-only provenance for split-overlap audits and paired evaluation.
+    # This object is never serialized into Generator/Reviewer model messages.
+    scene_value = row.get('scene_id') or row.get('scan')
+    scan_id = row.get('scan')
+    if not scan_id and isinstance(scene_value, str):
+        scan_id = Path(scene_value).stem if scene_value.endswith('.glb') else scene_value
+    provenance = {
+        'record_id': str(row.get('id') if row.get('id') is not None else row.get('record_id')) if (row.get('id') is not None or row.get('record_id') is not None) else None,
+        'episode_id': str(row.get('episode_id')) if row.get('episode_id') is not None else None,
+        'instruction_id': str(row.get('instruction_id')) if row.get('instruction_id') is not None else None,
+        'path_id': str(row.get('path_id')) if row.get('path_id') is not None else None,
+        'trajectory_id': str(row.get('trajectory_id')) if row.get('trajectory_id') is not None else None,
+        'scene_id': scene_value,
+        'scan_id': scan_id,
+        'source_record_role': row.get('role'),
+    }
+    return Source(key, ds, language, text, sp, provenance)
 
 def load_record(path, *, dataset: str | None = None, split: str | None = None) -> Source:
     # Decode JSON bytes exactly once as UTF-8. Never use unicode_escape, strip,
