@@ -181,7 +181,13 @@ class RxRProfileTests(unittest.TestCase):
         r2r = dataset_rules_metadata("r2r-en")
         rxr = dataset_rules_metadata("rxr-en-us")
         self.assertEqual(r2r["version"], "r2r-en-profile")
-        self.assertEqual(r2r["files"], ["shared/semantic_contract.md", "shared/dataset_rules/r2r_en.md"])
+        self.assertEqual(r2r["files"], [
+            "shared/semantic_contract.md",
+            "shared/dataset_rules/r2r_en.md",
+            "shared/dataset_rules/r2r_fragments.json",
+            "generator/dataset_rules/r2r_en.md",
+            "reviewer/dataset_rules/r2r_en.md",
+        ])
         self.assertEqual(rxr["version"], "rxr-en-us-profile")
         self.assertEqual(len(rxr["files"]), 4)
         ids = select_examples("generator", "rxr-en-us", "Go to the kitchen.")
