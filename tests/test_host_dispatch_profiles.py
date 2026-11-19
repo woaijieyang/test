@@ -161,7 +161,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             with self.subTest(path=entry["path"]):
                 self.assertEqual(blob, entry["git_blob_sha1"])
 
-    def test_r2r_prompt_restores_v5_build_and_curated_header(self):
+    def test_r2r_prompt_uses_current_profile_build_and_curated_header(self):
         source_text = "Walk through the doorway and stop beside the table."
         ids = select_examples("generator", "r2r-en", source_text)
         prompt, _ = compile_prompt(
@@ -179,7 +179,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         self.assertNotIn("RXR SHARED SEMANTIC RULES", prompt)
         self.assertNotIn("RXR ROLE GUIDANCE", prompt)
 
-    def test_r2r_dynamic_library_order_matches_v5_path_order(self):
+    def test_r2r_dynamic_library_order_is_stable(self):
         from pathlib import Path
         from host.compile import ROOT
         for role in ("generator", "reviewer"):
@@ -197,7 +197,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             actual_ids = [row["template_id"] for row in library(role, "r2r-en")]
             self.assertEqual(actual_ids, expected_ids)
 
-    def test_r2r_selector_matches_v5_selection_formula(self):
+    def test_r2r_selector_matches_declared_selection_contract(self):
         import re
         from host.template_selector import rank_examples, normalized, features
         text = SOURCE
@@ -231,7 +231,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             select_examples("reviewer", "r2r-en", text), expected_reviewer
         )
 
-    def test_r2r_full_four_phase_workflow_uses_only_v5_profile(self):
+    def test_r2r_full_four_phase_workflow_uses_only_r2r_profile(self):
         src = from_record({
             "dataset": "R2R", "split": "val_seen", "episode_id": "r2r-four-phase",
             "instruction_text": SOURCE
@@ -317,7 +317,7 @@ class HostDispatchProfileTests(unittest.TestCase):
         for req in requests:
             self.assertEqual(req["profile"], "r2r-en")
             self.assertEqual(len(req["fixed_core_template_ids"]), 10)
-            self.assertEqual(req["dataset_rules"]["version"], "v6.2-r2r-en")
+            self.assertEqual(req["dataset_rules"]["version"], "r2r-en-profile")
             system = req["messages"][0]["content"]
             self.assertNotIn("RXR SHARED SEMANTIC RULES", system)
             self.assertNotIn("RXR ROLE GUIDANCE", system)

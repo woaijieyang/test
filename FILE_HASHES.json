@@ -566,7 +566,7 @@
   "verify_package.py": "gitblob-sha1:27ce9e9b5d20a1cb85ebf3feb9ee2cce8d07921b",
   "VERSION": "gitblob-sha1:4d82121ef61b5762734ecde3a990212fe32f9d4b",
   "WORKFLOW.md": "gitblob-sha1:131f108e166d8b0af8816d2759ed22e5f5079cd3",
-  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:d1730da34abd024ee8bf6bcdc006db90f2ee2a5f",
+  "tests/test_host_dispatch_profiles.py": "gitblob-sha1:10c37949aa9a53cdf4c2c17c59a093b871e6337b",
   "generator/templates/R2R/core/G01_R2R-CORE-G01.json": "gitblob-sha1:06346e8a4d870f73eef9015664be02d574672d38",
   "generator/templates/R2R/core/G02_R2R-CORE-G02.json": "gitblob-sha1:348fd8dfde5db199e2fbbc58613372435112d0ea",
   "generator/templates/R2R/core/G03_R2R-CORE-G03.json": "gitblob-sha1:187eeb5a52e3ca9e5369f4edfef5294e2fd79155",
