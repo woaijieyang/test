@@ -2,5 +2,5 @@
   "task_key": "synthetic-demo-01",
   "dataset": "R2R",
   "language": "en",
-  "original_instruction": "Cross  the lobby to the stairway. Climb to the landing and wait by the clock. "
+  "original_instruction": "Exit the kitchen and turn right, then go down the hall and stop by the second door on the right."
 }
