@@ -340,7 +340,7 @@
   "host/README.md": "gitblob-sha1:db8e1a6f95ffb11097c4ed15607b62630d5bae82",
   "host/role-pins.json": "gitblob-sha1:b87ad032894bc880302c5c8adbf89c907e30e5a0",
   "host/run.py": "gitblob-sha1:1001639bd054e01de427a127ddb9e1123caf1bd5",
-  "host/template_selector.py": "gitblob-sha1:aa74c57502d6ee931252151748c860caf355f638",
+  "host/template_selector.py": "gitblob-sha1:5d6155a85b82e2eee76ed266850e3edf6e54a013",
   "IMPLEMENTATION.md": "gitblob-sha1:226194170ee5097e6f7bb897690378060821d1aa",
   "provenance/build_manifest.json": "gitblob-sha1:0489a80cf8c9a4ace099c7b2bfb279fdb4be19a2",
   "provenance/CHANGE_MATRIX.implementation.csv": "gitblob-sha1:6034b0b59f0f39ecc19582756b8d553ab41827a0",
