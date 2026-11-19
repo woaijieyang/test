@@ -247,23 +247,6 @@ Reviewer examples are calibration evidence, not verdict votes. The Reviewer must
 
 No rule in this file determines a fixed stage count, word-count threshold, or split/keep ratio. The shared semantic contract remains authoritative for every final decision.
 
-## Role-specific execution order
-
-Generator:
-1. Read the complete original instruction and inventory ordered navigation requirements.
-2. Identify candidate objectives, actual completion events, target identities, and active dependencies before consulting examples.
-3. Determine only boundaries jointly supported by completion, a distinct next objective, an executable entry context, and useful local focus.
-4. Read all ten fixed Generator Core cases in G01-G10 order, then the selected dynamic examples.
-5. Transfer only the matching semantic relation; generate the candidate and perform the existing stage, evidence, and handoff audits.
-
-Reviewer:
-1. Independently read the complete source and build the source-requirement inventory.
-2. Read the actual candidate and map each requirement to exact candidate evidence.
-3. Evaluate the existing L0-L6 checks, including stage grouping and each adjacent handoff.
-4. Read all ten fixed Reviewer Core cases in R01-R10 order, then the selected paired dynamic examples and diagnostics.
-5. Use examples only after the independent evidence review. A teaching verdict is local to its own case and is never a prior, vote, or default for the current candidate.
-6. Emit only the existing Reviewer schema and verdicts. A concern becomes a Finding only when the current case has source-supported evidence meeting the existing evidence threshold.
-
 
 R2R ROLE GUIDANCE [generator/dataset_rules/r2r_en.md]:
 # R2R Generator role guidance
