@@ -74,8 +74,10 @@ def rank_examples(rows, text, count, excluded=()):
         common = cues & tags
         exact_relations = query_relations & relations(source(row))
         relational_hits = special & tags
-        score = (sum(weights[token] for token in common)
-                 + sum(weights[token] for token in words & terms) / math.sqrt(max(1, len(terms)))
+        # Float addition order must not depend on a worker's randomized set
+        # iteration. Keep scoring and the final ID tie-break stable across runs.
+        score = (sum(weights[token] for token in sorted(common))
+                 + sum(weights[token] for token in sorted(words & terms)) / math.sqrt(max(1, len(terms)))
                  + 4 * len(exact_relations) + 2 * len(relational_hits)
                  - 0.12 * len(tags - cues))
         candidates.append((row, identity, score, relational_hits, exact_relations))
