@@ -279,7 +279,7 @@
     },
     {
       "path": "host/rxr_retrieval.py",
-      "git_blob_sha1": "08f925ba240b64aa397e9e05c38caf4c781c5568"
+      "git_blob_sha1": "457b7bf4ce057abe319d2bb8b89ec51e32537d42"
     },
     {
       "path": "provenance/rxr_training_sources.json",

@@ -1,5 +1,5 @@
 {
-  "tests_run": 196,
+  "tests_run": 197,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
@@ -11,7 +11,7 @@
   ],
   "navigation_evaluated": false,
   "semantic_correctness_certified": false,
-  "source_commit": "6c215e703e299377c5af054582870fa8f5065c4f",
+  "source_commit": "546ec6286672b7a96c711003f05a6319c7593eac",
   "baseline_commit": "cfd4c13010f105235d026ec14a9c2b4bbd7bf94e",
   "source_archive_verified": true,
   "r2r_prompt_schema_selection_equal": true,
