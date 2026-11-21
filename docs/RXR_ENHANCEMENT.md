@@ -20,15 +20,15 @@ The Generator uses supported entry states without mandating redundant entry sent
 
 ## Implementation and provenance
 
-Shared and role-specific RxR rules remain separate. `host/rxr_retrieval.py` is imported only through the RxR branch. The source registry and retrieval implementation participate in RxR task hashes; R2R does not read them. The teaching builder is an offline maintenance tool and never downloads data during navigation. Dynamic pools retain explicit identity, language, source and pairing validation.
+Shared and role-specific RxR rules remain separate. The selector imports the RxR helpers without reading training assets; it invokes the new ranker and training-library checks only for the RxR Profile. The source registry and retrieval implementation participate in RxR task hashes; R2R does not read them. The teaching builder is an offline maintenance tool and never downloads data during navigation. Dynamic pools retain explicit identity, language, source and pairing validation.
 
 Use isolated checkout/output/cache namespaces for active R2R and RxR runs. Do not hot-edit shared workers. Record actual messages, active schema, source and rendered hashes, model receipt and token usage. Unknown provider context/truncation information must remain unknown, not be fabricated from byte length.
 
 ## Validation and release
 
-Run inherited self-contained tests, new RxR calibration/provenance/protocol tests, four-phase R2R message-and-schema comparisons, selection comparisons and interleaved-cache tests. Keep the existing externally dependent release-transaction test limitation visible. Compile generated artifacts and update integrity records only after protected assets have been compared with the frozen base. Commit tested artifacts only to the checked-out branch, without force pushing or updating another Profile's snapshots to conceal a regression.
+Run inherited self-contained tests, new RxR calibration/provenance/protocol tests, four-phase R2R message-and-schema comparisons, selection comparisons and interleaved-cache tests. Keep the existing externally dependent release-transaction test limitation visible. Compile generated artifacts and update integrity records only after protected assets have been compared with the frozen base. Shared runtime source hashes necessarily change with an RxR-only dispatch addition; refresh only their approved integrity entries after proving R2R model messages, schemas and selection are unchanged. Record previous and current source fingerprints separately. Never retain an obsolete code hash to claim isolation.
 
-Use commit and content hashes for provenance. Project release labels belong in README only. External dependency pins and standard schema identifiers remain technical compatibility facts, not project release labels.
+Commit tested artifacts only to the checked-out branch, without force pushing or updating another Profile's model-message snapshots to conceal a regression. Use commit and content hashes for provenance. Project release labels belong in README only. External dependency pins and standard schema identifiers remain technical compatibility facts, not project release labels.
 
 ## Navigation verification still required
 

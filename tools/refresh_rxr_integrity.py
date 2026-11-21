@@ -24,7 +24,10 @@ def refresh_shared_runtime_pins():
         raise ValueError('The isolation checkout does not match BASE_COMMIT')
     path = ROOT / 'provenance/r2r_profile_integrity.json'
     value = json.loads(path.read_text(encoding='utf-8'))
-    approved = {'host/run.py', 'host/template_selector.py'}
+    # The two tests contain shared RxR inventory/snapshot assertions alongside
+    # untouched R2R assertions. Their exact migrations are in the finalizer.
+    approved = {'host/run.py', 'host/template_selector.py',
+                'tests/test_r2r_specialization.py', 'tests/test_roles_repair.py'}
     changes = []
     for row in value['files']:
         actual = gitblob((ROOT / row['path']).read_bytes())
@@ -37,7 +40,7 @@ def refresh_shared_runtime_pins():
         row['git_blob_sha1'] = actual
     if changes:
         path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        audit = dict(baseline_commit=head, reason='RxR-only shared-runtime dispatch and source validation',
+        audit = dict(baseline_commit=head, reason='RxR-only runtime dispatch and explicit RxR inventory/snapshot test migrations',
                      r2r_model_messages_and_schemas_equal=True, r2r_selections_equal=True,
                      protected_common_and_r2r_assets_equal=True, shared_runtime_changes=changes)
         (ROOT / 'provenance/r2r_shared_runtime_audit.json').write_text(
