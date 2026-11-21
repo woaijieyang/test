@@ -10,7 +10,9 @@ on:
       - 'shared/dataset_rules/rxr_en_us.md'
       - 'generator/dataset_rules/rxr_en_us.md'
       - 'reviewer/dataset_rules/rxr_en_us.md'
-      - 'tests/test_rxr_calibration.py'
+      - 'tests/**'
+      - 'generator/templates/RxR/**'
+      - 'reviewer/templates/RxR/**'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +44,7 @@ jobs:
       - name: Prepare frozen baseline and exact scoped integration
         run: |
           git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
+          echo "R2R_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
           python -B tools/finalize_rxr_sources.py
           python -B tools/integrate_rxr.py
       - name: Verify official training source and build authored examples
@@ -49,7 +52,7 @@ jobs:
       - name: Compile profiles and prove R2R isolation before refreshing pins
         run: |
           python -B -m host.compile
-          python -B tools/check_r2r_isolation.py --baseline "$RUNNER_TEMP/r2r-baseline"
+          python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
       - name: Refresh scoped asset manifests and verify complete package
         run: |
           python -B tools/refresh_rxr_integrity.py
@@ -79,17 +82,28 @@ jobs:
         run: |
           python -B -m evaluation.smoke24
           python -B -m examples.demo
-          python -B tools/check_r2r_isolation.py --baseline "$RUNNER_TEMP/r2r-baseline"
+          python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
       - name: Record validation and refresh generated integrity
         run: |
           python -B - <<'PY'
-          import json, os
+          import json, os, re, subprocess
           from pathlib import Path
           report=json.loads(Path(os.environ['RUNNER_TEMP'],'rxr-tests.json').read_text())
           report.update(source_commit=os.environ['GITHUB_SHA'],baseline_commit=os.environ['BASE_COMMIT'],
                         source_archive_verified=True,r2r_prompt_schema_selection_equal=True,
                         common_and_r2r_assets_equal=True)
           Path('provenance/rxr_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+          pattern=re.compile(r'(?i)(?<![a-z0-9])v\d+(?:[._]\d+)*(?![a-z0-9])')
+          hits=[]
+          for item in subprocess.check_output(['git','ls-files'],text=True).splitlines():
+              p=Path(item)
+              if p.name.lower()=='readme.md' or not p.is_file(): continue
+              try: text=p.read_text(encoding='utf-8')
+              except UnicodeDecodeError: continue
+              names=pattern.findall(item)
+              labels=sorted(set(pattern.findall(text)))
+              if names or labels: hits.append({'path':item,'path_labels':names,'content_labels':labels})
+          print('PROJECT_LABEL_AUDIT='+json.dumps(hits))
           PY
           python -B tools/refresh_rxr_integrity.py
           python -B verify_package.py
@@ -99,7 +113,7 @@ jobs:
           test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py tests/test_rxr_calibration.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py tests/test_rxr_calibration.py tests/test_roles_repair.py tests/test_r2r_specialization.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json provenance/r2r_profile_integrity.json provenance/r2r_shared_runtime_audit.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
           if ! git diff --cached --quiet; then
             git commit -m 'Integrate verified RxR lessons and tested profile-scoped runtime assets'
             git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
