@@ -24,9 +24,12 @@ for text in texts:
         ids={role:select_examples(role,'rxr-en-us',text,count=count) for role in ('generator','reviewer')}
         messages={}
         for role,phase in [('generator','initial'),('generator','repair'),('reviewer','review'),('reviewer','recheck')]:
-            prompt=compile_prompt(role,phase,profile='rxr-en-us',selected_ids=ids[role],original_instruction=text)
-            messages[role+'/'+phase]=hashlib.sha256(prompt.encode()).hexdigest()
-        results.append({'ids':ids,'prompt_hashes':messages})
+            prompt,schema=compile_prompt(role,phase,profile='rxr-en-us',selected_ids=ids[role],original_instruction=text)
+            messages[role+'/'+phase]={
+                'prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),
+                'schema_sha256':hashlib.sha256(json.dumps(schema,sort_keys=True,separators=(',',':')).encode()).hexdigest(),
+            }
+        results.append({'ids':ids,'prompt_and_schema_hashes':messages})
 print(json.dumps(results,sort_keys=True))
 '''
 
