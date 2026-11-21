@@ -1,0 +1,24 @@
+name: Frozen source audit
+on:
+  push:
+    paths:
+      - .github/workflows/source-audit.yml
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfd4c13010f105235d026ec14a9c2b4bbd7bf94e
+          persist-credentials: false
+      - name: Verify frozen source
+        run: python -B verify_package.py
+      - name: Export tracked source only
+        run: git archive --format=zip HEAD > "$RUNNER_TEMP/source.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frozen-source
+          path: ${{ runner.temp }}/source.zip
+          retention-days: 1
