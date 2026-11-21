@@ -1,0 +1,33 @@
+name: HAMLET CPU verification
+on:
+  push:
+    branches: [HAMLET-v2]
+    paths:
+      - 'src/awarevln_memory/**'
+      - 'src/hamlet_v2/**'
+      - 'src/llava/train/train_hamlet.py'
+      - 'tests/hamlet_training/**'
+      - 'configs/hamlet/training/**'
+      - '.github/workflows/hamlet-cpu.yml'
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check baseline Python syntax
+        run: python -m compileall -q src/awarevln_memory src/hamlet_v2
+      - name: Export reviewed source for CPU integration work
+        run: |
+          git archive --format=tar HEAD AGENTS.md README.md THIRD_PARTY.md src/awarevln_memory src/hamlet_v2 src/llava src/vlnce_baselines tests configs scripts tools > "$RUNNER_TEMP/hamlet-source.tar"
+          sha256sum "$RUNNER_TEMP/hamlet-source.tar"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hamlet-cpu-source
+          path: ${{ runner.temp }}/hamlet-source.tar
+          retention-days: 1
+          if-no-files-found: error
