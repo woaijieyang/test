@@ -165,8 +165,8 @@
     "supplied_stage_count": 1,
     "mode": "ASSEMBLED_SINGLE",
     "source_sha256": "ef9a81a3ff3a7cfab720dbbd582c6366097f24a7c88c72dd2dce8f3d0a8dde4d",
-    "preview_sha256": "23a2e85751cf628abd5231e1b742cfb7ef1f11c92551b2f3fac1b1670f3d58cb",
-    "frozen_stage_text_differs_from_proposal": true,
+    "preview_sha256": "eb897f9e237baddef8cdd6ad9f68acce52764c216df336de2143dfd236ed1bec",
+    "frozen_stage_text_differs_from_proposal": false,
     "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
   },
   {
@@ -185,8 +185,8 @@
     "supplied_stage_count": 3,
     "mode": "ASSEMBLED_MULTI",
     "source_sha256": "9136ac679be6234f3343809ec8759ec4ffaa2e09e113251af7b1fca8b7ae707e",
-    "preview_sha256": "7aa53bb4580f77e81a57e73ddd94458e7ba386cea0afd7a208d045c2a2a693e9",
-    "frozen_stage_text_differs_from_proposal": true,
+    "preview_sha256": "7da0ca300192555216b7a994cada54f93238cb483e04459b368496845dfac1eb",
+    "frozen_stage_text_differs_from_proposal": false,
     "scope": "supplied strings -> formatter only; not semantic re-evaluation or a repeat navigation"
   },
   {
