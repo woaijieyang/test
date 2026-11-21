@@ -1,98 +1,108 @@
-name: RxR source and baseline audit
+name: Isolated RxR integration and validation
 
 on:
   push:
     branches: ['LLM-decompose-*']
-    paths: ['.github/workflows/rxr-development.yml']
+    paths:
+      - '.github/workflows/rxr-development.yml'
+      - 'tools/**'
+      - 'host/**'
+      - 'shared/dataset_rules/rxr_en_us.md'
+      - 'generator/dataset_rules/rxr_en_us.md'
+      - 'reviewer/dataset_rules/rxr_en_us.md'
+      - 'tests/test_rxr_calibration.py'
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: rxr-integration-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  BASE_COMMIT: cfd4c13010f105235d026ec14a9c2b4bbd7bf94e
 
 jobs:
-  inspect:
+  validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout exact source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.11'
-      - name: Install existing test dependencies
+      - name: Install existing validation dependencies
         run: python -m pip install -r requirements.txt
-      - name: Inventory release labels and runtime assets
+      - name: Prepare frozen baseline and exact scoped integration
         run: |
-          python - <<'PY'
-          import collections, json, pathlib, re, subprocess
-          root = pathlib.Path('.')
-          paths = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          pattern = re.compile(r'(?i)\bv\d+(?:[._]\d+)*\b')
-          hits = []
-          for name in paths:
-              if not name or name == 'README.md': continue
-              path = root / name
-              try: text = path.read_text(encoding='utf-8')
-              except (UnicodeError, OSError): continue
-              lines = [(i, line[:220]) for i,line in enumerate(text.splitlines(),1) if pattern.search(line)]
-              if lines or pattern.search(name):
-                  hits.append((name, len(lines), lines[:3]))
-          print('PROJECT_LABEL_INVENTORY', json.dumps(hits, ensure_ascii=False))
-          for role in ('generator','reviewer'):
-              for folder in ('core','val_seen','paired','diagnostics'):
-                  for path in sorted((root/role/'templates'/'RxR'/folder).glob('*.json')):
-                      row=json.loads(path.read_bytes())
-                      notes=row.get('teaching_notes',{})
-                      print('RXR_ASSET',json.dumps({'path':str(path),'id':row.get('template_id'),'source':(row.get('input') or row.get('review_input',{})).get('original_instruction'),'decision':row.get('decision'),'verdict':row.get('expected_review',{}).get('verdict'),'pattern':notes.get('segmentation_pattern',notes.get('review_pattern')),'tags':row.get('retrieval_tags'), 'provenance':row.get('provenance')},ensure_ascii=False))
-          PY
-      - name: Inspect official training-only candidates
+          git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
+          python -B tools/integrate_rxr.py
+      - name: Verify official training source and build authored examples
+        run: python -B tools/build_rxr_teaching.py --verify-upstream
+      - name: Compile profiles and prove R2R isolation before refreshing pins
         run: |
-          python - <<'PY'
-          import gzip, hashlib, json, pathlib, re, tempfile, urllib.request
-          url='https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz'
-          path=pathlib.Path(tempfile.gettempdir())/'rxr-train-guide.jsonl.gz'
-          with urllib.request.urlopen(url, timeout=120) as src, path.open('wb') as dst:
-              while chunk:=src.read(1048576): dst.write(chunk)
-          print('OFFICIAL_TRAINING_SOURCE',url,'sha256',hashlib.sha256(path.read_bytes()).hexdigest())
-          patterns={
-            'correction':r'\b(?:sorry|or rather|i mean)\b',
-            'conditional_observation':r'\bif (?:you|we) (?:turn|look)',
-            'paired_relation':r'\b(?:right|left)(?:most)?\b.{0,45}\b(?:two|both)\b|\b(?:two|both)\b.{0,45}\b(?:right|left)(?:most)?\b',
-            'ordinal_origin':r'\b(?:second|third) (?:door|entrance|opening)',
-            'bounded_terminal':r'\b(?:one step|a step|halfway|half way|midway)\b',
-            'return_revisit':r'\b(?:return|back through|same door)\b',
-            'repeat_scope':r'\b(?:walk around|go around|walk straight|move forward)\b.{0,90}\b(?:walk around|go around|walk straight|move forward)\b',
-            'late_identity':r'\b(?:doorway|entrance|opening)\b.{0,140}\b(?:that is|which is|it has|there are two)\b',
-          }
-          chosen={key:[] for key in patterns}; seen=set()
-          with gzip.open(path,'rt',encoding='utf-8') as stream:
-              for line in stream:
-                  row=json.loads(line)
-                  if row.get('language')!='en-US': continue
-                  text=row.get('instruction','')
-                  if not 35 <= len(text.split()) <= 145: continue
-                  for key,pattern in patterns.items():
-                      if len(chosen[key])<3 and re.search(pattern,text,re.I|re.S):
-                          identity=(row.get('scan'),row.get('path_id'))
-                          if identity in seen: continue
-                          item={field:row.get(field) for field in ('instruction_id','path_id','scan','language','instruction')}
-                          item['source_record_sha256']=hashlib.sha256(line.encode()).hexdigest()
-                          chosen[key].append(item); seen.add(identity); break
-                  if all(len(items)>=3 for items in chosen.values()): break
-          for key,items in chosen.items():
-              for item in items: print('TRAIN_CANDIDATE',key,json.dumps(item,ensure_ascii=False))
-          PY
-      - name: Run inherited self-contained suite
+          python -B -m host.compile
+          python -B tools/check_r2r_isolation.py --baseline "$RUNNER_TEMP/r2r-baseline"
+      - name: Refresh scoped asset manifests and verify complete package
+        run: |
+          python -B tools/refresh_rxr_integrity.py
+          python -B verify_package.py
+      - name: Run inherited and new self-contained regression tests
         run: |
           python -B - <<'PY'
-          import unittest
-          suite=unittest.defaultTestLoader.discover('tests')
-          out=unittest.TestSuite()
-          def visit(node):
-              for item in node:
-                  if isinstance(item,unittest.TestSuite): visit(item)
-                  elif 'test_release_transaction' not in item.id(): out.addTest(item)
-          visit(suite)
-          result=unittest.TextTestRunner(verbosity=2).run(out)
-          raise SystemExit(not result.wasSuccessful())
+          import json, os, unittest
+          from pathlib import Path
+          all_tests=unittest.defaultTestLoader.discover('tests')
+          selected=unittest.TestSuite(); external=[]
+          def collect(suite):
+              for test in suite:
+                  if isinstance(test,unittest.TestSuite): collect(test)
+                  elif 'test_release_transaction' in test.id(): external.append(test.id())
+                  else: selected.addTest(test)
+          collect(all_tests)
+          result=unittest.TextTestRunner(verbosity=2).run(selected)
+          report={'tests_run':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),
+                  'skipped':len(result.skipped),'external_fixture_tests_not_run':external,
+                  'navigation_evaluated':False,'semantic_correctness_certified':False}
+          Path(os.environ['RUNNER_TEMP'],'rxr-tests.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report))
+          raise SystemExit(0 if result.wasSuccessful() else 1)
           PY
+      - name: Exercise renderer and bounded workflow
+        run: |
+          python -B -m evaluation.smoke24
+          python -B -m examples.demo
+          python -B tools/check_r2r_isolation.py --baseline "$RUNNER_TEMP/r2r-baseline"
+      - name: Record validation and refresh generated integrity
+        run: |
+          python -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          report=json.loads(Path(os.environ['RUNNER_TEMP'],'rxr-tests.json').read_text())
+          report.update(source_commit=os.environ['GITHUB_SHA'],baseline_commit=os.environ['BASE_COMMIT'],
+                        source_archive_verified=True,r2r_prompt_schema_selection_equal=True,
+                        common_and_r2r_assets_equal=True)
+          Path('provenance/rxr_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
+          python -B tools/refresh_rxr_integrity.py
+          python -B verify_package.py
+      - name: Commit only tested integration assets with a branch-head lease
+        run: |
+          current=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
+          test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Integrate verified RxR lessons and tested profile-scoped runtime assets'
+            git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          fi
+          test -z "$(git status --porcelain)" || { git status --short; exit 1; }
+          python -B verify_package.py
+          git rev-parse HEAD
