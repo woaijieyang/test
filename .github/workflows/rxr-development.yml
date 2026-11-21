@@ -41,23 +41,25 @@ jobs:
           python-version: '3.11'
       - name: Install existing validation dependencies
         run: python -m pip install -r requirements.txt
-      - name: Prepare frozen baseline and exact scoped integration
+      - name: Prepare immutable comparison checkout
         run: |
           git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
           echo "R2R_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
-          python -B tools/finalize_rxr_sources.py
-          python -B tools/integrate_rxr.py
       - name: Verify official training source and build authored examples
         run: python -B tools/build_rxr_teaching.py --verify-upstream
-      - name: Compile profiles and prove R2R isolation before refreshing pins
+      - name: Compile profiles and prove R2R isolation
         run: |
           python -B -m host.compile
           python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
+      - name: Exercise renderer and verify deterministic rebuild
+        run: |
+          python -B -m evaluation.smoke24
+          python -B tools/check_rxr_reproducibility.py
       - name: Refresh scoped asset manifests and verify complete package
         run: |
           python -B tools/refresh_rxr_integrity.py
           python -B verify_package.py
-      - name: Run inherited and new self-contained regression tests
+      - name: Run inherited and new regression tests
         run: |
           python -B - <<'PY'
           import json, os, unittest
@@ -66,9 +68,16 @@ jobs:
           selected=unittest.TestSuite(); external=[]
           def collect(suite):
               for test in suite:
-                  if isinstance(test,unittest.TestSuite): collect(test)
-                  elif 'test_release_transaction' in test.id(): external.append(test.id())
-                  else: selected.addTest(test)
+                  if isinstance(test,unittest.TestSuite):
+                      collect(test)
+                      continue
+                  error=str(getattr(test,'_exception',''))
+                  missing_external=(test.id()=='unittest.loader._FailedTest.test_release_transaction'
+                                    and 'FileNotFoundError' in error and 'manage_release.py' in error)
+                  if missing_external:
+                      external.append({'test':test.id(),'reason':'Required companion manage_release.py is outside this repository and absent on this runner.'})
+                  else:
+                      selected.addTest(test)
           collect(all_tests)
           result=unittest.TextTestRunner(verbosity=2).run(selected)
           report={'tests_run':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),
@@ -78,12 +87,11 @@ jobs:
           print(json.dumps(report))
           raise SystemExit(0 if result.wasSuccessful() else 1)
           PY
-      - name: Exercise renderer and bounded workflow
+      - name: Exercise bounded workflow and final R2R isolation
         run: |
-          python -B -m evaluation.smoke24
           python -B -m examples.demo
           python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
-      - name: Record validation and refresh generated integrity
+      - name: Record actual validation and inherited label audit
         run: |
           python -B - <<'PY'
           import json, os, re, subprocess
@@ -91,33 +99,50 @@ jobs:
           report=json.loads(Path(os.environ['RUNNER_TEMP'],'rxr-tests.json').read_text())
           report.update(source_commit=os.environ['GITHUB_SHA'],baseline_commit=os.environ['BASE_COMMIT'],
                         source_archive_verified=True,r2r_prompt_schema_selection_equal=True,
-                        common_and_r2r_assets_equal=True)
-          Path('provenance/rxr_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+                        common_and_r2r_assets_equal=True,deterministic_rebuild=True,
+                        runtime_source_and_tests_rewritten_by_ci=False)
           pattern=re.compile(r'(?i)(?<![a-z0-9])v\d+(?:[._]\d+)*(?![a-z0-9])')
-          hits=[]
+          # Historical provenance and technical wire identifiers are not silently
+          # rewritten. Report the residual literal-label requirement accurately.
+          inherited=0; current=[]
           for item in subprocess.check_output(['git','ls-files'],text=True).splitlines():
               p=Path(item)
               if p.name.lower()=='readme.md' or not p.is_file(): continue
               try: text=p.read_text(encoding='utf-8')
               except UnicodeDecodeError: continue
-              names=pattern.findall(item)
-              labels=sorted(set(pattern.findall(text)))
-              if names or labels: hits.append({'path':item,'path_labels':names,'content_labels':labels})
-          print('PROJECT_LABEL_AUDIT='+json.dumps(hits))
+              if pattern.search(item) or pattern.search(text):
+                  inherited+=1
+              if item in ('shared/dataset_rules/rxr_en_us.md','generator/dataset_rules/rxr_en_us.md',
+                          'reviewer/dataset_rules/rxr_en_us.md','docs/RXR_ENHANCEMENT.md',
+                          'host/rxr_retrieval.py','host/rxr_assets.py') and pattern.search(text):
+                  current.append(item)
+          if current:
+              raise RuntimeError('Unexpected project release label in current RxR assets: '+', '.join(current))
+          report['current_rxr_release_labels_outside_readme']=len(current)
+          report['inherited_technical_or_historical_label_file_count']=inherited
+          report['literal_repository_wide_zero_version_labels']=inherited==0
+          Path('provenance/rxr_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report))
           PY
           python -B tools/refresh_rxr_integrity.py
           python -B verify_package.py
-      - name: Commit only tested integration assets with a branch-head lease
+      - name: Commit the complete tested artifact set before pushing
         run: |
-          current=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
-          test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py tests/test_rxr_calibration.py tests/test_roles_repair.py tests/test_r2r_specialization.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json provenance/r2r_profile_integrity.json provenance/r2r_shared_runtime_audit.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          # CI rebuilds derived assets only. Runtime source, tests and policies are
+          # reviewed source commits, never patched during the validation run.
+          git add generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json provenance/r2r_profile_integrity.json provenance/r2r_shared_runtime_audit.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json evaluation/renderer_smoke24.json
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)" || { git status --short; exit 1; }
           if ! git diff --cached --quiet; then
-            git commit -m 'Integrate verified RxR lessons and tested profile-scoped runtime assets'
-            git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+            git commit -m 'Record reproducible RxR build artifacts and complete validation'
           fi
           test -z "$(git status --porcelain)" || { git status --short; exit 1; }
           python -B verify_package.py
+          current=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
+          test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          remote=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
+          test "$remote" = "$(git rev-parse HEAD)"
           git rev-parse HEAD
