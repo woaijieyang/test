@@ -122,7 +122,7 @@ class RxRCalibrationTests(unittest.TestCase):
             ids=select_examples(role,'rxr-en-us',text)
             prompt,_=compile_prompt(role,phase,profile='rxr-en-us',selected_ids=ids,original_instruction=text)
             self.assertIn('smallest supported scope',prompt)
-            self.assertIn('not a mandatory new entry sentence',prompt)
+            self.assertIn('Every stage requires an intelligible, supported entry state',prompt)
             files=[row['path'] for row in prompt_components_metadata(role,phase,'rxr-en-us')['files']]
             self.assertIn('host/rxr_retrieval.py',files)
             self.assertIn('provenance/rxr_training_sources.json',files)

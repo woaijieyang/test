@@ -189,145 +189,105 @@ A missing entry, target, process, supported completion or applicable condition r
 
 
 RXR SHARED SEMANTIC RULES [shared/dataset_rules/rxr_en_us.md]:
-# RxR en-US shared semantic rules
+# RxR en-US semantic guidance
 
-## Authority and scope
+## Scope and authority
 
-These rules apply only when the Adapter resolves the record to `rxr-en-us`. They refine how the shared semantic contract is applied to long, multi-sentence RxR instructions. They do not replace the shared semantic contract, five-element Stage Audit, Handoff schema, evidence rules, Reviewer dimensions, L0–L6 checks, or output schemas. The original instruction is the only authority for route facts. No map, pose, image, trajectory, or environment truth is available to Generator or Reviewer.
+Apply only to `rxr-en-us`. The original instruction is the only source of route facts. The shared semantic contract, evidence requirements, five-element audit, handoff definitions, active schemas and bounded review/repair workflow remain mandatory. No image, map, pose, navigation result or evaluation partition is available to either semantic role. These rules refine interpretation; they do not introduce new output fields or decision types.
 
-Priority is: (1) source fidelity and no unsupported additions; (2) preserve action/condition/temporal/spatial semantics; (3) complete executable stages and supported handoffs; (4) useful segmentation; (5) concise wording. A lower priority must never override a higher one.
+Priority: source-supported meaning and constraints; complete events and dependencies; supported stage handoffs; useful local objectives; concise wording. Neither a preferred stage count nor polished English can override a higher priority.
 
-## 1. Reconstruct the complete route before considering cuts
+## 1. Read globally, group events before cutting
 
-Read the entire instruction, including later sentences, corrections, parentheticals, expected-state narration, and final completion wording. Build a private event sequence before choosing boundaries. Each event should distinguish: active navigation action; target/region; descriptive or expected observation; temporal trigger; spatial relation and its reference frame; quantity/ordinal; prohibition or persistent constraint; and completion/stop requirement.
+Read the entire instruction, including later target descriptions, false starts, corrections and final placement. Identify each action, target, reference landmark, expected observation, temporal trigger, frame, count, prohibition and completion condition. Assemble complete event units before proposing boundaries. A sentence can contain several objectives; several sentences can describe one event. Shortness does not imply KEEP and length does not imply SPLIT.
 
-Do not equate sentence boundaries with task boundaries. A sentence can contain several independent navigation objectives; multiple sentences can describe one tightly coupled objective. The output may split only after the event sequence and dependencies are understood.
+Split only after a supported intermediate completion when a distinct next objective and executable handoff provide useful focus. Keep a maneuver together when a cut detaches its approach, turn, count origin, trigger, endpoint refinement or maintained spatial relation. Do not create a STOP or an arrival to justify a boundary.
 
-## 2. Action, observation, target, and reference are different
+## 2. Preserve event identity across oral repetition
 
-- Navigation action: an instruction to move, turn, enter, exit, pass, cross, climb, descend, approach, return, stop, wait, stand, or otherwise change the agent's state.
-- Target: the place, object, region, or spatial state the agent is instructed to reach or act upon.
-- Reference landmark: an entity used to identify, orient, or disambiguate a target; it is not automatically a destination.
-- Observation: something the instruction says the agent will see, notice, or find. It becomes an execution condition only when the source makes it a required trigger or selection cue.
+Distinguish continuation, restatement, endpoint refinement and genuinely new traversal. Repeated wording is not itself evidence of another lap, visit or turn. Do not introduce `again`, `another` or `a second time` solely because a phrase occurs twice. Conversely, preserve an explicit return, repeated visit and all intervening route events; sharing a place name does not make an event redundant. If the full source does not settle a route-critical distinction, preserve its uncertainty instead of choosing a new event history.
 
-Preserve the distinction between seeing and reaching, approaching and arriving, passing and entering, standing at a doorway and being inside, and a reference object and the actual target. Do not create a visit or stop merely because an object is described.
+## 3. Apply corrections to the smallest supported scope
 
-## 3. Bind later descriptions to the correct earlier target
+For `sorry`, `actually`, `I mean`, `or rather` and similar corrections, identify the exact action, target, direction or modifier being replaced. Execute the corrected meaning, not the superseded command. Do not erase unrelated preceding movements or constraints merely because they share a sentence with the correction. A correction of LEFT to RIGHT does not cancel the earlier room entry; a final top-of-stairs correction can cancel a proposed descent only when the complete source establishes that relation. Genuine uncertainty is not permission to guess.
 
-A later clause may identify or disambiguate a target introduced earlier (for example, which of two nearby doorways is the bathroom). Attach the identifying description to the target-selection action before the agent must choose that target. Do not leave the description in a later stage where it arrives too late to guide selection.
+## 4. Separate actions, observations and references
 
-Bind a description only when the complete source supports a unique referent. Preserve uncertainty when multiple referents remain plausible. Do not promote an adjacent object, a visual cue, or an expected observation into the destination unless the source explicitly makes it the goal.
+An object mentioned or expected to become visible is not automatically a destination. Seeing, approaching, reaching, passing and entering are different events. Classify `if you turn/look ... you will see ...` from the full instruction: it can explain a viewpoint, prescribe an action, or govern a real alternative. Do not automatically upgrade conditional observation to an unconditional turn or visit, and do not discard a turn that later text actually requires. Approximate quantity or descriptive `or` is not a route branch. Never use token occurrence alone to choose this interpretation.
 
-## 4. Preserve temporal scope and event order
+## 5. Bind identifying descriptions without inventing observations
 
-Interpret temporal relations by their semantic scope, not by word order alone:
+Attach uniquely supported later descriptions to the earlier target before its selection action. Do not create description-only stages or move a future observation into a claim about what has already been observed. Keep the target distinct from adjacent furniture, colors and other reference objects. When a later description could identify multiple entities and would change the route, retain the uncertainty. Target binding may change descriptive placement, not the required order of route events.
 
-- `before B, do A`: A precedes B. Do not infer that B is later required if the source only says to turn before entering.
-- `after/once/when A, do B`: B is conditional on or follows A. Ensure A is completed before B starts. Do not move B ahead because it appears earlier in the sentence.
-- `A until C`: keep the continuing action A bound to its actual termination event C. Do not separate C into a later stage that leaves A unbounded.
-- `while/during/keep/stay`: preserve the constraint throughout exactly the source-scoped interval. Do not convert a local condition into a global one or drop it at a cut.
-- `then/next`: preserve order, but do not infer a new stop or a new independent goal solely from the connective.
-- Corrections: apply an explicit correction to its intended action only; do not execute the superseded wording.
+## 6. Preserve spatial relation ownership and temporal scope
 
-A temporal phrase may describe a trigger, an endpoint refinement, or a separate later objective. Determine which event relation is supported before deciding whether it creates a boundary.
+For each relation, identify its subject, reference entity or frame, relation type, and the time or interval in which it applies. These are internal interpretation questions, not additional output fields. `The rightmost of two doors`, `a door to the right of both doors`, and `a door on your right` are not interchangeable. Agent path relative to a sofa is not the position of another object relative to that sofa. Keep between, beside, around, through, past, near, toward and into distinct.
 
-## 5. Resolve pronouns and route history globally
+A turn updates the egocentric frame. Do not carry a pre-turn left/right relation forward without source support. Do not turn an endpoint description into a maintained path constraint. Preserve final facing requirements as well as final location. Grammar repair must not silently decide an ambiguous spatial relation.
 
-Resolve `it`, `there`, `that doorway`, `the same door`, and similar references against the complete instruction and event sequence. The candidate stage must identify the intended entity sufficiently for the action to be executable. Do not assume that a name introduced several stages earlier remains unambiguous after intervening similar entities.
+## 7. Preserve trigger, condition and count scope
 
-A repeated location does not erase event history. If the source requires leaving a room, visiting another region, and returning, preserve all three events in order. Returning to a previously visited location is a new route event, not an already-satisfied endpoint. Preserve which doorway, side, route, or object is reused.
+Keep `A until C` bound to C as actually stated: seeing C is not reaching C. `After/once/when A, B` retains A's completion before B; do not execute A twice. `Before entering B, turn` does not itself authorize entering B. Preserve `while/keep/stay` for exactly its supported interval. Preserve prohibitions and real route alternatives, including branch-specific entry states before a common continuation.
 
-## 6. Preserve spatial relations and reference frames
+A new stage does not restart ordinal counting. Keep the object category, origin, direction and previously counted events: second door is not second open door. Preserve approximate quantities. Do not sharpen near, a little or halfway into unsupported metrics.
 
-For every left/right, ahead/behind, in-front-of, between, beside, across, through, past, around, and facing relation, identify what it is relative to and when it applies: initial orientation, orientation after a turn, maintained relation during motion, or endpoint-only relation.
+## 8. Use supported entry states, not mandatory new entry sentences
 
-A turn changes the egocentric frame. Do not carry an earlier left/right relation across a turn unless the source explicitly makes it persistent or the entity relation is world-relative. Distinguish `keep the sofa on your left as you cross` (a maintained process constraint) from `the table is on your left when you arrive` (an endpoint description). Do not silently change between, around, through, past, toward, and into.
+Every stage requires an intelligible, supported entry state; it does NOT require a newly written `From`, `After` or `Inside` sentence. Prefer immediate, unambiguous inheritance of current pose or a uniquely established entity. Add the shortest source-supported anchor only when needed for count origin, changed frame, revisited entity, competing similar targets, or a still-active constraint. Never repeat a completed action as a new instruction simply to make a stage look self-contained.
 
-## 7. Preserve ordinals, counts, and their origins
+For every boundary, compare the preceding stage's actual completion with the next stage's first unperformed action. A shared landmark name is not proof of arrival or entry. Necessary information must be recoverable from the actual ordered stage text; audit notes cannot repair omitted executable meaning.
 
-Keep the counting category and origin stable: second door is not second open door; third doorway on the left must be counted from the source-supported start and orientation. A stage boundary does not reset a count. If a count depends on a previously established corridor entry or direction, retain that anchor in the later stage's natural-language entry context. Never invent a new count origin.
+## 9. Keep bounded movement and endpoint refinement intact
 
-Approximate quantities and vague descriptions remain approximate. Do not sharpen "a little", "near", "some", or "about halfway" into unsupported distances or exact thresholds.
+A final `one step inside`, `halfway down`, `near the foot of the bed` or facing clause can refine the same preceding event rather than create a new objective. Keep the refinement with that event when separating it adds no supported local objective. Do not infer a full descent before a halfway refinement, or arrival at an object after a bounded step toward it.
 
-## 8. Distinguish endpoint refinement from a new objective
+A bounded movement may itself establish a meaningful state for a distinct subsequent objective. Do not mechanically merge all short stages. Explicit intermediate stops remain intermediate; a boundary alone is not a physical STOP. Preserve the exact final spatial configuration, not just its destination noun.
 
-A later phrase may refine the same movement's endpoint (for example, descend the stairs, about halfway down, and wait there). Keep it with that movement; do not create a false full-descent stage followed by a second descent or stop.
+## 10. Preserve source wording where it is already useful
 
-A genuinely new objective requires a distinct source-supported event after the prior objective is complete (for example, enter a room, then cross it to a separate target). A repeated stop/wait/stand phrase is not by itself proof of a second objective. Ask what source event requires additional movement between the two descriptions.
+Retain route-bearing wording unless an edit has a specific purpose: supported target-description binding, unique coreference, explicit temporal ordering, local correction, necessary entry information, or a real semantic defect. KEEP can retain exact source text; it can also perform a necessary local reassembly. Do not rewrite the whole route merely for grammatical polish or uniform style. Ordinary synonymous wording is not itself a defect and does not justify a blocking review finding.
 
-## 9. Conditions and alternatives
+## 11. Bidirectional audit and local repair
 
-Preserve genuine conditional route alternatives and their outcomes. Do not turn `if`, `or`, or `otherwise` into two unconditional actions. A conditional observation such as "if you can see the door" is not necessarily a route branch; classify by its actual effect on action choice. If two branches converge to the same supported state, a later common stage may follow only when both outcomes establish the same required entry state. Otherwise keep the dependent route together or mark a genuinely source-level ambiguity.
+Check both directions: every active source requirement survives, and every added executable requirement has source support. Pay particular attention to added turns, entry, repeat traversal, arrival, resolved ambiguity and persistent constraints. The five audit elements must describe actual stage text, with exact source and candidate evidence. Check all adjacent handoffs and the complete final route.
 
-Preserve prohibitions and negative constraints over their exact scope. A prohibition against entering the first door must not be generalized to all doors or omitted before the counted target.
-
-## 10. Stage and handoff test
-
-A proposed stage must be executable as a natural-language navigation instruction and auditable under the existing five elements:
-
-1. Entry: episode start or source-supported context/continuation.
-2. Target: the actual local navigation target or state transition, not merely a nearby reference.
-3. Process: all required ordered actions and route cues.
-4. Ending: a source-supported event, bounded action, linked trigger/refinement, or final goal directive.
-5. Conditions: all relevant temporal, spatial, count, branch, negation, and persistence constraints with correct scope.
-
-For every boundary, compare the preceding stage's actual supported exit with the next stage's first unperformed action. The next stage may inherit a state only if the preceding text actually establishes it. Do not count the next stage's action as already completed in the prior stage. A boundary never implies a physical STOP.
-
-## 11. Segmentation adequacy
-
-Split when the source contains a completed, useful intermediate objective and a distinct next objective with a supported handoff. Keep tightly coupled maneuvers together when splitting would leave an action without its trigger, endpoint, reference frame, or necessary context. Do not optimize for a fixed number of stages or equal stage lengths. A long RxR instruction may need multiple stages, but length alone is not a reason to split.
+Repair the affected text and its necessary dependencies only. Preserve unaffected executable wording and order, then regenerate consistent audits and handoffs. A reviewer finding is evidence to inspect, not an automatic rewrite command. The reviewer judges semantics, not navigation scores; PASS is not a prediction of navigation success.
 
 ## 12. Source uncertainty
 
-First use full-context coreference and route reconstruction; then try a sensible regrouping or merge. Only if a route-critical referent, branch, or completion requirement remains genuinely ambiguous should the output become `needs_review` / `unresolved` under the existing contracts. Missing imagery, coordinates, metric distances, or simulator pose are ordinary grounding limitations, not automatically source ambiguity.
-
-## Shared interpretation examples
-
-- "You will see the open door at the end of the hall" is an observation cue unless a later action makes that door the selected target.
-- "Stop at the restroom entrance; the fire extinguisher is next to you" makes the entrance the target and the extinguisher a reference.
-- "Go down the stairs, about halfway, and wait" is one bounded descent ending at the halfway point, not a full descent plus a second task.
-- "Turn left before entering the dining room and go into the open area" does not authorize a stop at the dining-room threshold or entry into the dining room.
-- "Return through the same door" requires preserving the identity of the previously used door and the intervening route event.
+Use full-context interpretation and sensible regrouping first. Only route-critical ambiguity remaining in the source can justify the existing needs_review/unresolved path. Missing visual grounding, map, coordinates or model capability is not automatically source ambiguity. Do not output a guessed partial route.
 
 
 RXR ROLE GUIDANCE [reviewer/dataset_rules/rxr_en_us.md]:
 # Reviewer guidance — RxR en-US
 
-Use the shared RxR rules together with the shared Reviewer prompt, checklist, output schema, and L0–L6 protocol. Review the complete route independently from the original instruction and actual candidate text. Do not use the Generator's Stage Audit as proof and do not copy a teaching example's verdict.
+Review the complete original instruction and actual frozen candidate independently. Use the unchanged common checklist, L0–L6 order, dimensions, evidence rules and active schema. Do not treat the Generator's audit, a paired example's verdict, or a navigation score as proof.
 
-## Required audit order
+## Audit order within the existing layers
 
-1. Read the entire original instruction and reconstruct its route events, including late descriptions, conditions, corrections, reference frames, repeated visits, and final state.
-2. Read the complete candidate subtasks in order. Treat the stage strings as the executable plan; audit fields cannot repair omissions in those strings.
-3. Build event-level source coverage. Each meaningful action, target identity, direction, ordinal/count, condition, prohibition, intermediate stop, and terminal requirement must map to actual candidate text. A source quote alone does not prove execution.
-4. Check semantic dependencies: temporal order, until endpoint, before-entry scope, while constraints, conditional branches, pronoun references, target-description attachment, count origin, and route history.
-5. Independently audit each stage's Entry, Target, Process, Ending, and Conditions. Distinguish actual navigation targets from reference landmarks and observations. Check that every element is evidenced by the corresponding candidate stage.
-6. Check every Handoff by comparing what the preceding stage actually completes with the next stage's first unperformed action. A shared place name is insufficient if the required transition, orientation, count origin, or target identity is missing.
-7. Check grouping. Identify both over-segmentation (a cut detaches a coupled action or condition) and under-segmentation (a completed independent objective is buried in a long phase and harms useful focus). Do not require a split solely because a sentence is long or contains several verbs.
-8. Read the complete candidate as one route. Verify source-to-candidate coverage and candidate-to-source support, then apply the existing Verdict Gate and L0–L6 schema.
+L0: Check the actual rendered artifact and candidate correspondence. Renderer whitespace is not, by itself, a semantic defect.
 
-## Evidence and finding quality
+L1: Map meaningful source events, identifiers, counts, conditions, constraints and final placement to indexed candidate evidence. Mark an explicitly corrected source clause as superseded only within its supported scope. A repeated clause may describe the same active event; do not require another traversal solely to obtain a separate coverage row.
 
-A blocking Finding must cite exact source evidence and exact candidate evidence from the actual affected stage(s). For a handoff issue, candidate evidence may cite both the preceding exit and next entry even when the minimal repair target is only the next stage. Explain the concrete execution consequence and specify a minimal source-faithful repair. Do not report a style preference as a defect.
+L2: Check event identity, correction scope, temporal trigger ownership, referents and spatial relation ownership. Determine the subject, reference frame and time of each left/right/between/facing relation. Distinguish real conditional action from conditional observation and descriptive uncertainty. Inspect count origins and genuine return history across every cut.
 
-Do not mark a stage as a gap merely because it inherits an immediately established endpoint or entity. Conversely, do not accept a stage that starts from a location, orientation, count origin, or completed event that the preceding stage never established. A carryover note is not executable evidence.
+L3: Independently check Entry, Target, Process, Ending and Conditions in the actual English. An immediately established unambiguous state can be inherited without a new From/After sentence. Conversely, an invented previous arrival cannot support the next stage. Keep final bounded movement, entry depth and facing constraints with their actual event where appropriate.
 
-## RxR-specific false-positive controls
+L4: Compare every preceding exit with the next first unperformed action. Cite both sides for cross-stage faults. Require explicit anchors only where a necessary count, frame, identity or persistent constraint would otherwise be lost. Do not demand redundant narration or a physical stop at every boundary.
 
-- Do not treat an expected observation as a new navigation goal unless the source requires acting on it.
-- Do not mistake a reference landmark for the target.
-- Do not require a physical STOP at every boundary.
-- Do not treat "enter", "exit", "reach", "pass", "stand", or a bounded movement as lacking an ending merely because the word STOP is absent.
-- Do not split an endpoint refinement into a second visit or second movement.
-- Do not reset ordinals at stage boundaries.
-- Do not carry egocentric left/right through a turn without source support.
-- Do not erase repeated route events because the final location matches an earlier location.
-- Do not force a multi-stage decomposition when one complete stage is more faithful.
-- Do not force KEEP when the source contains multiple completed, independently executable objectives.
+L5: Check both buried independent objectives and cuts that detach a coupled maneuver or endpoint refinement. A short final stage is neither automatically wrong nor automatically useful. A different valid segmentation is not a defect. Under-segmentation needs an earlier completion, distinct later objective, supported handoff and concrete local-focus loss.
 
-## Verdict discipline
+L6: Perform reverse support as well as coverage. Locate the source authority for every newly explicit turn, visit, repeat, arrival, certainty claim and maintained constraint. Check the final location, relative position and facing together. Re-read the entire candidate, not only the changed fragment.
 
-Use the active Reviewer schema and verdict semantics only. PASS requires complete source coverage, no unsupported addition, supported five-element stages, supported handoffs, and no material segmentation defect. REVISE is for candidate-created omissions, alterations, unsupported additions, or repairable boundary/handoff errors. UNRESOLVED is only for a route-critical ambiguity in the source that remains after full-context resolution and sensible regrouping. Missing images, maps, coordinates, or pose do not by themselves justify UNRESOLVED.
+## Findings and false-positive controls
+
+A blocking finding requires an actual material defect, exact source evidence, indexed candidate evidence, affected stages and a minimal source-faithful repair. Explain the particular execution consequence. Do not block on grammar, style, synonymous wording, an alternative valid segmentation, or navigation failure alone. Absence of images is not source ambiguity. Do not use audit prose to compensate for missing candidate meaning.
+
+For repetition, require evidence of an additional action before alleging a missing repeat; also catch unsupported `again`. For corrections, identify what was superseded and protect everything outside that scope. For conditions, do not apply a blanket if/or keyword rule. For spatial phrases, do not replace an ambiguous source with the reviewer's preferred layout.
+
+## Gate and recheck
+
+Keep the existing PASS/REVISE/UNRESOLVED semantics. PASS means the candidate satisfies the language contract, not that navigation will succeed. REVISE requires a repairable candidate defect. UNRESOLVED is reserved for remaining route-critical source ambiguity. The Generator remains the only candidate author. During recheck, independently inspect the entire new candidate, disposition every previous finding using new candidate evidence, and report new material defects. Do not approve merely because the Generator says a repair was made.
 
 
 # Reviewer layered checklist — exact same semantics as Generator
@@ -378,11 +338,11 @@ FIXED RXR REVIEWER CORE: exactly 10 fixed examples, always loaded in this stable
 
 {"applicable_lesson":"Use unresolved only after sensible merging still leaves an essential route choice unsupported. A weak candidate boundary is revise, not unresolved.","avoid":null,"teaching":{"coverage_evidence":[{"candidate_evidence":[],"requirement":"Resolve the route-defining target/referent.","requirement_id":"SRC-01","source_quote":"Walk forward, then turn there and stop.","status":"requires_review"}],"dimensions":{"closure_handoff":"not_assessable","segmentation_adequacy":"source_limited","source_fidelity":"source_limited"},"findings":[{"affected_subtask_indices":[],"c_check":"C05","candidate_evidence":[],"code":"SOURCE_AMBIGUITY","dimension":"source_fidelity","evidence_level":"S1","execution_consequence":"The navigator cannot select the intended route target without guessing.","failed_layer":"L1_source_coverage","problem":"The source does not identify where 'there' is or which direction to turn; the endpoint and turn cannot be grounded.","related_dimensions":["segmentation_adequacy"],"repair":{"affected_subtask_indices":[],"instruction":"Do not emit a speculative plan; request clarification or use an explicitly authorized correction.","operation":"preserve_uncertainty","protected_requirements":["Do not silently change the route-defining target.","Do not add a partial route."]},"source_quote":"Walk forward, then turn there and stop.","source_requirement_ids":["SRC-01"]}],"handoffs":[],"layer_checks":[{"conclusion":"No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.","finding_indices":[],"layer":"L0_integrity","status":"not_applicable"},{"conclusion":"Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.","finding_indices":[0],"layer":"L1_source_coverage","status":"source_limited"},{"conclusion":"Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.","finding_indices":[0],"layer":"L2_dependencies","status":"source_limited"},{"conclusion":"Checked each stage's entry, process, target, ending and scoped conditions.","finding_indices":[0],"layer":"L3_stage_checks","status":"source_limited"},{"conclusion":"Checked each adjacent stage's actual exit-to-entry continuity.","finding_indices":[],"layer":"L4_handoffs","status":"not_applicable"},{"conclusion":"Checked weak cuts and buried independent goals against supported boundaries.","finding_indices":[0],"layer":"L5_grouping","status":"source_limited"},{"conclusion":"Checked source-to-plan coverage and plan-to-source support independently.","finding_indices":[0],"layer":"L6_route_readback","status":"source_limited"}],"review_case":{"candidate":{"issues":[{"code":"UNRESOLVED_ROUTE_CHOICE","problem":"The source does not identify where 'there' is or which direction to turn; the endpoint and turn cannot be grounded.","source_quote":"Walk forward, then turn there and stop."}],"status":"needs_review","subtasks":[]},"original_instruction":"Walk forward, then turn there and stop."},"stage_checks":[],"verdict":"unresolved"},"template_id":"RXR-CORE-R10"}
 
-DYNAMIC RXR-EN-US REVIEWER EXAMPLES: 2 selected from 64 dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: RxR-REV-013, RxR-REV-022
+DYNAMIC RXR-EN-US REVIEWER EXAMPLES: 2 selected from 80 dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: RxR-REV-013, RxR-REV-004
 
 {"applicable_lesson":"Preserve the directional/spatial relation and its reference frame: Facing the bathroom, take a left into the living…","avoid":"Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.","teaching":{"coverage_evidence":[{"candidate_evidence":[{"quote":"Facing the bathroom, take a left into the living room.","subtask_index":0}],"requirement":"Preserve the directional/spatial relation and its reference frame: Facing the bathroom, take a left into the living room.","requirement_id":"SRC-01","source_quote":"Facing the bathroom, take a left into the living room.","status":"covered"}],"dimensions":{"closure_handoff":"pass","segmentation_adequacy":"pass","source_fidelity":"pass"},"findings":[],"handoffs":[],"layer_checks":[{"conclusion":"No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.","finding_indices":[],"layer":"L0_integrity","status":"not_applicable"},{"conclusion":"Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage.","finding_indices":[],"layer":"L1_source_coverage","status":"pass"},{"conclusion":"Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.","finding_indices":[],"layer":"L2_dependencies","status":"pass"},{"conclusion":"Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof.","finding_indices":[],"layer":"L3_stage_checks","status":"pass"},{"conclusion":"Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region.","finding_indices":[],"layer":"L4_handoffs","status":"pass"},{"conclusion":"Checked weak cuts and buried independent goals against supported boundaries.","finding_indices":[],"layer":"L5_grouping","status":"pass"},{"conclusion":"Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers.","finding_indices":[],"layer":"L6_route_readback","status":"pass"}],"review_case":{"candidate":{"status":"ok","subtasks":["Facing the bathroom, take a left into the living room."]},"original_instruction":"Facing the bathroom, take a left into the living room."},"stage_checks":[{"carryover":[],"conditions":{"candidate_quotes":["Facing","left"],"text":"spatial_frame: Facing, left"},"ending":{"candidate_quotes":["take a left into the living room"],"kind":"explicit_event","stop_scope":"none","text":"Complete the left turn into the living room."},"entry":{"candidate_quotes":[],"mode":"episode_start","text":"The episode start as described by the original instruction; no additional starting pose is inferred."},"process":{"candidate_quotes":["Facing the bathroom, take a left into the living room."],"text":"Facing the bathroom, take a left into the living room."},"source_quotes":["Facing the bathroom, take a left into the living room."],"source_requirement_ids":["SRC-01"],"status":"supported","subtask_index":0,"target":{"candidate_quotes":["Facing the bathroom, take a left into the living room."],"text":"Facing the bathroom, take a left into the living room."}}],"verdict":"pass"},"template_id":"RxR-REV-013"}
 
-{"applicable_lesson":"Preserve the directional/spatial relation and its reference frame: You begin in a bathroom looking towards a corner…; Preserve the directional/spatial relation and its reference frame: Turn right and exit through the open door, then…; Preserve the completion or stationary-position condition: As soon as you're out of that door, you're done.","avoid":"Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.","teaching":{"dimensions":{"closure_handoff":"pass","segmentation_adequacy":"pass","source_fidelity":"pass"},"findings":[],"review_case":{"candidate":{"status":"ok","subtasks":["You begin in a bathroom looking towards a corner over a bathroom counter. Turn right and exit through the open door, then turn left and exit the bedroom through an open door. As soon as you're out of that door, you're done. Just standing in the threshold, you are done."]},"original_instruction":"You begin in a bathroom looking towards a corner over a bathroom counter. Turn right and exit through the open door, then turn left and exit the bedroom through an open door. As soon as you're out of that door, you're done. Just standing in the threshold, you are done."},"verdict":"pass"},"template_id":"RxR-REV-022"}
+{"applicable_lesson":"Preserve the directional/spatial relation and its reference frame: `Begin facing a pool table.; Preserve the ordered route action or target-identifying landmark: Pass it and head down it.; Preserve the ordered route action or target-identifying landmark: At the end of it you'll reach a multi coloured wall.","avoid":"Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.","teaching":{"dimensions":{"closure_handoff":"pass","segmentation_adequacy":"pass","source_fidelity":"pass"},"findings":[],"review_case":{"candidate":{"status":"ok","subtasks":["Begin facing a pool table. Pass it and head down it. At the end of it, you will reach a multicoloured wall.","From the multicoloured wall, turn left and head into the bedroom. Head to the fuzzy chair, then turn right and head into the bathroom. You are done."]},"original_instruction":"`Begin facing a pool table. Pass it and head down it. At the end of it you'll reach a multi coloured wall. Turn left and head into the bedroom. Head to the fuzzy chair then turn right and head into the bathroom and you're done"},"verdict":"pass"},"template_id":"RxR-REV-004"}
 
 APPLY THE EXAMPLES TO THE CURRENT SOURCE. Compare the closest example's decision with the current action order, reference frame, and completion event. Transfer its rule only when the current wording supports the same relation. A different relation can require the opposite decision. Judge this candidate from its source and stage quotations; a paired example's pass or diagnostic example's revise is not a vote. Check that any alleged defect is present. Express the result through the existing schema; do not output a template commentary.
 

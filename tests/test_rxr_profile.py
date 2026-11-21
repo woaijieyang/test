@@ -121,10 +121,10 @@ class RxRProfileTests(unittest.TestCase):
         self.assertEqual(len(result["fixed_core_template_ids"]["generator"]), 10)
         self.assertEqual(len(result["fixed_core_template_ids"]["reviewer"]), 10)
         selection = result["example_selection"]
-        self.assertEqual(selection["actual_generator_examples"], 35)
-        self.assertEqual(selection["actual_reviewer_examples"], 64)
-        self.assertEqual(selection["reviewer_pair_count"], 35)
-        self.assertEqual(len(selection["reviewer_diagnostic_ids"]), 29)
+        self.assertEqual(selection["actual_generator_examples"], 43)
+        self.assertEqual(selection["actual_reviewer_examples"], 80)
+        self.assertEqual(selection["reviewer_pair_count"], 43)
+        self.assertEqual(len(selection["reviewer_diagnostic_ids"]), 37)
 
     def test_r2r_dynamic_retrieval_is_unchanged(self):
         g = select_examples("generator", "r2r-en", "Walk to the door and turn left.")
@@ -189,7 +189,7 @@ class RxRProfileTests(unittest.TestCase):
             "reviewer/dataset_rules/r2r_en.md",
         ])
         self.assertEqual(rxr["version"], "rxr-en-us-profile")
-        self.assertEqual(len(rxr["files"]), 4)
+        self.assertEqual(len(rxr["files"]), 7)
         ids = select_examples("generator", "rxr-en-us", "Go to the kitchen.")
         bundle = template_bundle_metadata("generator", "rxr-en-us", ids)
         self.assertEqual(len(bundle["fixed_core_ids"]), 10)
@@ -199,7 +199,7 @@ class RxRProfileTests(unittest.TestCase):
     def test_rule_metadata_uses_real_section_separators(self):
         metadata = dataset_rules_metadata("rxr-en-us")
         self.assertEqual(metadata["version"], "rxr-en-us-profile")
-        self.assertEqual(len(metadata["files"]), 4)
+        self.assertEqual(len(metadata["files"]), 7)
         self.assertEqual(len(metadata["sha256"]), 64)
         from pathlib import Path
         root = ROOT

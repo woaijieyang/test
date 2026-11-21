@@ -1,0 +1,164 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-TRAIN-correction",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "564",
+    "instruction_id": "564",
+    "scene_id": "ULsKaCPVFJR",
+    "trajectory_id": "244"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "bac97c0b2cb1bfe28ad450ff475d78c407e8077fcc5abd44d2ea14a662454527",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "input": {
+    "original_instruction": "You begin in what appears to be a walk-in closet area. You'll notice a mirror to your right, and a doorway to your left, but, you're going to go straight through the one you begin facing. Should be entering a bedroom with a lot of white and blue decor. You will veer slightly left... Or, sorry, slightly right, moving towards the backless couch. Move towards the right side of it. And, once you are on that far side of the backless couch, you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The correction changes only the veer direction. Preserve the earlier doorway traversal, bedroom identity and couch-side endpoint. The next stage can inherit the established bedroom without another entry command."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You begin in what appears to be a walk-in closet area. You'll notice a mirror to your right, and a doorway to your left, but, you're going to go straight through the one you begin facing. You should be entering a bedroom with a lot of white and blue decor.",
+      "Veer slightly right, moving towards the backless couch. Move towards the right side of it. Once you are on that far side of the backless couch, you're done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The source supplies the initial closet area and facing doorway.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "a bedroom with a lot of white and blue decor",
+          "candidate_quotes": [
+            "a bedroom with a lot of white and blue decor"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "You begin in what appears to be a walk-in closet area. You'll notice a mirror to your right, and a doorway to your left, but, you're going to go straight through the one you begin facing. You should be entering a bedroom with a lot of white and blue decor."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: entering a bedroom with a lot of white and blue decor",
+          "candidate_quotes": [
+            "entering a bedroom with a lot of white and blue decor"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "mirror to your right; a doorway to your left; the one you begin facing",
+          "candidate_quotes": [
+            "mirror to your right",
+            "a doorway to your left",
+            "the one you begin facing"
+          ]
+        },
+        "source_quotes": [
+          "You begin in what appears to be a walk-in closet area.",
+          "You'll notice a mirror to your right, and a doorway to your left, but, you're going to go straight through the one you begin facing.",
+          "Should be entering a bedroom with a lot of white and blue decor."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the bedroom reached by the preceding doorway traversal; no additional entry action is required.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "that far side of the backless couch",
+          "candidate_quotes": [
+            "that far side of the backless couch"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Veer slightly right, moving towards the backless couch. Move towards the right side of it. Once you are on that far side of the backless couch, you're done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you are on that far side of the backless couch",
+          "candidate_quotes": [
+            "Once you are on that far side of the backless couch"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "slightly right; the right side of it",
+          "candidate_quotes": [
+            "slightly right",
+            "the right side of it"
+          ]
+        },
+        "source_quotes": [
+          "You will veer slightly left... Or, sorry, slightly right, moving towards the backless couch.",
+          "Move towards the right side of it.",
+          "And, once you are on that far side of the backless couch, you're done."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: entering a bedroom with a lot of white and blue decor",
+          "candidate_quote": "entering a bedroom with a lot of white and blue decor"
+        },
+        "next_entry": {
+          "text": "Inherit the bedroom reached by the preceding doorway traversal; no additional entry action is required.",
+          "candidate_quote": "Veer slightly right, moving towards the backless couch."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the bedroom reached by the preceding doorway traversal; no additional entry action is required."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "local_correction",
+    "why_this_case_matters": "The correction changes only the veer direction. Preserve the earlier doorway traversal, bedroom identity and couch-side endpoint. The next stage can inherit the established bedroom without another entry command.",
+    "reusable_rule": "The correction changes only the veer direction. Preserve the earlier doorway traversal, bedroom identity and couch-side endpoint. The next stage can inherit the established bedroom without another entry command.",
+    "anti_pattern": "Do not execute the superseded left veer or delete the closet-to-bedroom route. Do not make the described mirror a visit target.",
+    "retrieval_rule": "Retrieve only when the current source exhibits the same relation; the example never determines a stage count."
+  },
+  "retrieval_tags": [
+    "local_correction"
+  ]
+}

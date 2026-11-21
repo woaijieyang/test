@@ -1,0 +1,243 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-TRAIN-ordinal-origin",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "28",
+    "instruction_id": "28",
+    "scene_id": "7y3sRwLe3Va",
+    "trajectory_id": "12"
+  },
+  "provenance": {
+    "kind": "authored_single_defect_training_diagnostic",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "2f8de293769d35ddf22604ae69392ef2db67c2ffd7bf05126ca8c56a9409bc8f",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false,
+    "candidate_corruption_is_authored_not_model_output": true
+  },
+  "review_input": {
+    "original_instruction": "You're starting in a closet, facing empty shelves and a drawer unit. To your left, is the door to exit, and just beyond that, is another door that leads into a hallway. Walk through the closet door and that second door toward the hallway. When you get in the threshold between the bedroom and the hallway with the stairs, you're finished.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You're starting in a closet, facing empty shelves and a drawer unit. To your left, is the door to exit, and just beyond that, is another door that leads into a hallway. Walk through the closet door and the second door you find after entering the hallway. When you get in the threshold between the bedroom and the hallway with the stairs, you're finished."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You're starting in a closet, facing empty shelves and a drawer unit.",
+        "requirement": "Preserve the closet start and initial facing.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You're starting in a closet, facing empty shelves and a drawer unit."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "To your left, is the door to exit, and just beyond that, is another door that leads into a hallway.",
+        "requirement": "Identify the closet exit first and the hall door beyond it.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "To your left, is the door to exit, and just beyond that, is another door that leads into a hallway."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Walk through the closet door and that second door toward the hallway.",
+        "requirement": "Traverse both identified doors without resetting the count.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "the second door you find after entering the hallway"
+          }
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "When you get in the threshold between the bedroom and the hallway with the stairs, you're finished.",
+        "requirement": "Finish at the bedroom/hallway threshold, not after another doorway selection.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "When you get in the threshold between the bedroom and the hallway with the stairs, you're finished."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This authored case supplies no Renderer artifact; review the actual stage strings."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate restarts the second-door count after hallway entry."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate restarts the second-door count after hallway entry."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate restarts the second-door count after hallway entry."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The grouping respects source-supported completed objectives and coupled maneuvers."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate restarts the second-door count after hallway entry."
+      }
+    ],
+    "findings": [
+      {
+        "code": "COUNT_SCOPE_DRIFT",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quote": "Walk through the closet door and that second door toward the hallway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "the second door you find after entering the hallway"
+          }
+        ],
+        "evidence_level": "S1",
+        "problem": "The candidate restarts the second-door count after hallway entry.",
+        "execution_consequence": "It skips the specifically identified door beyond the closet exit and selects a later door.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0
+          ],
+          "instruction": "Restore 'that second door toward the hallway' in place of 'the second door you find after entering the hallway'; preserve the unaffected route.",
+          "protected_requirements": [
+            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "The second door is the door beyond the closet exit, not a fresh second-door count after reaching the hall. Keep the traversal and threshold refinement together."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start in the source-described closet facing shelves and drawer unit.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the threshold between the bedroom and the hallway with the stairs",
+          "candidate_quotes": [
+            "the threshold between the bedroom and the hallway with the stairs"
+          ]
+        },
+        "process": {
+          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "candidate_quotes": [
+            "You're starting in a closet, facing empty shelves and a drawer unit. To your left, is the door to exit, and just beyond that, is another door that leads into a hallway. Walk through the closet door and the second door you find after entering the hallway. When you get in the threshold between the bedroom and the hallway with the stairs, you're finished."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: When you get in the threshold between the bedroom and the hallway with the stairs",
+          "candidate_quotes": [
+            "When you get in the threshold between the bedroom and the hallway with the stairs"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "To your left; just beyond that; that second door",
+          "candidate_quotes": [
+            "To your left",
+            "just beyond that",
+            "the second door you find after entering the hallway"
+          ]
+        },
+        "source_quotes": [
+          "You're starting in a closet, facing empty shelves and a drawer unit.",
+          "To your left, is the door to exit, and just beyond that, is another door that leads into a hallway.",
+          "Walk through the closet door and that second door toward the hallway.",
+          "When you get in the threshold between the bedroom and the hallway with the stairs, you're finished."
+        ],
+        "carryover": [],
+        "status": "gap",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "ordinal_origin",
+    "review_principle": "The candidate restarts the second-door count after hallway entry.",
+    "case_specific_focus": "It skips the specifically identified door beyond the closet exit and selects a later door.",
+    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+  },
+  "retrieval_tags": [
+    "ordinal_origin"
+  ]
+}

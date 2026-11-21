@@ -1,0 +1,167 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-TRAIN-late-description",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "942",
+    "instruction_id": "942",
+    "scene_id": "e9zR4mvMWw7",
+    "trajectory_id": "407"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "fe738a4c31dc6035fad094a5f67b5c8cd44ae93a06947496adfe61a5e12d66c2",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "input": {
+    "original_instruction": "You're currently looking into a mirror in the bedroom. Turn around, and face right. Take a step forward to the entrance of this blue bedroom. Take a step forward to the middle of the hallway. Turn slightly to the right. Go down the grey staircase. Once you're at the bottom of the grey staircase, take one large step forward to the entrance leading outside. It has two black doors open on each side. Now, take a large step forward in front of you, hopping over the brown mat, onto the grey pavement outside of the house. Once the brown mat is directly behind you, outside of the house, you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "Bind the two black doors to the outside entrance, keep the one large step and the mat-crossing as prescribed, and finish outside with the mat directly behind. Do not turn the entrance description into an extra door visit."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You're currently looking into a mirror in the bedroom. Turn around, and face right. Take a step forward to the entrance of this blue bedroom. Take a step forward to the middle of the hallway. Turn slightly to the right. Go down the grey staircase to its bottom.",
+      "From the bottom of the grey staircase, take one large step forward to the entrance leading outside, which has two black doors open on each side. Now, take a large step forward in front of you, hopping over the brown mat, onto the grey pavement outside of the house. Once the brown mat is directly behind you, outside of the house, you're done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start looking into the bedroom mirror. The following once-clause supplies the staircase-bottom completion.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "its bottom",
+          "candidate_quotes": [
+            "its bottom"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "You're currently looking into a mirror in the bedroom. Turn around, and face right. Take a step forward to the entrance of this blue bedroom. Take a step forward to the middle of the hallway. Turn slightly to the right. Go down the grey staircase to its bottom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Go down the grey staircase to its bottom",
+          "candidate_quotes": [
+            "Go down the grey staircase to its bottom"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Turn around, and face right; a step forward to the entrance; a step forward to the middle of the hallway; Turn slightly to the right",
+          "candidate_quotes": [
+            "Turn around, and face right",
+            "a step forward to the entrance",
+            "a step forward to the middle of the hallway",
+            "Turn slightly to the right"
+          ]
+        },
+        "source_quotes": [
+          "You're currently looking into a mirror in the bedroom. Turn around, and face right.",
+          "Take a step forward to the entrance of this blue bedroom. Take a step forward to the middle of the hallway.",
+          "Turn slightly to the right. Go down the grey staircase. Once you're at the bottom of the grey staircase"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "The staircase bottom anchors the source-prescribed large step and outside entrance choice.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the grey pavement outside of the house",
+          "candidate_quotes": [
+            "the grey pavement outside of the house"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "From the bottom of the grey staircase, take one large step forward to the entrance leading outside, which has two black doors open on each side. Now, take a large step forward in front of you, hopping over the brown mat, onto the grey pavement outside of the house. Once the brown mat is directly behind you, outside of the house, you're done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once the brown mat is directly behind you, outside of the house",
+          "candidate_quotes": [
+            "Once the brown mat is directly behind you, outside of the house"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "one large step forward; two black doors open on each side; hopping over the brown mat; directly behind you",
+          "candidate_quotes": [
+            "one large step forward",
+            "two black doors open on each side",
+            "hopping over the brown mat",
+            "directly behind you"
+          ]
+        },
+        "source_quotes": [
+          "take one large step forward to the entrance leading outside. It has two black doors open on each side.",
+          "Now, take a large step forward in front of you, hopping over the brown mat, onto the grey pavement outside of the house.",
+          "Once the brown mat is directly behind you, outside of the house, you're done."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: Go down the grey staircase to its bottom",
+          "candidate_quote": "Go down the grey staircase to its bottom"
+        },
+        "next_entry": {
+          "text": "The staircase bottom anchors the source-prescribed large step and outside entrance choice.",
+          "candidate_quote": "take one large step forward to the entrance leading outside, which has two black doors open on each side."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "The staircase bottom anchors the source-prescribed large step and outside entrance choice."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "late_target_description",
+    "why_this_case_matters": "Bind the two black doors to the outside entrance, keep the one large step and the mat-crossing as prescribed, and finish outside with the mat directly behind. Do not turn the entrance description into an extra door visit.",
+    "reusable_rule": "Bind the two black doors to the outside entrance, keep the one large step and the mat-crossing as prescribed, and finish outside with the mat directly behind. Do not turn the entrance description into an extra door visit.",
+    "anti_pattern": "Do not drop either identifying door or substitute a generic outside goal for the final mat-relative position.",
+    "retrieval_rule": "Retrieve only when the current source exhibits the same relation; the example never determines a stage count."
+  },
+  "retrieval_tags": [
+    "late_target_description"
+  ]
+}

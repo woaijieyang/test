@@ -1,0 +1,384 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-TRAIN-return-history",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-TRAIN-return-history",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "45476",
+    "instruction_id": "45476",
+    "scene_id": "V2XKFyX4ASd",
+    "trajectory_id": "4184"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "32d555a74feab100ceefd750a3bd710c62a7f353fd8b923d2888c79b03f7d7e4",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "review_input": {
+    "original_instruction": "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge. Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway, walk back through that open doorway, in the area of which you came. You're now in a bedroom, walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead. In the open doorway, the toilet on your left, turn to the right. You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge.",
+        "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway. Walk back through that open doorway, in the area of which you came. You're now in a bedroom.",
+        "Walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead. In the open doorway, the toilet on your left, turn to the right. You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge.",
+        "requirement": "First reach the table corner closest to the fridge.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway",
+        "requirement": "Turn back only after the corner objective and retain the left-door viewpoint.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "walk back through that open doorway, in the area of which you came.",
+        "requirement": "Return through the identified doorway to the prior area, not a new doorway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Walk back through that open doorway, in the area of which you came."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "You're now in a bedroom",
+        "requirement": "The return establishes the bedroom as the next entry state.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "You're now in a bedroom."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead.",
+        "requirement": "Preserve bed-foot positioning and the Jacuzzi-to-doorway traversal.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 2,
+            "quote": "Walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "In the open doorway, the toilet on your left, turn to the right.",
+        "requirement": "Turn right at the doorway with the toilet on the left.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 2,
+            "quote": "In the open doorway, the toilet on your left, turn to the right."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination.",
+        "requirement": "Actually enter the shower and finish standing in it.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 2,
+            "quote": "You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This authored case supplies no Renderer artifact; review the actual stage strings."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Map every listed route requirement to indexed candidate text."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The picnic-table corner is an actual intermediate objective before the return. Preserve the turn back, the previously traversed open doorway and the later shower entry; a repeated region does not erase intervening events."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Audit the actual stage entry, target, ordered process, ending and conditions independently."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The grouping respects source-supported completed objectives and coupled maneuvers."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Coverage and reverse source support preserve the route; this is not a navigation success claim."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start looking at the inside picnic table as described.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the right hand corner of the picnic table, closest to the fridge",
+          "candidate_quotes": [
+            "the right hand corner of the picnic table, closest to the fridge"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: walk directly at the right hand corner of the picnic table, closest to the fridge",
+          "candidate_quotes": [
+            "walk directly at the right hand corner of the picnic table, closest to the fridge"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "right hand corner; closest to the fridge",
+          "candidate_quotes": [
+            "right hand corner",
+            "closest to the fridge"
+          ]
+        },
+        "source_quotes": [
+          "Looking at the picnic table inside, walk directly at the right hand corner of the picnic table, closest to the fridge."
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01"
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the completed picnic-table corner objective. The source Once you get there binds the turn back.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the area of which you came",
+          "candidate_quotes": [
+            "the area of which you came"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway. Walk back through that open doorway, in the area of which you came. You're now in a bedroom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Walk back through that open doorway",
+          "candidate_quotes": [
+            "Walk back through that open doorway"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Once you get there; facing the TV, couch and chairs; to the left; back through that open doorway",
+          "candidate_quotes": [
+            "Once you get there",
+            "facing the TV, couch and chairs",
+            "to the left",
+            "back through that open doorway"
+          ]
+        },
+        "source_quotes": [
+          "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway",
+          "walk back through that open doorway, in the area of which you came.",
+          "You're now in a bedroom"
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the bedroom established by the return; preserve all subsequent route events.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Standing in the shower",
+          "candidate_quotes": [
+            "Standing in the shower"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead. In the open doorway, the toilet on your left, turn to the right. You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Standing in the shower",
+          "candidate_quotes": [
+            "Standing in the shower"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "between the TV and the bed; past the Jacuzzi tub; straight ahead; the toilet on your left; turn to the right",
+          "candidate_quotes": [
+            "between the TV and the bed",
+            "past the Jacuzzi tub",
+            "straight ahead",
+            "the toilet on your left",
+            "turn to the right"
+          ]
+        },
+        "source_quotes": [
+          "walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead.",
+          "In the open doorway, the toilet on your left, turn to the right.",
+          "You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination."
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: walk directly at the right hand corner of the picnic table, closest to the fridge",
+          "candidate_quote": "walk directly at the right hand corner of the picnic table, closest to the fridge"
+        },
+        "next_entry": {
+          "text": "Inherit the completed picnic-table corner objective. The source Once you get there binds the turn back.",
+          "candidate_quote": "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway"
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the completed picnic-table corner objective. The source Once you get there binds the turn back."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: Walk back through that open doorway",
+          "candidate_quote": "Walk back through that open doorway"
+        },
+        "next_entry": {
+          "text": "Inherit the bedroom established by the return; preserve all subsequent route events.",
+          "candidate_quote": "Walk to the foot of the bed, between the TV and the bed, walk past the Jacuzzi tub into the open doorway straight ahead."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the bedroom established by the return; preserve all subsequent route events."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "return_identity",
+    "review_principle": "The picnic-table corner is an actual intermediate objective before the return. Preserve the turn back, the previously traversed open doorway and the later shower entry; a repeated region does not erase intervening events.",
+    "case_specific_focus": "The picnic-table corner is an actual intermediate objective before the return. Preserve the turn back, the previously traversed open doorway and the later shower entry; a repeated region does not erase intervening events.",
+    "anti_pattern": "Do not substitute another doorway for the return or shortcut from the initial location to the final bedroom route."
+  },
+  "retrieval_tags": [
+    "return_identity"
+  ]
+}

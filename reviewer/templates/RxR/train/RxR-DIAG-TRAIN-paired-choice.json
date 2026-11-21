@@ -1,0 +1,243 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-TRAIN-paired-choice",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "745",
+    "instruction_id": "745",
+    "scene_id": "ZMojNkEp431",
+    "trajectory_id": "320"
+  },
+  "provenance": {
+    "kind": "authored_single_defect_training_diagnostic",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "65b471fcc045d9cf52fac585aa5a8632c466e6ac1cafd7beed187a6f2ab46b78",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false,
+    "candidate_corruption_is_authored_not_model_output": true
+  },
+  "review_input": {
+    "original_instruction": "You begin facing a white couch with green pillows. Turn to your left and you're going to notice two sets of stairs with a section of wall between them. You're going to walk to the leftmost set of stairs, and then you're going to walk own them. Rather once you're standing at the top of the stairs you're done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You begin facing a white couch with green pillows. Turn to your left and you'll notice two sets of stairs with a section of wall between them. Walk to the set of stairs to the left of both sets. Once you're standing at the top of the stairs, you're done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You begin facing a white couch with green pillows.",
+        "requirement": "Preserve initial facing and the couch attributes.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You begin facing a white couch with green pillows."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn to your left and you're going to notice two sets of stairs with a section of wall between them.",
+        "requirement": "Preserve the turn and the observed pair with intervening wall.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn to your left and you'll notice two sets of stairs with a section of wall between them."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "You're going to walk to the leftmost set of stairs",
+        "requirement": "Select the leftmost member of the two sets, not a location left of both.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk to the set of stairs to the left of both sets."
+          }
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "and then you're going to walk own them. Rather once you're standing at the top of the stairs you're done.",
+        "requirement": "Apply the explicit final correction at the top rather than carrying out an additional descent.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Once you're standing at the top of the stairs, you're done."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This authored case supplies no Renderer artifact; review the actual stage strings."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate changes selection within a pair to a position outside the pair."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate changes selection within a pair to a position outside the pair."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate changes selection within a pair to a position outside the pair."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The grouping respects source-supported completed objectives and coupled maneuvers."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate changes selection within a pair to a position outside the pair."
+      }
+    ],
+    "findings": [
+      {
+        "code": "WRONG_RELATION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quote": "You're going to walk to the leftmost set of stairs",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk to the set of stairs to the left of both sets."
+          }
+        ],
+        "evidence_level": "S1",
+        "problem": "The candidate changes selection within a pair to a position outside the pair.",
+        "execution_consequence": "It can direct the agent to a different staircase not identified by the source.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0
+          ],
+          "instruction": "Restore 'Walk to the leftmost set of stairs.' in place of 'Walk to the set of stairs to the left of both sets.'; preserve the unaffected route.",
+          "protected_requirements": [
+            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Leftmost selects a member of the described pair, not a third staircase to the left of both. The final rather clause refines/corrects the same stair movement to completion at the top; do not execute a descent first."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The initial facing relation is supplied by the source.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the top of the stairs",
+          "candidate_quotes": [
+            "the top of the stairs"
+          ]
+        },
+        "process": {
+          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "candidate_quotes": [
+            "You begin facing a white couch with green pillows. Turn to your left and you'll notice two sets of stairs with a section of wall between them. Walk to the set of stairs to the left of both sets. Once you're standing at the top of the stairs, you're done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're standing at the top of the stairs",
+          "candidate_quotes": [
+            "Once you're standing at the top of the stairs"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Turn to your left; two sets of stairs with a section of wall between them; leftmost set of stairs",
+          "candidate_quotes": [
+            "Turn to your left",
+            "two sets of stairs with a section of wall between them",
+            "Walk to the set of stairs to the left of both sets."
+          ]
+        },
+        "source_quotes": [
+          "You begin facing a white couch with green pillows.",
+          "Turn to your left and you're going to notice two sets of stairs with a section of wall between them.",
+          "You're going to walk to the leftmost set of stairs",
+          "and then you're going to walk own them. Rather once you're standing at the top of the stairs you're done."
+        ],
+        "carryover": [],
+        "status": "gap",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "paired_spatial_choice",
+    "review_principle": "The candidate changes selection within a pair to a position outside the pair.",
+    "case_specific_focus": "It can direct the agent to a different staircase not identified by the source.",
+    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+  },
+  "retrieval_tags": [
+    "paired_spatial_choice"
+  ]
+}

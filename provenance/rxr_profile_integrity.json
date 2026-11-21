@@ -1,9 +1,9 @@
 {
-  "file_count": 155,
+  "file_count": 182,
   "files": [
     {
       "path": "generator/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "d26040bcaf182c998a2beb68438fae48227e4327"
+      "git_blob_sha1": "5c5edb3de7390eaab3e8c415642df8ef02902a23"
     },
     {
       "path": "generator/output.schema.json",
@@ -100,6 +100,38 @@
     {
       "path": "generator/templates/RxR/legacy/G10_RxR-LEGACY-G10.json",
       "git_blob_sha1": "ba1d5ffa1652858e49565f7c981f63300c8fb1ce"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-bounded-placement.json",
+      "git_blob_sha1": "78f138222872dad22504c0716c3d54514843ff94"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-conditional-viewpoint.json",
+      "git_blob_sha1": "e4ea2260149589083f70c34ece9d18a4a1584182"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-correction.json",
+      "git_blob_sha1": "666b8aad82099b12084c1d943342099e12f580e0"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-late-description.json",
+      "git_blob_sha1": "8ddb88a1c8d992d8ea33e075a496afdfdde085bc"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-ordinal-origin.json",
+      "git_blob_sha1": "3c809b1ba7308532e68a148ec883b45649d3b357"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-paired-choice.json",
+      "git_blob_sha1": "e2216f08dfb47ea5b35b2325a6d397a3f0726eef"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-repetition.json",
+      "git_blob_sha1": "1d9f19a44f3042da9e83dabfadf3cbf7de1b1143"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-return-history.json",
+      "git_blob_sha1": "803e3fac976b0d345a47d4504b2e49d2e17b630f"
     },
     {
       "path": "generator/templates/RxR/val_seen/001_RxR-GEN-001.json",
@@ -242,12 +274,24 @@
       "git_blob_sha1": "0dab7ed2d6dce51071ed5b29055350f18a11451c"
     },
     {
+      "path": "host/rxr_assets.py",
+      "git_blob_sha1": "a8bb7007a5f234ebbc697dfe5afac35c541480db"
+    },
+    {
+      "path": "host/rxr_retrieval.py",
+      "git_blob_sha1": "08f925ba240b64aa397e9e05c38caf4c781c5568"
+    },
+    {
+      "path": "provenance/rxr_training_sources.json",
+      "git_blob_sha1": "cb86dae5b8c24a776bb7181e174c6d72e6829d71"
+    },
+    {
       "path": "reviewer/checklist.md",
       "git_blob_sha1": "52381a076ac3427be03c63fe0aba5978aaccd53c"
     },
     {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "42d5a6af752468f9cde4fbd0d74a8d81a735f61e"
+      "git_blob_sha1": "486ea99b1559dce2a7ea800b0d76b01b89ff52dc"
     },
     {
       "path": "reviewer/output.schema.json",
@@ -598,8 +642,72 @@
       "git_blob_sha1": "db7d9235e9debf70cff38888f1ded25c54ae3733"
     },
     {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-bounded-placement.json",
+      "git_blob_sha1": "9416198feb80081050e57233aefcb93b8a0064a5"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-conditional-viewpoint.json",
+      "git_blob_sha1": "a09e3cda9c13694a565868162f35b6fbc60b7445"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-correction.json",
+      "git_blob_sha1": "22295e98a55fd163702b299e503d15f90e119f58"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-late-description.json",
+      "git_blob_sha1": "1351fabbd9e972982dabf9b26ea2c0c4e971285b"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-ordinal-origin.json",
+      "git_blob_sha1": "7b25ec29ba9972cfd0f75a49f96542ddf4c2d9b6"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-paired-choice.json",
+      "git_blob_sha1": "aacf877f7b0cb55b79178e1b96438c1359a4adae"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-repetition.json",
+      "git_blob_sha1": "9659e22be316148448612f9532c6fd8bfc379e97"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-return-history.json",
+      "git_blob_sha1": "345a8f50e0a45724c88f6d5937b27a6ab48c5ec9"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-bounded-placement.json",
+      "git_blob_sha1": "af671819ce3cd6c5aec8110ab5c052fe60324fc0"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-conditional-viewpoint.json",
+      "git_blob_sha1": "380a4150b88439a6015cf50639e7d28e26cd4ba9"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-correction.json",
+      "git_blob_sha1": "fdd68f5b5d5ac6a4263a674f82ef70db14611f94"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-late-description.json",
+      "git_blob_sha1": "9274596ebfdae26d61429e31ce84f365631ee564"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-ordinal-origin.json",
+      "git_blob_sha1": "80e409b6694f5922298111716eb53b0b3f0b4a64"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-paired-choice.json",
+      "git_blob_sha1": "fae65901f7cd1eb343f422be4598973a0f04d1d8"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-repetition.json",
+      "git_blob_sha1": "89594e2de2a20b44965bf66f6f81d5b0b241a47e"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-return-history.json",
+      "git_blob_sha1": "e10793f895e55c873009459ba57a266d5c2cf211"
+    },
+    {
       "path": "shared/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "1977d1edd6ffaacd2f167a5e4e5d5d2b6027390d"
+      "git_blob_sha1": "3fe3589e50971023edce9c6cc71240a84f759bc8"
     },
     {
       "path": "shared/semantic_contract.md",

@@ -1,0 +1,24 @@
+{
+  "baseline_commit": "cfd4c13010f105235d026ec14a9c2b4bbd7bf94e",
+  "reason": "RxR-only runtime dispatch and explicit RxR inventory/snapshot test migrations",
+  "r2r_model_messages_and_schemas_equal": true,
+  "r2r_selections_equal": true,
+  "protected_common_and_r2r_assets_equal": true,
+  "shared_runtime_changes": [
+    {
+      "path": "host/run.py",
+      "previous_git_blob_sha1": "c5e349699067a8be9d8c1b8e502174374ffd3bed",
+      "current_git_blob_sha1": "33778ae56c77ef522ce627f4b67c46e6c6a95e0c"
+    },
+    {
+      "path": "host/template_selector.py",
+      "previous_git_blob_sha1": "c1f563688b61b0482df2c9d088b515ddf48c1d0c",
+      "current_git_blob_sha1": "3e17e9db46670365e44165e69f8b746f0881bf30"
+    },
+    {
+      "path": "tests/test_r2r_specialization.py",
+      "previous_git_blob_sha1": "2d03c1a24cc2335a08ebbd811439278c37e02576",
+      "current_git_blob_sha1": "7b66860d8a6ea68c16fe4954c7c33292b6819798"
+    }
+  ]
+}

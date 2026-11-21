@@ -1,4 +1,4 @@
-# LLM-decompose-v6.5｜R2R / RxR 统一导航指令分割系统
+# LLM-decompose-v6.6.2
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -122,3 +122,7 @@ python -m evaluation.smoke24
 ## 当前工程状态
 
 当前分支包含双 Profile 固定 Core、数据集专属规则、动态检索、完整双角色闭环、Snapshot Release、来源追踪和离线回归测试。任何后续改动必须保持 R2R/RxR 隔离，并以可复现的构建和行为测试证明未改变既有功能。
+
+## RxR semantic calibration
+
+RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md). Engineering checks do not establish navigation gains.

@@ -101,3 +101,11 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |RxR|[RxR-GEN-033](RxR/val_seen/033_RxR-GEN-033.json)|val_seen|—|single_coherent_stage|room_transition, doorway_selection_and_crossing, stairs_or_level_change, orientation_or_reference_frame, bounded_motion, single_stage_keep|
 |RxR|[RxR-GEN-034](RxR/val_seen/034_RxR-GEN-034.json)|val_seen|—|single_coherent_stage|room_transition, doorway_selection_and_crossing, temporal_dependency, orientation_or_reference_frame, single_stage_keep|
 |RxR|[RxR-GEN-035](RxR/val_seen/035_RxR-GEN-035.json)|val_seen|—|completed_transition_then_distinct_objective|room_transition, doorway_selection_and_crossing, stairs_or_level_change, landmark_conditioned_navigation, temporal_dependency, return_or_revisit, orientation_or_reference_frame, bounded_motion, multi_stage_split|
+|RxR|[RxR-GEN-TRAIN-bounded-placement](RxR/train/RxR-GEN-TRAIN-bounded-placement.json)|train|—|terminal_refinement|terminal_refinement|
+|RxR|[RxR-GEN-TRAIN-conditional-viewpoint](RxR/train/RxR-GEN-TRAIN-conditional-viewpoint.json)|train|—|conditional_viewpoint|conditional_viewpoint|
+|RxR|[RxR-GEN-TRAIN-correction](RxR/train/RxR-GEN-TRAIN-correction.json)|train|—|local_correction|local_correction|
+|RxR|[RxR-GEN-TRAIN-late-description](RxR/train/RxR-GEN-TRAIN-late-description.json)|train|—|late_target_description|late_target_description|
+|RxR|[RxR-GEN-TRAIN-ordinal-origin](RxR/train/RxR-GEN-TRAIN-ordinal-origin.json)|train|—|ordinal_origin|ordinal_origin|
+|RxR|[RxR-GEN-TRAIN-paired-choice](RxR/train/RxR-GEN-TRAIN-paired-choice.json)|train|—|paired_spatial_choice|paired_spatial_choice|
+|RxR|[RxR-GEN-TRAIN-repetition](RxR/train/RxR-GEN-TRAIN-repetition.json)|train|—|oral_repetition|oral_repetition|
+|RxR|[RxR-GEN-TRAIN-return-history](RxR/train/RxR-GEN-TRAIN-return-history.json)|train|—|return_identity|return_identity|

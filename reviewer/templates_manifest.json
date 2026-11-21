@@ -1,5 +1,4 @@
 {
-  "version": "6.4",
   "dataset_profiles": {
     "r2r-en": {
       "paired_directory": "templates/R2R/paired",
@@ -40,11 +39,14 @@
     "rxr-en-us": {
       "paired_directory": "templates/RxR/paired",
       "diagnostics_directory": "templates/RxR/diagnostics",
-      "paired_count": 35,
-      "diagnostics_count": 29,
+      "paired_count": 43,
+      "diagnostics_count": 37,
       "fixed_core_directory": "templates/RxR/core",
       "fixed_core_count": 10,
-      "fixed_core_source": "v1 original R01-R10 reviewer cases migrated to v5 reviewer template schema; runtime IDs RXR-CORE-R01..R10 paired by RXR-CORE-G01..G10"
+      "fixed_core_source": "Frozen original teaching cases expressed using the current authored template contract.",
+      "training_directory": "templates/RxR/train",
+      "training_source_count": 8,
+      "runtime_dynamic_count": 80
     }
   },
   "runtime_policy": {
@@ -77,5 +79,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "R2R Core is unconditional; promoted Reviewer source copies are excluded from Dynamic retrieval. Core pair_id records semantic provenance only. Dynamic paired examples are selected only for selected non-Core Generator Dynamic IDs; unpaired Diagnostics supplement them. v6.3: R2R dynamic loading is restricted to explicit allowlisted directories; RxR runtime behavior remains frozen."
+  "selection": "Profile-scoped Core is unconditional. Dynamic examples supplement it; RxR adds source-verified training relations, with paired reviews and separately selected diagnostics."
 }

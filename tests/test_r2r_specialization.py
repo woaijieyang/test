@@ -130,7 +130,15 @@ class R2RSpecializationTests(unittest.TestCase):
             components = prompt_components_metadata(role, "initial" if role == "generator" else "review", "r2r-en")
             self.assertIn(f"{role}/dataset_rules/r2r_en.md", [item["path"] for item in components["files"]])
         rxr = dataset_rules_metadata("rxr-en-us")
-        self.assertEqual(len(rxr["files"]), 4)
+        self.assertEqual(rxr["files"], [
+            "shared/semantic_contract.md",
+            "shared/dataset_rules/rxr_en_us.md",
+            "generator/dataset_rules/rxr_en_us.md",
+            "reviewer/dataset_rules/rxr_en_us.md",
+            "host/rxr_retrieval.py",
+            "host/rxr_assets.py",
+            "provenance/rxr_training_sources.json",
+        ])
         self.assertNotIn("shared/dataset_rules/r2r_fragments.json", rxr["files"])
 
     def test_rxr_compiled_prompt_hashes_remain_frozen(self):
@@ -139,9 +147,9 @@ class R2RSpecializationTests(unittest.TestCase):
         generator_ids = select_examples("generator", "rxr-en-us", "")
         reviewer_ids = select_examples("reviewer", "rxr-en-us", "")
         cases = (
-            ("generator", "initial", generator_ids, "a7dfd35332c41f8ac150d0fba18fdafe294d00d6601c75aff72bf5135d7d61c5"),
-            ("generator", "repair", generator_ids, "b4b880fec24d46e951d01157f104152041df1cddf250cde4611668aea8c6a95a"),
-            ("reviewer", "review", reviewer_ids, "91e0ca112eda38413521c2423b13c69b84d747825a1e5098f89389f7e815cc9b"),
+            ("generator", "initial", generator_ids, "8793949f5f2037cfeb6c1e3158f3c1440047860c8bf0c02f296b04b72e681550"),
+            ("generator", "repair", generator_ids, "bb96ba0eb4d764ac5c9e49045bd3ffbae4259ac68cf69b0c8b21cc5a6271ccae"),
+            ("reviewer", "review", reviewer_ids, "7944892ea3ffb0ce1d86a454ed2b03a642e65c22410c98aff34a0002ee8443de"),
         )
         for role, phase, selected, expected_hash in cases:
             with self.subTest(role=role, phase=phase):

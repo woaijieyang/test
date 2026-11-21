@@ -6,6 +6,9 @@ import json
 import math
 import re
 
+from host.rxr_retrieval import features as rxr_features, rank_examples as rank_rxr_examples
+from host.rxr_assets import validate_training_library
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -202,6 +205,8 @@ def library(role, profile):
     folder = ROOT/role/'templates'/PROFILES[profile]
     # Shared profile-driven allowlist: both datasets use the same loader.
     dynamic_dirs = ('val_seen',) if role == 'generator' else ('paired', 'diagnostics')
+    if profile == 'rxr-en-us':
+        dynamic_dirs += ('train',)
     files = []
     for kind in dynamic_dirs:
         files.extend(sorted((folder/kind).glob('*.json')))
@@ -215,6 +220,8 @@ def library(role, profile):
     dataset = PROFILES[profile]
     for row in rows:
         validate_dynamic_identity(role, profile, row)
+    if profile == 'rxr-en-us':
+        validate_training_library(role, rows)
 
     # R2R's historical val_seen Core promotions are excluded from its Dynamic
     # pool. RxR Core is migrated from train-guide material and is not duplicated
@@ -233,7 +240,7 @@ def library(role, profile):
 
     expected_counts = {
         ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,
-        ('RxR', 'generator'): 35, ('RxR', 'reviewer'): 64,
+        ('RxR', 'generator'): 43, ('RxR', 'reviewer'): 80,
     }
     if len(rows) != expected_counts[(dataset, role)]:
         raise ValueError(f'{dataset} {role} Dynamic count mismatch: expected {expected_counts[(dataset, role)]}, found {len(rows)}')
@@ -250,8 +257,10 @@ def library(role, profile):
         diagnostics = [row for row in rows if not row.get('pair_id')]
         paired_ids = [row['pair_id'] for row in paired]
         expected_pairs = {f'{dataset}-GEN-{i:03d}' for i in range(1, 36)} - promoted_gen_ids
-        expected_paired = 29 if dataset == 'R2R' else 35
-        expected_diagnostics = 23 if dataset == 'R2R' else 29
+        if dataset == 'RxR':
+            expected_pairs = {row['template_id'] for row in library('generator', profile)}
+        expected_paired = 29 if dataset == 'R2R' else 43
+        expected_diagnostics = 23 if dataset == 'R2R' else 37
         if len(paired) != expected_paired or len(diagnostics) != expected_diagnostics:
             raise ValueError(f'{dataset} Reviewer pool count mismatch: paired={len(paired)}, diagnostics={len(diagnostics)}')
         if len(set(paired_ids)) != len(paired_ids) or not expected_pairs.issubset(set(paired_ids)):
@@ -358,8 +367,8 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
             f"Invalid {profile} dynamic Generator count; expected {minimum}..{maximum}"
         )
 
-    cue_fn = features if profile == "rxr-en-us" else r2r_features
-    rank_fn = rank_examples if profile == "rxr-en-us" else rank_r2r_examples
+    cue_fn = rxr_features if profile == "rxr-en-us" else r2r_features
+    rank_fn = rank_rxr_examples if profile == "rxr-en-us" else rank_r2r_examples
     cues, _ = cue_fn(source_text)
     distinct = cues - {
         "orientation_or_reference_frame", "room_transition",
@@ -412,7 +421,7 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
 
 
 def selection_evidence(role, profile, text, ids):
-    cue_fn = features if profile == "rxr-en-us" else r2r_features
+    cue_fn = rxr_features if profile == "rxr-en-us" else r2r_features
     cues, _ = cue_fn(text)
     anchors = relations(text)
     by_id = {row["template_id"]: row for row in library(role,profile)}
@@ -447,6 +456,8 @@ def write_type_index(role):
                   "|---|---|---|---|---|---|"])
     for profile, dataset in PROFILES.items():
         allowed = ("val_seen",) if role == "generator" else ("paired", "diagnostics")
+        if profile == "rxr-en-us":
+            allowed += ("train",)
         for kind in allowed:
             for path in sorted((folder/dataset/kind).glob("*.json")):
                 row = json.loads(path.read_bytes())

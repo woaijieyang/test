@@ -180,11 +180,11 @@
     },
     {
       "path": "host/run.py",
-      "git_blob_sha1": "c5e349699067a8be9d8c1b8e502174374ffd3bed"
+      "git_blob_sha1": "33778ae56c77ef522ce627f4b67c46e6c6a95e0c"
     },
     {
       "path": "host/template_selector.py",
-      "git_blob_sha1": "c1f563688b61b0482df2c9d088b515ddf48c1d0c"
+      "git_blob_sha1": "3e17e9db46670365e44165e69f8b746f0881bf30"
     },
     {
       "path": "renderer/__init__.py",
@@ -492,7 +492,7 @@
     },
     {
       "path": "tests/test_r2r_specialization.py",
-      "git_blob_sha1": "2d03c1a24cc2335a08ebbd811439278c37e02576"
+      "git_blob_sha1": "7b66860d8a6ea68c16fe4954c7c33292b6819798"
     }
   ]
 }

@@ -1,0 +1,162 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-TRAIN-repetition",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "17649",
+    "instruction_id": "17649",
+    "scene_id": "B6ByNegPMKs",
+    "trajectory_id": "6483"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "b26e468cb266594803065b12eb433c68532966e55b1ecba4870a21e92922bed3",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "input": {
+    "original_instruction": "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway. Walk straight down that hallway, until you see the red exit sign in front of you. Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway until you see the red exit sign in front of you.",
+      "Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The source establishes the starting white room and window reference.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the red exit sign in front of you",
+          "candidate_quotes": [
+            "the red exit sign in front of you"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway until you see the red exit sign in front of you."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
+          "candidate_quotes": [
+            "until you see the red exit sign in front of you"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "black window pane to your right; Turn left",
+          "candidate_quotes": [
+            "black window pane to your right",
+            "Turn left"
+          ]
+        },
+        "source_quotes": [
+          "Look around, you're currently in a white room with a black window pane to your right.",
+          "Turn left, and walk straight down that hallway. Walk straight down that hallway, until you see the red exit sign in front of you."
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the center of that empty white room",
+          "candidate_quotes": [
+            "the center of that empty white room"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're at the center of that empty white room",
+          "candidate_quotes": [
+            "Once you're at the center of that empty white room"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Turn right; nearest room opened in the left; that beige door",
+          "candidate_quotes": [
+            "Turn right",
+            "nearest room opened in the left",
+            "that beige door"
+          ]
+        },
+        "source_quotes": [
+          "Turn right, and enter the nearest room opened in the left.",
+          "Pass through that beige door, and enter that empty room.",
+          "Once you're at the center of that empty white room, you have reached your final destination."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
+          "candidate_quote": "until you see the red exit sign in front of you"
+        },
+        "next_entry": {
+          "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted.",
+          "candidate_quote": "Turn right, and enter the nearest room opened in the left."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "oral_repetition",
+    "why_this_case_matters": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored.",
+    "reusable_rule": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored.",
+    "anti_pattern": "Do not introduce another hallway traversal from repeated oral wording or silently change the source turn/door geometry.",
+    "retrieval_rule": "Retrieve only when the current source exhibits the same relation; the example never determines a stage count."
+  },
+  "retrieval_tags": [
+    "oral_repetition"
+  ]
+}

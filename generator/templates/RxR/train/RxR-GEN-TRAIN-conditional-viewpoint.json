@@ -1,0 +1,164 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-TRAIN-conditional-viewpoint",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "644",
+    "instruction_id": "644",
+    "scene_id": "8WUmhLawc2A",
+    "trajectory_id": "278"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "128a5834b9fd520dc3437496bdb30b747e945af473569bfae6ec27b1b40b3702",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "input": {
+    "original_instruction": "You're standing in the corner of a dining room, facing a wooden table with 7 chairs, 8 chairs. If you look to the right, you'll see there's an arch that leads into a living room. Walk towards that arch and if you look, while you standing below the arch if you look left you'll see the living room and a fire place, and a wooden cabinet on the left side. Walk towards that wooden cabinet on the left side. And once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "split",
+    "rationale": "Conditional looking identifies the arch and then the cabinet without creating alternative routes. The final cabinet-front position and painting gaze are both required. Preserve uncertain chair-count wording rather than sharpening it."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You're standing in the corner of a dining room, facing a wooden table with 7 chairs, 8 chairs. If you look to the right, you'll see there's an arch that leads into a living room. Walk towards that arch until you are standing below it.",
+      "While standing below the arch, if you look left you'll see the living room and a fire place, and a wooden cabinet on the left side. Walk towards that wooden cabinet on the left side. Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace you're done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The source provides the dining-room corner and table-facing state.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "below it",
+          "candidate_quotes": [
+            "below it"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "You're standing in the corner of a dining room, facing a wooden table with 7 chairs, 8 chairs. If you look to the right, you'll see there's an arch that leads into a living room. Walk towards that arch until you are standing below it."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: until you are standing below it",
+          "candidate_quotes": [
+            "until you are standing below it"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "If you look to the right; 7 chairs, 8 chairs",
+          "candidate_quotes": [
+            "If you look to the right",
+            "7 chairs, 8 chairs"
+          ]
+        },
+        "source_quotes": [
+          "You're standing in the corner of a dining room, facing a wooden table with 7 chairs, 8 chairs.",
+          "If you look to the right, you'll see there's an arch that leads into a living room.",
+          "Walk towards that arch and if you look, while you standing below the arch"
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Below-arch context comes from the preceding supported completion and the original while clause.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "right in front of the wooden cabinet inside the living room",
+          "candidate_quotes": [
+            "right in front of the wooden cabinet inside the living room"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "While standing below the arch, if you look left you'll see the living room and a fire place, and a wooden cabinet on the left side. Walk towards that wooden cabinet on the left side. Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace you're done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace",
+          "candidate_quotes": [
+            "Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "if you look left you'll see; on the left side; looking at a blue and orange painting next to the fireplace",
+          "candidate_quotes": [
+            "if you look left you'll see",
+            "on the left side",
+            "looking at a blue and orange painting next to the fireplace"
+          ]
+        },
+        "source_quotes": [
+          "if you look left you'll see the living room and a fire place, and a wooden cabinet on the left side.",
+          "Walk towards that wooden cabinet on the left side.",
+          "And once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace you're done."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: until you are standing below it",
+          "candidate_quote": "until you are standing below it"
+        },
+        "next_entry": {
+          "text": "Below-arch context comes from the preceding supported completion and the original while clause.",
+          "candidate_quote": "if you look left you'll see the living room and a fire place, and a wooden cabinet on the left side."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Below-arch context comes from the preceding supported completion and the original while clause."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "conditional_viewpoint",
+    "why_this_case_matters": "Conditional looking identifies the arch and then the cabinet without creating alternative routes. The final cabinet-front position and painting gaze are both required. Preserve uncertain chair-count wording rather than sharpening it.",
+    "reusable_rule": "Conditional looking identifies the arch and then the cabinet without creating alternative routes. The final cabinet-front position and painting gaze are both required. Preserve uncertain chair-count wording rather than sharpening it.",
+    "anti_pattern": "Do not create an extra visit to a reference object, drop the final gaze, or interpret seven/eight chairs as alternative navigation branches.",
+    "retrieval_rule": "Retrieve only when the current source exhibits the same relation; the example never determines a stage count."
+  },
+  "retrieval_tags": [
+    "conditional_viewpoint"
+  ]
+}

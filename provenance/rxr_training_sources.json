@@ -1,0 +1,196 @@
+{
+  "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+  "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+  "source_split": "train",
+  "source_role": "guide",
+  "language": "en-US",
+  "annotation_status": "curated_not_official_subtask_ground_truth",
+  "records": [
+    {
+      "instruction_id": 564,
+      "scan": "ULsKaCPVFJR",
+      "path_id": 244,
+      "source_sha256": "f6637b4f0f326cc6506499dd92dc0a331adbe56ac32ca0ba1b527524d739572c",
+      "source_record_sha256": "bac97c0b2cb1bfe28ad450ff475d78c407e8077fcc5abd44d2ea14a662454527",
+      "generator": "RxR-GEN-TRAIN-correction",
+      "reviewer": "RxR-REV-TRAIN-correction",
+      "diagnostic": "RxR-DIAG-TRAIN-correction",
+      "pattern": "local_correction"
+    },
+    {
+      "instruction_id": 17649,
+      "scan": "B6ByNegPMKs",
+      "path_id": 6483,
+      "source_sha256": "5d97cda06b0cb13ee968651c2a1b3051b467302e53516542443708b8971cf6ae",
+      "source_record_sha256": "b26e468cb266594803065b12eb433c68532966e55b1ecba4870a21e92922bed3",
+      "generator": "RxR-GEN-TRAIN-repetition",
+      "reviewer": "RxR-REV-TRAIN-repetition",
+      "diagnostic": "RxR-DIAG-TRAIN-repetition",
+      "pattern": "oral_repetition"
+    },
+    {
+      "instruction_id": 745,
+      "scan": "ZMojNkEp431",
+      "path_id": 320,
+      "source_sha256": "5b855fe2ac46d1a6d168d3fec5b3d33a7d51e2f0ad84ef107f3f1a78287cd325",
+      "source_record_sha256": "65b471fcc045d9cf52fac585aa5a8632c466e6ac1cafd7beed187a6f2ab46b78",
+      "generator": "RxR-GEN-TRAIN-paired-choice",
+      "reviewer": "RxR-REV-TRAIN-paired-choice",
+      "diagnostic": "RxR-DIAG-TRAIN-paired-choice",
+      "pattern": "paired_spatial_choice"
+    },
+    {
+      "instruction_id": 28,
+      "scan": "7y3sRwLe3Va",
+      "path_id": 12,
+      "source_sha256": "f272234d1f51cc0fb05317fc58a19d5ca68dcd0a2edf999e7635777fa9ad2043",
+      "source_record_sha256": "2f8de293769d35ddf22604ae69392ef2db67c2ffd7bf05126ca8c56a9409bc8f",
+      "generator": "RxR-GEN-TRAIN-ordinal-origin",
+      "reviewer": "RxR-REV-TRAIN-ordinal-origin",
+      "diagnostic": "RxR-DIAG-TRAIN-ordinal-origin",
+      "pattern": "ordinal_origin"
+    },
+    {
+      "instruction_id": 60,
+      "scan": "S9hNv5qa7GM",
+      "path_id": 24,
+      "source_sha256": "0d742cac05d10adfe923f50a39923a1fd796440d87a6d11b2db82c6140c92431",
+      "source_record_sha256": "fd9af8f8eda8e4b27b83746444bda12fc3122dd2f2d1c9fcc2721fe80dabb411",
+      "generator": "RxR-GEN-TRAIN-bounded-placement",
+      "reviewer": "RxR-REV-TRAIN-bounded-placement",
+      "diagnostic": "RxR-DIAG-TRAIN-bounded-placement",
+      "pattern": "terminal_refinement"
+    },
+    {
+      "instruction_id": 45476,
+      "scan": "V2XKFyX4ASd",
+      "path_id": 4184,
+      "source_sha256": "c1c49c5fdd097736dc378b1158b6ed5ab53aedff5f6c5f0c0333931bdd7e6800",
+      "source_record_sha256": "32d555a74feab100ceefd750a3bd710c62a7f353fd8b923d2888c79b03f7d7e4",
+      "generator": "RxR-GEN-TRAIN-return-history",
+      "reviewer": "RxR-REV-TRAIN-return-history",
+      "diagnostic": "RxR-DIAG-TRAIN-return-history",
+      "pattern": "return_identity"
+    },
+    {
+      "instruction_id": 644,
+      "scan": "8WUmhLawc2A",
+      "path_id": 278,
+      "source_sha256": "a11b589e584599e4ab7cd933f5c43034474ecc441fae1a7efc3724384d615009",
+      "source_record_sha256": "128a5834b9fd520dc3437496bdb30b747e945af473569bfae6ec27b1b40b3702",
+      "generator": "RxR-GEN-TRAIN-conditional-viewpoint",
+      "reviewer": "RxR-REV-TRAIN-conditional-viewpoint",
+      "diagnostic": "RxR-DIAG-TRAIN-conditional-viewpoint",
+      "pattern": "conditional_viewpoint"
+    },
+    {
+      "instruction_id": 942,
+      "scan": "e9zR4mvMWw7",
+      "path_id": 407,
+      "source_sha256": "8ef618990e6fababd095f2f879294de070d017fe80293937c26a04f8c1ae8bd1",
+      "source_record_sha256": "fe738a4c31dc6035fad094a5f67b5c8cd44ae93a06947496adfe61a5e12d66c2",
+      "generator": "RxR-GEN-TRAIN-late-description",
+      "reviewer": "RxR-REV-TRAIN-late-description",
+      "diagnostic": "RxR-DIAG-TRAIN-late-description",
+      "pattern": "late_target_description"
+    }
+  ],
+  "templates": [
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-bounded-placement.json",
+      "sha256": "9a4ced9a5654b8f24d41ffd9cd40b9465a2b42f05782cf5e1453f29d5202ba17"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-conditional-viewpoint.json",
+      "sha256": "469214ba1548dcb0089360a8198e14c0aaff236ef935306379c4c7ff7a5898c1"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-correction.json",
+      "sha256": "eb5ec43715c97b4e8666c644cf846c6e7ff1af56719c2d54e0e4d0ba452c456f"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-late-description.json",
+      "sha256": "e8650a63f1c34855f5b95c8c507a3b9e581cedab711435661aaf63dde1e5ac51"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-ordinal-origin.json",
+      "sha256": "0825d2f610ee213630878ecb9127663599252cdf55788bbeefb85db93221ec72"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-paired-choice.json",
+      "sha256": "d3b073e8ad073ddbd97659843e709843462302bbf45db34a309a48fa34a68175"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-repetition.json",
+      "sha256": "a907154bd6910fbd41252c4e7dc925c04ef4cd46fdf149a9151fcb4e3c3e7ac4"
+    },
+    {
+      "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-return-history.json",
+      "sha256": "cc9462596168bd723ec86de4c32a2b0b03802ada228a8591523c9711b6a3bfee"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-bounded-placement.json",
+      "sha256": "aa8671b2732833b69176758c1d6a662f4434f41553bfc71bd61cc24023da9b7e"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-conditional-viewpoint.json",
+      "sha256": "878ad8ae29a2bd6ab74ad38ab2a5748bb4024d31ae62c3c051e2f5c7aaf6ea0c"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-correction.json",
+      "sha256": "5f35de2ed9c4ead7a4fec816ded3a7db4c1721ba36a10ae7eba6792081b2d850"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-late-description.json",
+      "sha256": "e464ef5dcf25bcc4f75f6e30175160586df4704a8670b48e673f171aa4f6158e"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-ordinal-origin.json",
+      "sha256": "105bd1a0bf9c0f8c9297c4596df122421fc2a39d384a2d8ee46219cab9314b26"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-paired-choice.json",
+      "sha256": "f845632c1b8d32acf0bea75b457644cfb9f29d6d13e55d73d22fafe23c48c947"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-repetition.json",
+      "sha256": "2818f0ce807e2d4dccbdc354f341c12c0e677f0f8605ea399252baf6e8421769"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-return-history.json",
+      "sha256": "4355b84e694e266f0f0b5ceb886796403875175f27bad9400560617564a1fe30"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-bounded-placement.json",
+      "sha256": "91073d1657e5f5a60d2719f9d71147aa80dd6209311dcc85952fdee77a18e95c"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-conditional-viewpoint.json",
+      "sha256": "0ce4b319acff995b80e5a3b12ef54d6a0bdbe556305b4b96bb081d84f5895a92"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-correction.json",
+      "sha256": "87b89f00c27ccfef0f43e7017af0101a450a78b7595c6f15222c8f693716e5af"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-late-description.json",
+      "sha256": "2d9ed7c4d83a2b58ea84012079be12055a787deeca44e7ba68d05a99056ee156"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-ordinal-origin.json",
+      "sha256": "a30a81b454a82d809eb87ee207d290ff6b0845074e9deb9440950f1eefc043bb"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-paired-choice.json",
+      "sha256": "4b95e8a32b4efe1537260864d25e23589fc32ea0b2e1d73d196f6b86b1c4f303"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-repetition.json",
+      "sha256": "bc9da598027082ec207539673e07bfabbd9d77fc35df3ab69e3230f33793a556"
+    },
+    {
+      "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-return-history.json",
+      "sha256": "f68698aafcfae92429423575e0d66a275a5cd5a6e0b215c670d2a175409443dc"
+    }
+  ]
+}

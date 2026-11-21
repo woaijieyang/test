@@ -35,6 +35,9 @@ def dataset_rules_metadata(profile):
             root/"shared/dataset_rules/rxr_en_us.md",
             root/"generator/dataset_rules/rxr_en_us.md",
             root/"reviewer/dataset_rules/rxr_en_us.md",
+            root/"host/rxr_retrieval.py",
+            root/"host/rxr_assets.py",
+            root/"provenance/rxr_training_sources.json",
         ])
         version = "rxr-en-us-profile"
     elif profile == "r2r-en":
@@ -80,6 +83,9 @@ def prompt_components_metadata(role, phase, profile):
         paths.extend([
             root/"shared/dataset_rules/rxr_en_us.md",
             root/role/"dataset_rules/rxr_en_us.md",
+            root/"host/rxr_retrieval.py",
+            root/"host/rxr_assets.py",
+            root/"provenance/rxr_training_sources.json",
         ])
     elif profile == "r2r-en":
         paths.extend([
@@ -99,6 +105,9 @@ def prompt_components_metadata(role, phase, profile):
 
 def template_bundle_metadata(role, profile, selected_ids):
     """Hash the fixed core and selected dynamic templates for task-level freezing."""
+    if profile == "rxr-en-us":
+        from host.rxr_assets import validate_training_assets
+        validate_training_assets()
     fixed = core_library(role, profile)
     dynamic_by_id = {row["template_id"]: row for row in library(role, profile)}
     missing = [template_id for template_id in selected_ids if template_id not in dynamic_by_id]

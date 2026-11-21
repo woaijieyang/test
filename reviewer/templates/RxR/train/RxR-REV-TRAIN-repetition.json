@@ -1,0 +1,283 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-REV-TRAIN-repetition",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": "RxR-GEN-TRAIN-repetition",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "17649",
+    "instruction_id": "17649",
+    "scene_id": "B6ByNegPMKs",
+    "trajectory_id": "6483"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "b26e468cb266594803065b12eb433c68532966e55b1ecba4870a21e92922bed3",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "review_input": {
+    "original_instruction": "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway. Walk straight down that hallway, until you see the red exit sign in front of you. Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway until you see the red exit sign in front of you.",
+        "Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Look around, you're currently in a white room with a black window pane to your right.",
+        "requirement": "Keep the initial look and right-side window reference.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Look around, you're currently in a white room with a black window pane to your right."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn left, and walk straight down that hallway. Walk straight down that hallway, until you see the red exit sign in front of you.",
+        "requirement": "One left-turn/hallway traversal is refined by the sign-visibility trigger, not an extra lap.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn left, and walk straight down that hallway until you see the red exit sign in front of you."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Turn right, and enter the nearest room opened in the left.",
+        "requirement": "Preserve the subsequent right turn and nearest left-side room selection.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Turn right, and enter the nearest room opened in the left."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Pass through that beige door, and enter that empty room.",
+        "requirement": "Retain actual beige-door traversal and empty-room entry.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Pass through that beige door, and enter that empty room."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "Once you're at the center of that empty white room, you have reached your final destination.",
+        "requirement": "Complete at the room center, not at its entrance.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you're at the center of that empty white room, you have reached your final destination."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This authored case supplies no Renderer artifact; review the actual stage strings."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Map every listed route requirement to indexed candidate text."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Audit the actual stage entry, target, ordered process, ending and conditions independently."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The grouping respects source-supported completed objectives and coupled maneuvers."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Coverage and reverse source support preserve the route; this is not a navigation success claim."
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The source establishes the starting white room and window reference.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the red exit sign in front of you",
+          "candidate_quotes": [
+            "the red exit sign in front of you"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway until you see the red exit sign in front of you."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
+          "candidate_quotes": [
+            "until you see the red exit sign in front of you"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "black window pane to your right; Turn left",
+          "candidate_quotes": [
+            "black window pane to your right",
+            "Turn left"
+          ]
+        },
+        "source_quotes": [
+          "Look around, you're currently in a white room with a black window pane to your right.",
+          "Turn left, and walk straight down that hallway. Walk straight down that hallway, until you see the red exit sign in front of you."
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the center of that empty white room",
+          "candidate_quotes": [
+            "the center of that empty white room"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "Turn right, and enter the nearest room opened in the left. Pass through that beige door, and enter that empty room. Once you're at the center of that empty white room, you have reached your final destination."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're at the center of that empty white room",
+          "candidate_quotes": [
+            "Once you're at the center of that empty white room"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Turn right; nearest room opened in the left; that beige door",
+          "candidate_quotes": [
+            "Turn right",
+            "nearest room opened in the left",
+            "that beige door"
+          ]
+        },
+        "source_quotes": [
+          "Turn right, and enter the nearest room opened in the left.",
+          "Pass through that beige door, and enter that empty room.",
+          "Once you're at the center of that empty white room, you have reached your final destination."
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
+          "candidate_quote": "until you see the red exit sign in front of you"
+        },
+        "next_entry": {
+          "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted.",
+          "candidate_quote": "Turn right, and enter the nearest room opened in the left."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "oral_repetition",
+    "review_principle": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored.",
+    "case_specific_focus": "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored.",
+    "anti_pattern": "Do not introduce another hallway traversal from repeated oral wording or silently change the source turn/door geometry."
+  },
+  "retrieval_tags": [
+    "oral_repetition"
+  ]
+}

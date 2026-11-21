@@ -171,7 +171,7 @@ def make_case(case):
                    source_requirement_ids=[changed_id], source_quote=case['coverage'][mutation['requirement']][0],
                    candidate_evidence=[dict(subtask_index=index,quote=new)], evidence_level='S1',
                    problem=mutation['problem'], execution_consequence=mutation['consequence'],
-                   repair=dict(operation='restore_source_semantics', affected_subtask_indices=[index],
+                   repair=dict(operation='restore', affected_subtask_indices=[index],
                                instruction=f'Restore {old!r} in place of {new!r}; preserve the unaffected route.',
                                protected_requirements=['Preserve all unaffected actions, relationships, quantities and source order.',case['lesson']]))
     audit['findings'] = [finding]
@@ -205,7 +205,7 @@ def build(verify=False):
                               generator=gen['template_id'],reviewer=rev['template_id'],diagnostic=diag['template_id'],pattern=case['pattern']))
     write(ROOT/'provenance/rxr_training_sources.json', dict(source_url=ARCHIVE_URL, archive_sha256=ARCHIVE_SHA256,
         source_split='train',source_role='guide',language='en-US',annotation_status='curated_not_official_subtask_ground_truth',
-        records=inventory))
+        records=inventory, templates=[dict(path=path.relative_to(ROOT).as_posix(), sha256=hashlib.sha256(path.read_bytes()).hexdigest()) for role in ('generator','reviewer') for path in sorted((ROOT/role/'templates'/'RxR'/'train').glob('*.json'))]))
     print(json.dumps(dict(training_sources=len(inventory),generated_templates=3*len(inventory),
                           upstream_bytes_verified=verify,semantic_correctness_certified=False,navigation_evaluated=False)))
 

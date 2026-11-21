@@ -86,7 +86,9 @@ def main():
     readme=ROOT/'README.md'
     text=readme.read_text(encoding='utf-8')
     text=text.split('\n',1)[1] if text.startswith('# ') else text
-    text='# LLM-decompose-v6.6.2\n'+text
+    import os
+    branch=os.environ.get('GITHUB_REF_NAME','LLM-decompose')
+    text='# '+branch+'\n'+text
     marker='## RxR semantic calibration'
     if marker not in text:
         text+='\n'+marker+'\n\nRxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md). Engineering checks do not establish navigation gains.\n'

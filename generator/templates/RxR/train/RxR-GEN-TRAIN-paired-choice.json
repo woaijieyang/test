@@ -1,0 +1,94 @@
+{
+  "schema_version": "generator-v1.5.1-template",
+  "template_id": "RxR-GEN-TRAIN-paired-choice",
+  "role": "generator",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "745",
+    "instruction_id": "745",
+    "scene_id": "ZMojNkEp431",
+    "trajectory_id": "320"
+  },
+  "provenance": {
+    "kind": "curated_train_guide_lesson",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "65b471fcc045d9cf52fac585aa5a8632c466e6ac1cafd7beed187a6f2ab46b78",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false
+  },
+  "input": {
+    "original_instruction": "You begin facing a white couch with green pillows. Turn to your left and you're going to notice two sets of stairs with a section of wall between them. You're going to walk to the leftmost set of stairs, and then you're going to walk own them. Rather once you're standing at the top of the stairs you're done."
+  },
+  "decision": {
+    "status": "ok",
+    "mode": "keep",
+    "rationale": "Leftmost selects a member of the described pair, not a third staircase to the left of both. The final rather clause refines/corrects the same stair movement to completion at the top; do not execute a descent first."
+  },
+  "output": {
+    "status": "ok",
+    "subtasks": [
+      "You begin facing a white couch with green pillows. Turn to your left and you'll notice two sets of stairs with a section of wall between them. Walk to the leftmost set of stairs. Once you're standing at the top of the stairs, you're done."
+    ],
+    "stage_audit": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The initial facing relation is supplied by the source.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the top of the stairs",
+          "candidate_quotes": [
+            "the top of the stairs"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "You begin facing a white couch with green pillows. Turn to your left and you'll notice two sets of stairs with a section of wall between them. Walk to the leftmost set of stairs. Once you're standing at the top of the stairs, you're done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're standing at the top of the stairs",
+          "candidate_quotes": [
+            "Once you're standing at the top of the stairs"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Turn to your left; two sets of stairs with a section of wall between them; leftmost set of stairs",
+          "candidate_quotes": [
+            "Turn to your left",
+            "two sets of stairs with a section of wall between them",
+            "leftmost set of stairs"
+          ]
+        },
+        "source_quotes": [
+          "You begin facing a white couch with green pillows.",
+          "Turn to your left and you're going to notice two sets of stairs with a section of wall between them.",
+          "You're going to walk to the leftmost set of stairs",
+          "and then you're going to walk own them. Rather once you're standing at the top of the stairs you're done."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [],
+    "issues": []
+  },
+  "teaching_notes": {
+    "segmentation_pattern": "paired_spatial_choice",
+    "why_this_case_matters": "Leftmost selects a member of the described pair, not a third staircase to the left of both. The final rather clause refines/corrects the same stair movement to completion at the top; do not execute a descent first.",
+    "reusable_rule": "Leftmost selects a member of the described pair, not a third staircase to the left of both. The final rather clause refines/corrects the same stair movement to completion at the top; do not execute a descent first.",
+    "anti_pattern": "Do not infer a new staircase outside the pair or a full descent before returning to the top.",
+    "retrieval_rule": "Retrieve only when the current source exhibits the same relation; the example never determines a stage count."
+  },
+  "retrieval_tags": [
+    "paired_spatial_choice"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tests_run": 196,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "external_fixture_tests_not_run": [
+    "unittest.loader._FailedTest.test_release_transaction"
+  ],
+  "navigation_evaluated": false,
+  "semantic_correctness_certified": false,
+  "source_commit": "6e5ac3c6eac9914153da30d2e4e365bdc11ad045",
+  "baseline_commit": "cfd4c13010f105235d026ec14a9c2b4bbd7bf94e",
+  "source_archive_verified": true,
+  "r2r_prompt_schema_selection_equal": true,
+  "common_and_r2r_assets_equal": true
+}

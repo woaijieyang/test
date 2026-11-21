@@ -1,0 +1,328 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "RxR-DIAG-TRAIN-bounded-placement",
+  "role": "reviewer",
+  "dataset_scope": "RxR",
+  "language": "en-US",
+  "pair_id": null,
+  "source": {
+    "split": "train",
+    "role": "guide",
+    "record_id": "60",
+    "instruction_id": "60",
+    "scene_id": "S9hNv5qa7GM",
+    "trajectory_id": "24"
+  },
+  "provenance": {
+    "kind": "authored_single_defect_training_diagnostic",
+    "source_url": "https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz",
+    "archive_sha256": "b28b374b6e3203874f8bf65293df102b698efd51109e7e81a0e86fe3e3f780f2",
+    "source_record_sha256": "fd9af8f8eda8e4b27b83746444bda12fc3122dd2f2d1c9fcc2721fe80dabb411",
+    "source_status": "curated_teaching_target_not_official_subtask_annotation",
+    "navigation_evaluated": false,
+    "candidate_corruption_is_authored_not_model_output": true
+  },
+  "review_input": {
+    "original_instruction": "You begin facing a wall, turn to your left, take a step towards the front of the bed, using the door that's to the left of the dresser, exit the bedroom, you will enter a hallway, once you've entered the hallway, look immediate to your left, there will be an opening, take a step towards the opening, once you're standing in the hallway, outside of the opening facing the living room with the red couches, you are done.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "You begin facing a wall, turn to your left, take a step towards the front of the bed, using the door that's to the left of the dresser, exit the bedroom and enter the hallway.",
+        "Look immediately to your left; there will be an opening. Take a step towards the opening. Once you're standing in the hallway, inside the living room with the red couches, you are done."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "You begin facing a wall, turn to your left, take a step towards the front of the bed",
+        "requirement": "Retain initial facing, left turn and a bounded step toward the bed front.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You begin facing a wall, turn to your left, take a step towards the front of the bed"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "using the door that's to the left of the dresser, exit the bedroom, you will enter a hallway",
+        "requirement": "Use the dresser-left door to exit into the hallway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "using the door that's to the left of the dresser, exit the bedroom and enter the hallway"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "once you've entered the hallway, look immediate to your left, there will be an opening",
+        "requirement": "Only after hallway entry look left for the opening.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Look immediately to your left; there will be an opening."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "take a step towards the opening",
+        "requirement": "Preserve one step toward the opening, not a full visit to the next room.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Take a step towards the opening."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "once you're standing in the hallway, outside of the opening facing the living room with the red couches, you are done.",
+        "requirement": "Finish in the hallway outside the opening, facing the red-couch living room.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "inside the living room with the red couches"
+          }
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "This authored case supplies no Renderer artifact; review the actual stage strings."
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate moves the final placement from outside the opening to inside the living room."
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate moves the final placement from outside the opening to inside the living room."
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate moves the final placement from outside the opening to inside the living room."
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": [],
+        "conclusion": "The grouping respects source-supported completed objectives and coupled maneuvers."
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate moves the final placement from outside the opening to inside the living room."
+      }
+    ],
+    "findings": [
+      {
+        "code": "WRONG_TARGET",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C05",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          1
+        ],
+        "source_requirement_ids": [
+          "SRC-05"
+        ],
+        "source_quote": "once you're standing in the hallway, outside of the opening facing the living room with the red couches, you are done.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "inside the living room with the red couches"
+          }
+        ],
+        "evidence_level": "S1",
+        "problem": "The candidate moves the final placement from outside the opening to inside the living room.",
+        "execution_consequence": "It requires an unsupported room entry and loses the source-facing configuration.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            1
+          ],
+          "instruction": "Restore 'outside of the opening facing the living room with the red couches' in place of 'inside the living room with the red couches'; preserve the unaffected route.",
+          "protected_requirements": [
+            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Bedroom exit establishes the next stage entry. Preserve the bounded step toward the opening and the final outside-opening position facing the living room; the living room is not an entry target."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "The initial facing-wall state is supplied by the source.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "the hallway",
+          "candidate_quotes": [
+            "the hallway"
+          ]
+        },
+        "process": {
+          "text": "Execute the ordered actions stated in this stage.",
+          "candidate_quotes": [
+            "You begin facing a wall, turn to your left, take a step towards the front of the bed, using the door that's to the left of the dresser, exit the bedroom and enter the hallway."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: exit the bedroom and enter the hallway",
+          "candidate_quotes": [
+            "exit the bedroom and enter the hallway"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "turn to your left; a step towards the front of the bed; the door that's to the left of the dresser",
+          "candidate_quotes": [
+            "turn to your left",
+            "a step towards the front of the bed",
+            "the door that's to the left of the dresser"
+          ]
+        },
+        "source_quotes": [
+          "You begin facing a wall, turn to your left, take a step towards the front of the bed",
+          "using the door that's to the left of the dresser, exit the bedroom, you will enter a hallway"
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Inherit the hallway reached by the preceding exit; do not repeat that exit command.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "outside of the opening facing the living room with the red couches",
+          "candidate_quotes": [
+            "inside the living room with the red couches"
+          ]
+        },
+        "process": {
+          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "candidate_quotes": [
+            "Look immediately to your left; there will be an opening. Take a step towards the opening. Once you're standing in the hallway, inside the living room with the red couches, you are done."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Complete the source-supported event: Once you're standing in the hallway, outside of the opening facing the living room with the red couches",
+          "candidate_quotes": [
+            "Once you're standing in the hallway, inside the living room with the red couches"
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Look immediately to your left; a step towards the opening; outside of the opening",
+          "candidate_quotes": [
+            "Look immediately to your left",
+            "a step towards the opening",
+            "inside the living room with the red couches"
+          ]
+        },
+        "source_quotes": [
+          "once you've entered the hallway, look immediate to your left, there will be an opening",
+          "take a step towards the opening",
+          "once you're standing in the hallway, outside of the opening facing the living room with the red couches, you are done."
+        ],
+        "carryover": [],
+        "status": "gap",
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Complete the source-supported event: exit the bedroom and enter the hallway",
+          "candidate_quote": "exit the bedroom and enter the hallway"
+        },
+        "next_entry": {
+          "text": "Inherit the hallway reached by the preceding exit; do not repeat that exit command.",
+          "candidate_quote": "Look immediately to your left; there will be an opening."
+        },
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Inherit the hallway reached by the preceding exit; do not repeat that exit command."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "terminal_refinement",
+    "review_principle": "The candidate moves the final placement from outside the opening to inside the living room.",
+    "case_specific_focus": "It requires an unsupported room entry and loses the source-facing configuration.",
+    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+  },
+  "retrieval_tags": [
+    "terminal_refinement"
+  ]
+}

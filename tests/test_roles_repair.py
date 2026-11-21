@@ -9,7 +9,7 @@ from host.compile import compile_prompt, runtime_review_output
 from host.protocol import generator,reviewer
 class RolesRepairTests(unittest.TestCase):
  def test_role_specific_profile_counts(self):
-     for profile, expected in [('r2r-en',(25,52)),('rxr-en-us',(35,64))]:
+     for profile, expected in [('r2r-en',(25,52)),('rxr-en-us',(43,80))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
