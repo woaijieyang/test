@@ -23,7 +23,7 @@ def main():
     files={}
     for path in sorted(ROOT.rglob('*')):
         if (not path.is_file() or '.git' in path.parts or '__pycache__' in path.parts
-                or path.suffix=='.pyc' or path.name=='FILE_HASHES.json'):
+                or path.suffix=='.pyc' or path==ROOT/'FILE_HASHES.json'):
             continue
         files[path.relative_to(ROOT).as_posix()]='gitblob-sha1:'+gitblob(path.read_bytes())
     (ROOT/'FILE_HASHES.json').write_text(json.dumps(files,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

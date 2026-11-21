@@ -42,6 +42,7 @@ jobs:
       - name: Prepare frozen baseline and exact scoped integration
         run: |
           git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
+          python -B tools/finalize_rxr_sources.py
           python -B tools/integrate_rxr.py
       - name: Verify official training source and build authored examples
         run: python -B tools/build_rxr_teaching.py --verify-upstream
@@ -98,7 +99,7 @@ jobs:
           test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          git add README.md host/template_selector.py host/run.py tools/integrate_rxr.py tools/build_rxr_teaching.py tools/rxr_lesson_specs.py tests/test_closed_loop_35.py tests/test_rxr_profile.py tests/test_rxr_calibration.py generator/templates_manifest.json reviewer/templates_manifest.json generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
           if ! git diff --cached --quiet; then
             git commit -m 'Integrate verified RxR lessons and tested profile-scoped runtime assets'
             git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
