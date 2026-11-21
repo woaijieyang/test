@@ -1,0 +1,98 @@
+name: RxR source and baseline audit
+
+on:
+  push:
+    branches: ['LLM-decompose-*']
+    paths: ['.github/workflows/rxr-development.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing test dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Inventory release labels and runtime assets
+        run: |
+          python - <<'PY'
+          import collections, json, pathlib, re, subprocess
+          root = pathlib.Path('.')
+          paths = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          pattern = re.compile(r'(?i)\bv\d+(?:[._]\d+)*\b')
+          hits = []
+          for name in paths:
+              if not name or name == 'README.md': continue
+              path = root / name
+              try: text = path.read_text(encoding='utf-8')
+              except (UnicodeError, OSError): continue
+              lines = [(i, line[:220]) for i,line in enumerate(text.splitlines(),1) if pattern.search(line)]
+              if lines or pattern.search(name):
+                  hits.append((name, len(lines), lines[:3]))
+          print('PROJECT_LABEL_INVENTORY', json.dumps(hits, ensure_ascii=False))
+          for role in ('generator','reviewer'):
+              for folder in ('core','val_seen','paired','diagnostics'):
+                  for path in sorted((root/role/'templates'/'RxR'/folder).glob('*.json')):
+                      row=json.loads(path.read_bytes())
+                      notes=row.get('teaching_notes',{})
+                      print('RXR_ASSET',json.dumps({'path':str(path),'id':row.get('template_id'),'source':(row.get('input') or row.get('review_input',{})).get('original_instruction'),'decision':row.get('decision'),'verdict':row.get('expected_review',{}).get('verdict'),'pattern':notes.get('segmentation_pattern',notes.get('review_pattern')),'tags':row.get('retrieval_tags'), 'provenance':row.get('provenance')},ensure_ascii=False))
+          PY
+      - name: Inspect official training-only candidates
+        run: |
+          python - <<'PY'
+          import gzip, hashlib, json, pathlib, re, tempfile, urllib.request
+          url='https://storage.googleapis.com/rxr-data/rxr_train_guide.jsonl.gz'
+          path=pathlib.Path(tempfile.gettempdir())/'rxr-train-guide.jsonl.gz'
+          with urllib.request.urlopen(url, timeout=120) as src, path.open('wb') as dst:
+              while chunk:=src.read(1048576): dst.write(chunk)
+          print('OFFICIAL_TRAINING_SOURCE',url,'sha256',hashlib.sha256(path.read_bytes()).hexdigest())
+          patterns={
+            'correction':r'\b(?:sorry|or rather|i mean)\b',
+            'conditional_observation':r'\bif (?:you|we) (?:turn|look)',
+            'paired_relation':r'\b(?:right|left)(?:most)?\b.{0,45}\b(?:two|both)\b|\b(?:two|both)\b.{0,45}\b(?:right|left)(?:most)?\b',
+            'ordinal_origin':r'\b(?:second|third) (?:door|entrance|opening)',
+            'bounded_terminal':r'\b(?:one step|a step|halfway|half way|midway)\b',
+            'return_revisit':r'\b(?:return|back through|same door)\b',
+            'repeat_scope':r'\b(?:walk around|go around|walk straight|move forward)\b.{0,90}\b(?:walk around|go around|walk straight|move forward)\b',
+            'late_identity':r'\b(?:doorway|entrance|opening)\b.{0,140}\b(?:that is|which is|it has|there are two)\b',
+          }
+          chosen={key:[] for key in patterns}; seen=set()
+          with gzip.open(path,'rt',encoding='utf-8') as stream:
+              for line in stream:
+                  row=json.loads(line)
+                  if row.get('language')!='en-US': continue
+                  text=row.get('instruction','')
+                  if not 35 <= len(text.split()) <= 145: continue
+                  for key,pattern in patterns.items():
+                      if len(chosen[key])<3 and re.search(pattern,text,re.I|re.S):
+                          identity=(row.get('scan'),row.get('path_id'))
+                          if identity in seen: continue
+                          item={field:row.get(field) for field in ('instruction_id','path_id','scan','language','instruction')}
+                          item['source_record_sha256']=hashlib.sha256(line.encode()).hexdigest()
+                          chosen[key].append(item); seen.add(identity); break
+                  if all(len(items)>=3 for items in chosen.values()): break
+          for key,items in chosen.items():
+              for item in items: print('TRAIN_CANDIDATE',key,json.dumps(item,ensure_ascii=False))
+          PY
+      - name: Run inherited self-contained suite
+        run: |
+          python -B - <<'PY'
+          import unittest
+          suite=unittest.defaultTestLoader.discover('tests')
+          out=unittest.TestSuite()
+          def visit(node):
+              for item in node:
+                  if isinstance(item,unittest.TestSuite): visit(item)
+                  elif 'test_release_transaction' not in item.id(): out.addTest(item)
+          visit(suite)
+          result=unittest.TextTestRunner(verbosity=2).run(out)
+          raise SystemExit(not result.wasSuccessful())
+          PY
