@@ -51,7 +51,7 @@
         "source_quote": "Make another left in the hall.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Make another left in the hall.",
         "candidate_evidence": [
-          "Make another left into the room next door."
+          "Make another left in the hall."
         ],
         "status": "covered"
       },
@@ -62,7 +62,7 @@
         "candidate_evidence": [
           "Make another left into the room next door."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
@@ -164,7 +164,7 @@
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "text": "The source first requires standing in the hallway doorway, then continues with two left turns and a final room entry. The candidate loses the first doorway landmark; no additional terminal STOP is specified.",
           "candidate_quotes": [],
           "stop_scope": "none"
         },
@@ -175,7 +175,9 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
         "source_quotes": [
           "Make another left into the room next door.",

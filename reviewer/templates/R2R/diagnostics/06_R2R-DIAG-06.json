@@ -53,14 +53,14 @@
         "candidate_evidence": [
           "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Keep going straight beyond the chair on your right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Keep going straight beyond the chair on your right.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          "Keep going straight beyond the chair on your right."
         ],
         "status": "covered"
       },
@@ -69,7 +69,7 @@
         "source_quote": "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom."
         ],
         "status": "covered"
       }

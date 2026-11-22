@@ -97,7 +97,7 @@
       {
         "layer": "L5_grouping",
         "status": "issue",
-        "conclusion": "The candidate turns a transit region and the same bedroom endpoint refinement into separate objectives without a distinct intervening visit.",
+        "conclusion": "Only the boundary between hallway-to-bedroom movement and the same bedroom-door WAIT is over-fragmented. The earlier doorway crossing may be a legitimate completed transition.",
         "finding_indices": [
           0
         ]
@@ -105,7 +105,7 @@
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "Textually completed transitions do not alone prove local-focus value. Keep this continuous route and its endpoint together; a different source with an independent visit may split.",
+        "conclusion": "All route requirements remain covered. A legal earlier room-transition cut does not justify isolating the terminal WAIT as a third objective.",
         "finding_indices": [
           0
         ]
@@ -119,19 +119,14 @@
         "dimension": "segmentation_adequacy",
         "related_dimensions": [],
         "affected_subtask_indices": [
-          0,
           1,
           2
         ],
         "source_requirement_ids": [
           "SRC-01"
         ],
-        "source_quote": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. ",
+        "source_quote": "follow the hallway until you get to a bedroom. Wait at the bedroom door.",
         "candidate_evidence": [
-          {
-            "subtask_index": 0,
-            "quote": "Go through the doorway to the room with the sink."
-          },
           {
             "subtask_index": 1,
             "quote": "Follow the hallway until you get to a bedroom."
@@ -142,16 +137,15 @@
           }
         ],
         "evidence_level": "S2",
-        "problem": "The candidate turns a transit region and the same bedroom endpoint refinement into separate objectives without a distinct intervening visit.",
-        "execution_consequence": "Textually completed transitions do not alone prove local-focus value. Keep this continuous route and its endpoint together; a different source with an independent visit may split.",
+        "problem": "The candidate separates the bedroom-door WAIT into a terminal-only stage immediately after the hallway approach to that same bedroom. No new local navigation target begins at this boundary.",
+        "execution_consequence": "The unnecessary final boundary detaches the destination's waiting condition from its governing approach, creating a redundant handoff without adding local focus.",
         "repair": {
           "operation": "regroup",
           "affected_subtask_indices": [
-            0,
             1,
             2
           ],
-          "instruction": "Regroup the transit sequence and its bedroom-door waiting condition without adding a stop in the sink room.",
+          "instruction": "Merge the hallway-to-bedroom approach and its final bedroom-door WAIT into one stage. The earlier sink-room doorway crossing may remain separate if its completed transition and next-stage entry are both supported.",
           "protected_requirements": [
             "Preserve every unaffected action, target identity, direction, ordinal, condition and terminal relation."
           ]
@@ -322,8 +316,8 @@
   },
   "teaching_notes": {
     "review_pattern": "transit_oversegmentation",
-    "case_specific_focus": "The candidate turns a transit region and the same bedroom endpoint refinement into separate objectives without a distinct intervening visit.",
-    "transfer_rule": "Textually completed transitions do not alone prove local-focus value. Keep this continuous route and its endpoint together; a different source with an independent visit may split.",
-    "anti_pattern": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding."
+    "case_specific_focus": "A valid room-transition boundary can coexist with an unnecessary final boundary. This example rejects separating bedroom-door WAIT from the hallway approach that establishes the same terminal target.",
+    "transfer_rule": "For oversegmentation, identify the exact unnecessary cut. A new room crossing is not automatically wrong; a terminal placement attached to the same just-reached destination normally belongs with its approach.",
+    "anti_pattern": "Do not reject every region transition as oversegmented or force an entire multi-region route into one stage. Require a genuine independent objective at each proposed boundary."
   }
 }

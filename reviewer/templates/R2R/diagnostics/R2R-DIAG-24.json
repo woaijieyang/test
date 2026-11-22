@@ -27,7 +27,7 @@
       "status": "ok",
       "subtasks": [
         "Exit the pool area and walk toward the stairs, passing the chair.",
-        "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+        "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
       ]
     }
   },
@@ -45,7 +45,7 @@
         "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
         "candidate_evidence": [
           "Exit the pool area and walk toward the stairs, passing the chair.",
-          "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+          "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
         ],
         "status": "altered_or_missing"
       }
@@ -94,12 +94,12 @@
           "SRC-01"
         ],
         "candidate_evidence": [
-          "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+          "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
         ],
         "failed_layer": "L3_stage_checks",
         "c_check": "C09",
         "evidence_level": "S1",
-        "problem": "The candidate starts after hallway entry and removes the required hallway-entry action from the next stage.",
+        "problem": "The candidate starts the second stage 'From the hallway' although the prior stage only passes the chair; the source-required entry into the hallway slightly to the right is omitted. The final locker-side WAIT remains present.",
         "execution_consequence": "The agent may skip the transition into the hallway before selecting the third door.",
         "repair": {
           "operation": "restore_source_semantics",
@@ -164,35 +164,35 @@
         "status": "gap",
         "entry": {
           "mode": "explicit_context",
-          "text": "Begin immediately after passing the chair; do not assume hallway entry is already complete.",
+          "text": "The candidate says 'From the hallway', assuming hallway entry is complete, but the source requires entering the hallway after passing the chair.",
           "candidate_quotes": [
-            "After passing the chair"
+            "From the hallway"
           ]
         },
         "target": {
           "text": "The third door on the left after entering the hallway, followed by the locker-side waiting position.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "process": {
-          "text": "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers.",
+          "text": "From the hallway, turn right and enter the third door on the left. Wait by the lockers.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "ending": {
-          "kind": "unspecified",
-          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "kind": "explicit_event",
+          "text": "The candidate retains the final WAIT beside the lockers; the defect is the omitted hallway entry and unsupported entry state, not an omitted terminal stop.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "Wait by the lockers."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
           "text": "hallway to the slight right; right turn; third door on the left",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "source_requirement_ids": [
@@ -214,20 +214,21 @@
           "candidate_quote": "Exit the pool area and walk toward the stairs, passing the chair."
         },
         "next_entry": {
-          "text": "The actual next candidate stage.",
-          "candidate_quote": "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+          "text": "The actual next stage incorrectly assumes hallway entry.",
+          "candidate_quote": "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
         },
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01"
         ],
-        "handoff_rationale": "The source places the hallway past the chair. The earlier candidate ended after hallway entry and began the next stage from the hallway, silently moving the boundary beyond the chair. The corrected candidate preserves the chair as the starting reference and keeps hallway entry in stage 2."
+        "handoff_rationale": "The preceding stage passes the chair without commanding entry into the hallway. The next stage nevertheless starts 'From the hallway', skipping the source-required hallway entry slightly to the right; its third-door selection and final WAIT remain present."
       }
     ]
   },
   "teaching_notes": {
     "review_pattern": "handoff_advanced",
     "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
-    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed.",
+    "review_principle": "Detect a premature handoff: passing the chair is not equivalent to entering the hallway. Protect the preserved third-door selection and final waiting condition, and flag only the missing entry."
   }
 }

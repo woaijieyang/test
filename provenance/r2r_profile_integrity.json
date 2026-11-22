@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 129,
+  "file_count": 132,
   "files": [
     {
       "path": "adapter/README.md",
@@ -17,6 +17,10 @@
     {
       "path": "adapter/source.py",
       "git_blob_sha1": "0694580b6f6fa3782a00dcb25826f2ba8de2613b"
+    },
+    {
+      "path": "docs/R2R_RULE_EVIDENCE.md",
+      "git_blob_sha1": "93396c0f5bc0f4fef05a2f4f6461a4112f6ff4fb"
     },
     {
       "path": "generator/dataset_rules/r2r_en.md",
@@ -224,15 +228,15 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/04_R2R-DIAG-04.json",
-      "git_blob_sha1": "e268997aaf267631318a61317871f5678979ffdd"
+      "git_blob_sha1": "994c593b807948f02a1c8db290862ba6a06a40fc"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/05_R2R-DIAG-05.json",
-      "git_blob_sha1": "f705262ad61be0d64e2b7a20cf09989a05901170"
+      "git_blob_sha1": "593a8c3efe956ead3e38ac6f1bcb555b74664a0f"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/06_R2R-DIAG-06.json",
-      "git_blob_sha1": "20870b4d37b999e866f69461ce50a0b4a7ff09de"
+      "git_blob_sha1": "db0f780efa84fa4de6bfeb5e75f27c78d3686d0a"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/07_R2R-DIAG-07.json",
@@ -240,7 +244,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/08_R2R-DIAG-08.json",
-      "git_blob_sha1": "c480ae5a58ba1b6064e920a6f8291df375f9ce77"
+      "git_blob_sha1": "987354f270d1ee59c02de8770493cea0725ae73b"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/09_R2R-DIAG-09.json",
@@ -248,7 +252,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/10_R2R-DIAG-10.json",
-      "git_blob_sha1": "267ced00533b722b11c20e5181f87dd591c31108"
+      "git_blob_sha1": "cabcdc0baaf22deb53273bb27986867df9b44781"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/11_R2R-DIAG-11.json",
@@ -256,7 +260,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/12_R2R-DIAG-12.json",
-      "git_blob_sha1": "20d0dabb7f10b7b1a110f58dd203dd01e7c3cf2b"
+      "git_blob_sha1": "1a25053f52de35cf8badee0406c18ad61488a1bd"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/13_R2R-DIAG-13.json",
@@ -268,19 +272,19 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/15_R2R-DIAG-15.json",
-      "git_blob_sha1": "7f30c31dceb6ba501a90385d3e46e98acf1421c2"
+      "git_blob_sha1": "4ee15e9a326f0c0ab89f7c4b1854370e4fd97151"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/16_R2R-DIAG-16.json",
-      "git_blob_sha1": "39bec10bc00f1db0c28021d1fc5a03b1567c1541"
+      "git_blob_sha1": "157c6f9400bf9f05d25134ea4105d00b76ea6521"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/17_R2R-DIAG-17.json",
-      "git_blob_sha1": "c3920fd78a2bb6c9dcaff38f8147847dee0945a1"
+      "git_blob_sha1": "135d1b8f1cc670e1d44fd2d85c6aa07cddc0a539"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/18_R2R-DIAG-18.json",
-      "git_blob_sha1": "da50b5c6ebd92100541ecd6d3bf8c9732abe5a05"
+      "git_blob_sha1": "c080384d65567ec7848a156a7098cd0aa6bcad02"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/19_R2R-DIAG-19.json",
@@ -296,11 +300,15 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/28_R2R-DIAG-28.json",
-      "git_blob_sha1": "067a7fe6b2ad23739bc676ac4f9f01be9f3495a9"
+      "git_blob_sha1": "365a0778d808dbceee3043767269daa40a741708"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/29_R2R-DIAG-29.json",
       "git_blob_sha1": "2a49e23fc35f4ad8ef694c72a65cea40a680e8b8"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-20.json",
+      "git_blob_sha1": "5786d3ade831708d594d32193eb31a60a5cc06f4"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-21.json",
@@ -316,7 +324,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-24.json",
-      "git_blob_sha1": "b89a0a30f970aa6cd738b421d6d1241964d63d67"
+      "git_blob_sha1": "3500a03e4b81b4cd2673ba8fcbd3e23755837ac1"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-25.json",
@@ -517,6 +525,10 @@
     {
       "path": "tests/test_r2r_specialization.py",
       "git_blob_sha1": "5fae52bff5f160364943fbddac1ee6dddf9eb275"
+    },
+    {
+      "path": "tests/test_r2r_teaching_evidence.py",
+      "git_blob_sha1": "b60ff037998e442afe3848c138138a4bc9e75f54"
     }
   ]
 }

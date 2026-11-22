@@ -33,7 +33,7 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "pass",
+      "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
@@ -42,16 +42,16 @@
         "source_quote": "Walk along the hallway.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk along the hallway.",
         "candidate_evidence": [
-          "Turn right at the second doorway and stop beside the desk."
+          "Walk along the hallway."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Do not enter the first doorway.",
         "requirement": "Preserve the ordinal target and its counting origin: Do not enter the first doorway.",
         "candidate_evidence": [
-          "Turn right at the second doorway and stop beside the desk."
+          "enter the first doorway"
         ],
         "status": "altered_or_missing"
       },
@@ -62,7 +62,7 @@
         "candidate_evidence": [
           "Turn right at the second doorway and stop beside the desk."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
@@ -82,15 +82,19 @@
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
+        "status": "issue",
         "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
+        "status": "issue",
         "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L4_handoffs",
@@ -115,15 +119,15 @@
     ],
     "findings": [
       {
-        "source_quote": "Walk along the hallway. Do not enter the first doorway. Turn right at the second doorway a",
+        "source_quote": "Do not enter the first doorway.",
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-02"
         ],
         "candidate_evidence": [
-          "Turn right at the second doorway and stop beside the desk."
+          "enter the first doorway"
         ],
         "failed_layer": "L1_source_coverage",
-        "c_check": "C3_ORDER",
+        "c_check": "C04",
         "evidence_level": "S1",
         "problem": "The candidate removes a prohibition or negation, potentially authorizing a movement the source forbids.",
         "execution_consequence": "The prohibition is removed; the agent may enter or traverse a region the source explicitly says to avoid.",
@@ -180,7 +184,9 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
         "source_quotes": [
           "Turn right at the second doorway and stop beside the desk.",
@@ -196,6 +202,6 @@
     "review_pattern": "negation",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a negation corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The hallway traverse and second-doorway endpoint are preserved; only the prohibition on entering the first doorway is lost. Cite SRC-02 and check its active negative scope without fabricating unrelated omissions."
   }
 }

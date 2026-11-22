@@ -1,0 +1,213 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-20",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "57",
+    "episode_id": "57",
+    "instruction_id": null,
+    "scene_id": null,
+    "source_key": "R2R|val_seen|standard|record_id=57|episode_id=57|scene_id=unknown"
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_uploaded_val_seen",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "REFERENT"
+  },
+  "review_input": {
+    "original_instruction": "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Turn around.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around.",
+        "candidate_evidence": [
+          "Turn around."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Walk down the hall, past the stairs, past the chair.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Walk down the hall, past the stairs, past the chair.",
+        "candidate_evidence": [
+          "Walk down the hall, past the stairs, past the chair."
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Stop right there.",
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Stop right there.",
+        "candidate_evidence": [
+          "Stop beside the stairs."
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "Wait.",
+        "requirement": "Preserve the completion or stationary-position condition: Wait.",
+        "candidate_evidence": [
+          "Wait."
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_assessable",
+        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "source_quote": "Stop right there.",
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "candidate_evidence": [
+          "Stop beside the stairs."
+        ],
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C11",
+        "evidence_level": "S1",
+        "problem": "After instructing the agent to pass the stairs and then the chair, the source says to stop right there. The candidate instead relocates that stop beside the already passed stairs, changing the terminal place.",
+        "execution_consequence": "The agent may stop early by the stairs instead of stopping at the source-defined position after passing the chair.",
+        "repair": {
+          "operation": "referent",
+          "affected_stage_indices": [
+            0
+          ],
+          "instruction": "Restore the final stop at the source-defined location after passing the chair, preserving the final WAIT and all preceding movement.",
+          "protected_requirements": [
+            "Preserve all other source-supported actions and landmarks.",
+            "Do not add unsupported stops or route segments.",
+            "Keep original conditions, directions, counts, and spatial relations."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "gap",
+        "entry": {
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Wait.",
+          "candidate_quotes": [
+            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
+          ]
+        },
+        "process": {
+          "text": "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. ",
+          "candidate_quotes": [
+            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate commands an unsupported stop beside the stairs followed by WAIT; the source requires stopping at the reached position after passing the chair.",
+          "candidate_quotes": [
+            "Stop beside the stairs.",
+            "Wait."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "spatial_frame: right; manner_or_constraint: around, past",
+          "candidate_quotes": [
+            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "source_quotes": [
+          ", past the chair.  Stop right there.  Wait. "
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": []
+  },
+  "teaching_notes": {
+    "review_pattern": "referent",
+    "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
+    "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
+    "review_principle": "This is a true referent/terminal-placement corruption: the final STOP location changes from the reached position after passing the chair to the earlier stairs. The earlier travel and final WAIT remain present, so only SRC-03 is altered."
+  }
+}

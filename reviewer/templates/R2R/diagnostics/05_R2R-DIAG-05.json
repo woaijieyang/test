@@ -53,14 +53,14 @@
         "candidate_evidence": [
           "Go into the next door on the right."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "You'll see a snowman quilt on the bed.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: You'll see a snowman quilt on the bed.",
         "candidate_evidence": [
-          "Go into the next door on the right."
+          "You'll see a snowman quilt on the bed."
         ],
         "status": "covered"
       },
@@ -69,7 +69,7 @@
         "source_quote": "Wait right there.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Wait right there.",
         "candidate_evidence": [
-          "Go into the next door on the right."
+          "Wait right there."
         ],
         "status": "covered"
       }

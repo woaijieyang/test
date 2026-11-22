@@ -42,7 +42,7 @@
         "source_quote": "Walk through the door and around the table.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk through the door and around the table.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          "Walk through the door and around the table."
         ],
         "status": "covered"
       },
@@ -60,7 +60,7 @@
         "source_quote": "Turn right and walk around the chair.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right and walk around the chair.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          "Turn right and walk around the chair."
         ],
         "status": "covered"
       },
@@ -71,7 +71,7 @@
         "candidate_evidence": [
           "Turn left and walk into the small hallway then go into the bedroom."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [

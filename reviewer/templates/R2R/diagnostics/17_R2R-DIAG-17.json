@@ -42,9 +42,9 @@
         "source_quote": "Walk down the porch steps and walk into the covered porch.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk down the porch steps and walk into the covered porch.",
         "candidate_evidence": [
-          "Go inside the house and  in front of the white couch by the window."
+          "Walk down the porch steps and walk into the covered porch."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
@@ -108,15 +108,15 @@
     ],
     "findings": [
       {
-        "source_quote": " covered porch. Go inside the house and wait in front of the white couch by the window. ",
+        "source_quote": "wait in front of the white couch by the window.",
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-02"
         ],
         "candidate_evidence": [
           "Go inside the house and  in front of the white couch by the window."
         ],
         "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
+        "c_check": "C11",
         "evidence_level": "S1",
         "problem": "The candidate drops an explicitly requested stop or wait at its source-defined location.",
         "execution_consequence": "The explicitly requested stop/wait/placement is omitted; the agent may continue past the required endpoint.",
@@ -156,8 +156,8 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "kind": "unspecified",
+          "text": "The source explicitly requires waiting in front of the white couch by the window; the candidate omits WAIT and leaves an incomplete final placement clause.",
           "candidate_quotes": [],
           "stop_scope": "none"
         },
@@ -168,7 +168,8 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
           "Walk down the porch steps and walk into the covered porch.",
@@ -183,6 +184,6 @@
     "review_pattern": "stop_omission",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The initial porch transition remains intact and is covered by SRC-01. The omitted WAIT belongs to SRC-02 and removes the source-required final stationary placement. Check its source coverage and closure at the same stage."
   }
 }
