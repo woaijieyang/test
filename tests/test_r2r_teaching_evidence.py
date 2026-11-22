@@ -28,6 +28,14 @@ class R2RTeachingEvidenceTests(unittest.TestCase):
                 candidate = "\n".join(row["review_input"]["candidate"]["subtasks"])
                 self.assertNotEqual(original, candidate)
 
+    @staticmethod
+    def evidence_quote(item):
+        if isinstance(item, str):
+            return item
+        if isinstance(item, dict) and isinstance(item.get("quote"), str):
+            return item["quote"]
+        raise TypeError(f"Unsupported candidate evidence type: {type(item).__name__}")
+
     def test_literal_preserved_requirements_are_not_marked_missing(self):
         for number in range(1, 21):
             row = self.example(number)
@@ -38,7 +46,7 @@ class R2RTeachingEvidenceTests(unittest.TestCase):
                 with self.subTest(template=number, requirement=coverage["requirement_id"]):
                     self.assertEqual(coverage["status"], "covered")
                     self.assertTrue(any(
-                        evidence in candidate for evidence in coverage["candidate_evidence"]
+                        self.evidence_quote(evidence) in candidate for evidence in coverage["candidate_evidence"]
                     ))
 
     def test_findings_point_to_actual_changed_requirement_and_quotes(self):
@@ -54,7 +62,7 @@ class R2RTeachingEvidenceTests(unittest.TestCase):
                     self.assertTrue(set(finding["source_requirement_ids"]) & changed)
                     self.assertIn(finding["source_quote"], row["review_input"]["original_instruction"])
                     candidate = "\n".join(row["review_input"]["candidate"]["subtasks"])
-                    self.assertTrue(all(q in candidate for q in finding["candidate_evidence"]))
+                    self.assertTrue(all(self.evidence_quote(q) in candidate for q in finding["candidate_evidence"]))
 
     def test_constraint_and_terminal_diagnostics(self):
         for number in (8, 18):
