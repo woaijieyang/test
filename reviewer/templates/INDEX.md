@@ -68,7 +68,7 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-07](R2R/diagnostics/07_R2R-DIAG-07.json)|diagnostics|—|stop_omission|—|
 |R2R|[R2R-DIAG-08](R2R/diagnostics/08_R2R-DIAG-08.json)|diagnostics|—|negation|—|
 |R2R|[R2R-DIAG-09](R2R/diagnostics/09_R2R-DIAG-09.json)|diagnostics|—|orientation|—|
-|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|referent|—|
+|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|orientation_reference_frame|—|
 |R2R|[R2R-DIAG-11](R2R/diagnostics/11_R2R-DIAG-11.json)|diagnostics|—|ordinal|—|
 |R2R|[R2R-DIAG-12](R2R/diagnostics/12_R2R-DIAG-12.json)|diagnostics|—|direction|—|
 |R2R|[R2R-DIAG-13](R2R/diagnostics/13_R2R-DIAG-13.json)|diagnostics|—|transition|—|

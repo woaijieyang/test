@@ -28,9 +28,9 @@
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "1962a64861c8148b98def159717e7e13a4d96c864674122fa33db9d993dde592",
+    "compiled_sha256": "b97ff0930e24aa09b8bcd67f3f8b523d51bbadfd4144e58f6600f96208e9a42e",
     "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
-    "bytes": 148079,
+    "bytes": 148045,
     "default_examples": 6,
     "library_count": 55,
     "fixed_core_count": 10,
