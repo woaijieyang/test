@@ -1,0 +1,260 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-29",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "21",
+    "episode_id": "21",
+    "instruction_id": null,
+    "scene_id": "mp3d/kEZ7cmS4wCh/kEZ7cmS4wCh.glb",
+    "trajectory_id": "185",
+    "source_key": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185"
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_existing_val_seen_template",
+    "source_template": "R2R-GEN-021",
+    "candidate_corruption_is_authored_not_model_output": true,
+    "corruption_pattern": "UNSUPPORTED_ADDITION",
+    "curation_basis": "Contrastive teaching, not trajectory ground truth or observed model output."
+  },
+  "review_input": {
+    "original_instruction": "Walk between the couch and the window.  Turn left and walk towards the stairway.  Go up the three steps and when you get to the top, wait. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps.",
+        "Go up the three steps again and when you get to the top, wait."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk between the couch and the window.  Turn left and walk towards the stairway.  Go up the three steps and when you get to the top, wait. ",
+        "requirement": "Preserve the complete ordered route and its entity roles, completion conditions and terminal placement.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Go up the three steps again and when you get to the top, wait."
+          }
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_assessable",
+        "conclusion": "No rendered snapshot is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "A later completion clause refines the same movement rather than licensing a second movement.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "code": "UNSUPPORTED_ADDITION",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C02",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0,
+          1
+        ],
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quote": "Walk between the couch and the window.  Turn left and walk towards the stairway.  Go up the three steps and when you get to the top, wait. ",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Go up the three steps again and when you get to the top, wait."
+          }
+        ],
+        "evidence_level": "S2",
+        "problem": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
+        "execution_consequence": "A later completion clause refines the same movement rather than licensing a second movement.",
+        "repair": {
+          "operation": "remove",
+          "affected_subtask_indices": [
+            0,
+            1
+          ],
+          "instruction": "Remove the repeated ascent and keep the top-of-steps wait attached to the original ascent.",
+          "protected_requirements": [
+            "Preserve every unaffected action, target identity, direction, ordinal, condition and terminal relation."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Use the episode start.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps.",
+          "candidate_quotes": [
+            "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+          ]
+        },
+        "process": {
+          "text": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps.",
+          "candidate_quotes": [
+            "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate states this event; assess source support independently of textual executability.",
+          "candidate_quotes": [
+            "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Walk between the couch and the window.  Turn left and walk towards the stairway.  Go up the three steps and when you get to the top, wait. "
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the preceding intended event without replay.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Go up the three steps again and when you get to the top, wait.",
+          "candidate_quotes": [
+            "Go up the three steps again and when you get to the top, wait."
+          ]
+        },
+        "process": {
+          "text": "Go up the three steps again and when you get to the top, wait.",
+          "candidate_quotes": [
+            "Go up the three steps again and when you get to the top, wait."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate states this event; assess source support independently of textual executability.",
+          "candidate_quotes": [
+            "Go up the three steps again and when you get to the top, wait."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Walk between the couch and the window.  Turn left and walk towards the stairway.  Go up the three steps and when you get to the top, wait. "
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps.",
+          "candidate_quote": "Walk between the couch and the window. Turn left and walk towards the stairway. Go up the three steps."
+        },
+        "next_entry": {
+          "text": "Go up the three steps again and when you get to the top, wait.",
+          "candidate_quote": "Go up the three steps again and when you get to the top, wait."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "handoff_rationale": "The textual order is preserved; the finding below assesses the actual grouping or source-support defect."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "endpoint_refinement_replayed_motion",
+    "case_specific_focus": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
+    "transfer_rule": "A later completion clause refines the same movement rather than licensing a second movement.",
+    "anti_pattern": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding."
+  }
+}

@@ -147,7 +147,9 @@
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: through; past Stage 2: through",
     "handoff_focus": "Stage 1 ends with 'Walk through the door on the other side of the bedroom, past the bed and lamp.'; stage 2 begins from 'From the far-side bedroom doorway, walk through the hallway and turn the corner'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not change walk through the open doors into open the doors; do not import an action merely because an attribute can also be a verb.",
+    "case_rationale": "Open doors are entity states identifying the passage, not an instruction to operate doors. Preserve the complete path to the entrance.",
+    "transfer_rule": "Open doors are entity states identifying the passage, not an instruction to operate doors. Preserve the complete path to the entrance."
   },
   "retrieval_tags": [
     "room_transition",

@@ -83,7 +83,9 @@
     "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
-    "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint."
+    "anti_pattern": "Do not force a split at a room noun or doorway. A different source with a completed visit followed by an independent objective can support a cut.",
+    "case_rationale": "The sink room is transit space within a continuous route ending at the bedroom door. Read the until condition before closing the hallway movement.",
+    "transfer_rule": "The sink room is transit space within a continuous route ending at the bedroom door. Read the until condition before closing the hallway movement."
   },
   "retrieval_tags": [
     "room_transition",

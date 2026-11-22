@@ -44,14 +44,17 @@
         "candidate_evidence": [
           "Walk forward through the kitchen and enter the empty room that is the third door from the left."
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Stop in the room next to the door.",
         "requirement": "Preserve the completion or stationary-position condition: Stop in the room next to the door.",
         "candidate_evidence": [
-          "Walk forward through the kitchen and enter the empty room that is the third door from the left."
+          {
+            "subtask_index": 0,
+            "quote": "in the room next to the door."
+          }
         ],
         "status": "altered_or_missing"
       }
@@ -60,13 +63,13 @@
       {
         "layer": "L0_integrity",
         "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "conclusion": "No rendered snapshot is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "SRC-01 is covered; SRC-02 loses its stop command.",
         "finding_indices": [
           0
         ]
@@ -74,13 +77,13 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The required terminal action is missing.",
         "finding_indices": [
           0
         ]
@@ -88,19 +91,19 @@
       {
         "layer": "L4_handoffs",
         "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "conclusion": "No adjacent handoff exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore the omitted stop without changing the preserved approach.",
         "finding_indices": [
           0
         ]
@@ -108,28 +111,37 @@
     ],
     "findings": [
       {
-        "source_quote": "m that is the third door from the left. Stop in the room next to the door. ",
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "candidate_evidence": [
-          "Walk forward through the kitchen and enter the empty room that is the third door from the left."
-        ],
+        "code": "OMISSION",
         "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
-        "evidence_level": "S1",
-        "problem": "The candidate drops an explicitly requested stop or wait at its source-defined location.",
-        "execution_consequence": "The explicitly requested stop/wait/placement is omitted; the agent may continue past the required endpoint.",
+        "c_check": "C02",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quote": "Stop in the room next to the door.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "in the room next to the door."
+          }
+        ],
+        "evidence_level": "S2",
+        "problem": "The final location remains, but its explicit Stop command is missing. The ordinal entrance requirement is unchanged.",
+        "execution_consequence": "The route no longer commands stopping at the specified inside position.",
         "repair": {
-          "operation": "stop_omission",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the stop/wait at the exact source location; do not move it to another stage.",
+          "instruction": "Restore Stop at the retained terminal location without changing the third-door selection.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve every unaffected action, target identity, direction, ordinal, condition and terminal relation."
           ]
         }
       }
@@ -156,8 +168,8 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "kind": "unspecified",
+          "text": "The source explicitly requires Stop at this location; the candidate omits that action and leaves only a location fragment.",
           "candidate_quotes": [],
           "stop_scope": "none"
         },
@@ -170,7 +182,8 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
           "Walk forward through the kitchen and enter the empty room that is the third door from the left.",
@@ -179,12 +192,15 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "stop_omission",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command.",
+    "transfer_rule": "Audit the actual changed requirement and keep all unaffected coverage marked covered."
   }
 }

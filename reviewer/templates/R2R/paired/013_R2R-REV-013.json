@@ -239,6 +239,8 @@
       "multi_stage_split"
     ],
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Walk through the open doors and into the bedroom.; Preserve the spatial transition and region/threshold: Walk through the door on the other side of the bedroom passed…; Preserve the spatial transition and region/threshold: Walk through the hallway and turn the corner.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Walk through the open doors and into the bedroom.; Preserve the spatial transition and region/threshold: Walk through the door on the other side of the bedroom passed…; Preserve the spatial transition and region/threshold: Walk through the hallway and turn the corner."
+    "case_specific_focus": "Open doors are entity states identifying the passage, not an instruction to operate doors. Preserve the complete path to the entrance.",
+    "transfer_rule": "Open doors are entity states identifying the passage, not an instruction to operate doors. Preserve the complete path to the entrance.",
+    "anti_pattern": "Do not change walk through the open doors into open the doors; do not import an action merely because an attribute can also be a verb."
   }
 }

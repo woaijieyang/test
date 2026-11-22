@@ -1,0 +1,322 @@
+[
+  {
+    "source": "",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-013",
+      "RxR-GEN-022"
+    ],
+    "prompt_sha256": "a7dfd35332c41f8ac150d0fba18fdafe294d00d6601c75aff72bf5135d7d61c5",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-013",
+      "RxR-GEN-022"
+    ],
+    "prompt_sha256": "b4b880fec24d46e951d01157f104152041df1cddf250cde4611668aea8c6a95a",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-013",
+      "RxR-REV-022"
+    ],
+    "prompt_sha256": "91e0ca112eda38413521c2423b13c69b84d747825a1e5098f89389f7e815cc9b",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-013",
+      "RxR-REV-022"
+    ],
+    "prompt_sha256": "91e0ca112eda38413521c2423b13c69b84d747825a1e5098f89389f7e815cc9b",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Turn left and walk through the door.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-022",
+      "RxR-GEN-010"
+    ],
+    "prompt_sha256": "c017ad1d388eaf01970baa5ed7c77c11dd67584224dc12742deedfeddefa20d4",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "Turn left and walk through the door.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-022",
+      "RxR-GEN-010"
+    ],
+    "prompt_sha256": "7658c3c714a887826851e4538199720cb6cd1ec55fffae3b57c4c8053fbdf314",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "Turn left and walk through the door.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-022",
+      "RxR-REV-010"
+    ],
+    "prompt_sha256": "7fecc7a88eb8b98024fddbc00fc31edb04b7ae8a2e898a42c223d59c0b957be0",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Turn left and walk through the door.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-022",
+      "RxR-REV-010"
+    ],
+    "prompt_sha256": "7fecc7a88eb8b98024fddbc00fc31edb04b7ae8a2e898a42c223d59c0b957be0",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Before you enter the kitchen, turn right. After passing the stairs, stop beside the table.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-021",
+      "RxR-GEN-023",
+      "RxR-GEN-032"
+    ],
+    "prompt_sha256": "7e57f32964d1e12534925fb730fe8009c22d2903a38f7f13b1a1002870ee40c3",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "Before you enter the kitchen, turn right. After passing the stairs, stop beside the table.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-021",
+      "RxR-GEN-023",
+      "RxR-GEN-032"
+    ],
+    "prompt_sha256": "bc235754ce6d6d1d10dc4d66347db71cc6e40c83967bba4a18628abed087c031",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "Before you enter the kitchen, turn right. After passing the stairs, stop beside the table.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-021",
+      "RxR-REV-023",
+      "RxR-REV-032",
+      "RxR-DIAG-02"
+    ],
+    "prompt_sha256": "60714c1bba4ad707cc041e87d0f1863863ddb6637cce774993ed2e3baf0e3a19",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Before you enter the kitchen, turn right. After passing the stairs, stop beside the table.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-021",
+      "RxR-REV-023",
+      "RxR-REV-032",
+      "RxR-DIAG-02"
+    ],
+    "prompt_sha256": "60714c1bba4ad707cc041e87d0f1863863ddb6637cce774993ed2e3baf0e3a19",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Go down the second flight of stairs and wait halfway.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-019",
+      "RxR-GEN-021",
+      "RxR-GEN-025"
+    ],
+    "prompt_sha256": "4168751dfc947c3c0123e3dfc96f83687339f8037477f96566461545a5a15b11",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "Go down the second flight of stairs and wait halfway.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-019",
+      "RxR-GEN-021",
+      "RxR-GEN-025"
+    ],
+    "prompt_sha256": "bab1962c757c7723f0f18b83b1d69a3525e186d581ed1a3e1afa308857da5a55",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "Go down the second flight of stairs and wait halfway.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-019",
+      "RxR-REV-021",
+      "RxR-REV-025",
+      "RxR-DIAG-01"
+    ],
+    "prompt_sha256": "23f4daddbdeb97e522089eb06cf7b17f3454809a1de180d4f89cd6bed0fef425",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Go down the second flight of stairs and wait halfway.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-019",
+      "RxR-REV-021",
+      "RxR-REV-025",
+      "RxR-DIAG-01"
+    ],
+    "prompt_sha256": "23f4daddbdeb97e522089eb06cf7b17f3454809a1de180d4f89cd6bed0fef425",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Walk into the hall, keep going past the chairs and leave by the far door.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-024",
+      "RxR-GEN-016"
+    ],
+    "prompt_sha256": "5680b16e601b17418aa48a724f2280141e0ca53cece6c322ef5dc9d8a7dbb57b",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "Walk into the hall, keep going past the chairs and leave by the far door.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-024",
+      "RxR-GEN-016"
+    ],
+    "prompt_sha256": "d6ae2d0b5b8fb091fe027b0cd1c903cf376afa03416f81e577f0143a9dfcc604",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "Walk into the hall, keep going past the chairs and leave by the far door.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-024",
+      "RxR-REV-016"
+    ],
+    "prompt_sha256": "c7f3b639172156ac73eb932c322044fe2d394e4e6f071c86c09420255377ec60",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Walk into the hall, keep going past the chairs and leave by the far door.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-024",
+      "RxR-REV-016"
+    ],
+    "prompt_sha256": "c7f3b639172156ac73eb932c322044fe2d394e4e6f071c86c09420255377ec60",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "If the left door is open, go through it; otherwise take the right doorway.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-027",
+      "RxR-GEN-031"
+    ],
+    "prompt_sha256": "ef2efd619e3b7299f77d40a02186b54ebd551fdee1c7a0fd599da2650c111a44",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "If the left door is open, go through it; otherwise take the right doorway.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-027",
+      "RxR-GEN-031"
+    ],
+    "prompt_sha256": "c7f9a3e19cb5b60693288d91ebb6a10ad3200bad3527ca6a0bbecfe7615e9869",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "If the left door is open, go through it; otherwise take the right doorway.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-027",
+      "RxR-REV-031"
+    ],
+    "prompt_sha256": "c72c9a97bd187d549bb37f1c08528d85362b7f7d7a618f569d50f4bb114acf53",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "If the left door is open, go through it; otherwise take the right doorway.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-027",
+      "RxR-REV-031"
+    ],
+    "prompt_sha256": "c72c9a97bd187d549bb37f1c08528d85362b7f7d7a618f569d50f4bb114acf53",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Stand between the cabinet and the window facing the door.",
+    "role": "generator",
+    "phase": "initial",
+    "ids": [
+      "RxR-GEN-010",
+      "RxR-GEN-011"
+    ],
+    "prompt_sha256": "63baa2564cdf1fd367ca3ccb5252c6d375de306b9f6051e02e68982956ce2b80",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645"
+  },
+  {
+    "source": "Stand between the cabinet and the window facing the door.",
+    "role": "generator",
+    "phase": "repair",
+    "ids": [
+      "RxR-GEN-010",
+      "RxR-GEN-011"
+    ],
+    "prompt_sha256": "1b209d241a647958f21fc1f4c004f09a8993dcef1fb87e26a477eb4fee0f839a",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63"
+  },
+  {
+    "source": "Stand between the cabinet and the window facing the door.",
+    "role": "reviewer",
+    "phase": "review",
+    "ids": [
+      "RxR-REV-010",
+      "RxR-REV-011"
+    ],
+    "prompt_sha256": "5619214f33490dd62cab1d52771dc58e8cdf7c26e7fc0da6553c34aa63edd8c1",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  {
+    "source": "Stand between the cabinet and the window facing the door.",
+    "role": "reviewer",
+    "phase": "recheck",
+    "ids": [
+      "RxR-REV-010",
+      "RxR-REV-011"
+    ],
+    "prompt_sha256": "5619214f33490dd62cab1d52771dc58e8cdf7c26e7fc0da6553c34aa63edd8c1",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  }
+]

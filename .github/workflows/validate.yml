@@ -3,8 +3,11 @@ name: Profile integrity and regression validation
 on:
   push:
     branches:
-      - LLM-decompose-v6.4
-      - LLM-decompose-v6.5
+      - LLM-decompose-*
+
+concurrency:
+  group: validation-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -25,7 +28,7 @@ jobs:
         run: python -B verify_package.py
       - name: Compile all profile prompts and template indexes
         run: python -B -m host.compile
-      - name: Refresh generated-file integrity and persist compiled artifacts
+      - name: Refresh generated-file integrity
         run: |
           python - <<'PY'
           import hashlib, json
@@ -50,17 +53,11 @@ jobs:
           manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
           python -B verify_package.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Regenerate compiled prompts, template indexes and build manifest"
-            git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
-          fi
-      - name: Verify committed build artifacts match the compiler
+      - name: Verify repeated builds are deterministic
         run: |
           python -B -m host.compile
-          git diff --exit-code -- generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          git diff --exit-code -- generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt
+          python -B verify_package.py
       - name: Validate R2R Core quality, runtime contracts, prompt assembly and RxR isolation
         run: python -B -m unittest discover -s tests -p "test_r2r_core.py" -v
       - name: Validate R2R-specific guidance, fragments and isolated retrieval
@@ -108,6 +105,15 @@ jobs:
           raise SystemExit(0 if result.wasSuccessful() else 1)
           PY
       - name: Run renderer smoke evaluation
-        run: python -m evaluation.smoke24
+        run: python -B -c "from evaluation.smoke24 import smoke; rows=smoke(); assert len(rows) == 24; print('24 renderer cases passed')"
       - name: Run the current integration demo
         run: python -m examples.demo
+      - name: Persist verified generated artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate compiled prompts, template indexes and build manifest"
+            git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          fi

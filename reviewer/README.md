@@ -26,7 +26,7 @@ PASS requires all material source requirements preserved, no unsupported additio
 
 | Profile | Fixed Reviewer Core | Paired Dynamic | Diagnostics |
 |---|---:|---:|---:|
-| R2R English | R01–R10 (10) | 29 eligible; select 6–8 | 23 eligible; select 2–4 |
+| R2R English | R01–R10 (10) | 29 eligible; select 4–6 | 26 eligible; select 2–3 |
 | RxR en-US | R01–R10 (10) | 35 eligible; select 2–4 | 29 eligible; select 0–2 |
 
 Core is always loaded in stable order. Paired Dynamic is linked to selected non-Core Generator Dynamic IDs; Diagnostics supplement it. Pair IDs describe teaching lineage, not a verdict or forced runtime order. R2R and RxR libraries are isolated. Legacy is provenance only.

@@ -63,7 +63,7 @@ def validate_template(role, row, *, source_path=""):
             f"Invalid {role} teaching template {row.get('template_id')} at "
             f"{source_path or '<unknown>'}:{location}: {error.message}"
         )
-DEFAULT_EXAMPLES = None  # Profile-aware: R2R 6-8; RxR 2-4 in addition to its fixed core.
+DEFAULT_EXAMPLES = None  # Profile-aware: R2R 4-6; RxR 2-4 in addition to its fixed core.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
     'ordinal_target_selection': r'first|second|third|fourth|last|1st|2nd|3rd',
@@ -141,58 +141,68 @@ def r2r_features(text):
     return cues, words
 
 
-def rank_r2r_examples(rows, text, count, excluded=()):
-    """R2R-specific ranking over the R2R fragment taxonomy and source-only cues."""
-    cues, words = r2r_features(text)
-    query_relations = relations(text)
-    type_terms = set().union(*(TYPE_CUES.get(c, set()) for c in cues))
-    if len(re.findall(r"\b(?:stop|wait|stand|stay|remain)\b", text, re.I)) > 1:
-        type_terms.update(("refinement", "intermediate", "stop"))
-    if len(words) < 12 and not query_relations:
-        type_terms.add("single")
+def _r2r_core(role):
+    """Read authored Core without importing the compiler (no dependency cycle)."""
+    rows = []
+    for path in sorted((ROOT/role/'templates/R2R/core').glob('*.json')):
+        row = json.loads(path.read_bytes())
+        validate_template(role, row, source_path=path.relative_to(ROOT).as_posix())
+        rows.append(row)
+    prefix = 'G' if role == 'generator' else 'R'
+    if [row.get('template_id') for row in rows] != [f'R2R-CORE-{prefix}{i:02d}' for i in range(1, 11)]:
+        raise ValueError('R2R fixed Core order or count is invalid')
+    return rows
 
-    options = []
-    document_frequency = Counter()
-    blocked = {normalized(text), *excluded}
-    for row in rows:
-        identity = normalized(source(row))
-        if identity in blocked:
+
+def r2r_match_evidence(text, coverage):
+    """Record exact source spans for retrieval; no route facts are injected."""
+    wanted = {item[4:] for item in coverage if item.startswith('cue:')}
+    rows = []
+    for key, patterns in _r2r_fragment_specs():
+        if key not in wanted:
             continue
-        tags, terms = r2r_features(source(row))
-        tags.update(row.get("retrieval_tags", []))
-        document_frequency.update(tags | terms)
-        options.append((row, tags, terms, identity))
+        matches = {(m.start(), m.end(), m.group()) for pat in patterns
+                   for m in re.finditer(pat, text, re.I)}
+        rows.extend(dict(feature=key, start=a, end=b, quote=q)
+                    for a, b, q in sorted(matches))
+    return rows
 
-    weights = {
-        token: 1 + math.log((len(options) + 1) / (frequency + 1))
-        for token, frequency in document_frequency.items()
-    }
-    candidates = []
-    for row, tags, terms, identity in options:
-        common = cues & tags
-        relation_hits = query_relations & relations(source(row))
-        annotations = [task_type(row), *row.get("retrieval_tags", [])]
-        annotation_tokens = set("_".join(annotations).lower().split("_"))
-        type_hits = type_terms & annotation_tokens
-        score = (
-            sum(weights[token] for token in common)
-            + sum(weights[token] for token in words & terms) / math.sqrt(max(1, len(terms)))
-            + 4 * len(relation_hits)
-            + 2 * len(type_hits)
-            - 0.12 * len(tags - cues)
-        )
-        coverage = common | relation_hits | {("type", token) for token in type_hits}
-        candidates.append((row, identity, score, coverage))
 
-    chosen, covered = [], set()
-    while candidates and len(chosen) < count:
-        row, identity, _, coverage = max(
-            candidates, key=lambda item: item[2] + 1.5 * len(item[3] - covered)
-        )
-        chosen.append(row)
-        covered.update(coverage)
-        candidates = [item for item in candidates if item[1] != identity]
+def rank_r2r_examples(rows, text, count, excluded=()):
+    """Compatibility rank entry: exact count, same complementary R2R engine."""
+    from host.r2r_retrieval import select
+    role = rows[0].get('role', 'generator') if rows else 'generator'
+    chosen, _ = select(rows, text, minimum=count, maximum=count, count=count,
+                       core=_r2r_core(role), feature_fn=r2r_features,
+                       relation_fn=relations, evidence_fn=r2r_match_evidence,
+                       excluded=excluded)
     return chosen
+
+
+def select_r2r_bundle(source_text, count=None):
+    """One task-level decision supplies G0/G1 and the corresponding R0/R1 IDs."""
+    from host.r2r_retrieval import select
+    generators = library('generator', 'r2r-en')
+    reviewers = library('reviewer', 'r2r-en')
+    base, _ = select(generators, source_text, minimum=4, maximum=6, count=count,
+                     core=_r2r_core('generator'), feature_fn=r2r_features,
+                     relation_fn=relations, evidence_fn=r2r_match_evidence)
+    ids = [row['template_id'] for row in base]
+    pairs = {row['pair_id']: row for row in reviewers if row.get('pair_id')}
+    if len(pairs) != sum(bool(row.get('pair_id')) for row in reviewers):
+        raise ValueError('Duplicate R2R Reviewer pair')
+    missing = [item for item in ids if item not in pairs]
+    if missing:
+        raise ValueError(f'Missing paired R2R Reviewer templates: {missing}')
+    paired = [pairs[item] for item in ids]
+    diagnostics, _ = select(
+        [row for row in reviewers if not row.get('pair_id')], source_text,
+        minimum=2, maximum=3, core=_r2r_core('reviewer') + paired,
+        feature_fn=r2r_features, relation_fn=relations,
+        evidence_fn=r2r_match_evidence,
+        excluded=[source(row) for row in paired])
+    return {'generator': ids,
+            'reviewer': [row['template_id'] for row in paired + diagnostics]}
 
 
 @lru_cache(maxsize=4)
@@ -235,6 +245,9 @@ def library(role, profile):
         ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,
         ('RxR', 'generator'): 35, ('RxR', 'reviewer'): 64,
     }
+    if dataset == 'R2R':
+        manifest = json.loads((ROOT/role/'templates_manifest.json').read_bytes())['dataset_profiles'][profile]
+        expected_counts[(dataset, role)] = manifest['runtime_dynamic_count']
     if len(rows) != expected_counts[(dataset, role)]:
         raise ValueError(f'{dataset} {role} Dynamic count mismatch: expected {expected_counts[(dataset, role)]}, found {len(rows)}')
 
@@ -250,8 +263,10 @@ def library(role, profile):
         diagnostics = [row for row in rows if not row.get('pair_id')]
         paired_ids = [row['pair_id'] for row in paired]
         expected_pairs = {f'{dataset}-GEN-{i:03d}' for i in range(1, 36)} - promoted_gen_ids
-        expected_paired = 29 if dataset == 'R2R' else 35
-        expected_diagnostics = 23 if dataset == 'R2R' else 29
+        if dataset == 'R2R':
+            expected_pairs = {row['template_id'] for row in library('generator', profile)}
+        expected_paired = manifest['runtime_paired_dynamic_count'] if dataset == 'R2R' else 35
+        expected_diagnostics = manifest['runtime_diagnostics_count'] if dataset == 'R2R' else 29
         if len(paired) != expected_paired or len(diagnostics) != expected_diagnostics:
             raise ValueError(f'{dataset} Reviewer pool count mismatch: paired={len(paired)}, diagnostics={len(diagnostics)}')
         if len(set(paired_ids)) != len(paired_ids) or not expected_pairs.issubset(set(paired_ids)):
@@ -351,8 +366,11 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
 
+    if profile == "r2r-en":
+        return select_r2r_bundle(source_text, count=count)[role]
+
     gen = library("generator", profile)
-    minimum, maximum = (2, 4) if profile == "rxr-en-us" else (6, 8)
+    minimum, maximum = (2, 4) if profile == "rxr-en-us" else (4, 6)
     if count is not None and (type(count) is not int or not minimum <= count <= maximum):
         raise ValueError(
             f"Invalid {profile} dynamic Generator count; expected {minimum}..{maximum}"
@@ -367,16 +385,11 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     }
     extra = min(2, len(distinct) // 3 + int(len(source_text.split()) >= 65))
 
-    if profile == "rxr-en-us":
-        # RxR retrieval policy remains unchanged: 2–4 paired cases plus 0–2 diagnostics.
-        base_count = (2 + extra) if count is None else count
-        diagnostic_count = min(
-            2, int(len(distinct) >= 3) + int(len(source_text.split()) >= 65)
-        )
-    else:
-        # R2R uses a larger complementary set in addition to its unconditional ten-case Core.
-        base_count = (6 + extra) if count is None else count
-        diagnostic_count = 2 + extra
+    # RxR retrieval policy remains unchanged: 2-4 paired plus 0-2 diagnostics.
+    base_count = (2 + extra) if count is None else count
+    diagnostic_count = min(
+        2, int(len(distinct) >= 3) + int(len(source_text.split()) >= 65)
+    )
 
     base = rank_fn(gen, source_text, base_count)
     ids = [row["template_id"] for row in base]
@@ -424,6 +437,24 @@ def selection_evidence(role, profile, text, ids):
         result.append(dict(template_id=template_id, authored_type=task_type(row),
                            pair_id=row.get("pair_id"), matched_cues=sorted(cues & (tags | set(row.get("retrieval_tags", [])))),
                            matched_relations=sorted(anchors & relations(example))))
+    if profile == 'r2r-en':
+        from host.r2r_retrieval import explain
+        rows = list(by_id.values())
+        if role == 'generator':
+            groups = [(ids, 4, _r2r_core(role))]
+        else:
+            paired = [item for item in ids if by_id[item].get('pair_id')]
+            diagnostics = [item for item in ids if not by_id[item].get('pair_id')]
+            groups = [(paired, 4, _r2r_core(role)),
+                      (diagnostics, 2, _r2r_core(role) + [by_id[item] for item in paired])]
+        details = {}
+        for group, minimum, core in groups:
+            details.update({item['template_id']: item for item in explain(
+                rows, text, group, minimum=minimum, core=core,
+                feature_fn=r2r_features, relation_fn=relations,
+                evidence_fn=r2r_match_evidence)})
+        for item in result:
+            item.update(details[item['template_id']])
     return result
 
 
@@ -450,6 +481,8 @@ def write_type_index(role):
         for kind in allowed:
             for path in sorted((folder/dataset/kind).glob("*.json")):
                 row = json.loads(path.read_bytes())
+                if profile == 'r2r-en' and row['template_id'] not in {item['template_id'] for item in library(role, profile)}:
+                    continue  # Promoted originals remain provenance-only, not Dynamic inputs.
                 lines.append("|{}|[{}]({})|{}|{}|{}|{}|".format(
                     dataset, row["template_id"], path.relative_to(folder).as_posix(), kind,
                     row.get("pair_id") or "—", task_type(row) or "—",

@@ -1,26 +1,31 @@
 # R2R English Dataset Guidance
 
-This file supplements the shared semantic contract for R2R English instructions. It does not replace, weaken, or redefine any shared acceptance criterion.
+This R2R-specific guidance supplements the shared semantic contract only for `r2r-en`. It does not replace its truth conditions, audit fields, evidence threshold, or output schema. Short instructions may contain distinct objectives; long instructions may describe one continuing maneuver.
 
-## R2R-specific risk patterns
+## Event roles and scope
 
-R2R instructions often express a compact, locally grounded route through ordered movement clauses, reference landmarks, room or doorway transitions, ordinal target choices, and terminal placements. Treat these as patterns to inspect, not as dataset-wide assumptions or segmentation triggers.
+Read the complete source before selecting a boundary. Distinguish commanded actions from entity attributes, identifying descriptions, path constraints, expected observations, and completion conditions. Preserve each phrase's grammatical role and attachment. An open doorway describes a state unless the source actually commands opening it. Facing used to define a reference frame does not automatically command an extra turn. Seeing a landmark does not establish reaching, crossing, or entering it. Resolve a route-critical ambiguity only when the complete source supports a unique reading; otherwise preserve uncertainty under the existing contract.
 
-- Reconstruct the complete source event sequence before choosing boundaries. A short route may contain multiple independently completed objectives; a longer route may remain one continuous maneuver.
-- Distinguish a preparatory orientation change from a completed navigation objective. A turn is not automatically a stage, but a completed turn-and-transition can establish a supported handoff when a distinct next objective follows.
-- Preserve the exact role of each scene entity. A landmark can orient or disambiguate a path without becoming a destination; an expected observation does not prove arrival, crossing, or entry.
-- Preserve ordinal target identity and its counting origin. "First", "second", "third", and equivalent descriptions must remain attached to the region and direction that define the count.
-- Keep approach, pass-by, crossing, entry, arrival, and stationary placement distinct. Do not strengthen one event into another.
-- Keep endpoint refinements, side relations, and terminal placement details attached to the movement and target they constrain. Do not create a new stage merely because a later clause describes the same endpoint more precisely.
-- Keep temporal triggers and the actions they govern together unless the source establishes a completed event and a distinct subsequent objective with a useful supported handoff.
-- Preserve source ambiguity when an unclear landmark, ordinal, direction, or transition changes route execution. Do not silently normalize likely transcription errors.
+## Completion versus segmentation value
+
+A source-supported completion makes a cut eligible, not mandatory. Check both the completed prior event and the distinct next objective. Entry into a room or passage through a doorway may simply be transit toward an exit. Keep a continuation through transit space together when a cut exposes no different local objective. Conversely, retain a useful cut when a completed objective is followed by a different visit, target selection, or local placement with a supported entry. Words such as enter, continue, then, left, and right are inspection cues, never KEEP/SPLIT triggers. Neither source length nor verb count decides grouping.
+
+## Completion binding and endpoint refinement
+
+Read later clauses before closing an earlier movement. Attach a later completion condition to the event it actually limits, even across sentence boundaries. A hallway endpoint stated before the next turn may bound the earlier traversal. A halfway constraint may limit the same stair descent; do not first complete the descent and then navigate back to halfway. Preserve action order and uncertainty when relocating descriptions. Do not strengthen seeing into reaching, approaching into entering, or a final target-directed approach into an invented arrival or STOP. A more precise description of the same endpoint is not automatically a new visit.
+
+## Minimum sufficient handoff
+
+The next stage begins with the first unperformed action. It may inherit ordinary current pose and uniquely established entities from the previous completed stage. State an explicit anchor only to preserve a real dependency involving region choice, target identity, count origin, direction frame, or an active constraint. Prefer the shortest source-supported anchor. Normal event entailment is allowed; an unmentioned word is not by itself a hallucination. Additional exact positions, headings, or observed states still require support. An intended stage outcome is not a verified observation. Do not replay completed movement.
+
+## Spatial ownership and terminal fidelity
+
+Preserve who moves, the reference entity, the affected action, and the time span of each left/right/behind/between/facing relation. A turn changes current heading; it does not license changing the owner of a spatial relation. Keep ordinal object class, origin, and region fixed across cuts. Preserve stair flights, landings, midway and step limits on the correct movement. Retain the exact scope of before, near, inside, outside, through, and past, including terminal facing, intermediate stops, prohibitions, and conditional branches. A stage boundary is not a physical STOP.
+
+## Purpose-limited editing
+
+Preserve wording that already expresses the route clearly. Edit only to resolve a supported execution-relevant ambiguity, bind a dependency, organize a genuine local objective, or express a necessary handoff. Limit the edit to that purpose; do not polish unrelated grammar or guess transcription repairs. Minimal editing does not justify hiding independent objectives in one stage. Conversely, a faithful paraphrase is not automatically a Reviewer blocker: rejection still requires a material defect under the shared contract.
 
 ## Template use
 
-The fixed R2R Generator and Reviewer Core examples provide stable semantic decision-boundary calibration. Dynamic examples provide additional source-feature-matched cases. Core is unconditional and ordered; dynamic examples supplement it and must never replace it.
-
-A teaching case is transferable only when the current source and candidate exhibit the same semantic relation and the same relevant event completion. Do not transfer a decision based only on shared nouns, room names, object names, or surface keywords.
-
-Reviewer examples are calibration evidence, not verdict votes. The Reviewer must independently inventory the current source requirements, inspect the candidate evidence, evaluate the existing L0-L6 checks, and only then consult the closest teaching cases. A teaching verdict is local to its own source/candidate pair.
-
-No rule in this file determines a fixed stage count, word-count threshold, or split/keep ratio. The shared semantic contract remains authoritative for every final decision.
+The ten fixed Core cases calibrate decision boundaries, not a preferred stage count. Dynamic cases supplement specific relationships insufficiently illustrated by Core. Transfer a lesson only when the present source has the same relevant event role, completion, relation, and scope. Similar scene nouns do not establish applicability. Reviewer verdicts are local to their own source/candidate pairs, never votes. Inspect the actual candidate, including every material defect, rather than assuming it has the nearest template's corruption label.

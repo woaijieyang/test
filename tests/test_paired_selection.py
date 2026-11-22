@@ -13,7 +13,7 @@ class PairedSelectionTests(unittest.TestCase):
                 if profile == "rxr-en-us":
                     self.assertTrue(2 <= len(g) <= 4 and 0 <= len(extras) <= 2)
                 else:
-                    self.assertTrue(6 <= len(g) <= 8 and 2 <= len(extras) <= 4)
+                    self.assertTrue(4 <= len(g) <= 6 and 2 <= len(extras) <= 3)
                 self.assertEqual([bank[i]['pair_id'] for i in pairs],g)
                 self.assertTrue(all(not bank[i].get('pair_id') for i in extras))
                 used = [normalized(source(bank[i])) for i in reviewer]

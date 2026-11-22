@@ -1,5 +1,5 @@
 {
-  "version": "6.4",
+  "version": "current",
   "dataset_profiles": {
     "r2r-en": {
       "dynamic_directory": "templates/R2R/val_seen",
@@ -33,8 +33,8 @@
   "runtime_policy": {
     "r2r-en": {
       "dynamic_generator_examples": [
-        6,
-        8
+        4,
+        6
       ],
       "fixed_core": 10,
       "core_order": "G01-G10",
@@ -52,5 +52,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "ten fixed R2R Core examples are unconditional; promoted Core source copies are excluded from the R2R Dynamic retrieval pool, while their original files remain available for provenance v6.3: R2R dynamic loading is restricted to explicit allowlisted directories; RxR runtime behavior remains frozen."
+  "selection": "ten fixed R2R Core examples are unconditional; promoted Core source copies are excluded from the R2R Dynamic retrieval pool, while their original files remain available for provenance R2R dynamic loading is restricted to explicit allowlisted directories; RxR runtime behavior remains frozen."
 }

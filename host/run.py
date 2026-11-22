@@ -17,7 +17,7 @@ from pathlib import Path
 from adapter.source import Source, load_record
 from renderer.freeze import freeze, unchanged
 from host.compile import compile_prompt, core_library
-from host.template_selector import select_examples, selection_evidence, library, DEFAULT_EXAMPLES
+from host.template_selector import select_examples, selection_evidence, library, DEFAULT_EXAMPLES, select_r2r_bundle
 from host import protocol
 from shared.identity import need, canonical, obj_hash, text_hash, ContractError
 
@@ -86,6 +86,7 @@ def prompt_components_metadata(role, phase, profile):
             root/"shared/dataset_rules/r2r_en.md",
             root/role/"dataset_rules/r2r_en.md",
         ])
+        paths.append(root/"host/r2r_retrieval.py")
     files = []
     for path in paths:
         data = path.read_bytes()
@@ -388,11 +389,14 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             role: [row["template_id"] for row in core_library(role, src.profile)]
             for role in ("generator", "reviewer")
         }
-        selections = {
-            role: select_examples(role, src.profile, src.raw,
-                                  count=example_count, mode=selection_mode)
-            for role in ("generator", "reviewer")
-        }
+        if src.profile == "r2r-en" and selection_mode == "adaptive":
+            selections = select_r2r_bundle(src.raw, count=example_count)
+        else:
+            selections = {
+                role: select_examples(role, src.profile, src.raw,
+                                      count=example_count, mode=selection_mode)
+                for role in ("generator", "reviewer")
+            }
         retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                               for role, ids in selections.items()}
         reviewer_rows_by_id = {

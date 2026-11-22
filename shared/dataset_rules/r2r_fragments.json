@@ -214,6 +214,92 @@
         "Do not infer arrival at the corridor end unless the source supports it.",
         "Keep the endpoint turn with the preceding traversal when they form one coupled maneuver."
       ]
+    },
+    {
+      "id": "transit_continuation",
+      "patterns": [
+        "\\b(?:keep going|continue(?: straight| forward)?|straight through)\\b.{0,100}\\b(?:through|past|out|exit|door|hallway)\\b"
+      ],
+      "meaning": "Continuation through a transit region; not an automatic KEEP decision.",
+      "positive_case_type": "transit_continuation",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "attribute_description",
+      "patterns": [
+        "\\b(?:open|closed)\\s+(?:(?:sliding|glass|arched)\\s+)?(?:doors?|doorways?)\\b",
+        "\\b(?:chairs?|benches?|windows?)\\s+(?:that are\\s+)?facing\\b"
+      ],
+      "meaning": "Entity state or identifying orientation, not automatically a commanded action.",
+      "positive_case_type": "attribute_description",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "hallway_endpoint_turn",
+      "patterns": [
+        "\\b(?:at|to|until)\\b.{0,45}\\bend\\b.{0,60}\\b(?:turn|take a|veer)\\b"
+      ],
+      "meaning": "Explicit endpoint tied to a following turn.",
+      "positive_case_type": "hallway_endpoint_turn",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "endpoint_refinement",
+      "patterns": [
+        "\\b(?:once|when|until)\\b.{0,100}\\b(?:stop|wait|stand|reach)\\b",
+        "\\b(?:midway|halfway)\\b.{0,70}\\b(?:stairs?|flight|hallway)\\b"
+      ],
+      "meaning": "A completion or placement clause may constrain the same movement.",
+      "positive_case_type": "endpoint_refinement",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "ordinal_navigation",
+      "patterns": [
+        "\\b(?:first|second|third|last|1st|2nd|3rd)\\s+(?:(?:open|left|right)\\s+)?(?:door(?:way)?|hallway|room|flight|turn)\\b"
+      ],
+      "meaning": "Ordinal target with its source-defined object class and origin.",
+      "positive_case_type": "ordinal_navigation",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "terminal_relation",
+      "patterns": [
+        "\\b(?:stop|wait|stand)\\b.{0,55}\\b(?:before|near|inside|outside|between|facing|in front of|next to)\\b"
+      ],
+      "meaning": "A terminal relation must retain owner and scope.",
+      "positive_case_type": "terminal_relation",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
+    },
+    {
+      "id": "doorway_crossing",
+      "patterns": [
+        "\\b(?:walk|go|move|step|pass)\\b.{0,30}\\bthrough\\s+(?:the\\s+)?(?:(?:open|arched|glass)\\s+)?(?:door|doorway|archway)\\b"
+      ],
+      "meaning": "Actual crossing, distinct from seeing or approaching a doorway.",
+      "positive_case_type": "doorway_crossing",
+      "negative_case_type": "The matching phrase has a different role or scope in the complete source.",
+      "review_checks": [
+        "Match the actual relation and completion evidence, not keywords or a preferred stage count."
+      ]
     }
   ]
 }

@@ -151,6 +151,8 @@
       "single_stage_keep"
     ],
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the temporal trigger/order and its scope: Go through the doorway to the room with the sink and follow the…; Preserve the completion or stationary-position condition: Wait at the bedroom door.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the temporal trigger/order and its scope: Go through the doorway to the room with the sink and follow the…; Preserve the completion or stationary-position condition: Wait at the bedroom door."
+    "case_specific_focus": "The sink room is transit space within a continuous route ending at the bedroom door. Read the until condition before closing the hallway movement.",
+    "transfer_rule": "The sink room is transit space within a continuous route ending at the bedroom door. Read the until condition before closing the hallway movement.",
+    "anti_pattern": "Do not force a split at a room noun or doorway. A different source with a completed visit followed by an independent objective can support a cut."
   }
 }

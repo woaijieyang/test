@@ -31,7 +31,7 @@
       "status": "ok",
       "subtasks": [
         "Go down the stairs and take a right.",
-        "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+        "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
       ]
     }
   },
@@ -57,7 +57,7 @@
         "source_quote": "walk forward towards the leather chairs next to the table.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the table.",
         "candidate_evidence": [
-          "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table."
+          "Walk forward towards the leather chairs next to the table."
         ],
         "status": "covered"
       },
@@ -158,11 +158,9 @@
         "subtask_index": 1,
         "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
-          ]
+          "mode": "inherited_pose",
+          "text": "Continue from the completed stair descent and right turn; the forward approach is the first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
           "text": "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
@@ -171,9 +169,9 @@
           ]
         },
         "process": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
+          "text": "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
           "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+            "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
           ]
         },
         "ending": {
@@ -185,9 +183,8 @@
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "after; Once; right; between",
+          "text": "Once; right; between",
           "candidate_quotes": [
-            "after",
             "Once",
             "right",
             "between"
@@ -216,8 +213,8 @@
           "candidate_quote": "Go down the stairs and take a right."
         },
         "next_entry": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table",
-          "candidate_quote": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
+          "text": "Walk forward towards the leather chairs next to the table",
+          "candidate_quote": "Walk forward towards the leather chairs next to the table"
         },
         "shared_context": [],
         "source_requirement_ids": [
@@ -225,7 +222,7 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Go down the stairs and take a right.'; the next stage begins with 'From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The previous stage explicitly ends with 'Go down the stairs and take a right.'; the next stage begins with 'Walk forward towards the leather chairs next to the table'. The handoff carries the established location/reference frame without adding a physical stop."
       }
     ]
   },
@@ -241,11 +238,11 @@
       "orientation_or_reference_frame"
     ],
     "review_principle": "Verify the stair descent and right turn, the forward approach toward the leather chairs beside the table, and the once-triggered stop/stand placement on the wood between the bench and carpet.",
-    "case_specific_focus": "The boundary is between a completed stair-descent/turn maneuver and a distinct subsequent bench-approach and terminal-placement objective; it is not a room or doorway transition.",
+    "case_specific_focus": "The forward approach inherits the completed descent and turn; inspect the bench trigger and exact wood-between-bench-and-carpet endpoint.",
     "semantic_pattern": "hard_pass_temporal_condition_and_endpoint_scope",
     "decision_reason": "The candidate preserves the 'once you reach' trigger and the stop/stand placement it governs. The condition remains attached to the approach endpoint.",
-    "transfer_rule": "PASS when temporal triggers retain their original scope and remain attached to the action or endpoint they govern.",
-    "anti_pattern": "Do not detach a condition from its action, infer a new branch, or treat every temporal connective as an independent objective.",
+    "transfer_rule": "Inherit the completed descent and right turn; explicitly restate context only when an actual dependency would otherwise be lost. Keep the bench trigger and final between relation together.",
+    "anti_pattern": "Do not replay the descent or turn. An unmentioned word is not automatically unsupported; assess event entailment and anchor necessity, not a prohibited-word list.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
   }
 }

@@ -22,7 +22,7 @@ G1 receives the complete Source, prior Candidate, R0 Review and protected requir
 
 | Profile | Fixed Core | Dynamic source | Dynamic per task |
 |---|---:|---:|---:|
-| R2R English | G01–G10 (10) | 25 eligible from R2R val_seen pool | 6–8 |
+| R2R English | G01–G10 (10) | 25 eligible from R2R val_seen pool | 4–6 |
 | RxR en-US | G01–G10 (10) | 35 RxR val_seen examples | 2–4 |
 
 Fixed Core is always loaded in stable order. Dynamic retrieval cannot replace Core. R2R loads only R2R assets; RxR loads only RxR assets. Legacy files are provenance only.

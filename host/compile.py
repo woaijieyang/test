@@ -104,7 +104,7 @@ def transfer_checks(text):
 
 
 def runtime_review_output(example):
-    """Convert authored teaching evidence to the active Reviewer Runtime v2 wire shape.
+    """Convert authored teaching evidence to the active Reviewer Runtime wire shape.
 
     Historical template files retain their original teaching representation. The
     compiler performs this lossless, source-grounded projection only at prompt
@@ -158,7 +158,7 @@ def runtime_review_output(example):
     audit["findings"] = convert(audit.get("findings", []), "/findings")
     audit["prior_finding_reviews"] = convert(audit.get("prior_finding_reviews", []), "/prior_finding_reviews")
     audit.setdefault("prior_finding_reviews", [])
-    # Map the legacy source-limited disposition to the active Runtime v2
+    # Map the legacy source-limited disposition to the active Runtime
     # source-ambiguity state without changing its evidence or verdict.
     for row in audit["source_coverage"]:
         if row.get("status") == "source_limited":
@@ -184,12 +184,12 @@ def runtime_review_output(example):
             repair.pop("affected_stage_indices", None)
             if finding.get("c_check") == "C2_SUPPORT":
                 finding["c_check"] = "C05"
-    # Runtime v2 requires every L0-L6 row to explicitly link its findings.
+    # Runtime requires every L0-L6 row to explicitly link its findings.
     # Preserve authored links when present; otherwise derive only the direct
     # failed_layer relation from the authored finding records.
     for layer in audit.get("layer_checks", []):
-        # v1 teaching used not_assessable when no rendered artifact existed.
-        # Runtime v2 names that same non-applicable condition explicitly.
+        # Earlier teaching used not_assessable when no rendered artifact existed.
+        # Runtime names that same non-applicable condition explicitly.
         if layer.get("status") == "not_assessable":
             layer["status"] = "not_applicable"
         if not layer.get("finding_indices"):
@@ -242,6 +242,11 @@ def teaching_card(example, role, detailed):
             )
     result = dict(template_id=example["template_id"], teaching=card, applicable_lesson=lesson,
                   avoid=notes.get("anti_pattern"))
+    if example.get("dataset_scope") == "R2R":
+        # Preserve the decisive transfer condition even on compact Dynamic cards.
+        # This is teaching projection, not a change to the active response schema.
+        result["transfer_boundary"] = notes.get("transfer_rule") or notes.get("reusable_rule") or notes.get("reuse_rule") or notes.get("review_principle") or notes.get("reviewer_rule") or lesson
+        result["counter_boundary"] = notes.get("anti_pattern") or "Transfer only when the current source has the same event role, completion, relation and scope; a different relation may require the opposite decision."
     if example.get("template_id", "").startswith("R2R-CORE-"):
         result.update(
             primary_decision_boundary=notes.get("primary_decision_boundary", notes["semantic_pattern"]),

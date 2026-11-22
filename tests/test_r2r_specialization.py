@@ -53,14 +53,14 @@ class R2RSpecializationTests(unittest.TestCase):
         for source in sources:
             generator_ids = select_examples("generator", "r2r-en", source)
             reviewer_ids = select_examples("reviewer", "r2r-en", source)
-            self.assertTrue(6 <= len(generator_ids) <= 8)
+            self.assertTrue(4 <= len(generator_ids) <= 6)
             paired = reviewer_ids[:len(generator_ids)]
             diagnostics = reviewer_ids[len(generator_ids):]
             self.assertEqual(
                 [reviewer_rows[item]["pair_id"] for item in paired],
                 generator_ids,
             )
-            self.assertTrue(2 <= len(diagnostics) <= 4)
+            self.assertTrue(2 <= len(diagnostics) <= 3)
             self.assertTrue(all(reviewer_rows[item].get("pair_id") is None for item in diagnostics))
             self.assertEqual(len(set(reviewer_ids)), len(reviewer_ids))
             evidence = selection_evidence("generator", "r2r-en", source, generator_ids)
@@ -68,11 +68,11 @@ class R2RSpecializationTests(unittest.TestCase):
 
     def test_r2r_explicit_dynamic_count_is_fail_closed(self):
         source = "Walk through the doorway and stop near the table."
-        for invalid in (1, 5, 9, 25):
+        for invalid in (1, 3, 7, 8, 25, True, 4.0):
             with self.subTest(count=invalid), self.assertRaises(ValueError):
                 select_examples("generator", "r2r-en", source, count=invalid)
         self.assertEqual(len(select_examples("generator", "r2r-en", source, count=6)), 6)
-        self.assertEqual(len(select_examples("generator", "r2r-en", source, count=8)), 8)
+        self.assertEqual(len(select_examples("generator", "r2r-en", source, count=4)), 4)
 
     def test_r2r_role_guidance_is_loaded_only_for_matching_profile_and_role(self):
         source = "Go down the stairs, enter the room, and wait near the chairs."

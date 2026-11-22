@@ -126,11 +126,11 @@ class RxRProfileTests(unittest.TestCase):
         self.assertEqual(selection["reviewer_pair_count"], 35)
         self.assertEqual(len(selection["reviewer_diagnostic_ids"]), 29)
 
-    def test_r2r_dynamic_retrieval_is_unchanged(self):
+    def test_r2r_dynamic_retrieval_uses_its_declared_policy(self):
         g = select_examples("generator", "r2r-en", "Walk to the door and turn left.")
         r = select_examples("reviewer", "r2r-en", "Walk to the door and turn left.")
-        self.assertTrue(6 <= len(g) <= 8)
-        self.assertTrue(8 <= len(r) <= 12)
+        self.assertTrue(4 <= len(g) <= 6)
+        self.assertTrue(6 <= len(r) <= 9)
         self.assertEqual(len(core_library("generator", "r2r-en")), 10)
 
     def test_rxr_generator_compiler_injects_core_then_dynamic(self):

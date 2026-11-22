@@ -228,6 +228,8 @@
     ],
     "conditions_focus": "path/manner constraints: walk around the bed; after exiting, continue straight to the end of the hallway. These constrain the route before the later left turn.",
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk around the bed and exit the room going…; Preserve the directional/spatial relation and its reference frame: Turn left and enter the bedroom.; Preserve the completion or stationary-position condition: Wait in the doorway.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk around the bed and exit the room going…; Preserve the directional/spatial relation and its reference frame: Turn left and enter the bedroom.; Preserve the completion or stationary-position condition: Wait in the doorway."
+    "case_specific_focus": "The hallway-end phrase bounds the preceding traversal; the following bedroom entry has a distinct local objective.",
+    "transfer_rule": "The hallway-end phrase bounds the preceding traversal; the following bedroom entry has a distinct local objective.",
+    "anti_pattern": "Do not invent a hallway endpoint when the source only says down the hall, and do not execute a completed traversal twice."
   }
 }

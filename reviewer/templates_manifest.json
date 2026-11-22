@@ -1,16 +1,16 @@
 {
-  "version": "6.4",
+  "version": "current",
   "dataset_profiles": {
     "r2r-en": {
       "paired_directory": "templates/R2R/paired",
       "diagnostics_directory": "templates/R2R/diagnostics",
       "paired_count": 35,
-      "diagnostics_count": 26,
+      "diagnostics_count": 29,
       "fixed_core_directory": "templates/R2R/core",
       "fixed_core_count": 10,
       "fixed_core_source": "Curated R2R semantic decision-boundary Reviewer Core R01-R10; pair_id records semantic provenance only",
       "runtime_paired_dynamic_count": 29,
-      "runtime_diagnostics_count": 23,
+      "runtime_diagnostics_count": 26,
       "promoted_core_source_count": 9,
       "fixed_core_source_template_ids": [
         "R2R-REV-004",
@@ -24,7 +24,7 @@
         "R2R-REV-002",
         "R2R-REV-031"
       ],
-      "runtime_dynamic_count": 52,
+      "runtime_dynamic_count": 55,
       "excluded_promoted_reviewer_template_ids": [
         "R2R-REV-002",
         "R2R-REV-004",
@@ -50,12 +50,12 @@
   "runtime_policy": {
     "r2r-en": {
       "paired_dynamic_examples": [
-        6,
-        8
+        4,
+        6
       ],
       "diagnostic_dynamic_examples": [
         2,
-        4
+        3
       ],
       "fixed_core": 10,
       "core_order": "R01-R10",
@@ -77,5 +77,5 @@
   },
   "legacy_directory": "templates/RxR/legacy",
   "legacy_runtime_use": false,
-  "selection": "R2R Core is unconditional; promoted Reviewer source copies are excluded from Dynamic retrieval. Core pair_id records semantic provenance only. Dynamic paired examples are selected only for selected non-Core Generator Dynamic IDs; unpaired Diagnostics supplement them. v6.3: R2R dynamic loading is restricted to explicit allowlisted directories; RxR runtime behavior remains frozen."
+  "selection": "R2R Core is unconditional; promoted Reviewer source copies are excluded from Dynamic retrieval. Core pair_id records semantic provenance only. Dynamic paired examples are selected only for selected non-Core Generator Dynamic IDs; unpaired Diagnostics supplement them. R2R dynamic loading is restricted to explicit allowlisted directories; RxR runtime behavior remains frozen."
 }

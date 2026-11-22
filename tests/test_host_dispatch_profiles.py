@@ -205,38 +205,25 @@ class HostDispatchProfileTests(unittest.TestCase):
             self.assertEqual(actual_ids, expected_ids)
 
     def test_r2r_selector_matches_declared_selection_contract(self):
-        import re
-        from host.template_selector import rank_r2r_examples, r2r_features, normalized
+        from host.template_selector import rank_r2r_examples, selection_evidence
         text = SOURCE
-        cues, _ = r2r_features(text)
-        distinct = cues - {
-            "orientation_or_reference_frame", "room_transition",
-            "intermediate_stop_or_wait"
-        }
-        extra = min(2, len(distinct)//3 + int(len(text.split()) >= 65))
         generator_rows = library("generator", "r2r-en")
         reviewer_rows = library("reviewer", "r2r-en")
-        expected_generator = [
-            row["template_id"]
-            for row in rank_r2r_examples(generator_rows, text, 6 + extra)
-        ]
-        self.assertEqual(
-            select_examples("generator", "r2r-en", text), expected_generator
-        )
-        pairs = {
-            row["pair_id"]: row for row in reviewer_rows if row.get("pair_id")
-        }
-        expected_paired = [pairs[item]["template_id"] for item in expected_generator]
-        diagnostics = rank_r2r_examples(
-            [row for row in reviewer_rows if not row.get("pair_id")],
-            text, 2 + extra,
-            excluded=[normalized((row.get("input") or row["review_input"])["original_instruction"])
-                      for row in (pairs[item] for item in expected_generator)]
-        )
-        expected_reviewer = expected_paired + [row["template_id"] for row in diagnostics]
-        self.assertEqual(
-            select_examples("reviewer", "r2r-en", text), expected_reviewer
-        )
+        generator_ids = select_examples("generator", "r2r-en", text)
+        base = [row["template_id"] for row in rank_r2r_examples(generator_rows, text, 4)]
+        self.assertEqual(generator_ids[:4], base)
+        self.assertTrue(4 <= len(generator_ids) <= 6)
+        trace = selection_evidence("generator", "r2r-en", text, generator_ids)
+        for extra in trace[4:]:
+            self.assertEqual(extra["selection_reason"], "uncovered_relation")
+            self.assertTrue(extra["optional_coverage"])
+        pairs = {row["pair_id"]: row for row in reviewer_rows if row.get("pair_id")}
+        reviewer_ids = select_examples("reviewer", "r2r-en", text)
+        self.assertEqual(reviewer_ids[:len(generator_ids)],
+                         [pairs[item]["template_id"] for item in generator_ids])
+        diagnostics = reviewer_ids[len(generator_ids):]
+        self.assertTrue(2 <= len(diagnostics) <= 3)
+        self.assertEqual(len(reviewer_ids), len(set(reviewer_ids)))
 
     def test_r2r_full_four_phase_workflow_uses_only_r2r_profile(self):
         src = from_record({

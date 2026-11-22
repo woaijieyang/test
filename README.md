@@ -1,4 +1,4 @@
-# LLM-decompose-v6.5｜R2R / RxR 统一导航指令分割系统
+# LLM-decompose-v6.6｜R2R / RxR 统一导航指令分割系统
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -61,11 +61,11 @@ G0/R0/G1/R1 均绑定同一个 Source Identity。G0/G1 使用同一 Generator Co
 | Generator Fixed Core | 10（G01–G10） | 10（G01–G10） |
 | Reviewer Fixed Core | 10（R01–R10） | 10（R01–R10） |
 | Generator Dynamic Eligible | 25 | 35 |
-| Generator Dynamic per task | 6–8 | 2–4 |
+| Generator Dynamic per task | 4–6 | 2–4 |
 | Reviewer Paired Dynamic Eligible | 29 | 35 |
-| Reviewer Paired per task | 6–8 | 2–4 |
-| Reviewer Diagnostics Eligible | 23 | 29 |
-| Reviewer Diagnostics per task | 2–4 | 0–2 |
+| Reviewer Paired per task | 4–6 | 2–4 |
+| Reviewer Diagnostics Eligible | 26 | 29 |
+| Reviewer Diagnostics per task | 2–3 | 0–2 |
 
 磁盘来源数、Core 数、Dynamic Eligible 数和单任务实际选择数是不同概念，禁止混用。固定 Core 无条件加载且顺序稳定；Dynamic 只从当前 Profile 的白名单目录检索；Legacy 仅用于来源追溯，不进入运行时。
 

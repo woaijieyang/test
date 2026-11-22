@@ -61,7 +61,7 @@ class R2RCoreTests(unittest.TestCase):
         self.assertNotEqual(pairs, [x["template_id"] for x in core_library("generator", "r2r-en")])
 
     def test_core_is_excluded_from_dynamic_libraries_and_selection(self):
-        for role, expected in (("generator", 25), ("reviewer", 52)):
+        for role, expected in (("generator", 25), ("reviewer", 55)):
             rows = library(role, "r2r-en")
             self.assertEqual(len(rows), expected)
             self.assertTrue(all(x["role"] == role and x["dataset_scope"] == "R2R"
@@ -76,12 +76,12 @@ class R2RCoreTests(unittest.TestCase):
                 }
                 dynamic_pair_ids = {x.get("pair_id") for x in rows if x.get("pair_id")}
                 self.assertTrue(dynamic_generator_ids.issubset(dynamic_pair_ids))
-                self.assertEqual(sum(not x.get("pair_id") for x in rows), 23)
+                self.assertEqual(sum(not x.get("pair_id") for x in rows), 26)
             ids = select_examples(role, "r2r-en", "Walk through the doorway and stop beside the table.")
             self.assertFalse(any(x.startswith("R2R-CORE-") for x in ids))
             self.assertTrue(all(x in {r["template_id"] for r in rows} for x in ids))
-        self.assertTrue(6 <= len(select_examples("generator", "r2r-en", "Walk through the doorway.")) <= 8)
-        self.assertTrue(8 <= len(select_examples("reviewer", "r2r-en", "Walk through the doorway.")) <= 12)
+        self.assertTrue(4 <= len(select_examples("generator", "r2r-en", "Walk through the doorway.")) <= 6)
+        self.assertTrue(6 <= len(select_examples("reviewer", "r2r-en", "Walk through the doorway.")) <= 9)
 
     def test_generator_core_passes_existing_runtime_contract(self):
         for row in core_library("generator", "r2r-en"):

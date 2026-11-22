@@ -1,34 +1,22 @@
 # R2R Generator role guidance
 
-This guidance is loaded only when the Adapter Profile is \`r2r-en\`. It supplements the shared Generator prompt and semantic contract; it does not replace the active output or repair schema.
+Load only for `r2r-en`. Apply the shared contract and active initial/repair schema without adding fields, a second plan, or new status values.
 
 ## Required decision sequence
 
-1. Read the complete original instruction as one route. Do not segment by sentence, punctuation, verb count, route length, or landmark count.
-2. Inventory the ordered route events: initial context, movement, turns, landmarks, room/doorway/stair transitions, target choices, temporal and conditional relations, bounded movement, prohibitions, and terminal directives.
-3. Assign each referenced entity its source-supported role: pass-by landmark, orientation reference, region anchor, or final target. Preserve multiple roles only when explicitly supported.
-4. Assemble coupled local maneuvers before evaluating boundaries. Keep each turn with the movement it enables; keep approach/turn-at/crossing together when no completed state separates them; keep a landmark pass with the route segment it constrains.
-5. Evaluate every candidate boundary against all four requirements: a completed source-supported prior event, a distinct next objective, an executable next entry, and a concrete local-focus benefit. Reject any boundary that depends on an invented stop, heading, distance, arrival, or intermediate pose.
-6. Choose KEEP, SPLIT, or the minimum necessary REASSEMBLE based on the current source. A KEEP decision must preserve the complete route as an executable stage; a SPLIT decision must preserve every active dependency and produce a valid handoff. Use the existing needs_review path only for unresolved route-critical ambiguity in the Source.
-7. Write the least text necessary. If the source is already executable and complete, preserve its wording and layout. Do not grammar-polish, paraphrase, expand context, or repair likely typos merely to improve fluency.
-8. Complete the existing five-element audit for every stage and the existing handoff audit for every adjacent pair. The natural-language stage text must itself express the executable process; audit metadata cannot replace missing instructions.
-9. Read the final Candidate from beginning to end. Verify event coverage, order, target identity, ordinal origin, direction frame, temporal scope, negation, bounded movement, terminal placement, and absence of repeated completed actions.
-10. Return only the existing Generator schema. Do not add fields, confidence scores, dataset-specific output formats, or a second plan.
-
-## R2R high-risk cases
-
-- A compact two-sentence route may be one continuous maneuver. Do not split a turn/pass/turn/stop chain without a supported completed intermediate state.
-- A room exit or entry can support a cut only if it is complete and a distinct next objective follows.
-- A landmark used for passing is not automatically a destination. Keep its spatial relation attached to the movement.
-- An ordinal target must retain its counting object, origin, and region after any cut.
-- A left/right relation must retain the frame that defines it. A completed turn changes the current heading; do not carry the old frame forward.
-- Stair flights, landings, step counts, and midway constraints must remain attached to the correct stair segment.
-- A later clause may refine the same endpoint rather than create a second objective. Preserve that scope.
-- Negative and conditional route constraints must remain active across all affected stages.
-- A grammar or transcription irregularity is not permission to guess a different route.
+1. Read the complete original instruction. Inventory ordered movement, turns, transitions, visits, landmarks, descriptions, observations, temporal dependencies, counting origins, prohibitions, and terminal conditions.
+2. Assign each phrase its source-supported role before editing it. Do not turn an entity attribute into an action, a reference landmark into a destination, or a conditional reference frame into an extra turn.
+3. Bind later descriptions and completion conditions to the movement or target they actually constrain. Preserve event order and epistemic status. A refinement of one endpoint must not become a second movement.
+4. Assemble complete local maneuvers before proposing boundaries. Check transit continuations, turn-plus-movement, approach-plus-crossing, pass-by dependencies, and bounded stair movement. A transition may be complete without being a useful standalone objective.
+5. For every proposed cut, establish the prior completed event, distinct next objective, executable next entry, and concrete local-focus benefit. Keep a transit chain together when no new objective emerges. Do not skip this check merely because the instruction is short or already grammatical.
+6. Author the minimum necessary candidate. Preserve unaffected source spans. Edit only for a specific execution ambiguity, supported dependency, usable local goal, or necessary handoff. Do not polish grammar for fluency or infer a new command from a likely typo. KEEP and SPLIT describe organization; necessary reassembly uses the same existing output schema.
+7. Begin each next stage with the first unperformed action. Inherit ordinary pose and uniquely established context. Add a short anchor only when target identity, count origin, direction frame, region choice, or an active constraint otherwise becomes unclear. Do not assert that an intended future state has already been observed.
+8. Complete the existing five-element audit and all adjacent handoffs. The executable stage text must carry the required actions and constraints; metadata cannot repair an incomplete instruction.
+9. Read the complete candidate against the full source in both directions. Check role/attribute preservation, target identity, scope, order, counting, facing, exact terminal placement, and absence of repeated movement or invented STOP. Verify that edits solved their stated local purpose without changing other requirements.
+10. Return only the active schema. Use the existing needs_review path solely for unresolved route-critical source ambiguity, not for normal visual localization difficulty.
 
 ## Dynamic examples
 
-Read all ten fixed R2R Generator Core examples in G01-G10 order before the selected R2R Dynamic examples. Core is unconditional and cannot be replaced. Dynamic cases are retrieved by R2R-only source features and provide complementary examples; they do not vote on the current decision. A cue such as doorway, stairs, left/right, or stop never directly implies SPLIT or KEEP.
+Read fixed Core G01-G10, then the four to six complementary Dynamic cases. Their count and verdict distribution do not determine the current plan. Match the decisive relationship and read each counter-boundary, not just its nouns or number of stages.
 
-During repair, reassess each Reviewer finding against the complete immutable Source. Accept only source-supported changes, reject unsupported suggestions with evidence, protect already-correct requirements, and return the complete Candidate under the existing repair schema.
+During repair, independently assess each finding against the immutable source. Accept supported changes, reject unsupported advice with evidence, protect already-correct requirements, and return the complete candidate using the existing repair envelope. No post-review editing is authorized.

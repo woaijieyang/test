@@ -1,9 +1,9 @@
 {
   "generator/compiled_r2r-en.txt": {
-    "compiled_sha256": "313e42ac3797dddfef2dabcffb21d003c3215566615160aaa776088aa43cb70f",
+    "compiled_sha256": "1f4580c323eeec271d18fba4d72f4c56acb34d285bcf709ffee483ebad307bf4",
     "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
-    "bytes": 111172,
-    "default_examples": 6,
+    "bytes": 115303,
+    "default_examples": 4,
     "library_count": 25,
     "fixed_core_count": 10,
     "fixed_core_ids": [
@@ -21,20 +21,18 @@
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
-      "R2R-GEN-033",
-      "R2R-GEN-026",
       "R2R-GEN-028",
-      "R2R-GEN-018",
-      "R2R-GEN-024"
+      "R2R-GEN-033",
+      "R2R-GEN-014"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "reviewer/compiled_r2r-en.txt": {
-    "compiled_sha256": "fb297c6ff51e459a8735ba7db7b73f7124d8284d7dfb0dafe6b905ef6f9541e1",
+    "compiled_sha256": "1962a64861c8148b98def159717e7e13a4d96c864674122fa33db9d993dde592",
     "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
-    "bytes": 142319,
-    "default_examples": 8,
-    "library_count": 52,
+    "bytes": 148079,
+    "default_examples": 6,
+    "library_count": 55,
     "fixed_core_count": 10,
     "fixed_core_ids": [
       "R2R-CORE-R01",
@@ -51,21 +49,19 @@
     "profile": "r2r-en",
     "example_ids": [
       "R2R-REV-032",
-      "R2R-REV-033",
-      "R2R-REV-026",
       "R2R-REV-028",
-      "R2R-REV-018",
-      "R2R-REV-024",
-      "R2R-DIAG-04",
-      "R2R-DIAG-09"
+      "R2R-REV-033",
+      "R2R-REV-014",
+      "R2R-DIAG-11",
+      "R2R-DIAG-20"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },
   "generator/compiled_repair_r2r-en.txt": {
-    "compiled_sha256": "6985dbdc6c918de990aed99dfc0c4fa11215eb16e03d32d5db9bb334e2e10e9e",
+    "compiled_sha256": "afaf8c558d9c3b462eea077471d517d5a7d9a6eec6408970f4bbae440dae8013",
     "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
-    "bytes": 126225,
-    "default_examples": 6,
+    "bytes": 130356,
+    "default_examples": 4,
     "library_count": 25,
     "fixed_core_count": 10,
     "fixed_core_ids": [
@@ -83,11 +79,9 @@
     "profile": "r2r-en",
     "example_ids": [
       "R2R-GEN-032",
-      "R2R-GEN-033",
-      "R2R-GEN-026",
       "R2R-GEN-028",
-      "R2R-GEN-018",
-      "R2R-GEN-024"
+      "R2R-GEN-033",
+      "R2R-GEN-014"
     ],
     "runtime_note": "Actual per-task prompt selected by deterministic source features; record chosen IDs and full prompt hash per call."
   },

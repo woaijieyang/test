@@ -144,7 +144,9 @@
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: Path constraints: go around the bed; continue straight to the end of the hallway. Stage 2: left",
     "handoff_focus": "Stage 1 ends with 'Continue straight to the end of the hallway.'; stage 2 begins from 'At the end of the hallway, turn left and enter the bedroom. Wait in the doorway.'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not invent a hallway endpoint when the source only says down the hall, and do not execute a completed traversal twice.",
+    "case_rationale": "The hallway-end phrase bounds the preceding traversal; the following bedroom entry has a distinct local objective.",
+    "transfer_rule": "The hallway-end phrase bounds the preceding traversal; the following bedroom entry has a distinct local objective."
   },
   "retrieval_tags": [
     "room_transition",

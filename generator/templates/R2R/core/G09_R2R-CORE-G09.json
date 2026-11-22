@@ -33,7 +33,7 @@
     "status": "ok",
     "subtasks": [
       "Go down the stairs and take a right.",
-      "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+      "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
     ],
     "stage_audit": [
       {
@@ -79,11 +79,9 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
-          ]
+          "mode": "inherited_pose",
+          "text": "Continue from the completed stair descent and right turn; the forward approach is the first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
           "text": "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
@@ -92,9 +90,9 @@
           ]
         },
         "process": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
+          "text": "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
           "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+            "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
           ]
         },
         "ending": {
@@ -106,9 +104,8 @@
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "after; Once; right; between",
+          "text": "Once; right; between",
           "candidate_quotes": [
-            "after",
             "Once",
             "right",
             "between"
@@ -132,32 +129,32 @@
           "candidate_quote": "Go down the stairs and take a right."
         },
         "next_entry": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table",
-          "candidate_quote": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
+          "text": "Walk forward towards the leather chairs next to the table",
+          "candidate_quote": "Walk forward towards the leather chairs next to the table"
         },
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Go down the stairs and take a right.'; the next stage begins with 'From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The previous stage explicitly ends with 'Go down the stairs and take a right.'; the next stage begins with 'Walk forward towards the leather chairs next to the table'. The handoff carries the established location/reference frame without adding a physical stop."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Go down the stairs and take a right.'; stage 2 begins from 'From the bottom of the stairs after turning right, walk forward towards the leather chairs…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Go down the stairs and take a right.'; stage 2 begins from 'Walk forward towards the leather chairs…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
     "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: right Stage 2: after; Once; right; between",
-    "handoff_focus": "Stage 1 ends with 'Go down the stairs and take a right.'; stage 2 begins from 'From the bottom of the stairs after turning right, walk forward towards the leather chairs…'.",
+    "handoff_focus": "Stage 1 ends with 'Go down the stairs and take a right.'; stage 2 begins from 'Walk forward towards the leather chairs…'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not detach 'once/when/until' from its action or treat every temporal connective as a stage boundary.",
+    "anti_pattern": "Do not replay the descent or turn. An unmentioned word is not automatically unsupported; assess event entailment and anchor necessity, not a prohibited-word list.",
     "semantic_pattern": "temporal_condition_closes_target_action",
     "decision_reason": "The stair descent and right turn establish a completed transition and orientation. The subsequent forward approach and bench-relative terminal placement form a distinct objective. The 'once you reach' condition remains attached to the stop/stand action in the same stage.",
-    "transfer_rule": "Keep temporal triggers and their governed actions attached. A condition can refine an endpoint or completion event without automatically creating a new stage.",
+    "transfer_rule": "Inherit the completed descent and right turn; explicitly restate context only when an actual dependency would otherwise be lost. Keep the bench trigger and final between relation together.",
     "primary_decision_boundary": "completed_stair_descent_and_turn_then_bench_approach",
-    "case_rationale": "The first stage completes the bounded stair descent and the explicitly ordered right turn. The second stage begins the still-unperformed forward approach toward the leather chairs and table, then keeps the once-you-reach trigger attached to the bench-relative stop/stand placement. The boundary does not detach the temporal condition or invent a stop at the stair base.",
+    "case_rationale": "The descent and right turn establish the next stage entry. The candidate now begins the unperformed forward approach directly, preserving the bench trigger and terminal between relation without a redundant location prefix.",
     "secondary_semantic_focus": [
       "temporal_condition_scope",
       "terminal_placement",
