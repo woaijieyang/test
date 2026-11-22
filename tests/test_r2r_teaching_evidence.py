@@ -1,19 +1,20 @@
 """R2R teaching-evidence checks: source text, candidate defects, and labels must agree."""
+import json
 import unittest
 
-from host import protocol
-from host.compile import runtime_review_output
-from host.template_selector import library
+from host.compile import ROOT, teaching_card
+from host.template_selector import validate_template
 
 
 class R2RTeachingEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.bank = {
-            row["template_id"]: row
-            for row in library("reviewer", "r2r-en")
-            if row["template_id"].startswith("R2R-DIAG-")
-        }
+        folder = ROOT / "reviewer/templates/R2R/diagnostics"
+        rows = [json.loads(path.read_text(encoding="utf-8"))
+                for path in sorted(folder.glob("*.json"))]
+        cls.bank = {row["template_id"]: row for row in rows}
+        if len(cls.bank) != len(rows):
+            raise ValueError("Duplicate authored Reviewer diagnostic ID")
 
     def example(self, number):
         return self.bank[f"R2R-DIAG-{number:02d}"]
@@ -82,14 +83,14 @@ class R2RTeachingEvidenceTests(unittest.TestCase):
         self.assertEqual(finding["affected_subtask_indices"], [1, 2])
         self.assertIn("terminal", finding["problem"].lower())
 
-    def test_revised_templates_pass_active_reviewer_protocol(self):
+    def test_revised_templates_validate_authored_schema_and_projection(self):
         for number in (4, 5, 6, 8, 10, 12, 15, 16, 17, 18, 20, 24, 28):
             row = self.example(number)
             with self.subTest(template=number):
-                review = runtime_review_output(row)
-                protocol.reviewer(row["review_input"]["original_instruction"],
-                                  row["review_input"]["candidate"], review)
-                self.assertEqual(review["verdict"], "revise")
+                validate_template("reviewer", row)
+                card = teaching_card(row, "reviewer", detailed=True)
+                self.assertEqual(card["teaching"]["verdict"], "revise")
+                self.assertTrue(card["teaching"]["findings"])
 
 
 if __name__ == "__main__":
