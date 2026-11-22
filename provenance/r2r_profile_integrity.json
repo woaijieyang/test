@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 132,
+  "file_count": 131,
   "files": [
     {
       "path": "adapter/README.md",
@@ -292,7 +292,7 @@
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/20_R2R-DIAG-20.json",
-      "git_blob_sha1": "fd773c488d27a632692cd4b8ef5c5356c734045f"
+      "git_blob_sha1": "5786d3ade831708d594d32193eb31a60a5cc06f4"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/27_R2R-DIAG-27.json",
@@ -305,10 +305,6 @@
     {
       "path": "reviewer/templates/R2R/diagnostics/29_R2R-DIAG-29.json",
       "git_blob_sha1": "2a49e23fc35f4ad8ef694c72a65cea40a680e8b8"
-    },
-    {
-      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-20.json",
-      "git_blob_sha1": "5786d3ade831708d594d32193eb31a60a5cc06f4"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-21.json",
