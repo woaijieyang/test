@@ -24,7 +24,7 @@ concurrency:
 
 env:
   PYTHONDONTWRITEBYTECODE: '1'
-  BASE_COMMIT: cfd4c13010f105235d026ec14a9c2b4bbd7bf94e
+  BASE_COMMIT: da277a0f9a6ee7d8eebb78dafa852e469cd1a50e
 
 jobs:
   validate:
@@ -45,6 +45,11 @@ jobs:
         run: |
           git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
           echo "R2R_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
+      - name: Validate and materialize authored teaching corrections
+        run: |
+          python -B tools/build_rxr_reviewed.py --inspect
+          python -B tools/build_rxr_reviewed.py --write
+          python -B tools/build_rxr_reviewed.py --check
       - name: Verify official training source and build authored examples
         run: python -B tools/build_rxr_teaching.py --verify-upstream
       - name: Compile profiles and prove R2R isolation
@@ -55,6 +60,7 @@ jobs:
         run: |
           python -B -m evaluation.smoke24
           python -B tools/check_rxr_reproducibility.py
+          python -B tools/build_rxr_reviewed.py --check
       - name: Refresh scoped asset manifests and verify complete package
         run: |
           python -B tools/refresh_rxr_integrity.py
@@ -91,33 +97,34 @@ jobs:
         run: |
           python -B -m examples.demo
           python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
+          python -B tools/build_rxr_reviewed.py --check
       - name: Record actual validation and inherited label audit
         run: |
           python -B - <<'PY'
           import json, os, re, subprocess
           from pathlib import Path
           report=json.loads(Path(os.environ['RUNNER_TEMP'],'rxr-tests.json').read_text())
+          teaching=json.loads(Path('provenance/rxr_teaching_changes.json').read_text())
           report.update(source_commit=os.environ['GITHUB_SHA'],baseline_commit=os.environ['BASE_COMMIT'],
                         source_archive_verified=True,r2r_prompt_schema_selection_equal=True,
                         common_and_r2r_assets_equal=True,deterministic_rebuild=True,
-                        runtime_source_and_tests_rewritten_by_ci=False)
+                        runtime_source_and_tests_rewritten_by_ci=False,
+                        reviewed_teaching_materialized=True,
+                        reviewed_teaching_count=teaching['legacy_template_count'],
+                        reviewed_teaching_field_changes=sum(len(r['fields']) for r in teaching['templates']))
           pattern=re.compile(r'(?i)(?<![a-z0-9])v\d+(?:[._]\d+)*(?![a-z0-9])')
-          # Historical provenance and technical wire identifiers are not silently
-          # rewritten. Report the residual literal-label requirement accurately.
           inherited=0; current=[]
           for item in subprocess.check_output(['git','ls-files'],text=True).splitlines():
               p=Path(item)
               if p.name.lower()=='readme.md' or not p.is_file(): continue
               try: text=p.read_text(encoding='utf-8')
               except UnicodeDecodeError: continue
-              if pattern.search(item) or pattern.search(text):
-                  inherited+=1
+              if pattern.search(item) or pattern.search(text): inherited+=1
               if item in ('shared/dataset_rules/rxr_en_us.md','generator/dataset_rules/rxr_en_us.md',
                           'reviewer/dataset_rules/rxr_en_us.md','docs/RXR_ENHANCEMENT.md',
                           'host/rxr_retrieval.py','host/rxr_assets.py') and pattern.search(text):
                   current.append(item)
-          if current:
-              raise RuntimeError('Unexpected project release label in current RxR assets: '+', '.join(current))
+          if current: raise RuntimeError('Unexpected release label in current RxR assets: '+', '.join(current))
           report['current_rxr_release_labels_outside_readme']=len(current)
           report['inherited_technical_or_historical_label_file_count']=inherited
           report['literal_repository_wide_zero_version_labels']=inherited==0
@@ -130,13 +137,13 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # CI rebuilds derived assets only. Runtime source, tests and policies are
-          # reviewed source commits, never patched during the validation run.
-          git add generator/templates/RxR/train reviewer/templates/RxR/train provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json provenance/r2r_profile_integrity.json provenance/r2r_shared_runtime_audit.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json evaluation/renderer_smoke24.json
+          # Only authored data and deterministic derived outputs are materialized.
+          # Runtime source, tests and policies are never patched by this job.
+          git add generator/templates/RxR/core generator/templates/RxR/val_seen generator/templates/RxR/train reviewer/templates/RxR/core reviewer/templates/RxR/paired reviewer/templates/RxR/diagnostics reviewer/templates/RxR/train provenance/rxr_teaching_changes.json provenance/rxr_training_sources.json provenance/rxr_validation.json provenance/rxr_profile_integrity.json provenance/r2r_profile_integrity.json provenance/r2r_shared_runtime_audit.json FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json evaluation/renderer_smoke24.json
           git diff --exit-code
           test -z "$(git ls-files --others --exclude-standard)" || { git status --short; exit 1; }
           if ! git diff --cached --quiet; then
-            git commit -m 'Record reproducible RxR build artifacts and complete validation'
+            git commit -m 'Record reviewed RxR teaching and verified runtime artifacts'
           fi
           test -z "$(git status --porcelain)" || { git status --short; exit 1; }
           python -B verify_package.py
