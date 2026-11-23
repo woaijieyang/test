@@ -1,4 +1,4 @@
-# LLM-decompose-v6.6.2
+# LLM-decompose-v6.6.3
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -13,6 +13,7 @@
 - `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
 - `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
 - `docs/R2R_ENHANCEMENT.md`：R2R English 专属规则、检索、Host 接入、RxR 隔离和验收规范。
+- `docs/RXR_TEACHING_REPAIR.md`：本轮 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
 - `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
 - `docs/V1_V5_V6_RULE_COMPARISON.md`：历史比较档案，仅用于追溯，不是当前实现规范。
 - `shared/semantic_contract.md`：Generator/Reviewer 共用的唯一语义验收标准。
@@ -60,11 +61,11 @@ G0/R0/G1/R1 均绑定同一个 Source Identity。G0/G1 使用同一 Generator Co
 |---|---:|---:|
 | Generator Fixed Core | 10（G01–G10） | 10（G01–G10） |
 | Reviewer Fixed Core | 10（R01–R10） | 10（R01–R10） |
-| Generator Dynamic Eligible | 25 | 35 |
+| Generator Dynamic Eligible | 25 | 43（35原有＋8训练源） |
 | Generator Dynamic per task | 6–8 | 2–4 |
-| Reviewer Paired Dynamic Eligible | 29 | 35 |
+| Reviewer Paired Dynamic Eligible | 29 | 43（35原有＋8训练源） |
 | Reviewer Paired per task | 6–8 | 2–4 |
-| Reviewer Diagnostics Eligible | 23 | 29 |
+| Reviewer Diagnostics Eligible | 23 | 37（29原有＋8训练源） |
 | Reviewer Diagnostics per task | 2–4 | 0–2 |
 
 磁盘来源数、Core 数、Dynamic Eligible 数和单任务实际选择数是不同概念，禁止混用。固定 Core 无条件加载且顺序稳定；Dynamic 只从当前 Profile 的白名单目录检索；Legacy 仅用于来源追溯，不进入运行时。
@@ -104,6 +105,7 @@ Reviewer 的 PASS/REVISE/UNRESOLVED 必须来自当前 Source 和 Candidate 的�
 在 Python 3.11 环境安装 `requirements.txt` 后执行：
 
 ```bash
+python -B tools/build_rxr_reviewed.py --check
 python -B -m host.compile
 python -B verify_package.py
 python -B -m unittest discover -s tests -v
@@ -111,18 +113,26 @@ python -m examples.demo
 python -m evaluation.smoke24
 ```
 
+作者侧重建和完整历史要求见 `docs/RXR_TEACHING_REPAIR.md`。`test_release_transaction.py` 需要仓库外的配套 `manage_release.py`；缺失时应单独记录未运行，不计为通过。CI 的实际测试数、限制和隔离结果保存在 `provenance/rxr_validation.json`。
+
 编译后必须检查六份 Compiled Prompt 和 Build Manifest：每个 Profile/Role 都应有十条固定 Core；R2R/RxR Dynamic IDs 只能来自本 Profile 的允许目录；Legacy 不得进入 RxR 运行时；Schema 必须处于约定的 Prompt 位置。所有编译产物必须提交并通过完整性校验。
 
 真实模型调用、盲审语义评估、Tokenizer 捕获和导航 Rollout 属于独立实验。离线 Fixture、Smoke 和 CI 不能替代这些实验。
 
 ## 数据来源与评测
 
-教学来源与评测 Split 必须显式区分：R2R Generator Core/Dynamic 与 Reviewer Core 的来源记录来自 val_seen；RxR 固定 Core 的来源元数据指向 train guide 记录，RxR Dynamic 来自 val_seen。固定 Core 是经过整理的教学案例，不是官方子任务标注或轨迹金标；Dynamic 也不是无条件可用于所有评测 Split 的训练数据。正式评测前必须按原始 split、instruction/episode/path ID 和 scene/scan ID 做交叉审计。R2R 的 val_seen 使用训练中已见环境，val_unseen 使用未见环境；RxR 官方划分同样区分 val_seen 与 val_unseen，且数据记录包含 split、instruction_id、path_id、scan 和 language。以实际使用的数据版本及 roster 为准，不能只凭文件名推断无泄漏。参考：[R2R task data documentation](https://github.com/peteanderson80/Matterport3DSimulator/blob/master/tasks/R2R/README.md)、[RxR dataset repository](https://github.com/google-research-datasets/RxR)、[RxR split description](https://ai.google.com/research/rxr/explore)。
+教学来源与评测 Split 必须显式区分。R2R 教学沿用各文件的 val_seen 来源记录。RxR Core 包含可追溯训练来源以及明确标注的合成或改编案例；动态库包含原有 val_seen 来源和八组经过官方归档核验的 train/guide/en-US 来源。所有分割、审计和单缺陷负例都是作者教学标注，不是官方子任务或轨迹金标。
+
+正式评测前按原始 split、instruction/episode/path ID、scene/scan ID 和原文哈希交叉核验。当前评测案例不注入 Runtime Few-shot。来源真实、引文存在与教学语义正确是不同验收条件，不能混用。数据定义参考 [R2R task data documentation](https://github.com/peteanderson80/Matterport3DSimulator/blob/master/tasks/R2R/README.md) 和 [RxR dataset repository](https://github.com/google-research-datasets/RxR)。
 
 ## 当前工程状态
 
-当前分支包含双 Profile 固定 Core、数据集专属规则、动态检索、完整双角色闭环、Snapshot Release、来源追踪和离线回归测试。任何后续改动必须保持 R2R/RxR 隔离，并以可复现的构建和行为测试证明未改变既有功能。
+当前分支从 `LLM-decompose-v6.6.2` 的固定提交建立，保留原分支不变。本轮先修正既有 RxR 教学，再加入六类局部语义判据澄清；不改变 R2R 专属资产、通用规则、运行 Schema、Renderer 或有界双角色工作流。固定 Core 身份、动态数量、来源和检索策略保持不变。
+
+逐字段修正记录见 `provenance/rxr_teaching_changes.json`，作者规格和构建检查见 `tools/build_rxr_reviewed.py`。存在争议的足床位置解释和辅助玻璃方位叙述继续显式记录，不标为已证明。候选仍需真实语义盲审和导航对照；本轮不宣称追回任何固定数量的成功，也未将计划中的三组新增来源混入修复实验。
+
+发布标识仅在 README 展示；新增规则、作者工具、测试和技术文档不加入发布后缀。继承的 Schema 身份、历史来源和兼容路径保留，不为清除字符串而破坏接口或追溯记录。全仓库历史标识与当前新增发布标识分别记录。
 
 ## RxR semantic calibration
 
-RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md). Engineering checks do not establish navigation gains.
+RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md) and [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md). Engineering checks do not establish navigation gains.
