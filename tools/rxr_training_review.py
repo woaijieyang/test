@@ -6,7 +6,7 @@ specification fails rather than defaulting every ending to no stop.
 """
 from __future__ import annotations
 import copy
-from tools.rxr_diagnostic_repairs import mapped_quote
+from tools.rxr_evidence_alignment import mapped_quote
 from tools.rxr_positive_repairs import evidence,field
 
 STOP_SCOPES={

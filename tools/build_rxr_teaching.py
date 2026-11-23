@@ -1,7 +1,8 @@
 """Build authored training demonstrations; verify public source bytes on demand.
 
 Offline maintenance only. Runtime reads committed JSON and performs no download.
-The builder checks mechanical contracts, not semantic entailment or navigation.
+Validate every case before publishing a guarded, explicit complete bundle.
+Mechanical contracts do not certify semantic entailment or navigation.
 """
 from __future__ import annotations
 import argparse
@@ -10,6 +11,7 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 import urllib.request
 
@@ -17,14 +19,31 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.rxr_lesson_specs import LESSONS, ARCHIVE_URL, ARCHIVE_SHA256
 from tools.rxr_training_review import STOP_SCOPES, build_diagnostic
+from tools.rxr_training_io import encode, publish
 
 
-def write(path, value):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+def validate_lesson_inventory(lessons):
+    if not isinstance(lessons, list) or len(lessons) != 8:
+        raise ValueError('The approved source inventory requires eight lessons')
+    names, instructions, sources = set(), set(), set()
+    for case in lessons:
+        name, iid, source = case.get('id'), case.get('instruction_id'), case.get('source')
+        if not isinstance(name, str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', name):
+            raise ValueError('Invalid authored lesson identity')
+        if isinstance(iid, bool) or not isinstance(iid, int) or iid < 0:
+            raise ValueError('Invalid authored instruction identity')
+        if not isinstance(source, str) or not source:
+            raise ValueError('Empty authored source instruction')
+        digest = hashlib.sha256(source.encode('utf-8')).hexdigest()
+        if name in names or iid in instructions or digest in sources:
+            raise ValueError('Duplicate authored lesson, instruction or source')
+        if not isinstance(case.get('record_sha256'), str) or not re.fullmatch(r'[0-9a-f]{64}', case['record_sha256']):
+            raise ValueError('Invalid authored source-record digest')
+        names.add(name); instructions.add(iid); sources.add(digest)
 
 
 def verify_upstream():
+    validate_lesson_inventory(LESSONS)
     with urllib.request.urlopen(ARCHIVE_URL, timeout=90) as response:
         blob = response.read()
     if hashlib.sha256(blob).hexdigest() != ARCHIVE_SHA256:
@@ -84,7 +103,6 @@ def make_case(case):
         ending = case['stages'][i][2]
         entry = case['stages'][i + 1][5]
         next_quote = case['coverage'][next(j for j, row in enumerate(case['coverage']) if row[1] == i + 1)][2]
-        # The source quotes are authored, while their IDs are local to this case.
         handoffs.append(dict(
             from_subtask_index=i, to_subtask_index=i + 1, status='supported',
             preceding_exit=dict(text=audits[i]['ending']['text'], candidate_quote=ending),
@@ -136,13 +154,12 @@ def make_case(case):
     return generator, reviewer, diagnostic
 
 
-def build(verify=False):
-    if verify:
-        verify_upstream()
+def expected_bundle():
+    validate_lesson_inventory(LESSONS)
     from host.template_selector import validate_template
     from host.compile import runtime_review_output
     from host import protocol
-    inventory = []
+    inventory, outputs = [], {}
     for case in LESSONS:
         gen, rev, diag = make_case(case)
         validate_template('generator', gen)
@@ -150,19 +167,38 @@ def build(verify=False):
         for row in (rev, diag):
             validate_template('reviewer', row)
             protocol.reviewer(case['source'], row['review_input']['candidate'], runtime_review_output(row))
+        if gen['output']['subtasks'] != rev['review_input']['candidate']['subtasks']:
+            raise ValueError('Authored pair does not review its actual Generator candidate')
         for role, row in (('generator',gen),('reviewer',rev),('reviewer',diag)):
-            write(ROOT/role/'templates'/'RxR'/'train'/f"{row['template_id']}.json", row)
+            path = f"{role}/templates/RxR/train/{row['template_id']}.json"
+            if path in outputs:
+                raise ValueError('Duplicate authored training output: ' + path)
+            outputs[path] = encode(row)
         inventory.append(dict(instruction_id=case['instruction_id'],scan=case['scan'],path_id=case['path_id'],
                               source_sha256=hashlib.sha256(case['source'].encode()).hexdigest(),
                               source_record_sha256=case['record_sha256'],
                               generator=gen['template_id'],reviewer=rev['template_id'],diagnostic=diag['template_id'],pattern=case['pattern']))
-    write(ROOT/'provenance/rxr_training_sources.json', dict(source_url=ARCHIVE_URL, archive_sha256=ARCHIVE_SHA256,
+    registry = dict(source_url=ARCHIVE_URL, archive_sha256=ARCHIVE_SHA256,
         source_split='train',source_role='guide',language='en-US',annotation_status='curated_not_official_subtask_ground_truth',
-        records=inventory, templates=[dict(path=path.relative_to(ROOT).as_posix(), sha256=hashlib.sha256(path.read_bytes()).hexdigest()) for role in ('generator','reviewer') for path in sorted((ROOT/role/'templates'/'RxR'/'train').glob('*.json'))]))
-    print(json.dumps(dict(training_sources=len(inventory),generated_templates=3*len(inventory),
+        records=inventory, templates=[dict(path=name, sha256=hashlib.sha256(outputs[name]).hexdigest()) for name in sorted(outputs)])
+    return outputs, registry
+
+
+def build(verify=False, *, check=False):
+    validate_lesson_inventory(LESSONS)
+    if verify:
+        verify_upstream()
+    # A late invalid lesson cannot leave earlier generated files behind.
+    outputs, registry = expected_bundle()
+    changed = publish(ROOT, outputs, registry, check=check)
+    print(json.dumps(dict(training_sources=len(registry['records']),generated_templates=len(outputs),
+                          changed_files=len(changed),check_only=check,
                           upstream_bytes_verified=verify,semantic_correctness_certified=False,navigation_evaluated=False)))
+
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--verify-upstream',action='store_true')
-    build(parser.parse_args().verify_upstream)
+    parser.add_argument('--check',action='store_true',help='Validate authored bytes without writing any artifacts')
+    args=parser.parse_args()
+    build(args.verify_upstream, check=args.check)
