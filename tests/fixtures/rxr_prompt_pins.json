@@ -2,9 +2,28 @@
   "basis": "Case-specific RxR Core lessons, 33 authored local coverage rows, and source-preserving positive/diagnostic calibration. Measured by deterministic compilation in the recorded source run; all new behavioral tests and R2R isolation passed before reviewing these changed expectations. Common contract, schemas, compiler and R2R inputs remain frozen. CI never rewrites these expectations.",
   "measured_source_commit": "773539d888f45bade562bbd775406fc4d426d7e9",
   "measurement_workflow_run": 45190859747,
+  "profile": "rxr-en-us",
+  "query": "",
+  "selected_ids": {
+    "generator": ["RxR-GEN-013", "RxR-GEN-004"],
+    "reviewer": ["RxR-REV-013", "RxR-REV-004"]
+  },
   "prompts": {
     "generator/initial": "2e8ad0e78205a572200e34d773c213c7f1f9f093f16385f799c725c8e22f9596",
     "generator/repair": "f1b10eb701108ab78395463ac5a021da5d706efa452898d0724ccb896d275429",
     "reviewer/review": "421f442d1341f1c5ed8b167056634455b8b6c9ba39731c4117c808b8779895b5"
-  }
+  },
+  "schema_sha256": {
+    "generator/initial": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+    "generator/repair": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+    "reviewer/review": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6"
+  },
+  "utf8_bytes": {
+    "generator/initial": 111818,
+    "generator/repair": 126871,
+    "reviewer/review": 143454
+  },
+  "recheck_contract": "With the same frozen selection, Reviewer review and recheck compile the same system contract and response schema. Recheck-specific candidate and prior-review content is carried by the existing user payload, not by editing the frozen examples.",
+  "token_budget_verified": false,
+  "navigation_evaluated": false
 }
