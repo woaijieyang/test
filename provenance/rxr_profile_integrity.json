@@ -275,7 +275,7 @@
     },
     {
       "path": "host/rxr_assets.py",
-      "git_blob_sha1": "a8bb7007a5f234ebbc697dfe5afac35c541480db"
+      "git_blob_sha1": "08c9208f921236898a78024de4a7c791b79c040f"
     },
     {
       "path": "host/rxr_retrieval.py",
