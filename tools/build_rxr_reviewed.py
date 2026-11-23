@@ -65,6 +65,7 @@ def expected():
     from tools.rxr_positive_repairs import repair as positive
     from tools.rxr_diagnostic_repairs import repair as diagnostics
     from tools.rxr_review_contract import finalize
+    from tools.rxr_teaching_focus import refine_positive, refine_core
     from host.template_selector import validate_template
     from host.compile import runtime_review_output, teaching_card
     from host import protocol
@@ -83,8 +84,12 @@ def expected():
         raise ValueError(f'Unexpected frozen teaching count: {len(original)}')
     rows = copy.deepcopy(original)
     positive(rows)
+    # Refine the reviewed parent before dependent diagnostics are materialized.
+    # This prevents a grouping contrast from retaining an obsolete parent route.
+    refine_positive(rows)
     contrasts = diagnostics(rows)
     finalize(rows)
+    refine_core(rows)
     ledger, outputs = [], {}
     for tid in sorted(rows):
         row, old, path = rows[tid], original[tid], paths[tid]
@@ -123,11 +128,13 @@ def expected():
     report = dict(baseline_commit=BASE, legacy_template_count=len(rows),
         source_and_retrieval_identity_preserved=True, template_count_preserved=True,
         mechanical_runtime_contracts_pass=True, semantic_correctness_certified=False,
-        navigation_evaluated=False,
+        navigation_evaluated=False, core_case_specific_lessons=True,
+        core_event_local_coverage_rows=33,
         curation_limits=[
             'Natural-language entailment is not proven by schema, quote or pair checks.',
-            'The room-or-door and foot-of-bed interpretation remains an explicit review item; no arbitrary distance is added by these repairs.',
-            'Auxiliary-window uncertainty commentary is preserved pending an isolated wording experiment.'
+            'The room-or-door description remains source uncertainty; the final bed-foot state is preserved without prescribing an extra traversal.',
+            'Contradictory auxiliary-window wording remains in source-preserving descriptive form; analysis is kept outside executable navigation text.',
+            'No retrieval, template-count, runtime-schema, renderer or navigation-budget change is included in this calibration.'
         ], contrasts=contrasts, templates=ledger)
     return outputs, report
 
