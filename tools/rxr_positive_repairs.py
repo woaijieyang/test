@@ -127,8 +127,6 @@ def apply_stage_repairs(row):
             end(row,0,'Cross the doorway to the source-described position in front of the two white chairs. Expected standing does not add an intermediate stop.',
                 'Walk through this doorway. You will be standing in front of two white chairs.',kind='explicit_event',stop='none',target='The position in front of the two white chairs reached through the doorway.')
         elif number == 21:
-            # The source predicts the intermediate standing state but gives its
-            # explicit stop only before the podium in the final stage.
             checks[0]['ending']['stop_scope'] = 'none'
         elif number == 23:
             replace_candidate(row,2,'walk to the end of the brick patio.','walk to the end, mostly to the end of the brick patio.')
@@ -143,7 +141,6 @@ def apply_stage_repairs(row):
                        'one step','two steps','Turn left once again')
             conditions(row,2,'Repeat the right turn; retain the closed-to-open door state and select the narrow opening rather than the previously closer one. No door-opening action is invented.',
                        'Turn right once again','closed door and now it will open for you','not the one that was closest to you earlier','Take a step inside')
-    # A stage boundary never adds a stop, but cannot cancel an explicit source stop.
     for h in stages_and_checks(row)[2]:
         if h['handoff_rationale'] == 'The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.':
             h['handoff_rationale'] = 'The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.'
@@ -173,9 +170,6 @@ def repair_coverage(row):
     src = row['review_input']['original_instruction']
     tid = row['template_id']
     if tid.startswith('RXR-CORE-'):
-        # Core source units are short and remain ordered in the existing table.
-        # The cited completion fields above, rather than arbitrary SRC numbers,
-        # are the evidence for the existing boundary.
         audit = runtime_review_output(row)
         row['expected_review'] = audit
         for h in audit['handoffs']:
@@ -208,7 +202,6 @@ def repair_coverage(row):
         setrow(4,[(0,'then turn left and take a few steps towards the two entrances in front.'),(0,'Then turn left.')])
         setrow(5,[(0,'There should be a wine room on your right.'),(0,"The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you.")])
         setrow(7,[(0,'Go towards the open door which has a black bench on your right until you reach that open door.')],source='go towards the open door which has a black bench, on your right',requirement='The bench is on your right in this event; do not transfer the relation to the door as subject.')
-        # These notes were copied from a negative case into a PASS positive.
         for layer in audit['layer_checks']:
             if 'note' in layer:
                 layer.pop('note')
@@ -249,7 +242,8 @@ def repair_coverage(row):
         setrow(5,[(0,'Do not go outside; move near the opening and stand there.')])
         for layer in audit['layer_checks']:
             note = layer.pop('note',None)
-            if note: layer['conclusion'] += ' ' + note
+            if note:
+                layer['conclusion'] = (layer.get('conclusion','')+' '+note).strip()
     elif n == 21:
         setrow(7,[(1,'On your left should be a bathtub with a window above it;'),(1,'in front of you should be two podiums, one with a sink and one with something else.')])
     elif n == 22:
@@ -278,8 +272,6 @@ def repair_coverage(row):
         setrow(7,[(1,'Move forward until you are in the middle of the doorway that leads into a living room.'),(1,'Once you are there, do not move.')])
     elif n == 35:
         setrow(10,[(2,'Turn right once again and you will see a narrow opening with a closed door and now it will open for you.')],requirement='Preserve the repeated turn and the described door opening state; do not insert a door-opening action.')
-    # Shorten mechanically identical evidence only when the original quotation
-    # has exactly one occurrence in exactly one stage. Never guess occurrence.
     for c in audit['source_coverage']:
         q = c['source_quote']
         matches = [i for i,s in enumerate(stages) if q in s and s.count(q)==1]
@@ -291,7 +283,6 @@ def repair_coverage(row):
         if len(HANDOFF_IDS[n]) != len(audit['handoffs']): raise ValueError(tid)
         for h, numbers in zip(audit['handoffs'], HANDOFF_IDS[n]):
             h['source_requirement_ids'] = [f'SRC-{k:02d}' for k in numbers]
-    # Update each review's local traceability from its own explicit indexed map.
     for check in audit['stage_checks']:
         i=check['subtask_index']
         matched=[c for c in audit['source_coverage'] if any(e['subtask_index']==i for e in c['candidate_evidence'])]
@@ -306,8 +297,6 @@ def repair(rows):
     for row in rows.values():
         if row['role']=='reviewer' and 'DIAG' not in row['template_id']:
             repair_coverage(row)
-    # Ground G's illustrative local requirement names against the paired source
-    # evidence without introducing a shared runtime ID protocol.
     generators={r['template_id']:r for r in rows.values() if r['role']=='generator'}
     for rev in rows.values():
         if rev['role']!='reviewer' or rev.get('pair_id') not in generators: continue
