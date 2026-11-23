@@ -16,6 +16,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.rxr_lesson_specs import LESSONS, ARCHIVE_URL, ARCHIVE_SHA256
+from tools.rxr_training_review import STOP_SCOPES, build_diagnostic
 
 
 def write(path, value):
@@ -38,10 +39,11 @@ def verify_upstream():
         case = wanted[key]
         if key in found:
             raise ValueError(f'Duplicate training instruction {key}')
-        assert hashlib.sha256(line).hexdigest() == case['record_sha256'], key
-        assert row['instruction'] == case['source'], key
-        assert row['scan'] == case['scan'] and row['path_id'] == case['path_id'], key
-        assert row['language'] == 'en-US', key
+        if hashlib.sha256(line).hexdigest() != case['record_sha256']:
+            raise ValueError(f'Training source record digest mismatch: {key}')
+        if (row['instruction'] != case['source'] or row['scan'] != case['scan']
+                or row['path_id'] != case['path_id'] or row['language'] != 'en-US'):
+            raise ValueError(f'Training source identity mismatch: {key}')
         found.add(key)
     if found != set(wanted):
         raise ValueError(f'Missing verified source records: {sorted(set(wanted) - found)}')
@@ -56,23 +58,24 @@ def make_case(case):
     versions = {role: _template_validators()[role].schema['properties']['schema_version']['const']
                 for role in ('generator', 'reviewer')}
     name = case['id']
-    gen_id, rev_id, diag_id = (f'RxR-{role}-TRAIN-{name}' for role in ('GEN', 'REV', 'DIAG'))
+    gen_id, rev_id = (f'RxR-{role}-TRAIN-{name}' for role in ('GEN', 'REV'))
     stages = [stage[0] for stage in case['stages']]
+    scopes = STOP_SCOPES[name]
+    if len(scopes) != len(stages) or any(x not in ('none','intermediate','terminal') for x in scopes):
+        raise ValueError(f'{name}: every stage requires an explicit authored stop scope')
     coverage = [dict(requirement_id=f'SRC-{i + 1:02d}', source_quote=src,
                      requirement=requirement,
                      candidate_evidence=[dict(subtask_index=index, quote=quote)], status='covered')
                 for i, (src, index, quote, requirement) in enumerate(case['coverage'])]
     audits = []
     for i, (text, target, ending, kind, conditions, entry) in enumerate(case['stages']):
-        # These descriptions and evidence are explicitly authored in the specs.
-        # No hidden plan or trajectory is inferred here.
         audits.append(dict(
             subtask_index=i,
             entry=dict(mode='episode_start' if i == 0 else 'inherited_pose', text=entry, candidate_quotes=[]),
             target=field(target, [target]),
             process=field('Execute the ordered actions stated in this stage.', [text]),
             ending=dict(kind=kind, text='Complete the source-supported event: ' + ending,
-                        candidate_quotes=[ending], stop_scope='none'),
+                        candidate_quotes=[ending], stop_scope=scopes[i]),
             conditions=field('; '.join(conditions) if conditions else None, conditions),
             source_quotes=[row['source_quote'] for row in coverage if row['candidate_evidence'][0]['subtask_index'] == i],
             carryover=[]))
@@ -81,13 +84,14 @@ def make_case(case):
         ending = case['stages'][i][2]
         entry = case['stages'][i + 1][5]
         next_quote = case['coverage'][next(j for j, row in enumerate(case['coverage']) if row[1] == i + 1)][2]
+        # The source quotes are authored, while their IDs are local to this case.
         handoffs.append(dict(
             from_subtask_index=i, to_subtask_index=i + 1, status='supported',
             preceding_exit=dict(text=audits[i]['ending']['text'], candidate_quote=ending),
             next_entry=dict(text=entry, candidate_quote=next_quote),
             shared_context=[dict(kind='inherited_context', text=entry)],
             source_requirement_ids=[row['requirement_id'] for row in coverage if row['candidate_evidence'][0]['subtask_index'] in (i, i + 1)],
-            handoff_rationale='The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred.'))
+            handoff_rationale='The cited preceding completion supplies the next first unperformed action. The boundary adds no physical stop or traversal and does not cancel any stop explicitly required by the source.'))
     source = dict(split='train', role='guide', record_id=str(case['instruction_id']),
                   instruction_id=str(case['instruction_id']), scene_id=case['scan'], trajectory_id=str(case['path_id']))
     provenance = dict(kind='curated_train_guide_lesson', source_url=ARCHIVE_URL,
@@ -106,12 +110,12 @@ def make_case(case):
     from host.protocol import LAYERS
     conclusions = [
         'This authored case supplies no Renderer artifact; review the actual stage strings.',
-        'Map every listed route requirement to indexed candidate text.',
+        'The indexed source passages identify their actual candidate events, not merely repeated words.',
         case['lesson'],
-        'Audit the actual stage entry, target, ordered process, ending and conditions independently.',
-        'Compare every previous completion with the next first unperformed action; inheritance is supported.',
+        'The authored five-element definitions preserve the actual entry, target, process, completion and scoped conditions.',
+        'The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command.',
         'The grouping respects source-supported completed objectives and coupled maneuvers.',
-        'Coverage and reverse source support preserve the route; this is not a navigation success claim.']
+        'Source coverage and reverse source support retain the route. This is a teaching judgment, not a navigation success claim.']
     checks = []
     for i, audit in enumerate(audits):
         check = copy.deepcopy(audit)
@@ -128,58 +132,7 @@ def make_case(case):
                     expected_review=review, teaching_notes=dict(review_pattern=case['pattern'],
                         review_principle=case['lesson'], case_specific_focus=case['lesson'], anti_pattern=case['anti']),
                     retrieval_tags=[case['pattern']])
-    diagnostic = copy.deepcopy(reviewer)
-    diagnostic['template_id'], diagnostic['pair_id'] = diag_id, None
-    diagnostic['provenance']['kind'] = 'authored_single_defect_training_diagnostic'
-    diagnostic['provenance']['candidate_corruption_is_authored_not_model_output'] = True
-    mutation = case['mutation']
-    index, old, new = mutation['stage'], mutation['old'], mutation['new']
-    if stages[index].count(old) != 1:
-        raise ValueError(f'{name}: mutation must match exactly one stage span')
-    bad = stages[index].replace(old, new, 1)
-    diagnostic['review_input']['candidate']['subtasks'][index] = bad
-    audit = diagnostic['expected_review']
-    audit['verdict'] = 'revise'
-    audit['dimensions']['source_fidelity'] = 'issue'
-    changed_id = audit['source_coverage'][mutation['requirement']]['requirement_id']
-
-    def quote_after(quote):
-        if quote in bad:
-            return quote
-        result = quote.replace(old, new)
-        return result if result in bad else new
-
-    for row in audit['source_coverage']:
-        for evidence in row['candidate_evidence']:
-            if evidence['subtask_index'] == index:
-                evidence['quote'] = quote_after(evidence['quote'])
-    changed_row = audit['source_coverage'][mutation['requirement']]
-    changed_row['status'] = 'altered_or_missing'
-    changed_row['candidate_evidence'] = [dict(subtask_index=index, quote=new)]
-    check = audit['stage_checks'][index]
-    check['status'] = 'gap'
-    for key in ('entry','target','process','ending','conditions'):
-        check[key]['candidate_quotes'] = [quote_after(q) for q in check[key]['candidate_quotes']]
-    check['process']['text'] = 'The candidate contains the material change identified by the finding; other ordered actions remain.'
-    for handoff in audit['handoffs']:
-        for key, endpoint in (('preceding_exit','from_subtask_index'),('next_entry','to_subtask_index')):
-            if handoff[endpoint] == index:
-                handoff[key]['candidate_quote'] = quote_after(handoff[key]['candidate_quote'])
-    cchecks = {'UNSUPPORTED_ADDITION':'C02','WRONG_REFERENCE_FRAME':'C03','WRONG_RELATION':'C06','COUNT_SCOPE_DRIFT':'C07','WRONG_TARGET':'C05'}
-    finding = dict(code=mutation['code'], failed_layer='L2_dependencies', c_check=cchecks[mutation['code']],
-                   dimension='source_fidelity', related_dimensions=[], affected_subtask_indices=[index],
-                   source_requirement_ids=[changed_id], source_quote=case['coverage'][mutation['requirement']][0],
-                   candidate_evidence=[dict(subtask_index=index,quote=new)], evidence_level='S1',
-                   problem=mutation['problem'], execution_consequence=mutation['consequence'],
-                   repair=dict(operation='restore', affected_subtask_indices=[index],
-                               instruction=f'Restore {old!r} in place of {new!r}; preserve the unaffected route.',
-                               protected_requirements=['Preserve all unaffected actions, relationships, quantities and source order.',case['lesson']]))
-    audit['findings'] = [finding]
-    for layer in audit['layer_checks']:
-        if layer['layer'] in ('L1_source_coverage','L2_dependencies','L3_stage_checks','L6_route_readback'):
-            layer.update(status='issue', finding_indices=[0], conclusion=mutation['problem'])
-    diagnostic['teaching_notes'] = dict(review_pattern=case['pattern'], review_principle=mutation['problem'],
-                                        case_specific_focus=mutation['consequence'], anti_pattern='Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation.')
+    diagnostic = build_diagnostic(case, reviewer)
     return generator, reviewer, diagnostic
 
 
