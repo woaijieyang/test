@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
+        "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside another door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
       ]
     }
   },
@@ -39,267 +39,353 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "Turn to your left and note the dining table to your left.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn to your left and note the dining table to your left.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Turn to your left and note the dining table to your left."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Walk between the dining table and the windows, and towards the kitchen island with three bar stools.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Walk between the dining table and the windows, and towards the kitchen island with three bar stools.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Walk between the dining table and the windows, and towards the kitchen island with three bar stools."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Once you are behind the left bar stool, turn right and move to the other side of the island.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are behind the left bar stool, turn right and move to the other side of the island.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Once you are behind the left bar stool, turn right and move to the other side of the island."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Once there, you should see that, upon turning left, you see a staircase.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Once there, you should see that, upon turning left, you see a staircase.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Once there, you should see that, upon turning left, you see a staircase."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "Go up the staircase.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Go up the staircase.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Go up the staircase."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "It turns left, in the middle, but you want to go all the way up.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: It turns left, in the middle, but you want to go all the way up.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "It turns left, in the middle, but you want to go all the way up."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-07",
         "source_quote": "Once you're at the top you should see four paintings...",
-        "requirement": "Preserve the temporal trigger/order and its scope: Once you're at the top you should see four paintings...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Once you're at the top you should see four paintings..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-08",
         "source_quote": "If you see that, you're in the right place.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: If you see that, you're in the right place.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "If you see that, you're in the right place."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-09",
         "source_quote": "Turn left down the hall, and take the first door to the right.",
-        "requirement": "Preserve the ordinal target and its counting origin: Turn left down the hall, and take the first door to the right.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left down the hall, and take the first door to the right."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-10",
         "source_quote": "This leads to another hallway which you will go all the way down.",
-        "requirement": "Preserve the spatial transition and region/threshold: This leads to another hallway which you will go all the way down.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "This leads to another hallway which you will go all the way down."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-11",
         "source_quote": "You should end up near some green chairs.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: You should end up near some green chairs.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "You should end up near some green chairs."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-12",
         "source_quote": "They're on the opposite side of a desk to a leather chair.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: They're on the opposite side of a desk to a leather chair.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "They're on the opposite side of a desk to a leather chair."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-13",
         "source_quote": "Move towards that leather chair, next to the painting with all the abstract birds.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Move towards that leather chair, next to the painting with all the abstract birds.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Move towards that leather chair, next to the painting with all the abstract birds."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-14",
         "source_quote": "Once you're behind the leather chair, near the abstract bird painting, turn back the way you came.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you're behind the leather chair, near the abstract bird painting, turn back the way you came.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Once you're behind the leather chair, near the abstract bird painting, turn back the way you came."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-15",
         "source_quote": "You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
-        ],
-        "status": "altered_or_missing"
-      },
-      {
-        "requirement_id": "SRC-16",
-        "source_quote": "Go inside that door from here.",
-        "requirement": "Preserve the spatial transition and region/threshold: Go inside that door from here.",
-        "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in."
+          }
         ],
         "status": "covered"
       },
       {
+        "requirement_id": "SRC-16",
+        "source_quote": "Go inside that door from here.",
+        "requirement": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go inside another door from here."
+          }
+        ],
+        "status": "altered_or_missing"
+      },
+      {
         "requirement_id": "SRC-17",
         "source_quote": "You should be in a bedroom, with a bed with a green and white comforter.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: You should be in a bedroom, with a bed with a green and white comforter.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "You should be in a bedroom, with a bed with a green and white comforter."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-18",
         "source_quote": "There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-19",
         "source_quote": "Turn to the left, moving along the foot of the bed.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn to the left, moving along the foot of the bed.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Turn to the left, moving along the foot of the bed."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-20",
         "source_quote": "And you should end up next to a Campbell's tomato soup painting, and a dog bed.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: And you should end up next to a Campbell's tomato soup painting, and a dog bed.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "And you should end up next to a Campbell's tomato soup painting, and a dog bed."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-21",
         "source_quote": "If you're in that corner you're done.",
-        "requirement": "Preserve the completion or stationary-position condition: If you're in that corner you're done.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "If you're in that corner you're done."
+          }
         ],
         "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-22",
+        "source_quote": "Go inside that door from here.",
+        "requirement": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go inside another door from here."
+          }
+        ],
+        "status": "altered_or_missing"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact."
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact."
       }
     ],
     "findings": [
       {
-        "source_quote": "ther side of the island. Once there, you should see that, upon turning left, you see a staircas",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-16",
+          "SRC-22"
         ],
+        "source_quote": "Go inside that door from here.",
         "candidate_evidence": [
-          "Once there, you should see that, upon turning left, you see a staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Go inside another door from here."
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate leaves a deictic reference without preserving the identity of its source-supported antecedent.",
-        "execution_consequence": "The referent is changed or left unresolved; the agent may select the wrong door/object or lose the intended target identity.",
+        "problem": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact.",
+        "execution_consequence": "The candidate abandons the source-supported referent at this particular later entry event.",
         "repair": {
-          "operation": "referent",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -310,50 +396,93 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "If you're in that corner",
+          "text": "The candidate retains the source ending: And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done.",
           "candidate_quotes": [
-            "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
+            "And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
           ]
         },
         "process": {
-          "text": "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact.",
           "candidate_quotes": [
-            "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
+            "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside another door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "If you're in that corner",
+          "kind": "explicit_event",
+          "text": "The candidate retains the source ending: And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done.",
           "candidate_quotes": [
-            "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
+            "And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: Once, when; branch: If, Or; ordinal_or_count: three, four, first; spatial_frame: left, between, behind, right; manner_or_constraint: through, along",
+          "text": "Source requires Go inside that door from here.; candidate instead states Go inside another door from here..",
           "candidate_quotes": [
-            "You begin staring at some gray curtains in a corner. Turn to your left and note the dining table to your left. Walk between the dining table and the windows, and towards the kitchen island with three bar stools. Once you are behind the left bar stool, turn right and move to the other side of the island. Once there, you should see that, upon turning left, you see a staircase. Go up the staircase. It turns left, in the middle, but you want to go all the way up. Once you're at the top you should see four paintings... Well, four pictures. One of them is a picture of a woman riding on a surfboard carried by four men. If you see that, you're in the right place. Turn left down the hall, and take the first door to the right. This leads to another hallway which you will go all the way down. You should end up near some green chairs. They're on the opposite side of a desk to a leather chair. Move towards that leather chair, next to the painting with all the abstract birds. Once you're behind the leather chair, near the abstract bird painting, turn back the way you came. You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in. Go inside that door from here. You should be in a bedroom, with a bed with a green and white comforter. There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the... Or, with a three and less than symbol creating the heart. Turn to the left, moving along the foot of the bed. And you should end up next to a Campbell's tomato soup painting, and a dog bed. If you're in that corner you're done."
+            "Go inside another door from here."
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09",
+          "SRC-10",
+          "SRC-11",
+          "SRC-12",
+          "SRC-13",
+          "SRC-14",
+          "SRC-15",
+          "SRC-16",
+          "SRC-17",
+          "SRC-18",
+          "SRC-19",
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
         "source_quotes": [
-          "ther side of the island. Once there, you should see that, upon turning left, you see a staircas"
+          "Turn to your left and note the dining table to your left.",
+          "Walk between the dining table and the windows, and towards the kitchen island with three bar stools.",
+          "Once you are behind the left bar stool, turn right and move to the other side of the island.",
+          "Once there, you should see that, upon turning left, you see a staircase.",
+          "Go up the staircase.",
+          "It turns left, in the middle, but you want to go all the way up.",
+          "Once you're at the top you should see four paintings...",
+          "If you see that, you're in the right place.",
+          "Turn left down the hall, and take the first door to the right.",
+          "This leads to another hallway which you will go all the way down.",
+          "You should end up near some green chairs.",
+          "They're on the opposite side of a desk to a leather chair.",
+          "Move towards that leather chair, next to the painting with all the abstract birds.",
+          "Once you're behind the leather chair, near the abstract bird painting, turn back the way you came.",
+          "You should be able to look through the wooden sliding door and see the door that was on the right when you were heading in.",
+          "Go inside that door from here.",
+          "You should be in a bedroom, with a bed with a green and white comforter.",
+          "There's a picture of a giraffe on the right hand wall, and a poster that says 'Love' with a heart and less than symbol creating the...",
+          "Turn to the left, moving along the foot of the bed.",
+          "And you should end up next to a Campbell's tomato soup painting, and a dog bed.",
+          "If you're in that corner you're done."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "referent",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The late bedroom-entry command replaces the door identified through the wooden sliding door with another door. The earlier island antecedent remains intact. The candidate abandons the source-supported referent at this particular later entry event."
   }
 }

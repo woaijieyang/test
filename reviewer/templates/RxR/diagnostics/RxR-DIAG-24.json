@@ -25,240 +25,343 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
+        "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk all the way to the toilet and you're done."
       ]
     }
   },
   "expected_review": {
-    "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
       "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "You begin facing a door",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "turn to your left",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "take a step to the right of the dining area",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "take another step towards the chairs and then turn to your right",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "take a step towards the staircase",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-06",
-        "source_quote": "turn to your right and then take a step towards the curtains",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-07",
-        "source_quote": "and then turn to your left",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-08",
-        "source_quote": "take a step going down the hallway",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-09",
-        "source_quote": "turn to your right",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-10",
-        "source_quote": "take a step into the bathroom",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-11",
-        "source_quote": "turn to your right again",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-12",
-        "source_quote": "take 2 steps towards the toilet and you're done.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
-        "status": "altered_or_missing"
-      }
-    ],
-    "layer_checks": [
-      {
-        "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
-      },
-      {
-        "layer": "L1_source_coverage",
-        "status": "issue",
-        "conclusion": "The source specifies two steps toward the toilet, not arrival at or stopping by it."
-      },
-      {
-        "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
-      },
-      {
-        "layer": "L3_stage_checks",
-        "status": "issue",
-        "conclusion": "The source specifies two steps toward the toilet, not arrival at or stopping by it."
-      },
-      {
-        "layer": "L4_handoffs",
-        "status": "pass",
-        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
-      },
-      {
-        "layer": "L5_grouping",
-        "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
-      },
-      {
-        "layer": "L6_route_readback",
-        "status": "issue",
-        "conclusion": "The source specifies two steps toward the toilet, not arrival at or stopping by it."
-      }
-    ],
     "findings": [
       {
-        "source_quote": "take 2 steps towards the toilet",
-        "source_requirement_ids": [
-          "SRC-12"
-        ],
-        "candidate_evidence": [
-          "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-        ],
+        "code": "UNSUPPORTED_ADDITION",
         "failed_layer": "L3_stage_checks",
         "c_check": "C02",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-09",
+          "SRC-12",
+          "SRC-13"
+        ],
+        "source_quote": "take 2 steps towards the toilet",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "walk all the way to the toilet"
+          }
+        ],
         "evidence_level": "S1",
-        "problem": "The source specifies two steps toward the toilet, not arrival at or stopping by it.",
-        "execution_consequence": "The candidate adds distance and a terminal stop that are not prescribed.",
+        "problem": "A bounded two-step approach is strengthened to travel all the way to the toilet.",
+        "execution_consequence": "The source does not authorize this additional distance or arrival.",
         "repair": {
-          "operation": "restore_source_semantics",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the bounded two-step approach without adding arrival or STOP.",
+          "instruction": "Restore the cited source relation at this occurrence and preserve the rest of the reviewed parent candidate.",
           "protected_requirements": [
-            "Preserve all unaffected actions and source order.",
-            "Do not add a physical STOP unless the source requires it."
+            "Keep all unaffected events, descriptions, quantities, constraints and order.",
+            "A stage boundary neither creates a STOP nor cancels an explicit source stop."
           ]
         }
       }
     ],
-    "stage_checks": [
+    "handoffs": [],
+    "layer_checks": [
       {
-        "subtask_index": 0,
-        "status": "gap",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, take 2 steps towards the toilet",
-          "candidate_quotes": [
-            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-          ]
-        },
-        "process": {
-          "text": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done.",
-          "candidate_quotes": [
-            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-          ]
-        },
-        "ending": {
-          "kind": "unspecified",
-          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
-          "candidate_quotes": [
-            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-          ],
-          "stop_scope": "terminal"
-        },
-        "conditions": {
-          "text": "temporal: then; spatial_frame: facing, left, right",
-          "candidate_quotes": [
-            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk to the toilet and stop and you're done."
-          ]
-        },
-        "source_requirement_ids": [
-          "SRC-12"
-        ],
-        "source_quotes": [
-          "take 2 steps towards the toilet"
-        ],
-        "carryover": []
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "A bounded two-step approach is strengthened to travel all the way to the toilet.",
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "A bounded two-step approach is strengthened to travel all the way to the toilet.",
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "conclusion": "One stage has no adjacent handoff.",
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "A bounded two-step approach is strengthened to travel all the way to the toilet.",
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
       }
     ],
-    "handoffs": []
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You begin facing a door",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You begin facing a door",
+        "requirement_id": "SRC-01",
+        "source_quote": "You begin facing a door",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk all the way to the toilet and you're done."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your left",
+        "requirement_id": "SRC-02",
+        "source_quote": "turn to your left",
+        "status": "altered_or_missing"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take a step to the right of the dining area",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: take a step to the right of the dining area",
+        "requirement_id": "SRC-03",
+        "source_quote": "take a step to the right of the dining area",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take another step towards the chairs and then turn to your right",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: take another step towards the chairs and then turn to your right",
+        "requirement_id": "SRC-04",
+        "source_quote": "take another step towards the chairs and then turn to your right",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take a step towards the staircase",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: take a step towards the staircase",
+        "requirement_id": "SRC-05",
+        "source_quote": "take a step towards the staircase",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "turn to your right and then take a step towards the curtains",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right and then take a step towards the curtains",
+        "requirement_id": "SRC-06",
+        "source_quote": "turn to your right and then take a step towards the curtains",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "and then turn to your left",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: and then turn to your left",
+        "requirement_id": "SRC-07",
+        "source_quote": "and then turn to your left",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take a step going down the hallway",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: take a step going down the hallway",
+        "requirement_id": "SRC-08",
+        "source_quote": "take a step going down the hallway",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk all the way to the toilet and you're done."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right",
+        "requirement_id": "SRC-09",
+        "source_quote": "turn to your right",
+        "status": "altered_or_missing"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take a step into the bathroom",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: take a step into the bathroom",
+        "requirement_id": "SRC-10",
+        "source_quote": "take a step into the bathroom",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "turn to your right again",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn to your right again",
+        "requirement_id": "SRC-11",
+        "source_quote": "turn to your right again",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "walk all the way to the toilet and you're done.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the completion or stationary-position condition: take 2 steps towards the toilet and you're done.",
+        "requirement_id": "SRC-12",
+        "source_quote": "take 2 steps towards the toilet and you're done.",
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-13",
+        "source_quote": "take 2 steps towards the toilet",
+        "requirement": "A bounded two-step approach is strengthened to travel all the way to the toilet.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "walk all the way to the toilet"
+          }
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "stage_checks": [
+      {
+        "carryover": [],
+        "conditions": {
+          "candidate_quotes": [
+            "then",
+            "facing",
+            "left",
+            "right"
+          ],
+          "text": "temporal: then; spatial_frame: facing, left, right"
+        },
+        "ending": {
+          "candidate_quotes": [
+            "walk all the way to the toilet"
+          ],
+          "kind": "bounded_action",
+          "stop_scope": "none",
+          "text": "Source requires take 2 steps towards the toilet; candidate instead states walk all the way to the toilet. A bounded two-step approach is strengthened to travel all the way to the toilet."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "text": "The stage retains its unaffected movements but contains this local defect: A bounded two-step approach is strengthened to travel all the way to the toilet.",
+          "candidate_quotes": [
+            "You begin facing a door, turn to your left, you will see a dining area, take a step to the right of the dining area, take another step towards the chairs and then turn to your right, take a step towards the staircase, turn to your right and then take a step towards the curtains, and then turn to your left, take a step going down the hallway, turn to your right, take a step into the bathroom, turn to your right again, walk all the way to the toilet and you're done."
+          ]
+        },
+        "source_quotes": [
+          "You begin facing a door",
+          "turn to your left",
+          "take a step to the right of the dining area",
+          "take another step towards the chairs and then turn to your right",
+          "take a step towards the staircase",
+          "turn to your right and then take a step towards the curtains",
+          "and then turn to your left",
+          "take a step going down the hallway",
+          "turn to your right",
+          "take a step into the bathroom",
+          "turn to your right again",
+          "take 2 steps towards the toilet and you're done."
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09",
+          "SRC-10",
+          "SRC-11",
+          "SRC-12",
+          "SRC-13"
+        ],
+        "status": "gap",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "walk all the way to the toilet"
+          ],
+          "text": "Source requires take 2 steps towards the toilet; candidate instead states walk all the way to the toilet. A bounded two-step approach is strengthened to travel all the way to the toilet."
+        }
+      }
+    ],
+    "verdict": "revise",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "bounded_action_strengthened",
     "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
-    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+    "anti_pattern": "Do not spread a local defect to unrelated coverage rows or unchanged boundaries. Check the actual source and candidate, not the diagnostic label.",
+    "case_specific_focus": "A bounded two-step approach is strengthened to travel all the way to the toilet. The source does not authorize this additional distance or arrival."
   }
 }

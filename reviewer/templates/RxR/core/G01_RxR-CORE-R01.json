@@ -25,211 +25,233 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "You will start by standing in front of a glass door and on your right is a doorway.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "Once inside the washroom, stand between the sink and the bathtub",
+          "text": "Once inside the washroom, stand between the sink and the bathtub"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Walk towards that doorway and enter the washroom.",
+          "text": "Walk towards that doorway and enter the washroom."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Turn around and you will see a doorway to the washroom.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Walk towards the doorway and inside the washroom.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "Once you're there, stand in between the sink and the bathtub and once you're there, you're done.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "You will start by standing in front of a glass door and on your right is a doorway.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn around and you will see a doorway to the washroom.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Walk towards the doorway and inside the washroom.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-04",
+        "source_quote": "Once you're there, stand in between the sink and the bathtub and once you're there, you're done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Walk towards that doorway and enter the washroom.",
-          "candidate_quotes": [
-            "Walk towards that doorway and enter the washroom."
-          ]
-        },
-        "process": {
-          "text": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
-          "candidate_quotes": [
-            "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Walk towards that doorway and enter the washroom.",
-          "candidate_quotes": [
-            "Walk towards that doorway and enter the washroom."
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "spatial_frame: in front of, on your, right; manner_or_constraint: around",
           "candidate_quotes": [
             "in front of",
             "on your",
             "right",
             "around"
-          ]
+          ],
+          "text": "spatial_frame: in front of, on your, right; manner_or_constraint: around"
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Walk towards that doorway and enter the washroom."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Walk towards that doorway and enter the washroom."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+          ],
+          "text": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+        },
         "source_quotes": [
           "Turn around and you will see a doorway to the washroom.",
           "Walk towards the doorway and inside the washroom.",
           "You will start by standing in front of a glass door and on your right is a doorway.",
           "Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Walk towards that doorway and enter the washroom."
+          ],
+          "text": "Walk towards that doorway and enter the washroom."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "Once inside the washroom, stand between the sink and the bathtub",
-          "candidate_quotes": [
-            "Once inside the washroom, stand between the sink and the bathtub"
-          ]
-        },
-        "target": {
-          "text": "Once inside the washroom, stand between the sink and the bathtub.",
-          "candidate_quotes": [
-            "Once inside the washroom, stand between the sink and the bathtub."
-          ]
-        },
-        "process": {
-          "text": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination.",
-          "candidate_quotes": [
-            "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once inside the washroom, stand between the sink and the bathtub.",
-          "candidate_quotes": [
-            "Once inside the washroom, stand between the sink and the bathtub."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "temporal: Once; spatial_frame: between",
           "candidate_quotes": [
             "Once",
             "between"
-          ]
+          ],
+          "text": "temporal: Once; spatial_frame: between"
         },
-        "source_requirement_ids": [
-          "SRC-04"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Stand between the sink and bathtub inside the washroom; the entry trigger is not the ending mechanism."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub"
+          ],
+          "mode": "explicit_context",
+          "text": "Once inside the washroom, stand between the sink and the bathtub"
+        },
+        "process": {
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+          ],
+          "text": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+        },
         "source_quotes": [
           "Once you're there, stand in between the sink and the bathtub and once you're there, you're done.",
           "Walk towards the doorway and inside the washroom.",
           "Turn around and you will see a doorway to the washroom.",
           "You will start by standing in front of a glass door and on your right is a doorway."
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "source_requirement_ids": [
+          "SRC-04"
+        ],
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Once inside the washroom, stand between the sink and the bathtub."
+          ],
+          "text": "Once inside the washroom, stand between the sink and the bathtub."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Walk towards that doorway and enter the washroom.",
-          "candidate_quote": "Walk towards that doorway and enter the washroom."
-        },
-        "next_entry": {
-          "text": "Once inside the washroom, stand between the sink and the bathtub",
-          "candidate_quote": "Once inside the washroom, stand between the sink and the bathtub"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "initial_context_plus_room_entry",

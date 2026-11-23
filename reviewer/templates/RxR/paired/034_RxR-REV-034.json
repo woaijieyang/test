@@ -25,132 +25,149 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "You are facing a wall.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You are facing a wall.",
-        "candidate_evidence": [
-          "You are facing a wall."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "You are going to turn to your left and go thru the door.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You are going to turn to your left and go thru the door.",
-        "candidate_evidence": [
-          "You are going to turn to your left and go thru the door."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
-        "candidate_evidence": [
-          "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
-        ],
-        "status": "covered"
-      }
-    ],
+    "findings": [],
+    "handoffs": [],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You are facing a wall.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are facing a wall.",
+        "requirement_id": "SRC-01",
+        "source_quote": "You are facing a wall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You are going to turn to your left and go thru the door.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are going to turn to your left and go thru the door.",
+        "requirement_id": "SRC-02",
+        "source_quote": "You are going to turn to your left and go thru the door.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+        "requirement_id": "SRC-03",
+        "source_quote": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall",
-          "candidate_quotes": [
-            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
-          ]
-        },
-        "process": {
-          "text": "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
-          "candidate_quotes": [
-            "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall",
-          "candidate_quotes": [
-            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "temporal: once; spatial_frame: facing, left, on your, right",
           "candidate_quotes": [
             "once",
             "facing",
             "left",
             "on your",
             "right"
-          ]
+          ],
+          "text": "temporal: once; spatial_frame: facing, left, on your, right"
         },
+        "ending": {
+          "candidate_quotes": [
+            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+          ],
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+          ],
+          "text": "You are facing a wall.  You are going to turn to your left and go thru the door.  And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+        },
+        "source_quotes": [
+          "You are facing a wall.",
+          "You are going to turn to your left and go thru the door.",
+          "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "source_quotes": [
-          "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall and you are done.",
-          "You are going to turn to your left and go thru the door.",
-          "You are facing a wall."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+          ],
+          "text": "And you are going to continue forward and once you have just barely entered this room, on your left will be the letters ski on the wall and to the right of you will be the patterned blue and purple wall"
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",

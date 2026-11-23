@@ -30,7 +30,7 @@
     "subtasks": [
       "You will start facing a wall with posters on it. Turn right and take one step slightly at the foot of the bed. Take another step towards the TV with a console table underneath. From there, turn left and walk two steps down the hallway and exit this room. Turn left once again and walk down this narrow hallway and take one step towards the glass railing.",
       "Once you are facing the circular glass railing, jump over it and walk towards the other side of that railing. Then turn right and walk down the stairs. Once you are at the foot of the stairs, turn right and take one step towards that black and white picture frame.",
-      "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
+      "Turn right once again and you will see a narrow opening with a closed door and now it will open for you. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
     ],
     "stage_audit": [
       {
@@ -61,14 +61,11 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: once; ordinal_or_count: one step, two; spatial_frame: facing, right, left",
+          "text": "Preserve the specified step counts and ordered left/right turns. Once again denotes repetition of a turn, not a separate prerequisite.",
           "candidate_quotes": [
-            "once",
             "one step",
-            "two",
-            "facing",
-            "right",
-            "left"
+            "two steps",
+            "Turn left once again"
           ]
         },
         "source_quotes": [
@@ -142,9 +139,9 @@
           ]
         },
         "process": {
-          "text": "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done.",
+          "text": "Turn right once again and you will see a narrow opening with a closed door and now it will open for you. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done.",
           "candidate_quotes": [
-            "Turn right once again and you will see a narrow opening with a closed door. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
+            "Turn right once again and you will see a narrow opening with a closed door and now it will open for you. Walk towards the narrow opening, not the one that was closest to you earlier. Take a step inside and you will see a section where there is a large stone inside, and you are done."
           ]
         },
         "ending": {
@@ -156,11 +153,12 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: once; negation: not; spatial_frame: right",
+          "text": "Repeat the right turn; retain the closed-to-open door state and select the narrow opening rather than the previously closer one. No door-opening action is invented.",
           "candidate_quotes": [
-            "once",
-            "not",
-            "right"
+            "Turn right once again",
+            "closed door and now it will open for you",
+            "not the one that was closest to you earlier",
+            "Take a step inside"
           ]
         },
         "source_quotes": [
@@ -189,10 +187,11 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -208,10 +207,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-09",
+          "SRC-10"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

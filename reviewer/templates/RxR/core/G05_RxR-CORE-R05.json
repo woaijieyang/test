@@ -25,201 +25,217 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "Walk across the bedroom and enter the bathroom through the first door on your right.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "Inside the bathroom, turn left and stop in front of the toilet",
+          "text": "Inside the bathroom, turn left and stop in front of the toilet"
+        },
+        "preceding_exit": {
+          "candidate_quote": "enter the bathroom through the first door on your right",
+          "text": "Enter the bathroom through the selected first right-hand door. Wall colour and doorway proximity identify the door but do not establish entry."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "The bathroom doorway is in the darker-painted wall.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Inside the bathroom, turn left and stop in front of the toilet.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Inside the bathroom, turn left and stop in front of the toilet."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk across the bedroom and enter the bathroom through the first door on your right.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "The bathroom doorway is in the darker-painted wall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Inside the bathroom, turn left and stop in front of the toilet."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Inside the bathroom, turn left and stop in front of the toilet.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
-            "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
-          ]
-        },
-        "process": {
-          "text": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
-          "candidate_quotes": [
-            "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
-          ]
+            "first door on your right",
+            "two doorways close together",
+            "bathroom doorway is in the darker-painted wall"
+          ],
+          "text": "Select the first right-hand bathroom doorway among the close pair using the darker-painted wall."
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "candidate_quotes": [
-            "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+            "enter the bathroom through the first door on your right"
           ],
-          "stop_scope": "none"
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Enter the bathroom through the selected first right-hand door. Wall colour and doorway proximity identify the door but do not establish entry."
         },
-        "conditions": {
-          "text": "ordinal_or_count: first, two; spatial_frame: on your, right; manner_or_constraint: through",
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
           "candidate_quotes": [
-            "first",
-            "two",
-            "on your",
-            "right",
-            "through"
-          ]
+            "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+          ],
+          "text": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
         "source_quotes": [
           "The bathroom doorway is in the darker-painted wall.",
           "There are two doorways close together.",
           "Walk across the bedroom and enter the bathroom through the first door on your right.",
           "Inside the bathroom, turn left and stop in front of the toilet."
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "enter the bathroom through the first door on your right"
+          ],
+          "text": "The bathroom interior reached through the identified first right-hand door."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "Inside the bathroom, turn left and stop in front of the toilet",
-          "candidate_quotes": [
-            "Inside the bathroom, turn left and stop in front of the toilet"
-          ]
-        },
-        "target": {
-          "text": "Inside the bathroom, turn left and stop in front of the toilet.",
-          "candidate_quotes": [
-            "Inside the bathroom, turn left and stop in front of the toilet."
-          ]
-        },
-        "process": {
-          "text": "Inside the bathroom, turn left and stop in front of the toilet.",
-          "candidate_quotes": [
-            "Inside the bathroom, turn left and stop in front of the toilet."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Inside the bathroom, turn left and stop in front of the toilet.",
-          "candidate_quotes": [
-            "Inside the bathroom, turn left and stop in front of the toilet."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "spatial_frame: left, in front of",
           "candidate_quotes": [
             "left",
             "in front of"
-          ]
+          ],
+          "text": "spatial_frame: left, in front of"
         },
-        "source_requirement_ids": [
-          "SRC-03"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Inside the bathroom, turn left and stop in front of the toilet."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Inside the bathroom, turn left and stop in front of the toilet."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "Inside the bathroom, turn left and stop in front of the toilet"
+          ],
+          "mode": "explicit_context",
+          "text": "Inside the bathroom, turn left and stop in front of the toilet"
+        },
+        "process": {
+          "candidate_quotes": [
+            "Inside the bathroom, turn left and stop in front of the toilet."
+          ],
+          "text": "Inside the bathroom, turn left and stop in front of the toilet."
+        },
         "source_quotes": [
           "Inside the bathroom, turn left and stop in front of the toilet.",
           "The bathroom doorway is in the darker-painted wall.",
           "Walk across the bedroom and enter the bathroom through the first door on your right."
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Inside the bathroom, turn left and stop in front of the toilet."
+          ],
+          "text": "Inside the bathroom, turn left and stop in front of the toilet."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
-          "candidate_quote": "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
-        },
-        "next_entry": {
-          "text": "Inside the bathroom, turn left and stop in front of the toilet",
-          "candidate_quote": "Inside the bathroom, turn left and stop in front of the toilet"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "late_target_description_binding",

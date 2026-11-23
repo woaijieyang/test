@@ -52,7 +52,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the explicitly requested movement into the open area after turning left before entering the dining room. Do not enter the dining room.",
+          "text": "Enter the open area after the left turn before dining-room entry. An entry completes without an additional physical stop.",
           "candidate_quotes": [
             "go into the open area."
           ],

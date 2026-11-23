@@ -145,8 +145,9 @@
           }
         ],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-04",
+          "SRC-05",
+          "SRC-10"
         ],
         "handoff_rationale": "The first stage ends after the explicitly requested hop over the second bench. The following 'you will see an open doorway' is an anticipated visual cue, not arrival at the threshold. The next stage therefore still performs the approach and doorway entry."
       }

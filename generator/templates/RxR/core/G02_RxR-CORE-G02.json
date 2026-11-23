@@ -40,9 +40,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Do not enter the first doorway.",
+          "text": "The second doorway on the right of the prescribed hallway traversal.",
           "candidate_quotes": [
-            "Do not enter the first doorway."
+            "until you reach the second doorway on your right"
           ]
         },
         "process": {
@@ -52,25 +52,19 @@
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Do not enter the first doorway.",
+          "kind": "explicit_event",
+          "text": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival.",
           "candidate_quotes": [
-            "Do not enter the first doorway."
+            "until you reach the second doorway on your right"
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: until; ordinal_or_count: two, second, first; negation: Do not; spatial_frame: on your, left, right; manner_or_constraint: along",
+          "text": "Pass both paintings on the left, count doorways from the original traversal, and do not enter the first doorway.",
           "candidate_quotes": [
-            "until",
-            "two",
-            "second",
-            "first",
-            "Do not",
-            "on your",
-            "left",
-            "right",
-            "along"
+            "passing the two paintings on your left",
+            "second doorway on your right",
+            "Do not enter the first doorway."
           ]
         },
         "source_quotes": [
@@ -132,8 +126,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Do not enter the first doorway.",
-          "candidate_quote": "Do not enter the first doorway."
+          "text": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival.",
+          "candidate_quote": "until you reach the second doorway on your right"
         },
         "next_entry": {
           "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk",
@@ -142,9 +136,10 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

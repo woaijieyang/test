@@ -25,142 +25,162 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "Turn around completely, and take the door that is on the right of the bear head.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around completely, and take the door that is on the right of the bear head.",
-        "candidate_evidence": [
-          "Turn around completely, and take the door that is on the right of the bear head."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Take two more steps towards the foot of the bed.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Take two more steps towards the foot of the bed.",
-        "candidate_evidence": [
-          "Take two more steps towards the foot of the bed."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
-        "candidate_evidence": [
-          "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "We should be standing on the left side of the bed, and you are done.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: We should be standing on the left side of the bed, and you are done.",
-        "candidate_evidence": [
-          "We should be standing on the left side of the bed, and you are done."
-        ],
-        "status": "covered"
-      }
-    ],
+    "findings": [],
+    "handoffs": [],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Turn around completely, and take the door that is on the right of the bear head.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around completely, and take the door that is on the right of the bear head.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Turn around completely, and take the door that is on the right of the bear head.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Take two more steps towards the foot of the bed.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Take two more steps towards the foot of the bed.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Take two more steps towards the foot of the bed.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "We should be standing on the left side of the bed, and you are done.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: We should be standing on the left side of the bed, and you are done.",
+        "requirement_id": "SRC-04",
+        "source_quote": "We should be standing on the left side of the bed, and you are done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "The final standing position on the left side of the bed.",
-          "candidate_quotes": [
-            "standing on the left side of the bed"
-          ]
-        },
-        "process": {
-          "text": "You are going to start facing a staircase going down. Turn around completely, and take the door that is on the right of the bear head. Take two more steps towards the foot of the bed. Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed. We should be standing on the left side of the bed, and you are done.",
-          "candidate_quotes": [
-            "You are going to start facing a staircase going down. Turn around completely, and take the door that is on the right of the bear head. Take two more steps towards the foot of the bed. Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed. We should be standing on the left side of the bed, and you are done."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Reach the final stated position on the left side of the bed, with the big window-facing orientation.",
-          "candidate_quotes": [
-            "We should be standing on the left side of the bed, and you are done."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "conditional_observation: turning left is used to inspect/confirm that the bed is visible; it is not an alternative route branch. Conditions also preserve the two-step movement toward the foot of the bed and the final standing position on the bed's left side, with the big window as endpoint orientation.",
           "candidate_quotes": [
             "Take two more steps towards the foot of the bed",
             "if we turn to the left, we should see the bed",
             "standing on the left side of the bed",
             "facing the big window"
-          ]
+          ],
+          "text": "conditional_observation: turning left is used to inspect/confirm that the bed is visible; it is not an alternative route branch. Conditions also preserve the two-step movement toward the foot of the bed and the final standing position on the bed's left side, with the big window as endpoint orientation."
         },
+        "ending": {
+          "candidate_quotes": [
+            "We should be standing on the left side of the bed, and you are done."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Reach the final stated position on the left side of the bed, with the big window-facing orientation."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "You are going to start facing a staircase going down. Turn around completely, and take the door that is on the right of the bear head. Take two more steps towards the foot of the bed. Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed. We should be standing on the left side of the bed, and you are done."
+          ],
+          "text": "You are going to start facing a staircase going down. Turn around completely, and take the door that is on the right of the bear head. Take two more steps towards the foot of the bed. Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed. We should be standing on the left side of the bed, and you are done."
+        },
+        "source_quotes": [
+          "Turn around completely, and take the door that is on the right of the bear head.",
+          "Take two more steps towards the foot of the bed.",
+          "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
+          "We should be standing on the left side of the bed, and you are done."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "source_quotes": [
-          "We should be standing on the left side of the bed, and you are done.",
-          "Once you are there, you should be facing the big window, and if we turn to the left, we should see the bed.",
-          "Take two more steps towards the foot of the bed.",
-          "Turn around completely, and take the door that is on the right of the bear head."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "standing on the left side of the bed"
+          ],
+          "text": "The final standing position on the left side of the bed."
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",

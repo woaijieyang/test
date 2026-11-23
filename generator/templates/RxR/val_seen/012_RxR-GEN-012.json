@@ -41,9 +41,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "text": "The hallway entered through the open door after exiting the closet.",
           "candidate_quotes": [
-            "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+            "exit, and enter the open door which will take you inside a hallway."
           ]
         },
         "process": {
@@ -54,9 +54,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
+          "text": "Exit the closet and enter the hallway through the open door. The lights and neighbouring room are identifying observations, not entry evidence.",
           "candidate_quotes": [
-            "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+            "exit, and enter the open door which will take you inside a hallway."
           ],
           "stop_scope": "none"
         },
@@ -173,8 +173,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture.",
-          "candidate_quote": "There are hanging black lights on your right and a railing; on your left there is another room with brown furniture."
+          "text": "Exit the closet and enter the hallway through the open door. The lights and neighbouring room are identifying observations, not entry evidence.",
+          "candidate_quote": "exit, and enter the open door which will take you inside a hallway."
         },
         "next_entry": {
           "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
@@ -182,10 +182,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-03",
+          "SRC-04"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -201,10 +201,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-07",
+          "SRC-08"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

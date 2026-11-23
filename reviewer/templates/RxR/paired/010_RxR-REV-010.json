@@ -25,109 +25,119 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
+    "findings": [],
+    "handoffs": [],
+    "layer_checks": [
+      {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "finding_indices": []
+      }
+    ],
     "source_coverage": [
       {
+        "candidate_evidence": [
+          {
+            "quote": "Head through the door by the bookshelf and stop when you're to the left of the printer.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Head through the door by the bookshelf and stop when you're to the left of the printer.",
         "requirement_id": "SRC-01",
         "source_quote": "Head through the door by the bookshelf and stop when you're to the left of the printer.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Head through the door by the bookshelf and stop when you're to the left of the printer.",
-        "candidate_evidence": [
-          "Head through the door by the bookshelf and stop when you're to the left of the printer."
-        ],
         "status": "covered"
       }
     ],
-    "layer_checks": [
-      {
-        "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
-      },
-      {
-        "layer": "L1_source_coverage",
-        "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
-      },
-      {
-        "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
-      },
-      {
-        "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
-      },
-      {
-        "layer": "L4_handoffs",
-        "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
-      },
-      {
-        "layer": "L5_grouping",
-        "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
-      },
-      {
-        "layer": "L6_route_readback",
-        "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
-      }
-    ],
-    "findings": [],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Head through the door by the bookshelf and stop when you're to the left of the printer.",
-          "candidate_quotes": [
-            "Head through the door by the bookshelf and stop when you're to the left of the printer."
-          ]
-        },
-        "process": {
-          "text": "Begin in an office. Head through the door by the bookshelf and stop when you're to the left of the printer. ",
-          "candidate_quotes": [
-            "Begin in an office. Head through the door by the bookshelf and stop when you're to the left of the printer. "
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Head through the door by the bookshelf and stop when you're to the left of the printer.",
-          "candidate_quotes": [
-            "Head through the door by the bookshelf and stop when you're to the left of the printer."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "temporal: when; spatial_frame: left; manner_or_constraint: through",
           "candidate_quotes": [
             "when",
             "left",
             "through"
-          ]
+          ],
+          "text": "temporal: when; spatial_frame: left; manner_or_constraint: through"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Head through the door by the bookshelf and stop when you're to the left of the printer."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Head through the door by the bookshelf and stop when you're to the left of the printer."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Begin in an office. Head through the door by the bookshelf and stop when you're to the left of the printer. "
+          ],
+          "text": "Begin in an office. Head through the door by the bookshelf and stop when you're to the left of the printer. "
+        },
+        "source_quotes": [
+          "Head through the door by the bookshelf and stop when you're to the left of the printer."
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
-        "source_quotes": [
-          "Head through the door by the bookshelf and stop when you're to the left of the printer.",
-          "Begin in an office."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Head through the door by the bookshelf and stop when you're to the left of the printer."
+          ],
+          "text": "Head through the door by the bookshelf and stop when you're to the left of the printer."
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",

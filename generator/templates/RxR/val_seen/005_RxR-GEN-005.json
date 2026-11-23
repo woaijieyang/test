@@ -140,7 +140,7 @@
           ]
         },
         "target": {
-          "text": "Walk towards the bathroom; your destination is near the sink.",
+          "text": "The prescribed final position near the sink, not merely the visible bathroom.",
           "candidate_quotes": [
             "Walk towards the bathroom; your destination is near the sink."
           ]
@@ -152,8 +152,8 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final target-directed approach to the bathroom with the destination near the sink, but no further stopping threshold.",
+          "kind": "linked_trigger_or_refinement",
+          "text": "The final approach is refined by the prescribed destination near the sink. No metric tolerance or extra STOP is supplied.",
           "candidate_quotes": [
             "Walk towards the bathroom; your destination is near the sink."
           ],
@@ -192,10 +192,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-03",
+          "SRC-04"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -211,10 +211,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-05",
+          "SRC-06"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

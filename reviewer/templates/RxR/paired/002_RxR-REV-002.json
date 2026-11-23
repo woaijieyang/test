@@ -26,173 +26,235 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "You are standing inside a living room",
-        "requirement": "Preserve the completion or stationary-position condition: You are standing inside a living room",
-        "candidate_evidence": [
-          "You are standing inside a living room."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left",
+          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Go towards the open door which has a black bench on your right until you reach that open door.",
+          "text": "Go towards the open door which has a black bench on your right until you reach that open door."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "turn right and exit",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: turn right and exit",
-        "candidate_evidence": [
-          "Turn right and exit."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "move towards the stairs on your right",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: move towards the stairs on your right",
-        "candidate_evidence": [
-          "Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "and then turn left take few steps towards two entrances in front and then turn left",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: and then turn left take few steps towards two entrances in front and then turn left",
-        "candidate_evidence": [
-          "Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
-        "candidate_evidence": [
-          "There should be a wine room on your right.",
-          "Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-06",
-        "source_quote": "go towards the open door which has a black bench",
-        "requirement": "Preserve the spatial transition and region/threshold: go towards the open door which has a black bench",
-        "candidate_evidence": [
-          "Go towards the open door which has a black bench on your right until you reach that open door."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-07",
-        "source_quote": "on your right",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: on your right",
-        "candidate_evidence": [
-          "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-08",
-        "source_quote": "once you are their turn left and then proceed straight ahead towards the garage door",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: once you are their turn left and then proceed straight ahead towards the garage door",
-        "candidate_evidence": [
-          "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-09",
-        "source_quote": "more towards the lockers on your left",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: more towards the lockers on your left",
-        "candidate_evidence": [
-          "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-10",
-        "source_quote": "once you are their you are done.",
-        "requirement": "Preserve the temporal trigger/order and its scope: once you are their you are done.",
-        "candidate_evidence": [
-          "Once you are there, you are done."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
+        "finding_indices": [],
         "layer": "L1_source_coverage",
-        "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
-        "finding_indices": [],
-        "note": "The candidate explicitly preserves both conflicting window-side descriptions as uncertainty and keeps the open door/bench as the route target."
+        "status": "pass"
       },
       {
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
+        "finding_indices": [],
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
-        "finding_indices": [],
-        "note": "The window conflict is quarantined as an auxiliary visual uncertainty; the ordered route and stable open-door target remain executable."
+        "status": "pass"
       },
       {
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
+        "finding_indices": [],
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
-        "finding_indices": [],
-        "note": "The actual stage still preserves the selected open-door target and the open-door-to-garage continuation; the identified defect is localized to auxiliary window-side fidelity."
+        "status": "pass"
       },
       {
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
+        "finding_indices": [],
         "layer": "L4_handoffs",
-        "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
-        "finding_indices": [],
-        "note": "The actual stage still preserves the selected open-door target and the open-door-to-garage continuation; the identified defect is localized to auxiliary window-side fidelity."
+        "status": "pass"
       },
       {
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
+        "finding_indices": [],
         "layer": "L5_grouping",
-        "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
-        "finding_indices": [],
-        "note": "The two-stage grouping remains useful; whole-route fidelity is affected only by the dropped auxiliary orientation phrase."
+        "status": "pass"
       },
       {
-        "layer": "L6_route_readback",
-        "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
+        "conclusion": "The candidate retains both window-side descriptions as uncertainty, preserves the agent-relative bench cue and keeps the ordered route. No candidate-created omission is asserted.",
         "finding_indices": [],
-        "note": "The source-to-candidate comparison reveals one auxiliary spatial relation was silently removed."
+        "layer": "L6_route_readback",
+        "status": "pass"
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You are standing inside a living room",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the initial living-room context; it is not a newly commanded stop.",
+        "requirement_id": "SRC-01",
+        "source_quote": "You are standing inside a living room",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and exit."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn right and exit",
+        "requirement_id": "SRC-02",
+        "source_quote": "turn right and exit",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: move towards the stairs on your right",
+        "requirement_id": "SRC-03",
+        "source_quote": "move towards the stairs on your right",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "then turn left and take a few steps towards the two entrances in front.",
+            "subtask_index": 0
+          },
+          {
+            "quote": "Then turn left.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: and then turn left take few steps towards two entrances in front and then turn left",
+        "requirement_id": "SRC-04",
+        "source_quote": "and then turn left take few steps towards two entrances in front and then turn left",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "There should be a wine room on your right.",
+            "subtask_index": 0
+          },
+          {
+            "quote": "The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
+        "requirement_id": "SRC-05",
+        "source_quote": "their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go towards the open door which has a black bench on your right until you reach that open door."
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: go towards the open door which has a black bench",
+        "requirement_id": "SRC-06",
+        "source_quote": "go towards the open door which has a black bench",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Go towards the open door which has a black bench on your right until you reach that open door.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "The bench is on your right in this event; do not transfer the relation to the door as subject.",
+        "requirement_id": "SRC-07",
+        "source_quote": "go towards the open door which has a black bench, on your right",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: once you are their turn left and then proceed straight ahead towards the garage door",
+        "requirement_id": "SRC-08",
+        "source_quote": "once you are their turn left and then proceed straight ahead towards the garage door",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "more towards the lockers on your left",
+            "subtask_index": 1
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: more towards the lockers on your left",
+        "requirement_id": "SRC-09",
+        "source_quote": "more towards the lockers on your left",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you are there, you are done."
+          }
+        ],
+        "requirement": "Preserve the temporal trigger/order and its scope: once you are their you are done.",
+        "requirement_id": "SRC-10",
+        "source_quote": "once you are their you are done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "The open door in front, identified by the black bench on its right; the glass window is only an uncertain auxiliary visual reference.",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
+            "two entrances in front",
+            "wine room on your right",
+            "conflicting left/right descriptions for the glass window",
             "an open door is in front of you",
             "black bench on your right"
-          ]
+          ],
+          "text": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch."
+        },
+        "ending": {
+          "candidate_quotes": [
+            "until you reach that open door."
+          ],
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "Reach the selected open door identified by the black bench on your right. The conflicting glass-window side is not used to select a different route."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
         },
         "process": {
-          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
           "candidate_quotes": [
             "Turn right and exit.",
             "Move towards the stairs on your right",
@@ -201,120 +263,94 @@
             "wine room on your right",
             "conflicting left/right descriptions for the glass window",
             "Go towards the open door which has a black bench on your right until you reach that open door."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Reach the selected open door identified by the black bench on its right. The conflicting glass-window side is not used to select a different route.",
-          "candidate_quotes": [
-            "until you reach that open door."
           ],
-          "stop_scope": "none"
+          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
         },
-        "conditions": {
-          "text": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch.",
-          "candidate_quotes": [
-            "two entrances in front",
-            "wine room on your right",
-            "conflicting left/right descriptions for the glass window",
-            "an open door is in front of you",
-            "black bench on your right"
-          ]
-        },
+        "source_quotes": [
+          "You are standing inside a living room",
+          "turn right and exit",
+          "move towards the stairs on your right",
+          "and then turn left take few steps towards two entrances in front and then turn left",
+          "their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
+          "go towards the open door which has a black bench",
+          "go towards the open door which has a black bench, on your right"
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04",
           "SRC-05",
-          "SRC-06"
+          "SRC-06",
+          "SRC-07"
         ],
-        "source_quotes": [
-          "on your right",
-          "go towards the open door which has a black bench",
-          "and then turn left take few steps towards two entrances in front and then turn left",
-          "move towards the stairs on your right"
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "an open door is in front of you",
+            "black bench on your right"
+          ],
+          "text": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left",
-          "candidate_quotes": [
-            "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left"
-          ]
-        },
-        "target": {
-          "text": "Once you are there",
-          "candidate_quotes": [
-            "Once you are there"
-          ]
-        },
-        "process": {
-          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done.",
-          "candidate_quotes": [
-            "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once you are there",
-          "candidate_quotes": [
-            "Once you are there"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "temporal: Once; spatial_frame: on your, right, left, ahead",
           "candidate_quotes": [
             "Once",
             "on your",
             "right",
             "left",
             "ahead"
-          ]
+          ],
+          "text": "temporal: Once; spatial_frame: on your, right, left, ahead"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Once you are there"
+          ],
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "Once you are there"
+        },
+        "entry": {
+          "candidate_quotes": [
+            "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left"
+          ],
+          "mode": "explicit_context",
+          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left"
+        },
+        "process": {
+          "candidate_quotes": [
+            "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
+          ],
+          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
+        },
+        "source_quotes": [
+          "once you are their turn left and then proceed straight ahead towards the garage door",
+          "more towards the lockers on your left",
+          "once you are their you are done."
+        ],
         "source_requirement_ids": [
-          "SRC-07",
           "SRC-08",
           "SRC-09",
           "SRC-10"
         ],
-        "source_quotes": [
-          "more towards the lockers on your left",
-          "on your right",
-          "once you are their turn left and then proceed straight ahead towards the garage door",
-          "once you are their you are done."
-        ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Once you are there"
+          ],
+          "text": "Once you are there"
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Go towards the open door which has a black bench on your right until you reach that open door.",
-          "candidate_quote": "Go towards the open door which has a black bench on your right until you reach that open door."
-        },
-        "next_entry": {
-          "text": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left",
-          "candidate_quote": "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",

@@ -40,7 +40,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "The open door in front, identified by the black bench on its right; the glass window is only an uncertain auxiliary visual reference.",
+          "text": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference.",
           "candidate_quotes": [
             "an open door is in front of you",
             "black bench on your right"
@@ -60,7 +60,7 @@
         },
         "ending": {
           "kind": "linked_trigger_or_refinement",
-          "text": "Reach the selected open door identified by the black bench on its right. The conflicting glass-window side is not used to select a different route.",
+          "text": "Reach the selected open door identified by the black bench on your right. The conflicting glass-window side is not used to select a different route.",
           "candidate_quotes": [
             "until you reach that open door."
           ],
@@ -150,10 +150,11 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

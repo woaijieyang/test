@@ -136,9 +136,12 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

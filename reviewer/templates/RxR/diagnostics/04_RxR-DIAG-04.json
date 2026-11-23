@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You will start by standing in a bedroom. Take a step forward. Turn right and exit the bedroom. You should now be standing on the right side of the pool . Take another step forward towards the railing and you're done."
+        "You will start by standing in a bedroom. Take a step forward. Turn right and exit the bedroom. You should now be standing on the right side of the pool. Take another step forward towards the railing and you're done."
       ]
     }
   },
@@ -39,112 +39,149 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "Take a step forward.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Take a step forward.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will start by standing in a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Take a step forward."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Turn right and exit the bedroom.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right and exit the bedroom.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will start by standing in a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and exit the bedroom."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "You should now be standing on the right side of the pool table.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You should now be standing on the right side of the pool table.",
+        "requirement": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word.",
         "candidate_evidence": [
-          "You will start by standing in a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "You should now be standing on the right side of the pool."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Take another step forward towards the railing and you're done.",
-        "requirement": "Preserve the completion or stationary-position condition: Take another step forward towards the railing and you're done.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will start by standing in a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Take another step forward towards the railing and you're done."
+          }
         ],
         "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-05",
+        "source_quote": "on the right side of the pool table",
+        "requirement": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "on the right side of the pool"
+          }
+        ],
+        "status": "altered_or_missing"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word."
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word."
       }
     ],
     "findings": [
       {
-        "source_quote": "table",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C05",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-03"
+          "SRC-03",
+          "SRC-05"
         ],
+        "source_quote": "on the right side of the pool table",
         "candidate_evidence": [
-          "You will start by standing in a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "on the right side of the pool"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate drops a route-identifying landmark that the source uses to locate or select the path.",
-        "execution_consequence": "A route-identifying landmark is removed; the agent may fail to identify the intended corridor, doorway or destination.",
+        "problem": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word.",
+        "execution_consequence": "The next bounded step can be interpreted from a different reference object.",
         "repair": {
-          "operation": "landmark",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the omitted landmark and its spatial relation.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -155,51 +192,60 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Take another step forward towards the railing",
+          "text": "The candidate retains the source ending: Take another step forward towards the railing and you're done.",
           "candidate_quotes": [
-            "Take another step forward towards the railing"
+            "Take another step forward towards the railing and you're done."
           ]
         },
         "process": {
-          "text": "You will start by standing in a bedroom. Take a step forward. Turn right and exit the bedroom. You should now be standing on the right side of the pool . Take another step forward towards the railing and you're done.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word.",
           "candidate_quotes": [
-            "You will start by standing in a bedroom. Take a step forward. Turn right and exit the bedroom. You should now be standing on the right side of the pool . Take another step forward towards the railing and you're done."
+            "You will start by standing in a bedroom. Take a step forward. Turn right and exit the bedroom. You should now be standing on the right side of the pool. Take another step forward towards the railing and you're done."
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "bounded_action",
+          "text": "The candidate retains the source ending: Take another step forward towards the railing and you're done.",
+          "candidate_quotes": [
+            "Take another step forward towards the railing and you're done."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "spatial_frame: right",
+          "text": "Source requires on the right side of the pool table; candidate instead states on the right side of the pool.",
           "candidate_quotes": [
-            "right"
+            "on the right side of the pool"
           ]
         },
         "source_requirement_ids": [
-          "SRC-03"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
         "source_quotes": [
-          "Take another step forward towards the railing and you're done.",
-          "Turn right and exit the bedroom.",
           "Take a step forward.",
-          "You will start by standing in a bedroom."
+          "Turn right and exit the bedroom.",
+          "You should now be standing on the right side of the pool table.",
+          "Take another step forward towards the railing and you're done.",
+          "on the right side of the pool table"
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "landmark",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a landmark corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a landmark corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The expected reference is a pool table, not a pool. This is an entity change, not an omitted decorative word. The next bounded step can be interpreted from a different reference object."
   }
 }

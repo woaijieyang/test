@@ -30,168 +30,281 @@
     }
   },
   "expected_review": {
-    "verdict": "revise",
     "dimensions": {
       "source_fidelity": "pass",
       "closure_handoff": "pass",
       "segmentation_adequacy": "issue"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "do not go outside just go near and stand.",
-        "requirement": "Preserve the explicit no-outside intermediate placement as a completed first navigation objective.",
-        "candidate_evidence": [
-          "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Once you are standing near the open door just at the back door",
-        "requirement": "Preserve the transition from the stand-near-opening state to the later route leg.",
-        "candidate_evidence": [
-          "From near the open back door"
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "near the foot of the bed, once you are here you are done.",
-        "requirement": "Preserve the final standing-near-foot-of-bed destination.",
-        "candidate_evidence": [
-          "ue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination."
-        ],
-        "status": "covered"
-      }
-    ],
-    "layer_checks": [
-      {
-        "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed."
-      },
-      {
-        "layer": "L1_source_coverage",
-        "status": "pass",
-        "conclusion": "All source events and constraints are present in the single-stage candidate."
-      },
-      {
-        "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Temporal order, no-outside scope and referent wording remain intact."
-      },
-      {
-        "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "The single stage preserves the full process and final target; the issue is that an explicit intermediate placement and later independent route leg are not separated."
-      },
-      {
-        "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "A single-stage candidate has no adjacent handoff to assess."
-      },
-      {
-        "layer": "L5_grouping",
-        "status": "issue",
-        "conclusion": "The source supplies an explicit intermediate stand-near state followed by a distinct later navigation leg; the one-stage grouping weakens local task focus."
-      },
-      {
-        "layer": "L6_route_readback",
-        "status": "pass",
-        "conclusion": "All source requirements are present; the issue is grouping and local focus rather than source-to-plan fidelity."
-      }
-    ],
     "findings": [
       {
-        "code": "UNDERSEGMENTED_EXPLICIT_INTERMEDIATE_OBJECTIVE",
-        "source_quote": "Do not go outside; move near the opening and stand there. Once you are standing near the open door just at the back door",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
-        "candidate_evidence": [
-          "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there.",
-          "From near the open back door"
-        ],
+        "code": "UNDERSEGMENTED",
         "failed_layer": "L5_grouping",
-        "c_check": "C_UNDERSEGMENTATION",
+        "c_check": "C10",
+        "dimension": "segmentation_adequacy",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06"
+        ],
+        "source_quote": "do not go outside just go near and stand. Once you are standing near the open door just at the back door",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Do not go outside; move near the opening and stand there."
+          },
+          {
+            "subtask_index": 0,
+            "quote": "From near the open back door"
+          }
+        ],
         "evidence_level": "S2",
-        "problem": "The candidate places a source-explicit stand-near-opening intermediate objective and the subsequent room/door-to-desk-to-bed route in one undifferentiated stage. The source establishes a completed intermediate placement, then explicitly starts a later leg from near the open back door with a distinct final target. Keeping both legs together buries the prohibition and intermediate state inside a long instruction and weakens current-stage focus.",
-        "execution_consequence": "The model must process the completed no-outside stand-near objective and a separate room/door-to-bed route in one long stage, making it easier to lose the boundary between the intermediate placement and the later target.",
+        "problem": "The source completes an explicit stand-near-opening placement without going outside, then starts a distinct door/desk/bed leg. The one-stage candidate buries this supported local-objective change; the route words themselves are retained.",
+        "execution_consequence": "The explicit completed intermediate placement and the subsequent independent target are not given distinct local focus.",
         "repair": {
-          "operation": "split_after_supported_intermediate_placement",
-          "affected_stage_indices": [
+          "operation": "regroup",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Create stage 1 ending at the source-explicit stand-near-opening position without crossing outside; begin stage 2 from that same position and continue to the foot-of-bed target. Preserve the uncertain room-or-door referent.",
+          "instruction": "Separate after the explicit stand-near-opening placement, preserving the same English route and uncertainty. No new movement or STOP is needed.",
           "protected_requirements": [
-            "Do not cross outside.",
-            "Do not claim the later room/door was reached at the handoff.",
-            "Preserve the desk/brown-chair relation and chair-relative right turn.",
-            "Preserve the final standing-near-foot-of-bed position."
+            "Do not go outside.",
+            "Keep the room-or-door uncertainty, desk/chair relations and final foot-of-bed state."
           ]
         }
       }
     ],
+    "handoffs": [],
+    "layer_checks": [
+      {
+        "conclusion": "All route words are retained; the finding concerns a supported intermediate-objective grouping, not a fabricated source omission.",
+        "finding_indices": [],
+        "layer": "L0_integrity",
+        "status": "not_applicable"
+      },
+      {
+        "conclusion": "All route words are retained; the finding concerns a supported intermediate-objective grouping, not a fabricated source omission.",
+        "finding_indices": [],
+        "layer": "L1_source_coverage",
+        "status": "pass"
+      },
+      {
+        "conclusion": "All route words are retained; the finding concerns a supported intermediate-objective grouping, not a fabricated source omission.",
+        "finding_indices": [],
+        "layer": "L2_dependencies",
+        "status": "pass"
+      },
+      {
+        "conclusion": "All route words are retained; the finding concerns a supported intermediate-objective grouping, not a fabricated source omission.",
+        "finding_indices": [],
+        "layer": "L3_stage_checks",
+        "status": "pass"
+      },
+      {
+        "conclusion": "There is currently one stage, so no existing inter-stage handoff is broken.",
+        "finding_indices": [],
+        "layer": "L4_handoffs",
+        "status": "not_applicable"
+      },
+      {
+        "conclusion": "The source completes an explicit stand-near-opening placement without going outside, then starts a distinct door/desk/bed leg. The one-stage candidate buries this supported local-objective change; the route words themselves are retained.",
+        "finding_indices": [
+          0
+        ],
+        "layer": "L5_grouping",
+        "status": "issue"
+      },
+      {
+        "conclusion": "All route words are retained; the finding concerns a supported intermediate-objective grouping, not a fabricated source omission.",
+        "finding_indices": [],
+        "layer": "L6_route_readback",
+        "status": "pass"
+      }
+    ],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You are facing a bedroom",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You are facing a bedroom",
+        "requirement_id": "SRC-01",
+        "source_quote": "You are facing a bedroom",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn around to face the two chairs on the wall"
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn around",
+        "requirement_id": "SRC-02",
+        "source_quote": "turn around",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference."
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: a kitchen with blue cabinets and the steel oven and the blue cabinets looking outside at the rocks",
+        "requirement_id": "SRC-03",
+        "source_quote": "a kitchen with blue cabinets and the steel oven and the blue cabinets looking outside at the rocks",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and move towards the same area with the chairs."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: turn right and move towards the same area with the chairs on the wall",
+        "requirement_id": "SRC-04",
+        "source_quote": "turn right and move towards the same area with the chairs on the wall",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Do not go outside; move near the opening and stand there.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the completion or stationary-position condition: do not go outside just go near and stand",
+        "requirement_id": "SRC-05",
+        "source_quote": "do not go outside just go near and stand",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target."
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: you should see a room or another door at the back of it",
+        "requirement_id": "SRC-06",
+        "source_quote": "you should see a room or another door at the back of it",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "at the back of the brown chairs",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: at the back of the brown chairs",
+        "requirement_id": "SRC-07",
+        "source_quote": "at the back of the brown chairs",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: when you are standing at the chair turn right",
+        "requirement_id": "SRC-08",
+        "source_quote": "when you are standing at the chair turn right",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+          }
+        ],
+        "requirement": "Preserve the temporal trigger/order and its scope: now you should be standing near the foot of the bed, once you are here you are done.",
+        "requirement_id": "SRC-09",
+        "source_quote": "now you should be standing near the foot of the bed, once you are here you are done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "the final standing position near the foot of the bed",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
-            "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with"
-          ]
+            "a room or another door",
+            "near a desk and at the back of the brown chairs",
+            "When you are standing at the chair",
+            "until you are standing near the foot of the bed"
+          ],
+          "text": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed."
+        },
+        "ending": {
+          "candidate_quotes": [
+            "continue until you are standing near the foot of the bed",
+            "This is your destination."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "Begin from the stated bedroom-facing start."
         },
         "process": {
-          "text": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "text": "The candidate contains both the completed stand-near-opening objective and the subsequent route to the bed in one stage.",
           "candidate_quotes": [
             "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination."
           ]
         },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Reach the final standing position near the foot of the bed.",
-          "candidate_quotes": [
-            "standing near the foot of the bed"
-          ],
-          "stop_scope": "terminal"
-        },
-        "conditions": {
-          "text": "no-outside prohibition; intermediate stand-near-opening state; uncertain room/door referent; desk/chair relation and final bed position",
-          "candidate_quotes": [
-            "Do not go outside",
-            "move near the opening and stand there",
-            "a room or another door",
-            "standing near the foot of the bed"
-          ]
-        },
+        "source_quotes": [
+          "You are facing a bedroom",
+          "turn around",
+          "a kitchen with blue cabinets and the steel oven and the blue cabinets looking outside at the rocks",
+          "turn right and move towards the same area with the chairs on the wall",
+          "do not go outside just go near and stand",
+          "you should see a room or another door at the back of it",
+          "at the back of the brown chairs",
+          "when you are standing at the chair turn right",
+          "now you should be standing near the foot of the bed, once you are here you are done."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
-          "SRC-03"
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09"
         ],
-        "source_quotes": [
-          "do not go outside just go near and stand.",
-          "Once you are standing near the open door just at the back door",
-          "near the foot of the bed, once you are here you are done."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "standing near the foot of the bed"
+          ],
+          "text": "The final standing position near the foot of the bed."
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "revise",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_principle": "Judge the boundary from source event order and actual stage text; do not infer a segmentation defect from sentence count alone.",
     "why_this_case_matters": "The candidate places a source-explicit stand-near-opening intermediate objective and the subsequent room/door-to-desk-to-bed route in one undifferentiated stage. The source establishes a completed intermediate placement, then explicitly starts a later leg from near the open back door with a distinct final target. Keeping both legs together buries the prohibition and intermediate state inside a long instruction and weakens current-stage focus.",
     "reusable_rule": "Create stage 1 ending at the source-explicit stand-near-opening position without crossing outside; begin stage 2 from that same position and continue to the foot-of-bed target. Preserve the uncertain room-or-door referent.",
-    "anti_pattern": "Do not invent STOP, arrival, entry, or an endpoint to make a cut appear closed."
+    "anti_pattern": "Do not invent STOP, arrival, entry, or an endpoint to make a cut appear closed.",
+    "case_specific_focus": "The source completes an explicit stand-near-opening placement without going outside, then starts a distinct door/desk/bed leg. The one-stage candidate buries this supported local-objective change; the route words themselves are retained."
   }
 }

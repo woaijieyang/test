@@ -40,9 +40,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
+          "text": "The bathroom interior reached through the identified first right-hand door.",
           "candidate_quotes": [
-            "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+            "enter the bathroom through the first door on your right"
           ]
         },
         "process": {
@@ -53,20 +53,18 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
+          "text": "Enter the bathroom through the selected first right-hand door. Wall colour and doorway proximity identify the door but do not establish entry.",
           "candidate_quotes": [
-            "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+            "enter the bathroom through the first door on your right"
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "ordinal_or_count: first, two; spatial_frame: on your, right; manner_or_constraint: through",
+          "text": "Select the first right-hand bathroom doorway among the close pair using the darker-painted wall.",
           "candidate_quotes": [
-            "first",
-            "two",
-            "on your",
-            "right",
-            "through"
+            "first door on your right",
+            "two doorways close together",
+            "bathroom doorway is in the darker-painted wall"
           ]
         },
         "source_quotes": [
@@ -129,8 +127,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
-          "candidate_quote": "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+          "text": "Enter the bathroom through the selected first right-hand door. Wall colour and doorway proximity identify the door but do not establish entry.",
+          "candidate_quote": "enter the bathroom through the first door on your right"
         },
         "next_entry": {
           "text": "Inside the bathroom, turn left and stop in front of the toilet",
@@ -139,9 +137,10 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You're currently staring at a brown-framed painting in a dining room. Turn a hundred-and-eighty degrees and take two steps forward, until you're left in front of the open brown double doors. Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left. In this new room, you see a silver staircase, take one step forward to the base of the silver staircase. Now, you see the silver staircase going up to the left, or up to the right. Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall. To your right, you see the end of the white railing, you're done."
+        "You're currently staring at a brown-framed painting in a dining room. Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors. Once you're at the entrance to this art gallery room, enter the first door to your left, slightly passing the silver bath tub to your left. In this new room, you see a silver staircase, take one step forward to the base of the silver staircase. Now, you see the silver staircase going up to the left, or up to the right. Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall. To your right, you see the end of the white railing, you're done."
       ]
     }
   },
@@ -39,63 +39,96 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "You're currently staring at a brown-framed painting in a dining room.",
-        "requirement": "Preserve the spatial transition and region/threshold: You're currently staring at a brown-framed painting in a dining room.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "You're currently staring at a brown-framed painting in a dining room."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left.",
-        "requirement": "Preserve the ordinal target and its counting origin: Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left.",
+        "requirement": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Once you're at the entrance to this art gallery room, enter the first door to your left, slightly passing the silver bath tub to your left."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "In this new room, you see a silver staircase, take one step forward to the base of the silver staircase.",
-        "requirement": "Preserve the spatial transition and region/threshold: In this new room, you see a silver staircase, take one step forward to the base of the silver staircase.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "In this new room, you see a silver staircase, take one step forward to the base of the silver staircase."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "Now, you see the silver staircase going up to the left, or up to the right.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Now, you see the silver staircase going up to the left, or up to the right.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Now, you see the silver staircase going up to the left, or up to the right."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-07",
         "source_quote": "To your right, you see the end of the white railing, you're done.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: To your right, you see the end of the white railing, you're done.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "To your right, you see the end of the white railing, you're done."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-08",
+        "source_quote": "enter the first door to your right",
+        "requirement": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "enter the first door to your left"
+          }
         ],
         "status": "altered_or_missing"
       }
@@ -103,77 +136,88 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier."
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier."
       }
     ],
     "findings": [
       {
-        "source_quote": "right",
+        "code": "WRONG_REFERENCE_FRAME",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-03",
+          "SRC-08"
         ],
+        "source_quote": "enter the first door to your right",
         "candidate_evidence": [
-          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left."
+          {
+            "subtask_index": 0,
+            "quote": "enter the first door to your left"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate reverses a source-grounded direction and changes the route or spatial relation.",
-        "execution_consequence": "The left/right direction is reversed; the agent may turn into the wrong corridor or room.",
+        "problem": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier.",
+        "execution_consequence": "The candidate selects a door on the opposite side from the required viewpoint.",
         "repair": {
-          "operation": "direction",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the original direction and its source reference frame.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -184,63 +228,66 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "To your right, you see the end of the white railing",
+          "text": "The candidate retains the source ending: once you're halfway up the staircase, and staring directly in front of a white wall.",
           "candidate_quotes": [
-            "To your right, you see the end of the white railing"
+            "once you're halfway up the staircase, and staring directly in front of a white wall."
           ]
         },
         "process": {
-          "text": "You're currently staring at a brown-framed painting in a dining room. Turn a hundred-and-eighty degrees and take two steps forward, until you're left in front of the open brown double doors. Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left. In this new room, you see a silver staircase, take one step forward to the base of the silver staircase. Now, you see the silver staircase going up to the left, or up to the right. Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall. To your right, you see the end of the white railing, you're done.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier.",
           "candidate_quotes": [
-            "You're currently staring at a brown-framed painting in a dining room. Turn a hundred-and-eighty degrees and take two steps forward, until you're left in front of the open brown double doors. Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left. In this new room, you see a silver staircase, take one step forward to the base of the silver staircase. Now, you see the silver staircase going up to the left, or up to the right. Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall. To your right, you see the end of the white railing, you're done."
+            "You're currently staring at a brown-framed painting in a dining room. Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors. Once you're at the entrance to this art gallery room, enter the first door to your left, slightly passing the silver bath tub to your left. In this new room, you see a silver staircase, take one step forward to the base of the silver staircase. Now, you see the silver staircase going up to the left, or up to the right. Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall. To your right, you see the end of the white railing, you're done."
           ]
         },
         "ending": {
           "kind": "bounded_action",
-          "text": "To your right, you see the end of the white railing",
+          "text": "The candidate retains the source ending: once you're halfway up the staircase, and staring directly in front of a white wall.",
           "candidate_quotes": [
-            "To your right, you see the end of the white railing"
+            "once you're halfway up the staircase, and staring directly in front of a white wall."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: until, Once, once; branch: or; ordinal_or_count: two, first, one step, halfway; spatial_frame: left, in front of, right",
+          "text": "Source requires enter the first door to your right; candidate instead states enter the first door to your left.",
           "candidate_quotes": [
-            "until",
-            "Once",
-            "once",
-            "or",
-            "two",
-            "first",
-            "one step",
-            "halfway",
-            "left",
-            "in front of",
-            "right"
+            "enter the first door to your left"
           ]
         },
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
         "source_quotes": [
-          "To your right, you see the end of the white railing, you're done.",
-          "Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall.",
+          "You're currently staring at a brown-framed painting in a dining room.",
+          "Turn a hundred-and-eighty degrees and take two steps forward, until you're right in front of the open brown double doors.",
+          "Once you're at the entrance to this art gallery room, enter the first door to your right, slightly passing the silver bath tub to your left.",
+          "In this new room, you see a silver staircase, take one step forward to the base of the silver staircase.",
           "Now, you see the silver staircase going up to the left, or up to the right.",
-          "In this new room, you see a silver staircase, take one step forward to the base of the silver staircase."
+          "Go up the silver staircase towards the left, and once you're halfway up the staircase, and staring directly in front of a white wall.",
+          "To your right, you see the end of the white railing, you're done.",
+          "enter the first door to your right"
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "direction",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a direction corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a direction corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The side of the first door selected at the gallery entrance is reversed. Right in front of earlier double doors remains unchanged and is an intensifier. The candidate selects a door on the opposite side from the required viewpoint."
   }
 }

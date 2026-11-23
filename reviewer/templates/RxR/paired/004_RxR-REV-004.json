@@ -26,219 +26,239 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "`Begin facing a pool table.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: `Begin facing a pool table.",
-        "candidate_evidence": [
-          "Begin facing a pool table."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From the multicoloured wall, turn left and head into the bedroom",
+          "text": "From the multicoloured wall, turn left and head into the bedroom"
+        },
+        "preceding_exit": {
+          "candidate_quote": "At the end of it, you will reach a multicoloured wall.",
+          "text": "At the end of it, you will reach a multicoloured wall."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Pass it and head down it.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Pass it and head down it.",
-        "candidate_evidence": [
-          "Pass it and head down it."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "At the end of it you'll reach a multi coloured wall.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: At the end of it you'll reach a multi coloured wall.",
-        "candidate_evidence": [
-          "At the end of it, you will reach a multicoloured wall."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "Turn left and head into the bedroom.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left and head into the bedroom.",
-        "candidate_evidence": [
-          "From the multicoloured wall, turn left and head into the bedroom."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "Head to the fuzzy chair then turn right and head into the bathroom and you're done",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Head to the fuzzy chair then turn right and head into the bathroom and you're done",
-        "candidate_evidence": [
-          "Head to the fuzzy chair, then turn right and head into the bathroom."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+        "finding_indices": []
       },
       {
+        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Begin facing a pool table."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: `Begin facing a pool table.",
+        "requirement_id": "SRC-01",
+        "source_quote": "`Begin facing a pool table.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Pass it and head down it.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: Pass it and head down it.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Pass it and head down it.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "At the end of it, you will reach a multicoloured wall."
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: At the end of it you'll reach a multi coloured wall.",
+        "requirement_id": "SRC-03",
+        "source_quote": "At the end of it you'll reach a multi coloured wall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From the multicoloured wall, turn left and head into the bedroom."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left and head into the bedroom.",
+        "requirement_id": "SRC-04",
+        "source_quote": "Turn left and head into the bedroom.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Head to the fuzzy chair, then turn right and head into the bathroom."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Head to the fuzzy chair then turn right and head into the bathroom and you're done",
+        "requirement_id": "SRC-05",
+        "source_quote": "Head to the fuzzy chair then turn right and head into the bathroom and you're done",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "At the end of it, you will reach a multicoloured wall.",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
-            "At the end of it, you will reach a multicoloured wall."
-          ]
-        },
-        "process": {
-          "text": "Begin facing a pool table. Pass it and head down it. At the end of it, you will reach a multicoloured wall.",
-          "candidate_quotes": [
-            "Begin facing a pool table. Pass it and head down it. At the end of it, you will reach a multicoloured wall."
-          ]
+            "facing"
+          ],
+          "text": "spatial_frame: facing"
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "At the end of it, you will reach a multicoloured wall.",
           "candidate_quotes": [
             "At the end of it, you will reach a multicoloured wall."
           ],
-          "stop_scope": "none"
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "At the end of it, you will reach a multicoloured wall."
         },
-        "conditions": {
-          "text": "spatial_frame: facing",
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
           "candidate_quotes": [
-            "facing"
-          ]
+            "Begin facing a pool table. Pass it and head down it. At the end of it, you will reach a multicoloured wall."
+          ],
+          "text": "Begin facing a pool table. Pass it and head down it. At the end of it, you will reach a multicoloured wall."
         },
+        "source_quotes": [
+          "`Begin facing a pool table.",
+          "Pass it and head down it.",
+          "At the end of it you'll reach a multi coloured wall."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "source_quotes": [
-          "Pass it and head down it.",
-          "`Begin facing a pool table.",
-          "At the end of it you'll reach a multi coloured wall.",
-          "Turn left and head into the bedroom."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "At the end of it, you will reach a multicoloured wall."
+          ],
+          "text": "At the end of it, you will reach a multicoloured wall."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "inherited_entity",
-          "text": "From the multicoloured wall, turn left and head into the bedroom",
-          "candidate_quotes": [
-            "From the multicoloured wall, turn left and head into the bedroom"
-          ]
-        },
-        "target": {
-          "text": "The bathroom entered after turning right at the fuzzy chair. The fuzzy chair is an intermediate waypoint, not the final target.",
-          "candidate_quotes": [
-            "head into the bathroom"
-          ]
-        },
-        "process": {
-          "text": "From the multicoloured wall, turn left and head into the bedroom. Head to the fuzzy chair, then turn right and head into the bathroom. You are done.",
-          "candidate_quotes": [
-            "From the multicoloured wall, turn left and head into the bedroom. Head to the fuzzy chair, then turn right and head into the bathroom. You are done."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "The source requires entering the bathroom after turning right at the fuzzy chair; 'you're done' confirms the task end but is not the movement evidence.",
-          "candidate_quotes": [
-            "head into the bathroom"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "temporal: then; spatial_frame: left, right",
           "candidate_quotes": [
             "then",
             "left",
             "right"
-          ]
+          ],
+          "text": "temporal: then; spatial_frame: left, right"
         },
+        "ending": {
+          "candidate_quotes": [
+            "head into the bathroom"
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "The source requires entering the bathroom after turning right at the fuzzy chair; 'you're done' confirms the task end but is not the movement evidence."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From the multicoloured wall, turn left and head into the bedroom"
+          ],
+          "mode": "inherited_entity",
+          "text": "From the multicoloured wall, turn left and head into the bedroom"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From the multicoloured wall, turn left and head into the bedroom. Head to the fuzzy chair, then turn right and head into the bathroom. You are done."
+          ],
+          "text": "From the multicoloured wall, turn left and head into the bedroom. Head to the fuzzy chair, then turn right and head into the bathroom. You are done."
+        },
+        "source_quotes": [
+          "Turn left and head into the bedroom.",
+          "Head to the fuzzy chair then turn right and head into the bathroom and you're done"
+        ],
         "source_requirement_ids": [
           "SRC-04",
           "SRC-05"
         ],
-        "source_quotes": [
-          "Turn left and head into the bedroom.",
-          "Head to the fuzzy chair then turn right and head into the bathroom and you're done",
-          "Pass it and head down it.",
-          "At the end of it you'll reach a multi coloured wall."
-        ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "head into the bathroom"
+          ],
+          "text": "The bathroom entered after turning right at the fuzzy chair. The fuzzy chair is an intermediate waypoint, not the final target."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "At the end of it, you will reach a multicoloured wall.",
-          "candidate_quote": "At the end of it, you will reach a multicoloured wall."
-        },
-        "next_entry": {
-          "text": "From the multicoloured wall, turn left and head into the bedroom",
-          "candidate_quote": "From the multicoloured wall, turn left and head into the bedroom"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",

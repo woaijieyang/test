@@ -30,7 +30,7 @@
     "subtasks": [
       "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
       "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
-      "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
+      "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
     ],
     "stage_audit": [
       {
@@ -140,9 +140,9 @@
           ]
         },
         "process": {
-          "text": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side.",
+          "text": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side.",
           "candidate_quotes": [
-            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
+            "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
           ]
         },
         "ending": {
@@ -154,8 +154,11 @@
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "At the terminal position, the pool is on the right, the home is on the left, and the potted plant is on the left-hand side.",
+          "text": "Keep the pool on the right and the home on the left during the patio movement; retain the approximate extent. Stop at the pool edge, where the plant is a left-side reference.",
           "candidate_quotes": [
+            "With the pool on the right and the home to your left",
+            "mostly to the end of the brick patio",
+            "Stop when you are at the edge of the pool.",
             "There will be a potted plant on your left-hand side."
           ]
         },
@@ -185,10 +188,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-05",
+          "SRC-11"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -204,10 +207,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-13",
+          "SRC-07"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

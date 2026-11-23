@@ -98,8 +98,8 @@
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once inside the washroom, stand between the sink and the bathtub.",
+          "kind": "explicit_event",
+          "text": "Stand between the sink and bathtub inside the washroom; the entry trigger is not the ending mechanism.",
           "candidate_quotes": [
             "Once inside the washroom, stand between the sink and the bathtub."
           ],
@@ -139,9 +139,11 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

@@ -40,9 +40,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "At that position, the table should be on your left.",
+          "text": "The beside-table position with the table on the left.",
           "candidate_quotes": [
-            "At that position, the table should be on your left."
+            "until you are next to it. At that position, the table should be on your left."
           ]
         },
         "process": {
@@ -53,9 +53,9 @@
         },
         "ending": {
           "kind": "linked_trigger_or_refinement",
-          "text": "At that position, the table should be on your left.",
+          "text": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity.",
           "candidate_quotes": [
-            "At that position, the table should be on your left."
+            "until you are next to it. At that position, the table should be on your left."
           ],
           "stop_scope": "none"
         },
@@ -130,8 +130,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "At that position, the table should be on your left.",
-          "candidate_quote": "At that position, the table should be on your left."
+          "text": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity.",
+          "candidate_quote": "until you are next to it. At that position, the table should be on your left."
         },
         "next_entry": {
           "text": "From beside the white table, turn right and walk through the open doorway into the kitchen",
@@ -140,9 +140,12 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

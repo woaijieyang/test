@@ -24,129 +24,146 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "Go down the staircase.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Go about halfway down the staircase, then stop and wait there."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Go about halfway down and then stop.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Go about halfway down the staircase, then stop and wait there."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Wait there.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Go about halfway down the staircase, then stop and wait there."
-        ],
-        "status": "covered"
-      }
-    ],
+    "findings": [],
+    "handoffs": [],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go about halfway down the staircase, then stop and wait there."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Go down the staircase.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go about halfway down the staircase, then stop and wait there."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Go about halfway down and then stop.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go about halfway down the staircase, then stop and wait there."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Wait there.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Go about halfway down the staircase, then stop and wait there.",
-          "candidate_quotes": [
-            "Go about halfway down the staircase, then stop and wait there."
-          ]
-        },
-        "process": {
-          "text": "Go about halfway down the staircase, then stop and wait there.",
-          "candidate_quotes": [
-            "Go about halfway down the staircase, then stop and wait there."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Go about halfway down the staircase, then stop and wait there.",
-          "candidate_quotes": [
-            "Go about halfway down the staircase, then stop and wait there."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "temporal: then; ordinal_or_count: halfway",
           "candidate_quotes": [
             "then",
             "halfway"
-          ]
+          ],
+          "text": "temporal: then; ordinal_or_count: halfway"
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Go about halfway down the staircase, then stop and wait there."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ],
+          "text": "Go about halfway down the staircase, then stop and wait there."
+        },
         "source_quotes": [
           "Wait there.",
           "Go about halfway down and then stop.",
           "Go down the staircase."
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Go about halfway down the staircase, then stop and wait there."
+          ],
+          "text": "Go about halfway down the staircase, then stop and wait there."
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "endpoint_refinement_and_bounded_motion",

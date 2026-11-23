@@ -136,9 +136,9 @@
           ]
         },
         "target": {
-          "text": "Once you are there",
+          "text": "The position directly underneath the shower head.",
           "candidate_quotes": [
-            "Once you are there"
+            "Take another step forward until you are right underneath the shower head."
           ]
         },
         "process": {
@@ -148,10 +148,10 @@
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once you are there",
+          "kind": "bounded_action",
+          "text": "Complete the final step to the position directly underneath the shower head.",
           "candidate_quotes": [
-            "Once you are there"
+            "Take another step forward until you are right underneath the shower head."
           ],
           "stop_scope": "none"
         },
@@ -193,10 +193,11 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -212,10 +213,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-13",
+          "SRC-14"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

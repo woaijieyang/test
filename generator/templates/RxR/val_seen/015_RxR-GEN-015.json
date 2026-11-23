@@ -60,13 +60,12 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: until, Then; spatial_frame: left, right, in front of",
+          "text": "The first open door is to the left; approach its front before using the other door directly ahead to enter the ladies bathroom. Right in front intensifies front, not right-side selection.",
           "candidate_quotes": [
-            "until",
-            "Then",
-            "left",
-            "right",
-            "in front of"
+            "Directly to the left is an open door.",
+            "until you are right in front of it",
+            "other open door directly in front of you",
+            "until you are inside the ladies' bathroom"
           ]
         },
         "source_quotes": [
@@ -107,12 +106,13 @@
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "temporal: Once; spatial_frame: left, right, in front of",
+          "text": "Inside the bathroom the sink is left and stalls ahead; enter the open stall, retain the window ahead and toilet left, and stop inside.",
           "candidate_quotes": [
-            "Once",
-            "left",
-            "right",
-            "in front of"
+            "the sink is on the left",
+            "bathroom stalls are right in front of you",
+            "Walk inside the open bathroom stall.",
+            "toilet to your left",
+            "Stop inside this bathroom stall."
           ]
         },
         "source_quotes": [
@@ -141,10 +141,12 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You are standing in a kitchen next to a counter top with a sink.  You will see a door on the left of you.  Right next to the door will be a shelf with pots and pans.  Exit there door.  You will come into a hallway.   You are going to veer to the right and go thru that door.  You will enter a long hallway.  You are going to make a left and enter a bathroom.  You are going to just step inside that bathroom next to the grey door and you are done.   "
+        "You are standing in a kitchen next to a counter top with a sink.  You will see a door on the left of you.  Right next to the door will be a shelf with pots and pans.  Exit another door.  You will come into a hallway.   You are going to veer to the right and go thru that door.  You will enter a long hallway.  You are going to make a left and enter a bathroom.  You are going to just step inside that bathroom next to the grey door and you are done.   "
       ]
     }
   },
@@ -39,81 +39,120 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "You are standing in a kitchen next to a counter top with a sink.",
-        "requirement": "Preserve the completion or stationary-position condition: You are standing in a kitchen next to a counter top with a sink.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You are standing in a kitchen next to a counter top with a sink."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "You will see a door on the left of you.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You will see a door on the left of you.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You will see a door on the left of you."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Right next to the door will be a shelf with pots and pans.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Right next to the door will be a shelf with pots and pans.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "Right next to the door will be a shelf with pots and pans."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Exit that door.",
-        "requirement": "Preserve the spatial transition and region/threshold: Exit that door.",
+        "requirement": "The exit is changed from the previously identified left-hand door by the shelf to another door.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "Exit another door."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "You will come into a hallway.",
-        "requirement": "Preserve the spatial transition and region/threshold: You will come into a hallway.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You will come into a hallway."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "You are going to veer to the right and go thru that door.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You are going to veer to the right and go thru that door.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You are going to veer to the right and go thru that door."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-07",
         "source_quote": "You will enter a long hallway.",
-        "requirement": "Preserve the spatial transition and region/threshold: You will enter a long hallway.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You will enter a long hallway."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-08",
         "source_quote": "You are going to make a left and enter a bathroom.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You are going to make a left and enter a bathroom.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You are going to make a left and enter a bathroom."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-09",
         "source_quote": "You are going to just step inside that bathroom next to the grey door and you are done.",
-        "requirement": "Preserve the completion or stationary-position condition: You are going to just step inside that bathroom next to the grey door and you are done.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "You are going to just step inside that bathroom next to the grey door and you are done."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-10",
+        "source_quote": "Exit that door.",
+        "requirement": "The exit is changed from the previously identified left-hand door by the shelf to another door.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Exit another door."
+          }
         ],
         "status": "altered_or_missing"
       }
@@ -121,77 +160,88 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The exit is changed from the previously identified left-hand door by the shelf to another door."
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The exit is changed from the previously identified left-hand door by the shelf to another door."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The exit is changed from the previously identified left-hand door by the shelf to another door."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The exit is changed from the previously identified left-hand door by the shelf to another door."
       }
     ],
     "findings": [
       {
-        "source_quote": "elf with pots and pans.  Exit that door.  You will come into a hallway.   You are going to vee",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-04",
+          "SRC-10"
         ],
+        "source_quote": "Exit that door.",
         "candidate_evidence": [
-          "Right next to the door will be a shelf with pots and pans."
+          {
+            "subtask_index": 0,
+            "quote": "Exit another door."
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate leaves a deictic reference without preserving the identity of its source-supported antecedent.",
-        "execution_consequence": "The referent is changed or left unresolved; the agent may select the wrong door/object or lose the intended target identity.",
+        "problem": "The exit is changed from the previously identified left-hand door by the shelf to another door.",
+        "execution_consequence": "The antecedent identity is lost even though the sentence remains grammatical.",
         "repair": {
-          "operation": "referent",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -202,53 +252,69 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "You are going to just step inside that bathroom next to the grey door",
+          "text": "The candidate retains the source ending: just step inside that bathroom next to the grey door and you are done.",
           "candidate_quotes": [
-            "You are going to just step inside that bathroom next to the grey door"
+            "just step inside that bathroom next to the grey door and you are done."
           ]
         },
         "process": {
-          "text": "You are standing in a kitchen next to a counter top with a sink.  You will see a door on the left of you.  Right next to the door will be a shelf with pots and pans.  Exit there door.  You will come into a hallway.   You are going to veer to the right and go thru that door.  You will enter a long hallway.  You are going to make a left and enter a bathroom.  You are going to just step inside that bathroom next to the grey door and you are done.   ",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The exit is changed from the previously identified left-hand door by the shelf to another door.",
           "candidate_quotes": [
-            "You are standing in a kitchen next to a counter top with a sink.  You will see a door on the left of you.  Right next to the door will be a shelf with pots and pans.  Exit there door.  You will come into a hallway.   You are going to veer to the right and go thru that door.  You will enter a long hallway.  You are going to make a left and enter a bathroom.  You are going to just step inside that bathroom next to the grey door and you are done.   "
+            "You are standing in a kitchen next to a counter top with a sink.  You will see a door on the left of you.  Right next to the door will be a shelf with pots and pans.  Exit another door.  You will come into a hallway.   You are going to veer to the right and go thru that door.  You will enter a long hallway.  You are going to make a left and enter a bathroom.  You are going to just step inside that bathroom next to the grey door and you are done.   "
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "bounded_action",
+          "text": "The candidate retains the source ending: just step inside that bathroom next to the grey door and you are done.",
+          "candidate_quotes": [
+            "just step inside that bathroom next to the grey door and you are done."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "spatial_frame: left, Right, right",
+          "text": "Source requires Exit that door.; candidate instead states Exit another door..",
           "candidate_quotes": [
-            "left",
-            "Right",
-            "right"
+            "Exit another door."
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09",
+          "SRC-10"
         ],
         "source_quotes": [
-          "You are going to just step inside that bathroom next to the grey door and you are done.",
-          "You are going to make a left and enter a bathroom.",
+          "You are standing in a kitchen next to a counter top with a sink.",
+          "You will see a door on the left of you.",
+          "Right next to the door will be a shelf with pots and pans.",
+          "Exit that door.",
+          "You will come into a hallway.",
+          "You are going to veer to the right and go thru that door.",
           "You will enter a long hallway.",
-          "You are going to veer to the right and go thru that door."
+          "You are going to make a left and enter a bathroom.",
+          "You are going to just step inside that bathroom next to the grey door and you are done."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "referent",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The exit is changed from the previously identified left-hand door by the shelf to another door. The antecedent identity is lost even though the sentence remains grammatical."
   }
 }

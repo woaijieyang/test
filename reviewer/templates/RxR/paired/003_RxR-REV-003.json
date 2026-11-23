@@ -26,223 +26,243 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "Head into that.",
-        "requirement": "Preserve the spatial transition and region/threshold: Head into that.",
-        "candidate_evidence": [
-          "Head into it."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From the right side of the dining table, head to the base of the stairs in front of you",
+          "text": "From the right side of the dining table, head to the base of the stairs in front of you"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Make another right through another archway and head to the right side of the dining table.",
+          "text": "Make another right through another archway and head to the right side of the dining table."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Turn right through another arched entrance.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right through another arched entrance.",
-        "candidate_evidence": [
-          "Turn right through another arched entrance."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Make another right through another arch way and head to the right side of the dining table.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Make another right through another arch way and head to the right side of the dining table.",
-        "candidate_evidence": [
-          "Make another right through another archway and head to the right side of the dining table."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "You'll see a set of stairs in front of you head to the bass of the stairs.",
-        "requirement": "Preserve the spatial transition and region/threshold: You'll see a set of stairs in front of you head to the bass of the stairs.",
-        "candidate_evidence": [
-          "In front of you will be a set of curtains."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "Once you get to the 2nd platform by the window you've arrived.",
-        "requirement": "Preserve the temporal trigger/order and its scope: Once you get to the 2nd platform by the window you've arrived.",
-        "candidate_evidence": [
-          "Once you get to the second platform by the window, you have arrived."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Head into it."
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: Head into that.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Head into that.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Turn right through another arched entrance.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right through another arched entrance.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn right through another arched entrance.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Make another right through another archway and head to the right side of the dining table."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Make another right through another arch way and head to the right side of the dining table.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Make another right through another arch way and head to the right side of the dining table.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "From the right side of the dining table, head to the base of the stairs in front of you.",
+            "subtask_index": 1
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: You'll see a set of stairs in front of you head to the bass of the stairs.",
+        "requirement_id": "SRC-04",
+        "source_quote": "You'll see a set of stairs in front of you head to the bass of the stairs.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you get to the second platform by the window, you have arrived."
+          }
+        ],
+        "requirement": "Preserve the temporal trigger/order and its scope: Once you get to the 2nd platform by the window you've arrived.",
+        "requirement_id": "SRC-05",
+        "source_quote": "Once you get to the 2nd platform by the window you've arrived.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Make another right through another archway and head to the right side of the dining table.",
-          "candidate_quotes": [
-            "Make another right through another archway and head to the right side of the dining table."
-          ]
-        },
-        "process": {
-          "text": "Begin in front of an arched entrance. Head into it. In front of you will be a set of curtains. Turn right through another arched entrance. Make another right through another archway and head to the right side of the dining table.",
-          "candidate_quotes": [
-            "Begin in front of an arched entrance. Head into it. In front of you will be a set of curtains. Turn right through another arched entrance. Make another right through another archway and head to the right side of the dining table."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Make another right through another archway and head to the right side of the dining table.",
-          "candidate_quotes": [
-            "Make another right through another archway and head to the right side of the dining table."
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "spatial_frame: in front of, In front of, right; manner_or_constraint: through",
           "candidate_quotes": [
             "in front of",
             "In front of",
             "right",
             "through"
-          ]
+          ],
+          "text": "spatial_frame: in front of, In front of, right; manner_or_constraint: through"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Make another right through another archway and head to the right side of the dining table."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Make another right through another archway and head to the right side of the dining table."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Begin in front of an arched entrance. Head into it. In front of you will be a set of curtains. Turn right through another arched entrance. Make another right through another archway and head to the right side of the dining table."
+          ],
+          "text": "Begin in front of an arched entrance. Head into it. In front of you will be a set of curtains. Turn right through another arched entrance. Make another right through another archway and head to the right side of the dining table."
+        },
+        "source_quotes": [
+          "Head into that.",
+          "Turn right through another arched entrance.",
+          "Make another right through another arch way and head to the right side of the dining table."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
-          "SRC-03",
-          "SRC-04"
+          "SRC-03"
         ],
-        "source_quotes": [
-          "Turn right through another arched entrance.",
-          "In front of you will be a set of curtains.",
-          "Begin in front of an arched entrance.",
-          "Make another right through another arch way and head to the right side of the dining table."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Make another right through another archway and head to the right side of the dining table."
+          ],
+          "text": "Make another right through another archway and head to the right side of the dining table."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "inherited_entity",
-          "text": "From the right side of the dining table, head to the base of the stairs in front of you",
-          "candidate_quotes": [
-            "From the right side of the dining table, head to the base of the stairs in front of you"
-          ]
-        },
-        "target": {
-          "text": "Once you get to the second platform by the window",
-          "candidate_quotes": [
-            "Once you get to the second platform by the window"
-          ]
-        },
-        "process": {
-          "text": "From the right side of the dining table, head to the base of the stairs in front of you. Once you get to the second platform by the window, you have arrived.",
-          "candidate_quotes": [
-            "From the right side of the dining table, head to the base of the stairs in front of you. Once you get to the second platform by the window, you have arrived."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once you get to the second platform by the window",
-          "candidate_quotes": [
-            "Once you get to the second platform by the window"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "temporal: Once; ordinal_or_count: second; spatial_frame: right, in front of",
           "candidate_quotes": [
             "Once",
             "second",
             "right",
             "in front of"
-          ]
+          ],
+          "text": "temporal: Once; ordinal_or_count: second; spatial_frame: right, in front of"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Once you get to the second platform by the window"
+          ],
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "Once you get to the second platform by the window"
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From the right side of the dining table, head to the base of the stairs in front of you"
+          ],
+          "mode": "inherited_entity",
+          "text": "From the right side of the dining table, head to the base of the stairs in front of you"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From the right side of the dining table, head to the base of the stairs in front of you. Once you get to the second platform by the window, you have arrived."
+          ],
+          "text": "From the right side of the dining table, head to the base of the stairs in front of you. Once you get to the second platform by the window, you have arrived."
+        },
+        "source_quotes": [
+          "You'll see a set of stairs in front of you head to the bass of the stairs.",
+          "Once you get to the 2nd platform by the window you've arrived."
+        ],
         "source_requirement_ids": [
+          "SRC-04",
           "SRC-05"
         ],
-        "source_quotes": [
-          "Once you get to the 2nd platform by the window you've arrived.",
-          "You'll see a set of stairs in front of you head to the bass of the stairs.",
-          "Make another right through another arch way and head to the right side of the dining table.",
-          "In front of you will be a set of curtains."
-        ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Once you get to the second platform by the window"
+          ],
+          "text": "Once you get to the second platform by the window"
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Make another right through another archway and head to the right side of the dining table.",
-          "candidate_quote": "Make another right through another archway and head to the right side of the dining table."
-        },
-        "next_entry": {
-          "text": "From the right side of the dining table, head to the base of the stairs in front of you",
-          "candidate_quote": "From the right side of the dining table, head to the base of the stairs in front of you"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",

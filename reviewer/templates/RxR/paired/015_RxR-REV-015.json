@@ -26,276 +26,316 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "We're going to start in a room that has a very long brown table.",
-        "requirement": "Preserve the spatial transition and region/threshold: We're going to start in a room that has a very long brown table.",
-        "candidate_evidence": [
-          "We are starting in a room that has a very long brown table."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you",
+          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
+          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "If we look directly to the left of us we're going to see an open door.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: If we look directly to the left of us we're going to see an open door.",
-        "candidate_evidence": [
-          "Directly to the left is an open door."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "so we're going to walk towards that open door to be right in front of it.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: so we're going to walk towards that open door to be right in front of it.",
-        "candidate_evidence": [
-          "Walk towards that open door until you are right in front of it."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "Then we'll see another open door directly in front of us.",
-        "requirement": "Preserve the temporal trigger/order and its scope: Then we'll see another open door directly in front of us.",
-        "candidate_evidence": [
-          "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
-        "requirement": "Preserve the temporal trigger/order and its scope: We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
-        "candidate_evidence": [
-          "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
-          "Walk towards that open door until you are right in front of it."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-06",
-        "source_quote": "so we're going to walk inside the ladies bathroom.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: so we're going to walk inside the ladies bathroom.",
-        "candidate_evidence": [
-          "Walk inside the open bathroom stall.",
-          "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-07",
-        "source_quote": "ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
-        "candidate_evidence": [
-          "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-08",
-        "source_quote": "and we're going to go ahead and walk inside the opened bathroom stall.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: and we're going to go ahead and walk inside the opened bathroom stall.",
-        "candidate_evidence": [
-          "Walk inside the open bathroom stall."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-09",
-        "source_quote": "once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
-        "candidate_evidence": [
-          "Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-10",
-        "source_quote": "And we will stop inside this bathroom stall",
-        "requirement": "Preserve the completion or stationary-position condition: And we will stop inside this bathroom stall",
-        "candidate_evidence": [
-          "Stop inside this bathroom stall."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "We are starting in a room that has a very long brown table."
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: We're going to start in a room that has a very long brown table.",
+        "requirement_id": "SRC-01",
+        "source_quote": "We're going to start in a room that has a very long brown table.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Directly to the left is an open door."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: If we look directly to the left of us we're going to see an open door.",
+        "requirement_id": "SRC-02",
+        "source_quote": "If we look directly to the left of us we're going to see an open door.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk towards that open door until you are right in front of it."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: so we're going to walk towards that open door to be right in front of it.",
+        "requirement_id": "SRC-03",
+        "source_quote": "so we're going to walk towards that open door to be right in front of it.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
+          }
+        ],
+        "requirement": "Preserve the temporal trigger/order and its scope: Then we'll see another open door directly in front of us.",
+        "requirement_id": "SRC-04",
+        "source_quote": "Then we'll see another open door directly in front of us.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the temporal trigger/order and its scope: We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
+        "requirement_id": "SRC-05",
+        "source_quote": "We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "The repeated bathroom-entry wording elaborates the same entry, not the later stall entry or a second bathroom traversal.",
+        "requirement_id": "SRC-06",
+        "source_quote": "so we're going to walk inside the ladies bathroom.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
+        "requirement_id": "SRC-07",
+        "source_quote": "ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Walk inside the open bathroom stall."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: and we're going to go ahead and walk inside the opened bathroom stall.",
+        "requirement_id": "SRC-08",
+        "source_quote": "and we're going to go ahead and walk inside the opened bathroom stall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
+        "requirement_id": "SRC-09",
+        "source_quote": "once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Stop inside this bathroom stall."
+          }
+        ],
+        "requirement": "Preserve the completion or stationary-position condition: And we will stop inside this bathroom stall",
+        "requirement_id": "SRC-10",
+        "source_quote": "And we will stop inside this bathroom stall",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
-            "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
-          ]
-        },
-        "process": {
-          "text": "We are starting in a room that has a very long brown table. Directly to the left is an open door. Walk towards that open door until you are right in front of it. Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
-          "candidate_quotes": [
-            "We are starting in a room that has a very long brown table. Directly to the left is an open door. Walk towards that open door until you are right in front of it. Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
-          ]
+            "Directly to the left is an open door.",
+            "until you are right in front of it",
+            "other open door directly in front of you",
+            "until you are inside the ladies' bathroom"
+          ],
+          "text": "The first open door is to the left; approach its front before using the other door directly ahead to enter the ladies bathroom. Right in front intensifies front, not right-side selection."
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
           "candidate_quotes": [
             "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
           ],
-          "stop_scope": "none"
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
         },
-        "conditions": {
-          "text": "temporal: until, Then; spatial_frame: left, right, in front of",
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
           "candidate_quotes": [
-            "until",
-            "Then",
-            "left",
-            "right",
-            "in front of"
-          ]
+            "We are starting in a room that has a very long brown table. Directly to the left is an open door. Walk towards that open door until you are right in front of it. Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
+          ],
+          "text": "We are starting in a room that has a very long brown table. Directly to the left is an open door. Walk towards that open door until you are right in front of it. Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
         },
+        "source_quotes": [
+          "We're going to start in a room that has a very long brown table.",
+          "If we look directly to the left of us we're going to see an open door.",
+          "so we're going to walk towards that open door to be right in front of it.",
+          "Then we'll see another open door directly in front of us.",
+          "We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
+          "so we're going to walk inside the ladies bathroom."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04",
-          "SRC-05"
+          "SRC-05",
+          "SRC-06"
         ],
-        "source_quotes": [
-          "We're going to start in a room that has a very long brown table.",
-          "We're going to walk towards that open door until we're inside and it is a ladies bathroom.",
-          "so we're going to walk towards that open door to be right in front of it.",
-          "Then we'll see another open door directly in front of us."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
+          ],
+          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you",
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
+        "conditions": {
           "candidate_quotes": [
-            "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you"
-          ]
-        },
-        "target": {
-          "text": "Stop inside this bathroom stall.",
-          "candidate_quotes": [
+            "the sink is on the left",
+            "bathroom stalls are right in front of you",
+            "Walk inside the open bathroom stall.",
+            "toilet to your left",
             "Stop inside this bathroom stall."
-          ]
-        },
-        "process": {
-          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you. Walk inside the open bathroom stall. Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left. Stop inside this bathroom stall.",
-          "candidate_quotes": [
-            "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you. Walk inside the open bathroom stall. Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left. Stop inside this bathroom stall."
-          ]
+          ],
+          "text": "Inside the bathroom the sink is left and stalls ahead; enter the open stall, retain the window ahead and toilet left, and stop inside."
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Stop inside this bathroom stall.",
           "candidate_quotes": [
             "Stop inside this bathroom stall."
           ],
-          "stop_scope": "terminal"
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Stop inside this bathroom stall."
         },
-        "conditions": {
-          "text": "temporal: Once; spatial_frame: left, right, in front of",
+        "entry": {
           "candidate_quotes": [
-            "Once",
-            "left",
-            "right",
-            "in front of"
-          ]
+            "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you"
+          ],
+          "mode": "explicit_context",
+          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you"
         },
+        "process": {
+          "candidate_quotes": [
+            "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you. Walk inside the open bathroom stall. Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left. Stop inside this bathroom stall."
+          ],
+          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you. Walk inside the open bathroom stall. Once you reach the open stall, you will see a small window directly in front of you and the toilet to your left. Stop inside this bathroom stall."
+        },
+        "source_quotes": [
+          "ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
+          "and we're going to go ahead and walk inside the opened bathroom stall.",
+          "once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
+          "And we will stop inside this bathroom stall"
+        ],
         "source_requirement_ids": [
-          "SRC-06",
           "SRC-07",
           "SRC-08",
           "SRC-09",
           "SRC-10"
         ],
-        "source_quotes": [
-          "And we will stop inside this bathroom stall",
-          "ON the left we'll see the sink and we'll see the bathroom stalls right in front of us.",
-          "once we reached the opened bathroom stall we'll notice the small window right in front of us with the toilet to the left of us.",
-          "and we're going to go ahead and walk inside the opened bathroom stall."
-        ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Stop inside this bathroom stall."
+          ],
+          "text": "Stop inside this bathroom stall."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom.",
-          "candidate_quote": "Then walk towards the other open door directly in front of you until you are inside the ladies' bathroom."
-        },
-        "next_entry": {
-          "text": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you",
-          "candidate_quote": "Inside the ladies' bathroom, the sink is on the left and the bathroom stalls are right in front of you"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",

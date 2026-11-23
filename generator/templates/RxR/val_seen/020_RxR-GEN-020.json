@@ -158,8 +158,8 @@
           }
         ],
         "source_requirement_ids": [
-          "SRC-04",
-          "SRC-05"
+          "SRC-05",
+          "SRC-06"
         ],
         "handoff_rationale": "The source explicitly establishes standing near the open back door before describing the room/door, desk, chair and foot-of-bed continuation. The boundary preserves that state and does not convert 'see a room or another door' into arrival at either object."
       }

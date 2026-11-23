@@ -84,9 +84,9 @@
           ]
         },
         "target": {
-          "text": "You have reached your endpoint in between the doorway leading into the living room.",
+          "text": "The middle of the doorway leading into the living room.",
           "candidate_quotes": [
-            "You have reached your endpoint in between the doorway leading into the living room."
+            "Move forward until you are in the middle of the doorway that leads into a living room. Once you are there, do not move."
           ]
         },
         "process": {
@@ -97,11 +97,11 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "You have reached your endpoint in between the doorway leading into the living room.",
+          "text": "Reach the middle of the living-room doorway and obey the explicit instruction not to move further.",
           "candidate_quotes": [
-            "You have reached your endpoint in between the doorway leading into the living room."
+            "Move forward until you are in the middle of the doorway that leads into a living room. Once you are there, do not move."
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "temporal: Once, until; negation: do not; spatial_frame: right, ahead, left, between",
@@ -141,10 +141,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-04",
+          "SRC-05"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

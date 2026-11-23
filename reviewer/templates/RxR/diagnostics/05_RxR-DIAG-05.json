@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top... walk past this small area, and walk towards the room that's in front of you... On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub... Turn towards the left slightly... And take a few steps further... We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room... We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+        "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top... walk past this small area, and walk towards the room that's in front of you... On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub... Turn towards the left slightly... And take a few steps further... We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room... We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination. "
       ]
     }
   },
@@ -32,202 +32,241 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "issue",
+      "closure_handoff": "pass",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
         "source_quote": "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: We're facing towards a wooden door and in the opposite side of it there are some switches of some sort",
-        "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
-        ],
-        "status": "altered_or_missing"
+        "requirement": "The initial facing context, slight left turn and hallway approach have been removed.",
+        "candidate_evidence": [],
+        "status": "omitted"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "turn slightly to the left",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: turn slightly to the left",
-        "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
-        ],
-        "status": "altered_or_missing"
+        "requirement": "The initial facing context, slight left turn and hallway approach have been removed.",
+        "candidate_evidence": [],
+        "status": "omitted"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "and walk towards the hallway that's in front of you...",
-        "requirement": "Preserve the spatial transition and region/threshold: and walk towards the hallway that's in front of you...",
-        "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
-        ],
-        "status": "altered_or_missing"
+        "requirement": "The initial facing context, slight left turn and hallway approach have been removed.",
+        "candidate_evidence": [],
+        "status": "omitted"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "walk past this small area, and walk towards the room that's in front of you...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: walk past this small area, and walk towards the room that's in front of you...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "walk past this small area, and walk towards the room that's in front of you..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-07",
         "source_quote": "Turn towards the left slightly...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn towards the left slightly...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "Turn towards the left slightly..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-08",
         "source_quote": "We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room...",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room...",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room..."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-09",
         "source_quote": "We're now in a walk in closet",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: We're now in a walk in closet",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "We're now in a walk in closet"
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-10",
         "source_quote": "turn slightly to the right",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: turn slightly to the right",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "turn slightly to the right"
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-11",
         "source_quote": "and walk towards the empty shelf that's right in front of you",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: and walk towards the empty shelf that's right in front of you",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "and walk towards the empty shelf that's right in front of you"
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-12",
         "source_quote": "pass the small stool that's in the middle of the room",
-        "requirement": "Preserve the spatial transition and region/threshold: pass the small stool that's in the middle of the room",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "pass the small stool that's in the middle of the room"
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-13",
         "source_quote": "once you're facing that shelf",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: once you're facing that shelf",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+          {
+            "subtask_index": 0,
+            "quote": "once you're facing that shelf"
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-14",
+        "source_quote": "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort, turn slightly to the left, and walk towards the hallway that's in front of you... ",
+        "requirement": "The initial facing context, slight left turn and hallway approach have been removed.",
+        "candidate_evidence": [],
+        "status": "omitted"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The initial facing context, slight left turn and hallway approach have been removed."
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The initial facing context, slight left turn and hallway approach have been removed."
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The initial facing context, slight left turn and hallway approach have been removed."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The initial facing context, slight left turn and hallway approach have been removed."
       }
     ],
     "findings": [
       {
-        "source_quote": "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort, turn slightly to the left, and walk towards the hallway that's in front of you...",
+        "code": "OMISSION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C01",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-14"
         ],
-        "candidate_evidence": [
-          "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
-        ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C1_COVERAGE",
+        "source_quote": "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort, turn slightly to the left, and walk towards the hallway that's in front of you... ",
+        "candidate_evidence": [],
         "evidence_level": "S1",
-        "problem": "The candidate omits an active navigation action, so the prescribed route is incomplete.",
-        "execution_consequence": "A required movement clause is missing; the agent may skip a route segment and reach a later landmark from the wrong location.",
+        "problem": "The initial facing context, slight left turn and hallway approach have been removed.",
+        "execution_consequence": "The remaining route starts at later landmarks without prescribing the initial transition.",
         "repair": {
-          "operation": "action_omission",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the omitted action in its original temporal position.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -238,60 +277,78 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf",
+          "text": "The candidate retains the source ending: once you're facing that shelf, you have reached your destination.",
           "candidate_quotes": [
-            "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf"
+            "once you're facing that shelf, you have reached your destination."
           ]
         },
         "process": {
-          "text": "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top... walk past this small area, and walk towards the room that's in front of you... On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub... Turn towards the left slightly... And take a few steps further... We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room... We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The initial facing context, slight left turn and hallway approach have been removed.",
           "candidate_quotes": [
-            "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top... walk past this small area, and walk towards the room that's in front of you... On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub... Turn towards the left slightly... And take a few steps further... We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room... We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination."
+            "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top... walk past this small area, and walk towards the room that's in front of you... On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub... Turn towards the left slightly... And take a few steps further... We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room... We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf, you have reached your destination. "
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf",
+          "kind": "explicit_event",
+          "text": "The candidate retains the source ending: once you're facing that shelf, you have reached your destination.",
           "candidate_quotes": [
-            "We're now in a walk in closet, in front of us there are a few hangers and a few shirts, turn slightly to the right, and walk towards the empty shelf that's right in front of you, pass the small stool that's in the middle of the room, once you're facing that shelf"
+            "once you're facing that shelf, you have reached your destination."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: once; ordinal_or_count: seven; spatial_frame: On your, right, left, in front of, facing; manner_or_constraint: past",
+          "text": "The candidate retains the final shelf-facing completion condition. Its missing initial orientation and hallway transition are established by the source coverage and omission finding, not by an absent candidate quote.",
           "candidate_quotes": [
-            "once",
-            "seven",
-            "On your",
-            "right",
-            "left",
-            "in front of",
-            "facing",
-            "past"
+            "once you're facing that shelf, you have reached your destination."
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09",
+          "SRC-10",
+          "SRC-11",
+          "SRC-12",
+          "SRC-13",
+          "SRC-14"
         ],
         "source_quotes": [
-          "you have reached your destination.",
-          "once you're facing that shelf",
+          "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort",
+          "turn slightly to the left",
+          "and walk towards the hallway that's in front of you...",
+          "On your right there's an entrance to a bedroom, and on the left there's a console table with seven candles on top...",
+          "walk past this small area, and walk towards the room that's in front of you...",
+          "On your right there's a sink area, and above the sink there's a mirror, in front of you there's a round table, and in the opposite side of it there's a tub...",
+          "Turn towards the left slightly...",
+          "We're now facing towards a corner of a wall, above there's a TV, turn slightly to the left, and exit this room...",
+          "We're now in a walk in closet",
+          "turn slightly to the right",
+          "and walk towards the empty shelf that's right in front of you",
           "pass the small stool that's in the middle of the room",
-          "and walk towards the empty shelf that's right in front of you"
+          "once you're facing that shelf",
+          "We're facing towards a wooden door and in the opposite side of it there are some switches of some sort, turn slightly to the left, and walk towards the hallway that's in front of you... "
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "action_omission",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a action_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a action_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The initial facing context, slight left turn and hallway approach have been removed. The remaining route starts at later landmarks without prescribing the initial transition."
   }
 }

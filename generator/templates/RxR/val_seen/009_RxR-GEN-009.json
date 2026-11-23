@@ -53,12 +53,12 @@
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "kind": "bounded_action",
+          "text": "Complete the prescribed step toward the wooden news stand after the slight right turn. News stand names furniture, not a stop command.",
           "candidate_quotes": [
             "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
           ],
-          "stop_scope": "intermediate"
+          "stop_scope": "none"
         },
         "conditions": {
           "text": "spatial_frame: right, on your, left; manner_or_constraint: around",
@@ -182,7 +182,7 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books.",
+          "text": "Complete the prescribed step toward the wooden news stand after the slight right turn. News stand names furniture, not a stop command.",
           "candidate_quote": "Turn slightly to the right and take a step forward to the wooden news stand holding a pile of books."
         },
         "next_entry": {
@@ -191,10 +191,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-04",
+          "SRC-05"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
@@ -210,10 +210,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-08",
+          "SRC-09"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

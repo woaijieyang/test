@@ -25,143 +25,163 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "Our starting point is in a living room",
-        "requirement": "Preserve the spatial transition and region/threshold: Our starting point is in a living room",
-        "candidate_evidence": [
-          "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "on your right there's a wood door and on your left there's a white chair",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: on your right there's a wood door and on your left there's a white chair",
-        "candidate_evidence": [
-          "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "and in front of you there's an exit door",
-        "requirement": "Preserve the spatial transition and region/threshold: and in front of you there's an exit door",
-        "candidate_evidence": [
-          "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "walk towards the exit door",
-        "requirement": "Preserve the spatial transition and region/threshold: walk towards the exit door",
-        "candidate_evidence": [
-          "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
-        ],
-        "status": "covered"
-      }
-    ],
+    "findings": [],
+    "handoffs": [],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Our starting point is in a living room",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: Our starting point is in a living room",
+        "requirement_id": "SRC-01",
+        "source_quote": "Our starting point is in a living room",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "on your right there's a wood door and on your left there's a white chair",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: on your right there's a wood door and on your left there's a white chair",
+        "requirement_id": "SRC-02",
+        "source_quote": "on your right there's a wood door and on your left there's a white chair",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "and in front of you there's an exit door",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: and in front of you there's an exit door",
+        "requirement_id": "SRC-03",
+        "source_quote": "and in front of you there's an exit door",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "walk towards the exit door",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: walk towards the exit door",
+        "requirement_id": "SRC-04",
+        "source_quote": "walk towards the exit door",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door",
-          "candidate_quotes": [
-            "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door"
-          ]
-        },
-        "process": {
-          "text": "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination.",
-          "candidate_quotes": [
-            "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
-          ]
-        },
-        "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "Preserve the final approach toward the exit door as the stated destination; do not invent door crossing or STOP.",
-          "candidate_quotes": [
-            "walk towards the exit door",
-            "that's your destination"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "spatial_frame: on your, right, left, in front of",
           "candidate_quotes": [
             "on your",
             "right",
             "left",
             "in front of"
-          ]
+          ],
+          "text": "spatial_frame: on your, right, left, in front of"
         },
+        "ending": {
+          "candidate_quotes": [
+            "walk towards the exit door",
+            "that's your destination"
+          ],
+          "kind": "terminal_goal_directive",
+          "stop_scope": "none",
+          "text": "Preserve the final approach toward the exit door as the stated destination; do not invent door crossing or STOP."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
+          ],
+          "text": "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door, and that's your destination."
+        },
+        "source_quotes": [
+          "Our starting point is in a living room",
+          "on your right there's a wood door and on your left there's a white chair",
+          "and in front of you there's an exit door",
+          "walk towards the exit door"
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "source_quotes": [
-          "and that's your destination.",
-          "walk towards the exit door",
-          "and in front of you there's an exit door",
-          "on your right there's a wood door and on your left there's a white chair"
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door"
+          ],
+          "text": "Our starting point is in a living room, on your right there's a wood door and on your left there's a white chair, and in front of you there's an exit door, walk towards the exit door"
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",

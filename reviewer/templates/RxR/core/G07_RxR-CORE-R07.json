@@ -25,222 +25,248 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "You start facing a wall.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From beside the white table, turn right and walk through the open doorway into the kitchen",
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen"
+        },
+        "preceding_exit": {
+          "candidate_quote": "until you are next to it. At that position, the table should be on your left.",
+          "text": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Turn left and walk towards the white table.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Now you are standing next to the white table, with the table on your left.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "Turn right and walk through the open doorway into the kitchen.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "Stop just inside, facing the sink.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "You start facing a wall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Turn left and walk towards the white table.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Now you are standing next to the white table, with the table on your left.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-04",
+        "source_quote": "Turn right and walk through the open doorway into the kitchen.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-05",
+        "source_quote": "Stop just inside, facing the sink.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "At that position, the table should be on your left.",
-          "candidate_quotes": [
-            "At that position, the table should be on your left."
-          ]
-        },
-        "process": {
-          "text": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
-          "candidate_quotes": [
-            "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "At that position, the table should be on your left.",
-          "candidate_quotes": [
-            "At that position, the table should be on your left."
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "temporal: until; spatial_frame: facing, left, on your",
           "candidate_quotes": [
             "until",
             "facing",
             "left",
             "on your"
-          ]
+          ],
+          "text": "temporal: until; spatial_frame: facing, left, on your"
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "until you are next to it. At that position, the table should be on your left."
+          ],
+          "kind": "linked_trigger_or_refinement",
+          "stop_scope": "none",
+          "text": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+          ],
+          "text": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+        },
         "source_quotes": [
           "Turn left and walk towards the white table.",
           "You start facing a wall.",
           "Now you are standing next to the white table, with the table on your left.",
           "Turn right and walk through the open doorway into the kitchen."
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "until you are next to it. At that position, the table should be on your left."
+          ],
+          "text": "The beside-table position with the table on the left."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen",
-          "candidate_quotes": [
-            "From beside the white table, turn right and walk through the open doorway into the kitchen"
-          ]
-        },
-        "target": {
-          "text": "Stop just inside the kitchen, facing the sink.",
-          "candidate_quotes": [
-            "Stop just inside the kitchen, facing the sink."
-          ]
-        },
-        "process": {
-          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink.",
-          "candidate_quotes": [
-            "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Stop just inside the kitchen, facing the sink.",
-          "candidate_quotes": [
-            "Stop just inside the kitchen, facing the sink."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "spatial_frame: right, facing; manner_or_constraint: through",
           "candidate_quotes": [
             "right",
             "facing",
             "through"
-          ]
+          ],
+          "text": "spatial_frame: right, facing; manner_or_constraint: through"
         },
-        "source_requirement_ids": [
-          "SRC-04",
-          "SRC-05"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Stop just inside the kitchen, facing the sink."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Stop just inside the kitchen, facing the sink."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From beside the white table, turn right and walk through the open doorway into the kitchen"
+          ],
+          "mode": "explicit_context",
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+          ],
+          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+        },
         "source_quotes": [
           "Stop just inside, facing the sink.",
           "Turn right and walk through the open doorway into the kitchen.",
           "Turn left and walk towards the white table.",
           "Now you are standing next to the white table, with the table on your left."
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "source_requirement_ids": [
+          "SRC-04",
+          "SRC-05"
+        ],
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Stop just inside the kitchen, facing the sink."
+          ],
+          "text": "Stop just inside the kitchen, facing the sink."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "At that position, the table should be on your left.",
-          "candidate_quote": "At that position, the table should be on your left."
-        },
-        "next_entry": {
-          "text": "From beside the white table, turn right and walk through the open doorway into the kitchen",
-          "candidate_quote": "From beside the white table, turn right and walk through the open doorway into the kitchen"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "expected_state_and_endpoint_orientation",

@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "For your start point you will begin in a bathroom exit the washroom straight ahead and approach into the bedroom. You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway. Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right. There's going to be a wall that has some family pictures on it. Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug. Move to the right of the front door and enter into the open doorway that would lead you into a home office. Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder. Stand in front of that shredder and you are done.\n"
+        "For your start point you will begin in a bathroom exit the washroom straight ahead and approach the bedroom without entering it. You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway. Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right. There's going to be a wall that has some family pictures on it. Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug. Move to the right of the front door and enter into the open doorway that would lead you into a home office. Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder. Stand in front of that shredder and you are done.\n"
       ]
     }
   },
@@ -32,157 +32,204 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "issue",
+      "closure_handoff": "pass",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
         "source_quote": "For your start point you will begin in a bathroom exit the washroom straight ahead and enter into the bedroom.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: For your start point you will begin in a bathroom exit the washroom straight ahead and enter into the bedroom.",
+        "requirement": "The required bedroom entry is replaced by an approach that explicitly excludes entry.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "For your start point you will begin in a bathroom exit the washroom straight ahead and approach the bedroom without entering it."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "There's going to be a wall that has some family pictures on it.",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: There's going to be a wall that has some family pictures on it.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "There's going to be a wall that has some family pictures on it."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "Move to the right of the front door and enter into the open doorway that would lead you into a home office.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Move to the right of the front door and enter into the open doorway that would lead you into a home office.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Move to the right of the front door and enter into the open doorway that would lead you into a home office."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-07",
         "source_quote": "Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-08",
         "source_quote": "Stand in front of that shredder and you are done.",
-        "requirement": "Preserve the completion or stationary-position condition: Stand in front of that shredder and you are done.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Stand in front of that shredder and you are done."
+          }
         ],
         "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-09",
+        "source_quote": "enter into the bedroom",
+        "requirement": "The required bedroom entry is replaced by an approach that explicitly excludes entry.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "approach the bedroom without entering it"
+          }
+        ],
+        "status": "altered_or_missing"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The required bedroom entry is replaced by an approach that explicitly excludes entry."
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The required bedroom entry is replaced by an approach that explicitly excludes entry."
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The required bedroom entry is replaced by an approach that explicitly excludes entry."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The required bedroom entry is replaced by an approach that explicitly excludes entry."
       }
     ],
     "findings": [
       {
-        "source_quote": "enter",
+        "code": "WRONG_RELATION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-09"
         ],
+        "source_quote": "enter into the bedroom",
         "candidate_evidence": [
-          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "approach the bedroom without entering it"
+          }
         ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate changes a spatial transition: approaching, entering, and passing through are not equivalent.",
-        "execution_consequence": "The candidate weakens an instructed crossing/entry into an approach; the agent may remain outside the required room or doorway.",
+        "problem": "The required bedroom entry is replaced by an approach that explicitly excludes entry.",
+        "execution_consequence": "This contradicts the required traversal and the subsequent bedroom-relative route.",
         "repair": {
-          "operation": "transition",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact source transition semantics.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -193,59 +240,68 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Stand in front of that shredder",
+          "text": "The candidate retains the source ending: Stand in front of that shredder and you are done.",
           "candidate_quotes": [
-            "Stand in front of that shredder"
+            "Stand in front of that shredder and you are done."
           ]
         },
         "process": {
-          "text": "For your start point you will begin in a bathroom exit the washroom straight ahead and approach into the bedroom. You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway. Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right. There's going to be a wall that has some family pictures on it. Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug. Move to the right of the front door and enter into the open doorway that would lead you into a home office. Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder. Stand in front of that shredder and you are done.\n",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The required bedroom entry is replaced by an approach that explicitly excludes entry.",
           "candidate_quotes": [
-            "For your start point you will begin in a bathroom exit the washroom straight ahead and approach into the bedroom. You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway. Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right. There's going to be a wall that has some family pictures on it. Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug. Move to the right of the front door and enter into the open doorway that would lead you into a home office. Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder. Stand in front of that shredder and you are done.\n"
+            "For your start point you will begin in a bathroom exit the washroom straight ahead and approach the bedroom without entering it. You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway. Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right. There's going to be a wall that has some family pictures on it. Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug. Move to the right of the front door and enter into the open doorway that would lead you into a home office. Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder. Stand in front of that shredder and you are done.\n"
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
-          "stop_scope": "none"
+          "kind": "explicit_event",
+          "text": "The candidate retains the source ending: Stand in front of that shredder and you are done.",
+          "candidate_quotes": [
+            "Stand in front of that shredder and you are done."
+          ],
+          "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "temporal: then; spatial_frame: ahead, on your, right, left, between, in front of; manner_or_constraint: through, around",
+          "text": "Source requires enter into the bedroom; candidate instead states approach the bedroom without entering it.",
           "candidate_quotes": [
-            "then",
-            "ahead",
-            "on your",
-            "right",
-            "left",
-            "between",
-            "in front of",
-            "through",
-            "around"
+            "approach the bedroom without entering it"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-09"
         ],
         "source_quotes": [
-          "Stand in front of that shredder and you are done.",
-          "Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder.",
+          "For your start point you will begin in a bathroom exit the washroom straight ahead and enter into the bedroom.",
+          "You will pass a bed on your right and a desk study area to your left exit the bedroom through the open doorway and enter into the hallway.",
+          "Make a left turn around the corner and look to your left you will see that there is a dark brown leather chair move towards that chair and turn around to your right.",
+          "There's going to be a wall that has some family pictures on it.",
+          "Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug.",
           "Move to the right of the front door and enter into the open doorway that would lead you into a home office.",
-          "Move to the right of that wall and enter into a short narrow hall that bends you will then see the front door that has a circle fuzzy accent rug."
+          "Move to the right in between the desk to your left and the leather arm chair to your right move in between both sets of furniture and make your way to the wall that has that shredder.",
+          "Stand in front of that shredder and you are done.",
+          "enter into the bedroom"
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "transition",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The required bedroom entry is replaced by an approach that explicitly excludes entry. This contradicts the required traversal and the subsequent bedroom-relative route."
   }
 }

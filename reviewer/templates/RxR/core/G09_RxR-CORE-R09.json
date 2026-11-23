@@ -25,218 +25,244 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "Enter the kitchen and stop beside the counter.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Enter the kitchen and stop beside the counter."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door",
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Enter the kitchen and stop beside the counter.",
+          "text": "Enter the kitchen and stop beside the counter."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "From the counter, if the door to the laundry room is open, go through it",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "otherwise use the open archway beside that door.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "Both entrances lead into the laundry room.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "Once inside the laundry room, stop at the sink.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Enter the kitchen and stop beside the counter."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Enter the kitchen and stop beside the counter.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "From the counter, if the door to the laundry room is open, go through it",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "otherwise use the open archway beside that door.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-04",
+        "source_quote": "Both entrances lead into the laundry room.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-05",
+        "source_quote": "Once inside the laundry room, stop at the sink.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Enter the kitchen and stop beside the counter.",
-          "candidate_quotes": [
-            "Enter the kitchen and stop beside the counter."
-          ]
-        },
-        "process": {
-          "text": "Enter the kitchen and stop beside the counter.",
-          "candidate_quotes": [
-            "Enter the kitchen and stop beside the counter."
-          ]
+        "carryover": [],
+        "conditions": {
+          "candidate_quotes": [],
+          "text": null
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Enter the kitchen and stop beside the counter.",
           "candidate_quotes": [
             "Enter the kitchen and stop beside the counter."
           ],
-          "stop_scope": "intermediate"
+          "kind": "explicit_event",
+          "stop_scope": "intermediate",
+          "text": "Enter the kitchen and stop beside the counter."
         },
-        "conditions": {
-          "text": null,
-          "candidate_quotes": []
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
         },
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
+        "process": {
+          "candidate_quotes": [
+            "Enter the kitchen and stop beside the counter."
+          ],
+          "text": "Enter the kitchen and stop beside the counter."
+        },
         "source_quotes": [
           "Enter the kitchen and stop beside the counter.",
           "Once inside the laundry room, stop at the sink.",
           "otherwise use the open archway beside that door.",
           "From the counter, if the door to the laundry room is open, go through it"
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Enter the kitchen and stop beside the counter."
+          ],
+          "text": "Enter the kitchen and stop beside the counter."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door",
-          "candidate_quotes": [
-            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
-          ]
-        },
-        "target": {
-          "text": "Once inside the laundry room, stop at the sink.",
-          "candidate_quotes": [
-            "Once inside the laundry room, stop at the sink."
-          ]
-        },
-        "process": {
-          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
-          "candidate_quotes": [
-            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Once inside the laundry room, stop at the sink.",
-          "candidate_quotes": [
-            "Once inside the laundry room, stop at the sink."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "temporal: Once; branch: if, otherwise; manner_or_constraint: through",
           "candidate_quotes": [
             "Once",
             "if",
             "otherwise",
             "through"
-          ]
+          ],
+          "text": "temporal: Once; branch: if, otherwise; manner_or_constraint: through"
         },
-        "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03",
-          "SRC-04",
-          "SRC-05"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "Once inside the laundry room, stop at the sink."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "Once inside the laundry room, stop at the sink."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
+          ],
+          "mode": "explicit_context",
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+          ],
+          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+        },
         "source_quotes": [
           "Once inside the laundry room, stop at the sink.",
           "Both entrances lead into the laundry room.",
           "otherwise use the open archway beside that door.",
           "From the counter, if the door to the laundry room is open, go through it"
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
+        ],
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Once inside the laundry room, stop at the sink."
+          ],
+          "text": "Once inside the laundry room, stop at the sink."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Enter the kitchen and stop beside the counter.",
-          "candidate_quote": "Enter the kitchen and stop beside the counter."
-        },
-        "next_entry": {
-          "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door",
-          "candidate_quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "intermediate_stop_and_conditional_branch",

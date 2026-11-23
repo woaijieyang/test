@@ -25,140 +25,135 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "Our starting point is in a hallway",
-        "requirement": "Preserve the spatial transition and region/threshold: Our starting point is in a hallway",
-        "candidate_evidence": [
-          "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further..."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "on the left there's an open door and there are also two windows",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: on the left there's an open door and there are also two windows",
-        "candidate_evidence": [
-          "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further..."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "walk towards the end of the wall that's on the left",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the end of the wall that's on the left",
-        "candidate_evidence": [
-          "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further..."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "pass the open door",
-        "requirement": "Preserve the spatial transition and region/threshold: pass the open door",
-        "candidate_evidence": [
-          "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further..."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "take one step further...",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: take one step further...",
-        "candidate_evidence": [
-          "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further..."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-06",
-        "source_quote": "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
-        "candidate_evidence": [
-          "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination."
-        ],
-        "status": "covered"
-      }
-    ],
+    "findings": [],
+    "handoffs": [],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Our starting point is in a hallway",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: Our starting point is in a hallway",
+        "requirement_id": "SRC-01",
+        "source_quote": "Our starting point is in a hallway",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "on the left there's an open door and there are also two windows",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: on the left there's an open door and there are also two windows",
+        "requirement_id": "SRC-02",
+        "source_quote": "on the left there's an open door and there are also two windows",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "walk towards the end of the wall that's on the left",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: walk towards the end of the wall that's on the left",
+        "requirement_id": "SRC-03",
+        "source_quote": "walk towards the end of the wall that's on the left",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "pass the open door",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: pass the open door",
+        "requirement_id": "SRC-04",
+        "source_quote": "pass the open door",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "take one step further...",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: take one step further...",
+        "requirement_id": "SRC-05",
+        "source_quote": "take one step further...",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
+        "requirement_id": "SRC-06",
+        "source_quote": "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "The one-step-forward endpoint, recognized by the room entrance ahead, vanity-room cue on the left and bathroom on the right.",
-          "candidate_quotes": [
-            "take one step further",
-            "You'll be facing an entrance to a room",
-            "on the right there's a bathroom"
-          ]
-        },
-        "process": {
-          "text": "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further... You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
-          "candidate_quotes": [
-            "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further... You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination."
-          ]
-        },
-        "ending": {
-          "kind": "bounded_action",
-          "text": "The finite one-step movement establishes the resulting observation/position; the audit must cite the bounded movement rather than only the following descriptive clause.",
-          "candidate_quotes": [
-            "take one step further",
-            "You'll be facing an entrance to a room"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "ordinal_or_count: two, one step; spatial_frame: left, facing, on your, right",
           "candidate_quotes": [
             "two",
             "one step",
@@ -166,8 +161,37 @@
             "facing",
             "on your",
             "right"
-          ]
+          ],
+          "text": "ordinal_or_count: two, one step; spatial_frame: left, facing, on your, right"
         },
+        "ending": {
+          "candidate_quotes": [
+            "take one step further",
+            "You'll be facing an entrance to a room"
+          ],
+          "kind": "bounded_action",
+          "stop_scope": "none",
+          "text": "The finite one-step movement establishes the resulting observation/position; the audit must cite the bounded movement rather than only the following descriptive clause."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further... You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination."
+          ],
+          "text": "Our starting point is in a hallway, on the left there's an open door and there are also two windows, walk towards the end of the wall that's on the left, pass the open door, take one step further... You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination."
+        },
+        "source_quotes": [
+          "Our starting point is in a hallway",
+          "on the left there's an open door and there are also two windows",
+          "walk towards the end of the wall that's on the left",
+          "pass the open door",
+          "take one step further...",
+          "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
@@ -176,16 +200,20 @@
           "SRC-05",
           "SRC-06"
         ],
-        "source_quotes": [
-          "You'll be facing an entrance to a room, on your left there will be what seems to be a vanity room, and on the right there's a bathroom and that's your destination.",
-          "take one step further...",
-          "pass the open door",
-          "walk towards the end of the wall that's on the left"
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "take one step further",
+            "You'll be facing an entrance to a room",
+            "on the right there's a bathroom"
+          ],
+          "text": "The one-step-forward endpoint, recognized by the room entrance ahead, vanity-room cue on the left and bathroom on the right."
+        }
       }
     ],
-    "handoffs": []
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",

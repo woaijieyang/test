@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
+        "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the second door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
       ]
     }
   },
@@ -39,132 +39,173 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "You're going to start in a bathroom facing some sinks and a mirror.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to start in a bathroom facing some sinks and a mirror.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "You're going to start in a bathroom facing some sinks and a mirror."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "You're going to turn slightly towards your right.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to turn slightly towards your right.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "You're going to turn slightly towards your right."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Take a step forward towards the first door opening that you see that's right in front of you.",
-        "requirement": "Preserve the ordinal target and its counting origin: Take a step forward towards the first door opening that you see that's right in front of you.",
+        "requirement": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "Take a step forward towards the second door opening that you see that's right in front of you."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "You're going to take one small step forway right before the next door opening.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You're going to take one small step forway right before the next door opening.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "You're going to take one small step forway right before the next door opening."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "On your right there should be a shower with on a hook on the side with a robe.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: On your right there should be a shower with on a hook on the side with a robe.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "On your right there should be a shower with on a hook on the side with a robe."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-06",
         "source_quote": "On your left should another robe and some more hooks and what might be a closet.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: On your left should another robe and some more hooks and what might be a closet.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "On your left should another robe and some more hooks and what might be a closet."
+          }
         ],
         "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-07",
+        "source_quote": "first door opening",
+        "requirement": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "second door opening"
+          }
+        ],
+        "status": "altered_or_missing"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged."
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged."
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged."
       }
     ],
     "findings": [
       {
-        "source_quote": "first",
+        "code": "COUNT_SCOPE_DRIFT",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-03"
+          "SRC-03",
+          "SRC-07"
         ],
+        "source_quote": "first door opening",
         "candidate_evidence": [
-          "You're going to start in a bathroom facing some sinks and a mirror."
+          {
+            "subtask_index": 0,
+            "quote": "second door opening"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate removes the source ordinal identity and changes which landmark is selected.",
-        "execution_consequence": "The ordinal changes which door/landmark is selected; the agent may enter the wrong room or count from the wrong item.",
+        "problem": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged.",
+        "execution_consequence": "The stated ordinal selection is no longer preserved.",
         "repair": {
-          "operation": "ordinal",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact ordinal and preserve its counting origin.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -175,56 +216,64 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "This will be your stopping point.",
+          "text": "The candidate retains the source ending: This will be your stopping point.",
           "candidate_quotes": [
             "This will be your stopping point."
           ]
         },
         "process": {
-          "text": "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The first door-opening selection is changed to the second; the later next-opening clause is unchanged.",
           "candidate_quotes": [
-            "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the next door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
+            "You're going to start in a bathroom facing some sinks and a mirror. You're going to turn slightly towards your right. Take a step forward towards the second door opening that you see that's right in front of you. You're going to take one small step forway right before the next door opening. On your right there should be a shower with on a hook on the side with a robe. On your left should another robe and some more hooks and what might be a closet. This will be your stopping point."
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
-          "stop_scope": "none"
+          "kind": "explicit_event",
+          "text": "The candidate retains the source ending: This will be your stopping point.",
+          "candidate_quotes": [
+            "This will be your stopping point."
+          ],
+          "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "temporal: before; spatial_frame: facing, right, in front of, On your, left",
+          "text": "Source requires first door opening; candidate instead states second door opening.",
           "candidate_quotes": [
-            "before",
-            "facing",
-            "right",
-            "in front of",
-            "On your",
-            "left"
+            "second door opening"
           ]
         },
         "source_requirement_ids": [
-          "SRC-03"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-07"
         ],
         "source_quotes": [
-          "This will be your stopping point.",
-          "On your left should another robe and some more hooks and what might be a closet.",
+          "You're going to start in a bathroom facing some sinks and a mirror.",
+          "You're going to turn slightly towards your right.",
+          "Take a step forward towards the first door opening that you see that's right in front of you.",
+          "You're going to take one small step forway right before the next door opening.",
           "On your right there should be a shower with on a hook on the side with a robe.",
-          "You're going to take one small step forway right before the next door opening."
+          "On your left should another robe and some more hooks and what might be a closet.",
+          "first door opening"
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "ordinal",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The first door-opening selection is changed to the second; the later next-opening clause is unchanged. The stated ordinal selection is no longer preserved."
   }
 }

@@ -29,7 +29,7 @@
     "status": "ok",
     "subtasks": [
       "You are standing in a living room. On the left you can see a blue sofa with a picture above it. If you turn around, you will see two white double doors that are open. Walk through this doorway. You will be standing in front of two white chairs.",
-      "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
+      "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. Look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
     ],
     "stage_audit": [
       {
@@ -40,9 +40,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "You will be standing in front of two white chairs.",
+          "text": "The position in front of the two white chairs reached through the doorway.",
           "candidate_quotes": [
-            "You will be standing in front of two white chairs."
+            "Walk through this doorway. You will be standing in front of two white chairs."
           ]
         },
         "process": {
@@ -53,11 +53,11 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "You will be standing in front of two white chairs.",
+          "text": "Cross the doorway to the source-described position in front of the two white chairs. Expected standing does not add an intermediate stop.",
           "candidate_quotes": [
-            "You will be standing in front of two white chairs."
+            "Walk through this doorway. You will be standing in front of two white chairs."
           ],
-          "stop_scope": "intermediate"
+          "stop_scope": "none"
         },
         "conditions": {
           "text": "conditional_observation: if you turn around, two open double doors become visible; this is an expected visual cue, not an alternative route.",
@@ -90,9 +90,9 @@
           ]
         },
         "process": {
-          "text": "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end.",
+          "text": "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. Look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end.",
           "candidate_quotes": [
-            "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. At the table, look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
+            "From in front of the two white chairs, walk towards the white sofa on your left. To your left you will see a large opening to another room and a white table in the middle. Walk towards this white table. Look towards the left. You can see a white bench with some pillows on it; walk towards this bench. To the left you will see an open door; walk towards this door. To the right you will see a stairway; go up the first two stairs. Once you are standing on the first two stairs, you have reached the end."
           ]
         },
         "ending": {
@@ -132,8 +132,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "You will be standing in front of two white chairs.",
-          "candidate_quote": "You will be standing in front of two white chairs."
+          "text": "Cross the doorway to the source-described position in front of the two white chairs. Expected standing does not add an intermediate stop.",
+          "candidate_quote": "Walk through this doorway. You will be standing in front of two white chairs."
         },
         "next_entry": {
           "text": "From in front of the two white chairs, walk towards the white sofa on your left",
@@ -141,10 +141,11 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
+          "SRC-04",
+          "SRC-05",
+          "SRC-12"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

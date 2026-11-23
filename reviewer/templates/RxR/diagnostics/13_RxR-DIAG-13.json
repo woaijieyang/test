@@ -24,7 +24,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead. Look to your left you will see an open door, go towards it. You will enter into a hall move forward through that hall you will pass an open doorway to your left. Continue moving straight a head you will see an open doorway that leads into a bedroom. stand at the thresh hole of that doorway. And your done."
+        "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead. Look to your left you will see an open door, go past it without entering. You will enter into a hall move forward through that hall you will pass an open doorway to your left. Continue moving straight a head you will see an open doorway that leads into a bedroom. stand at the thresh hole of that doorway. And your done."
       ]
     }
   },
@@ -32,130 +32,168 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "issue",
+      "closure_handoff": "pass",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
         "source_quote": "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Look to your left you will see an open door, go through it.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Look to your left you will see an open door, go through it.",
+        "requirement": "The identified open door must be traversed, not passed without entering.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Look to your left you will see an open door, go past it without entering."
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "You will enter into a hall move forward through that hall you will pass an open doorway to your left.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You will enter into a hall move forward through that hall you will pass an open doorway to your left.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Continue moving straight a head you will see an open doorway that leads into a bedroom.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Continue moving straight a head you will see an open doorway that leads into a bedroom.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "Continue moving straight a head you will see an open doorway that leads into a bedroom."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "stand at the thresh hole of that doorway.",
-        "requirement": "Preserve the completion or stationary-position condition: stand at the thresh hole of that doorway.",
+        "requirement": "Preserve the cited source event or context, with its local referent, order and qualifiers unchanged.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "stand at the thresh hole of that doorway."
+          }
         ],
         "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-06",
+        "source_quote": "go through it.",
+        "requirement": "The identified open door must be traversed, not passed without entering.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "go past it without entering."
+          }
+        ],
+        "status": "altered_or_missing"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "No rendered artifact is supplied."
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The identified open door must be traversed, not passed without entering."
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": []
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The identified open door must be traversed, not passed without entering."
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The identified open door must be traversed, not passed without entering."
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-        "finding_indices": []
+        "status": "not_applicable",
+        "finding_indices": [],
+        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
-        "finding_indices": []
+        "finding_indices": [],
+        "conclusion": "No additional grouping defect is asserted merely from length or the diagnostic label."
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
         "finding_indices": [
           0
-        ]
+        ],
+        "conclusion": "The identified open door must be traversed, not passed without entering."
       }
     ],
     "findings": [
       {
-        "source_quote": "through",
+        "code": "WRONG_RELATION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-02",
+          "SRC-06"
         ],
+        "source_quote": "go through it.",
         "candidate_evidence": [
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          {
+            "subtask_index": 0,
+            "quote": "go past it without entering."
+          }
         ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate changes a spatial transition: approaching, entering, and passing through are not equivalent.",
-        "execution_consequence": "The candidate weakens an instructed crossing/entry into an approach; the agent may remain outside the required room or doorway.",
+        "problem": "The identified open door must be traversed, not passed without entering.",
+        "execution_consequence": "The required hallway entry is contradicted by the replacement transition.",
         "repair": {
-          "operation": "transition",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact source transition semantics.",
+          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
           "protected_requirements": [
-            "Preserve every other source-supported action and landmark.",
-            "Do not add a stop or route not stated by the source.",
-            "Keep the original condition, direction, count, and spatial relation."
+            "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
+            "Do not reject an equivalent phrasing or another valid grouping."
           ]
         }
       }
@@ -166,54 +204,62 @@
         "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
+          "text": "Start in the source-described episode context; any altered initial cue is identified below, not silently repaired.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "And your done.",
+          "text": "The candidate retains the source ending: stand at the thresh hole of that doorway.",
           "candidate_quotes": [
-            "And your done."
+            "stand at the thresh hole of that doorway."
           ]
         },
         "process": {
-          "text": "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead. Look to your left you will see an open door, go towards it. You will enter into a hall move forward through that hall you will pass an open doorway to your left. Continue moving straight a head you will see an open doorway that leads into a bedroom. stand at the thresh hole of that doorway. And your done.",
+          "text": "The actual candidate preserves the surrounding source sequence except for this identified defect: The identified open door must be traversed, not passed without entering.",
           "candidate_quotes": [
-            "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead. Look to your left you will see an open door, go towards it. You will enter into a hall move forward through that hall you will pass an open doorway to your left. Continue moving straight a head you will see an open doorway that leads into a bedroom. stand at the thresh hole of that doorway. And your done."
+            "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead. Look to your left you will see an open door, go past it without entering. You will enter into a hall move forward through that hall you will pass an open doorway to your left. Continue moving straight a head you will see an open doorway that leads into a bedroom. stand at the thresh hole of that doorway. And your done."
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
-          "stop_scope": "none"
+          "kind": "explicit_event",
+          "text": "The candidate retains the source ending: stand at the thresh hole of that doorway.",
+          "candidate_quotes": [
+            "stand at the thresh hole of that doorway."
+          ],
+          "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "spatial_frame: facing, left, ahead; manner_or_constraint: through",
+          "text": "Source requires go through it.; candidate instead states go past it without entering..",
           "candidate_quotes": [
-            "facing",
-            "left",
-            "ahead",
-            "through"
+            "go past it without entering."
           ]
         },
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
         ],
         "source_quotes": [
-          "And your done.",
-          "stand at the thresh hole of that doorway.",
+          "For your point you will begin in a bathroom facing a towel rack turn to the left and exit it straight ahead.",
+          "Look to your left you will see an open door, go through it.",
+          "You will enter into a hall move forward through that hall you will pass an open doorway to your left.",
           "Continue moving straight a head you will see an open doorway that leads into a bedroom.",
-          "You will enter into a hall move forward through that hall you will pass an open doorway to your left."
+          "stand at the thresh hole of that doorway.",
+          "go through it."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "transition",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
-    "anti_pattern": "Do not duplicate one root issue across multiple findings, rewrite the full route, or reject harmless wording differences.",
-    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
+    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "case_specific_focus": "The identified open door must be traversed, not passed without entering. The required hallway entry is contradicted by the replacement transition."
   }
 }

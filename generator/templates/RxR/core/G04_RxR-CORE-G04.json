@@ -98,10 +98,10 @@
           ]
         },
         "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
+          "kind": "explicit_event",
+          "text": "Cross the kitchen and pass through the archway into the dining room; Once inside the kitchen supplies entry, not completion.",
           "candidate_quotes": [
-            "Once inside the kitchen, cross it and go through the archway into the dining room."
+            "cross it and go through the archway into the dining room."
           ],
           "stop_scope": "none"
         },
@@ -225,17 +225,18 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02"
+          "SRC-02",
+          "SRC-03"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 1,
         "to_subtask_index": 2,
         "status": "supported",
         "preceding_exit": {
-          "text": "Once inside the kitchen, cross it and go through the archway into the dining room.",
-          "candidate_quote": "Once inside the kitchen, cross it and go through the archway into the dining room."
+          "text": "Cross the kitchen and pass through the archway into the dining room; Once inside the kitchen supplies entry, not completion.",
+          "candidate_quote": "cross it and go through the archway into the dining room."
         },
         "next_entry": {
           "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop.",
@@ -243,10 +244,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-03",
+          "SRC-04"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       },
       {
         "from_subtask_index": 2,
@@ -262,10 +263,10 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
+          "SRC-04",
+          "SRC-05"
         ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
       }
     ],
     "issues": []

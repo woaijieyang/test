@@ -26,255 +26,398 @@
       "status": "ok",
       "subtasks": [
         "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway.",
-        "From inside the open doorway, move one step inside. Turn left and move in between both banquet tables."
+        "From inside that open doorway, Move one step inside; it looks like a dining room or a banquet hall. Turn to the left. You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall. Move in between both tables."
       ]
     }
   },
   "expected_review": {
-    "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
       "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
-    "source_coverage": [
-      {
-        "requirement_id": "SRC-01",
-        "source_quote": "hop over the bench",
-        "requirement": "Preserve the hop over the selected second black iron bench.",
-        "candidate_evidence": [
-          "hop over the bench"
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "you will see there's an open doorway",
-        "requirement": "Seeing the open doorway is an observation cue, not proof of arrival at or entry through the doorway.",
-        "candidate_evidence": [
-          "You will see an open doorway."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Move forward to the left and enter that doorway",
-        "requirement": "The next stage must approach and enter the doorway; it cannot begin from inside it.",
-        "candidate_evidence": [
-          "From inside the open doorway"
-        ],
-        "status": "altered_or_missing"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "move one step inside",
-        "requirement": "Preserve the one-step-inside action after doorway entry.",
-        "candidate_evidence": [
-          "move one step inside"
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "move in between both tables",
-        "requirement": "Preserve the final position between the two banquet tables.",
-        "candidate_evidence": [
-          "move in between both banquet tables"
-        ],
-        "status": "covered"
-      }
-    ],
-    "layer_checks": [
-      {
-        "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed."
-      },
-      {
-        "layer": "L1_source_coverage",
-        "status": "issue",
-        "conclusion": "The required doorway approach and entry are absent from stage 2."
-      },
-      {
-        "layer": "L2_dependencies",
-        "status": "issue",
-        "conclusion": "The candidate reverses the source event dependency by assuming entry before the source-prescribed approach/entry."
-      },
-      {
-        "layer": "L3_stage_checks",
-        "status": "issue",
-        "conclusion": "Stage 2's entry state is unsupported by the preceding stage and its process omits the required approach/entry."
-      },
-      {
-        "layer": "L4_handoffs",
-        "status": "issue",
-        "conclusion": "The previous stage ends post-hop with only a visual doorway cue; the next stage assumes the agent is already inside."
-      },
-      {
-        "layer": "L5_grouping",
-        "status": "pass",
-        "conclusion": "A split after the hop can be valid; the candidate's defect is the premature assumed entry state, not the existence of a boundary."
-      },
-      {
-        "layer": "L6_route_readback",
-        "status": "issue",
-        "conclusion": "The candidate omits a required transition and cannot be executed continuously."
-      }
-    ],
     "findings": [
       {
-        "code": "PREMATURE_BOUNDARY_AFTER_VISUAL_CUE",
-        "source_quote": "Move forward to the left and enter that doorway.",
-        "source_requirement_ids": [
-          "SRC-03"
-        ],
-        "candidate_evidence": [
-          "From inside the open doorway"
-        ],
+        "code": "MISSING_ENTRY_ANCHOR",
         "failed_layer": "L4_handoffs",
-        "c_check": "C_HANDOFF_EARLY_BOUNDARY",
+        "c_check": "C09",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          1
+        ],
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-11"
+        ],
+        "source_quote": "Move forward to the left and enter that doorway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From inside that open doorway,"
+          }
+        ],
         "evidence_level": "S1",
-        "problem": "Stage 1 ends after the hop and only seeing the doorway. Stage 2 begins from inside the doorway, skipping the source-required approach and entry that occur after the visual cue.",
-        "execution_consequence": "The navigator may teleport from the post-hop position to inside the room, skipping a required doorway approach/crossing and then performing the one-step-inside movement from an unsupported state.",
+        "problem": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "execution_consequence": "The entry state is unsupported. Room-description, column, tables and television clauses are otherwise retained.",
         "repair": {
-          "operation": "restore_approach_and_entry",
-          "affected_stage_indices": [
+          "operation": "bind_entry",
+          "affected_subtask_indices": [
             1
           ],
-          "instruction": "Begin stage 2 from the post-hop state; move forward to the left and enter the visible doorway before moving one step inside and proceeding between the tables.",
+          "instruction": "Restore the cited source relation at this occurrence and preserve the rest of the reviewed parent candidate.",
           "protected_requirements": [
-            "Keep stage 1 ending after the hop, not at the doorway.",
-            "Preserve the one-step-inside action.",
-            "Preserve the final position between the two tables."
+            "Keep all unaffected events, descriptions, quantities, constraints and order.",
+            "A stage boundary neither creates a STOP nor cancels an explicit source stop."
           ]
         }
-      }
-    ],
-    "stage_checks": [
-      {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "the second black iron bench",
-          "candidate_quotes": [
-            "the second black iron bench"
-          ]
-        },
-        "process": {
-          "text": "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway.",
-          "candidate_quotes": [
-            "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway."
-          ]
-        },
-        "ending": {
-          "kind": "bounded_action",
-          "text": "Complete the hop over the second bench; the open doorway is only seen, not reached.",
-          "candidate_quotes": [
-            "hop over the bench"
-          ],
-          "stop_scope": "none"
-        },
-        "conditions": {
-          "text": null,
-          "candidate_quotes": []
-        },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "source_quotes": [
-          "hop over the bench",
-          "you will see there's an open doorway"
-        ],
-        "carryover": []
-      },
-      {
-        "subtask_index": 1,
-        "status": "gap",
-        "entry": {
-          "mode": "explicit_context",
-          "text": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
-          "candidate_quotes": [
-            "From inside the open doorway, move one step inside."
-          ]
-        },
-        "target": {
-          "text": "between both banquet tables",
-          "candidate_quotes": [
-            "between both banquet tables"
-          ]
-        },
-        "process": {
-          "text": "From inside the open doorway, move one step inside. Turn left and move in between both banquet tables.",
-          "candidate_quotes": [
-            "From inside the open doorway, move one step inside. Turn left and move in between both banquet tables."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Reach the position between both tables after entering the doorway.",
-          "candidate_quotes": [
-            "move in between both banquet tables"
-          ],
-          "stop_scope": "none"
-        },
-        "conditions": {
-          "text": "The candidate assumes the agent is already inside the doorway; approach and entry are missing.",
-          "candidate_quotes": [
-            "From inside the open doorway",
-            "move one step inside",
-            "move in between both banquet tables"
-          ]
-        },
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04",
-          "SRC-05"
-        ],
-        "source_quotes": [
-          "Move forward to the left and enter that doorway",
-          "move one step inside",
-          "move in between both tables"
-        ],
-        "carryover": []
       }
     ],
     "handoffs": [
       {
         "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "gap",
-        "preceding_exit": {
-          "text": "The agent has hopped over the second bench and sees the open doorway, but has not reached or entered it.",
-          "candidate_quote": "You will see an open doorway."
-        },
+        "handoff_rationale": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
         "next_entry": {
-          "text": "The candidate assumes the agent is already inside the doorway.",
-          "candidate_quote": "From inside the open doorway"
+          "candidate_quote": "From inside that open doorway,",
+          "text": "The candidate endpoint/entry now states From inside that open doorway,. After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry."
+        },
+        "preceding_exit": {
+          "candidate_quote": "hop over the bench",
+          "text": "Complete the hop over the selected second black iron bench; seeing the doorway does not mean it has been reached."
         },
         "shared_context": [
           {
-            "kind": "entity_or_region",
-            "text": "The doorway is visible but not reached or entered."
+            "kind": "inherited_context",
+            "text": "The previous stage only completed the bench hop and saw the door; candidate entry inside that door is unsupported."
           }
         ],
         "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+          "SRC-04",
+          "SRC-05",
+          "SRC-10",
+          "SRC-11"
         ],
-        "handoff_rationale": "Seeing the doorway does not complete the approach or entry. Those actions remain to be executed in the next stage."
+        "status": "gap",
+        "to_subtask_index": 1
       }
-    ]
+    ],
+    "layer_checks": [
+      {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "conclusion": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "layer": "L4_handoffs",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
+        "layer": "L5_grouping",
+        "status": "pass",
+        "finding_indices": []
+      },
+      {
+        "conclusion": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "quote": "For your start point, you are facing a wooden garden arbor.",
+            "subtask_index": 0
+          },
+          {
+            "quote": "Turn around so that you can see the rows of white chairs to your right and left.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: For your start point you are facing a wooden garden arbor turn around so that you can see the rows of white chairs to your right and left.",
+        "requirement_id": "SRC-01",
+        "source_quote": "For your start point you are facing a wooden garden arbor turn around so that you can see the rows of white chairs to your right and left.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Move forward through the center aisle."
+          }
+        ],
+        "requirement": "Preserve the ordered route action or target-identifying landmark: And move forward through the center aisle.",
+        "requirement_id": "SRC-02",
+        "source_quote": "And move forward through the center aisle.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Once you are at the end of the aisle, make a right turn towards the column to the right."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Once you are at the end of the aisle  you will need to make a right turn towards the column that's to the right.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Once you are at the end of the aisle  you will need to make a right turn towards the column that's to the right.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Make your way to the second black iron bench directly opposite and hop over the bench."
+          }
+        ],
+        "requirement": "Preserve the ordinal target and its counting origin: You will need to make your way to the second black iron bench that is directly opposite and hop over the bench.",
+        "requirement_id": "SRC-04",
+        "source_quote": "You will need to make your way to the second black iron bench that is directly opposite and hop over the bench.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "From inside that open doorway,",
+            "subtask_index": 1
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Move forward to the left and enter that doorway.",
+        "requirement_id": "SRC-05",
+        "source_quote": "Move forward to the left and enter that doorway.",
+        "status": "altered_or_missing"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Move one step inside; it looks like a dining room or a banquet hall.",
+            "subtask_index": 1
+          }
+        ],
+        "requirement": "Preserve the spatial transition and region/threshold: And move one step inside it looks like a dining room or a banquet hall.",
+        "requirement_id": "SRC-06",
+        "source_quote": "And move one step inside it looks like a dining room or a banquet hall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "Turn to the left.",
+            "subtask_index": 1
+          },
+          {
+            "quote": "You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall.",
+            "subtask_index": 1
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: Turn to the left you will move in front of a column and you will also see there's a banquet table to your left and one to the right closet to the flat screen TV on the wall.",
+        "requirement_id": "SRC-07",
+        "source_quote": "Turn to the left you will move in front of a column and you will also see there's a banquet table to your left and one to the right closet to the flat screen TV on the wall.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Move in between both tables."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You will need to move in between both tables.",
+        "requirement_id": "SRC-08",
+        "source_quote": "You will need to move in between both tables.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "From that column supporting the balcony above, you will see a black iron bench.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "Identify the first bench from the balcony-supporting column before selecting the opposite second bench.",
+        "requirement_id": "SRC-09",
+        "source_quote": "And from that column that is supporting the balcony above you will see a bench, a black iron bench.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "quote": "You will see an open doorway.",
+            "subtask_index": 0
+          }
+        ],
+        "requirement": "The open doorway is seen after the hop, not already reached or entered.",
+        "requirement_id": "SRC-10",
+        "source_quote": "you will see there's an open doorway.",
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-11",
+        "source_quote": "Move forward to the left and enter that doorway.",
+        "requirement": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From inside that open doorway,"
+          }
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "stage_checks": [
+      {
+        "carryover": [],
+        "conditions": {
+          "candidate_quotes": [
+            "second black iron bench",
+            "hop over the bench",
+            "open doorway"
+          ],
+          "text": "The second bench is selected from the bench opposite the column; after hopping over it, the open doorway becomes visible."
+        },
+        "ending": {
+          "candidate_quotes": [
+            "hop over the bench"
+          ],
+          "kind": "bounded_action",
+          "stop_scope": "none",
+          "text": "Complete the hop over the selected second black iron bench. The following open doorway is a visual cue for the next stage, not proof that the doorway has been reached."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway."
+          ],
+          "text": "For your start point, you are facing a wooden garden arbor. Turn around so that you can see the rows of white chairs to your right and left. Move forward through the center aisle. Once you are at the end of the aisle, make a right turn towards the column to the right. From that column supporting the balcony above, you will see a black iron bench. Make your way to the second black iron bench directly opposite and hop over the bench. You will see an open doorway."
+        },
+        "source_quotes": [
+          "For your start point you are facing a wooden garden arbor turn around so that you can see the rows of white chairs to your right and left.",
+          "And move forward through the center aisle.",
+          "Once you are at the end of the aisle  you will need to make a right turn towards the column that's to the right.",
+          "You will need to make your way to the second black iron bench that is directly opposite and hop over the bench.",
+          "And from that column that is supporting the balcony above you will see a bench, a black iron bench.",
+          "you will see there's an open doorway."
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-09",
+          "SRC-10"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "second black iron bench"
+          ],
+          "text": "The second black iron bench directly opposite the first, which the route explicitly says to hop over."
+        }
+      },
+      {
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
+        "conditions": {
+          "candidate_quotes": [
+            "dining room or a banquet hall",
+            "one step inside",
+            "Move in between both tables"
+          ],
+          "text": "descriptive_uncertainty: dining room or banquet hall describes uncertain room identity, not an alternative route; bounded movement: one step inside; spatial relations: column/table left and right."
+        },
+        "ending": {
+          "candidate_quotes": [
+            "Move in between both tables."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Reach the specified position in between the two banquet tables."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "inherited_pose",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; the boundary does not require a physical stop."
+        },
+        "process": {
+          "text": "The stage retains its unaffected movements but contains this local defect: After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.",
+          "candidate_quotes": [
+            "From inside that open doorway, Move one step inside; it looks like a dining room or a banquet hall. Turn to the left. You will move in front of a column and see a banquet table to your left and one to your right, closest to the flat-screen TV on the wall. Move in between both tables."
+          ]
+        },
+        "source_quotes": [
+          "Move forward to the left and enter that doorway.",
+          "And move one step inside it looks like a dining room or a banquet hall.",
+          "Turn to the left you will move in front of a column and you will also see there's a banquet table to your left and one to the right closet to the flat screen TV on the wall.",
+          "You will need to move in between both tables."
+        ],
+        "source_requirement_ids": [
+          "SRC-05",
+          "SRC-06",
+          "SRC-07",
+          "SRC-08",
+          "SRC-11"
+        ],
+        "status": "gap",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Move in between both tables"
+          ],
+          "text": "The position between the two banquet tables."
+        }
+      }
+    ],
+    "verdict": "revise",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_principle": "Judge the boundary from source event order and actual stage text; do not infer a segmentation defect from sentence count alone.",
     "why_this_case_matters": "Stage 1 ends after the hop and only seeing the doorway. Stage 2 begins from inside the doorway, skipping the source-required approach and entry that occur after the visual cue.",
     "reusable_rule": "Begin stage 2 from the post-hop state; move forward to the left and enter the visible doorway before moving one step inside and proceeding between the tables.",
-    "anti_pattern": "Do not invent STOP, arrival, entry, or an endpoint to make a cut appear closed."
+    "anti_pattern": "Do not spread a local defect to unrelated coverage rows or unchanged boundaries. Check the actual source and candidate, not the diagnostic label.",
+    "case_specific_focus": "After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry. The entry state is unsupported. Room-description, column, tables and television clauses are otherwise retained."
   }
 }

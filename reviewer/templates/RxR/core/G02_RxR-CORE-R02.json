@@ -25,204 +25,216 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk",
+          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk"
+        },
+        "preceding_exit": {
+          "candidate_quote": "until you reach the second doorway on your right",
+          "text": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "Do not enter the first doorway.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "Once at the second doorway, turn right into the study and stop beside the desk.",
-        "requirement": "Preserve this route event or constraint in its source order.",
-        "candidate_evidence": [
-          "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-02",
+        "source_quote": "Do not enter the first doorway.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+          }
+        ],
+        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement_id": "SRC-03",
+        "source_quote": "Once at the second doorway, turn right into the study and stop beside the desk.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Do not enter the first doorway.",
+        "carryover": [],
+        "conditions": {
           "candidate_quotes": [
-            "Do not enter the first doorway."
-          ]
-        },
-        "process": {
-          "text": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway.",
-          "candidate_quotes": [
-            "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
-          ]
-        },
-        "ending": {
-          "kind": "linked_trigger_or_refinement",
-          "text": "Do not enter the first doorway.",
-          "candidate_quotes": [
+            "passing the two paintings on your left",
+            "second doorway on your right",
             "Do not enter the first doorway."
           ],
-          "stop_scope": "none"
+          "text": "Pass both paintings on the left, count doorways from the original traversal, and do not enter the first doorway."
         },
-        "conditions": {
-          "text": "temporal: until; ordinal_or_count: two, second, first; negation: Do not; spatial_frame: on your, left, right; manner_or_constraint: along",
+        "ending": {
           "candidate_quotes": [
-            "until",
-            "two",
-            "second",
-            "first",
-            "Do not",
-            "on your",
-            "left",
-            "right",
-            "along"
-          ]
+            "until you reach the second doorway on your right"
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival."
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+          ],
+          "text": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+        },
         "source_quotes": [
           "Do not enter the first doorway.",
           "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
           "Once at the second doorway, turn right into the study and stop beside the desk."
         ],
-        "carryover": []
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "until you reach the second doorway on your right"
+          ],
+          "text": "The second doorway on the right of the prescribed hallway traversal."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "inherited_entity",
-          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk",
-          "candidate_quotes": [
-            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk"
-          ]
-        },
-        "target": {
-          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk.",
-          "candidate_quotes": [
-            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
-          ]
-        },
-        "process": {
-          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk.",
-          "candidate_quotes": [
-            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk.",
-          "candidate_quotes": [
-            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
-          ],
-          "stop_scope": "terminal"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "ordinal_or_count: second; spatial_frame: right",
           "candidate_quotes": [
             "second",
             "right"
-          ]
+          ],
+          "text": "ordinal_or_count: second; spatial_frame: right"
         },
-        "source_requirement_ids": [
-          "SRC-03"
-        ],
+        "ending": {
+          "candidate_quotes": [
+            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "terminal",
+          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk"
+          ],
+          "mode": "inherited_entity",
+          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+          ],
+          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+        },
         "source_quotes": [
           "Once at the second doorway, turn right into the study and stop beside the desk.",
           "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
           "Do not enter the first doorway."
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+          ],
+          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Do not enter the first doorway.",
-          "candidate_quote": "Do not enter the first doorway."
-        },
-        "next_entry": {
-          "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk",
-          "candidate_quote": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "until_ordinal_negation",

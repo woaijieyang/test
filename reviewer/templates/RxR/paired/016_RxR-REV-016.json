@@ -26,222 +26,245 @@
     }
   },
   "expected_review": {
-    "verdict": "pass",
     "dimensions": {
-      "source_fidelity": "pass",
       "closure_handoff": "pass",
-      "segmentation_adequacy": "pass"
+      "segmentation_adequacy": "pass",
+      "source_fidelity": "pass"
     },
-    "source_coverage": [
+    "findings": [],
+    "handoffs": [
       {
-        "requirement_id": "SRC-01",
-        "source_quote": "You're looking at a picture of a dog, turn to the left.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: You're looking at a picture of a dog, turn to the left.",
-        "candidate_evidence": [
-          "You are looking at a picture of a dog.",
-          "Turn to the left and go down this hallway past the picture of the zebra."
+        "from_subtask_index": 0,
+        "handoff_rationale": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory.",
+        "next_entry": {
+          "candidate_quote": "From that doorway, go through the doorway across from the mirror on the right",
+          "text": "From that doorway, go through the doorway across from the mirror on the right"
+        },
+        "preceding_exit": {
+          "candidate_quote": "Turn left and go through the doorway with the white open door.",
+          "text": "Turn left and go through the doorway with the white open door."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
         ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-02",
-        "source_quote": "And go down this hallway past the picture of the zebra.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: And go down this hallway past the picture of the zebra.",
-        "candidate_evidence": [
-          "Turn to the left and go down this hallway past the picture of the zebra."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-03",
-        "source_quote": "And turn left and go through the doorway with the white open door.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: And turn left and go through the doorway with the white open door.",
-        "candidate_evidence": [
-          "Turn left and go through the doorway with the white open door."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-04",
-        "source_quote": "And then take through this doorway that's across from the mirror on the right.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: And then take through this doorway that's across from the mirror on the right.",
-        "candidate_evidence": [
-          "From that doorway, go through the doorway across from the mirror on the right."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "And take one step into this closet and you're done.",
-        "requirement": "Preserve the completion or stationary-position condition: And take one step into this closet and you're done.",
-        "candidate_evidence": [
-          "Take one step into this closet and you are done."
-        ],
-        "status": "covered"
+        "status": "supported",
+        "to_subtask_index": 1
       }
     ],
     "layer_checks": [
       {
+        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed."
+        "status": "not_applicable",
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions.",
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Checked each stage's entry, process, target, ending and scoped conditions."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries.",
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "Checked weak cuts and buried independent goals against supported boundaries."
+        "finding_indices": []
       },
       {
+        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently.",
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Checked source-to-plan coverage and plan-to-source support independently."
+        "finding_indices": []
       }
     ],
-    "findings": [],
+    "source_coverage": [
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "You are looking at a picture of a dog."
+          },
+          {
+            "subtask_index": 0,
+            "quote": "Turn to the left and go down this hallway past the picture of the zebra."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: You're looking at a picture of a dog, turn to the left.",
+        "requirement_id": "SRC-01",
+        "source_quote": "You're looking at a picture of a dog, turn to the left.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn to the left and go down this hallway past the picture of the zebra."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And go down this hallway past the picture of the zebra.",
+        "requirement_id": "SRC-02",
+        "source_quote": "And go down this hallway past the picture of the zebra.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and go through the doorway with the white open door."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And turn left and go through the doorway with the white open door.",
+        "requirement_id": "SRC-03",
+        "source_quote": "And turn left and go through the doorway with the white open door.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From that doorway, go through the doorway across from the mirror on the right."
+          }
+        ],
+        "requirement": "Preserve the directional/spatial relation and its reference frame: And then take through this doorway that's across from the mirror on the right.",
+        "requirement_id": "SRC-04",
+        "source_quote": "And then take through this doorway that's across from the mirror on the right.",
+        "status": "covered"
+      },
+      {
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Take one step into this closet and you are done."
+          }
+        ],
+        "requirement": "Preserve the completion or stationary-position condition: And take one step into this closet and you're done.",
+        "requirement_id": "SRC-05",
+        "source_quote": "And take one step into this closet and you're done.",
+        "status": "covered"
+      }
+    ],
     "stage_checks": [
       {
-        "subtask_index": 0,
-        "status": "supported",
-        "entry": {
-          "mode": "episode_start",
-          "text": "The episode start as described by the original instruction; no additional starting pose is inferred.",
-          "candidate_quotes": []
-        },
-        "target": {
-          "text": "Turn left and go through the doorway with the white open door.",
-          "candidate_quotes": [
-            "Turn left and go through the doorway with the white open door."
-          ]
-        },
-        "process": {
-          "text": "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door.",
-          "candidate_quotes": [
-            "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Turn left and go through the doorway with the white open door.",
-          "candidate_quotes": [
-            "Turn left and go through the doorway with the white open door."
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [],
         "conditions": {
-          "text": "spatial_frame: left; manner_or_constraint: past, through",
           "candidate_quotes": [
             "left",
             "past",
             "through"
-          ]
+          ],
+          "text": "spatial_frame: left; manner_or_constraint: past, through"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Turn left and go through the doorway with the white open door."
+          ],
+          "kind": "explicit_event",
+          "stop_scope": "none",
+          "text": "Turn left and go through the doorway with the white open door."
+        },
+        "entry": {
+          "candidate_quotes": [],
+          "mode": "episode_start",
+          "text": "The episode start as described by the original instruction; no additional starting pose is inferred."
+        },
+        "process": {
+          "candidate_quotes": [
+            "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door."
+          ],
+          "text": "You are looking at a picture of a dog. Turn to the left and go down this hallway past the picture of the zebra. Turn left and go through the doorway with the white open door."
+        },
+        "source_quotes": [
+          "You're looking at a picture of a dog, turn to the left.",
+          "And go down this hallway past the picture of the zebra.",
+          "And turn left and go through the doorway with the white open door."
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "source_quotes": [
-          "And turn left and go through the doorway with the white open door.",
-          "And go down this hallway past the picture of the zebra.",
-          "You're looking at a picture of a dog, turn to the left.",
-          "And then take through this doorway that's across from the mirror on the right."
-        ],
-        "carryover": []
+        "status": "supported",
+        "subtask_index": 0,
+        "target": {
+          "candidate_quotes": [
+            "Turn left and go through the doorway with the white open door."
+          ],
+          "text": "Turn left and go through the doorway with the white open door."
+        }
       },
       {
-        "subtask_index": 1,
-        "status": "supported",
-        "entry": {
-          "mode": "inherited_entity",
-          "text": "From that doorway, go through the doorway across from the mirror on the right",
-          "candidate_quotes": [
-            "From that doorway, go through the doorway across from the mirror on the right"
-          ]
-        },
-        "target": {
-          "text": "Take one step into this closet",
-          "candidate_quotes": [
-            "Take one step into this closet"
-          ]
-        },
-        "process": {
-          "text": "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done.",
-          "candidate_quotes": [
-            "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done."
-          ]
-        },
-        "ending": {
-          "kind": "bounded_action",
-          "text": "Take one step into this closet",
-          "candidate_quotes": [
-            "Take one step into this closet"
-          ],
-          "stop_scope": "none"
-        },
+        "carryover": [
+          "Retain the immediately preceding endpoint and orientation."
+        ],
         "conditions": {
-          "text": "ordinal_or_count: one step; spatial_frame: right; manner_or_constraint: through",
           "candidate_quotes": [
             "one step",
             "right",
             "through"
-          ]
+          ],
+          "text": "ordinal_or_count: one step; spatial_frame: right; manner_or_constraint: through"
         },
+        "ending": {
+          "candidate_quotes": [
+            "Take one step into this closet"
+          ],
+          "kind": "bounded_action",
+          "stop_scope": "none",
+          "text": "Take one step into this closet"
+        },
+        "entry": {
+          "candidate_quotes": [
+            "From that doorway, go through the doorway across from the mirror on the right"
+          ],
+          "mode": "inherited_entity",
+          "text": "From that doorway, go through the doorway across from the mirror on the right"
+        },
+        "process": {
+          "candidate_quotes": [
+            "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done."
+          ],
+          "text": "From that doorway, go through the doorway across from the mirror on the right. Take one step into this closet and you are done."
+        },
+        "source_quotes": [
+          "And then take through this doorway that's across from the mirror on the right.",
+          "And take one step into this closet and you're done."
+        ],
         "source_requirement_ids": [
           "SRC-04",
           "SRC-05"
         ],
-        "source_quotes": [
-          "And take one step into this closet and you're done.",
-          "And then take through this doorway that's across from the mirror on the right.",
-          "And turn left and go through the doorway with the white open door.",
-          "And go down this hallway past the picture of the zebra."
-        ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "status": "supported",
+        "subtask_index": 1,
+        "target": {
+          "candidate_quotes": [
+            "Take one step into this closet"
+          ],
+          "text": "Take one step into this closet"
+        }
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Turn left and go through the doorway with the white open door.",
-          "candidate_quote": "Turn left and go through the doorway with the white open door."
-        },
-        "next_entry": {
-          "text": "From that doorway, go through the doorway across from the mirror on the right",
-          "candidate_quote": "From that doorway, go through the doorway across from the mirror on the right"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced."
-      }
-    ]
+    "verdict": "pass",
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
