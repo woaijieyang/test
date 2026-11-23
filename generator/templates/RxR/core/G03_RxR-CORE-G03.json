@@ -76,10 +76,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "before_entry_turn",
-    "why_this_case_matters": "Keep 'toward dining room', 'before entering', the left turn, and entry into the open area in one stage.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together.",
+    "reusable_rule": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "A before-entry condition does not imply later entry into the named room or a stop at its threshold."
+    "anti_pattern": "Do not infer dining-room entry from before entering, or require an extra STOP to validate entry into the actual destination.",
+    "case_rationale": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together."
   },
   "retrieval_tags": [
     "room_transition",

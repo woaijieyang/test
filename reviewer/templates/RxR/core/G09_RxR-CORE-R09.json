@@ -47,9 +47,7 @@
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
-          "SRC-03",
-          "SRC-04",
-          "SRC-05"
+          "SRC-03"
         ],
         "status": "supported",
         "to_subtask_index": 1
@@ -63,13 +61,13 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "conclusion": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient.",
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": []
       },
       {
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "conclusion": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP.",
         "layer": "L2_dependencies",
         "status": "pass",
         "finding_indices": []
@@ -104,10 +102,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Enter the kitchen and stop beside the counter."
+            "quote": "Enter the kitchen"
+          },
+          {
+            "subtask_index": 0,
+            "quote": "stop beside the counter."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Enter the kitchen and make the source-required intermediate counter-side stop.",
         "requirement_id": "SRC-01",
         "source_quote": "Enter the kitchen and stop beside the counter.",
         "status": "covered"
@@ -116,10 +118,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it"
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "From the counter, take the laundry door only under its stated open condition.",
         "requirement_id": "SRC-02",
         "source_quote": "From the counter, if the door to the laundry room is open, go through it",
         "status": "covered"
@@ -128,10 +130,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "if the door to the laundry room is open, go through it; otherwise use the open archway beside that door."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Otherwise use the open archway beside that door, not both branches unconditionally.",
         "requirement_id": "SRC-03",
         "source_quote": "otherwise use the open archway beside that door.",
         "status": "covered"
@@ -140,10 +142,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "Both entrances lead into the laundry room."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Both conditional entrances lead into the same laundry room.",
         "requirement_id": "SRC-04",
         "source_quote": "Both entrances lead into the laundry room.",
         "status": "covered"
@@ -152,10 +154,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "Once inside the laundry room, stop at the sink."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "After laundry-room entry, stop at the sink.",
         "requirement_id": "SRC-05",
         "source_quote": "Once inside the laundry room, stop at the sink.",
         "status": "covered"
@@ -188,10 +190,7 @@
           "text": "Enter the kitchen and stop beside the counter."
         },
         "source_quotes": [
-          "Enter the kitchen and stop beside the counter.",
-          "Once inside the laundry room, stop at the sink.",
-          "otherwise use the open archway beside that door.",
-          "From the counter, if the door to the laundry room is open, go through it"
+          "Enter the kitchen and stop beside the counter."
         ],
         "source_requirement_ids": [
           "SRC-01"
@@ -240,10 +239,10 @@
           "text": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
         },
         "source_quotes": [
-          "Once inside the laundry room, stop at the sink.",
-          "Both entrances lead into the laundry room.",
+          "From the counter, if the door to the laundry room is open, go through it",
           "otherwise use the open archway beside that door.",
-          "From the counter, if the door to the laundry room is open, go through it"
+          "Both entrances lead into the laundry room.",
+          "Once inside the laundry room, stop at the sink."
         ],
         "source_requirement_ids": [
           "SRC-02",
@@ -266,7 +265,8 @@
   },
   "teaching_notes": {
     "review_pattern": "intermediate_stop_and_conditional_branch",
-    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
-    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+    "reuse_rule": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP.",
+    "anti_pattern": "Do not execute both mutually exclusive branches, treat them as descriptive uncertainty, or cancel the counter stop because the route continues.",
+    "case_specific_focus": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP."
   }
 }

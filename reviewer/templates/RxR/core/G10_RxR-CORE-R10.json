@@ -133,6 +133,8 @@
   },
   "teaching_notes": {
     "review_pattern": "source_limited_ambiguity",
-    "reuse_rule": "Use unresolved only after sensible merging still leaves an essential route choice unsupported. A weak candidate boundary is revise, not unresolved."
+    "reuse_rule": "Confirm that merging or reading the full source cannot identify there or the turn direction. Return source-limited unresolved rather than a speculative PASS or a candidate-only repair.",
+    "case_specific_focus": "Confirm that merging or reading the full source cannot identify there or the turn direction. Return source-limited unresolved rather than a speculative PASS or a candidate-only repair.",
+    "anti_pattern": "Do not generalize this source ambiguity to ordinary descriptive uncertainty or to context lost only because of a bad candidate boundary."
   }
 }

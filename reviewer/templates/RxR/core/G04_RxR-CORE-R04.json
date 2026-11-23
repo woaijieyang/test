@@ -48,7 +48,6 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02",
           "SRC-03"
         ],
         "status": "supported",
@@ -101,13 +100,13 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "conclusion": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient.",
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": []
       },
       {
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "conclusion": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish.",
         "layer": "L2_dependencies",
         "status": "pass",
         "finding_indices": []
@@ -142,10 +141,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Turn right, then walk down the hallway to its end and enter the kitchen."
+            "quote": "walk down the hallway to its end and enter the kitchen."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Kitchen entry follows reaching the hallway end, not the source sentence's surface position.",
         "requirement_id": "SRC-01",
         "source_quote": "Enter the kitchen after you have walked to the end of the hallway.",
         "status": "covered"
@@ -154,10 +153,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Turn right, then walk down the hallway to its end and enter the kitchen."
+            "quote": "Turn right, then walk down the hallway"
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "The right turn occurs before hallway traversal.",
         "requirement_id": "SRC-02",
         "source_quote": "Before walking down the hallway, turn right.",
         "status": "covered"
@@ -166,10 +165,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "Once inside the kitchen, cross it and go through the archway into the dining room."
+            "quote": "Once inside the kitchen"
+          },
+          {
+            "subtask_index": 1,
+            "quote": "cross it and go through the archway into the dining room."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "After kitchen entry, cross the kitchen and traverse the archway into the dining room.",
         "requirement_id": "SRC-03",
         "source_quote": "Once inside the kitchen, cross it and go through the archway into the dining room.",
         "status": "covered"
@@ -178,10 +181,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 2,
-            "quote": "Cross the dining room and enter the study through the door beside the bookcase."
+            "quote": "Cross the dining room"
+          },
+          {
+            "subtask_index": 2,
+            "quote": "enter the study through the door beside the bookcase."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Cross the dining room and enter the study via the bookcase-side door.",
         "requirement_id": "SRC-04",
         "source_quote": "Cross the dining room and enter the study through the door beside the bookcase.",
         "status": "covered"
@@ -190,10 +197,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 3,
-            "quote": "In the study, walk around the desk and stop at the window."
+            "quote": "In the study, walk around the desk"
+          },
+          {
+            "subtask_index": 3,
+            "quote": "stop at the window."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Inside the study, go around the desk before stopping at the window.",
         "requirement_id": "SRC-05",
         "source_quote": "In the study, walk around the desk and stop at the window.",
         "status": "covered"
@@ -229,10 +240,8 @@
           "text": "Turn right, then walk down the hallway to its end and enter the kitchen."
         },
         "source_quotes": [
-          "Before walking down the hallway, turn right.",
           "Enter the kitchen after you have walked to the end of the hallway.",
-          "In the study, walk around the desk and stop at the window.",
-          "Cross the dining room and enter the study through the door beside the bookcase."
+          "Before walking down the hallway, turn right."
         ],
         "source_requirement_ids": [
           "SRC-01",
@@ -280,10 +289,7 @@
           "text": "Once inside the kitchen, cross it and go through the archway into the dining room."
         },
         "source_quotes": [
-          "Once inside the kitchen, cross it and go through the archway into the dining room.",
-          "Cross the dining room and enter the study through the door beside the bookcase.",
-          "In the study, walk around the desk and stop at the window.",
-          "Enter the kitchen after you have walked to the end of the hallway."
+          "Once inside the kitchen, cross it and go through the archway into the dining room."
         ],
         "source_requirement_ids": [
           "SRC-03"
@@ -327,10 +333,7 @@
           "text": "Cross the dining room and enter the study through the door beside the bookcase."
         },
         "source_quotes": [
-          "Cross the dining room and enter the study through the door beside the bookcase.",
-          "Once inside the kitchen, cross it and go through the archway into the dining room.",
-          "In the study, walk around the desk and stop at the window.",
-          "Enter the kitchen after you have walked to the end of the hallway."
+          "Cross the dining room and enter the study through the door beside the bookcase."
         ],
         "source_requirement_ids": [
           "SRC-04"
@@ -374,10 +377,7 @@
           "text": "In the study, walk around the desk and stop at the window."
         },
         "source_quotes": [
-          "In the study, walk around the desk and stop at the window.",
-          "Cross the dining room and enter the study through the door beside the bookcase.",
-          "Once inside the kitchen, cross it and go through the archway into the dining room.",
-          "Before walking down the hallway, turn right."
+          "In the study, walk around the desk and stop at the window."
         ],
         "source_requirement_ids": [
           "SRC-05"
@@ -397,7 +397,8 @@
   },
   "teaching_notes": {
     "review_pattern": "temporal_order_reversal_and_multileg_route",
-    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
-    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+    "reuse_rule": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish.",
+    "anti_pattern": "Do not execute kitchen entry before the earlier-mentioned prerequisite, or preserve sentence order at the expense of the stated temporal order.",
+    "case_specific_focus": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish."
   }
 }

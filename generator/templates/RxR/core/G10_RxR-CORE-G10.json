@@ -40,10 +40,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "unresolved_deictic_endpoint",
-    "why_this_case_matters": "Return needs_review because the endpoint of 'walk forward' and the direction/reference of 'turn there' are not specified.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route.",
+    "reusable_rule": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route.",
     "executable_reuse_test": "Check whether the unresolved phrase changes route choice, target identity, or the stage endpoint. If yes, refuse speculative segmentation.",
-    "anti_pattern": "Do not invent a hallway end, doorway, distance, or turn direction."
+    "anti_pattern": "Do not generalize this source ambiguity to ordinary descriptive uncertainty or to context lost only because of a bad candidate boundary.",
+    "case_rationale": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route."
   },
   "retrieval_tags": [
     "source_limited_ambiguity",

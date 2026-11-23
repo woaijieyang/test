@@ -25,7 +25,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination."
+        "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
       ]
     }
   },
@@ -188,10 +188,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target."
+            "quote": "From near the open back door, you should see a room or another door at the back of it."
           }
         ],
-        "requirement": "Preserve the spatial transition and region/threshold: you should see a room or another door at the back of it",
+        "requirement": "Preserve the expected room-or-door view from the back-door position without selecting an unsupported alternative or adding a viewing action.",
         "requirement_id": "SRC-06",
         "source_quote": "you should see a room or another door at the back of it",
         "status": "covered"
@@ -199,23 +199,27 @@
       {
         "candidate_evidence": [
           {
-            "quote": "at the back of the brown chairs",
-            "subtask_index": 0
+            "subtask_index": 0,
+            "quote": "Walk towards that target."
+          },
+          {
+            "subtask_index": 0,
+            "quote": "You should now be standing near a desk and at the back of the brown chairs."
           }
         ],
-        "requirement": "Preserve the ordered route action or target-identifying landmark: at the back of the brown chairs",
+        "requirement": "Walk toward the described target and retain the resulting desk-near, behind-brown-chairs state.",
         "requirement_id": "SRC-07",
-        "source_quote": "at the back of the brown chairs",
+        "source_quote": "walk towards that and now you should be standing near a desk and  at the back of the brown chairs",
         "status": "covered"
       },
       {
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+            "quote": "When you are standing at the chair, turn right."
           }
         ],
-        "requirement": "Preserve the directional/spatial relation and its reference frame: when you are standing at the chair turn right",
+        "requirement": "At the stated chair position, turn right; do not add a further movement command.",
         "requirement_id": "SRC-08",
         "source_quote": "when you are standing at the chair turn right",
         "status": "covered"
@@ -224,10 +228,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+            "quote": "Now you should be standing near the foot of the bed; once you are here, you are done."
           }
         ],
-        "requirement": "Preserve the temporal trigger/order and its scope: now you should be standing near the foot of the bed, once you are here you are done.",
+        "requirement": "Preserve the stated final position near the foot of the bed and completion without inferring additional distance.",
         "requirement_id": "SRC-09",
         "source_quote": "now you should be standing near the foot of the bed, once you are here you are done.",
         "status": "covered"
@@ -237,22 +241,21 @@
       {
         "carryover": [],
         "conditions": {
+          "text": "Do not resolve room-or-door descriptive uncertainty into another route. Preserve the desk and behind-chair relations, the right turn at the chair, and the final bed-foot state. Expected standing is not a new movement command.",
           "candidate_quotes": [
             "a room or another door",
             "near a desk and at the back of the brown chairs",
-            "When you are standing at the chair",
-            "until you are standing near the foot of the bed"
-          ],
-          "text": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed."
+            "When you are standing at the chair, turn right.",
+            "Now you should be standing near the foot of the bed; once you are here, you are done."
+          ]
         },
         "ending": {
           "candidate_quotes": [
-            "continue until you are standing near the foot of the bed",
-            "This is your destination."
+            "Now you should be standing near the foot of the bed; once you are here, you are done."
           ],
           "kind": "explicit_event",
           "stop_scope": "terminal",
-          "text": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement."
+          "text": "Finish in the stated near-foot-of-bed position. The source describes this state after the chair-side right turn; no extra continue-until movement is prescribed."
         },
         "entry": {
           "candidate_quotes": [],
@@ -262,7 +265,7 @@
         "process": {
           "text": "The candidate contains both the completed stand-near-opening objective and the subsequent route to the bed in one stage.",
           "candidate_quotes": [
-            "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination."
+            "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
           ]
         },
         "source_quotes": [
@@ -272,7 +275,7 @@
           "turn right and move towards the same area with the chairs on the wall",
           "do not go outside just go near and stand",
           "you should see a room or another door at the back of it",
-          "at the back of the brown chairs",
+          "walk towards that and now you should be standing near a desk and  at the back of the brown chairs",
           "when you are standing at the chair turn right",
           "now you should be standing near the foot of the bed, once you are here you are done."
         ],

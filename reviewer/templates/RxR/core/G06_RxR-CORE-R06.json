@@ -39,13 +39,13 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "conclusion": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient.",
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": []
       },
       {
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "conclusion": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff.",
         "layer": "L2_dependencies",
         "status": "pass",
         "finding_indices": []
@@ -57,9 +57,9 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked each adjacent stage's actual exit-to-entry continuity.",
+        "conclusion": "This candidate has one stage and no adjacent-stage handoff. Its process and completion are assessed separately.",
         "layer": "L4_handoffs",
-        "status": "pass",
+        "status": "not_applicable",
         "finding_indices": []
       },
       {
@@ -80,10 +80,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "Go about halfway down the staircase"
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Descend the staircase, subject to the subsequent halfway refinement of this same event.",
         "requirement_id": "SRC-01",
         "source_quote": "Go down the staircase.",
         "status": "covered"
@@ -92,10 +92,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "Go about halfway down the staircase, then stop"
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Limit that descent to about halfway and then stop.",
         "requirement_id": "SRC-02",
         "source_quote": "Go about halfway down and then stop.",
         "status": "covered"
@@ -104,10 +104,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "about halfway down the staircase"
+          },
+          {
+            "subtask_index": 0,
+            "quote": "then stop and wait there."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Wait at the same approximately halfway position after stopping.",
         "requirement_id": "SRC-03",
         "source_quote": "Wait there.",
         "status": "covered"
@@ -143,9 +147,9 @@
           "text": "Go about halfway down the staircase, then stop and wait there."
         },
         "source_quotes": [
-          "Wait there.",
+          "Go down the staircase.",
           "Go about halfway down and then stop.",
-          "Go down the staircase."
+          "Wait there."
         ],
         "source_requirement_ids": [
           "SRC-01",
@@ -167,7 +171,8 @@
   },
   "teaching_notes": {
     "review_pattern": "endpoint_refinement_and_bounded_motion",
-    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
-    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+    "reuse_rule": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff.",
+    "anti_pattern": "Do not complete the whole staircase first, convert about halfway into an exact distance, or manufacture another descent or stage.",
+    "case_specific_focus": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff."
   }
 }

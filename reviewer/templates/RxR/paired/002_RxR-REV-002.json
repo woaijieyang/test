@@ -20,7 +20,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+        "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
         "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
       ]
     }
@@ -56,7 +56,7 @@
     ],
     "layer_checks": [
       {
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "conclusion": "No rendered artifact is supplied in this teaching case; review the actual candidate text without claiming renderer verification.",
         "layer": "L0_integrity",
         "status": "not_applicable",
         "finding_indices": []
@@ -158,7 +158,7 @@
             "subtask_index": 0
           },
           {
-            "quote": "The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you.",
+            "quote": "On your right a glass window on your left and an open door in front of you.",
             "subtask_index": 0
           }
         ],
@@ -235,11 +235,11 @@
           "candidate_quotes": [
             "two entrances in front",
             "wine room on your right",
-            "conflicting left/right descriptions for the glass window",
-            "an open door is in front of you",
+            "On your right a glass window on your left",
+            "an open door in front of you",
             "black bench on your right"
           ],
-          "text": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch."
+          "text": "Preserve the ordered turns and few-step approach. The contradictory window-side wording is retained without choosing a side; the open door ahead and agent-relative bench cue identify the commanded route. This does not license ignoring a route-critical conflict in another source."
         },
         "ending": {
           "candidate_quotes": [
@@ -261,10 +261,10 @@
             "turn left and take a few steps towards the two entrances in front",
             "Then turn left.",
             "wine room on your right",
-            "conflicting left/right descriptions for the glass window",
+            "On your right a glass window on your left",
             "Go towards the open door which has a black bench on your right until you reach that open door."
           ],
-          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
         },
         "source_quotes": [
           "You are standing inside a living room",
@@ -288,7 +288,7 @@
         "subtask_index": 0,
         "target": {
           "candidate_quotes": [
-            "an open door is in front of you",
+            "an open door in front of you",
             "black bench on your right"
           ],
           "text": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference."
@@ -357,6 +357,7 @@
     "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
     "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
     "review_principle": "The corrected candidate preserves both source-side descriptions for the glass window as uncertainty, does not choose a side, and keeps the open door with the black bench as the stable navigation target. PASS is appropriate because the ambiguity is not route-critical after the target is independently identified.",
-    "case_specific_focus": "Do not silently delete a contradictory auxiliary spatial cue; preserve it as uncertainty while checking whether the actual navigation target remains uniquely identifiable."
+    "case_specific_focus": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door.",
+    "case_rationale": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door."
   }
 }

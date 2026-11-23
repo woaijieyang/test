@@ -46,7 +46,6 @@
         "shared_context": [],
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02",
           "SRC-03"
         ],
         "status": "supported",
@@ -61,13 +60,13 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "conclusion": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient.",
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": []
       },
       {
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "conclusion": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff.",
         "layer": "L2_dependencies",
         "status": "pass",
         "finding_indices": []
@@ -102,10 +101,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Traverse the hallway past both paintings on the left until reaching the second right-hand doorway.",
         "requirement_id": "SRC-01",
         "source_quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
         "status": "covered"
@@ -114,10 +113,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+            "quote": "Do not enter the first doorway."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Do not enter the first doorway during this counted traversal.",
         "requirement_id": "SRC-02",
         "source_quote": "Do not enter the first doorway.",
         "status": "covered"
@@ -126,10 +125,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+            "quote": "From the second doorway on the right that you have just reached"
+          },
+          {
+            "subtask_index": 1,
+            "quote": "turn right into the study and stop beside the desk."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "From the reached second doorway, turn right into the study and stop beside the desk.",
         "requirement_id": "SRC-03",
         "source_quote": "Once at the second doorway, turn right into the study and stop beside the desk.",
         "status": "covered"
@@ -166,9 +169,8 @@
           "text": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
         },
         "source_quotes": [
-          "Do not enter the first doorway.",
           "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
-          "Once at the second doorway, turn right into the study and stop beside the desk."
+          "Do not enter the first doorway."
         ],
         "source_requirement_ids": [
           "SRC-01",
@@ -216,9 +218,7 @@
           "text": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
         },
         "source_quotes": [
-          "Once at the second doorway, turn right into the study and stop beside the desk.",
-          "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
-          "Do not enter the first doorway."
+          "Once at the second doorway, turn right into the study and stop beside the desk."
         ],
         "source_requirement_ids": [
           "SRC-03"
@@ -238,7 +238,8 @@
   },
   "teaching_notes": {
     "review_pattern": "until_ordinal_negation",
-    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
-    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+    "reuse_rule": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff.",
+    "anti_pattern": "Do not count only open doors, restart the count at a cut, or substitute compliance with a prohibition for the required arrival.",
+    "case_specific_focus": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff."
   }
 }

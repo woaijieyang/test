@@ -273,10 +273,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "temporal_order_reversal_and_multileg_route",
-    "why_this_case_matters": "Apply the turn-right prerequisite before hallway traversal; split at completed room transitions, not at each sentence.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events.",
+    "reusable_rule": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "When clause order differs from execution order, reorder only where the temporal relation is explicit."
+    "anti_pattern": "Do not execute kitchen entry before the earlier-mentioned prerequisite, or preserve sentence order at the expense of the stated temporal order.",
+    "case_rationale": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events."
   },
   "retrieval_tags": [
     "room_transition",

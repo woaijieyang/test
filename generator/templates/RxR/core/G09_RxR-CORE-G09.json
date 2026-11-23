@@ -148,10 +148,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "intermediate_stop_and_conditional_branch",
-    "why_this_case_matters": "Keep the kitchen counter stop as an intermediate event; preserve both entrance alternatives in one branch-aware stage because both converge to the laundry room.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence.",
+    "reusable_rule": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "Do not flatten if/otherwise into two mandatory sequential entrances."
+    "anti_pattern": "Do not execute both mutually exclusive branches, treat them as descriptive uncertainty, or cancel the counter stop because the route continues.",
+    "case_rationale": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence."
   },
   "retrieval_tags": [
     "room_transition",

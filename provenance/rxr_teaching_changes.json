@@ -6,10 +6,13 @@
   "mechanical_runtime_contracts_pass": true,
   "semantic_correctness_certified": false,
   "navigation_evaluated": false,
+  "core_case_specific_lessons": true,
+  "core_event_local_coverage_rows": 33,
   "curation_limits": [
     "Natural-language entailment is not proven by schema, quote or pair checks.",
-    "The room-or-door and foot-of-bed interpretation remains an explicit review item; no arbitrary distance is added by these repairs.",
-    "Auxiliary-window uncertainty commentary is preserved pending an isolated wording experiment."
+    "The room-or-door description remains source uncertainty; the final bed-foot state is preserved without prescribing an extra traversal.",
+    "Contradictory auxiliary-window wording remains in source-preserving descriptive form; analysis is kept outside executable navigation text.",
+    "No retrieval, template-count, runtime-schema, renderer or navigation-budget change is included in this calibration."
   ],
   "contrasts": [
     {
@@ -281,8 +284,8 @@
       "parent_id": "RxR-REV-002",
       "basis": "reviewed_parent_except_authored_span",
       "source_quote": "their should be a wine room on your right and on your right a glass window on your left and an open door in front of you",
-      "old": "The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference;",
-      "replacement": "A glass window is on your left;",
+      "old": "On your right a glass window on your left",
+      "replacement": "A glass window is on your left",
       "changed_stage": 0,
       "code": "WRONG_RELATION",
       "unaffected_text_preserved": true
@@ -294,7 +297,7 @@
       "path": "generator/templates/RxR/core/G01_RxR-CORE-G01.json",
       "source_sha256": "717e6a7fa4ccedad6dae290c74b1a7a94518ab15b069885533e80f95de35b3bf",
       "before_sha256": "69dfe3abaacc7a21aff6f675eb50e2a4177a99c87f9f808d73f742a2c92e0404",
-      "after_sha256": "039aa6e0474cc5515bc0c5ffdd0ed76c600e7a051d61d10ffdbf75cc9009b90a",
+      "after_sha256": "890159b560fe0842d7b18fbc66cdce59083f0ba93cde9ca20abe7a72380e4d79",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -320,6 +323,25 @@
           "path": "/output/stage_audit/1/ending/text",
           "before": "Once inside the washroom, stand between the sink and the bathtub.",
           "after": "Stand between the sink and bathtub inside the washroom; the entry trigger is not the ending mechanism."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not convert the initial right-hand doorway into the washroom doorway; the turn changes the reference frame.",
+          "after": "Do not turn initial observations into searches or visits, and do not use a visible doorway as evidence that the room was entered."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Keep the initial doorway relation as context, execute the turn before selecting the washroom doorway, and split only after entering the washroom.",
+          "after": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation."
         }
       ]
     },
@@ -328,7 +350,7 @@
       "path": "generator/templates/RxR/core/G02_RxR-CORE-G02.json",
       "source_sha256": "bdd0ff68b1856502b28efd491ea59706029112e8ae9a6fb7514bafa474536c4f",
       "before_sha256": "5b8bd450206e47d929fa6e0304f0634baf3c824459a1ecd9541bfcd012b100be",
-      "after_sha256": "03e10c4e5e6bc6718e99b1bbed00bc5ab8277abe6b0355e48e0e6171593cb214",
+      "after_sha256": "de2821d17b50096cbe1c2447db9535daa2a3dc448428d20a0f25be2bc0c8b479",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -419,6 +441,25 @@
           "path": "/output/stage_audit/0/target/text",
           "before": "Do not enter the first doorway.",
           "after": "The second doorway on the right of the prescribed hallway traversal."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "The ordinal is counted from the source-defined traversal origin and must not restart at stage 2.",
+          "after": "Do not count only open doors, restart the count at a cut, or substitute compliance with a prohibition for the required arrival."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Bind the two paintings and the 'do not enter first doorway' prohibition to the hallway traversal that ends at the second doorway; keep study entry and desk stop together.",
+          "after": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn."
         }
       ]
     },
@@ -427,7 +468,7 @@
       "path": "generator/templates/RxR/core/G03_RxR-CORE-G03.json",
       "source_sha256": "b0eccf17c8965b043ba0a59913ee7f369356fce5855f33b0c6f0d84ab3da2049",
       "before_sha256": "8607ab4dd41f961fe892f39a444c0ab1f6e997a42e5d210c4caed1bbf28afe74",
-      "after_sha256": "04d821b567a66c9c559c9818103639c06804e199326d001609682c4aade3b824",
+      "after_sha256": "f4bd19c1271730576b901dc03227c49c74afce21cdb5fb1033bb5eb4bc33622b",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -435,6 +476,25 @@
           "path": "/output/stage_audit/0/ending/text",
           "before": "Complete the explicitly requested movement into the open area after turning left before entering the dining room. Do not enter the dining room.",
           "after": "Enter the open area after the left turn before dining-room entry. An entry completes without an additional physical stop."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "A before-entry condition does not imply later entry into the named room or a stop at its threshold.",
+          "after": "Do not infer dining-room entry from before entering, or require an extra STOP to validate entry into the actual destination."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Keep 'toward dining room', 'before entering', the left turn, and entry into the open area in one stage.",
+          "after": "Turn left before dining-room entry and then enter the open area. The before-clause locates the turn; it does not command entry into the dining room. Keep this coupled maneuver together."
         }
       ]
     },
@@ -443,7 +503,7 @@
       "path": "generator/templates/RxR/core/G04_RxR-CORE-G04.json",
       "source_sha256": "cffc47ef44990c2a7ea1ebb0324b84560bad6b9e2971f5ed962470ef9350ad41",
       "before_sha256": "a68f9277f88c3e8a841995c0f27c691649e5672a27bd3b463dc2badf20b7c34a",
-      "after_sha256": "b58b4432c039a18646bbd5f664c0a070bb96223d17fb2be7db6b3a5275166713",
+      "after_sha256": "5dc5979d1474e8c65b9313ba1c252961602b950024848ebed5daf80d91f13414",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -510,6 +570,25 @@
           "path": "/output/stage_audit/1/ending/text",
           "before": "Once inside the kitchen, cross it and go through the archway into the dining room.",
           "after": "Cross the kitchen and pass through the archway into the dining room; Once inside the kitchen supplies entry, not completion."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "When clause order differs from execution order, reorder only where the temporal relation is explicit.",
+          "after": "Do not execute kitchen entry before the earlier-mentioned prerequisite, or preserve sentence order at the expense of the stated temporal order."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Apply the turn-right prerequisite before hallway traversal; split at completed room transitions, not at each sentence.",
+          "after": "Reconstruct the right-turn, hallway-end and kitchen-entry order from before/after across sentences. Later kitchen, dining-room and study transitions remain distinct source-supported events."
         }
       ]
     },
@@ -518,7 +597,7 @@
       "path": "generator/templates/RxR/core/G05_RxR-CORE-G05.json",
       "source_sha256": "0861106b44b984fcab2410c035c336134bcfb7b964e55f6c55dc0683276b3d3e",
       "before_sha256": "2e699c0c40e588170c720a57b62323b2f9e2760622abdd7d81b250083cd71662",
-      "after_sha256": "f419d8f6f9f496035b1a6c07e29306377a69e5832da5f6ded30e7a10951826bc",
+      "after_sha256": "a8adfd76dcf25b5de2ec0c0f191ead09ded360cebc6e9cd951b106364d1a9468",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -588,6 +667,25 @@
           "path": "/output/stage_audit/0/target/text",
           "before": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "after": "The bathroom interior reached through the identified first right-hand door."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Later descriptive information belongs before target selection when it disambiguates the earlier referent.",
+          "after": "Do not treat identification of the dark-wall door as completed entry, redefine the ordinal counting scope, or drop the late identifying description."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Move the darker-wall description into the stage that selects the first right-hand bathroom doorway; retain both doorway proximity and wall colour.",
+          "after": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff."
         }
       ]
     },
@@ -596,17 +694,37 @@
       "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
       "source_sha256": "727caa257cd516fdc396f918f3c83e0a7a060aa370da646fbe0ed058b91a1e32",
       "before_sha256": "2e6de9cf694f7df4408c1927d0b1ba0b6d2d03248b37faa8de93f7367a2cbae2",
-      "after_sha256": "2e6de9cf694f7df4408c1927d0b1ba0b6d2d03248b37faa8de93f7367a2cbae2",
+      "after_sha256": "c98c4403dc5a4646839d8d9b3045f91135542e06f1971e705496460a1173a9c2",
       "candidate_changed": false,
-      "status": "unchanged",
-      "fields": []
+      "status": "authored_correction",
+      "fields": [
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not execute a full descent and then repeat the descent to halfway.",
+          "after": "Do not complete the whole staircase first, convert about halfway into an exact distance, or manufacture another descent or stage."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Collapse the full-staircase wording and later halfway refinement into one descent ending halfway, followed by the explicit stop/wait.",
+          "after": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement."
+        }
+      ]
     },
     {
       "template_id": "RXR-CORE-G07",
       "path": "generator/templates/RxR/core/G07_RxR-CORE-G07.json",
       "source_sha256": "77e47bb712fd9263f5bc1a5f53c7afb501dc56f0942b1e78294d527a523b4888",
       "before_sha256": "c0a91080607a51d9f1f7cb61aa66628fcd1c28425c169bc9a11d73cd289d47bd",
-      "after_sha256": "4f2c3adb838be7c5efed5b195b6d84c66d92517e16a3d66ad5a1133b4f1ce845",
+      "after_sha256": "97048a2657555a02a10a64def185aee1e566732da4772324bef141c29d5ba5ab",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -656,6 +774,25 @@
           "path": "/output/stage_audit/0/target/text",
           "before": "At that position, the table should be on your left.",
           "after": "The beside-table position with the table on the left."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Keep the table-on-left relation endpoint-scoped; do not turn it into a constraint over the whole approach.",
+          "after": "Do not use a side relation alone as arrival evidence, extend an endpoint-only relation over the entire path, or turn a facing reference into a destination."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Use the narrated beside-table state as the intended result of the approach, then hand off from that state into the kitchen.",
+          "after": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop."
         }
       ]
     },
@@ -664,7 +801,7 @@
       "path": "generator/templates/RxR/core/G08_RxR-CORE-G08.json",
       "source_sha256": "f4e266b5b94a53ff51ede313968a703ff3bea1d89b260773e0ec623b29be8c59",
       "before_sha256": "4ce27022c622d9057ce9990b2e8c2d4149ac56054541385c4472428c737caa77",
-      "after_sha256": "0768d67f074167948499f380ad5d393e951daf2106f7588063f3a2847ba64254",
+      "after_sha256": "f93a606d7348949d5c24f219a42a2163503e9140a925f5518f882ac848a9a824",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -691,6 +828,25 @@
           "path": "/output/handoffs/1/source_requirement_ids/1",
           "before": "SRC-03",
           "after": "SRC-04"
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "A return visit is not satisfied by reaching the earlier door once; retain the intervening route and repeated crossing.",
+          "after": "Do not execute the corrected-away left turn, erase the window leg as repetition, or carry the crossing-only sofa constraint over the return."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Apply the spoken correction to the first turn, keep the sofa-left constraint over the lounge crossing, and preserve the explicit return through the same door as a separate event.",
+          "after": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs."
         }
       ]
     },
@@ -699,7 +855,7 @@
       "path": "generator/templates/RxR/core/G09_RxR-CORE-G09.json",
       "source_sha256": "178868db013921bedfa0c0ac3ffa8e9f4f63388c644c9b15a08f72a2f086538f",
       "before_sha256": "b89f482a6c9aa0818d6a8bbce7eecf05dadae691e619e3f2c0b28a058dd71795",
-      "after_sha256": "dbd574b2e055b5a35d405862ec5a0d595c4dedf90285d2d3dccc0d0c91f0a281",
+      "after_sha256": "2b7a98eaecef3886ecbf9cc27cfc7fc3fdf1424888bcd6e2c290111ff642244d",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -719,6 +875,25 @@
         {
           "path": "/output/handoffs/0/source_requirement_ids/4",
           "added": "SRC-05"
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not flatten if/otherwise into two mandatory sequential entrances.",
+          "after": "Do not execute both mutually exclusive branches, treat them as descriptive uncertainty, or cancel the counter stop because the route continues."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Keep the kitchen counter stop as an intermediate event; preserve both entrance alternatives in one branch-aware stage because both converge to the laundry room.",
+          "after": "Keep the explicit counter stop before choosing exactly the source-supported door/archway branch. Both entrances lead to the laundry room; sink stopping follows entry, not both branches in sequence."
         }
       ]
     },
@@ -727,17 +902,37 @@
       "path": "generator/templates/RxR/core/G10_RxR-CORE-G10.json",
       "source_sha256": "457da8cd5d19f4571e67a8acc29d2f1abf39c0e8eba5a849c9ca165f80940cba",
       "before_sha256": "59e4b2d27ab639096ffeedaa592be672669d5b95f9180edbbace64724c329175",
-      "after_sha256": "59e4b2d27ab639096ffeedaa592be672669d5b95f9180edbbace64724c329175",
+      "after_sha256": "191a90af21f285391b6e4b571a3cab11cf189d90eeed1077963f0b2f0c9bf8a0",
       "candidate_changed": false,
-      "status": "unchanged",
-      "fields": []
+      "status": "authored_correction",
+      "fields": [
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not invent a hallway end, doorway, distance, or turn direction.",
+          "after": "Do not generalize this source ambiguity to ordinary descriptive uncertainty or to context lost only because of a bad candidate boundary."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route."
+        },
+        {
+          "path": "/teaching_notes/reusable_rule",
+          "before": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+          "after": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route."
+        },
+        {
+          "path": "/teaching_notes/why_this_case_matters",
+          "before": "Return needs_review because the endpoint of 'walk forward' and the direction/reference of 'turn there' are not specified.",
+          "after": "When the full source supplies neither the referent of there nor the turn direction, preserve route-critical uncertainty through the existing needs_review path instead of fabricating a partial route."
+        }
+      ]
     },
     {
       "template_id": "RXR-CORE-R01",
       "path": "reviewer/templates/RxR/core/G01_RxR-CORE-R01.json",
       "source_sha256": "717e6a7fa4ccedad6dae290c74b1a7a94518ab15b069885533e80f95de35b3bf",
       "before_sha256": "e343777cd1411b719e649f31bb84c3967f1efd580136035bce0189c48b6b2884",
-      "after_sha256": "98885931e2bf92a1a7b8f81922d053a12a4cec6c70993dce6fb0dec68a1f209a",
+      "after_sha256": "ce845c99e44ff98e17f05b6dad9bd77ad9d24707d57abe82c4c63fb51d153349",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -747,12 +942,14 @@
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/2",
-          "added": "SRC-03"
+          "path": "/expected_review/handoffs/0/source_requirement_ids/0",
+          "before": "SRC-01",
+          "after": "SRC-03"
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/3",
-          "added": "SRC-04"
+          "path": "/expected_review/handoffs/0/source_requirement_ids/1",
+          "before": "SRC-02",
+          "after": "SRC-04"
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -764,8 +961,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Verify initial view, the commanded turn, actual washroom entry and the final sink/bathtub placement separately. Seeing the doorway does not prove entry; entry does support the inside-washroom next stage."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -796,32 +1003,78 @@
           "before": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+            "quote": "You start standing in front of a glass door, with a doorway on your right."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Preserve the starting glass-door view and the doorway on the right, not new movements."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+            "quote": "Turn around; you should see a doorway to the washroom."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Turn around and retain the resulting washroom-doorway observation."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start standing in front of a glass door, with a doorway on your right. Turn around; you should see a doorway to the washroom. Walk towards that doorway and enter the washroom."
+            "quote": "Walk towards that doorway and enter the washroom."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Approach the identified doorway and enter the washroom."
         },
         {
           "path": "/expected_review/source_coverage/3/candidate_evidence/0",
           "before": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination.",
           "after": {
             "subtask_index": 1,
-            "quote": "Once inside the washroom, stand between the sink and the bathtub. This is your final destination."
+            "quote": "Once inside the washroom, stand between the sink and the bathtub."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "This is your final destination."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "After entry, finish standing between the sink and bathtub."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Turn around and you will see a doorway to the washroom.",
+          "after": "You will start by standing in front of a glass door and on your right is a doorway."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "Walk towards the doorway and inside the washroom.",
+          "after": "Turn around and you will see a doorway to the washroom."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "before": "You will start by standing in front of a glass door and on your right is a doorway.",
+          "after": "Walk towards the doorway and inside the washroom."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "Once you're there, stand in between the sink and the bathtub and once you're there, you're done."
         },
         {
           "path": "/expected_review/stage_checks/1/ending/kind",
@@ -832,6 +1085,32 @@
           "path": "/expected_review/stage_checks/1/ending/text",
           "before": "Once inside the washroom, stand between the sink and the bathtub.",
           "after": "Stand between the sink and bathtub inside the washroom; the entry trigger is not the ending mechanism."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "removed": "Walk towards the doorway and inside the washroom."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "Turn around and you will see a doorway to the washroom."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/3",
+          "removed": "You will start by standing in front of a glass door and on your right is a doorway."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not turn initial observations into searches or visits, and do not use a visible doorway as evidence that the room was entered."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Verify initial view, the commanded turn, actual washroom entry and the final sink/bathtub placement separately. Seeing the doorway does not prove entry; entry does support the inside-washroom next stage."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Verify initial view, the commanded turn, actual washroom entry and the final sink/bathtub placement separately. Seeing the doorway does not prove entry; entry does support the inside-washroom next stage."
         }
       ]
     },
@@ -840,7 +1119,7 @@
       "path": "reviewer/templates/RxR/core/G02_RxR-CORE-R02.json",
       "source_sha256": "bdd0ff68b1856502b28efd491ea59706029112e8ae9a6fb7514bafa474536c4f",
       "before_sha256": "2dcfd97ef15e01c7ade13139c42805af1d97d9c454bbc2b6e8219966c90e81e1",
-      "after_sha256": "abf5d2948156a2ee875c6d3d18ea4b65e15ae6fc844ce4c444b9b19adad0db73",
+      "after_sha256": "fae810c139f4a443e202dd4d257e67eaf04228251d78a094829968d5443910dc",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -860,8 +1139,9 @@
           "after": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival."
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/2",
-          "added": "SRC-03"
+          "path": "/expected_review/handoffs/0/source_requirement_ids/1",
+          "before": "SRC-02",
+          "after": "SRC-03"
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -873,8 +1153,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -905,24 +1195,46 @@
           "before": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway.",
           "after": {
             "subtask_index": 0,
-            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Traverse the hallway past both paintings on the left until reaching the second right-hand doorway."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway.",
           "after": {
             "subtask_index": 0,
-            "quote": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right. Do not enter the first doorway."
+            "quote": "Do not enter the first doorway."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Do not enter the first doorway during this counted traversal."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk.",
           "after": {
             "subtask_index": 1,
-            "quote": "From the second doorway on the right that you have just reached, turn right into the study and stop beside the desk."
+            "quote": "From the second doorway on the right that you have just reached"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "turn right into the study and stop beside the desk."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "From the reached second doorway, turn right into the study and stop beside the desk."
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
@@ -984,6 +1296,20 @@
           "after": "Reach the second doorway on the right after passing the two paintings; not entering the first doorway is a constraint, not proof of arrival."
         },
         {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Do not enter the first doorway.",
+          "after": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right.",
+          "after": "Do not enter the first doorway."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "removed": "Once at the second doorway, turn right into the study and stop beside the desk."
+        },
+        {
           "path": "/expected_review/stage_checks/0/target/candidate_quotes/0",
           "before": "Do not enter the first doorway.",
           "after": "until you reach the second doorway on your right"
@@ -992,6 +1318,28 @@
           "path": "/expected_review/stage_checks/0/target/text",
           "before": "Do not enter the first doorway.",
           "after": "The second doorway on the right of the prescribed hallway traversal."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "removed": "Walk along the hallway, passing the two paintings on your left, until you reach the second doorway on your right."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "Do not enter the first doorway."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not count only open doors, restart the count at a cut, or substitute compliance with a prohibition for the required arrival."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Require separate evidence for second-doorway arrival, the first-doorway prohibition and the subsequent study entry. Use arrival, not the negative constraint, to establish the handoff."
         }
       ]
     },
@@ -1000,7 +1348,7 @@
       "path": "reviewer/templates/RxR/core/G03_RxR-CORE-R03.json",
       "source_sha256": "b0eccf17c8965b043ba0a59913ee7f369356fce5855f33b0c6f0d84ab3da2049",
       "before_sha256": "8efd765af48e3ab77a582f2333f4d9887b64be2487c9c5016b2c10fee45a9c48",
-      "after_sha256": "2e5d02a2dce11532f78f863fdb93d49603c6b7a09f159f4c943b75e99b257302",
+      "after_sha256": "c28d5e1c0c9259e064cc2da71f1c3efff9bd72078d2ef9db08cbcb8c87c72949",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1014,8 +1362,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Check that the left turn precedes any dining-room entry and that the candidate enters the open area instead. That entry is a completion event even without an added STOP; there is no inter-stage handoff."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1026,8 +1384,18 @@
           "added": []
         },
         {
+          "path": "/expected_review/layer_checks/4/conclusion",
+          "before": "Checked each adjacent stage's actual exit-to-entry continuity.",
+          "after": "This candidate has one stage and no adjacent-stage handoff. Its process and completion are assessed separately."
+        },
+        {
           "path": "/expected_review/layer_checks/4/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/4/status",
+          "before": "pass",
+          "after": "not_applicable"
         },
         {
           "path": "/expected_review/layer_checks/5/finding_indices",
@@ -1046,8 +1414,20 @@
           "before": "Walk towards the dining room, but turn left before entering it and go into the open area.",
           "after": {
             "subtask_index": 0,
-            "quote": "Walk towards the dining room, but turn left before entering it and go into the open area."
+            "quote": "Walk towards the dining room"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/candidate_evidence/1",
+          "added": {
+            "subtask_index": 0,
+            "quote": "turn left before entering it and go into the open area."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Approach the dining room, turn left before entering it, and enter the open area instead."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/kind",
@@ -1058,6 +1438,20 @@
           "path": "/expected_review/stage_checks/0/ending/text",
           "before": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
           "after": "Enter the open area after the left turn before dining-room entry. An entry completes without an additional physical stop."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not infer dining-room entry from before entering, or require an extra STOP to validate entry into the actual destination."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Check that the left turn precedes any dining-room entry and that the candidate enters the open area instead. That entry is a completion event even without an added STOP; there is no inter-stage handoff."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Check that the left turn precedes any dining-room entry and that the candidate enters the open area instead. That entry is a completion event even without an added STOP; there is no inter-stage handoff."
         }
       ]
     },
@@ -1066,7 +1460,7 @@
       "path": "reviewer/templates/RxR/core/G04_RxR-CORE-R04.json",
       "source_sha256": "cffc47ef44990c2a7ea1ebb0324b84560bad6b9e2971f5ed962470ef9350ad41",
       "before_sha256": "a8d43d22a1198a547dccefccbb5f5337b7aaa5d688ab9294d31eacb5cdf357fd",
-      "after_sha256": "ca5c01e97329564733acbdce03a4c2c9c21d17985fd3ff70c8a5e3e2fc57847b",
+      "after_sha256": "045b2ed674d9c8dd9bd8081c2524b8cd661e52917adea464a6ef99f262b5f7a8",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1076,8 +1470,9 @@
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/2",
-          "added": "SRC-03"
+          "path": "/expected_review/handoffs/0/source_requirement_ids/1",
+          "before": "SRC-02",
+          "after": "SRC-03"
         },
         {
           "path": "/expected_review/handoffs/1/handoff_rationale",
@@ -1129,8 +1524,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1161,40 +1566,104 @@
           "before": "Turn right, then walk down the hallway to its end and enter the kitchen.",
           "after": {
             "subtask_index": 0,
-            "quote": "Turn right, then walk down the hallway to its end and enter the kitchen."
+            "quote": "walk down the hallway to its end and enter the kitchen."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Kitchen entry follows reaching the hallway end, not the source sentence's surface position."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "Turn right, then walk down the hallway to its end and enter the kitchen.",
           "after": {
             "subtask_index": 0,
-            "quote": "Turn right, then walk down the hallway to its end and enter the kitchen."
+            "quote": "Turn right, then walk down the hallway"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "The right turn occurs before hallway traversal."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "Once inside the kitchen, cross it and go through the archway into the dining room.",
           "after": {
             "subtask_index": 1,
-            "quote": "Once inside the kitchen, cross it and go through the archway into the dining room."
+            "quote": "Once inside the kitchen"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "cross it and go through the archway into the dining room."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "After kitchen entry, cross the kitchen and traverse the archway into the dining room."
         },
         {
           "path": "/expected_review/source_coverage/3/candidate_evidence/0",
           "before": "Cross the dining room and enter the study through the door beside the bookcase.",
           "after": {
             "subtask_index": 2,
-            "quote": "Cross the dining room and enter the study through the door beside the bookcase."
+            "quote": "Cross the dining room"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/candidate_evidence/1",
+          "added": {
+            "subtask_index": 2,
+            "quote": "enter the study through the door beside the bookcase."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Cross the dining room and enter the study via the bookcase-side door."
         },
         {
           "path": "/expected_review/source_coverage/4/candidate_evidence/0",
           "before": "In the study, walk around the desk and stop at the window.",
           "after": {
             "subtask_index": 3,
-            "quote": "In the study, walk around the desk and stop at the window."
+            "quote": "In the study, walk around the desk"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/4/candidate_evidence/1",
+          "added": {
+            "subtask_index": 3,
+            "quote": "stop at the window."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/4/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Inside the study, go around the desk before stopping at the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Before walking down the hallway, turn right.",
+          "after": "Enter the kitchen after you have walked to the end of the hallway."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "Enter the kitchen after you have walked to the end of the hallway.",
+          "after": "Before walking down the hallway, turn right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "removed": "In the study, walk around the desk and stop at the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "Cross the dining room and enter the study through the door beside the bookcase."
         },
         {
           "path": "/expected_review/stage_checks/1/ending/candidate_quotes/0",
@@ -1210,6 +1679,56 @@
           "path": "/expected_review/stage_checks/1/ending/text",
           "before": "Once inside the kitchen, cross it and go through the archway into the dining room.",
           "after": "Cross the kitchen and pass through the archway into the dining room; Once inside the kitchen supplies entry, not completion."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "removed": "Cross the dining room and enter the study through the door beside the bookcase."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "In the study, walk around the desk and stop at the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/3",
+          "removed": "Enter the kitchen after you have walked to the end of the hallway."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/1",
+          "removed": "Once inside the kitchen, cross it and go through the archway into the dining room."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/2",
+          "removed": "In the study, walk around the desk and stop at the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/3",
+          "removed": "Enter the kitchen after you have walked to the end of the hallway."
+        },
+        {
+          "path": "/expected_review/stage_checks/3/source_quotes/1",
+          "removed": "Cross the dining room and enter the study through the door beside the bookcase."
+        },
+        {
+          "path": "/expected_review/stage_checks/3/source_quotes/2",
+          "removed": "Once inside the kitchen, cross it and go through the archway into the dining room."
+        },
+        {
+          "path": "/expected_review/stage_checks/3/source_quotes/3",
+          "removed": "Before walking down the hallway, turn right."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not execute kitchen entry before the earlier-mentioned prerequisite, or preserve sentence order at the expense of the stated temporal order."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Compare temporal dependencies rather than sentence order: right turn before hallway traversal, kitchen entry after its end, then dining-room entry, study entry and the desk-to-window finish."
         }
       ]
     },
@@ -1218,7 +1737,7 @@
       "path": "reviewer/templates/RxR/core/G05_RxR-CORE-R05.json",
       "source_sha256": "0861106b44b984fcab2410c035c336134bcfb7b964e55f6c55dc0683276b3d3e",
       "before_sha256": "56c0d7f858902c329f170c0b7f4e0be040c1446074626fbf783e3e0dd3411b3e",
-      "after_sha256": "b8025a4f6ee5ac9438fd20516a22390eb196959b6881a6caf7d78b6dda3c8643",
+      "after_sha256": "65f4f7f9f7ea4d036a5f43faaca62b8441ec928967c33eb9543d7fea491088c0",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1251,8 +1770,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Independently verify bedroom traversal, first-right-door selection, the close pair and dark-wall cue, and bathroom entry. Use entry evidence for the next inside-bathroom left turn."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1283,24 +1812,51 @@
           "before": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "after": {
             "subtask_index": 0,
-            "quote": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+            "quote": "Walk across the bedroom and enter the bathroom through the first door on your right."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Cross the bedroom and enter the bathroom through the first door on the right."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "after": {
             "subtask_index": 0,
-            "quote": "Walk across the bedroom and enter the bathroom through the first door on your right. There are two doorways close together; the bathroom doorway is in the darker-painted wall."
+            "quote": "There are two doorways close together; the bathroom doorway is in the darker-painted wall."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Use the close doorway pair and darker wall to identify the bathroom doorway, not to establish completed entry."
+        },
+        {
+          "path": "/expected_review/source_coverage/1/source_quote",
+          "before": "The bathroom doorway is in the darker-painted wall.",
+          "after": "There are two doorways close together. The bathroom doorway is in the darker-painted wall."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "Inside the bathroom, turn left and stop in front of the toilet.",
           "after": {
             "subtask_index": 1,
-            "quote": "Inside the bathroom, turn left and stop in front of the toilet."
+            "quote": "Inside the bathroom, turn left"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "stop in front of the toilet."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Once inside the bathroom, turn left and stop in front of the toilet."
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
@@ -1341,6 +1897,24 @@
           "after": "Enter the bathroom through the selected first right-hand door. Wall colour and doorway proximity identify the door but do not establish entry."
         },
         {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "The bathroom doorway is in the darker-painted wall.",
+          "after": "Walk across the bedroom and enter the bathroom through the first door on your right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "There are two doorways close together.",
+          "after": "There are two doorways close together. The bathroom doorway is in the darker-painted wall."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "removed": "Walk across the bedroom and enter the bathroom through the first door on your right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "Inside the bathroom, turn left and stop in front of the toilet."
+        },
+        {
           "path": "/expected_review/stage_checks/0/target/candidate_quotes/0",
           "before": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "after": "enter the bathroom through the first door on your right"
@@ -1349,6 +1923,28 @@
           "path": "/expected_review/stage_checks/0/target/text",
           "before": "There are two doorways close together; the bathroom doorway is in the darker-painted wall.",
           "after": "The bathroom interior reached through the identified first right-hand door."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "removed": "The bathroom doorway is in the darker-painted wall."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "Walk across the bedroom and enter the bathroom through the first door on your right."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not treat identification of the dark-wall door as completed entry, redefine the ordinal counting scope, or drop the late identifying description."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Independently verify bedroom traversal, first-right-door selection, the close pair and dark-wall cue, and bathroom entry. Use entry evidence for the next inside-bathroom left turn."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Independently verify bedroom traversal, first-right-door selection, the close pair and dark-wall cue, and bathroom entry. Use entry evidence for the next inside-bathroom left turn."
         }
       ]
     },
@@ -1357,7 +1953,7 @@
       "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
       "source_sha256": "727caa257cd516fdc396f918f3c83e0a7a060aa370da646fbe0ed058b91a1e32",
       "before_sha256": "910c51759ef330e95f0077229f99848b0dd818cee83401319f02d731515366f8",
-      "after_sha256": "f1b37e260c1bc8c57a2e6ff699c35ac6bee6052d6fb67654e32294e5a8ea3dad",
+      "after_sha256": "262b2e0240bbdcb7aa03b35d73da012f4eaa0dae195508eac60b2a0f5462f312",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1371,8 +1967,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1383,8 +1989,18 @@
           "added": []
         },
         {
+          "path": "/expected_review/layer_checks/4/conclusion",
+          "before": "Checked each adjacent stage's actual exit-to-entry continuity.",
+          "after": "This candidate has one stage and no adjacent-stage handoff. Its process and completion are assessed separately."
+        },
+        {
           "path": "/expected_review/layer_checks/4/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/4/status",
+          "before": "pass",
+          "after": "not_applicable"
         },
         {
           "path": "/expected_review/layer_checks/5/finding_indices",
@@ -1403,24 +2019,70 @@
           "before": "Go about halfway down the staircase, then stop and wait there.",
           "after": {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "Go about halfway down the staircase"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Descend the staircase, subject to the subsequent halfway refinement of this same event."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "Go about halfway down the staircase, then stop and wait there.",
           "after": {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "Go about halfway down the staircase, then stop"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Limit that descent to about halfway and then stop."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "Go about halfway down the staircase, then stop and wait there.",
           "after": {
             "subtask_index": 0,
-            "quote": "Go about halfway down the staircase, then stop and wait there."
+            "quote": "about halfway down the staircase"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 0,
+            "quote": "then stop and wait there."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Wait at the same approximately halfway position after stopping."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Wait there.",
+          "after": "Go down the staircase."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "before": "Go down the staircase.",
+          "after": "Wait there."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not complete the whole staircase first, convert about halfway into an exact distance, or manufacture another descent or stage."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Read the general descent and its later approximate halfway limit together. Verify both stop and wait at that location; a single complete stage is valid and has no adjacent handoff."
         }
       ]
     },
@@ -1429,7 +2091,7 @@
       "path": "reviewer/templates/RxR/core/G07_RxR-CORE-R07.json",
       "source_sha256": "77e47bb712fd9263f5bc1a5f53c7afb501dc56f0942b1e78294d527a523b4888",
       "before_sha256": "ac23ff62e1d4c0f404a9397f56e7bfb43d1adf9a08b127757499453527438d45",
-      "after_sha256": "ac57be9095ff5dc13d1de4cf4cc61339bc770e9cfc3d68c9a6b004bcb90780c2",
+      "after_sha256": "ef860eb2dc56ee85a93db93b687630bc13da0dae53aac5588e6530720a13832a",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1449,16 +2111,18 @@
           "after": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity."
         },
         {
+          "path": "/expected_review/handoffs/0/source_requirement_ids/0",
+          "before": "SRC-01",
+          "after": "SRC-02"
+        },
+        {
+          "path": "/expected_review/handoffs/0/source_requirement_ids/1",
+          "before": "SRC-02",
+          "after": "SRC-03"
+        },
+        {
           "path": "/expected_review/handoffs/0/source_requirement_ids/2",
-          "added": "SRC-03"
-        },
-        {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/3",
           "added": "SRC-04"
-        },
-        {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/4",
-          "added": "SRC-05"
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -1470,8 +2134,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1502,40 +2176,79 @@
           "before": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "You start facing a wall."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Begin facing the wall; this is a starting state."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "Turn left and walk towards the white table"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Turn left and approach the white table."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left.",
           "after": {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "walk towards the white table until you are next to it."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 0,
+            "quote": "At that position, the table should be on your left."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Finish the same approach next to the white table with it on the left at that position."
         },
         {
           "path": "/expected_review/source_coverage/3/candidate_evidence/0",
           "before": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+            "quote": "From beside the white table"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "turn right and walk through the open doorway into the kitchen."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "From beside that table, turn right and pass through the open doorway into the kitchen."
         },
         {
           "path": "/expected_review/source_coverage/4/candidate_evidence/0",
           "before": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+            "quote": "Stop just inside the kitchen, facing the sink."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/4/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Stop just inside the entered kitchen while facing the sink, without an additional visit to it."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/candidate_quotes/0",
@@ -1548,6 +2261,20 @@
           "after": "Complete the approach beside the white table, with the table on the left at that position; the side relation alone does not establish proximity."
         },
         {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Turn left and walk towards the white table.",
+          "after": "You start facing a wall."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "You start facing a wall.",
+          "after": "Turn left and walk towards the white table."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "Turn right and walk through the open doorway into the kitchen."
+        },
+        {
           "path": "/expected_review/stage_checks/0/target/candidate_quotes/0",
           "before": "At that position, the table should be on your left.",
           "after": "until you are next to it. At that position, the table should be on your left."
@@ -1556,6 +2283,38 @@
           "path": "/expected_review/stage_checks/0/target/text",
           "before": "At that position, the table should be on your left.",
           "after": "The beside-table position with the table on the left."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/0",
+          "before": "Stop just inside, facing the sink.",
+          "after": "Turn right and walk through the open doorway into the kitchen."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "before": "Turn right and walk through the open doorway into the kitchen.",
+          "after": "Stop just inside, facing the sink."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "Turn left and walk towards the white table."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/3",
+          "removed": "Now you are standing next to the white table, with the table on your left."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not use a side relation alone as arrival evidence, extend an endpoint-only relation over the entire path, or turn a facing reference into a destination."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink."
         }
       ]
     },
@@ -1564,7 +2323,7 @@
       "path": "reviewer/templates/RxR/core/G08_RxR-CORE-R08.json",
       "source_sha256": "f4e266b5b94a53ff51ede313968a703ff3bea1d89b260773e0ec623b29be8c59",
       "before_sha256": "598386caafdbf9f74c761168411508290fc4185deaba898553253aeb0898a1d5",
-      "after_sha256": "9d8b38696753fde246955b4f389bf48d31dec7a514f65582b75adfbe5d684b7c",
+      "after_sha256": "b3cf46d3b15a292e79980fdf4f94f10208411e386b752aab83bcc61909e9b6f0",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1574,8 +2333,14 @@
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/2",
-          "added": "SRC-03"
+          "path": "/expected_review/handoffs/0/source_requirement_ids/0",
+          "before": "SRC-01",
+          "after": "SRC-02"
+        },
+        {
+          "path": "/expected_review/handoffs/0/source_requirement_ids/1",
+          "before": "SRC-02",
+          "after": "SRC-03"
         },
         {
           "path": "/expected_review/handoffs/1/handoff_rationale",
@@ -1585,12 +2350,20 @@
         {
           "path": "/expected_review/handoffs/1/source_requirement_ids/0",
           "before": "SRC-02",
-          "after": "SRC-03"
+          "after": "SRC-01"
         },
         {
           "path": "/expected_review/handoffs/1/source_requirement_ids/1",
           "before": "SRC-03",
-          "after": "SRC-04"
+          "after": "SRC-02"
+        },
+        {
+          "path": "/expected_review/handoffs/1/source_requirement_ids/2",
+          "added": "SRC-03"
+        },
+        {
+          "path": "/expected_review/handoffs/1/source_requirement_ids/3",
+          "added": "SRC-04"
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -1602,8 +2375,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Verify the corrected turn, continuous sofa-side constraint, intermediate window stop and later return to the same door. Repeated door identity does not erase the intervening route."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1634,32 +2417,129 @@
           "before": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
           "after": {
             "subtask_index": 0,
-            "quote": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+            "quote": "Turn right and walk to the blue door next to the stairs"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Apply the explicit left-to-right correction and approach the blue door next to the stairs."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge.",
           "after": {
             "subtask_index": 0,
-            "quote": "Turn right and walk to the blue door next to the stairs, then go through that door into the lounge."
+            "quote": "the blue door next to the stairs"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/candidate_evidence/1",
+          "added": {
+            "subtask_index": 0,
+            "quote": "then go through that door into the lounge."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Enter the lounge through that same identified blue door."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "Cross the lounge with the sofa on your left and stop beside the window.",
           "after": {
             "subtask_index": 1,
-            "quote": "Cross the lounge with the sofa on your left and stop beside the window."
+            "quote": "Cross the lounge with the sofa on your left"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "stop beside the window."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Keep the sofa on the left while crossing the lounge, then make the explicit window-side stop."
         },
         {
           "path": "/expected_review/source_coverage/3/candidate_evidence/0",
           "before": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs.",
           "after": {
             "subtask_index": 2,
-            "quote": "From beside the window, return through the same blue door next to the stairs and stop beside the stairs."
+            "quote": "From beside the window, return through the same blue door next to the stairs"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/candidate_evidence/1",
+          "added": {
+            "subtask_index": 2,
+            "quote": "stop beside the stairs."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "After the window stop, return through the same blue door and stop beside the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/0",
+          "before": "Go through it into the lounge.",
+          "after": "Turn left, sorry, turn right, and walk to the blue door next to the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "before": "Turn left, sorry, turn right, and walk to the blue door next to the stairs.",
+          "after": "Go through it into the lounge."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "removed": "Then return through the same blue door and stop beside the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "Keep the sofa on your left as you cross the lounge and stop beside the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "removed": "Then return through the same blue door and stop beside the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "removed": "Go through it into the lounge."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/3",
+          "removed": "Turn left, sorry, turn right, and walk to the blue door next to the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/1",
+          "removed": "Turn left, sorry, turn right, and walk to the blue door next to the stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/2",
+          "removed": "Keep the sofa on your left as you cross the lounge and stop beside the window."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/source_quotes/3",
+          "removed": "Go through it into the lounge."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not execute the corrected-away left turn, erase the window leg as repetition, or carry the crossing-only sofa constraint over the return."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Verify the corrected turn, continuous sofa-side constraint, intermediate window stop and later return to the same door. Repeated door identity does not erase the intervening route."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Verify the corrected turn, continuous sofa-side constraint, intermediate window stop and later return to the same door. Repeated door identity does not erase the intervening route."
         }
       ]
     },
@@ -1668,7 +2548,7 @@
       "path": "reviewer/templates/RxR/core/G09_RxR-CORE-R09.json",
       "source_sha256": "178868db013921bedfa0c0ac3ffa8e9f4f63388c644c9b15a08f72a2f086538f",
       "before_sha256": "c90022fab4f540ae6c772fca15560b474b112b361b38b5037b1b48c3e02b69c1",
-      "after_sha256": "d064c17e6a1c1871680fae7d096efd18a3d7330b4c7fe105cf71b9613d230af9",
+      "after_sha256": "93f64c6500f4fb9b8e9b6825e1aa7eb3b6d123ea24f1bdd30dc8205cdc2c6f12",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1682,14 +2562,6 @@
           "added": "SRC-03"
         },
         {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/3",
-          "added": "SRC-04"
-        },
-        {
-          "path": "/expected_review/handoffs/0/source_requirement_ids/4",
-          "added": "SRC-05"
-        },
-        {
           "path": "/expected_review/layer_checks/0/finding_indices",
           "added": []
         },
@@ -1699,8 +2571,18 @@
           "after": "not_applicable"
         },
         {
+          "path": "/expected_review/layer_checks/1/conclusion",
+          "before": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+          "after": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient."
+        },
+        {
           "path": "/expected_review/layer_checks/1/finding_indices",
           "added": []
+        },
+        {
+          "path": "/expected_review/layer_checks/2/conclusion",
+          "before": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+          "after": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP."
         },
         {
           "path": "/expected_review/layer_checks/2/finding_indices",
@@ -1731,40 +2613,118 @@
           "before": "Enter the kitchen and stop beside the counter.",
           "after": {
             "subtask_index": 0,
-            "quote": "Enter the kitchen and stop beside the counter."
+            "quote": "Enter the kitchen"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/candidate_evidence/1",
+          "added": {
+            "subtask_index": 0,
+            "quote": "stop beside the counter."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/0/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Enter the kitchen and make the source-required intermediate counter-side stop."
         },
         {
           "path": "/expected_review/source_coverage/1/candidate_evidence/0",
           "before": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "From beside the counter, if the door to the laundry room is open, go through it"
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/1/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "From the counter, take the laundry door only under its stated open condition."
         },
         {
           "path": "/expected_review/source_coverage/2/candidate_evidence/0",
           "before": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "if the door to the laundry room is open, go through it; otherwise use the open archway beside that door."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/2/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Otherwise use the open archway beside that door, not both branches unconditionally."
         },
         {
           "path": "/expected_review/source_coverage/3/candidate_evidence/0",
           "before": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "Both entrances lead into the laundry room."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/3/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "Both conditional entrances lead into the same laundry room."
         },
         {
           "path": "/expected_review/source_coverage/4/candidate_evidence/0",
           "before": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink.",
           "after": {
             "subtask_index": 1,
-            "quote": "From beside the counter, if the door to the laundry room is open, go through it; otherwise use the open archway beside that door. Both entrances lead into the laundry room. Once inside the laundry room, stop at the sink."
+            "quote": "Once inside the laundry room, stop at the sink."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/4/requirement",
+          "before": "Preserve this route event or constraint in its source order.",
+          "after": "After laundry-room entry, stop at the sink."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/1",
+          "removed": "Once inside the laundry room, stop at the sink."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/2",
+          "removed": "otherwise use the open archway beside that door."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/source_quotes/3",
+          "removed": "From the counter, if the door to the laundry room is open, go through it"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/0",
+          "before": "Once inside the laundry room, stop at the sink.",
+          "after": "From the counter, if the door to the laundry room is open, go through it"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/1",
+          "before": "Both entrances lead into the laundry room.",
+          "after": "otherwise use the open archway beside that door."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/2",
+          "before": "otherwise use the open archway beside that door.",
+          "after": "Both entrances lead into the laundry room."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/source_quotes/3",
+          "before": "From the counter, if the door to the laundry room is open, go through it",
+          "after": "Once inside the laundry room, stop at the sink."
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "before": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
+          "after": "Do not execute both mutually exclusive branches, treat them as descriptive uncertainty, or cancel the counter stop because the route continues."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
+          "after": "Verify counter placement, the door-open condition and otherwise alternative, their common destination, and the inside-laundry sink stop. Preserve the source's intermediate stop without making every cut a STOP."
         }
       ]
     },
@@ -1773,7 +2733,7 @@
       "path": "reviewer/templates/RxR/core/G10_RxR-CORE-R10.json",
       "source_sha256": "457da8cd5d19f4571e67a8acc29d2f1abf39c0e8eba5a849c9ca165f80940cba",
       "before_sha256": "4d4367fe1b368cbd7aede42de959cc764e6017bc11376c844ae4c564ede6c94e",
-      "after_sha256": "b42ffdce4ba8d4cbc751d37716fdf792bfa1e9b5c7740b08ec4e7803b4d1773a",
+      "after_sha256": "37e43e4f478767ea27f19d58ebd7deb0ff9ce24570bf5b32a09ecf8601140126",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -1790,6 +2750,19 @@
         {
           "path": "/expected_review/prior_finding_reviews",
           "added": []
+        },
+        {
+          "path": "/teaching_notes/anti_pattern",
+          "added": "Do not generalize this source ambiguity to ordinary descriptive uncertainty or to context lost only because of a bad candidate boundary."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "added": "Confirm that merging or reading the full source cannot identify there or the turn direction. Return source-limited unresolved rather than a speculative PASS or a candidate-only repair."
+        },
+        {
+          "path": "/teaching_notes/reuse_rule",
+          "before": "Use unresolved only after sensible merging still leaves an essential route choice unsupported. A weak candidate boundary is revise, not unresolved.",
+          "after": "Confirm that merging or reading the full source cannot identify there or the turn direction. Return source-limited unresolved rather than a speculative PASS or a candidate-only repair."
         }
       ]
     },
@@ -14506,8 +15479,8 @@
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-27.json",
       "source_sha256": "9e80174bb38dc2466039d7c2726b2178f5c150e75c2ed40c1e8f97066c3bff31",
       "before_sha256": "08c91fe562c426e511c06a9f9ad15c9a240e54a806a6746e25534039cef236ec",
-      "after_sha256": "c9860f37676db12712d7e135ebcecf7ccb3cc3a2f060f0f2b70c4c9e57d6a3a4",
-      "candidate_changed": false,
+      "after_sha256": "f0d9c89b3501f56c33a500e036628244474482ffce5bfb6a45c1df2548ff9587",
+      "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
         {
@@ -14788,10 +15761,10 @@
             "candidate_evidence": [
               {
                 "subtask_index": 0,
-                "quote": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target."
+                "quote": "From near the open back door, you should see a room or another door at the back of it."
               }
             ],
-            "requirement": "Preserve the spatial transition and region/threshold: you should see a room or another door at the back of it",
+            "requirement": "Preserve the expected room-or-door view from the back-door position without selecting an unsupported alternative or adding a viewing action.",
             "requirement_id": "SRC-06",
             "source_quote": "you should see a room or another door at the back of it",
             "status": "covered"
@@ -14802,13 +15775,17 @@
           "added": {
             "candidate_evidence": [
               {
-                "quote": "at the back of the brown chairs",
-                "subtask_index": 0
+                "subtask_index": 0,
+                "quote": "Walk towards that target."
+              },
+              {
+                "subtask_index": 0,
+                "quote": "You should now be standing near a desk and at the back of the brown chairs."
               }
             ],
-            "requirement": "Preserve the ordered route action or target-identifying landmark: at the back of the brown chairs",
+            "requirement": "Walk toward the described target and retain the resulting desk-near, behind-brown-chairs state.",
             "requirement_id": "SRC-07",
-            "source_quote": "at the back of the brown chairs",
+            "source_quote": "walk towards that and now you should be standing near a desk and  at the back of the brown chairs",
             "status": "covered"
           }
         },
@@ -14818,10 +15795,10 @@
             "candidate_evidence": [
               {
                 "subtask_index": 0,
-                "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+                "quote": "When you are standing at the chair, turn right."
               }
             ],
-            "requirement": "Preserve the directional/spatial relation and its reference frame: when you are standing at the chair turn right",
+            "requirement": "At the stated chair position, turn right; do not add a further movement command.",
             "requirement_id": "SRC-08",
             "source_quote": "when you are standing at the chair turn right",
             "status": "covered"
@@ -14833,10 +15810,10 @@
             "candidate_evidence": [
               {
                 "subtask_index": 0,
-                "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+                "quote": "Now you should be standing near the foot of the bed; once you are here, you are done."
               }
             ],
-            "requirement": "Preserve the temporal trigger/order and its scope: now you should be standing near the foot of the bed, once you are here you are done.",
+            "requirement": "Preserve the stated final position near the foot of the bed and completion without inferring additional distance.",
             "requirement_id": "SRC-09",
             "source_quote": "now you should be standing near the foot of the bed, once you are here you are done.",
             "status": "covered"
@@ -14855,36 +15832,37 @@
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
           "before": "a room or another door",
-          "after": "When you are standing at the chair"
+          "after": "When you are standing at the chair, turn right."
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
           "before": "standing near the foot of the bed",
-          "after": "until you are standing near the foot of the bed"
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/text",
           "before": "no-outside prohibition; intermediate stand-near-opening state; uncertain room/door referent; desk/chair relation and final bed position",
-          "after": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed."
+          "after": "Do not resolve room-or-door descriptive uncertainty into another route. Preserve the desk and behind-chair relations, the right turn at the chair, and the final bed-foot state. Expected standing is not a new movement command."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/candidate_quotes/0",
           "before": "standing near the foot of the bed",
-          "after": "continue until you are standing near the foot of the bed"
-        },
-        {
-          "path": "/expected_review/stage_checks/0/ending/candidate_quotes/1",
-          "added": "This is your destination."
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/text",
           "before": "Reach the final standing position near the foot of the bed.",
-          "after": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement."
+          "after": "Finish in the stated near-foot-of-bed position. The source describes this state after the chair-side right turn; no extra continue-until movement is prescribed."
         },
         {
           "path": "/expected_review/stage_checks/0/entry/text",
           "before": "Use the episode start or the immediately preceding established endpoint; do not infer an unperformed transition.",
           "after": "Begin from the stated bedroom-facing start."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/process/candidate_quotes/0",
+          "before": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
         },
         {
           "path": "/expected_review/stage_checks/0/process/text",
@@ -14920,7 +15898,7 @@
         },
         {
           "path": "/expected_review/stage_checks/0/source_quotes/6",
-          "added": "at the back of the brown chairs"
+          "added": "walk towards that and now you should be standing near a desk and  at the back of the brown chairs"
         },
         {
           "path": "/expected_review/stage_checks/0/source_quotes/7",
@@ -14963,6 +15941,11 @@
           "path": "/expected_review/stage_checks/0/target/text",
           "before": "the final standing position near the foot of the bed",
           "after": "The final standing position near the foot of the bed."
+        },
+        {
+          "path": "/review_input/candidate/subtasks/0",
+          "before": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "You are facing a bedroom. Turn around to face the two chairs on the wall; the kitchen with blue cabinets and a steel oven is straight ahead, with the rocks outside as an additional visual reference. Turn right and move towards the same area with the chairs. When you are standing next to the black chairs, look straight ahead towards the opening to go outside. Do not go outside; move near the opening and stand there. From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
         },
         {
           "path": "/teaching_notes/case_specific_focus",
@@ -15621,7 +16604,7 @@
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-29.json",
       "source_sha256": "9cb1a566ed5cd9fa63b5d0f63088e3fc2815134df86b143246ef5e193131bcff",
       "before_sha256": "6f2e174b46290bc808bd6870a7a538fc278c36dc0d433371f435b734cf2d4537",
-      "after_sha256": "b8a71afcb506ff75d3ec37bc2471353e463d61691a2886d31ae5ff4715cab030",
+      "after_sha256": "560af2781c1a42f1b59db77462d17776d8b30aa3861462d1e95371899bd0fdb7",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -15641,7 +16624,7 @@
           "before": "a glass window on your left",
           "after": {
             "subtask_index": 0,
-            "quote": "A glass window is on your left;"
+            "quote": "A glass window is on your left"
           }
         },
         {
@@ -15729,6 +16712,11 @@
         {
           "path": "/expected_review/handoffs/0/source_requirement_ids/2",
           "added": "SRC-08"
+        },
+        {
+          "path": "/expected_review/layer_checks/0/conclusion",
+          "before": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+          "after": "No rendered artifact is supplied in this teaching case; review the actual candidate text without claiming renderer verification."
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -15870,7 +16858,7 @@
         {
           "path": "/expected_review/source_coverage/4/candidate_evidence/1",
           "added": {
-            "quote": "A glass window is on your left; an open door is in front of you.",
+            "quote": "A glass window is on your left and an open door in front of you.",
             "subtask_index": 0
           }
         },
@@ -15938,7 +16926,7 @@
             "candidate_evidence": [
               {
                 "subtask_index": 0,
-                "quote": "A glass window is on your left;"
+                "quote": "A glass window is on your left"
               }
             ],
             "status": "altered_or_missing"
@@ -15956,11 +16944,11 @@
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
-          "added": "A glass window is on your left;"
+          "added": "A glass window is on your left"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
-          "added": "an open door is in front of you"
+          "added": "an open door in front of you"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/4",
@@ -15969,7 +16957,7 @@
         {
           "path": "/expected_review/stage_checks/0/conditions/text",
           "before": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch.",
-          "after": "Source requires The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference;; candidate instead states A glass window is on your left;. The candidate silently resolves the conflicting auxiliary window-side description to the left."
+          "after": "Source requires On your right a glass window on your left; candidate instead states A glass window is on your left. The candidate silently resolves the conflicting auxiliary window-side description to the left."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/text",
@@ -15979,7 +16967,7 @@
         {
           "path": "/expected_review/stage_checks/0/process/candidate_quotes/0",
           "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. a glass window on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
-          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
         },
         {
           "path": "/expected_review/stage_checks/0/process/text",
@@ -16030,6 +17018,11 @@
           "path": "/expected_review/stage_checks/0/status",
           "before": "supported",
           "after": "gap"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/target/candidate_quotes/0",
+          "before": "an open door is in front of you",
+          "after": "an open door in front of you"
         },
         {
           "path": "/expected_review/stage_checks/0/target/candidate_quotes/1",
@@ -16118,7 +17111,7 @@
         {
           "path": "/review_input/candidate/subtasks/0",
           "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. a glass window on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
-          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
         },
         {
           "path": "/teaching_notes/anti_pattern",
@@ -16166,8 +17159,8 @@
       "path": "generator/templates/RxR/val_seen/002_RxR-GEN-002.json",
       "source_sha256": "9cb1a566ed5cd9fa63b5d0f63088e3fc2815134df86b143246ef5e193131bcff",
       "before_sha256": "d1c00c48480d9c6ca386522a8956e9763c2946b891efbb0d027de8c8e1dec8d9",
-      "after_sha256": "b52e2ae275a8286736b419ab92bc19e7947a82848d5eac40ac147601a81d1c21",
-      "candidate_changed": false,
+      "after_sha256": "f25fd972b8d052a43a1a7d0e234f1c913e635258a56b88fa1f76778c6c950595",
+      "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
         {
@@ -16190,14 +17183,53 @@
           "added": "SRC-08"
         },
         {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/2",
+          "before": "conflicting left/right descriptions for the glass window",
+          "after": "On your right a glass window on your left"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/3",
+          "before": "an open door is in front of you",
+          "after": "an open door in front of you"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/text",
+          "before": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch.",
+          "after": "Preserve the ordered turns and few-step approach. The contradictory window-side wording is retained without choosing a side; the open door ahead and agent-relative bench cue identify the commanded route. This does not license ignoring a route-critical conflict in another source."
+        },
+        {
           "path": "/output/stage_audit/0/ending/text",
           "before": "Reach the selected open door identified by the black bench on its right. The conflicting glass-window side is not used to select a different route.",
           "after": "Reach the selected open door identified by the black bench on your right. The conflicting glass-window side is not used to select a different route."
         },
         {
+          "path": "/output/stage_audit/0/process/candidate_quotes/5",
+          "before": "conflicting left/right descriptions for the glass window",
+          "after": "On your right a glass window on your left"
+        },
+        {
+          "path": "/output/stage_audit/0/process/text",
+          "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+        },
+        {
+          "path": "/output/stage_audit/0/target/candidate_quotes/0",
+          "before": "an open door is in front of you",
+          "after": "an open door in front of you"
+        },
+        {
           "path": "/output/stage_audit/0/target/text",
           "before": "The open door in front, identified by the black bench on its right; the glass window is only an uncertain auxiliary visual reference.",
           "after": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference."
+        },
+        {
+          "path": "/output/subtasks/0",
+          "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door."
         }
       ]
     },
@@ -16871,8 +17903,8 @@
       "path": "generator/templates/RxR/val_seen/020_RxR-GEN-020.json",
       "source_sha256": "9e80174bb38dc2466039d7c2726b2178f5c150e75c2ed40c1e8f97066c3bff31",
       "before_sha256": "5f1bb6d29de663aa45dbfc7528baac8bea55b6bcfd15719200b224753867eb13",
-      "after_sha256": "fa863530b7cd2522ffff183469cbd7b36c54b452a8a22a6560da1b7fbaa87869",
-      "candidate_changed": false,
+      "after_sha256": "2a36fc5de22657097a0a1e047c67d8e7466a9e29b328bf233f82ea92d54a81f9",
+      "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
         {
@@ -16884,6 +17916,68 @@
           "path": "/output/handoffs/0/source_requirement_ids/1",
           "before": "SRC-05",
           "after": "SRC-06"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/2",
+          "before": "When you are standing at the chair",
+          "after": "When you are standing at the chair, turn right."
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/3",
+          "before": "until you are standing near the foot of the bed",
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/text",
+          "before": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed.",
+          "after": "Do not resolve room-or-door descriptive uncertainty into another route. Preserve the desk and behind-chair relations, the right turn at the chair, and the final bed-foot state. Expected standing is not a new movement command."
+        },
+        {
+          "path": "/output/stage_audit/1/ending/candidate_quotes/0",
+          "before": "continue until you are standing near the foot of the bed",
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/output/stage_audit/1/ending/candidate_quotes/1",
+          "removed": "This is your destination."
+        },
+        {
+          "path": "/output/stage_audit/1/ending/text",
+          "before": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement.",
+          "after": "Finish in the stated near-foot-of-bed position. The source describes this state after the chair-side right turn; no extra continue-until movement is prescribed."
+        },
+        {
+          "path": "/output/stage_audit/1/process/candidate_quotes/0",
+          "before": "look towards a room or another door visible at the back of it and move towards that target",
+          "after": "From near the open back door, you should see a room or another door at the back of it. Walk towards that target."
+        },
+        {
+          "path": "/output/stage_audit/1/process/candidate_quotes/1",
+          "before": "near a desk and at the back of the brown chairs",
+          "after": "You should now be standing near a desk and at the back of the brown chairs."
+        },
+        {
+          "path": "/output/stage_audit/1/process/candidate_quotes/2",
+          "before": "When you are standing at the chair, turn right",
+          "after": "When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/output/stage_audit/1/process/candidate_quotes/3",
+          "removed": "continue until you are standing near the foot of the bed"
+        },
+        {
+          "path": "/output/stage_audit/1/process/text",
+          "before": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "From the established back-door position, retain the expected room-or-door observation, walk toward that target, preserve the resulting desk/chair state, turn right at the chair, and retain the stated foot-of-bed final state without commanding another traversal."
+        },
+        {
+          "path": "/output/subtasks/1",
+          "before": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Preserve the explicit stand-near-opening intermediate stop and the final foot-of-bed state. Keep expected observations and result states as such; do not add look or continue-until commands merely to make the audit appear closed."
         }
       ]
     },
@@ -17511,8 +18605,8 @@
       "path": "reviewer/templates/RxR/paired/002_RxR-REV-002.json",
       "source_sha256": "9cb1a566ed5cd9fa63b5d0f63088e3fc2815134df86b143246ef5e193131bcff",
       "before_sha256": "a60b9f5b941521de8a104cdbbb2d7fcde88df5a84d0a31b94e4a6c7bec58d7f0",
-      "after_sha256": "fd08a620dcf9572d92a6ee57ff8e5481d57889e843e6900feb49e9c2e111a012",
-      "candidate_changed": false,
+      "after_sha256": "6b3aec96a047a91b744ecd3538e6447a58deb7c6a3ebdbc730e47aa009634036",
+      "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
         {
@@ -17533,6 +18627,11 @@
         {
           "path": "/expected_review/handoffs/0/source_requirement_ids/2",
           "added": "SRC-08"
+        },
+        {
+          "path": "/expected_review/layer_checks/0/conclusion",
+          "before": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+          "after": "No rendered artifact is supplied in this teaching case; review the actual candidate text without claiming renderer verification."
         },
         {
           "path": "/expected_review/layer_checks/0/finding_indices",
@@ -17657,7 +18756,7 @@
           "path": "/expected_review/source_coverage/4/candidate_evidence/1",
           "before": "Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front.",
           "after": {
-            "quote": "The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you.",
+            "quote": "On your right a glass window on your left and an open door in front of you.",
             "subtask_index": 0
           }
         },
@@ -17712,9 +18811,34 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
+          "before": "conflicting left/right descriptions for the glass window",
+          "after": "On your right a glass window on your left"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
+          "before": "an open door is in front of you",
+          "after": "an open door in front of you"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch.",
+          "after": "Preserve the ordered turns and few-step approach. The contradictory window-side wording is retained without choosing a side; the open door ahead and agent-relative bench cue identify the commanded route. This does not license ignoring a route-critical conflict in another source."
+        },
+        {
           "path": "/expected_review/stage_checks/0/ending/text",
           "before": "Reach the selected open door identified by the black bench on its right. The conflicting glass-window side is not used to select a different route.",
           "after": "Reach the selected open door identified by the black bench on your right. The conflicting glass-window side is not used to select a different route."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/process/candidate_quotes/5",
+          "before": "conflicting left/right descriptions for the glass window",
+          "after": "On your right a glass window on your left"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/process/text",
+          "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
         },
         {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
@@ -17751,6 +18875,11 @@
         {
           "path": "/expected_review/stage_checks/0/source_requirement_ids/6",
           "added": "SRC-07"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/target/candidate_quotes/0",
+          "before": "an open door is in front of you",
+          "after": "an open door in front of you"
         },
         {
           "path": "/expected_review/stage_checks/0/target/text",
@@ -17794,6 +18923,20 @@
         {
           "path": "/expected_review/stage_checks/1/source_requirement_ids/3",
           "removed": "SRC-10"
+        },
+        {
+          "path": "/review_input/candidate/subtasks/0",
+          "before": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+          "after": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "before": "Do not silently delete a contradictory auxiliary spatial cue; preserve it as uncertainty while checking whether the actual navigation target remains uniquely identifiable.",
+          "after": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door."
         }
       ]
     },
@@ -20938,17 +22081,22 @@
       "path": "reviewer/templates/RxR/paired/020_RxR-REV-020.json",
       "source_sha256": "9e80174bb38dc2466039d7c2726b2178f5c150e75c2ed40c1e8f97066c3bff31",
       "before_sha256": "dd8298c98f25229ec44ed55f67d1f6f1b4b48aa3d349333769837c705aceb492",
-      "after_sha256": "9061fb914c7ddc11fba010f41d7e7d464d9e4deaadd42f4b32929b56e2f18109",
-      "candidate_changed": false,
+      "after_sha256": "9c045162c7784a8318099bc6d25011e7d8dda615650395e3355ae576bbb67629",
+      "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
         {
           "path": "/expected_review/layer_checks/0/conclusion",
-          "added": "The actual English stages are the reviewed candidate; no renderer-only issue is present."
+          "added": "No rendered artifact is supplied; this example reviews the actual candidate, not an unobserved rendering."
         },
         {
           "path": "/expected_review/layer_checks/0/note",
           "removed": "The actual English stages are the reviewed candidate; no renderer-only issue is present."
+        },
+        {
+          "path": "/expected_review/layer_checks/0/status",
+          "before": "pass",
+          "after": "not_applicable"
         },
         {
           "path": "/expected_review/layer_checks/1/conclusion",
@@ -20968,7 +22116,7 @@
         },
         {
           "path": "/expected_review/layer_checks/3/conclusion",
-          "added": "The final stage explicitly preserves the source-required standing-near-foot-of-bed position; it is not weakened to an approach-only directive."
+          "added": "The intermediate stand and final foot-of-bed state remain explicit. Expected observation and standing clauses do not create extra looking or locomotion commands."
         },
         {
           "path": "/expected_review/layer_checks/3/note",
@@ -21047,32 +22195,64 @@
           "before": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target.",
           "after": {
             "subtask_index": 1,
-            "quote": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target."
+            "quote": "From near the open back door, you should see a room or another door at the back of it."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/5/requirement",
+          "before": "Preserve the spatial transition and region/threshold: you should see a room or another door at the back of it",
+          "after": "Preserve the expected room-or-door view from the back-door position without selecting an unsupported alternative or adding a viewing action."
         },
         {
           "path": "/expected_review/source_coverage/6/candidate_evidence/0",
           "before": "Continue until you are near a desk and at the back of the brown chairs.",
           "after": {
-            "quote": "at the back of the brown chairs",
-            "subtask_index": 1
+            "subtask_index": 1,
+            "quote": "Walk towards that target."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/6/candidate_evidence/1",
+          "added": {
+            "subtask_index": 1,
+            "quote": "You should now be standing near a desk and at the back of the brown chairs."
+          }
+        },
+        {
+          "path": "/expected_review/source_coverage/6/requirement",
+          "before": "Preserve the ordered route action or target-identifying landmark: at the back of the brown chairs",
+          "after": "Walk toward the described target and retain the resulting desk-near, behind-brown-chairs state."
+        },
+        {
+          "path": "/expected_review/source_coverage/6/source_quote",
+          "before": "at the back of the brown chairs",
+          "after": "walk towards that and now you should be standing near a desk and  at the back of the brown chairs"
         },
         {
           "path": "/expected_review/source_coverage/7/candidate_evidence/0",
           "before": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed.",
           "after": {
             "subtask_index": 1,
-            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+            "quote": "When you are standing at the chair, turn right."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/7/requirement",
+          "before": "Preserve the directional/spatial relation and its reference frame: when you are standing at the chair turn right",
+          "after": "At the stated chair position, turn right; do not add a further movement command."
         },
         {
           "path": "/expected_review/source_coverage/8/candidate_evidence/0",
           "before": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed.",
           "after": {
             "subtask_index": 1,
-            "quote": "When you are standing at the chair, turn right and continue until you are standing near the foot of the bed."
+            "quote": "Now you should be standing near the foot of the bed; once you are here, you are done."
           }
+        },
+        {
+          "path": "/expected_review/source_coverage/8/requirement",
+          "before": "Preserve the temporal trigger/order and its scope: now you should be standing near the foot of the bed, once you are here you are done.",
+          "after": "Preserve the stated final position near the foot of the bed and completion without inferring additional distance."
         },
         {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
@@ -21099,9 +22279,76 @@
           "added": "do not go outside just go near and stand"
         },
         {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/2",
+          "before": "When you are standing at the chair",
+          "after": "When you are standing at the chair, turn right."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/3",
+          "before": "until you are standing near the foot of the bed",
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/text",
+          "before": "referent_uncertainty: 'a room or another door' is preserved as an uncertain visual description, not a navigation branch; temporal: once near the open back door, then continue to the desk/chair and turn right; spatial frame: behind the brown chairs, right turn, foot of bed.",
+          "after": "Do not resolve room-or-door descriptive uncertainty into another route. Preserve the desk and behind-chair relations, the right turn at the chair, and the final bed-foot state. Expected standing is not a new movement command."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/ending/candidate_quotes/0",
+          "before": "continue until you are standing near the foot of the bed",
+          "after": "Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/ending/candidate_quotes/1",
+          "removed": "This is your destination."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/ending/text",
+          "before": "Complete the source-specified final placement: be standing near the foot of the bed. 'This is your destination' confirms the endpoint but does not replace the position requirement.",
+          "after": "Finish in the stated near-foot-of-bed position. The source describes this state after the chair-side right turn; no extra continue-until movement is prescribed."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/process/candidate_quotes/0",
+          "before": "look towards a room or another door visible at the back of it and move towards that target",
+          "after": "From near the open back door, you should see a room or another door at the back of it. Walk towards that target."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/process/candidate_quotes/1",
+          "before": "near a desk and at the back of the brown chairs",
+          "after": "You should now be standing near a desk and at the back of the brown chairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/process/candidate_quotes/2",
+          "before": "When you are standing at the chair, turn right",
+          "after": "When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/process/candidate_quotes/3",
+          "removed": "continue until you are standing near the foot of the bed"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/process/text",
+          "before": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "From the established back-door position, retain the expected room-or-door observation, walk toward that target, preserve the resulting desk/chair state, turn right at the chair, and retain the stated foot-of-bed final state without commanding another traversal."
+        },
+        {
           "path": "/expected_review/stage_checks/1/source_quotes/1",
           "before": "walk towards that and now you should be standing near a desk and  at the back of the brown chairs",
           "after": "at the back of the brown chairs"
+        },
+        {
+          "path": "/review_input/candidate/subtasks/1",
+          "before": "From near the open back door, look towards a room or another door visible at the back of it and move towards that target. Continue until you are near a desk and at the back of the brown chairs. When you are standing at the chair, turn right and continue until you are standing near the foot of the bed. This is your destination.",
+          "after": "From near the open back door, you should see a room or another door at the back of it. Walk towards that target. You should now be standing near a desk and at the back of the brown chairs. When you are standing at the chair, turn right. Now you should be standing near the foot of the bed; once you are here, you are done."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Preserve the explicit stand-near-opening intermediate stop and the final foot-of-bed state. Keep expected observations and result states as such; do not add look or continue-until commands merely to make the audit appear closed."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "before": "Preserve the directional/spatial relation and its reference frame: You are facing a bedroom; Preserve the directional/spatial relation and its reference frame: turn around; Preserve the ordered route action or target-identifying landmark: a kitchen with blue cabinets and the steel oven and…",
+          "after": "Preserve the explicit stand-near-opening intermediate stop and the final foot-of-bed state. Keep expected observations and result states as such; do not add look or continue-until commands merely to make the audit appear closed."
         }
       ]
     },

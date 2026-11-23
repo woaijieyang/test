@@ -28,7 +28,7 @@
   "output": {
     "status": "ok",
     "subtasks": [
-      "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+      "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
       "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
     ],
     "stage_audit": [
@@ -42,19 +42,19 @@
         "target": {
           "text": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference.",
           "candidate_quotes": [
-            "an open door is in front of you",
+            "an open door in front of you",
             "black bench on your right"
           ]
         },
         "process": {
-          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+          "text": "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. On your right a glass window on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
           "candidate_quotes": [
             "Turn right and exit.",
             "Move towards the stairs on your right",
             "turn left and take a few steps towards the two entrances in front",
             "Then turn left.",
             "wine room on your right",
-            "conflicting left/right descriptions for the glass window",
+            "On your right a glass window on your left",
             "Go towards the open door which has a black bench on your right until you reach that open door."
           ]
         },
@@ -67,12 +67,12 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two entrances ahead, open door ahead; referent/descriptive spatial uncertainty: the glass window is described with conflicting right/left relations in the source. The open door with the black bench remains the selected navigation target; do not choose a window side or create a route branch.",
+          "text": "Preserve the ordered turns and few-step approach. The contradictory window-side wording is retained without choosing a side; the open door ahead and agent-relative bench cue identify the commanded route. This does not license ignoring a route-critical conflict in another source.",
           "candidate_quotes": [
             "two entrances in front",
             "wine room on your right",
-            "conflicting left/right descriptions for the glass window",
-            "an open door is in front of you",
+            "On your right a glass window on your left",
+            "an open door in front of you",
             "black bench on your right"
           ]
         },
@@ -166,7 +166,8 @@
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: temporal: then/once preserve order; ordinal_or_count: two entrances; spatial_frame: wine room right, two… Stage 2: temporal: Once; spatial_frame: on your, right, left, ahead",
     "handoff_focus": "Stage 1 ends with 'until you reach that open door.'; stage 2 begins from 'Once you are at that open door with the black bench on your right, turn left and proceed…'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "Preserve the auxiliary window-side wording without choosing a side or placing source-analysis commentary in executable text. Keep the door-ahead target and the bench on your right; do not transfer the bench relation to the door."
   },
   "retrieval_tags": [
     "room_transition",

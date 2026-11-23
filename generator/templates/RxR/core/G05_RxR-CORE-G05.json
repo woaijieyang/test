@@ -147,10 +147,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "late_target_description_binding",
-    "why_this_case_matters": "Move the darker-wall description into the stage that selects the first right-hand bathroom doorway; retain both doorway proximity and wall colour.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff.",
+    "reusable_rule": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "Later descriptive information belongs before target selection when it disambiguates the earlier referent."
+    "anti_pattern": "Do not treat identification of the dark-wall door as completed entry, redefine the ordinal counting scope, or drop the late identifying description.",
+    "case_rationale": "Bind the close-doorway and dark-wall descriptions to bathroom-door selection. These properties identify the requested door; only the actual entry establishes the inside-bathroom handoff."
   },
   "retrieval_tags": [
     "room_transition",

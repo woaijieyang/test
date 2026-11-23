@@ -152,10 +152,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "expected_state_and_endpoint_orientation",
-    "why_this_case_matters": "Use the narrated beside-table state as the intended result of the approach, then hand off from that state into the kitchen.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop.",
+    "reusable_rule": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "Keep the table-on-left relation endpoint-scoped; do not turn it into a constraint over the whole approach."
+    "anti_pattern": "Do not use a side relation alone as arrival evidence, extend an endpoint-only relation over the entire path, or turn a facing reference into a destination.",
+    "case_rationale": "The later beside-table state refines the table approach. Preserve proximity and the left-side relation at that position, then the right turn, kitchen entry and just-inside sink-facing stop."
   },
   "retrieval_tags": [
     "room_transition",

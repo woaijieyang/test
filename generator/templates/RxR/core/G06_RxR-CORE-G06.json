@@ -78,10 +78,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "endpoint_refinement_and_bounded_motion",
-    "why_this_case_matters": "Collapse the full-staircase wording and later halfway refinement into one descent ending halfway, followed by the explicit stop/wait.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement.",
+    "reusable_rule": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "Do not execute a full descent and then repeat the descent to halfway."
+    "anti_pattern": "Do not complete the whole staircase first, convert about halfway into an exact distance, or manufacture another descent or stage.",
+    "case_rationale": "Halfway down refines the same staircase descent. Descend only about halfway, then stop and wait there; this is one bounded event, not a full descent followed by a second movement."
   },
   "retrieval_tags": [
     "stairs_or_level_change",

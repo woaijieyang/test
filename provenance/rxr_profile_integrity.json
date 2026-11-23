@@ -19,43 +19,43 @@
     },
     {
       "path": "generator/templates/RxR/core/G01_RxR-CORE-G01.json",
-      "git_blob_sha1": "64ea9ce3aad8e95ed1d28b4129ed67f6c7f337fd"
+      "git_blob_sha1": "26daf632abb4c43f2c897ba71537a1e8d020fec7"
     },
     {
       "path": "generator/templates/RxR/core/G02_RxR-CORE-G02.json",
-      "git_blob_sha1": "930a9645d70d18bb4842f6d986394289eaf20910"
+      "git_blob_sha1": "43a0490f6c8330b9b1758d61f31750fe75ad8847"
     },
     {
       "path": "generator/templates/RxR/core/G03_RxR-CORE-G03.json",
-      "git_blob_sha1": "76837ec55a549b93af794439fca2f64d07091f0e"
+      "git_blob_sha1": "83b89ca4ae404898b265ea5ec03ac3ccd57e338e"
     },
     {
       "path": "generator/templates/RxR/core/G04_RxR-CORE-G04.json",
-      "git_blob_sha1": "ca85c9046bc66321bc3705df32306e76acd7e72c"
+      "git_blob_sha1": "41ad8a203aec8156cbad8973fb10ccd4cf8608e1"
     },
     {
       "path": "generator/templates/RxR/core/G05_RxR-CORE-G05.json",
-      "git_blob_sha1": "6687357e9cd792b291c0798c49454f8cde5a2fc0"
+      "git_blob_sha1": "91bc1689944f3ebf4eb9573a167e06d6bf3f9f28"
     },
     {
       "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
-      "git_blob_sha1": "442d4d76debefa4f4630a7edb512d3bb85831f17"
+      "git_blob_sha1": "aebe22e4c7ccc8665f6f3ca502101a5cfe75f26f"
     },
     {
       "path": "generator/templates/RxR/core/G07_RxR-CORE-G07.json",
-      "git_blob_sha1": "6b21ae0f9183b670ab689a8fc2d2db854a8ea79b"
+      "git_blob_sha1": "5f0188f697f2a40231ac4172ba184cddf5277142"
     },
     {
       "path": "generator/templates/RxR/core/G08_RxR-CORE-G08.json",
-      "git_blob_sha1": "3d7e85c15bf23b9134baa865e522b192caf2ca57"
+      "git_blob_sha1": "c0ccb1708bcd8842ab093069b8dc992abc07b857"
     },
     {
       "path": "generator/templates/RxR/core/G09_RxR-CORE-G09.json",
-      "git_blob_sha1": "b42165f4a75e5c9270283f41da24f8353dd70e3b"
+      "git_blob_sha1": "936ab61c0ed55b512b97b2c5aa89075d9ee1ac0c"
     },
     {
       "path": "generator/templates/RxR/core/G10_RxR-CORE-G10.json",
-      "git_blob_sha1": "7333a8cdb158a4bbf4b048db1a24f5a2143f58e3"
+      "git_blob_sha1": "6e61b90345e3bbf15612f435ab1eb8f61e08460e"
     },
     {
       "path": "generator/templates/RxR/core/README.md",
@@ -139,7 +139,7 @@
     },
     {
       "path": "generator/templates/RxR/val_seen/002_RxR-GEN-002.json",
-      "git_blob_sha1": "6b9a91b11bde54c445ca111f21c20bd3399115da"
+      "git_blob_sha1": "4a1b3924398b15b7760bc0dcd20b245d36d93447"
     },
     {
       "path": "generator/templates/RxR/val_seen/003_RxR-GEN-003.json",
@@ -211,7 +211,7 @@
     },
     {
       "path": "generator/templates/RxR/val_seen/020_RxR-GEN-020.json",
-      "git_blob_sha1": "441a453da237d9958bbd8b629d47b449dbc076d5"
+      "git_blob_sha1": "9606fa018a3ad744d505fb99a83eed8c56e3c97e"
     },
     {
       "path": "generator/templates/RxR/val_seen/021_RxR-GEN-021.json",
@@ -303,43 +303,43 @@
     },
     {
       "path": "reviewer/templates/RxR/core/G01_RxR-CORE-R01.json",
-      "git_blob_sha1": "7cab63db4a7ac1d9b36118a85984fd6203221f17"
+      "git_blob_sha1": "147996d0d0ec5505e04c74ffe88a73a3cb11af87"
     },
     {
       "path": "reviewer/templates/RxR/core/G02_RxR-CORE-R02.json",
-      "git_blob_sha1": "0b75e58754a2521bbf4ba61777f5b17b9a88660d"
+      "git_blob_sha1": "74a3184598425363a30c5c5f3877ab44db1623c7"
     },
     {
       "path": "reviewer/templates/RxR/core/G03_RxR-CORE-R03.json",
-      "git_blob_sha1": "3b958fbf0739911fe3dc630c0187bc00d7a479e2"
+      "git_blob_sha1": "c932be5eddfe164149380844479290a5c800c555"
     },
     {
       "path": "reviewer/templates/RxR/core/G04_RxR-CORE-R04.json",
-      "git_blob_sha1": "16113b37565bfca541d3a91c421185423bfff046"
+      "git_blob_sha1": "9df60f62682f1578bf6920c20a52495b99ca5868"
     },
     {
       "path": "reviewer/templates/RxR/core/G05_RxR-CORE-R05.json",
-      "git_blob_sha1": "95ae8283adf96b3835b67d76695e0bf886879015"
+      "git_blob_sha1": "347d2128330e2f412d578123c88ef15bee6e2fd3"
     },
     {
       "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
-      "git_blob_sha1": "65baeca4f0cf325e547df9fd8d8b62235097152d"
+      "git_blob_sha1": "f4f2dec457cb5edc9e2104f19cafce54d092e890"
     },
     {
       "path": "reviewer/templates/RxR/core/G07_RxR-CORE-R07.json",
-      "git_blob_sha1": "65e61fcfa760f9bdd0b383a1421dd4094202e610"
+      "git_blob_sha1": "f704bce75c0d1cd37fb7a974fed558b22f1c8fda"
     },
     {
       "path": "reviewer/templates/RxR/core/G08_RxR-CORE-R08.json",
-      "git_blob_sha1": "6af806dfc306465d32d65b5a809682c7e37bc5b5"
+      "git_blob_sha1": "1a5e1e74cf728fee010dd3c77cfb41b0ae7e30c0"
     },
     {
       "path": "reviewer/templates/RxR/core/G09_RxR-CORE-R09.json",
-      "git_blob_sha1": "711ae216ff42358a4c53906590bf17e14c8dd867"
+      "git_blob_sha1": "dda7853e729cb06c07a67251d985dfd25f2060f2"
     },
     {
       "path": "reviewer/templates/RxR/core/G10_RxR-CORE-R10.json",
-      "git_blob_sha1": "6477ee5a9a563c2a14e00d021e89de07673e198f"
+      "git_blob_sha1": "7ff1c5a71a34111fb1415592d102a49d9f1dc87f"
     },
     {
       "path": "reviewer/templates/RxR/core/README.md",
@@ -451,7 +451,7 @@
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-27.json",
-      "git_blob_sha1": "4b90fc1cc0dc0d32ead69d2361e2c6d752de5fe2"
+      "git_blob_sha1": "e1e625cfb80ed05530fe81de6100f1e72b16ea82"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-28.json",
@@ -459,7 +459,7 @@
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-29.json",
-      "git_blob_sha1": "a0ff9c2d4295d81b3c88374e0a801486df4606de"
+      "git_blob_sha1": "c0b2be7a5db1807226aba2196361b47111ce57e3"
     },
     {
       "path": "reviewer/templates/RxR/legacy/G01_RxR-LEGACY-G01.json",
@@ -507,7 +507,7 @@
     },
     {
       "path": "reviewer/templates/RxR/paired/002_RxR-REV-002.json",
-      "git_blob_sha1": "e23b3597131bd448bcbc09fe3ac54fc55ba09b66"
+      "git_blob_sha1": "cc16ee1fa8256be16aa819f2bd0aa6d4e871817e"
     },
     {
       "path": "reviewer/templates/RxR/paired/003_RxR-REV-003.json",
@@ -579,7 +579,7 @@
     },
     {
       "path": "reviewer/templates/RxR/paired/020_RxR-REV-020.json",
-      "git_blob_sha1": "1d18a36dd4f87ea39509fd9f57916b84e30a862a"
+      "git_blob_sha1": "51358bceb1bb5b6effabe3b01bbb8be5ffbbab9b"
     },
     {
       "path": "reviewer/templates/RxR/paired/021_RxR-REV-021.json",

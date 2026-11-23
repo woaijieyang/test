@@ -45,11 +45,9 @@
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01",
           "SRC-02",
           "SRC-03",
-          "SRC-04",
-          "SRC-05"
+          "SRC-04"
         ],
         "status": "supported",
         "to_subtask_index": 1
@@ -63,13 +61,13 @@
         "finding_indices": []
       },
       {
-        "conclusion": "Checked active actions, route cues, conditions, quantities and terminal posture against exact source quotations.",
+        "conclusion": "The event-local evidence below supports each source requirement, including its action or state, target and operative qualifiers. Matching a noun alone is insufficient.",
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": []
       },
       {
-        "conclusion": "Checked ordering, triggers, reference frames, counts, late descriptions, branches and repeated visits.",
+        "conclusion": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink.",
         "layer": "L2_dependencies",
         "status": "pass",
         "finding_indices": []
@@ -104,10 +102,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "You start facing a wall."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Begin facing the wall; this is a starting state.",
         "requirement_id": "SRC-01",
         "source_quote": "You start facing a wall.",
         "status": "covered"
@@ -116,10 +114,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "Turn left and walk towards the white table"
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Turn left and approach the white table.",
         "requirement_id": "SRC-02",
         "source_quote": "Turn left and walk towards the white table.",
         "status": "covered"
@@ -128,10 +126,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
+            "quote": "walk towards the white table until you are next to it."
+          },
+          {
+            "subtask_index": 0,
+            "quote": "At that position, the table should be on your left."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Finish the same approach next to the white table with it on the left at that position.",
         "requirement_id": "SRC-03",
         "source_quote": "Now you are standing next to the white table, with the table on your left.",
         "status": "covered"
@@ -140,10 +142,14 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+            "quote": "From beside the white table"
+          },
+          {
+            "subtask_index": 1,
+            "quote": "turn right and walk through the open doorway into the kitchen."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "From beside that table, turn right and pass through the open doorway into the kitchen.",
         "requirement_id": "SRC-04",
         "source_quote": "Turn right and walk through the open doorway into the kitchen.",
         "status": "covered"
@@ -152,10 +158,10 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
+            "quote": "Stop just inside the kitchen, facing the sink."
           }
         ],
-        "requirement": "Preserve this route event or constraint in its source order.",
+        "requirement": "Stop just inside the entered kitchen while facing the sink, without an additional visit to it.",
         "requirement_id": "SRC-05",
         "source_quote": "Stop just inside, facing the sink.",
         "status": "covered"
@@ -193,10 +199,9 @@
           "text": "You start facing a wall. Turn left and walk towards the white table until you are next to it. At that position, the table should be on your left."
         },
         "source_quotes": [
-          "Turn left and walk towards the white table.",
           "You start facing a wall.",
-          "Now you are standing next to the white table, with the table on your left.",
-          "Turn right and walk through the open doorway into the kitchen."
+          "Turn left and walk towards the white table.",
+          "Now you are standing next to the white table, with the table on your left."
         ],
         "source_requirement_ids": [
           "SRC-01",
@@ -246,10 +251,8 @@
           "text": "From beside the white table, turn right and walk through the open doorway into the kitchen. Stop just inside the kitchen, facing the sink."
         },
         "source_quotes": [
-          "Stop just inside, facing the sink.",
           "Turn right and walk through the open doorway into the kitchen.",
-          "Turn left and walk towards the white table.",
-          "Now you are standing next to the white table, with the table on your left."
+          "Stop just inside, facing the sink."
         ],
         "source_requirement_ids": [
           "SRC-04",
@@ -270,7 +273,8 @@
   },
   "teaching_notes": {
     "review_pattern": "expected_state_and_endpoint_orientation",
-    "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
-    "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text."
+    "reuse_rule": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink.",
+    "anti_pattern": "Do not use a side relation alone as arrival evidence, extend an endpoint-only relation over the entire path, or turn a facing reference into a destination.",
+    "case_specific_focus": "Check beside-table proximity separately from table-on-left orientation. Together they support the following turn; the final stop is just inside the kitchen facing the sink, not a visit to the sink."
   }
 }

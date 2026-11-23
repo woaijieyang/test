@@ -211,10 +211,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "correction_ongoing_constraint_and_return",
-    "why_this_case_matters": "Apply the spoken correction to the first turn, keep the sofa-left constraint over the lounge crossing, and preserve the explicit return through the same door as a separate event.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs.",
+    "reusable_rule": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "A return visit is not satisfied by reaching the earlier door once; retain the intervening route and repeated crossing."
+    "anti_pattern": "Do not execute the corrected-away left turn, erase the window leg as repetition, or carry the crossing-only sofa constraint over the return.",
+    "case_rationale": "The local correction replaces only left with right. Retain blue-door entry, sofa-on-left crossing, the explicit window stop and the real return through the same blue door to the stairs."
   },
   "retrieval_tags": [
     "room_transition",

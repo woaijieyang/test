@@ -25,7 +25,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
+        "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door.",
         "Once you are at that open door with the black bench on your right, turn left and proceed straight ahead towards the garage door, more towards the lockers on your left. Once you are there, you are done."
       ]
     }
@@ -54,7 +54,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "A glass window is on your left;"
+            "quote": "A glass window is on your left"
           }
         ],
         "evidence_level": "S1",
@@ -97,7 +97,7 @@
     ],
     "layer_checks": [
       {
-        "conclusion": "No rendered_instruction was supplied in this template example, so lexical candidate-versus-rendered comparison is not assessable. The candidate text itself is reviewed.",
+        "conclusion": "No rendered artifact is supplied in this teaching case; review the actual candidate text without claiming renderer verification.",
         "layer": "L0_integrity",
         "status": "not_applicable",
         "finding_indices": []
@@ -207,7 +207,7 @@
             "subtask_index": 0
           },
           {
-            "quote": "A glass window is on your left; an open door is in front of you.",
+            "quote": "A glass window is on your left and an open door in front of you.",
             "subtask_index": 0
           }
         ],
@@ -283,7 +283,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "A glass window is on your left;"
+            "quote": "A glass window is on your left"
           }
         ],
         "status": "altered_or_missing"
@@ -296,11 +296,11 @@
           "candidate_quotes": [
             "two entrances in front",
             "wine room on your right",
-            "A glass window is on your left;",
-            "an open door is in front of you",
+            "A glass window is on your left",
+            "an open door in front of you",
             "black bench on your right"
           ],
-          "text": "Source requires The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference;; candidate instead states A glass window is on your left;. The candidate silently resolves the conflicting auxiliary window-side description to the left."
+          "text": "Source requires On your right a glass window on your left; candidate instead states A glass window is on your left. The candidate silently resolves the conflicting auxiliary window-side description to the left."
         },
         "ending": {
           "candidate_quotes": [
@@ -318,7 +318,7 @@
         "process": {
           "text": "The stage retains its unaffected movements but contains this local defect: The candidate silently resolves the conflicting auxiliary window-side description to the left.",
           "candidate_quotes": [
-            "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left; an open door is in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
+            "You are standing inside a living room. Turn right and exit. Move towards the stairs on your right, then turn left and take a few steps towards the two entrances in front. Then turn left. There should be a wine room on your right. A glass window is on your left and an open door in front of you. Go towards the open door which has a black bench on your right until you reach that open door."
           ]
         },
         "source_quotes": [
@@ -344,7 +344,7 @@
         "subtask_index": 0,
         "target": {
           "candidate_quotes": [
-            "an open door is in front of you",
+            "an open door in front of you",
             "black bench on your right"
           ],
           "text": "The open door in front, identified by the black bench on your right; the glass window is only an uncertain auxiliary visual reference."

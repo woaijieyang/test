@@ -150,10 +150,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "initial_context_plus_room_entry",
-    "why_this_case_matters": "Keep the initial doorway relation as context, execute the turn before selecting the washroom doorway, and split only after entering the washroom.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation.",
+    "reusable_rule": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "Do not convert the initial right-hand doorway into the washroom doorway; the turn changes the reference frame."
+    "anti_pattern": "Do not turn initial observations into searches or visits, and do not use a visible doorway as evidence that the room was entered.",
+    "case_rationale": "Initial standing and the right-hand doorway establish the starting view; only the commanded turn, washroom entry and final between-fixtures placement are actions. Split after entry without replaying the initial observation."
   },
   "retrieval_tags": [
     "doorway_selection_and_crossing",

@@ -146,10 +146,11 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "until_ordinal_negation",
-    "why_this_case_matters": "Bind the two paintings and the 'do not enter first doorway' prohibition to the hallway traversal that ends at the second doorway; keep study entry and desk stop together.",
-    "reusable_rule": "Transfer the semantic operation, not the rooms or landmarks. Apply only when the new instruction contains the same structural relation.",
+    "why_this_case_matters": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn.",
+    "reusable_rule": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
-    "anti_pattern": "The ordinal is counted from the source-defined traversal origin and must not restart at stage 2."
+    "anti_pattern": "Do not count only open doors, restart the count at a cut, or substitute compliance with a prohibition for the required arrival.",
+    "case_rationale": "The hallway traversal ends on reaching the second right-hand doorway. Not entering the first doorway constrains that traversal but cannot prove arrival; retain the original counting scope before the study turn."
   },
   "retrieval_tags": [
     "room_transition",
