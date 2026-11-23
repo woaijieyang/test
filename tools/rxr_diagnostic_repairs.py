@@ -212,7 +212,7 @@ PARENT = {
      'Move forward to the left and enter that doorway.','MISSING_ENTRY_ANCHOR','C09','L4_handoffs',
      'After seeing the doorway from the post-hop position, the next stage falsely starts inside it and omits approach and entry.',
      'The entry state is unsupported. Room-description, column, tables and television clauses are otherwise retained.'),
-29: (2,0,"The source gives conflicting left/right descriptions for the glass window ('on your right' and 'on your left'), so treat the window only as an uncertain visual reference;",'A glass window is on your left;',
+29: (2,0,'On your right a glass window on your left','A glass window is on your left',
      'their should be a wine room on your right and on your right a glass window on your left and an open door in front of you',
      'WRONG_RELATION','C06','L2_dependencies',
      'The candidate silently resolves the conflicting auxiliary window-side description to the left.',
