@@ -14,6 +14,8 @@
 - `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
 - `docs/R2R_ENHANCEMENT.md`：R2R English 专属规则、检索、Host 接入、RxR 隔离和验收规范。
 - `docs/RXR_TEACHING_REPAIR.md`：本轮 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
+- `docs/RXR_TEACHING_FOCUS.md`：Core案例级教学、局部覆盖证据、保守正文修订及建议采纳边界。
+- `docs/RXR_DATA_BOUNDARIES.md`：训练来源、生成文件、配对、缓存与写入失败处理。
 - `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
 - `docs/V1_V5_V6_RULE_COMPARISON.md`：历史比较档案，仅用于追溯，不是当前实现规范。
 - `shared/semantic_contract.md`：Generator/Reviewer 共用的唯一语义验收标准。
@@ -127,12 +129,12 @@ python -m evaluation.smoke24
 
 ## 当前工程状态
 
-当前分支从 `LLM-decompose-v6.6.2` 的固定提交建立，保留原分支不变。本轮先修正既有 RxR 教学，再加入六类局部语义判据澄清；不改变 R2R 专属资产、通用规则、运行 Schema、Renderer 或有界双角色工作流。固定 Core 身份、动态数量、来源和检索策略保持不变。
+当前分支从 `LLM-decompose-v6.6.2` 的固定提交建立，保留原分支不变。已有 RxR 教学修复及六类局部语义判据继续保留。本轮进一步完善十组Core的案例级教学重点、33条正常覆盖证据及002/020的最小来源保留表达，连同对应Reviewer和依赖诊断一起重建。不改变 R2R 专属资产、通用规则、运行 Schema、Compiler优先级、Renderer 或有界双角色工作流。固定 Core 身份、动态数量、来源和检索策略保持不变。
 
-逐字段修正记录见 `provenance/rxr_teaching_changes.json`，作者规格和构建检查见 `tools/build_rxr_reviewed.py`。存在争议的足床位置解释和辅助玻璃方位叙述继续显式记录，不标为已证明。候选仍需真实语义盲审和导航对照；本轮不宣称追回任何固定数量的成功，也未将计划中的三组新增来源混入修复实验。
+逐字段修正记录见 `provenance/rxr_teaching_changes.json`，作者规格和构建检查见 `tools/build_rxr_reviewed.py`。足床终态现在保留为结果状态而不新增继续移动命令；玻璃窗的矛盾辅助描述不被擅自消歧，也不再将source审计说明放入Actor文本。它们的真实环境解释和导航收益仍未被证明。候选仍需独立语义盲审和导航对照；本轮不宣称追回任何固定数量的成功，也未将计划中的三组新增来源混入修复实验。
 
 发布标识仅在 README 展示；新增规则、作者工具、测试和技术文档不加入发布后缀。继承的 Schema 身份、历史来源和兼容路径保留，不为清除字符串而破坏接口或追溯记录。全仓库历史标识与当前新增发布标识分别记录。
 
 ## RxR semantic calibration
 
-RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md) and [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md). Engineering checks do not establish navigation gains.
+RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.

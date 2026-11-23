@@ -1,9 +1,10 @@
 {
-  "basis": "Reviewed teaching plus RxR-only event/evidence clarifications. Measured after deterministic compilation; the common contract, schemas and R2R inputs remain frozen. CI never rewrites these expectations.",
-  "measured_source_commit": "111d244fb4226eb6b2ec01733b80f856c8767702",
+  "basis": "Case-specific RxR Core lessons, 33 authored local coverage rows, and source-preserving positive/diagnostic calibration. Measured by deterministic compilation in the recorded source run; all new behavioral tests and R2R isolation passed before reviewing these changed expectations. Common contract, schemas, compiler and R2R inputs remain frozen. CI never rewrites these expectations.",
+  "measured_source_commit": "773539d888f45bade562bbd775406fc4d426d7e9",
+  "measurement_workflow_run": 45190859747,
   "prompts": {
-    "generator/initial": "8fa47345504a910ecfae97a8f70312aaf4b0a6b53cea9eeb24580d3e880c6839",
-    "generator/repair": "081cd476db6445b2f18ab3204ac1a38cb8139496244afe5c37ca447925e4af7a",
-    "reviewer/review": "9b451647a5b92185c94081bdc8b4b89819377571e0a699c24c16357381985482"
+    "generator/initial": "2e8ad0e78205a572200e34d773c213c7f1f9f093f16385f799c725c8e22f9596",
+    "generator/repair": "f1b10eb701108ab78395463ac5a021da5d706efa452898d0724ccb896d275429",
+    "reviewer/review": "421f442d1341f1c5ed8b167056634455b8b6c9ba39731c4117c808b8779895b5"
   }
 }
