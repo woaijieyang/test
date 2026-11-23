@@ -1,0 +1,8 @@
+{
+  "basis": "Explicitly reviewed teaching-only build; source definitions and R2R assertions are unchanged. Expected values are never rewritten by CI.",
+  "prompts": {
+    "generator/initial": "f31cc0f08c478301a2a79da72e2e9227b3908003864060281ce643a110b3394d",
+    "generator/repair": "deec342b704e8fec21536f2723f3145d010690287b2e09b17c41df0bb78c8cab",
+    "reviewer/review": "c1377b2bb4076f5316886040c94dd3b51a95b6eba5fb869d16f79d9c30ee4d08"
+  }
+}

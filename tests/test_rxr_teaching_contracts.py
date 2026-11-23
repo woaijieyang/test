@@ -3,7 +3,6 @@ import copy
 import json
 import re
 import unittest
-from pathlib import Path
 
 from host import protocol
 from host.compile import core_library, runtime_review_output, teaching_card
@@ -109,11 +108,14 @@ class ReviewedTeaching(unittest.TestCase):
     def test_negative_change_and_locality_are_visible_in_compact_cards(self):
         for tid in ('RxR-DIAG-12', 'RxR-DIAG-18', 'RxR-DIAG-20', 'RxR-DIAG-28'):
             row = self.rows[tid]
-            card = teaching_card(row, 'reviewer', False)
+            projected = teaching_card(row, 'reviewer', False)
+            card = projected['teaching']
             self.assertEqual(card['verdict'], 'revise')
             self.assertEqual(card['findings'], runtime_review_output(row)['findings'])
             self.assertTrue(card['findings'][0]['problem'])
             self.assertTrue(card['findings'][0]['source_quote'])
+            self.assertTrue(projected['applicable_lesson'])
+            self.assertTrue(projected['avoid'])
 
     def test_review_contract_repair_is_idempotent_and_preserves_candidate(self):
         rows = {tid: copy.deepcopy(row) for tid, row in self.rows.items() if row['role'] == 'reviewer'}

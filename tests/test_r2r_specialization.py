@@ -142,22 +142,29 @@ class R2RSpecializationTests(unittest.TestCase):
         self.assertNotIn("shared/dataset_rules/r2r_fragments.json", rxr["files"])
 
     def test_rxr_compiled_prompt_hashes_remain_frozen(self):
+        import json
+        from pathlib import Path
         from shared.identity import text_hash
 
+        # Reviewed RxR changes update this explicitly committed fixture. CI does
+        # not rewrite expected values, and R2R has a separate immutable-baseline
+        # four-phase comparison. A generated manifest is not its own oracle.
+        pins = json.loads((Path(__file__).parent / 'fixtures/rxr_prompt_pins.json').read_text())
+        self.assertEqual(set(pins['prompts']), {'generator/initial', 'generator/repair', 'reviewer/review'})
         generator_ids = select_examples("generator", "rxr-en-us", "")
         reviewer_ids = select_examples("reviewer", "rxr-en-us", "")
         cases = (
-            ("generator", "initial", generator_ids, "8793949f5f2037cfeb6c1e3158f3c1440047860c8bf0c02f296b04b72e681550"),
-            ("generator", "repair", generator_ids, "bb96ba0eb4d764ac5c9e49045bd3ffbae4259ac68cf69b0c8b21cc5a6271ccae"),
-            ("reviewer", "review", reviewer_ids, "7944892ea3ffb0ce1d86a454ed2b03a642e65c22410c98aff34a0002ee8443de"),
+            ("generator", "initial", generator_ids),
+            ("generator", "repair", generator_ids),
+            ("reviewer", "review", reviewer_ids),
         )
-        for role, phase, selected, expected_hash in cases:
+        for role, phase, selected in cases:
             with self.subTest(role=role, phase=phase):
                 prompt, _ = compile_prompt(
                     role, phase, profile="rxr-en-us", selected_ids=selected,
                     original_instruction="",
                 )
-                self.assertEqual(text_hash(prompt), expected_hash)
+                self.assertEqual(text_hash(prompt), pins['prompts'][role + '/' + phase])
 
     def test_fixed_r2r_core_remains_ten_per_role(self):
         self.assertEqual(len(core_library("generator", "r2r-en")), 10)
