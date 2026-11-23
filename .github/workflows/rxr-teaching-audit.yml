@@ -35,46 +35,9 @@ jobs:
           python-version: '3.11'
       - name: Install repository dependencies
         run: python -m pip install -r requirements.txt
-      - name: Inspect authored corrections without changing files
+      - name: Validate the same authored output used by the materializer
+        run: python -B tools/build_rxr_reviewed.py --inspect
+      - name: Prove the audit did not change the worktree
         run: |
-          python -B - <<'PY'
-          import copy,json,subprocess
-          from tools.build_rxr_reviewed import BASE,FOLDERS
-          from tools.rxr_positive_repairs import apply_stage_repairs,repair_coverage
-          from tools.rxr_diagnostic_repairs import single_diagnostic,revise_parent,grouping_diagnostic,PARENT
-          from host.compile import runtime_review_output,teaching_card
-          from host import protocol
-          files=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'--',*FOLDERS],text=True).splitlines()
-          rows={}
-          for path in files:
-              if path.endswith('.json'):
-                  row=json.loads(subprocess.check_output(['git','show',BASE+':'+path]));rows[row['template_id']]=row
-          errors=[]
-          def attempt(tid,operation):
-              try: operation()
-              except Exception as exc:
-                  errors.append({'id':tid,'error':str(exc)})
-                  row=rows[tid]
-                  stages=row['output']['subtasks'] if row['role']=='generator' else row['review_input']['candidate']['subtasks']
-                  print('EDIT_ERROR|'+json.dumps({'id':tid,'error':str(exc),'stages':stages},ensure_ascii=False))
-          for tid,row in rows.items():
-              if 'DIAG' not in tid: attempt(tid,lambda row=row:apply_stage_repairs(row))
-          for tid,row in rows.items():
-              if row['role']=='reviewer' and 'DIAG' not in tid: attempt(tid,lambda row=row:repair_coverage(row))
-          for n in range(1,21):
-              tid=f'RxR-DIAG-{n:02d}'
-              attempt(tid,lambda n=n,tid=tid:single_diagnostic(rows[tid],n))
-          for n,spec in PARENT.items():
-              tid=f'RxR-DIAG-{n:02d}'
-              attempt(tid,lambda tid=tid,spec=spec:revise_parent(rows[tid],rows[f'RxR-REV-{spec[0]:03d}'],spec))
-          attempt('RxR-DIAG-27',lambda:grouping_diagnostic(rows['RxR-DIAG-27'],rows['RxR-REV-020']))
-          for tid,row in rows.items():
-              try:
-                  if row['role']=='generator': protocol.generator(row['input']['original_instruction'],row['output'])
-                  else: protocol.reviewer(row['review_input']['original_instruction'],row['review_input']['candidate'],runtime_review_output(row))
-                  teaching_card(row,row['role'],True);teaching_card(row,row['role'],False)
-              except Exception as exc:
-                  errors.append({'id':tid,'contract':str(exc)});print('CONTRACT_ERROR|'+json.dumps(errors[-1]))
-          print('RESULT|'+json.dumps({'templates':len(rows),'errors':len(errors),'semantic_correctness_certified':False}))
-          if errors: raise SystemExit(1)
-          PY
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
