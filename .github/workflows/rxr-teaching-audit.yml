@@ -25,45 +25,56 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - name: Checkout exact candidate
+      - name: Checkout exact candidate and frozen source history
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.11'
       - name: Install repository dependencies
         run: python -m pip install -r requirements.txt
-      - name: Inspect actual active teaching and runtime projection
+      - name: Inspect authored corrections without changing files
         run: |
           python -B - <<'PY'
-          import collections, difflib, json
-          from host.compile import core_library, runtime_review_output, teaching_card
-          from host.template_selector import library
+          import copy,json,subprocess
+          from tools.build_rxr_reviewed import BASE,FOLDERS
+          from tools.rxr_positive_repairs import apply_stage_repairs,repair_coverage
+          from tools.rxr_diagnostic_repairs import single_diagnostic,revise_parent,grouping_diagnostic,PARENT
+          from host.compile import runtime_review_output,teaching_card
           from host import protocol
-          def emit(kind, value):
-              print(kind + '|' + json.dumps(value, ensure_ascii=False, separators=(',', ':')))
-          rows = {role: core_library(role, 'rxr-en-us') + library(role, 'rxr-en-us') for role in ('generator', 'reviewer')}
-          problems = []
-          for role, cases in rows.items():
-              for case in cases:
-                  src = case['input']['original_instruction'] if role == 'generator' else case['review_input']['original_instruction']
-                  try:
-                      if role == 'generator':
-                          protocol.generator(src, case['output'])
-                      else:
-                          protocol.reviewer(src, case['review_input']['candidate'], runtime_review_output(case))
-                  except Exception as exc:
-                      problems.append({'id': case['template_id'], 'error': str(exc)})
-                  for detail in (True, False):
-                      teaching_card(case, role, detail)
-          emit('SUMMARY', {'counts': {r: len(c) for r,c in rows.items()}, 'mechanical_contract_issues': problems, 'semantic_correctness_certified': False})
-          for case in rows['generator']:
-              emit('GEN', {'id': case['template_id'], 'source': case['input']['original_instruction'], 'stages': case['output']['subtasks'], 'audit': [{'ending': a['ending'], 'target': a['target'], 'conditions': a['conditions']} for a in case['output']['stage_audit']]})
-          for case in rows['reviewer']:
-              if 'DIAG' not in case['template_id']:
-                  continue
-              src = case['review_input']['original_instruction']; cand = '\n'.join(case['review_input']['candidate']['subtasks'])
-              delta = [{'op': op, 'source': src[a:b], 'candidate': cand[c:d]} for op,a,b,c,d in difflib.SequenceMatcher(None, src, cand, autojunk=False).get_opcodes() if op != 'equal']
-              emit('DIAG', {'id': case['template_id'], 'source': src, 'stages': case['review_input']['candidate']['subtasks'], 'delta': delta, 'findings': case['expected_review']['findings']})
-          emit('HANDOFFS', [{'id': r['template_id'], 'coverage': [{k: c[k] for k in ('requirement_id','source_quote','candidate_evidence')} for c in r['expected_review'].get('source_coverage',[])], 'handoffs': r['expected_review'].get('handoffs',[])} for r in rows['reviewer'] if r['template_id'].startswith('RxR-REV-') and 'TRAIN' not in r['template_id']])
+          files=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'--',*FOLDERS],text=True).splitlines()
+          rows={}
+          for path in files:
+              if path.endswith('.json'):
+                  row=json.loads(subprocess.check_output(['git','show',BASE+':'+path]));rows[row['template_id']]=row
+          errors=[]
+          def attempt(tid,operation):
+              try: operation()
+              except Exception as exc:
+                  errors.append({'id':tid,'error':str(exc)})
+                  row=rows[tid]
+                  stages=row['output']['subtasks'] if row['role']=='generator' else row['review_input']['candidate']['subtasks']
+                  print('EDIT_ERROR|'+json.dumps({'id':tid,'error':str(exc),'stages':stages},ensure_ascii=False))
+          for tid,row in rows.items():
+              if 'DIAG' not in tid: attempt(tid,lambda row=row:apply_stage_repairs(row))
+          for tid,row in rows.items():
+              if row['role']=='reviewer' and 'DIAG' not in tid: attempt(tid,lambda row=row:repair_coverage(row))
+          for n in range(1,21):
+              tid=f'RxR-DIAG-{n:02d}'
+              attempt(tid,lambda n=n,tid=tid:single_diagnostic(rows[tid],n))
+          for n,spec in PARENT.items():
+              tid=f'RxR-DIAG-{n:02d}'
+              attempt(tid,lambda tid=tid,spec=spec:revise_parent(rows[tid],rows[f'RxR-REV-{spec[0]:03d}'],spec))
+          attempt('RxR-DIAG-27',lambda:grouping_diagnostic(rows['RxR-DIAG-27'],rows['RxR-REV-020']))
+          for tid,row in rows.items():
+              try:
+                  if row['role']=='generator': protocol.generator(row['input']['original_instruction'],row['output'])
+                  else: protocol.reviewer(row['review_input']['original_instruction'],row['review_input']['candidate'],runtime_review_output(row))
+                  teaching_card(row,row['role'],True);teaching_card(row,row['role'],False)
+              except Exception as exc:
+                  errors.append({'id':tid,'contract':str(exc)});print('CONTRACT_ERROR|'+json.dumps(errors[-1]))
+          print('RESULT|'+json.dumps({'templates':len(rows),'errors':len(errors),'semantic_correctness_certified':False}))
+          if errors: raise SystemExit(1)
           PY
