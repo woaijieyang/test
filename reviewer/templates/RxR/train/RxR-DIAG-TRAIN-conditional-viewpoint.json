@@ -148,7 +148,7 @@
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -193,9 +193,9 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore \"If you look to the right, you'll see there's an arch that leads into a living room.\" in place of 'Turn right and walk into the living room.'; preserve the unaffected route.",
+          "instruction": "Restore \"If you look to the right, you'll see there's an arch that leads into a living room.\" in place of 'Turn right and walk into the living room.'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "Conditional looking identifies the arch and then the cabinet without creating alternative routes. The final cabinet-front position and painting gaze are both required. Preserve uncertain chair-count wording rather than sharpening it."
           ]
         }
@@ -216,7 +216,7 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate converts an identifying conditional observation into immediate room entry before the arch approach.",
           "candidate_quotes": [
             "You're standing in the corner of a dining room, facing a wooden table with 7 chairs, 8 chairs. Turn right and walk into the living room. Walk towards that arch until you are standing below it."
           ]
@@ -230,7 +230,7 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "If you look to the right; 7 chairs, 8 chairs",
+          "text": "Source requires If you look to the right, you'll see there's an arch that leads into a living room.; candidate instead states Turn right and walk into the living room.. The candidate converts an identifying conditional observation into immediate room entry before the arch approach.",
           "candidate_quotes": [
             "Turn right and walk into the living room.",
             "7 chairs, 8 chairs"
@@ -274,7 +274,7 @@
           "candidate_quotes": [
             "Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "if you look left you'll see; on the left side; looking at a blue and orange painting next to the fireplace",
@@ -325,7 +325,7 @@
           "SRC-05",
           "SRC-06"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       }
     ],
     "prior_finding_reviews": []
@@ -333,8 +333,8 @@
   "teaching_notes": {
     "review_pattern": "conditional_viewpoint",
     "review_principle": "The candidate converts an identifying conditional observation into immediate room entry before the arch approach.",
-    "case_specific_focus": "It prescribes an extra entry and changes the source event order.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate converts an identifying conditional observation into immediate room entry before the arch approach. It prescribes an extra entry and changes the source event order.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "conditional_viewpoint"

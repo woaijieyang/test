@@ -59,7 +59,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "walk straight down that hallway again until"
+            "quote": "Turn left, and walk straight down that hallway again until you see the red exit sign in front of you."
           }
         ],
         "status": "altered_or_missing"
@@ -136,7 +136,7 @@
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -181,9 +181,9 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore 'walk straight down that hallway until' in place of 'walk straight down that hallway again until'; preserve the unaffected route.",
+          "instruction": "Restore 'walk straight down that hallway until' in place of 'walk straight down that hallway again until'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "The second hallway clause supplies the until endpoint for the same straight traversal. Preserve the visual trigger; it is not an arrival at the sign. The later right turn and left-side room selection remain as authored."
           ]
         }
@@ -204,16 +204,16 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate adds again to a continuation whose second source clause refines its endpoint.",
           "candidate_quotes": [
             "Look around, you're currently in a white room with a black window pane to your right. Turn left, and walk straight down that hallway again until you see the red exit sign in front of you."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
+          "text": "Source requires walk straight down that hallway until; candidate instead states walk straight down that hallway again until. The candidate adds again to a continuation whose second source clause refines its endpoint.",
           "candidate_quotes": [
-            "until you see the red exit sign in front of you"
+            "walk straight down that hallway again until you see the red exit sign in front of you"
           ],
           "stop_scope": "none"
         },
@@ -290,8 +290,8 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Complete the source-supported event: until you see the red exit sign in front of you",
-          "candidate_quote": "until you see the red exit sign in front of you"
+          "text": "The candidate now says walk straight down that hallway again until rather than the source-supported walk straight down that hallway until.",
+          "candidate_quote": "walk straight down that hallway again until you see the red exit sign in front of you"
         },
         "next_entry": {
           "text": "Inherit the state at which the exit sign has become visible; no arrival at the sign is asserted.",
@@ -310,7 +310,7 @@
           "SRC-04",
           "SRC-05"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       }
     ],
     "prior_finding_reviews": []
@@ -318,8 +318,8 @@
   "teaching_notes": {
     "review_pattern": "oral_repetition",
     "review_principle": "The candidate adds again to a continuation whose second source clause refines its endpoint.",
-    "case_specific_focus": "It can command a further hallway traversal not required by the source.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate adds again to a continuation whose second source clause refines its endpoint. It can command a further hallway traversal not required by the source.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "oral_repetition"

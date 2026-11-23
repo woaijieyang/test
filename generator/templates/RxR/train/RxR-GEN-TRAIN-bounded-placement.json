@@ -101,7 +101,7 @@
           "candidate_quotes": [
             "Once you're standing in the hallway, outside of the opening facing the living room with the red couches"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "Look immediately to your left; a step towards the opening; outside of the opening",
@@ -145,7 +145,7 @@
           "SRC-04",
           "SRC-05"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "The cited preceding completion supplies the next first unperformed action. The boundary adds no physical stop or traversal and does not cancel any stop explicitly required by the source."
       }
     ],
     "issues": []

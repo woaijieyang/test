@@ -98,19 +98,19 @@
   "templates": [
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-bounded-placement.json",
-      "sha256": "9a4ced9a5654b8f24d41ffd9cd40b9465a2b42f05782cf5e1453f29d5202ba17"
+      "sha256": "8250f1a7a29872d6ea24d83c198a780d4602a263c838ededbfdaadfbe0043fe0"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-conditional-viewpoint.json",
-      "sha256": "469214ba1548dcb0089360a8198e14c0aaff236ef935306379c4c7ff7a5898c1"
+      "sha256": "b5e0c4d76773b88818dde6219705b1597545f2f0ed5ccdfe39ebf75b02899293"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-correction.json",
-      "sha256": "eb5ec43715c97b4e8666c644cf846c6e7ff1af56719c2d54e0e4d0ba452c456f"
+      "sha256": "d02aee7824efc22d58741826c7433bb4a88a9ae549d514003e432590f7c5b629"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-late-description.json",
-      "sha256": "e8650a63f1c34855f5b95c8c507a3b9e581cedab711435661aaf63dde1e5ac51"
+      "sha256": "a8601835fab56c8023afa70136d9919561d9cc7771f88aee3cc90ce84ace2397"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-ordinal-origin.json",
@@ -118,79 +118,79 @@
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-paired-choice.json",
-      "sha256": "d3b073e8ad073ddbd97659843e709843462302bbf45db34a309a48fa34a68175"
+      "sha256": "c8cad84065348f4a2707fb4c31c0ac61eda6565aef349c1b7bb40fcb53cc397c"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-repetition.json",
-      "sha256": "a907154bd6910fbd41252c4e7dc925c04ef4cd46fdf149a9151fcb4e3c3e7ac4"
+      "sha256": "b9be19b919b49c62b9b31e3b5cb25babca5b31b69740935cb45e279f3ce450bb"
     },
     {
       "path": "generator/templates/RxR/train/RxR-GEN-TRAIN-return-history.json",
-      "sha256": "cc9462596168bd723ec86de4c32a2b0b03802ada228a8591523c9711b6a3bfee"
+      "sha256": "6a3ad099e253304ff407540ab0aa2f9384bdcf476d21e600aa120e223caed002"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-bounded-placement.json",
-      "sha256": "aa8671b2732833b69176758c1d6a662f4434f41553bfc71bd61cc24023da9b7e"
+      "sha256": "a1f83da74b32d1fda018e531bb6d0a7c4fc1fa1a40c7df5713c6f26b8dd8a093"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-conditional-viewpoint.json",
-      "sha256": "878ad8ae29a2bd6ab74ad38ab2a5748bb4024d31ae62c3c051e2f5c7aaf6ea0c"
+      "sha256": "7187c25f50949aab5b584347be7983349b888391b47f8c906a18003b4131298f"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-correction.json",
-      "sha256": "5f35de2ed9c4ead7a4fec816ded3a7db4c1721ba36a10ae7eba6792081b2d850"
+      "sha256": "adb9dae09a94a442a3b361240a2f5b5b939750b53d147657a76b52c48b349a2e"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-late-description.json",
-      "sha256": "e464ef5dcf25bcc4f75f6e30175160586df4704a8670b48e673f171aa4f6158e"
+      "sha256": "1e618355a0abc1e3ed1e2d2df45bfa8162cd3c007da777047f41b8002889c8e6"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-ordinal-origin.json",
-      "sha256": "105bd1a0bf9c0f8c9297c4596df122421fc2a39d384a2d8ee46219cab9314b26"
+      "sha256": "f67aeb3233fa7a2d846900038a309ff49d33452910e3d69f49a08a347be365ca"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-paired-choice.json",
-      "sha256": "f845632c1b8d32acf0bea75b457644cfb9f29d6d13e55d73d22fafe23c48c947"
+      "sha256": "a17bffd4952ecba1ae1f35ba7a0879e326b068de9bd02471bfda268227d95588"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-repetition.json",
-      "sha256": "2818f0ce807e2d4dccbdc354f341c12c0e677f0f8605ea399252baf6e8421769"
+      "sha256": "1a7c86e96c5c2ddb7cfb2c799de16a74f4f74862c6911754f6a3f73fa12030d1"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-DIAG-TRAIN-return-history.json",
-      "sha256": "4355b84e694e266f0f0b5ceb886796403875175f27bad9400560617564a1fe30"
+      "sha256": "383d93caf5fb175feee83b80bd979d66e37cd0776bd88c035f8ddb6da531ebb2"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-bounded-placement.json",
-      "sha256": "91073d1657e5f5a60d2719f9d71147aa80dd6209311dcc85952fdee77a18e95c"
+      "sha256": "a1bc7a317b29b0e2a01477322529dcce53253ecb3c0f7698f0debb2362651a2a"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-conditional-viewpoint.json",
-      "sha256": "0ce4b319acff995b80e5a3b12ef54d6a0bdbe556305b4b96bb081d84f5895a92"
+      "sha256": "aa1031baa6447df9d28c001e1e0dcab62e44c6187ae80008987bef7e75f67828"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-correction.json",
-      "sha256": "87b89f00c27ccfef0f43e7017af0101a450a78b7595c6f15222c8f693716e5af"
+      "sha256": "f91569b05e192508e09942baac52ff73a5f734cbe1403ab864df61371feceed2"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-late-description.json",
-      "sha256": "2d9ed7c4d83a2b58ea84012079be12055a787deeca44e7ba68d05a99056ee156"
+      "sha256": "1706386cb28eabe2ae3372a8d1f466c1d28d1817f374e45c235c2479141e29af"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-ordinal-origin.json",
-      "sha256": "a30a81b454a82d809eb87ee207d290ff6b0845074e9deb9440950f1eefc043bb"
+      "sha256": "387cdd1cab7e1d03cf4818c6404d80a8960ea25e35d75d4c157463433a5c4193"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-paired-choice.json",
-      "sha256": "4b95e8a32b4efe1537260864d25e23589fc32ea0b2e1d73d196f6b86b1c4f303"
+      "sha256": "f14f9c2e7259c854ee599f3612623cf366ab1c836091d1c2f709bd43e5ddc248"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-repetition.json",
-      "sha256": "bc9da598027082ec207539673e07bfabbd9d77fc35df3ab69e3230f33793a556"
+      "sha256": "addc346fbcbd186ffdf400cbe5c837afe4f63f0f2566ddc91c82e516b6528d26"
     },
     {
       "path": "reviewer/templates/RxR/train/RxR-REV-TRAIN-return-history.json",
-      "sha256": "f68698aafcfae92429423575e0d66a275a5cd5a6e0b215c670d2a175409443dc"
+      "sha256": "790fed904cee4eca6ddf39dea5a7fac86394fdc2efd85fa718923f7e0e3bf815"
     }
   ]
 }

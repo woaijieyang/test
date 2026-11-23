@@ -146,7 +146,7 @@
           "SRC-05",
           "SRC-06"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "The cited preceding completion supplies the next first unperformed action. The boundary adds no physical stop or traversal and does not cancel any stop explicitly required by the source."
       }
     ],
     "issues": []

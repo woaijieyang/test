@@ -123,7 +123,7 @@
         "layer": "L4_handoffs",
         "status": "not_applicable",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -168,9 +168,9 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore 'Walk to the leftmost set of stairs.' in place of 'Walk to the set of stairs to the left of both sets.'; preserve the unaffected route.",
+          "instruction": "Restore 'Walk to the leftmost set of stairs.' in place of 'Walk to the set of stairs to the left of both sets.'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "Leftmost selects a member of the described pair, not a third staircase to the left of both. The final rather clause refines/corrects the same stair movement to completion at the top; do not execute a descent first."
           ]
         }
@@ -191,7 +191,7 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate changes selection within a pair to a position outside the pair.",
           "candidate_quotes": [
             "You begin facing a white couch with green pillows. Turn to your left and you'll notice two sets of stairs with a section of wall between them. Walk to the set of stairs to the left of both sets. Once you're standing at the top of the stairs, you're done."
           ]
@@ -202,10 +202,10 @@
           "candidate_quotes": [
             "Once you're standing at the top of the stairs"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Turn to your left; two sets of stairs with a section of wall between them; leftmost set of stairs",
+          "text": "Source requires Walk to the leftmost set of stairs.; candidate instead states Walk to the set of stairs to the left of both sets.. The candidate changes selection within a pair to a position outside the pair.",
           "candidate_quotes": [
             "Turn to your left",
             "two sets of stairs with a section of wall between them",
@@ -234,8 +234,8 @@
   "teaching_notes": {
     "review_pattern": "paired_spatial_choice",
     "review_principle": "The candidate changes selection within a pair to a position outside the pair.",
-    "case_specific_focus": "It can direct the agent to a different staircase not identified by the source.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate changes selection within a pair to a position outside the pair. It can direct the agent to a different staircase not identified by the source.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "paired_spatial_choice"

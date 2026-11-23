@@ -95,7 +95,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "inside the living room with the red couches"
+            "quote": "Once you're standing in the hallway, inside the living room with the red couches, you are done."
           }
         ],
         "status": "altered_or_missing"
@@ -136,7 +136,7 @@
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -181,9 +181,9 @@
           "affected_subtask_indices": [
             1
           ],
-          "instruction": "Restore 'outside of the opening facing the living room with the red couches' in place of 'inside the living room with the red couches'; preserve the unaffected route.",
+          "instruction": "Restore 'outside of the opening facing the living room with the red couches' in place of 'inside the living room with the red couches'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "Bedroom exit establishes the next stage entry. Preserve the bounded step toward the opening and the final outside-opening position facing the living room; the living room is not an entry target."
           ]
         }
@@ -244,27 +244,27 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "outside of the opening facing the living room with the red couches",
+          "text": "Source requires outside of the opening facing the living room with the red couches; candidate instead states inside the living room with the red couches. The candidate moves the final placement from outside the opening to inside the living room.",
           "candidate_quotes": [
             "inside the living room with the red couches"
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate moves the final placement from outside the opening to inside the living room.",
           "candidate_quotes": [
             "Look immediately to your left; there will be an opening. Take a step towards the opening. Once you're standing in the hallway, inside the living room with the red couches, you are done."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the source-supported event: Once you're standing in the hallway, outside of the opening facing the living room with the red couches",
+          "text": "Source requires outside of the opening facing the living room with the red couches; candidate instead states inside the living room with the red couches. The candidate moves the final placement from outside the opening to inside the living room.",
           "candidate_quotes": [
             "Once you're standing in the hallway, inside the living room with the red couches"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Look immediately to your left; a step towards the opening; outside of the opening",
+          "text": "Source requires outside of the opening facing the living room with the red couches; candidate instead states inside the living room with the red couches. The candidate moves the final placement from outside the opening to inside the living room.",
           "candidate_quotes": [
             "Look immediately to your left",
             "a step towards the opening",
@@ -311,7 +311,7 @@
           "SRC-04",
           "SRC-05"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       }
     ],
     "prior_finding_reviews": []
@@ -319,8 +319,8 @@
   "teaching_notes": {
     "review_pattern": "terminal_refinement",
     "review_principle": "The candidate moves the final placement from outside the opening to inside the living room.",
-    "case_specific_focus": "It requires an unsupported room entry and loses the source-facing configuration.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate moves the final placement from outside the opening to inside the living room. It requires an unsupported room entry and loses the source-facing configuration.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "terminal_refinement"

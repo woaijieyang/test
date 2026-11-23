@@ -59,7 +59,7 @@
           "candidate_quotes": [
             "Once you're standing at the top of the stairs"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "Turn to your left; two sets of stairs with a section of wall between them; leftmost set of stairs",

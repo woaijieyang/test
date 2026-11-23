@@ -101,7 +101,7 @@
           "candidate_quotes": [
             "Once you're standing right in front of the wooden cabinet inside the living room and looking at a blue and orange painting next to the fireplace"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "if you look left you'll see; on the left side; looking at a blue and orange painting next to the fireplace",
@@ -146,7 +146,7 @@
           "SRC-05",
           "SRC-06"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "The cited preceding completion supplies the next first unperformed action. The boundary adds no physical stop or traversal and does not cancel any stop explicitly required by the source."
       }
     ],
     "issues": []

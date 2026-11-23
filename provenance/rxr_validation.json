@@ -11,7 +11,7 @@
   ],
   "navigation_evaluated": false,
   "semantic_correctness_certified": false,
-  "source_commit": "2c7544f5bf032c7a65e6ce8c35d3c5e079d8fecd",
+  "source_commit": "a97a81387b05af6e89c63a8a0f75c4a5510996a4",
   "baseline_commit": "cfd4c13010f105235d026ec14a9c2b4bbd7bf94e",
   "source_archive_verified": true,
   "r2r_prompt_schema_selection_equal": true,

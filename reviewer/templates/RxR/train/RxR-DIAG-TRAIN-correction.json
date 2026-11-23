@@ -83,7 +83,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "Veer slightly left"
+            "quote": "Veer slightly left, moving towards the backless couch."
           }
         ],
         "status": "altered_or_missing"
@@ -148,7 +148,7 @@
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -193,9 +193,9 @@
           "affected_subtask_indices": [
             1
           ],
-          "instruction": "Restore 'Veer slightly right' in place of 'Veer slightly left'; preserve the unaffected route.",
+          "instruction": "Restore 'Veer slightly right' in place of 'Veer slightly left'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "The correction changes only the veer direction. Preserve the earlier doorway traversal, bedroom identity and couch-side endpoint. The next stage can inherit the established bedroom without another entry command."
           ]
         }
@@ -264,7 +264,7 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate executes the explicitly superseded left veer.",
           "candidate_quotes": [
             "Veer slightly left, moving towards the backless couch. Move towards the right side of it. Once you are on that far side of the backless couch, you're done."
           ]
@@ -278,7 +278,7 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "slightly right; the right side of it",
+          "text": "Source requires Veer slightly right; candidate instead states Veer slightly left. The candidate executes the explicitly superseded left veer.",
           "candidate_quotes": [
             "Veer slightly left",
             "the right side of it"
@@ -308,7 +308,7 @@
           "candidate_quote": "entering a bedroom with a lot of white and blue decor"
         },
         "next_entry": {
-          "text": "Inherit the bedroom reached by the preceding doorway traversal; no additional entry action is required.",
+          "text": "The candidate now says Veer slightly left rather than the source-supported Veer slightly right.",
           "candidate_quote": "Veer slightly left, moving towards the backless couch."
         },
         "shared_context": [
@@ -325,7 +325,7 @@
           "SRC-05",
           "SRC-06"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       }
     ],
     "prior_finding_reviews": []
@@ -333,8 +333,8 @@
   "teaching_notes": {
     "review_pattern": "local_correction",
     "review_principle": "The candidate executes the explicitly superseded left veer.",
-    "case_specific_focus": "It initiates the couch approach in the opposite direction after the bedroom entry.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate executes the explicitly superseded left veer. It initiates the couch approach in the opposite direction after the bedroom entry.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "local_correction"

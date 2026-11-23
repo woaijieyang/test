@@ -70,7 +70,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 0,
-            "quote": "the second door you find after entering the hallway"
+            "quote": "Walk through the closet door and the second door you find after entering the hallway."
           }
         ],
         "status": "altered_or_missing"
@@ -123,7 +123,7 @@
         "layer": "L4_handoffs",
         "status": "not_applicable",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -168,9 +168,9 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore 'that second door toward the hallway' in place of 'the second door you find after entering the hallway'; preserve the unaffected route.",
+          "instruction": "Restore 'that second door toward the hallway' in place of 'the second door you find after entering the hallway'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "The second door is the door beyond the closet exit, not a fresh second-door count after reaching the hall. Keep the traversal and threshold refinement together."
           ]
         }
@@ -191,7 +191,7 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate restarts the second-door count after hallway entry.",
           "candidate_quotes": [
             "You're starting in a closet, facing empty shelves and a drawer unit. To your left, is the door to exit, and just beyond that, is another door that leads into a hallway. Walk through the closet door and the second door you find after entering the hallway. When you get in the threshold between the bedroom and the hallway with the stairs, you're finished."
           ]
@@ -205,7 +205,7 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "To your left; just beyond that; that second door",
+          "text": "Source requires that second door toward the hallway; candidate instead states the second door you find after entering the hallway. The candidate restarts the second-door count after hallway entry.",
           "candidate_quotes": [
             "To your left",
             "just beyond that",
@@ -234,8 +234,8 @@
   "teaching_notes": {
     "review_pattern": "ordinal_origin",
     "review_principle": "The candidate restarts the second-door count after hallway entry.",
-    "case_specific_focus": "It skips the specifically identified door beyond the closet exit and selects a later door.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate restarts the second-door count after hallway entry. It skips the specifically identified door beyond the closet exit and selects a later door.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "ordinal_origin"

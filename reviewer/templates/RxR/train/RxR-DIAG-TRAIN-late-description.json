@@ -83,7 +83,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "one black door on the left"
+            "quote": "take one large step forward to the entrance leading outside, which has one black door on the left."
           }
         ],
         "status": "altered_or_missing"
@@ -148,7 +148,7 @@
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -193,9 +193,9 @@
           "affected_subtask_indices": [
             1
           ],
-          "instruction": "Restore 'two black doors open on each side' in place of 'one black door on the left'; preserve the unaffected route.",
+          "instruction": "Restore 'two black doors open on each side' in place of 'one black door on the left'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "Bind the two black doors to the outside entrance, keep the one large step and the mat-crossing as prescribed, and finish outside with the mat directly behind. Do not turn the entrance description into an extra door visit."
           ]
         }
@@ -265,7 +265,7 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate changes the identifying pair of black doors to one left-hand door.",
           "candidate_quotes": [
             "From the bottom of the grey staircase, take one large step forward to the entrance leading outside, which has one black door on the left. Now, take a large step forward in front of you, hopping over the brown mat, onto the grey pavement outside of the house. Once the brown mat is directly behind you, outside of the house, you're done."
           ]
@@ -279,7 +279,7 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "one large step forward; two black doors open on each side; hopping over the brown mat; directly behind you",
+          "text": "Source requires two black doors open on each side; candidate instead states one black door on the left. The candidate changes the identifying pair of black doors to one left-hand door.",
           "candidate_quotes": [
             "one large step forward",
             "one black door on the left",
@@ -311,7 +311,7 @@
           "candidate_quote": "Go down the grey staircase to its bottom"
         },
         "next_entry": {
-          "text": "The staircase bottom anchors the source-prescribed large step and outside entrance choice.",
+          "text": "The candidate now says one black door on the left rather than the source-supported two black doors open on each side.",
           "candidate_quote": "take one large step forward to the entrance leading outside, which has one black door on the left."
         },
         "shared_context": [
@@ -328,7 +328,7 @@
           "SRC-05",
           "SRC-06"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       }
     ],
     "prior_finding_reviews": []
@@ -336,8 +336,8 @@
   "teaching_notes": {
     "review_pattern": "late_target_description",
     "review_principle": "The candidate changes the identifying pair of black doors to one left-hand door.",
-    "case_specific_focus": "It can select a different exit while appearing to preserve a generic outside destination.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate changes the identifying pair of black doors to one left-hand door. It can select a different exit while appearing to preserve a generic outside destination.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "late_target_description"

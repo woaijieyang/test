@@ -111,7 +111,7 @@
         "layer": "L1_source_coverage",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Map every listed route requirement to indexed candidate text."
+        "conclusion": "The indexed source passages identify their actual candidate events, not merely repeated words."
       },
       {
         "layer": "L2_dependencies",
@@ -123,13 +123,13 @@
         "layer": "L3_stage_checks",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Audit the actual stage entry, target, ordered process, ending and conditions independently."
+        "conclusion": "The authored five-element definitions preserve the actual entry, target, process, completion and scoped conditions."
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "conclusion": "The cited preceding outcome supports the next first unperformed action; an inherited pose is not an extra command."
       },
       {
         "layer": "L5_grouping",
@@ -141,7 +141,7 @@
         "layer": "L6_route_readback",
         "status": "pass",
         "finding_indices": [],
-        "conclusion": "Coverage and reverse source support preserve the route; this is not a navigation success claim."
+        "conclusion": "Source coverage and reverse source support retain the route. This is a teaching judgment, not a navigation success claim."
       }
     ],
     "findings": [],
@@ -266,7 +266,7 @@
           "SRC-04",
           "SRC-05"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "The cited preceding completion supplies the next first unperformed action. The boundary adds no physical stop or traversal and does not cancel any stop explicitly required by the source."
       }
     ],
     "prior_finding_reviews": []

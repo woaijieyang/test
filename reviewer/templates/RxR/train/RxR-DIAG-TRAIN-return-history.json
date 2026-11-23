@@ -37,7 +37,7 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "pass",
+      "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
@@ -72,7 +72,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "Walk through another open doorway"
+            "quote": "Walk through another open doorway, in the area of which you came."
           }
         ],
         "status": "altered_or_missing"
@@ -87,7 +87,7 @@
             "quote": "You're now in a bedroom."
           }
         ],
-        "status": "covered"
+        "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-05",
@@ -159,9 +159,11 @@
       },
       {
         "layer": "L4_handoffs",
-        "status": "pass",
-        "finding_indices": [],
-        "conclusion": "Compare every previous completion with the next first unperformed action; inheritance is supported."
+        "status": "issue",
+        "finding_indices": [
+          0
+        ],
+        "conclusion": "The candidate replaces the identified return doorway with another doorway. The changed return identity also affects the next entry."
       },
       {
         "layer": "L5_grouping",
@@ -182,14 +184,18 @@
       {
         "code": "WRONG_TARGET",
         "failed_layer": "L2_dependencies",
-        "c_check": "C05",
+        "c_check": "C07",
         "dimension": "source_fidelity",
-        "related_dimensions": [],
+        "related_dimensions": [
+          "closure_handoff"
+        ],
         "affected_subtask_indices": [
-          1
+          1,
+          2
         ],
         "source_requirement_ids": [
-          "SRC-03"
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quote": "walk back through that open doorway, in the area of which you came.",
         "candidate_evidence": [
@@ -206,9 +212,9 @@
           "affected_subtask_indices": [
             1
           ],
-          "instruction": "Restore 'Walk back through that open doorway' in place of 'Walk through another open doorway'; preserve the unaffected route.",
+          "instruction": "Restore 'Walk back through that open doorway' in place of 'Walk through another open doorway'; preserve unaffected route text and rebuild only the affected evidence and dependencies.",
           "protected_requirements": [
-            "Preserve all unaffected actions, relationships, quantities and source order.",
+            "Preserve unaffected actions, relations, quantities and event order.",
             "The picnic-table corner is an actual intermediate objective before the return. Preserve the turn back, the previously traversed open doorway and the later shower entry; a repeated region does not erase intervening events."
           ]
         }
@@ -272,21 +278,21 @@
           ]
         },
         "process": {
-          "text": "The candidate contains the material change identified by the finding; other ordered actions remain.",
+          "text": "The actual candidate retains the other ordered actions but contains this source-relative defect: The candidate replaces the identified return doorway with another doorway.",
           "candidate_quotes": [
             "Once you get there, turn back around and head, facing the TV, couch and chairs, to the left there is an open doorway. Walk through another open doorway, in the area of which you came. You're now in a bedroom."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the source-supported event: Walk back through that open doorway",
+          "text": "Source requires Walk back through that open doorway; candidate instead states Walk through another open doorway. The candidate replaces the identified return doorway with another doorway.",
           "candidate_quotes": [
             "Walk through another open doorway"
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Once you get there; facing the TV, couch and chairs; to the left; back through that open doorway",
+          "text": "Source requires Walk back through that open doorway; candidate instead states Walk through another open doorway. The candidate replaces the identified return doorway with another doorway.",
           "candidate_quotes": [
             "Once you get there",
             "facing the TV, couch and chairs",
@@ -311,7 +317,7 @@
         "subtask_index": 2,
         "entry": {
           "mode": "inherited_pose",
-          "text": "Inherit the bedroom established by the return; preserve all subsequent route events.",
+          "text": "The following leg expects the bedroom established by the original return. That identity is unsupported after the candidate chooses another doorway.",
           "candidate_quotes": []
         },
         "target": {
@@ -332,7 +338,7 @@
           "candidate_quotes": [
             "Standing in the shower"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": "between the TV and the bed; past the Jacuzzi tub; straight ahead; the toilet on your left; turn to the right",
@@ -350,11 +356,13 @@
           "You'll see a shower, walk into the shower. Standing in the shower, you've reached your final destination."
         ],
         "carryover": [],
-        "status": "supported",
+        "status": "gap",
         "source_requirement_ids": [
           "SRC-05",
           "SRC-06",
-          "SRC-07"
+          "SRC-07",
+          "SRC-03",
+          "SRC-04"
         ]
       }
     ],
@@ -383,14 +391,14 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "This boundary retains its source-supported exit and entry. The local diagnostic defect does not erase unrelated continuity or cancel any explicit source stop."
       },
       {
         "from_subtask_index": 1,
         "to_subtask_index": 2,
-        "status": "supported",
+        "status": "gap",
         "preceding_exit": {
-          "text": "Complete the source-supported event: Walk back through that open doorway",
+          "text": "The candidate now says Walk through another open doorway rather than the source-supported Walk back through that open doorway.",
           "candidate_quote": "Walk through another open doorway"
         },
         "next_entry": {
@@ -400,7 +408,7 @@
         "shared_context": [
           {
             "kind": "inherited_context",
-            "text": "Inherit the bedroom established by the return; preserve all subsequent route events."
+            "text": "The source requires return through the identified original doorway. The candidate chooses another doorway; it cannot certify the same bedroom entry for the next leg."
           }
         ],
         "source_requirement_ids": [
@@ -411,7 +419,7 @@
           "SRC-06",
           "SRC-07"
         ],
-        "handoff_rationale": "The preceding completion supplies the next first unperformed action; no physical stop or extra traversal is inferred."
+        "handoff_rationale": "Restore the identified return event; generic bedroom wording is not proof of the required route-history identity."
       }
     ],
     "prior_finding_reviews": []
@@ -419,8 +427,8 @@
   "teaching_notes": {
     "review_pattern": "return_identity",
     "review_principle": "The candidate replaces the identified return doorway with another doorway.",
-    "case_specific_focus": "It loses route-history identity even if both routes happen to lead to a bedroom.",
-    "anti_pattern": "Do not reject a legal paraphrase or alternative segmentation; this candidate changes a specific source relation."
+    "case_specific_focus": "The candidate replaces the identified return doorway with another doorway. It loses route-history identity even if both routes happen to lead to a bedroom.",
+    "anti_pattern": "Do not keep old correct-state explanations after replacing their evidence. Diagnose the actual changed event and preserve unrelated coverage and handoffs."
   },
   "retrieval_tags": [
     "return_identity"
