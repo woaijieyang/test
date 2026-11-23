@@ -19,3 +19,9 @@ src为活动源码，configs保存冻结配置与来源，scripts为受保护入
 服务器的data/landmark保存20847条通过严格筛选的索引；data/baseline-rollouts保存R2R/RxR/Landmark历史baseline轨迹清单。它们没有启动新训练，也不能把验证集或Oracle轨迹伪装成训练baseline。
 
 旧results-show目录保留来源明确的case1历史结果；本次正式对照入口为单数result-show。源码来源为baseline d230f31及经288文件历史哈希定位的候选核心；初始部署提交107317c的消息为HAMLET-construct。
+
+## HAMLET-v2 分阶段训练增量
+
+新的短时记忆训练使用独立版本的 Moment → Reader → CBEM checkpoint，不覆盖上面的历史实验结果或权重。入口为 `scripts/hamlet/run.sh`，在线评估通过显式 `--method hamlet-trained` 启用；baseline 与旧 `hamlet` 默认路径保留。
+
+详细的真实文件 tree、Mermaid workflow、S00–S11 操作和 GPU/数据验收边界见 [HAMLET-v2 实施与训练执行手册](docs/hamlet/HAMLET-v2_实施与训练执行手册.md)。`bash scripts/hamlet/test_cpu.sh` 执行旧接口及新训练的 CPU 回归；CPU 通过不代表完成真实 8B、A6000 或导航验证。缓存 read-set、rollout split 证据及 Moment dtype 现有独立审计回归（见手册第 6 节），未经过真实 8B 联调不可视作上线验收。训练仅使用 R2R train 与 RxR train en-US，B1/B2/B3 只作累计选模，历史 val-unseen rollout 不得回流训练。

@@ -16,7 +16,6 @@
 
 import os
 
-import deepspeed.comm as dist
 import torch
 
 
@@ -40,6 +39,7 @@ class ProcessGroupManager(Singleton):
     """
 
     def __init__(self, ulysses_degree, ring_degree, dp_degree, use_ulysses_low, ring_type):
+        import deepspeed.comm as dist
         if not hasattr(self, "__initialized"):
             super().__init__()
             self.ulysses_degree = ulysses_degree
@@ -154,6 +154,8 @@ def set_pg_manager(sp_degree, sp_ring_degree=1, use_ulysses_low=True, ring_type=
     Set the process group manager for sequence parallelism.
     sp_degree = sp_ring_degree x sp_ulysses_degree
     """
+
+    import deepspeed.comm as dist
 
     # first check torch distributed group init and set device accordingly;
     # (DL) TODO: Whether this can be skipped in DeepSpeed.

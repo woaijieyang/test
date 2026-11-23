@@ -33,7 +33,6 @@ from llava.model.multimodal_encoder.builder import build_vision_tower
 from llava.model.multimodal_projector.builder import build_mm_projector
 from llava.model.utils import get_model_config
 from llava.train.sequence_parallel import get_pg_manager
-from llava.utils.media import extract_media
 from llava.utils.tokenizer import infer_stop_tokens, tokenize_conversation
 
 
@@ -834,6 +833,8 @@ class LlavaMetaForCausalLM(ABC):
         conversation = [{"from": "human", "value": prompt}]
 
         # Extract media from the conversation
+        from llava.utils.media import extract_media
+
         media = extract_media(conversation, self.config)
 
         # Tokenize the conversation

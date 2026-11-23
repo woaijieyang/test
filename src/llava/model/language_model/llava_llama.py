@@ -161,8 +161,9 @@ class AwareVLNModel(HAMLETMemoryMixin, LlavaMetaModel, LlavaMetaForCausalLM, Pre
                 std=self.config.soft_ce_std,
             )
 
-        loss_weight = calculate_loss_weight(new_labels)
-        outputs.loss = outputs.loss * loss_weight
+        if new_labels is not None and outputs.loss is not None:
+            loss_weight = calculate_loss_weight(new_labels)
+            outputs.loss = outputs.loss * loss_weight
 
         if dpo_forward:
             return outputs.logits, new_labels

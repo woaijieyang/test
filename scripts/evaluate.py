@@ -160,11 +160,12 @@ def recover_closed_traces(run):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--dataset", choices=["r2r", "rxr"], required=True)
-    p.add_argument("--method", choices=["baseline", "hamlet"], default="baseline")
+    p.add_argument("--method", choices=["baseline", "hamlet", "hamlet-trained"], default="baseline")
     p.add_argument(
         "--gpu-ids",
         help="Optional fixed physical GPU allowlist, e.g. 7 for same-device diagnostics",
     )
+    p.add_argument("--trained-bundle", help="Workspace-local immutable learned-memory bundle")
     p.add_argument("--run-id", required=True)
     p.add_argument("--profile", required=True)
     p.add_argument("--scope", choices=["diagnostic", "full"], required=True)
@@ -197,6 +198,13 @@ def main():
     if a.method == "hamlet":
         from hamlet_v2.policy import policy_identity
         candidate_policy = policy_identity(ROOT)
+    if a.method == "hamlet-trained":
+        if not a.trained_bundle:
+            raise ValueError("--trained-bundle is required")
+        from hamlet_v2.trained_runtime import bundle_identity
+        candidate_policy = bundle_identity(ROOT, a.trained_bundle)
+    elif a.trained_bundle:
+        raise ValueError("--trained-bundle is only valid with hamlet-trained")
     profile_path = Path(a.profile).resolve()
     profile = read_json(profile_path)
     if profile["agent"] != {"height": 1.5, "radius": 0.1}:
@@ -291,7 +299,7 @@ def main():
             "language": "en-US" if a.dataset == "rxr" else "en",
             "method": a.method,
             "policy_identity": candidate_policy,
-            "model": "HAMLET-Z V2 / CBEM aw4 seed10" if candidate_policy else model["model"],
+            "model": ("HAMLET trained Recent-4" if a.method == "hamlet-trained" else "HAMLET-Z V2 / CBEM aw4 seed10") if candidate_policy else model["model"],
             "base_model_sha256": model["model_sha256"],
             "model_sha256": hashlib.sha256((model["model_sha256"] + candidate_policy["sha256"]).encode()).hexdigest() if candidate_policy else model["model_sha256"],
             "source_sha256": source_sha,

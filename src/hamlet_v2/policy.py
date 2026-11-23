@@ -30,9 +30,23 @@ def policy_identity(root):
 def bind_worker(root,run):
     root=Path(root).resolve();manifest=json.loads((Path(run)/'run_manifest.json').read_text())
     os.environ.pop('CASE2_HAMLET_CONFIG',None)
+    os.environ.pop('HAMLET_TRAINED_BUNDLE',None)
     identity=manifest.get('policy_identity')
     if identity is None:
         if manifest.get('method','baseline')!='baseline':raise ValueError('Missing candidate policy binding')
+        return
+    if manifest.get('method')=='hamlet-trained':
+        from hamlet_v2.trained_runtime import bundle_identity
+        current=bundle_identity(root,identity['bundle'])
+        if identity!=current:raise ValueError('Trained bundle differs from frozen run')
+        frozen={x['path']:x['sha256'] for x in manifest['frozen_files']}
+        if any(frozen.get(x['path'])!=x['sha256'] for x in current['files']):raise ValueError('Trained bundle not frozen')
+        config=json.loads((Path(current['bundle'])/'bundle.json').read_text())
+        if config['base_inventory']['sha256']!=manifest['base_model_sha256']:
+            # The training inventory may use a different aggregate algorithm; compare actual file bindings.
+            if any(frozen.get(x['path'])!=x['sha256'] for x in config['base_inventory']['files']):
+                raise ValueError('Trained bundle uses a different base model')
+        os.environ['HAMLET_TRAINED_BUNDLE']=current['bundle']
         return
     current=policy_identity(root)
     if identity!=current or manifest.get('method')!='hamlet':raise ValueError('Worker policy differs from frozen run')

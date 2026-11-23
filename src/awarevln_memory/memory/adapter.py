@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
@@ -288,7 +289,7 @@ class GatedPromptInjection(nn.Module):
         if labels is not None:
             # Training sequences include assistant target tokens.  Memory is
             # injected only into the last masked prompt positions.
-            valid &= labels[batch_index].eq(-100)
+            valid &= labels[batch_index].ne(-100).long().cumsum(-1).eq(0)
         indices = torch.where(valid)[0]
         count = min(self.config.output_memory_tokens, indices.numel())
         return indices[-count:]
@@ -352,12 +353,20 @@ class AwareVLNMemoryAdapter(nn.Module):
         enabled: bool = True,
         read_threshold: float = 0.0,
         alpha_scale: float = 1.0,
+        prompt_mask: Optional[Tensor] = None,
     ) -> MemoryAdapterOutput:
         if not 0.0 <= read_threshold <= 1.0:
             raise ValueError("read_threshold must be in [0, 1]")
-        if alpha_scale < 0.0:
-            raise ValueError("alpha_scale must be non-negative")
-        current_query = self.query_encoder(inputs_embeds, attention_mask)
+        if not math.isfinite(alpha_scale) or alpha_scale < 0.0:
+            raise ValueError("alpha_scale must be finite and non-negative")
+        # The target suffix is visible to the teacher-forced decoder, NEVER to
+        # the query.  Masking only the injection positions does not prevent
+        # the query from leaking target answers back into the prompt.
+        from awarevln_memory.training.masks import causal_prompt_mask
+        query_mask = causal_prompt_mask(attention_mask, labels, prompt_mask,
+                                        inputs_embeds.shape[:2], inputs_embeds.device)
+        query_inputs = inputs_embeds.masked_fill(~query_mask[..., None], 0)
+        current_query = self.query_encoder(query_inputs, query_mask)
         (
             memory_tokens,
             read_probability,
@@ -383,8 +392,8 @@ class AwareVLNMemoryAdapter(nn.Module):
         adapted_inputs = self.injection(
             inputs_embeds,
             memory_tokens,
-            attention_mask,
-            labels=labels,
+            query_mask,
+            labels=None,
             enabled=enabled,
             alpha_scale=alpha_scale,
         )

@@ -150,6 +150,10 @@ def unit_test_rope_scaling(model: PreTrainedModel, config: PretrainedConfig, tra
 
 
 def calculate_loss_weight(labels, ignore_index=-100):
+    if labels is None:
+        return 1.0
+    if not dist.is_available() or not dist.is_initialized():
+        return labels.new_tensor(1.0, dtype=torch.float32)
     # (Qinghao): Weighted loss based on num_active_elements
     # To achieve accurate sequence parallel loss calculation, we need to get
     # the real active_elements of each sequence partitions.
@@ -161,7 +165,7 @@ def calculate_loss_weight(labels, ignore_index=-100):
     num_active_elements = padding_mask.numel() - padding_mask.long().sum()
     global_active_sum = copy.deepcopy(num_active_elements)
     dist.all_reduce(global_active_sum)
-    loss_weight = num_active_elements / global_active_sum * dist.get_world_size()
+    loss_weight = num_active_elements / global_active_sum.clamp_min(1) * dist.get_world_size()
     # print("num_active_elements", num_active_elements.item(), "padding_mask.numel()", padding_mask.numel(), "padding_mask.long().sum()", padding_mask.long().sum().item())
     return loss_weight
 

@@ -104,6 +104,14 @@ class AwareVLNTrainer(BaseVLNCETrainer):
                                    Path(os.environ["CASE1_TRACE_ROOT"]) / "hamlet-dataflow.jsonl")
 
 
+        if os.environ.get("HAMLET_TRAINED_BUNDLE"):
+            if hamlet is not None:
+                raise ValueError("Historical and trained HAMLET cannot run simultaneously")
+            from pathlib import Path
+            from hamlet_v2.trained_runtime import TrainedHAMLETRuntime
+            hamlet = TrainedHAMLETRuntime(model, os.environ["HAMLET_TRAINED_BUNDLE"],
+                        Path(os.environ["CASE1_TRACE_ROOT"]) / "hamlet-trained-dataflow.jsonl")
+
         ACTION_ID_STOP = 0
         ACTION_ID_FORWARD = 1
         ACTION_ID_LEFT = 2
@@ -154,6 +162,8 @@ class AwareVLNTrainer(BaseVLNCETrainer):
             before = envs.call_at(0, "case1_evaluator_state")
             recorder.ensure_episode(ep, before)
             outcome = envs.step(actions)
+            if hamlet is not None and hasattr(hamlet, "record_executed_action"):
+                hamlet.record_executed_action(actions[0])
             after = envs.call_at(0, "case1_evaluator_state")
             recorder.step(ep, actions[0], before, after, outcome[0][2], outcome[0][3], stop_source)
             return outcome

@@ -1,0 +1,21 @@
+schema: hamlet.cumulative-screening.v1
+roots:
+  r2r: /data/zy/vln/data/checkpoint-choice/VLN-awareVLN/B/r2r/
+  rxr: /data/zy/vln/data/checkpoint-choice/VLN-awareVLN/B/rxr_us/
+split: val_unseen
+rxr_language: en-US
+cumulative_sets: [B1, B12, B123]
+maximum_reader_candidates: 3
+maximum_router_candidates: 2
+reader_screening:
+  sr_drop_max_per_dataset: 0.01
+  spl_drop_max_per_dataset: 0.02
+  ndtw_drop_max_per_dataset: 0.02
+  historical_dependency_diagnostic_required: true
+final_screening:
+  sr_drop_max_per_dataset: 0.0
+  macro_sr_gain_strictly_positive: true
+  spl_drop_max_per_dataset: 0.01
+  ndtw_drop_max_per_dataset: 0.01
+fallback: baseline
+final_holdout: null # Discover real A/Remaining roles; never assume independence.

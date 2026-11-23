@@ -20,10 +20,6 @@ import os
 
 from transformers import AutoConfig, PretrainedConfig, PreTrainedModel
 
-from .clip_encoder import CLIPVisionTower, CLIPVisionTowerS2
-from .intern_encoder import InternVisionTower, InternVisionTowerS2
-from .radio_encoder import RADIOVisionTower
-from .siglip_encoder import SiglipVisionTower, SiglipVisionTowerS2
 
 
 def build_vision_tower(model_name_or_path: str, config: PretrainedConfig) -> PreTrainedModel:
@@ -41,19 +37,23 @@ def build_vision_tower(model_name_or_path: str, config: PretrainedConfig) -> Pre
     use_s2 = getattr(config, "s2", False)
 
     if "intern" in vision_tower_name.lower():
+        from .intern_encoder import InternVisionTower, InternVisionTowerS2
         drop_path_rate = getattr(config, "drop_path_rate", 0.0)
         if use_s2:
             vision_tower = InternVisionTowerS2(model_name_or_path, config=config, drop_path_rate=drop_path_rate)
         else:
             vision_tower = InternVisionTower(model_name_or_path, config=config, drop_path_rate=drop_path_rate)
     elif "radio" in vision_tower_name:
+        from .radio_encoder import RADIOVisionTower
         vision_tower = RADIOVisionTower(model_name_or_path, config)
     elif "clip" in vision_tower_name:
+        from .clip_encoder import CLIPVisionTower, CLIPVisionTowerS2
         if use_s2:
             vision_tower = CLIPVisionTowerS2(model_name_or_path, config)
         else:
             vision_tower = CLIPVisionTower(model_name_or_path, config)
     elif "siglip" in vision_tower_name:
+        from .siglip_encoder import SiglipVisionTower, SiglipVisionTowerS2
         if use_s2:
             vision_tower = SiglipVisionTowerS2(model_name_or_path, config)
         else:

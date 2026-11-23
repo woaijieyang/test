@@ -1,0 +1,46 @@
+# Optimization defaults, not measured optima. Actual steps come from sample exposure.
+tcl:
+  epochs: 5
+  step_cap: 5000
+  micro_batch: 1
+  accumulation: 16
+  expected_world_size: 2
+  lr: 0.00001
+  gate_lr: 0.00001
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  eval_steps: 100
+  seed: 42
+  mixed_precision: 'no'  # native clean encoding is FP16; BF16 requires a separate BF16 protocol
+  patience: 2
+  gradient_checkpointing: true
+reader:
+  epochs: 4
+  step_cap: 5000
+  micro_batch: 1
+  accumulation: 8
+  expected_world_size: 2
+  lr: 0.00005
+  gate_lr: 0.00002
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  eval_steps: 100
+  seed: 42
+  mixed_precision: 'no'  # native clean encoding is FP16; BF16 requires a separate BF16 protocol
+  patience: 2
+  gradient_checkpointing: true
+router:
+  epochs: 20
+  step_cap: 1000
+  micro_batch: 32
+  accumulation: 1
+  expected_world_size: 1
+  lr: 0.0001
+  gate_lr: 0.0001
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  eval_steps: 50
+  seed: 42
+  mixed_precision: 'no'
+  patience: 3
+  gradient_checkpointing: false
