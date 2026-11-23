@@ -1,5 +1,6 @@
 {
   ".github/workflows/rxr-development.yml": "gitblob-sha1:f9d99d86a4b8acb6933336722350066391a0b296",
+  ".github/workflows/rxr-teaching-audit.yml": "gitblob-sha1:89bc8232f51128f2279d913fb75cab16b163470e",
   ".github/workflows/validate.yml": "gitblob-sha1:176017f747804ea69660225197e246eefb77b3fc",
   "CHANGELOG.md": "gitblob-sha1:c50addd292479c4fa98f793b6b005b534f60f195",
   "CODEX_START_HERE.md": "gitblob-sha1:27cb6542b5e1a82dde0c2ca228bc9775afb1f673",
@@ -388,7 +389,7 @@
   "provenance/runtime-verification.json": "gitblob-sha1:fc26e8002782799d96e11899e14cf2f2c21ad0cf",
   "provenance/rxr_profile_integrity.json": "gitblob-sha1:fc60436d8aaf4440af28a6edbb8c8c461323ed30",
   "provenance/rxr_training_sources.json": "gitblob-sha1:cb86dae5b8c24a776bb7181e174c6d72e6829d71",
-  "provenance/rxr_validation.json": "gitblob-sha1:8c4d2318fd6daa1842fe2e19127c05bef505e27a",
+  "provenance/rxr_validation.json": "gitblob-sha1:cfbc5b6f5fcf51f658e7a9b87856e038bac026eb",
   "provenance/source_parse_manifest.json": "gitblob-sha1:8e514db298c77a6aac5396917aa364eceec12029",
   "provenance/source_validation.json": "gitblob-sha1:3efef8d2ac3cc92229583edb6c756a2c67a25904",
   "provenance/source_verified_findings.json": "gitblob-sha1:56b588494665872a69281ff4d64a451cb93c2c3e",
@@ -636,6 +637,7 @@
   "tools/check_rxr_reproducibility.py": "gitblob-sha1:9a9fce84e441f9dd05b9ba68bfc830f3d28e5a03",
   "tools/refresh_rxr_integrity.py": "gitblob-sha1:8eb06914a6d057dc682e742fd31c4213ff6ef3df",
   "tools/rxr_lesson_specs.py": "gitblob-sha1:e298b8410627946a8ee9b6e3272000c236a61308",
+  "tools/rxr_positive_repairs.py": "gitblob-sha1:e9941ea19ab51aa648f543893dcb94f76537bcd5",
   "validation.json": "gitblob-sha1:6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
   "verify_package.py": "gitblob-sha1:0c0d0ca705670fb5116a955856b61fe03c81c0a4"
 }
