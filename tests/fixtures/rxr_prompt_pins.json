@@ -1,8 +1,9 @@
 {
-  "basis": "Explicitly reviewed teaching-only build; source definitions and R2R assertions are unchanged. Expected values are never rewritten by CI.",
+  "basis": "Reviewed teaching plus RxR-only event/evidence clarifications. Measured after deterministic compilation; the common contract, schemas and R2R inputs remain frozen. CI never rewrites these expectations.",
+  "measured_source_commit": "111d244fb4226eb6b2ec01733b80f856c8767702",
   "prompts": {
-    "generator/initial": "f31cc0f08c478301a2a79da72e2e9227b3908003864060281ce643a110b3394d",
-    "generator/repair": "deec342b704e8fec21536f2723f3145d010690287b2e09b17c41df0bb78c8cab",
-    "reviewer/review": "c1377b2bb4076f5316886040c94dd3b51a95b6eba5fb869d16f79d9c30ee4d08"
+    "generator/initial": "8fa47345504a910ecfae97a8f70312aaf4b0a6b53cea9eeb24580d3e880c6839",
+    "generator/repair": "081cd476db6445b2f18ab3204ac1a38cb8139496244afe5c37ca447925e4af7a",
+    "reviewer/review": "9b451647a5b92185c94081bdc8b4b89819377571e0a699c24c16357381985482"
   }
 }
