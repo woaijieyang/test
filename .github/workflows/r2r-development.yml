@@ -2,9 +2,12 @@ name: R2R isolated authoring and validation
 on:
   push:
     branches: ['LLM-decompose-*']
-    paths: ['.github/workflows/r2r-development.yml']
+    paths: ['.github/workflows/r2r-development.yml', 'r2r_authoring/**', 'r2r/**']
 permissions:
   contents: read
+concurrency:
+  group: r2r-validation-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate:
     runs-on: ubuntu-latest
