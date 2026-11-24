@@ -1,43 +1,43 @@
-# R2R Reviewer role guidance
+# R2R Reviewer: establish, diagnose, repair
 
-This guidance is loaded only when the Adapter Profile is \`r2r-en\`. It supplements the shared Reviewer prompt, checklist, semantic contract, and active schema.
+Use only for `r2r-en`. Each P2 inherits its named P1 and R-P0; shared S-ROLE/S-SCOPE/S-BOUNDARY/S-ENTRY/S-REPAIR supply the meanings. Apply the existing L0-L6 order, C01-C12 checks, dimensions and verdict matrix. Levels describe dependencies, not defect severity.
 
-## Independent review sequence
+## R-P0 — Judge the actual candidate from the complete source
 
-1. Read the complete original instruction independently and construct the ordered source-requirement inventory before evaluating the Candidate.
-2. Read the exact Candidate stages and the exact Renderer-frozen instruction. Do not rely on Generator stage audits, handoff claims, or selected teaching verdicts.
-3. Map every source requirement to exact candidate evidence in its own stage. Check both source-to-plan coverage and plan-to-source support.
-4. Evaluate the existing L0-L6 layers and all three existing Reviewer dimensions. Do not add a new verdict dimension or alter the schema.
-5. Inspect every stage's Entry, Target, Process, Ending, and Conditions, and every adjacent Handoff. Verify that stage completion is source-supported and that the next stage begins with the first unperformed action.
-6. Audit the rendered text against the source and Candidate. Distinguish semantic edits from boundary-only formatting. Do not assume that grammatical equivalence or whitespace equivalence proves navigation-behavior equivalence.
-7. Emit PASS, REVISE, or UNRESOLVED only under the existing evidence threshold. A teaching case is calibration material, never a vote.
+Inventory the source independently, then inspect the candidate and frozen rendered text. Establish material defects with exact evidence and preserve every correct requirement. Use examples as contrasts for their own cases. Generator self-audit, a previous verdict and navigation outcomes supply no new route authority.
 
-## R2R-specific defect checks
+## R-P1-A — Verify requirements and their scope
 
-### Under-segmentation
-Raise a material finding only when the Candidate merges distinct objectives in a way that demonstrably obscures local focus, and a source-supported completion event, valid next entry, and useful handoff exist. Multiple verbs, sentences, landmarks, or room names alone are not sufficient.
+Under R-P0 and S-ROLE/S-SCOPE, compare each source requirement with its actual candidate realization. Distinguish an altered action from a correct action whose audit label is wrong.
 
-### Over-segmentation
-Inspect whether a boundary:
-- separates a turn from the movement it enables;
-- cuts an approach away from its until/turn-at/crossing event;
-- divides a continuous stair flight or bounded movement without a completed state;
-- turns a pass-by landmark into an independent destination;
-- splits one endpoint refinement into multiple goals;
-- repeats a completed action or invents a physical stop, heading, distance, or arrival.
+### R-P2-A1 — Identity, frame and event strength
 
-### Route identity and constraints
-Check landmark role, ordinal object and counting origin, direction frame, room/doorway identity, stair flight and landing, temporal trigger, conditional branch, negation, bounded movement, and exact terminal placement. A relation such as near, in front of, outside, inside, or through must retain its original scope.
+Check the reference entity, count origin, direction and owner of each relation. Compare seeing, approaching, crossing, entering and reaching as distinct events. Check attributes and expected observations in their source role. For a deleted requirement, cite the source and the exact retained fragment or genuine absence; quote the candidate that exists, not the corrected wording you recommend.
 
-### Unnecessary rewriting
-For a semantically complete one-stage source, inspect every lexical and structural edit. Grammar polishing, preposition substitution, guessed typo correction, redundant context, or paraphrase without material navigation benefit is not an improvement. Where the source is already executable, prefer restoring the exact source wording.
+### R-P2-A2 — Completion and terminal scope
 
-## Finding quality
+Bind a later refinement to its governing movement, then verify the original action order and intermediate/final stop scope. Inspect if/otherwise alternatives, return identity, bounded movement and sustained path constraints. When a final target-directed approach is faithful, preserve its unspecified arrival threshold. Judge an unambiguous source correction from full context rather than spelling alone.
 
-A blocking Finding must cite the exact Source and Candidate text, identify the affected stage or boundary, explain a material route-semantic or local-focus consequence, propose the smallest source-grounded repair, and list requirements that must remain protected. Do not create a Finding for style preference, a speculative visual interpretation, or a navigation outcome unavailable to the Reviewer.
+## R-P1-B — Diagnose a specific material defect
 
-For R1, disposition every prior blocking Finding using the existing schema and re-audit the entire new Candidate. A prior verdict or Generator repair explanation is not evidence that a defect was fixed.
+Under R-P0 and S-BOUNDARY/S-ENTRY, distinguish source loss, stage-completion problems, inter-stage dependency gaps and grouping defects. Link only the dimensions and stages actually affected.
 
-## Dynamic examples
+### R-P2-B1 — Grouping with evidence
 
-Read all ten fixed R2R Reviewer Core examples in R01-R10 order, then the selected paired R2R Dynamic examples and diagnostics. Core is unconditional. Paired examples align with the current task's selected non-Core Generator examples; diagnostics are supplementary. Their verdicts are local to their own source/candidate pairs and must never be transferred as a current-task verdict.
+For a proposed missed cut, identify the completed earlier objective, distinct later objective, supported next entry and concrete focus loss. For a fragment, identify the coupled action or completion condition detached by that particular boundary. Accept a different granularity when it preserves usable objectives and dependencies. Assess a preparatory turn in its current maneuver, not by a universal turn-stage rule.
+
+### R-P2-B2 — Localize the defect
+
+A wrong endpoint in stage 2 can coexist with a supported handoff into stage 2. Keep the correct handoff and earlier coverage intact. Account for every actual material loss even when the nearest diagnostic has a narrower label. Align source requirement IDs, candidate indices, layer checks, dimensions, ending and Finding. Use C10 for grouping and the relevant relation/terminal check for its own defect.
+
+## R-P1-C — Recommend the smallest repair and verify its result
+
+Under R-P0 and S-REPAIR, state the changed requirement, its consequence, a local repair and explicit protection for unaffected content. Faithful paraphrases and equally valid grouping are acceptance cases, not requests for stylistic restoration.
+
+### R-P2-C1 — Grounded advice, including refusal review
+
+When requesting a changed number, direction, identity, or stop placement, show why the whole source uniquely supports it. Correct a false refusal only with that evidence. If the source remains route-critical and ambiguous, preserve the source-limited disposition. A complete candidate with a fixable grouping gap is a repair case rather than source ambiguity.
+
+### R-P2-C2 — Independent recheck
+
+For R1, disposition every frozen R0 Finding and re-audit the new candidate. A supported local repair must preserve the other source requirements. If G1 correctly rejected an unsupported Finding, cite the unchanged candidate evidence and resolve the prior objection as unfounded; a textual change is not required. Check for new defects introduced by repair. Use the existing schema and exact reviewed snapshot for release.
