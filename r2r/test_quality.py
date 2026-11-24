@@ -1,8 +1,8 @@
 """Mechanical and authored semantic regression tests, not navigation scores."""
 import copy,json,re,subprocess,unittest
-from pathlib import Path
 from unittest.mock import patch
 from adapter.source import Source
+from renderer.freeze import freeze
 from host import protocol
 from host.compile import ROOT,compile_prompt,core_library,runtime_review_output
 from host.run import run_record
@@ -30,6 +30,31 @@ def run(source,replies):
         return {'output':pending.pop(0),'receipt':{'model':req['model'],'effort':req['effort'],'request_id':f'fixture-{len(seen)}'}}
     result=run_record(Source('r2r-fixture','R2R','en',source),transport,pins={r:dict(model='fixture',effort='low') for r in ('generator','reviewer')})
     return result,seen,pending
+
+def partial_fixture():
+    ex=json.loads((ROOT/'generator/repair_examples.json').read_bytes())[0]
+    source=ex['input']['original_instruction'];good=copy.deepcopy(ex['output']['candidate'])
+    def edit(x):
+        if isinstance(x,str):return x.replace('Go around the right side of the center unit','Go around the left side of the center unit').replace('right side of the center unit','left side of the center unit')
+        if isinstance(x,list):return [edit(v) for v in x]
+        if isinstance(x,dict):return {k:(v if k=='source_quotes' else edit(v)) for k,v in x.items()}
+        return x
+    bad=edit(copy.deepcopy(good));r0=copy.deepcopy(ex['input']['review'])
+    raw_r0=copy.deepcopy(r0)
+    src=Source('r2r-fixture','R2R','en',source)
+    bad_view=freeze(src,bad['subtasks'],'\n');good_view=freeze(src,good['subtasks'],'\n')
+    # Author fixture quotes against the actual frozen stage, not the Source
+    # envelope's trailing space. This is not a runtime quote repair facility.
+    r0['source_coverage'][0]['candidate_evidence'][0]['quote']=bad_view.stages[0]
+    r0['stage_checks'][0]['process']['candidate_quotes']=[bad_view.stages[0]]
+    r0['findings'][0]['repair']['instruction']+=' Add a stop at the center unit before going to the doorway.'
+    answer=copy.deepcopy(ex['output'])
+    answer['responses'][0].update(decision='partially_accept',reason='Restore the supported right side; retain only the source doorway stop because the proposed center-unit stop is unsupported.')
+    reviewed_good=copy.deepcopy(good);reviewed_good['subtasks']=list(good_view.stages)
+    reviewed_good['stage_audit'][0]['process']['candidate_quotes']=[good_view.stages[0]]
+    r1=fullpass(source,reviewed_good)
+    r1['prior_finding_reviews']=[dict(finding_index=0,status='resolved',candidate_evidence=[dict(subtask_index=0,quote=good_view.stages[0])],explanation='The right-side traversal is restored while the unsupported intermediate stop is absent.')]
+    return source,bad,r0,answer,r1,raw_r0,bad_view
 
 class Teaching(unittest.TestCase):
     def test_all_runtime_templates_use_active_contracts(self):
@@ -82,14 +107,12 @@ class Teaching(unittest.TestCase):
         self.assertEqual(sum(i['status']=='retained_pair' for i in index.values()),4)
         self.assertEqual(sum(i['status']=='dynamic' for i in index.values()),76)
         for role in ('generator','reviewer'):
-            for r in core_library(role,'r2r-en'):
-                self.assertEqual(r['source']['split'],'val_seen')
+            for r in core_library(role,'r2r-en'):self.assertEqual(r['source']['split'],'val_seen')
     def test_compact_cards_are_not_old_protocol_lookalikes(self):
         for tid,r in rows().items():
             c=card(r,r['role'],True)
             self.assertTrue(c['lesson']);self.assertTrue(c['counter_boundary'])
-            if c['format']=='lesson_summary':
-                self.assertNotIn('findings',c);self.assertNotIn('repair',c)
+            if c['format']=='lesson_summary':self.assertNotIn('findings',c);self.assertNotIn('repair',c)
             elif r['role']=='reviewer':protocol.validate('reviewer/output.schema.json',c['expected_output'])
             else:protocol.validate('generator/output.schema.json',c['expected_output'])
     def test_no_new_release_labels_in_model_inputs(self):
@@ -126,22 +149,20 @@ class Selection(unittest.TestCase):
         b=select_bundle('');self.assertEqual(len(b['generator']),4)
         self.assertTrue(all(t['selection_reason']=='broad_calibration' for t in b['evidence']['generator']['selected']))
         q='Enter the hall and choose the first room to the left of the staircase.'
-        self.assertIn('entity_frame',signals(q))
-        self.assertFalse({'KEEP','SPLIT'}&set(signals(q)))
+        self.assertIn('entity_frame',signals(q));self.assertFalse({'KEEP','SPLIT'}&set(signals(q)))
     def test_index_tampering_fails_closed(self):
-        index,h=teaching_index();bad=copy.deepcopy(index);tid='R2R-GEN-030';bad[tid]['content_sha256']='0'*64
+        index,h=teaching_index();bad=copy.deepcopy(index);bad['R2R-GEN-030']['content_sha256']='0'*64
         with patch('r2r.selection.teaching_index',return_value=(bad,h)):
             with self.assertRaises(ValueError):select_bundle('Go to the room left of the stairs.')
     def test_trace_candidate_order_has_no_set_iteration_dependence(self):
         code="import json;from r2r.selection import select_bundle;print(json.dumps(select_bundle('Walk through the hall and enter the second door on the left, then wait.'),sort_keys=True))"
-        import os
-        results=[subprocess.check_output([__import__('sys').executable,'-B','-c',code],cwd=ROOT,env=dict(os.environ,PYTHONHASHSEED=str(n))) for n in (0,1,42)]
+        import os,sys
+        results=[subprocess.check_output([sys.executable,'-B','-c',code],cwd=ROOT,env=dict(os.environ,PYTHONHASHSEED=str(n))) for n in (0,1,42)]
         self.assertEqual(results[0],results[1]);self.assertEqual(results[0],results[2])
 
 class ClosedLoop(unittest.TestCase):
     def test_reject_false_grouping_without_text_edit_can_release(self):
-        row=rows()['R2R-CORE-R06'];source=row['review_input']['original_instruction'];a=copy.deepcopy(row['expected_review'])
-        audits=[]
+        row=rows()['R2R-CORE-R06'];source=row['review_input']['original_instruction'];a=copy.deepcopy(row['expected_review']);audits=[]
         for s in a['stage_checks']:
             s=copy.deepcopy(s);s.pop('status');s.pop('source_requirement_ids');audits.append(s)
         g=dict(status='ok',subtasks=copy.deepcopy(row['review_input']['candidate']['subtasks']),stage_audit=audits,handoffs=[],issues=[])
@@ -154,18 +175,18 @@ class ClosedLoop(unittest.TestCase):
         self.assertEqual(requests[0]['selected_example_ids'],requests[2]['selected_example_ids']);self.assertEqual(requests[1]['selected_example_ids'],requests[3]['selected_example_ids'])
         self.assertNotIn('stage_audit',json.loads(requests[1]['messages'][1]['content'])['candidate'])
     def test_partially_accept_correct_diagnosis_without_extra_stop(self):
-        ex=json.loads((ROOT/'generator/repair_examples.json').read_bytes())[0];source=ex['input']['original_instruction'];good=copy.deepcopy(ex['output']['candidate'])
-        bad=copy.deepcopy(good)
-        def edit(x):
-            if isinstance(x,str):return x.replace('Go around the right side of the center unit','Go around the left side of the center unit').replace('right side of the center unit','left side of the center unit')
-            if isinstance(x,list):return [edit(v) for v in x]
-            if isinstance(x,dict):return {k:(v if k=='source_quotes' else edit(v)) for k,v in x.items()}
-            return x
-        bad=edit(bad);r0=copy.deepcopy(ex['input']['review']);r0['findings'][0]['repair']['instruction']+=' Add a stop at the center unit before going to the doorway.'
-        answer=copy.deepcopy(ex['output']);answer['responses'][0].update(decision='partially_accept',reason='Restore the supported right side; retain only the source doorway stop because the proposed center-unit stop is unsupported.')
-        r1=fullpass(source,good);r1['prior_finding_reviews']=[dict(finding_index=0,status='resolved',candidate_evidence=[dict(subtask_index=0,quote=good['subtasks'][0])],explanation='The right-side traversal is restored while the unsupported intermediate stop is absent.')]
+        source,bad,r0,answer,r1,_,view=partial_fixture()
+        protocol.reviewer(source,dict(status='ok',subtasks=list(view.stages),issues=[]),r0,rendered_instruction=view.rendered)
         result,requests,pending=run(source,[bad,r0,answer,r1])
-        self.assertFalse(pending);self.assertEqual(len(requests),4);self.assertIsNone(result['error']);self.assertEqual(result['instruction'],source)
+        self.assertFalse(pending);self.assertEqual(len(requests),4);self.assertIsNone(result['error'],result['error'])
+        self.assertEqual([r['phase'] for r in requests],['initial','review','repair','recheck'])
+        self.assertEqual(result['instruction'],source)
+        self.assertEqual(result['snapshots'][-1]['rendered_instruction'],result['instruction'])
+    def test_source_envelope_whitespace_is_not_fabricated_stage_evidence(self):
+        source,bad,_,_,_,raw,view=partial_fixture()
+        protocol.reviewer(source,bad,raw)
+        with self.assertRaisesRegex(Exception,'Unverifiable exact quotation'):
+            protocol.reviewer(source,dict(status='ok',subtasks=list(view.stages),issues=[]),raw,rendered_instruction=view.rendered)
     def test_source_limited_route_uses_existing_two_call_fallback(self):
         bank=rows();g=bank['R2R-CORE-G10'];r=bank['R2R-CORE-R10'];source=g['input']['original_instruction']
         result,requests,pending=run(source,[g['output'],r['expected_review']])
