@@ -15,20 +15,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Export the exact parent and evaluated source trees
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Export immutable trees and inspect exact teaching content
         env:
           PARENT: 081db4b9ea0712ff720c137fe96c240c26f7b15c
           EVALUATED: 9dd24a655a845d59698e835c0326fbf73db5fbb8
         run: |
           mkdir -p /tmp/r2r-baselines
-          git cat-file -e "$PARENT^{commit}"
-          git cat-file -e "$EVALUATED^{commit}"
           git archive --format=zip "$PARENT" > /tmp/r2r-baselines/parent.zip
           git archive --format=zip "$EVALUATED" > /tmp/r2r-baselines/evaluated.zip
           git diff --stat "$EVALUATED" "$PARENT" > /tmp/r2r-baselines/direct-difference.txt
           git diff --name-status "$EVALUATED" "$PARENT" > /tmp/r2r-baselines/changed-paths.txt
           printf '%s\n%s\n' "$PARENT" "$EVALUATED" > /tmp/r2r-baselines/commits.txt
-          sha256sum /tmp/r2r-baselines/*.zip
+          python -B r2r_authoring/inspect.py | tee /tmp/r2r-baselines/inspection.jsonl
       - uses: actions/upload-artifact@v4
         with:
           name: r2r-immutable-baselines
