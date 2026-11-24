@@ -5,12 +5,13 @@ on:
     branches: ['LLM-decompose-*']
     paths:
       - '.github/workflows/rxr-development.yml'
-      - 'tools/**'
-      - 'host/**'
+      - 'tools/rxr*'
+      - 'tools/build_rxr*'
+      - 'host/rxr*'
       - 'shared/dataset_rules/rxr_en_us.md'
       - 'generator/dataset_rules/rxr_en_us.md'
       - 'reviewer/dataset_rules/rxr_en_us.md'
-      - 'tests/**'
+      - 'tests/test_rxr*'
       - 'generator/templates/RxR/**'
       - 'reviewer/templates/RxR/**'
   workflow_dispatch:
