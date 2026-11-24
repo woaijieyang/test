@@ -4,7 +4,7 @@ No force push, secret lookup or cross-branch write. Invoked by the authorized
 repository workflow after successful build, isolation, regression and smoke.
 """
 from pathlib import Path
-import hashlib,json,os,subprocess,sys,tempfile
+import hashlib,json,os,shutil,subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EXACT={
@@ -51,7 +51,12 @@ def main():
         print('PUBLISH_NOOP '+tested);return
     call('git','commit','-m','Materialize validated R2R teaching, isolated runtime and integrity records')
     final=out('git','rev-parse','HEAD')
-    clean=Path(tempfile.mkdtemp(prefix='r2r-final-'))
+    temporary_root=Path(tempfile.mkdtemp(prefix='r2r-final-'))
+    # The inherited deployment test locates its companion using ROOT.parents[2].
+    # Give the clean checkout the same minimum directory depth as the runner;
+    # its absent companion is still reported unavailable by the strict runner.
+    clean=temporary_root/'checkout'/'repository'
+    clean.parent.mkdir(parents=True)
     call('git','worktree','add','--detach',str(clean),final)
     try:
         for module in ('r2r_authoring.integrate','r2r_authoring.test_expectations'):
@@ -63,7 +68,9 @@ def main():
         call(sys.executable,'-B','-m','r2r_authoring.regression',cwd=clean)
         call('git','diff','--exit-code',cwd=clean)
         call(sys.executable,'-B','verify_package.py',cwd=clean)
-    finally:call('git','worktree','remove','--force',str(clean))
+    finally:
+        call('git','worktree','remove','--force',str(clean))
+        shutil.rmtree(temporary_root)
     if out('git','ls-remote','origin','refs/heads/'+branch).split()[0]!=tested:raise ValueError('Branch advanced during final validation')
     call('git','push','origin','HEAD:refs/heads/'+branch)
     if out('git','ls-remote','origin','refs/heads/'+branch).split()[0]!=final:raise ValueError('Remote publication verification failed')
