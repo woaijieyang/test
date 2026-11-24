@@ -140,10 +140,10 @@
       "needs_review",
       "route_target_ambiguity"
     ],
-    "review_principle": "Inspect the complete original instruction to determine whether 'pack exit' can be uniquely resolved from its own context. Because the phrase identifies the route-critical exit and the source does not uniquely establish its intended meaning, preserve uncertainty rather than guessing a correction.",
+    "review_principle": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
     "case_specific_focus": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
     "semantic_pattern": "unresolved_route_critical_source_referent",
-    "decision_reason": "The phrase 'pack exit' identifies the route-critical target. The surrounding pew and wall/handrail relations do not uniquely establish whether 'pack' means 'back' or another exit. The correct response is to preserve uncertainty and request source clarification.",
+    "decision_reason": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
     "transfer_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
     "anti_pattern": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."

@@ -22,7 +22,7 @@
       "status": "ok",
       "subtasks": [
         "Go down the stairs and take a right.",
-        "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+        "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
       ]
     }
   },
@@ -39,7 +39,10 @@
         "source_quote": "Go down the stairs, and take a right .",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go down the stairs, and take a right .",
         "candidate_evidence": [
-          "Go down the stairs and take a right."
+          {
+            "subtask_index": 0,
+            "quote": "Go down the stairs and take a right."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "walk forward towards the leather chairs next to the table.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the table.",
         "candidate_evidence": [
-          "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table."
+          {
+            "subtask_index": 1,
+            "quote": "Walk forward towards the leather chairs next to the table."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Once you reach the bench on your right stop and stand on the wood between the bench and the carpet.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Once you reach the bench on your right stop and stand on the wood between the bench and the carpet.",
         "candidate_evidence": [
-          "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+          {
+            "subtask_index": 1,
+            "quote": "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+          }
         ],
         "status": "covered"
       }
@@ -65,54 +74,60 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
     "stage_checks": [
       {
         "subtask_index": 0,
-        "status": "supported",
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go down the stairs and take a right.",
+          "text": "The post-descent state after the right turn.",
           "candidate_quotes": [
-            "Go down the stairs and take a right."
+            "take a right."
           ]
         },
         "process": {
@@ -122,79 +137,70 @@
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "kind": "bounded_action",
+          "text": "The post-descent state after the right turn. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Go down the stairs and take a right."
+            "take a right."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "right",
-          "candidate_quotes": [
-            "right"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
         "source_quotes": [
           "Go down the stairs, and take a right ."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
-        "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
+          "text": "The wood between the bench and carpet, on reaching the bench at the right.",
           "candidate_quotes": [
-            "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+            "stop and stand on the wood between the bench and the carpet."
           ]
         },
         "process": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
+          "text": "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet.",
           "candidate_quotes": [
-            "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+            "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The wood between the bench and carpet, on reaching the bench at the right. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
+            "stop and stand on the wood between the bench and the carpet."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "after; Once; right; between",
+          "text": "Once you reach the bench on your right; between the bench and the carpet",
           "candidate_quotes": [
-            "after",
-            "Once",
-            "right",
-            "between"
+            "Once you reach the bench on your right",
+            "between the bench and the carpet"
           ]
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
         "source_quotes": [
-          "Go down the stairs, and take a right .",
           "walk forward towards the leather chairs next to the table.",
           "Once you reach the bench on your right stop and stand on the wood between the bench and the carpet."
         ],
-        "carryover": []
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ]
       }
     ],
     "handoffs": [
@@ -203,12 +209,12 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go down the stairs and take a right.",
-          "candidate_quote": "Go down the stairs and take a right."
+          "text": "The post-descent state after the right turn. Complete the quoted source-directed event.",
+          "candidate_quote": "take a right."
         },
         "next_entry": {
-          "text": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table",
-          "candidate_quote": "From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "Walk forward towards the leather chairs next to the table. Once you reach the bench on your right, stop and stand on the wood between the bench and the carpet."
         },
         "shared_context": [],
         "source_requirement_ids": [
@@ -216,9 +222,10 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Go down the stairs and take a right.'; the next stage begins with 'From the bottom of the stairs after turning right, walk forward towards the leather chairs next to the table'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -232,7 +239,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Go down the stairs, and take a right .; Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the…; Preserve the directional/spatial relation and its reference frame: Once you reach the bench on your right stop and…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Go down the stairs, and take a right .; Preserve the ordered route action or target-identifying landmark: walk forward towards the leather chairs next to the…; Preserve the directional/spatial relation and its reference frame: Once you reach the bench on your right stop and…"
+    "review_principle": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
+    "case_specific_focus": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
+    "transfer_rule": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
+    "anti_pattern": "Do not replay the descent or turn. An unmentioned word is not automatically unsupported; assess event entailment and anchor necessity, not a prohibited-word list.",
+    "counter_example_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
+    "primary_skills": [
+      "stair_target",
+      "terminal",
+      "scope"
+    ],
+    "decision_reason": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet."
   }
 }

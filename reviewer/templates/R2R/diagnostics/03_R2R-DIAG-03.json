@@ -42,7 +42,10 @@
         "source_quote": "Walk through the kitchen passed the sink.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk through the kitchen passed the sink.",
         "candidate_evidence": [
-          "Walk towards the kitchen passed the sink."
+          {
+            "subtask_index": 0,
+            "quote": "Walk towards the kitchen passed the sink."
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -51,7 +54,10 @@
         "source_quote": "Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp.",
         "candidate_evidence": [
-          "Walk towards the kitchen passed the sink."
+          {
+            "subtask_index": 0,
+            "quote": "Walk towards the kitchen passed the sink."
+          }
         ],
         "status": "covered"
       }
@@ -59,14 +65,14 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'.",
         "finding_indices": [
           0
         ]
@@ -74,33 +80,33 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
         "finding_indices": [
           0
         ]
@@ -108,28 +114,37 @@
     ],
     "findings": [
       {
-        "source_quote": "through",
+        "code": "LOST_EVENT",
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C03",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
+        "source_quote": "Walk through the kitchen passed the sink.",
         "candidate_evidence": [
-          "Walk towards the kitchen passed the sink."
+          {
+            "subtask_index": 0,
+            "quote": "Walk towards the kitchen passed the sink."
+          }
         ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate changes a spatial transition: approaching, entering, and passing through are not equivalent.",
-        "execution_consequence": "The candidate weakens an instructed crossing/entry into an approach; the agent may remain outside the required room or doorway.",
+        "problem": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'.",
+        "execution_consequence": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'.",
         "repair": {
-          "operation": "transition",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact source transition semantics.",
+          "instruction": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -144,9 +159,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp.",
+          "text": "The actual candidate endpoint: walk into the room with wooden walls that is completely empty except for a ceiling lamp.",
           "candidate_quotes": [
-            "Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp."
+            "walk into the room with wooden walls that is completely empty except for a ceiling lamp."
           ]
         },
         "process": {
@@ -156,9 +171,11 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "explicit_event",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
+          "candidate_quotes": [
+            "walk into the room with wooden walls that is completely empty except for a ceiling lamp."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
@@ -168,21 +185,30 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
-          "Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp.",
-          "Walk through the kitchen passed the sink."
+          "Walk through the kitchen passed the sink.",
+          "Turn the corner to the left and walk into the room with wooden walls that is completely empty except for a ceiling lamp."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "transition",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
+    "case_specific_focus": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
+    "transfer_rule": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "entry"
+    ],
+    "decision_reason": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry."
   }
 }

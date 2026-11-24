@@ -44,8 +44,14 @@
         "source_quote": "Turn around and then proceed to your left.",
         "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          }
         ],
         "status": "covered"
       },
@@ -54,8 +60,14 @@
         "source_quote": "Enter large room that looks like a lobby.",
         "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          }
         ],
         "status": "covered"
       },
@@ -64,8 +76,14 @@
         "source_quote": "Head left towards stairway.",
         "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          }
         ],
         "status": "covered"
       },
@@ -74,8 +92,10 @@
         "source_quote": "Then take another left into large dining hall.",
         "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          {
+            "subtask_index": 1,
+            "quote": "Walk towards the large dining hall."
+          }
         ],
         "status": "altered_or_missing"
       }
@@ -83,63 +103,86 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "The source requires turning into the large dining hall; the candidate only approaches it and drops the turn/entry event."
+        "conclusion": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "The source requires turning into the large dining hall; the candidate only approaches it and drops the turn/entry event."
+        "conclusion": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L4_handoffs",
-        "status": "issue",
-        "conclusion": "The altered event changes the stage completion/entry relation; the adjacent handoff must not be marked supported."
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The source requires turning into the large dining hall; the candidate only approaches it and drops the turn/entry event."
+        "conclusion": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
+        "finding_indices": [
+          0
+        ]
       }
     ],
     "findings": [
       {
-        "source_quote": "take another left into large dining hall",
+        "code": "LOST_EVENT",
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C03",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          1
+        ],
         "source_requirement_ids": [
           "SRC-04"
         ],
+        "source_quote": "take another left into large dining hall",
         "candidate_evidence": [
-          "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          {
+            "subtask_index": 1,
+            "quote": "Walk towards the large dining hall."
+          }
         ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C03",
         "evidence_level": "S1",
-        "problem": "The source requires turning into the large dining hall; the candidate only approaches it and drops the turn/entry event.",
-        "execution_consequence": "The agent may stop or continue near the hall without entering it.",
+        "problem": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'.",
+        "execution_consequence": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'.",
         "repair": {
-          "operation": "restore_source_semantics",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             1
           ],
-          "instruction": "Restore the turn into the large dining hall; do not add an extra STOP.",
+          "instruction": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
           "protected_requirements": [
-            "Preserve all unaffected actions and source order.",
-            "Do not add a physical STOP unless the source requires it."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -184,7 +227,8 @@
           "SRC-02"
         ],
         "source_quotes": [
-          "take another left into large dining hall"
+          "Turn around and then proceed to your left.",
+          "Enter large room that looks like a lobby."
         ],
         "carryover": [
           "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
@@ -194,16 +238,14 @@
         "subtask_index": 1,
         "status": "gap",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "Inside the lobby, head left towards the stairway"
-          ]
+          "mode": "inherited_pose",
+          "text": "Continue from the supported preceding region entry.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Take another left into the large dining hall.",
+          "text": "The candidate actually directs: Walk towards the large dining hall.",
           "candidate_quotes": [
-            "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+            "Walk towards the large dining hall."
           ]
         },
         "process": {
@@ -213,24 +255,26 @@
           ]
         },
         "ending": {
-          "kind": "unspecified",
-          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "kind": "terminal_goal_directive",
+          "text": "The candidate gives an approach where the source requires a specific entry or arrival.",
           "candidate_quotes": [
-            "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+            "Walk towards the large dining hall."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
+          "text": "The actual candidate relation is quoted; the source-required alternative is supplied by the Finding.",
           "candidate_quotes": [
-            "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+            "Walk towards the large dining hall."
           ]
         },
         "source_requirement_ids": [
+          "SRC-03",
           "SRC-04"
         ],
         "source_quotes": [
-          "take another left into large dining hall"
+          "Head left towards stairway.",
+          "Then take another left into large dining hall."
         ],
         "carryover": []
       }
@@ -239,14 +283,14 @@
       {
         "from_subtask_index": 0,
         "to_subtask_index": 1,
-        "status": "gap",
+        "status": "supported",
         "preceding_exit": {
-          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
+          "text": "The first stage executes the required region entry.",
           "candidate_quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
         },
         "next_entry": {
-          "text": "The actual next candidate stage.",
-          "candidate_quote": "Inside the lobby, head left towards the stairway. Walk towards the large dining hall."
+          "text": "Continue from the entered region.",
+          "candidate_quote": "Inside the lobby"
         },
         "shared_context": [],
         "source_requirement_ids": [
@@ -255,13 +299,22 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn around, proceed to your left, and enter the large room that looks like a lobby.'; the next stage begins with 'Inside the lobby, head left towards the stairway'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The preceding entry supports this starting region; the later target defect is localized separately."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "transition_weakened",
     "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
-    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed.",
+    "case_specific_focus": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
+    "transfer_rule": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "entry"
+    ],
+    "decision_reason": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
+    "review_principle": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach."
   }
 }

@@ -61,7 +61,7 @@ class R2RCoreTests(unittest.TestCase):
         self.assertNotEqual(pairs, [x["template_id"] for x in core_library("generator", "r2r-en")])
 
     def test_core_is_excluded_from_dynamic_libraries_and_selection(self):
-        for role, expected in (("generator", 25), ("reviewer", 52)):
+        for role, expected in (("generator", 25), ("reviewer", 55)):
             rows = library(role, "r2r-en")
             self.assertEqual(len(rows), expected)
             self.assertTrue(all(x["role"] == role and x["dataset_scope"] == "R2R"
@@ -76,12 +76,12 @@ class R2RCoreTests(unittest.TestCase):
                 }
                 dynamic_pair_ids = {x.get("pair_id") for x in rows if x.get("pair_id")}
                 self.assertTrue(dynamic_generator_ids.issubset(dynamic_pair_ids))
-                self.assertEqual(sum(not x.get("pair_id") for x in rows), 23)
+                self.assertEqual(sum(not x.get("pair_id") for x in rows), 26)
             ids = select_examples(role, "r2r-en", "Walk through the doorway and stop beside the table.")
             self.assertFalse(any(x.startswith("R2R-CORE-") for x in ids))
             self.assertTrue(all(x in {r["template_id"] for r in rows} for x in ids))
-        self.assertTrue(6 <= len(select_examples("generator", "r2r-en", "Walk through the doorway.")) <= 8)
-        self.assertTrue(8 <= len(select_examples("reviewer", "r2r-en", "Walk through the doorway.")) <= 12)
+        self.assertTrue(4 <= len(select_examples("generator", "r2r-en", "Walk through the doorway.")) <= 6)
+        self.assertTrue(6 <= len(select_examples("reviewer", "r2r-en", "Walk through the doorway.")) <= 9)
 
     def test_generator_core_passes_existing_runtime_contract(self):
         for row in core_library("generator", "r2r-en"):
@@ -102,8 +102,8 @@ class R2RCoreTests(unittest.TestCase):
                 self.assertEqual(len(audit["stage_checks"]), len(candidate["subtasks"]))
                 self.assertEqual(len(audit["handoffs"]), max(0, len(candidate["subtasks"]) - 1))
             verdicts.append(audit["verdict"])
-        self.assertEqual(verdicts.count("pass"), 4)
-        self.assertEqual(verdicts.count("revise"), 5)
+        self.assertEqual(verdicts.count("pass"), 5)
+        self.assertEqual(verdicts.count("revise"), 4)
         self.assertEqual(verdicts.count("unresolved"), 1)
 
     def test_all_core_templates_pass_authored_template_schema(self):
@@ -186,7 +186,7 @@ class R2RCoreTests(unittest.TestCase):
         self.assertNotIn("R2R-specific", shared)
         self.assertNotIn("R2R Core", shared)
         self.assertNotIn("R2R", rxr)
-        self.assertIn("R2R-specific", (ROOT / "shared/dataset_rules/r2r_en.md").read_text(encoding="utf-8"))
+        self.assertIn("S-ROLE", (ROOT / "shared/dataset_rules/r2r_en.md").read_text(encoding="utf-8"))
 
     def test_rxr_compiler_matches_its_generated_artifacts(self):
         cases = [
@@ -292,9 +292,9 @@ class R2RCoreTests(unittest.TestCase):
     def test_r02_coverage_evidence_is_requirement_specific(self):
         row = next(x for x in core_library("reviewer", "r2r-en") if x["template_id"] == "R2R-CORE-R02")
         coverage = row["expected_review"]["source_coverage"]
-        self.assertEqual(coverage[1]["candidate_evidence"], ["In the hallway take a right and go down the hall, keeping straight."])
-        self.assertEqual(coverage[2]["candidate_evidence"], ["the next door on your right"])
-        self.assertEqual(coverage[3]["candidate_evidence"], ["Stop in the room just past the door on the inside of the doorway."])
+        self.assertEqual(coverage[1]["candidate_evidence"], [{"subtask_index": 0, "quote": "In the hallway take a right and go down the hall, keeping straight."}])
+        self.assertEqual(coverage[2]["candidate_evidence"], [{"subtask_index": 0, "quote": "the next door on your right"}])
+        self.assertEqual(coverage[3]["candidate_evidence"], [{"subtask_index": 0, "quote": "Stop in the room just past the door on the inside of the doorway."}])
         self.assertEqual(coverage[2]["status"], "altered_or_missing")
 
     def test_reviewer_core_provenance_is_structured(self):
@@ -346,11 +346,15 @@ class R2RCoreTests(unittest.TestCase):
 
     def test_generator_core_cards_expose_primary_boundary_and_case_rationale(self):
         from host.compile import teaching_card
-        for row in core_library("generator", "r2r-en"):
-            card = teaching_card(row, "generator", detailed=True)
-            self.assertTrue(card.get("primary_decision_boundary"), row["template_id"])
-            self.assertTrue(card.get("case_rationale"), row["template_id"])
-            self.assertTrue(card.get("transfer_rule"), row["template_id"])
+        from r2r.selection import teaching_index
+        index,_=teaching_index()
+        for row in core_library("generator","r2r-en"):
+            card=teaching_card(row,"generator",detailed=True)
+            self.assertEqual(card['lesson'],index[row['template_id']]['lesson'])
+            self.assertEqual(card['skills'],index[row['template_id']]['skills'])
+            self.assertTrue(card['counter_boundary'])
+            self.assertEqual(card['source'],row['input']['original_instruction'])
+            self.assertIn(card['format'],('lesson_summary','complete_initial_output_demonstration'))
 
     def test_r09_r10_reviewer_teaching_metadata_matches_case_shape(self):
         rows = {row["template_id"]: row for row in core_library("reviewer", "r2r-en")}

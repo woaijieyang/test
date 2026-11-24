@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "The television-front movement and left exit precede the hall traversal and left-bedroom entry."
   },
   "output": {
     "status": "ok",
@@ -37,11 +37,11 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left and exit the room.",
+          "text": "The completed room exit after the television-side movement.",
           "candidate_quotes": [
             "Turn left and exit the room."
           ]
@@ -54,40 +54,32 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The completed room exit after the television-side movement. Complete the quoted source-directed event.",
           "candidate_quotes": [
             "Turn left and exit the room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; in front of",
-          "candidate_quotes": [
-            "left",
-            "in front of"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "move forward in front of the television.",
-          "turn left and exit the room."
+          "move forward in front of the television. turn left and exit the room.  go down hallway and step into the bedroom on the left."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "From the room exit, go down the hallway and step into the bedroom on the left"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "From the room exit, go down the hallway and step into the bedroom on the left.",
+          "text": "The left bedroom interior.",
           "candidate_quotes": [
-            "From the room exit, go down the hallway and step into the bedroom on the left."
+            "step into the bedroom on the left."
           ]
         },
         "process": {
@@ -98,21 +90,18 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The left bedroom interior. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "From the room exit, go down the hallway and step into the bedroom on the left."
+            "step into the bedroom on the left."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
-          "candidate_quotes": [
-            "left"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "turn left and exit the room.",
-          "go down hallway and step into the bedroom on the left."
+          "move forward in front of the television. turn left and exit the room.  go down hallway and step into the bedroom on the left."
         ],
         "carryover": []
       }
@@ -123,31 +112,37 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn left and exit the room.",
+          "text": "The completed room exit after the television-side movement. Complete the quoted source-directed event.",
           "candidate_quote": "Turn left and exit the room."
         },
         "next_entry": {
-          "text": "From the room exit, go down the hallway and step into the bedroom on the left",
-          "candidate_quote": "From the room exit, go down the hallway and step into the bedroom on the left"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "From the room exit, go down the hallway and step into the bedroom on the left."
         },
         "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn left and exit the room.'; the next stage begins with 'From the room exit, go down the hallway and step into the bedroom on the left'. The handoff carries the established location/reference frame without adding a physical stop."
+        "source_requirement_ids": [],
+        "handoff_rationale": "The television-front movement and left exit precede the hall traversal and left-bedroom entry."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Turn left and exit the room.'; stage 2 begins from 'From the room exit, go down the hallway and step into the bedroom on the left'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left; in front of Stage 2: left",
     "handoff_focus": "Stage 1 ends with 'Turn left and exit the room.'; stage 2 begins from 'From the room exit, go down the hallway and step into the bedroom on the left'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "case_specific_focus": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "transfer_rule": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "counter_example_boundary": "A predicted view of a doorway would not establish that exit.",
+    "primary_skills": [
+      "entry",
+      "direction"
+    ],
+    "decision_reason": "The television-front movement and left exit precede the hall traversal and left-bedroom entry."
   },
   "retrieval_tags": [
     "room_transition",

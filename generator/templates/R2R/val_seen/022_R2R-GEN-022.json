@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "Execute both door exits in order before the right turn, table-directed movement and stair target."
   },
   "output": {
     "status": "ok",
@@ -37,11 +37,11 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left and go out that door.",
+          "text": "The second doorway exit after the left turn.",
           "candidate_quotes": [
             "Turn left and go out that door."
           ]
@@ -54,37 +54,30 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The second doorway exit after the left turn. Complete the quoted source-directed event.",
           "candidate_quotes": [
             "Turn left and go out that door."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
-          "candidate_quotes": [
-            "left"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "Go out the door.",
-          "turn left and go out that door."
+          "Go out the door. turn left and go out that door. Turn right and go toward the table. Proceed to the stairs on the right."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "After exiting through that door, turn right and go towards the table"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Proceed to the stairs on the right.",
+          "text": "The right-hand stairs as the final directed target.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ]
@@ -97,23 +90,18 @@
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "Preserve the final directed approach; the source does not specify a further arrival threshold or physical STOP.",
+          "text": "The right-hand stairs as the final directed target. This is a final approach without an asserted arrival or STOP.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "After; right; through",
-          "candidate_quotes": [
-            "After",
-            "right",
-            "through"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "Turn right and go toward the table.",
-          "Proceed to the stairs on the right."
+          "Go out the door. turn left and go out that door. Turn right and go toward the table. Proceed to the stairs on the right."
         ],
         "carryover": []
       }
@@ -124,31 +112,38 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn left and go out that door.",
+          "text": "The second doorway exit after the left turn. Complete the quoted source-directed event.",
           "candidate_quote": "Turn left and go out that door."
         },
         "next_entry": {
-          "text": "After exiting through that door, turn right and go towards the table",
-          "candidate_quote": "After exiting through that door, turn right and go towards the table"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "After exiting through that door, turn right and go towards the table. Proceed to the stairs on the right."
         },
         "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn left and go out that door.'; the next stage begins with 'After exiting through that door, turn right and go towards the table'. The handoff carries the established location/reference frame without adding a physical stop."
+        "source_requirement_ids": [],
+        "handoff_rationale": "Execute both door exits in order before the right turn, table-directed movement and stair target."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Turn left and go out that door.'; stage 2 begins from 'After exiting through that door, turn right and go towards the table'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left Stage 2: After; right; through",
     "handoff_focus": "Stage 1 ends with 'Turn left and go out that door.'; stage 2 begins from 'After exiting through that door, turn right and go towards the table'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "case_specific_focus": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "transfer_rule": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "counter_example_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
+    "primary_skills": [
+      "entry",
+      "direction",
+      "final_approach"
+    ],
+    "decision_reason": "Execute both door exits in order before the right turn, table-directed movement and stair target."
   },
   "retrieval_tags": [
     "doorway_selection_and_crossing",

@@ -12,37 +12,50 @@ class InjectionTests(unittest.TestCase):
         self.assertEqual(req['selected_example_ids'],ids)
 
     def test_cards_preserve_decision_and_keep_diagnostic_evidence(self):
+        from host.compile import core_library
         for profile in PROFILES:
             for role,phase in [('generator','initial'),('reviewer','recheck')]:
                 source='Stop in the room. Stop beside the bed.'
                 ids=select_examples(role,profile,source)
                 text,schema=compile_prompt(role,phase,profile=profile,selected_ids=ids,original_instruction=source)
-                cards=[json.loads(line) for line in text.splitlines() if line.startswith('{') and '"applicable_lesson"' in line]
-                from host.compile import core_library
+                cards=[json.loads(line) for line in text.splitlines() if line.startswith('{') and '"template_id"' in line and ('"applicable_lesson"' in line or '"format"' in line)]
                 fixed=core_library(role,profile)
-                expected=[r['template_id'] for r in fixed]+ids
-                self.assertEqual([c['template_id'] for c in cards],expected)
+                self.assertEqual([c['template_id'] for c in cards],[r['template_id'] for r in fixed]+ids)
                 originals={r['template_id']:r for r in [*fixed,*library(role,profile)]}
                 for c in cards:
-                    e=originals[c['template_id']];self.assertTrue(c['applicable_lesson'])
-                    t=c['teaching']
-                    is_fixed_core = c['template_id'] in {x['template_id'] for x in fixed}
-                    is_first_dynamic = c['template_id'] == (ids[0] if ids else None)
-                    expects_detailed = is_fixed_core or is_first_dynamic
-                    if role=='generator':
-                        self.assertEqual(t['stages'],e['output']['subtasks'])
-                        self.assertEqual(t['handoffs'],e['output']['handoffs'])
-                        self.assertEqual('stage_evidence' in t,expects_detailed)
+                    e=originals[c['template_id']]
+                    if profile=='r2r-en':
+                        self.assertTrue(c['lesson']);self.assertTrue(c['counter_boundary'])
+                        self.assertEqual(c['source'],(e.get('input') or e['review_input'])['original_instruction'])
+                        if 'expected_output' in c:
+                            expected=e['output'] if role=='generator' else e['expected_review']
+                            self.assertEqual(c['expected_output'],expected)
+                        elif role=='generator':
+                            self.assertEqual(c['stages'],e['output']['subtasks'])
+                            self.assertEqual(c['decision']['status'],e['output']['status'])
+                            self.assertEqual(c['boundary_evidence'],[dict(after_stage=h['from_subtask_index'],completed_event=h['preceding_exit']['candidate_quote'],next_action_context=h['next_entry']['candidate_quote']) for h in e['output']['handoffs']])
+                        else:
+                            self.assertEqual(c['candidate'],e['review_input']['candidate'])
+                            self.assertEqual(c['verdict'],e['expected_review']['verdict'])
+                            for shown,finding in zip(c['evidence_excerpt'],e['expected_review']['findings']):
+                                self.assertEqual(shown['source'],finding['source_quote'])
+                                self.assertEqual(shown['candidate'],finding['candidate_evidence'])
+                            self.assertEqual(len(c['local_repair']),len(e['expected_review']['findings']))
                     else:
-                        self.assertEqual(t['findings'],runtime_review_output(e)['findings'])
-                        self.assertEqual(t['review_case'],e['review_input'])
-                        self.assertEqual('coverage_evidence' in t,expects_detailed)
-                        if is_fixed_core:
-                            self.assertIn('stage_checks',t)
-                            self.assertIn('layer_checks',t)
-                            self.assertEqual(len(t['stage_checks']),
-                                             len(e['review_input']['candidate']['subtasks']))
-                            self.assertEqual(len(t['layer_checks']),7)
+                        self.assertTrue(c['applicable_lesson']);t=c['teaching']
+                        is_fixed=c['template_id'] in {x['template_id'] for x in fixed}
+                        detail=is_fixed or c['template_id']==ids[0]
+                        if role=='generator':
+                            self.assertEqual(t['stages'],e['output']['subtasks'])
+                            self.assertEqual(t['handoffs'],e['output']['handoffs'])
+                            self.assertEqual('stage_evidence' in t,detail)
+                        else:
+                            self.assertEqual(t['findings'],runtime_review_output(e)['findings'])
+                            self.assertEqual(t['review_case'],e['review_input'])
+                            self.assertEqual('coverage_evidence' in t,detail)
+                            if is_fixed:
+                                self.assertEqual(len(t['stage_checks']),len(e['review_input']['candidate']['subtasks']))
+                                self.assertEqual(len(t['layer_checks']),7)
                 self.assertIn('two distinct stops',text)
                 blank,other_schema=compile_prompt(role,phase,profile=profile,original_instruction=source,examples=False)
                 self.assertEqual(other_schema,schema);self.assertNotIn('APPLY THE EXAMPLES',blank)

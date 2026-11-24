@@ -42,7 +42,10 @@
         "source_quote": "Walk down the hall.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: Walk down the hall.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall."
+          }
         ],
         "status": "covered"
       },
@@ -51,7 +54,10 @@
         "source_quote": "Turn right at the table.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right at the table.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall."
+          }
         ],
         "status": "covered"
       },
@@ -60,7 +66,10 @@
         "source_quote": "Turn left between the couch and the kitchen area.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left between the couch and the kitchen area.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall."
+          }
         ],
         "status": "covered"
       },
@@ -69,7 +78,10 @@
         "source_quote": "Go past the chair into the hall and go through the doorway on the right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go past the chair into the hall and go through the doorway on the right.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "go towards the doorway on the right"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -78,7 +90,10 @@
         "source_quote": "Go left of the family photos into the bedroom.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go left of the family photos into the bedroom.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall."
+          }
         ],
         "status": "covered"
       },
@@ -87,7 +102,10 @@
         "source_quote": "Stop just inside the doorway.",
         "requirement": "Preserve the completion or stationary-position condition: Stop just inside the doorway.",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall."
+          }
         ],
         "status": "covered"
       }
@@ -95,14 +113,14 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'.",
         "finding_indices": [
           0
         ]
@@ -110,33 +128,33 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
         "finding_indices": [
           0
         ]
@@ -144,28 +162,37 @@
     ],
     "findings": [
       {
-        "source_quote": "through",
+        "code": "LOST_EVENT",
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C03",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-04"
         ],
+        "source_quote": "go through the doorway on the right",
         "candidate_evidence": [
-          "Walk down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "go towards the doorway on the right"
+          }
         ],
-        "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate changes a spatial transition: approaching, entering, and passing through are not equivalent.",
-        "execution_consequence": "The candidate weakens an instructed crossing/entry into an approach; the agent may remain outside the required room or doorway.",
+        "problem": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'.",
+        "execution_consequence": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'.",
         "repair": {
-          "operation": "transition",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact source transition semantics.",
+          "instruction": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -180,7 +207,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Stop just inside the doorway.",
+          "text": "The actual candidate endpoint: Stop just inside the doorway.",
           "candidate_quotes": [
             "Stop just inside the doorway."
           ]
@@ -193,7 +220,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Stop just inside the doorway.",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
           "candidate_quotes": [
             "Stop just inside the doorway."
           ],
@@ -209,23 +236,38 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-04"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
         ],
         "source_quotes": [
-          "Stop just inside the doorway.",
-          "Go left of the family photos into the bedroom.",
+          "Walk down the hall.",
+          "Turn right at the table.",
           "Turn left between the couch and the kitchen area.",
-          "Turn right at the table."
+          "Go past the chair into the hall and go through the doorway on the right.",
+          "Go left of the family photos into the bedroom.",
+          "Stop just inside the doorway."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "transition",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a transition corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
+    "case_specific_focus": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
+    "transfer_rule": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "entry"
+    ],
+    "decision_reason": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop."
   }
 }

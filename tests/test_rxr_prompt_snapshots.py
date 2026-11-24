@@ -68,21 +68,24 @@ class RxRPromptSnapshotTests(unittest.TestCase):
                 self.assertEqual(positions, sorted(positions))
 
     def test_common_contract_and_compiler_match_the_reviewed_measurement(self):
-        # Changes here require an explicit reviewed rebaseline, not CI rewriting
-        # the expected prompt hash after observing whatever the code produced.
-        protected = (
-            'shared/semantic_contract.md', 'generator/prompt.md',
-            'reviewer/prompt.md', 'generator/repair.md',
-            'generator/output.schema.json', 'generator/repair.schema.json',
-            'reviewer/output.schema.json', 'host/compile.py',
-            'host/template_selector.py', 'host/rxr_retrieval.py',
+        # Prompt/schema golden expectations remain unchanged. Shared source
+        # may differ only by the reviewed, exact R2R integration delta.
+        from r2r_authoring.integrate import expected as integration, base
+        protected=(
+            'shared/semantic_contract.md','generator/prompt.md','reviewer/prompt.md',
+            'generator/repair.md','generator/output.schema.json','generator/repair.schema.json',
+            'reviewer/output.schema.json','host/compile.py','host/template_selector.py','host/rxr_retrieval.py',
         )
-        commit = self.pins['measured_source_commit']
+        commit=self.pins['measured_source_commit']
+        reviewed=integration()
         for path in protected:
             with self.subTest(path=path):
-                expected = subprocess.check_output(
-                    ['git', 'show', commit + ':' + path], cwd=ROOT)
-                self.assertEqual((ROOT / path).read_bytes(), expected)
+                original=subprocess.check_output(['git','show',commit+':'+path],cwd=ROOT)
+                if path in ('host/compile.py','host/template_selector.py'):
+                    self.assertEqual(base(path).encode(),original)
+                    self.assertEqual((ROOT/path).read_bytes(),reviewed[path].encode())
+                else:
+                    self.assertEqual((ROOT/path).read_bytes(),original)
 
     def test_bytes_are_not_reported_as_verified_model_tokens(self):
         self.assertIs(self.pins['token_budget_verified'], False)

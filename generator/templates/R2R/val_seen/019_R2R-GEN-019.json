@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "keep",
-    "rationale": "Keep the complete route as one executable stage because the source does not provide a useful intermediate completion point without detaching a coupled maneuver or inventing a state."
+    "rationale": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop."
   },
   "output": {
     "status": "ok",
@@ -36,11 +36,11 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue up the stairs and stop.",
+          "text": "The stair-ascent stopping state.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ]
@@ -53,22 +53,18 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The stair-ascent stopping state. Complete the quoted source-directed event.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "left; past",
-          "candidate_quotes": [
-            "left",
-            "past"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "Move forward past the white coach and then turn left.",
-          "Continue up the stairs and stop."
+          "Move forward past the white coach and then turn left. Continue up the stairs and stop."
         ],
         "carryover": []
       }
@@ -78,12 +74,22 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "single_coherent_stage",
-    "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Move forward past the white coach and then turn left. Continue up the stairs and stop.). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
-    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "why_this_case_matters": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "reusable_rule": "",
     "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
-    "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint."
+    "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint.",
+    "case_rationale": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "case_specific_focus": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "transfer_rule": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "counter_example_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
+    "primary_skills": [
+      "coupled",
+      "direction",
+      "terminal"
+    ],
+    "decision_reason": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop."
   },
   "retrieval_tags": [
     "stairs_or_level_change",

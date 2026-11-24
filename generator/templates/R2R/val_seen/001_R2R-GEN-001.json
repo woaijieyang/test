@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "The source explicitly completes the first turn/room traversal/waypoint, then gives a distinct next objective. The cut exposes that local transition without inventing a stop."
+    "rationale": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach."
   },
   "output": {
     "status": "ok",
@@ -37,13 +37,13 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk down the stairs and turn right.",
+          "text": "The post-descent state after the right turn.",
           "candidate_quotes": [
-            "Walk down the stairs and turn right."
+            "turn right."
           ]
         },
         "process": {
@@ -53,37 +53,31 @@
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "kind": "bounded_action",
+          "text": "The post-descent state after the right turn. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Walk down the stairs and turn right."
+            "turn right."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "right",
-          "candidate_quotes": [
-            "right"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
           "Walk down the stairs, turn right, and walk towards place with a rug. Wait near the bench and piano along the right side of the wall."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The next stage explicitly binds its entry to the completed stair descent and right turn.",
-          "candidate_quotes": [
-            "After going down the stairs and turning right"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Wait near the bench and piano along the right side of the wall.",
+          "text": "The waiting place near the bench and piano along the right wall.",
           "candidate_quotes": [
             "Wait near the bench and piano along the right side of the wall."
           ]
@@ -96,23 +90,18 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The waiting place near the bench and piano along the right wall. Complete the quoted source-directed event.",
           "candidate_quotes": [
             "Wait near the bench and piano along the right side of the wall."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; right; near",
-          "candidate_quotes": [
-            "After",
-            "right",
-            "near"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "Walk down the stairs, turn right, and walk towards place with a rug.",
-          "Wait near the bench and piano along the right side of the wall."
+          "Walk down the stairs, turn right, and walk towards place with a rug. Wait near the bench and piano along the right side of the wall."
         ],
         "carryover": []
       }
@@ -123,30 +112,37 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk down the stairs and turn right.",
-          "candidate_quote": "Walk down the stairs and turn right."
+          "text": "The post-descent state after the right turn. Complete the quoted source-directed event.",
+          "candidate_quote": "turn right."
         },
         "next_entry": {
-          "text": "After going down the stairs and turning right",
-          "candidate_quote": "After going down the stairs and turning right"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "After going down the stairs and turning right, walk towards the place with a rug. Wait near the bench and piano along the right side of the wall."
         },
         "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "handoff_rationale": "The preceding stage ends with 'Walk down the stairs and turn right.'; the next stage begins with 'After going down the stairs and turning right', carrying forward the established direction without replaying the turn."
+        "source_requirement_ids": [],
+        "handoff_rationale": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "bounded_transition_then_distinct_target",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk down the stairs and turn right.'; stage 2 begins from 'After going down the stairs and turning right'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: right Stage 2: After; right; near",
     "handoff_focus": "Stage 1 ends with 'Walk down the stairs and turn right.'; stage 2 begins from 'After going down the stairs and turning right'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
+    "case_specific_focus": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
+    "transfer_rule": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
+    "counter_example_boundary": "A midway limit would constrain the descent itself rather than a new full descent.",
+    "primary_skills": [
+      "stair_target",
+      "terminal"
+    ],
+    "decision_reason": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach."
   },
   "retrieval_tags": [
     "stairs_or_level_change",

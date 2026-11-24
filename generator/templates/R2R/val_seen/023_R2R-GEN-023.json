@@ -24,102 +24,89 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival."
   },
   "output": {
     "status": "ok",
     "subtasks": [
-      "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway.",
-      "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs."
+      "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway.",
+      "When you are in the hallway by the window, take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Finally take a right; when you get to the side of the stairs you have arrived."
     ],
     "stage_audit": [
       {
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go towards the indoor glass window and through the doorway.",
+          "text": "The hallway-side doorway crossing by the glass window.",
           "candidate_quotes": [
-            "Go towards the indoor glass window and through the doorway."
+            "Go toward the glass window and through the doorway."
           ]
         },
         "process": {
-          "text": "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway.",
+          "text": "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway.",
           "candidate_quotes": [
-            "Go towards the door. Turn left by the black vanity. Go towards the indoor glass window and through the doorway."
+            "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The hallway-side doorway crossing by the glass window. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Go towards the indoor glass window and through the doorway."
+            "Go toward the glass window and through the doorway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; through",
+          "text": "You will see an indoor glass window",
           "candidate_quotes": [
-            "left",
-            "through"
+            "You will see an indoor glass window"
           ]
         },
         "source_quotes": [
-          "Go toward the door.",
-          "Turn left by the black vanity.",
-          "You will see an indoor glass window.",
-          "Go toward the glass window and through the doorway."
+          "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway. When your in the hallway by the  window take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Next and finally you take a right and when you get to the side of the stairs you have arrived."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "When you are in the hallway by the window, take a right"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "You have arrived when you get to the side of the stairs.",
+          "text": "The explicit side-of-stairs arrival position.",
           "candidate_quotes": [
-            "You have arrived when you get to the side of the stairs."
+            "when you get to the side of the stairs you have arrived."
           ]
         },
         "process": {
-          "text": "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs.",
+          "text": "When you are in the hallway by the window, take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Finally take a right; when you get to the side of the stairs you have arrived.",
           "candidate_quotes": [
-            "When you are in the hallway by the window, take a right. Go towards the table with the pictures on it, then towards the wall with the security box or thermostat. Finally, take a right. You have arrived when you get to the side of the stairs."
+            "When you are in the hallway by the window, take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Finally take a right; when you get to the side of the stairs you have arrived."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The episode reaches its stated destination at the side of the stairs; no additional STOP is required.",
+          "text": "The explicit side-of-stairs arrival position. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "You have arrived when you get to the side of the stairs."
+            "when you get to the side of the stairs you have arrived."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "descriptive_uncertainty: \"security box or thermostat\" is an alternative description of the same wall-mounted reference, not two navigation branches; temporal: then/next/finally preserve the ordered route; spatial_frame: hallway by the window, right turn, picture table, and final right turn.",
+          "text": "When you are in the hallway by the window; when you get to the side of the stairs",
           "candidate_quotes": [
-            "When",
-            "right",
-            "security box or thermostat",
-            "When you are in the hallway by the window"
+            "When you are in the hallway by the window",
+            "when you get to the side of the stairs"
           ]
         },
         "source_quotes": [
-          "When your in the hallway by the  window take a right.",
-          "Go toward the table with the pictures on it.",
-          "Then go toward the wall with the security box or thermostat.",
-          "Next and finally you take a right and when you get to the side of the stairs you have arrived."
+          "Go toward the door. Turn left by the black vanity. You will see an indoor glass window. Go toward the glass window and through the doorway. When your in the hallway by the  window take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Next and finally you take a right and when you get to the side of the stairs you have arrived."
         ],
         "carryover": []
       }
@@ -130,31 +117,38 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go towards the indoor glass window and through the doorway.",
-          "candidate_quote": "Go towards the indoor glass window and through the doorway."
+          "text": "The hallway-side doorway crossing by the glass window. Complete the quoted source-directed event.",
+          "candidate_quote": "Go toward the glass window and through the doorway."
         },
         "next_entry": {
-          "text": "When you are in the hallway by the window, take a right",
-          "candidate_quote": "When you are in the hallway by the window, take a right"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "When you are in the hallway by the window, take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Finally take a right; when you get to the side of the stairs you have arrived."
         },
         "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Go towards the indoor glass window and through the doorway.'; the next stage begins with 'When you are in the hallway by the window, take a right'. The handoff carries the established location/reference frame without adding a physical stop."
+        "source_requirement_ids": [],
+        "handoff_rationale": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Go towards the indoor glass window and through the doorway.'; stage 2 begins from 'When you are in the hallway by the window, take a right'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left; through Stage 2: descriptive_uncertainty: \"security box or thermostat\" is an alternative description of the same wall-mounted…",
     "handoff_focus": "Stage 1 ends with 'Go towards the indoor glass window and through the doorway.'; stage 2 begins from 'When you are in the hallway by the window, take a right'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
+    "case_specific_focus": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
+    "transfer_rule": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
+    "counter_example_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
+    "primary_skills": [
+      "observation",
+      "entry",
+      "endpoint"
+    ],
+    "decision_reason": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival."
   },
   "retrieval_tags": [
     "room_transition",

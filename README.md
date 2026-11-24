@@ -1,4 +1,4 @@
-# LLM-decompose-v6.6.3
+# LLM-decompose-v6.6.4
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -64,11 +64,11 @@ G0/R0/G1/R1 均绑定同一个 Source Identity。G0/G1 使用同一 Generator Co
 | Generator Fixed Core | 10（G01–G10） | 10（G01–G10） |
 | Reviewer Fixed Core | 10（R01–R10） | 10（R01–R10） |
 | Generator Dynamic Eligible | 25 | 43（35原有＋8训练源） |
-| Generator Dynamic per task | 6–8 | 2–4 |
+| Generator Dynamic per task | 4–6 | 2–4 |
 | Reviewer Paired Dynamic Eligible | 29 | 43（35原有＋8训练源） |
-| Reviewer Paired per task | 6–8 | 2–4 |
-| Reviewer Diagnostics Eligible | 23 | 37（29原有＋8训练源） |
-| Reviewer Diagnostics per task | 2–4 | 0–2 |
+| Reviewer Paired per task | 4–6 | 2–4 |
+| Reviewer Diagnostics Eligible | 26 | 37（29原有＋8训练源） |
+| Reviewer Diagnostics per task | 2–3 | 0–2 |
 
 磁盘来源数、Core 数、Dynamic Eligible 数和单任务实际选择数是不同概念，禁止混用。固定 Core 无条件加载且顺序稳定；Dynamic 只从当前 Profile 的白名单目录检索；Legacy 仅用于来源追溯，不进入运行时。
 
@@ -138,3 +138,5 @@ python -m evaluation.smoke24
 ## RxR semantic calibration
 
 RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.
+
+R2R 新实现、父分支差异和验证边界见 `docs/R2R_IMPLEMENTATION.md`。完整作者资产用 `python -B -m r2r_authoring.build --check` 校验；当前模型和导航性能仍需独立实验。

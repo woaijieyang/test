@@ -11,7 +11,7 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-CORE-R03](R2R/core/R03_R2R-CORE-R03.json)|R2R-CORE-G05|single_coherent_stage|—|
 |R2R|[R2R-CORE-R04](R2R/core/R04_R2R-CORE-R04.json)|R2R-CORE-G01|C_SEGMENT_GRANULARITY|—|
 |R2R|[R2R-CORE-R05](R2R/core/R05_R2R-CORE-R05.json)|R2R-CORE-G03|completed_transition_then_distinct_objective|—|
-|R2R|[R2R-CORE-R06](R2R/core/R06_R2R-CORE-R06.json)|R2R-CORE-G02|undersegmentation_multiple_completed_objectives|—|
+|R2R|[R2R-CORE-R06](R2R/core/R06_R2R-CORE-R06.json)|R2R-CORE-G02|valid_alternative_grouping|—|
 |R2R|[R2R-CORE-R07](R2R/core/R07_R2R-CORE-R07.json)|R2R-CORE-G06|PREMATURE_HANDOFF_REGION_ASSUMPTION|—|
 |R2R|[R2R-CORE-R08](R2R/core/R08_R2R-CORE-R08.json)|R2R-CORE-G08|target_landmark_expected_observation_confusion|—|
 |R2R|[R2R-CORE-R09](R2R/core/R09_R2R-CORE-R09.json)|R2R-CORE-G09|completed_transition_then_distinct_objective|—|
@@ -75,7 +75,7 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-07](R2R/diagnostics/07_R2R-DIAG-07.json)|diagnostics|—|stop_omission|—|
 |R2R|[R2R-DIAG-08](R2R/diagnostics/08_R2R-DIAG-08.json)|diagnostics|—|negation|—|
 |R2R|[R2R-DIAG-09](R2R/diagnostics/09_R2R-DIAG-09.json)|diagnostics|—|orientation|—|
-|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|referent|—|
+|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|orientation_reference_frame|—|
 |R2R|[R2R-DIAG-11](R2R/diagnostics/11_R2R-DIAG-11.json)|diagnostics|—|ordinal|—|
 |R2R|[R2R-DIAG-12](R2R/diagnostics/12_R2R-DIAG-12.json)|diagnostics|—|direction|—|
 |R2R|[R2R-DIAG-13](R2R/diagnostics/13_R2R-DIAG-13.json)|diagnostics|—|transition|—|
@@ -86,6 +86,9 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-18](R2R/diagnostics/18_R2R-DIAG-18.json)|diagnostics|—|negation|—|
 |R2R|[R2R-DIAG-19](R2R/diagnostics/19_R2R-DIAG-19.json)|diagnostics|—|orientation|—|
 |R2R|[R2R-DIAG-20](R2R/diagnostics/20_R2R-DIAG-20.json)|diagnostics|—|referent|—|
+|R2R|[R2R-DIAG-27](R2R/diagnostics/27_R2R-DIAG-27.json)|diagnostics|—|attribute_promoted_to_action|—|
+|R2R|[R2R-DIAG-28](R2R/diagnostics/28_R2R-DIAG-28.json)|diagnostics|—|valid_alternative_grouping|—|
+|R2R|[R2R-DIAG-29](R2R/diagnostics/29_R2R-DIAG-29.json)|diagnostics|—|endpoint_refinement_replayed_motion|—|
 |R2R|[R2R-DIAG-21](R2R/diagnostics/R2R-DIAG-21.json)|diagnostics|—|transition_weakened|—|
 |R2R|[R2R-DIAG-22](R2R/diagnostics/R2R-DIAG-22.json)|diagnostics|—|explicit_arrival_lost|—|
 |R2R|[R2R-DIAG-23](R2R/diagnostics/R2R-DIAG-23.json)|diagnostics|—|reference_relation_reversed|—|

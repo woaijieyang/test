@@ -1,0 +1,174 @@
+{
+  "common_authority": "shared/semantic_contract.md",
+  "shared_interpretations": "shared/dataset_rules/r2r_en.md",
+  "nodes": [
+    {
+      "id": "G-P0",
+      "role": "generator",
+      "level": 0,
+      "parent": null,
+      "title": "Preserve the complete requested route",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-A",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Build the event and relation structure",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Attributes, observations and source corrections",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Relation owners and counting origins",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A3",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Refinement, branches and repeated events",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-B",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Group complete maneuvers and supported handoffs",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Transit and a new local objective",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Inheritance and anchors",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-C",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Write and verify the actual instruction",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-C1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-C",
+      "title": "Exact endings and economical English",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-C2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-C",
+      "title": "Independent repair",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P0",
+      "role": "reviewer",
+      "level": 0,
+      "parent": null,
+      "title": "Judge the actual candidate from the complete source",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-A",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Verify requirements and their scope",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Identity, frame and event strength",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Completion and terminal scope",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-B",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Diagnose a specific material defect",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-B1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-B",
+      "title": "Grouping with evidence",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-B2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-B",
+      "title": "Localize the defect",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-C",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Recommend the smallest repair and verify its result",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-C1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-C",
+      "title": "Grounded advice, including refusal review",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-C2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-C",
+      "title": "Independent recheck",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    }
+  ]
+}

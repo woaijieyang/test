@@ -23,131 +23,73 @@
   },
   "decision": {
     "status": "ok",
-    "mode": "split",
-    "rationale": "The source explicitly completes the first turn/room traversal/waypoint, then gives a distinct next objective. The cut exposes that local transition without inventing a stop."
+    "mode": "keep",
+    "rationale": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway."
   },
   "output": {
     "status": "ok",
     "subtasks": [
-      "Walk past the water fountain and turn left.",
-      "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
+      "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. "
     ],
     "stage_audit": [
       {
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk past the water fountain and turn left.",
-          "candidate_quotes": [
-            "Walk past the water fountain and turn left."
-          ]
-        },
-        "process": {
-          "text": "Walk past the water fountain and turn left.",
-          "candidate_quotes": [
-            "Walk past the water fountain and turn left."
-          ]
-        },
-        "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
-          "candidate_quotes": [
-            "Walk past the water fountain and turn left."
-          ],
-          "stop_scope": "none"
-        },
-        "conditions": {
-          "text": "left; past",
-          "candidate_quotes": [
-            "left",
-            "past"
-          ]
-        },
-        "source_quotes": [
-          "Walk past the water fountain and turn left."
-        ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
-      },
-      {
-        "subtask_index": 1,
-        "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
-          ]
-        },
-        "target": {
-          "text": "Stop in the doorway.",
+          "text": "The doorway directly across from the stairs.",
           "candidate_quotes": [
             "Stop in the doorway."
           ]
         },
         "process": {
-          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway.",
+          "text": "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. ",
           "candidate_quotes": [
-            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
+            "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. "
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The doorway directly across from the stairs. Complete the quoted source-directed event.",
           "candidate_quotes": [
             "Stop in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; left",
-          "candidate_quotes": [
-            "After",
-            "left"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_quotes": [
-          "Walk past the water fountain and turn left.",
-          "Walk to the doorway directly across from the stairs.",
-          "Stop in the doorway."
+          "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway."
         ],
         "carryover": []
       }
     ],
-    "handoffs": [
-      {
-        "from_subtask_index": 0,
-        "to_subtask_index": 1,
-        "status": "supported",
-        "preceding_exit": {
-          "text": "Walk past the water fountain and turn left.",
-          "candidate_quote": "Walk past the water fountain and turn left."
-        },
-        "next_entry": {
-          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs",
-          "candidate_quote": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
-        },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "handoff_rationale": "The first stage ends at the source-supported event 'Walk past the water fountain and turn left.'; the next stage begins with 'After passing the water fountain and turning left, walk to the doorway directly across from the stairs'. No physical stop is added."
-      }
-    ],
+    "handoffs": [],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "bounded_transition_then_distinct_target",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk past the water fountain and turn left.'; stage 2 begins from 'After passing the water fountain and turning left, walk to the doorway directly across from…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left; past Stage 2: After; left",
     "handoff_focus": "Stage 1 ends with 'Walk past the water fountain and turn left.'; stage 2 begins from 'After passing the water fountain and turning left, walk to the doorway directly across from…'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
+    "case_specific_focus": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
+    "transfer_rule": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
+    "counter_example_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
+    "primary_skills": [
+      "coupled",
+      "pass_by",
+      "terminal"
+    ],
+    "decision_reason": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway."
   },
   "retrieval_tags": [
     "doorway_selection_and_crossing",

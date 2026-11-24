@@ -48,7 +48,10 @@
         "source_quote": "With the bed on your left go forward and out of the room into the hallway.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: With the bed on your left go forward and out of the room into the hallway.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "With the bed on your left go forward and out of the room into the hallway."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +60,10 @@
         "source_quote": "In the hallway take a right and go down the hall, keeping straight.",
         "requirement": "Preserve the hallway-relative right turn and the straight hallway traversal.",
         "candidate_evidence": [
-          "In the hallway take a right and go down the hall, keeping straight."
+          {
+            "subtask_index": 0,
+            "quote": "In the hallway take a right and go down the hall, keeping straight."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +72,10 @@
         "source_quote": "Then take a right into the bedroom that is the first door on your right.",
         "requirement": "Preserve the first-door ordinal and its right-side counting origin; the candidate says next door, which changes the selected ordinal target.",
         "candidate_evidence": [
-          "the next door on your right"
+          {
+            "subtask_index": 0,
+            "quote": "the next door on your right"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -75,7 +84,10 @@
         "source_quote": "Stop in the room just past the door on the inside of the doorway.",
         "requirement": "Preserve the specified stopping position just inside the doorway.",
         "candidate_evidence": [
-          "Stop in the room just past the door on the inside of the doorway."
+          {
+            "subtask_index": 0,
+            "quote": "Stop in the room just past the door on the inside of the doorway."
+          }
         ],
         "status": "covered"
       }
@@ -83,7 +95,7 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
+        "status": "not_applicable",
         "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
         "finding_indices": []
       },
@@ -111,7 +123,7 @@
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
+        "status": "not_applicable",
         "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
         "finding_indices": []
       },

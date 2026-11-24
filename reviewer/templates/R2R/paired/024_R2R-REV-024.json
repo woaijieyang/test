@@ -38,7 +38,10 @@
         "source_quote": "Walk out of the bathroom and take a right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk out of the bathroom and take a right.",
         "candidate_evidence": [
-          "Walk out of the bathroom and take a right."
+          {
+            "subtask_index": 0,
+            "quote": "Walk out of the bathroom and take a right."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Then take a left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Then take a left.",
         "candidate_evidence": [
-          "Then take a left."
+          {
+            "subtask_index": 0,
+            "quote": "Then take a left."
+          }
         ],
         "status": "covered"
       },
@@ -56,7 +62,10 @@
         "source_quote": "Take another right and wait at the top of the stairs.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Take another right and wait at the top of the stairs.",
         "candidate_evidence": [
-          "Take another right and wait at the top of the stairs."
+          {
+            "subtask_index": 0,
+            "quote": "Take another right and wait at the top of the stairs."
+          }
         ],
         "status": "covered"
       }
@@ -64,54 +73,60 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
     "stage_checks": [
       {
         "subtask_index": 0,
-        "status": "supported",
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Take another right and wait at the top of the stairs.",
+          "text": "The top of the stairs after the ordered turns.",
           "candidate_quotes": [
-            "Take another right and wait at the top of the stairs."
+            "wait at the top of the stairs."
           ]
         },
         "process": {
@@ -122,33 +137,32 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The top of the stairs after the ordered turns. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Take another right and wait at the top of the stairs."
+            "wait at the top of the stairs."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "left; right",
-          "candidate_quotes": [
-            "left",
-            "right"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
-        ],
         "source_quotes": [
           "Walk out of the bathroom and take a right.",
           "Then take a left.",
           "Take another right and wait at the top of the stairs."
         ],
-        "carryover": []
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ]
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -161,7 +175,15 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk out of the bathroom and take a right.; Preserve the directional/spatial relation and its reference frame: Then take a left.; Preserve the directional/spatial relation and its reference frame: Take another right and wait at the top of the stairs.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk out of the bathroom and take a right.; Preserve the directional/spatial relation and its reference frame: Then take a left.; Preserve the directional/spatial relation and its reference frame: Take another right and wait at the top of the stairs."
+    "review_principle": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs.",
+    "case_specific_focus": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs.",
+    "transfer_rule": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs.",
+    "counter_example_boundary": "Turn count or sentence count alone does not establish independent local targets.",
+    "primary_skills": [
+      "coupled",
+      "direction",
+      "terminal"
+    ],
+    "decision_reason": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs."
   }
 }

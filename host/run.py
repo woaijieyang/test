@@ -92,6 +92,9 @@ def prompt_components_metadata(role, phase, profile):
             root/"shared/dataset_rules/r2r_en.md",
             root/role/"dataset_rules/r2r_en.md",
         ])
+        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py",
+                      root/"shared/dataset_rules/r2r_teaching_index.json",
+                      root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
     files = []
     for path in paths:
         data = path.read_bytes()
@@ -123,10 +126,10 @@ def template_bundle_metadata(role, profile, selected_ids):
         "sha256": text_hash(canonical(bundle)),
     }
 
-def request(role, phase, payload, pin, profile, selected_ids):
+def request(role, phase, payload, pin, profile, selected_ids, *, selection_mode="adaptive"):
     text, active_schema = compile_prompt(
         role, phase, profile=profile, selected_ids=selected_ids,
-        original_instruction=payload.get("original_instruction")
+        original_instruction=payload.get("original_instruction"), selection_mode=selection_mode
     )
     rules = dataset_rules_metadata(profile)
     bundle = template_bundle_metadata(role, profile, selected_ids)
@@ -163,7 +166,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
 
     def call(role, phase, payload, candidate_digest=None):
         context.update(step="request_construction", role=role, phase=phase)
-        req = request(role, phase, payload, pins[role], src.profile, selections[role])
+        req = request(role, phase, payload, pins[role], src.profile, selections[role], selection_mode=selection_mode)
         need(req["template_bundle"] == template_bundles[role],
              "Selected template content changed during the task",
              code="TEMPLATE_BUNDLE_MUTATED", module="host.run", path="/template_bundle")
@@ -397,13 +400,19 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             role: [row["template_id"] for row in core_library(role, src.profile)]
             for role in ("generator", "reviewer")
         }
-        selections = {
-            role: select_examples(role, src.profile, src.raw,
-                                  count=example_count, mode=selection_mode)
-            for role in ("generator", "reviewer")
-        }
-        retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
-                              for role, ids in selections.items()}
+        if src.profile == "r2r-en" and selection_mode == "adaptive":
+            from r2r.selection import select_bundle
+            plan = select_bundle(src.raw, count=example_count)
+            selections = {role: plan[role] for role in ("generator", "reviewer")}
+            retrieval_evidence = plan["evidence"]
+        else:
+            selections = {
+                role: select_examples(role, src.profile, src.raw,
+                                      count=example_count, mode=selection_mode)
+                for role in ("generator", "reviewer")
+            }
+            retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
+                                  for role, ids in selections.items()}
         reviewer_rows_by_id = {
             row["template_id"]: row for row in library("reviewer", src.profile)
         }

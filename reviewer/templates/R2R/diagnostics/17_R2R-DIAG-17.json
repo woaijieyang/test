@@ -42,16 +42,22 @@
         "source_quote": "Walk down the porch steps and walk into the covered porch.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk down the porch steps and walk into the covered porch.",
         "candidate_evidence": [
-          "Go inside the house and  in front of the white couch by the window."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the porch steps and walk into the covered porch."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Go inside the house and wait in front of the white couch by the window.",
         "requirement": "Preserve the completion or stationary-position condition: Go inside the house and wait in front of the white couch by the window.",
         "candidate_evidence": [
-          "Go inside the house and  in front of the white couch by the window."
+          {
+            "subtask_index": 0,
+            "quote": "in front of the white couch by the window"
+          }
         ],
         "status": "altered_or_missing"
       }
@@ -59,14 +65,14 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'.",
         "finding_indices": [
           0
         ]
@@ -74,33 +80,33 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
         "finding_indices": [
           0
         ]
@@ -108,28 +114,37 @@
     ],
     "findings": [
       {
-        "source_quote": " covered porch. Go inside the house and wait in front of the white couch by the window. ",
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "candidate_evidence": [
-          "Go inside the house and  in front of the white couch by the window."
-        ],
+        "code": "OMISSION",
         "failed_layer": "L3_stage_checks",
-        "c_check": "C2_SUPPORT",
+        "c_check": "C11",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quote": "wait in front of the white couch by the window",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "in front of the white couch by the window"
+          }
+        ],
         "evidence_level": "S1",
-        "problem": "The candidate drops an explicitly requested stop or wait at its source-defined location.",
-        "execution_consequence": "The explicitly requested stop/wait/placement is omitted; the agent may continue past the required endpoint.",
+        "problem": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'.",
+        "execution_consequence": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'.",
         "repair": {
-          "operation": "stop_omission",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the stop/wait at the exact source location; do not move it to another stage.",
+          "instruction": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -144,9 +159,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go inside the house and  in front of the white couch by the window.",
+          "text": "The retained white-couch location, without the required waiting action.",
           "candidate_quotes": [
-            "Go inside the house and  in front of the white couch by the window."
+            "in front of the white couch by the window"
           ]
         },
         "process": {
@@ -156,8 +171,8 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "kind": "unspecified",
+          "text": "The source explicitly requires waiting; the candidate retains its location but omits the waiting action.",
           "candidate_quotes": [],
           "stop_scope": "none"
         },
@@ -168,7 +183,8 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
           "Walk down the porch steps and walk into the covered porch.",
@@ -177,12 +193,20 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "stop_omission",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
+    "case_specific_focus": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
+    "transfer_rule": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "terminal"
+    ],
+    "decision_reason": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry."
   }
 }

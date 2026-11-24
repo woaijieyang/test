@@ -46,34 +46,46 @@
         "source_quote": "With the bed on your left go forward and out of the room into the hallway.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: With the bed on your left go forward and out of the room into the hallway.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "With the bed on your left go forward and out of the room into the hallway."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "In the hallway take a right and go down the hall, keeping straight.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: In the hallway take a right and go down the hall, keeping straight.",
+        "requirement": "Preserve the hallway-relative right turn and the straight hallway traversal.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "In the hallway take a right and go down the hall, keeping straight."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Then take a right into the bedroom that is the first door on your right.",
-        "requirement": "Preserve the ordinal target and its counting origin: Then take a right into the bedroom that is the first door on your right.",
+        "requirement": "Preserve the first-door ordinal and its right-side counting origin; the candidate says next door, which changes the selected ordinal target.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "the next door on your right"
+          }
         ],
         "status": "altered_or_missing"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "Stop in the room just past the door on the inside of the doorway.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: Stop in the room just past the door on the inside of the doorway.",
+        "requirement": "Preserve the specified stopping position just inside the doorway.",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Stop in the room just past the door on the inside of the doorway."
+          }
         ],
         "status": "covered"
       }
@@ -81,7 +93,7 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
+        "status": "not_applicable",
         "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
         "finding_indices": []
       },
@@ -109,7 +121,7 @@
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
+        "status": "not_applicable",
         "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
         "finding_indices": []
       },
@@ -130,28 +142,37 @@
     ],
     "findings": [
       {
-        "source_quote": "first",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C07",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-03"
         ],
+        "source_quote": "first door on your right",
         "candidate_evidence": [
-          "With the bed on your left go forward and out of the room into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "the next door on your right"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate removes the source ordinal identity and changes which landmark is selected.",
-        "execution_consequence": "The ordinal changes which door/landmark is selected; the agent may enter the wrong room or count from the wrong item.",
+        "problem": "The candidate changes the source ordinal from the first right-side door to the next door on the right. This changes which bedroom is selected even though the surrounding route remains present.",
+        "execution_consequence": "The navigator may enter a different bedroom because the selected door ordinal has changed.",
         "repair": {
-          "operation": "ordinal",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the exact ordinal and preserve its counting origin.",
+          "instruction": "Restore 'the first door on your right' exactly, preserving the hallway as the counting origin, and retain the specified stop just inside the doorway.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the preceding route and direction.",
+            "Preserve the original ordinal and its counting origin.",
+            "Do not add unsupported stops or route segments."
           ]
         }
       }
@@ -208,7 +229,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "ordinal",

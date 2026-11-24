@@ -26,8 +26,8 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Exit the pool area and walk toward the stairs, passing the chair.",
-        "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+        "Exit the pool area and walk toward the stairs.",
+        "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
       ]
     }
   },
@@ -41,75 +41,148 @@
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
-        "source_quote": "Exit the pool area and walk toward the stairs, enter the hallway to the slight right past the chair, turn right and enter the third door on the left, wait by the lockers.",
-        "requirement": "Preserve this source sentence/event and its action, target cue, temporal/spatial relation or terminal condition in its original order.",
+        "source_quote": "Exit the pool area and walk toward the stairs",
+        "requirement": "Exit the pool area and walk toward the stairs",
         "candidate_evidence": [
-          "Exit the pool area and walk toward the stairs, passing the chair.",
-          "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+          {
+            "subtask_index": 0,
+            "quote": "Exit the pool area and walk toward the stairs."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "enter the hallway to the slight right past the chair",
+        "requirement": "enter the hallway to the slight right past the chair",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "From the hallway"
+          }
         ],
         "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "turn right and enter the third door on the left",
+        "requirement": "turn right and enter the third door on the left",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "turn right and enter the third door on the left"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-04",
+        "source_quote": "wait by the lockers",
+        "requirement": "wait by the lockers",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Wait by the lockers."
+          }
+        ],
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "The candidate starts after hallway entry and removes the required hallway-entry action from the next stage."
+        "conclusion": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L2_dependencies",
-        "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "status": "issue",
+        "conclusion": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "The candidate starts after hallway entry and removes the required hallway-entry action from the next stage."
+        "conclusion": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L4_handoffs",
         "status": "issue",
-        "conclusion": "The altered event changes the stage completion/entry relation; the adjacent handoff must not be marked supported."
+        "conclusion": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "finding_indices": [
+          0
+        ]
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The candidate starts after hallway entry and removes the required hallway-entry action from the next stage."
+        "conclusion": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "finding_indices": [
+          0
+        ]
       }
     ],
     "findings": [
       {
-        "source_quote": "enter the hallway to the slight right",
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "candidate_evidence": [
-          "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
-        ],
-        "failed_layer": "L3_stage_checks",
+        "code": "OMISSION",
+        "failed_layer": "L4_handoffs",
         "c_check": "C09",
+        "dimension": "closure_handoff",
+        "related_dimensions": [
+          "source_fidelity"
+        ],
+        "affected_subtask_indices": [
+          0,
+          1
+        ],
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quote": "enter the hallway to the slight right past the chair",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "walk toward the stairs"
+          },
+          {
+            "subtask_index": 1,
+            "quote": "From the hallway"
+          }
+        ],
         "evidence_level": "S1",
-        "problem": "The candidate starts after hallway entry and removes the required hallway-entry action from the next stage.",
-        "execution_consequence": "The agent may skip the transition into the hallway before selecting the third door.",
+        "problem": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+        "execution_consequence": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
         "repair": {
-          "operation": "restore_source_semantics",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0,
             1
           ],
-          "instruction": "Restore the post-chair entry clause; the handoff is after passing the chair, not after entering the hallway.",
+          "instruction": "Restore the complete hallway-entry phrase with its slight-right and chair description before the right turn and third-door count. Keep its original modifier attachment; preserve the locker-side wait.",
           "protected_requirements": [
-            "Preserve all unaffected actions and source order.",
-            "Do not add a physical STOP unless the source requires it."
+            "Preserve the pool exit and stair-directed movement.",
+            "Preserve the full hallway-entry description without adding a separate chair-pass waypoint.",
+            "Preserve the later right turn, third door on the left and locker-side wait."
           ]
         }
       }
@@ -117,89 +190,91 @@
     "stage_checks": [
       {
         "subtask_index": 0,
-        "status": "supported",
+        "status": "gap",
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin at the episode start.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "The chair passed on the route toward the stairs.",
+          "text": "The candidate stair-directed approach.",
           "candidate_quotes": [
-            "Exit the pool area and walk toward the stairs, passing the chair."
+            "Exit the pool area and walk toward the stairs."
           ]
         },
         "process": {
-          "text": "Exit the pool area and walk toward the stairs, passing the chair.",
+          "text": "Exit the pool area and walk toward the stairs.",
           "candidate_quotes": [
-            "Exit the pool area and walk toward the stairs, passing the chair."
+            "Exit the pool area and walk toward the stairs."
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the explicitly described pass-by event at the chair; no physical stop is added.",
+          "kind": "unspecified",
+          "text": "The approach does not establish the hallway entry needed next.",
           "candidate_quotes": [
-            "Exit the pool area and walk toward the stairs, passing the chair."
+            "Exit the pool area and walk toward the stairs."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "toward the stairs; passing the chair",
-          "candidate_quotes": [
-            "Exit the pool area and walk toward the stairs, passing the chair."
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
-          "enter the hallway to the slight right"
+          "Exit the pool area and walk toward the stairs",
+          "enter the hallway to the slight right past the chair"
         ],
-        "carryover": [
-          "The chair has been passed; hallway entry remains the next stage's process."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "status": "gap",
         "entry": {
           "mode": "explicit_context",
-          "text": "Begin immediately after passing the chair; do not assume hallway entry is already complete.",
+          "text": "The candidate assumes hallway entry that it has not expressed.",
           "candidate_quotes": [
-            "After passing the chair"
+            "From the hallway"
           ]
         },
         "target": {
-          "text": "The third door on the left after entering the hallway, followed by the locker-side waiting position.",
+          "text": "The locker-side waiting position after selecting the third left-hand door.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "process": {
-          "text": "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers.",
+          "text": "From the hallway, turn right and enter the third door on the left. Wait by the lockers.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "From the hallway, turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "ending": {
-          "kind": "unspecified",
-          "text": "The candidate no longer preserves the source-supported terminal/transition event.",
+          "kind": "explicit_event",
+          "text": "The actual candidate still commands the final locker wait.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "Wait by the lockers."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "hallway to the slight right; right turn; third door on the left",
+          "text": "The hallway frame is required before the right turn and ordinal selection.",
           "candidate_quotes": [
-            "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+            "third door on the left"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quotes": [
-          "enter the hallway to the slight right"
+          "enter the hallway to the slight right past the chair",
+          "turn right and enter the third door on the left",
+          "wait by the lockers"
         ],
         "carryover": []
       }
@@ -210,24 +285,35 @@
         "to_subtask_index": 1,
         "status": "gap",
         "preceding_exit": {
-          "text": "The actual preceding candidate stage (corrupted for this diagnostic).",
-          "candidate_quote": "Exit the pool area and walk toward the stairs, passing the chair."
+          "text": "The candidate only approaches the stairs.",
+          "candidate_quote": "walk toward the stairs"
         },
         "next_entry": {
-          "text": "The actual next candidate stage.",
-          "candidate_quote": "From the hallway, turn right Turn right and enter the third door on the left. Wait by the lockers."
+          "text": "The next stage assumes hallway occupancy.",
+          "candidate_quote": "From the hallway"
         },
         "shared_context": [],
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-02"
         ],
-        "handoff_rationale": "The source places the hallway past the chair. The earlier candidate ended after hallway entry and began the next stage from the hallway, silently moving the boundary beyond the chair. The corrected candidate preserves the chair as the starting reference and keeps hallway entry in stage 2."
+        "handoff_rationale": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "handoff_advanced",
     "reuse_rule": "Retrieve only when the live candidate exhibits the same semantic failure. Cite exact source and candidate evidence, then prescribe the minimal source-faithful repair.",
-    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed."
+    "anti_pattern": "Do not accept a correct target noun when its required transition/position/ending has been changed.",
+    "review_principle": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+    "case_specific_focus": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+    "transfer_rule": "Restore the complete hallway-entry phrase with its slight-right and chair description before the right turn and third-door count. Keep its original modifier attachment; preserve the locker-side wait.",
+    "primary_skills": [
+      "entry",
+      "attachment",
+      "ordinal"
+    ],
+    "counter_example_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
+    "decision_reason": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy."
   }
 }

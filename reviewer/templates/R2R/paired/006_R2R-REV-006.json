@@ -39,7 +39,10 @@
         "source_quote": "Exit the room through the only door with an arched, round design above it.",
         "requirement": "Preserve the spatial transition and region/threshold: Exit the room through the only door with an arched, round design above it.",
         "candidate_evidence": [
-          "Exit the room through the only door with an arched, round design above it."
+          {
+            "subtask_index": 0,
+            "quote": "Exit the room through the only door with an arched, round design above it."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Continue straight through the small hall and enter the next room.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Continue straight through the small hall and enter the next room.",
         "candidate_evidence": [
-          "Continue straight through the small hall and enter the next room."
+          {
+            "subtask_index": 0,
+            "quote": "Continue straight through the small hall and enter the next room."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Stop once you reach the blue mat.",
         "requirement": "Preserve the temporal trigger/order and its scope: Stop once you reach the blue mat.",
         "candidate_evidence": [
-          "Inside the next room, stop once you reach the blue mat."
+          {
+            "subtask_index": 1,
+            "quote": "Inside the next room, stop once you reach the blue mat."
+          }
         ],
         "status": "covered"
       }
@@ -65,54 +74,60 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
     "stage_checks": [
       {
         "subtask_index": 0,
-        "status": "supported",
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue straight through the small hall and enter the next room.",
+          "text": "The next room reached through the small hallway.",
           "candidate_quotes": [
-            "Continue straight through the small hall and enter the next room."
+            "enter the next room."
           ]
         },
         "process": {
@@ -123,45 +138,41 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The next room reached through the small hallway. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Continue straight through the small hall and enter the next room."
+            "enter the next room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "through; only",
+          "text": "arched, round design above it; straight",
           "candidate_quotes": [
-            "through",
-            "only"
+            "arched, round design above it",
+            "straight"
           ]
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
         "source_quotes": [
           "Exit the room through the only door with an arched, round design above it.",
           "Continue straight through the small hall and enter the next room."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
-        "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "Inside the next room, stop once you reach the blue mat"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Inside the next room, stop once you reach the blue mat.",
+          "text": "The blue-mat stopping position.",
           "candidate_quotes": [
-            "Inside the next room, stop once you reach the blue mat."
+            "stop once you reach the blue mat."
           ]
         },
         "process": {
@@ -172,25 +183,26 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The blue-mat stopping position. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Inside the next room, stop once you reach the blue mat."
+            "stop once you reach the blue mat."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "once",
+          "text": "once you reach the blue mat",
           "candidate_quotes": [
-            "once"
+            "once you reach the blue mat"
           ]
         },
-        "source_requirement_ids": [
-          "SRC-03"
-        ],
         "source_quotes": [
           "Stop once you reach the blue mat."
         ],
-        "carryover": []
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-03"
+        ]
       }
     ],
     "handoffs": [
@@ -199,12 +211,12 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Continue straight through the small hall and enter the next room.",
-          "candidate_quote": "Continue straight through the small hall and enter the next room."
+          "text": "The next room reached through the small hallway. Complete the quoted source-directed event.",
+          "candidate_quote": "enter the next room."
         },
         "next_entry": {
-          "text": "Inside the next room, stop once you reach the blue mat",
-          "candidate_quote": "Inside the next room, stop once you reach the blue mat"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "Inside the next room, stop once you reach the blue mat."
         },
         "shared_context": [],
         "source_requirement_ids": [
@@ -212,9 +224,10 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Continue straight through the small hall and enter the next room.'; the next stage begins with 'Inside the next room, stop once you reach the blue mat'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -227,7 +240,15 @@
       "intermediate_stop_or_wait",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Exit the room through the only door with an arched, round design…; Preserve the directional/spatial relation and its reference frame: Continue straight through the small hall and enter…; Preserve the temporal trigger/order and its scope: Stop once you reach the blue mat.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Exit the room through the only door with an arched, round design…; Preserve the directional/spatial relation and its reference frame: Continue straight through the small hall and enter…; Preserve the temporal trigger/order and its scope: Stop once you reach the blue mat."
+    "review_principle": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
+    "case_specific_focus": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
+    "transfer_rule": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
+    "counter_example_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
+    "primary_skills": [
+      "transit",
+      "endpoint",
+      "terminal"
+    ],
+    "decision_reason": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop."
   }
 }

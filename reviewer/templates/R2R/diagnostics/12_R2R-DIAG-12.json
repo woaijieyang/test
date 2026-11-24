@@ -42,7 +42,10 @@
         "source_quote": "Walk through the door and around the table.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk through the door and around the table.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the door and around the table."
+          }
         ],
         "status": "covered"
       },
@@ -51,7 +54,10 @@
         "source_quote": "Turn left and walk to the end of the kitchen bar.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left and walk to the end of the kitchen bar.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and walk to the end of the kitchen bar."
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -60,7 +66,10 @@
         "source_quote": "Turn right and walk around the chair.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right and walk around the chair.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and walk around the chair."
+          }
         ],
         "status": "covered"
       },
@@ -69,56 +78,57 @@
         "source_quote": "Turn left and walk into the small hallway then go into the bedroom.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left and walk into the small hallway then go into the bedroom.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and walk into the small hallway then go into the bedroom."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L2_dependencies",
-        "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
-        "finding_indices": [
-          0
-        ]
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
         "finding_indices": [
           0
         ]
@@ -126,28 +136,35 @@
     ],
     "findings": [
       {
-        "source_quote": "left",
+        "code": "WRONG_RELATION",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-02"
         ],
+        "source_quote": "Turn left and walk to the end of the kitchen bar.",
         "candidate_evidence": [
-          "Turn left and walk into the small hallway then go into the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Turn right and walk to the end of the kitchen bar."
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate reverses a source-grounded direction and changes the route or spatial relation.",
-        "execution_consequence": "The left/right direction is reversed; the agent may turn into the wrong corridor or room.",
+        "problem": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'.",
+        "execution_consequence": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'.",
         "repair": {
-          "operation": "direction",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the original direction and its source reference frame.",
+          "instruction": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -162,9 +179,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left and walk into the small hallway then go into the bedroom.",
+          "text": "The actual candidate endpoint: go into the bedroom.",
           "candidate_quotes": [
-            "Turn left and walk into the small hallway then go into the bedroom."
+            "go into the bedroom."
           ]
         },
         "process": {
@@ -174,9 +191,11 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "explicit_event",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
+          "candidate_quotes": [
+            "go into the bedroom."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
@@ -190,23 +209,34 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quotes": [
-          "Turn left and walk into the small hallway then go into the bedroom.",
-          "Turn right and walk around the chair.",
+          "Walk through the door and around the table.",
           "Turn left and walk to the end of the kitchen bar.",
-          "Walk through the door and around the table."
+          "Turn right and walk around the chair.",
+          "Turn left and walk into the small hallway then go into the bedroom."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "direction",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a direction corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
+    "case_specific_focus": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
+    "transfer_rule": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "direction"
+    ],
+    "decision_reason": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway."
   }
 }

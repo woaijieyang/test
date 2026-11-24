@@ -24,92 +24,86 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step."
   },
   "output": {
     "status": "ok",
     "subtasks": [
-      "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
-      "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+      "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table.",
+      "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
     ],
     "stage_audit": [
       {
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Take a left behind the couch and continue past the dining room table.",
+          "text": "The dining-table pass within the coupled living-room route.",
           "candidate_quotes": [
-            "Take a left behind the couch and continue past the dining room table."
+            "past the dining room table."
           ]
         },
         "process": {
-          "text": "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
+          "text": "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table.",
           "candidate_quotes": [
-            "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table."
+            "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The dining-table pass within the coupled living-room route. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Take a left behind the couch and continue past the dining room table."
+            "past the dining room table."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; past; behind",
+          "text": "taking a left behind the couch; past the dining room table",
           "candidate_quotes": [
-            "left",
-            "past",
-            "behind"
+            "taking a left behind the couch",
+            "past the dining room table"
           ]
         },
         "source_quotes": [
           "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table and up the stairs into the entry way stopping on the third tile from the left at the top step."
         ],
-        "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
-        ]
+        "carryover": []
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "After passing the dining room table, go up the stairs into the entryway"
-          ]
+          "mode": "inherited_pose",
+          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Stop on the third tile from the left at the top step.",
+          "text": "The third tile from the left at the top step.",
           "candidate_quotes": [
-            "Stop on the third tile from the left at the top step."
+            "stopping on the third tile from the left at the top step."
           ]
         },
         "process": {
-          "text": "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step.",
+          "text": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step.",
           "candidate_quotes": [
-            "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+            "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The third tile from the left at the top step. Complete the quoted source-directed event.",
           "candidate_quotes": [
-            "Stop on the third tile from the left at the top step."
+            "stopping on the third tile from the left at the top step."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; third; left",
+          "text": "third tile from the left; at the top step",
           "candidate_quotes": [
-            "After",
-            "third",
-            "left"
+            "third tile from the left",
+            "at the top step"
           ]
         },
         "source_quotes": [
@@ -124,31 +118,38 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Take a left behind the couch and continue past the dining room table.",
-          "candidate_quote": "Take a left behind the couch and continue past the dining room table."
+          "text": "The dining-table pass within the coupled living-room route. Complete the quoted source-directed event.",
+          "candidate_quote": "past the dining room table."
         },
         "next_entry": {
-          "text": "After passing the dining room table, go up the stairs into the entryway",
-          "candidate_quote": "After passing the dining room table, go up the stairs into the entryway"
+          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "candidate_quote": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
         },
         "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Take a left behind the couch and continue past the dining room table.'; the next stage begins with 'After passing the dining room table, go up the stairs into the entryway'. The handoff carries the established location/reference frame without adding a physical stop."
+        "source_requirement_ids": [],
+        "handoff_rationale": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Take a left behind the couch and continue past the dining room table.'; stage 2 begins from 'After passing the dining room table, go up the stairs into the entryway'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "why_this_case_matters": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "reusable_rule": "",
     "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left; past; behind Stage 2: After; third; left",
     "handoff_focus": "Stage 1 ends with 'Take a left behind the couch and continue past the dining room table.'; stage 2 begins from 'After passing the dining room table, go up the stairs into the entryway'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "case_specific_focus": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "transfer_rule": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "counter_example_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
+    "primary_skills": [
+      "scope",
+      "stair_target",
+      "ordinal"
+    ],
+    "decision_reason": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step."
   },
   "retrieval_tags": [
     "room_transition",

@@ -42,7 +42,10 @@
         "source_quote": "TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT",
         "requirement": "Preserve the directional/spatial relation and its reference frame: TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -51,25 +54,34 @@
         "source_quote": "WALK TOWARDS THE END OF THE TABLE",
         "requirement": "Preserve the ordered route action or target-identifying landmark: WALK TOWARDS THE END OF THE TABLE",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "WALK TOWARDS THE END OF THE TABLE"
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU",
         "requirement": "Preserve the directional/spatial relation and its reference frame: TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU"
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
         "source_quote": "WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY",
         "requirement": "Preserve the spatial transition and region/threshold: WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY"
+          }
         ],
         "status": "covered"
       },
@@ -78,22 +90,25 @@
         "source_quote": "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL.",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'.",
         "finding_indices": [
           0
         ]
@@ -101,7 +116,7 @@
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'.",
         "finding_indices": [
           0
         ]
@@ -109,25 +124,25 @@
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
         "finding_indices": [
           0
         ]
@@ -135,28 +150,35 @@
     ],
     "findings": [
       {
-        "source_quote": "UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS",
+        "code": "DETACHED_CONDITION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C04",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
+        "source_quote": "TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT",
         "candidate_evidence": [
-          "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          {
+            "subtask_index": 0,
+            "quote": "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT"
+          }
         ],
-        "failed_layer": "L2_dependencies",
-        "c_check": "C3_ORDER",
         "evidence_level": "S1",
-        "problem": "The candidate removes a temporal trigger or ordering relation, changing when the associated action should occur.",
-        "execution_consequence": "The temporal trigger/order is removed; the agent may execute the action too early or detach it from the condition that governs it.",
+        "problem": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'.",
+        "execution_consequence": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'.",
         "repair": {
-          "operation": "temporal",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the temporal connective and keep its condition attached to the action it governs.",
+          "instruction": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -171,9 +193,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL.",
+          "text": "The actual candidate endpoint: TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL.",
           "candidate_quotes": [
-            "TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT, WALK TOWARDS THE END OF THE TABLE, TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU, WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY, TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+            "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
           ]
         },
         "process": {
@@ -184,8 +206,10 @@
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
+          "candidate_quotes": [
+            "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
@@ -197,23 +221,36 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
         "source_quotes": [
-          "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL.",
-          "WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY",
+          "TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT",
+          "WALK TOWARDS THE END OF THE TABLE",
           "TURN RIGHT SO THE DINNING TABLE IS ON THE RIGHT AND A BREAKFAST BAR IS ON THE LEFT WITH A DOOR WAY IN FRONT OF YOU",
-          "WALK TOWARDS THE END OF THE TABLE"
+          "WALK THOUGH THE DOORWAY INTO A SHORT HALLWAY",
+          "TURN SLIGHTLY TO THE RIGHT TOWARDS A HALL SINK ROOM WITH A PICTURE OF A SAILBOAT ON THE WALL."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "temporal",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a temporal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
+    "case_specific_focus": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
+    "transfer_rule": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "scope"
+    ],
+    "decision_reason": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing."
   }
 }

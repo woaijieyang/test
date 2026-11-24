@@ -38,7 +38,10 @@
         "source_quote": "Go left down the hall.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go left down the hall.",
         "candidate_evidence": [
-          "Go left down the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Go left down the hall."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Continue to the stairs.",
         "requirement": "Preserve the spatial transition and region/threshold: Continue to the stairs.",
         "candidate_evidence": [
-          "Continue to the stairs."
+          {
+            "subtask_index": 0,
+            "quote": "Continue to the stairs."
+          }
         ],
         "status": "covered"
       }
@@ -55,52 +61,58 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
     "stage_checks": [
       {
         "subtask_index": 0,
-        "status": "supported",
         "entry": {
           "mode": "episode_start",
-          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
+          "text": "Begin in the actual episode context.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue to the stairs.",
+          "text": "The stairs as the final directed target.",
           "candidate_quotes": [
             "Continue to the stairs."
           ]
@@ -113,30 +125,30 @@
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "Continue toward the stairs as the final directed approach. The source does not specify an arrival threshold, exact position or stop.",
+          "text": "The stairs as the final directed target. This is a final approach without an asserted arrival or STOP.",
           "candidate_quotes": [
             "Continue to the stairs."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
-          "candidate_quotes": [
-            "left"
-          ]
+          "text": null,
+          "candidate_quotes": []
         },
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ],
         "source_quotes": [
           "Go left down the hall.",
           "Continue to the stairs."
         ],
-        "carryover": []
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ]
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -147,7 +159,14 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Go left down the hall.; Preserve the spatial transition and region/threshold: Continue to the stairs.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Go left down the hall.; Preserve the spatial transition and region/threshold: Continue to the stairs."
+    "review_principle": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
+    "case_specific_focus": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
+    "transfer_rule": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
+    "counter_example_boundary": "An explicit source wait at the stairs would add a terminal event.",
+    "primary_skills": [
+      "coupled",
+      "final_approach"
+    ],
+    "decision_reason": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop."
   }
 }

@@ -24,7 +24,7 @@
   "decision": {
     "status": "needs_review",
     "mode": "source_limited_ambiguity",
-    "rationale": "The route-defining phrase 'pack exit' is ambiguous in the source. Do not silently normalize it to 'back exit' or invent a different landmark."
+    "rationale": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty."
   },
   "output": {
     "status": "needs_review",
@@ -41,10 +41,19 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "source_level_ambiguity_abstention",
-    "why_this_case_matters": "The source contains a route-defining phrase that cannot be safely normalized from language context alone. The model must preserve the ambiguity and return needs_review rather than silently correcting the landmark.",
-    "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
+    "why_this_case_matters": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "reusable_rule": "",
     "retrieval_rule": "Retrieve for route-critical source typos or conflicting target descriptions that cannot be resolved from context.",
-    "anti_pattern": "Do not repair a route-defining landmark by spelling correction or semantic guess."
+    "anti_pattern": "Do not repair a route-defining landmark by spelling correction or semantic guess.",
+    "case_rationale": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "case_specific_focus": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "transfer_rule": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "counter_example_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
+    "primary_skills": [
+      "uncertainty",
+      "target_identity"
+    ],
+    "decision_reason": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty."
   },
   "retrieval_tags": [
     "source_limited_ambiguity",

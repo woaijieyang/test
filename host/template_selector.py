@@ -66,7 +66,7 @@ def validate_template(role, row, *, source_path=""):
             f"Invalid {role} teaching template {row.get('template_id')} at "
             f"{source_path or '<unknown>'}:{location}: {error.message}"
         )
-DEFAULT_EXAMPLES = None  # Profile-aware: R2R 6-8; RxR 2-4 in addition to its fixed core.
+DEFAULT_EXAMPLES = None  # Profile-aware: R2R 4-6; RxR 2-4 in addition to its fixed core.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
     'ordinal_target_selection': r'first|second|third|fourth|last|1st|2nd|3rd',
@@ -239,7 +239,7 @@ def library(role, profile):
         rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
 
     expected_counts = {
-        ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,
+        ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 55,
         ('RxR', 'generator'): 43, ('RxR', 'reviewer'): 80,
     }
     if len(rows) != expected_counts[(dataset, role)]:
@@ -260,7 +260,7 @@ def library(role, profile):
         if dataset == 'RxR':
             expected_pairs = {row['template_id'] for row in library('generator', profile)}
         expected_paired = 29 if dataset == 'R2R' else 43
-        expected_diagnostics = 23 if dataset == 'R2R' else 37
+        expected_diagnostics = 26 if dataset == 'R2R' else 37
         if len(paired) != expected_paired or len(diagnostics) != expected_diagnostics:
             raise ValueError(f'{dataset} Reviewer pool count mismatch: paired={len(paired)}, diagnostics={len(diagnostics)}')
         if len(set(paired_ids)) != len(paired_ids) or not expected_pairs.issubset(set(paired_ids)):
@@ -359,6 +359,9 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
         return [r["template_id"] for r in rows]
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
+    if profile == "r2r-en":
+        from r2r.selection import select_bundle
+        return select_bundle(source_text, count=count)[role]
 
     gen = library("generator", profile)
     minimum, maximum = (2, 4) if profile == "rxr-en-us" else (6, 8)

@@ -42,16 +42,22 @@
         "source_quote": "Walk through the hall.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk through the hall.",
         "candidate_evidence": [
-          "Turn left at the second doorway and stop beside the table."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the hall."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "Do not enter the first doorway.",
         "requirement": "Preserve the ordinal target and its counting origin: Do not enter the first doorway.",
         "candidate_evidence": [
-          "Turn left at the second doorway and stop beside the table."
+          {
+            "subtask_index": 0,
+            "quote": "enter the first doorway"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -60,22 +66,25 @@
         "source_quote": "Turn left at the second doorway and stop beside the table.",
         "requirement": "Preserve the ordinal target and its counting origin: Turn left at the second doorway and stop beside the table.",
         "candidate_evidence": [
-          "Turn left at the second doorway and stop beside the table."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left at the second doorway and stop beside the table."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'.",
         "finding_indices": [
           0
         ]
@@ -83,31 +92,31 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore the first-door prohibition; retain the second-door left and table-side stop.",
         "finding_indices": [
           0
         ]
@@ -115,28 +124,35 @@
     ],
     "findings": [
       {
-        "source_quote": "Walk through the hall. Do not enter the first doorway. Turn left at the second doorway an",
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "candidate_evidence": [
-          "Turn left at the second doorway and stop beside the table."
-        ],
+        "code": "UNSUPPORTED_ADDITION",
         "failed_layer": "L1_source_coverage",
-        "c_check": "C3_ORDER",
+        "c_check": "C04",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quote": "Do not enter the first doorway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "enter the first doorway"
+          }
+        ],
         "evidence_level": "S1",
-        "problem": "The candidate removes a prohibition or negation, potentially authorizing a movement the source forbids.",
-        "execution_consequence": "The prohibition is removed; the agent may enter or traverse a region the source explicitly says to avoid.",
+        "problem": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'.",
+        "execution_consequence": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'.",
         "repair": {
-          "operation": "negation",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the negation and retain its original scope.",
+          "instruction": "Restore the first-door prohibition; retain the second-door left and table-side stop.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -151,9 +167,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left at the second doorway and stop beside the table.",
+          "text": "The actual candidate endpoint: stop beside the table.",
           "candidate_quotes": [
-            "Turn left at the second doorway and stop beside the table."
+            "stop beside the table."
           ]
         },
         "process": {
@@ -164,9 +180,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Turn left at the second doorway and stop beside the table.",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
           "candidate_quotes": [
-            "Turn left at the second doorway and stop beside the table."
+            "stop beside the table."
           ],
           "stop_scope": "terminal"
         },
@@ -180,22 +196,32 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
         "source_quotes": [
-          "Turn left at the second doorway and stop beside the table.",
           "Walk through the hall.",
-          "Do not enter the first doorway."
+          "Do not enter the first doorway.",
+          "Turn left at the second doorway and stop beside the table."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "negation",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a negation corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop.",
+    "case_specific_focus": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop.",
+    "transfer_rule": "Restore the first-door prohibition; retain the second-door left and table-side stop.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "negation"
+    ],
+    "decision_reason": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop."
   }
 }

@@ -18,14 +18,14 @@
     "kind": "reviewer_only_adversarial_example",
     "source_status": "source_instruction_from_uploaded_val_seen",
     "candidate_corruption_is_authored_not_model_output": true,
-    "corruption_pattern": "REFERENT"
+    "corruption_pattern": "ORIENTATION_FRAME_REVERSAL"
   },
   "review_input": {
     "original_instruction": "Turn 180 degrees so that the sunken seating area is on your left and the stairs going up are to your right. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. ",
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. "
+        "Turn 180 degrees so that the sunken seating area is on your right and the stairs going up are to your left. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. "
       ]
     }
   },
@@ -42,7 +42,10 @@
         "source_quote": "Turn 180 degrees so that the sunken seating area is on your left and the stairs going up are to your right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn 180 degrees so that the sunken seating area is on your left and the stairs going up are to your right.",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "the sunken seating area is on your right and the stairs going up are to your left"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -51,7 +54,10 @@
         "source_quote": "Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs.",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs."
+          }
         ],
         "status": "covered"
       },
@@ -60,7 +66,10 @@
         "source_quote": "Stop just after passing the second white chair and before you enter the room with the double doors.",
         "requirement": "Preserve the ordinal target and its counting origin: Stop just after passing the second white chair and before you enter the room with the double doors.",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "Stop just after passing the second white chair and before you enter the room with the double doors."
+          }
         ],
         "status": "covered"
       },
@@ -69,16 +78,22 @@
         "source_quote": "There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left.",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-05",
         "source_quote": "Stop.",
         "requirement": "Preserve the completion or stationary-position condition: Stop.",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "Stop."
+          }
         ],
         "status": "covered"
       }
@@ -86,14 +101,14 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'.",
         "finding_indices": [
           0
         ]
@@ -101,7 +116,7 @@
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'.",
         "finding_indices": [
           0
         ]
@@ -109,25 +124,25 @@
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
         "finding_indices": [
           0
         ]
@@ -135,28 +150,35 @@
     ],
     "findings": [
       {
-        "source_quote": "Turn 180 degrees so that the sunken seating area is on your left and the stairs goin",
+        "code": "WRONG_REFERENCE_FRAME",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
+        "source_quote": "the sunken seating area is on your left and the stairs going up are to your right",
         "candidate_evidence": [
-          "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right."
+          {
+            "subtask_index": 0,
+            "quote": "the sunken seating area is on your right and the stairs going up are to your left"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate leaves a deictic reference without preserving the identity of its source-supported antecedent.",
-        "execution_consequence": "The referent is changed or left unresolved; the agent may select the wrong door/object or lose the intended target identity.",
+        "problem": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'.",
+        "execution_consequence": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'.",
         "repair": {
-          "operation": "referent",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
+          "instruction": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -171,22 +193,22 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Stop.",
+          "text": "The actual candidate endpoint: Stop just after passing the second white chair and before you enter the room with the double doors.",
           "candidate_quotes": [
-            "Stop."
+            "Stop just after passing the second white chair and before you enter the room with the double doors."
           ]
         },
         "process": {
-          "text": "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. ",
+          "text": "Turn 180 degrees so that the sunken seating area is on your right and the stairs going up are to your left. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. ",
           "candidate_quotes": [
-            "Turn 180 degrees so there the sunken seating area is on your left and the stairs going up are to your right. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. "
+            "Turn 180 degrees so that the sunken seating area is on your right and the stairs going up are to your left. Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs. Stop just after passing the second white chair and before you enter the room with the double doors. There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left. Stop. "
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Stop.",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
           "candidate_quotes": [
-            "Stop."
+            "Stop just after passing the second white chair and before you enter the room with the double doors."
           ],
           "stop_scope": "terminal"
         },
@@ -204,23 +226,36 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04",
+          "SRC-05"
         ],
         "source_quotes": [
-          "Stop.",
-          "There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left.",
+          "Turn 180 degrees so that the sunken seating area is on your left and the stairs going up are to your right.",
+          "Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs.",
           "Stop just after passing the second white chair and before you enter the room with the double doors.",
-          "Proceed forward a short distance in the direction of the double doors, passing two arm-less white chairs."
+          "There will be an opening leading to a dining area directly to the right and a seating area with white chairs and a circular coffee table directly to the left.",
+          "Stop."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
-    "review_pattern": "referent",
+    "review_pattern": "orientation_reference_frame",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
+    "case_specific_focus": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
+    "transfer_rule": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "frame"
+    ],
+    "decision_reason": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement."
   }
 }

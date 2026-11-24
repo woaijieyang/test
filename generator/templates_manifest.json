@@ -35,8 +35,8 @@
   "runtime_policy": {
     "r2r-en": {
       "dynamic_generator_examples": [
-        6,
-        8
+        4,
+        6
       ],
       "fixed_core": 10,
       "core_order": "G01-G10",

@@ -1,0 +1,286 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-28",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "18",
+    "episode_id": "18",
+    "instruction_id": null,
+    "scene_id": "mp3d/JeFG25nYj2p/JeFG25nYj2p.glb",
+    "trajectory_id": "180",
+    "source_key": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180"
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_existing_val_seen_template",
+    "source_template": "R2R-GEN-018",
+    "candidate_corruption_is_authored_not_model_output": false,
+    "corruption_pattern": "none_valid_alternative",
+    "curation_basis": "Contrastive teaching, not trajectory ground truth or observed model output."
+  },
+  "review_input": {
+    "original_instruction": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go through the doorway to the room with the sink.",
+        "Follow the hallway until you get to a bedroom.",
+        "Wait at the bedroom door."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. ",
+        "requirement": "Preserve the complete ordered route and its entity roles, completion conditions and terminal placement.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go through the doorway to the room with the sink."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Follow the hallway until you get to a bedroom."
+          },
+          {
+            "subtask_index": 2,
+            "quote": "Wait at the bedroom door."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Use the episode start.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Go through the doorway to the room with the sink.",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink."
+          ]
+        },
+        "process": {
+          "text": "Go through the doorway to the room with the sink.",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate states this event; assess source support independently of textual executability.",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the preceding intended event without replay.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Follow the hallway until you get to a bedroom.",
+          "candidate_quotes": [
+            "Follow the hallway until you get to a bedroom."
+          ]
+        },
+        "process": {
+          "text": "Follow the hallway until you get to a bedroom.",
+          "candidate_quotes": [
+            "Follow the hallway until you get to a bedroom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate states this event; assess source support independently of textual executability.",
+          "candidate_quotes": [
+            "Follow the hallway until you get to a bedroom."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+        ],
+        "carryover": []
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "Continue from the preceding intended event without replay.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "Wait at the bedroom door.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ]
+        },
+        "process": {
+          "text": "Wait at the bedroom door.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate states this event; assess source support independently of textual executability.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": null,
+          "candidate_quotes": []
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. "
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Go through the doorway to the room with the sink.",
+          "candidate_quote": "Go through the doorway to the room with the sink."
+        },
+        "next_entry": {
+          "text": "Follow the hallway until you get to a bedroom.",
+          "candidate_quote": "Follow the hallway until you get to a bedroom."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "handoff_rationale": "The textual order is preserved; the finding below assesses the actual grouping or source-support defect."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Follow the hallway until you get to a bedroom.",
+          "candidate_quote": "Follow the hallway until you get to a bedroom."
+        },
+        "next_entry": {
+          "text": "Wait at the bedroom door.",
+          "candidate_quote": "Wait at the bedroom door."
+        },
+        "shared_context": [],
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "handoff_rationale": "The textual order is preserved; the finding below assesses the actual grouping or source-support defect."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "valid_alternative_grouping",
+    "case_specific_focus": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "transfer_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "anti_pattern": "Do not reject every region transition as oversegmented or force an entire multi-region route into one stage. Require a genuine independent objective at each proposed boundary.",
+    "review_principle": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "decision_reason": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "counter_example_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
+    "primary_skills": [
+      "grouping",
+      "endpoint"
+    ]
+  }
+}
