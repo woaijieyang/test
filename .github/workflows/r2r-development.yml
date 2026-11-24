@@ -2,12 +2,25 @@ name: R2R isolated authoring and validation
 on:
   push:
     branches: ['LLM-decompose-*']
-    paths: ['.github/workflows/r2r-development.yml']
+    paths:
+      - '.github/workflows/r2r-development.yml'
+      - 'r2r_authoring/**'
+      - 'r2r/**'
+      - 'generator/templates/R2R/**'
+      - 'reviewer/templates/R2R/**'
+      - 'generator/dataset_rules/r2r_en.md'
+      - 'reviewer/dataset_rules/r2r_en.md'
+      - 'shared/dataset_rules/r2r*'
+      - 'host/compile.py'
+      - 'host/template_selector.py'
+      - 'host/run.py'
+      - 'tests/test_r2r*'
+  workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: r2r-validation-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -21,9 +34,10 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
-      - name: Materialize explicit R2R changes and approved test migrations
+      - name: Verify parent ancestry and materialize only reviewed changes
         run: |
           set -euo pipefail
+          git merge-base --is-ancestor 081db4b9ea0712ff720c137fe96c240c26f7b15c HEAD
           python -B -m r2r_authoring.integrate --write
           python -B -m r2r_authoring.build --write
           python -B -m r2r_authoring.test_expectations --write
@@ -33,21 +47,31 @@ jobs:
           python -B -m host.compile
       - name: Compare parent RxR inputs and mixed-profile behavior
         run: python -B -m r2r_authoring.verify --isolation
-      - name: Diagnose the exact frozen repair fixture
-        run: python -B -m r2r_authoring.check_feedback_fixture
-      - name: Refresh and verify candidate integrity
+      - name: Verify current candidate integrity
         run: |
           python -B -m r2r_authoring.verify --refresh
           python -B verify_package.py
-      - name: Run complete regression and four-phase mock workflows
+      - name: Run all repository tests and complete four-phase replay
         run: python -B -m r2r_authoring.regression
+      - name: Run Renderer smoke, integration demo and repeat compilation
+        run: python -B -m r2r_authoring.smoke
+      - name: Verify final manifests after all result records are written
+        run: |
+          python -B -m r2r_authoring.verify --refresh
+          python -B verify_package.py
+          git diff --check
+      - name: Recheck a clean candidate commit and publish without force
+        if: github.event_name == 'push'
+        run: python -B -m r2r_authoring.publish
       - name: Save validation evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: r2r-validation-evidence
           path: |
             provenance/r2r_regression_results.json
             provenance/r2r_parent_isolation.json
             provenance/r2r_teaching_changes.json
+            provenance/r2r_rule_links.json
+            provenance/r2r_smoke_results.json
           retention-days: 7
