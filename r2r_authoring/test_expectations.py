@@ -1,14 +1,14 @@
-"""Migrate obsolete R2R expectations; preserve all runtime safety assertions.
+"""Migrate approved R2R test expectations, never weaken runtime contracts.
 
-The changes are limited to approved library sizes, production quantities,
-renamed rule headings, the explicitly reviewed coarse grouping example, and
-mocking the new R2R selection entry. RxR golden fixtures are never regenerated.
+No test is removed. RxR golden prompt/schema pins are not regenerated; the
+shared source-byte check admits only the explicit reviewed integration delta.
 """
 from pathlib import Path
 import argparse,json,re,subprocess
+from r2r_authoring.projection_expectations import apply as projection
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
-FILES=('test_r2r_core.py','test_r2r_specialization.py','test_paired_selection.py','test_closed_loop_35.py','test_roles_repair.py','test_workflow_integration.py','test_host_dispatch_profiles.py','test_rxr_profile.py','test_entry_diagnostics.py')
+FILES=('test_r2r_core.py','test_r2r_specialization.py','test_paired_selection.py','test_closed_loop_35.py','test_roles_repair.py','test_workflow_integration.py','test_host_dispatch_profiles.py','test_rxr_profile.py','test_entry_diagnostics.py','test_example_injection.py','test_rxr_prompt_snapshots.py')
 REPLACEMENTS=(
  ('("reviewer", 52)','("reviewer", 55)'),("('r2r-en',(25,52))","('r2r-en',(25,55))"),
  ('sum(not x.get("pair_id") for x in rows), 23','sum(not x.get("pair_id") for x in rows), 26'),
@@ -37,7 +37,7 @@ def main():
         for a,b in REPLACEMENTS:
             if a in new:new=new.replace(a,b);changes.append(a)
         if name=='test_host_dispatch_profiles.py':
-            replacement='''    def test_r2r_selector_matches_declared_selection_contract(self):
+            body='''    def test_r2r_selector_matches_declared_selection_contract(self):
         from r2r.selection import select_bundle
         from host.template_selector import library, select_examples
         bundle = select_bundle(SOURCE)
@@ -51,14 +51,19 @@ def main():
         self.assertEqual([bank[i]["pair_id"] for i in reviewer_ids[:len(generator_ids)]], generator_ids)
         self.assertEqual([r["template_id"] for r in bundle["evidence"]["generator"]["selected"]], generator_ids)
 '''
-            new,n=re.subn(r'    def test_r2r_selector_matches_declared_selection_contract\(self\):[\s\S]*?(?=\n    def |\nif __name__|\Z)',lambda _:replacement,new)
+            new,n=re.subn(r'    def test_r2r_selector_matches_declared_selection_contract\(self\):[\s\S]*?(?=\n    def |\nif __name__|\Z)',lambda _:body,new)
             if n!=1:raise ValueError('Missing explicit legacy selection-contract test')
-            changes.append('Replace former length/cue formula assertion with actual Scheme C count, pairing and trace assertions.')
+            changes.append('Assert actual count, pair mapping and captured trace instead of replaying the retired ranking formula.')
+        revised=projection(name,new)
+        if revised!=new:changes.append('Validate the exact new teaching representation and evidence; keep RxR expected prompt/schema hashes unchanged.')
+        new=revised
         if new==old:continue
         path=ROOT/rel;actual=path.read_text()
-        if actual not in (old,new):raise ValueError('Concurrent test edit: '+rel)
+        # read_text normalizes CRLF; compare normalized text only for this
+        # one-time authoring guard, never for prompt or released Source hashes.
+        if actual not in (old.replace('\r\n','\n'),new.replace('\r\n','\n')):raise ValueError('Concurrent test edit: '+rel)
         if args.write:path.write_text(new)
-        elif actual!=new:raise ValueError('R2R test expectations not materialized: '+rel)
+        elif actual!=new.replace('\r\n','\n'):raise ValueError('R2R test expectations not materialized: '+rel)
         report.append(dict(path=rel,approved_expectation_changes=changes))
     print('TEST_EXPECTATION_CHANGES '+json.dumps(report))
 if __name__=='__main__':main()
