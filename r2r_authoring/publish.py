@@ -1,10 +1,11 @@
 """Publish only the independently rechecked candidate tree on the current branch.
 
-No force push, secret lookup or cross-branch write. Invoked by the authorized
-repository workflow after successful build, isolation, regression and smoke.
+No force push, secret lookup or cross-branch write. Workflow-file changes must
+already be committed through the authorized repository connection; the Actions
+content token publishes only the remaining validated runtime and data changes.
 """
 from pathlib import Path
-import hashlib,json,os,shutil,subprocess,sys,tempfile
+import json,os,shutil,subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EXACT={
@@ -41,6 +42,10 @@ def main():
     names=set(out('git','diff','--name-only',PARENT).splitlines())|set(out('git','ls-files','--others','--exclude-standard').splitlines())
     invalid=[n for n in names if n and n not in EXACT and not n.startswith(PREFIX)]
     if invalid:raise ValueError('Out-of-scope change: '+repr(sorted(invalid)))
+    workflow_delta=out('git','diff','--name-only','HEAD','--','.github/workflows')
+    new_workflows=out('git','ls-files','--others','--exclude-standard','--','.github/workflows')
+    if workflow_delta or new_workflows:
+        raise ValueError('Commit reviewed workflow changes through the authorized repository connection before publishing artifacts')
     call('git','diff','--check')
     remote=out('git','ls-remote','origin','refs/heads/'+branch).split()[0]
     if remote!=tested:raise ValueError('Branch moved; refuse stale publication')
