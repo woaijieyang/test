@@ -1,8 +1,7 @@
-"""Publish only the independently rechecked candidate tree on the current branch.
+"""Publish only the independently rechecked candidate tree on this branch.
 
-No force push, secret lookup or cross-branch write. Workflow-file changes must
-already be committed through the authorized repository connection; the Actions
-content token publishes only the remaining validated runtime and data changes.
+No force push, secret lookup or cross-branch write. Workflow changes must be
+precommitted through the repository connection; this publishes tested assets.
 """
 from pathlib import Path
 import json,os,shutil,subprocess,sys,tempfile
@@ -20,6 +19,7 @@ EXACT={
  'tests/test_closed_loop_35.py','tests/test_roles_repair.py','tests/test_workflow_integration.py',
  'tests/test_host_dispatch_profiles.py','tests/test_rxr_profile.py','tests/test_entry_diagnostics.py',
  'tests/test_example_injection.py','tests/test_rxr_prompt_snapshots.py',
+ 'tests/test_final_best_contract.py',
 }
 PREFIX=('r2r/','r2r_authoring/','generator/templates/R2R/','reviewer/templates/R2R/','docs/R2R_','provenance/r2r_')
 
@@ -54,14 +54,12 @@ def main():
     call('git','add','--all')
     if subprocess.run(['git','diff','--cached','--quiet'],cwd=ROOT).returncode==0:
         print('PUBLISH_NOOP '+tested);return
-    call('git','commit','-m','Materialize validated R2R teaching, isolated runtime and integrity records')
+    call('git','commit','-m','Materialize validated R2R detailed teaching and isolated runtime')
     final=out('git','rev-parse','HEAD')
     temporary_root=Path(tempfile.mkdtemp(prefix='r2r-final-'))
-    # The inherited deployment test locates its companion using ROOT.parents[2].
-    # Give the clean checkout the same minimum directory depth as the runner;
-    # its absent companion is still reported unavailable by the strict runner.
-    clean=temporary_root/'checkout'/'repository'
-    clean.parent.mkdir(parents=True)
+    # Match the inherited fixture's directory-depth assumptions while reporting
+    # its absent external companion separately, never as a successful test.
+    clean=temporary_root/'checkout'/'repository';clean.parent.mkdir(parents=True)
     call('git','worktree','add','--detach',str(clean),final)
     try:
         for module in ('r2r_authoring.integrate','r2r_authoring.test_expectations'):
@@ -74,8 +72,7 @@ def main():
         call('git','diff','--exit-code',cwd=clean)
         call(sys.executable,'-B','verify_package.py',cwd=clean)
     finally:
-        call('git','worktree','remove','--force',str(clean))
-        shutil.rmtree(temporary_root)
+        call('git','worktree','remove','--force',str(clean));shutil.rmtree(temporary_root)
     if out('git','ls-remote','origin','refs/heads/'+branch).split()[0]!=tested:raise ValueError('Branch advanced during final validation')
     call('git','push','origin','HEAD:refs/heads/'+branch)
     if out('git','ls-remote','origin','refs/heads/'+branch).split()[0]!=final:raise ValueError('Remote publication verification failed')
