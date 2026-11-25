@@ -664,7 +664,7 @@
     },
     {
       "path": "tests/r2r/test_stability.py",
-      "git_blob_sha1": "41f123dbfcabcb951c93bba004c932f363872207"
+      "git_blob_sha1": "2e7b52487b58bddaba4aae73a803ce38aa1ea4f9"
     },
     {
       "path": "tests/test_host_dispatch_profiles.py",
@@ -768,7 +768,7 @@
     },
     {
       "path": "tools/r2r_authoring/workflow_policy.py",
-      "git_blob_sha1": "c604f3de6d653c32f7bb5ceda0b67fc9c7b7735a"
+      "git_blob_sha1": "826fc8a9b0c68f44fef26b27f8be732b394171b3"
     }
   ]
 }

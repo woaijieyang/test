@@ -50,6 +50,17 @@ def rxr_workflow(text):
           fi
           python -B tools/verify_package.py
       - name: Run inherited''')
+    # The old variable is consumed by the independently pinned RxR selection
+    # audit. Keep build-before/after isolation separate from historical replay.
+    if text.count('R2R_BASELINE_DIR') != 3:
+        raise ValueError('Unexpected build comparison variable references')
+    text = text.replace('R2R_BASELINE_DIR', 'R2R_BUILD_BASELINE_DIR')
+    replace('          import json, os, unittest\n',
+            '          import json, os, sys, unittest\n')
+    replace('          from pathlib import Path\n          all_tests=',
+            '          from pathlib import Path\n'
+            '          sys.path.insert(0, str(Path("tests").resolve()))\n'
+            '          all_tests=')
     replace("unittest.defaultTestLoader.discover('tests')",
             "unittest.defaultTestLoader.discover('tests', top_level_dir='.')")
     replace("test.id()=='unittest.loader._FailedTest.test_release_transaction'",

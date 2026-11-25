@@ -1,6 +1,10 @@
 """Runtime teaching guards and read-only cross-profile CI; no model-score claims."""
 from copy import deepcopy
 import json
+import os
+import subprocess
+import sys
+import textwrap
 from pathlib import Path
 import tempfile
 import unittest
@@ -201,6 +205,9 @@ class WorkflowOwnership(unittest.TestCase):
         workflow = (ROOT/'.github/workflows/rxr-development.yml').read_text()
         self.assertIn('comparison="$GITHUB_SHA"', workflow)
         self.assertIn('source_inventory.json', workflow)
+        self.assertIn('R2R_BUILD_BASELINE_DIR=', workflow)
+        self.assertNotIn('R2R_BASELINE_DIR=', workflow)
+        self.assertEqual(workflow.count('--baseline "$R2R_BUILD_BASELINE_DIR"'), 2)
         self.assertIn('git diff --exit-code', workflow)
         self.assertIn("if: env.R2R_MANAGED == 'true'", workflow)
 
@@ -215,6 +222,21 @@ class WorkflowOwnership(unittest.TestCase):
         self.assertIn("discover('tests', top_level_dir='.')", workflow)
         self.assertIn("test.id().endswith('.test_release_transaction')", workflow)
         self.assertIn("'FileNotFoundError' in error and 'manage_release.py' in error", workflow)
+        # Execute the actual workflow discovery preamble in a clean interpreter.
+        # Do not execute the suite recursively; reject all unexpected import errors.
+        block = workflow.split('      - name: Run inherited and new regression tests\n', 1)[1]
+        block = block.split('      - name:', 1)[0]
+        code = textwrap.dedent(block.split("python -B - <<'PY'\n", 1)[1]
+                               .split('          result=unittest.TextTestRunner', 1)[0])
+        code += "\nerrors=[str(getattr(t,'_exception','')) for t in selected if hasattr(t,'_exception')]\n"
+        code += "print(json.dumps(dict(errors=errors, count=selected.countTestCases())))\n"
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1',
+                   R2R_BUILD_BASELINE_DIR=str(ROOT))
+        result = subprocess.run([sys.executable, '-B', '-c', code], cwd=ROOT,
+                                env=env, check=True, capture_output=True, text=True, timeout=30)
+        report = json.loads(result.stdout)
+        self.assertEqual(report['errors'], [])
+        self.assertGreaterEqual(report['count'], 300)
 
 
 if __name__ == '__main__':
