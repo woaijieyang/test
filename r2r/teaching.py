@@ -53,8 +53,7 @@ def card(example, role, detailed):
         result['source_issues'] = deepcopy(out['issues'])
         result['boundary_evidence'] = [dict(after_stage=h['from_subtask_index'],
             completed_event=h['preceding_exit']['candidate_quote'],
-            next_action_context=h['next_entry']['candidate_quote'],
-            shared_context=deepcopy(h['shared_context'])) for h in out['handoffs']]
+            next_action_context=h['next_entry']['candidate_quote']) for h in out['handoffs']]
         result['completion_evidence'] = [dict(stage=s['subtask_index'],
             event=deepcopy(s['ending']['candidate_quotes']), kind=s['ending']['kind'],
             stop_scope=s['ending']['stop_scope']) for s in out['stage_audit']]
