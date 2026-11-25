@@ -1,4 +1,4 @@
-"""Evidence, complete/summarized teaching and isolated RxR boundary regressions."""
+"""Evidence, complete teaching and isolated RxR boundary regressions."""
 from __future__ import annotations
 import copy
 import json
@@ -39,7 +39,7 @@ class RxRRefinementTests(unittest.TestCase):
                 for detail in (True, False):
                     self.assertTrue(teaching_card(row, 'reviewer', detail)['applicable_lesson'])
 
-    def test_first_two_dynamic_cases_are_detailed_in_every_phase(self):
+    def test_all_dynamic_cases_are_detailed_in_every_phase(self):
         query = self.gbank['RxR-GEN-006']['input']['original_instruction']
         selected = {role: select_examples(role, 'rxr-en-us', query, count=4)
                     for role in ('generator', 'reviewer')}
@@ -54,42 +54,41 @@ class RxRRefinementTests(unittest.TestCase):
                 self.assertIn(canonical(expected), prompt)
                 teaching = expected['teaching']
                 self.assertEqual(('stage_evidence' in teaching if role == 'generator'
-                                  else 'stage_checks' in teaching), position < 2)
-                if position >= 2:
-                    self.assertIn('stage_summary', teaching)
+                                  else 'stage_checks' in teaching), True)
+                self.assertNotIn('stage_summary', teaching)
             for row in core_library(role, 'rxr-en-us'):
                 self.assertIn(canonical(teaching_card(row, role, True)), prompt)
 
-    def test_generator_summaries_keep_all_five_meanings_and_exact_evidence(self):
+    def test_generator_complete_cards_keep_all_five_meanings_and_exact_evidence(self):
         for row in self.g:
             summary = teaching_card(row, 'generator', False)['teaching']
             self.assertEqual(summary['source'], row['input']['original_instruction'])
             self.assertEqual(summary['stages'], row['output']['subtasks'])
             self.assertEqual(summary['handoffs'], row['output']['handoffs'])
-            for old, new in zip(row['output']['stage_audit'], summary['stage_summary']):
+            for old, new in zip(row['output']['stage_audit'], summary['stage_evidence']):
                 for field in ('entry', 'target', 'ending', 'conditions', 'source_quotes', 'carryover'):
                     self.assertEqual(new[field], old[field])
                 self.assertEqual(new['process']['candidate_quotes'], old['process']['candidate_quotes'])
                 if old['process']['text'] != row['output']['subtasks'][old['subtask_index']]:
                     self.assertEqual(new['process']['text'], old['process']['text'])
 
-    def test_reviewer_summaries_keep_findings_coverage_and_handoffs(self):
+    def test_reviewer_complete_cards_keep_findings_coverage_and_handoffs(self):
         for row in self.r:
             card = teaching_card(row, 'reviewer', False)['teaching']
             audit = runtime_review_output(row)
             self.assertEqual(card['review_case'], row['review_input'])
             self.assertEqual(card['findings'], audit['findings'])
-            self.assertEqual(card['coverage_summary'], audit['source_coverage'])
+            self.assertEqual(card['coverage_evidence'], audit['source_coverage'])
             self.assertEqual(card['handoffs'], audit['handoffs'])
             self.assertEqual(card['prior_finding_reviews'], audit['prior_finding_reviews'])
-            self.assertEqual(len(card['stage_summary']), len(audit['stage_checks']))
+            self.assertEqual(len(card['stage_checks']), len(audit['stage_checks']))
 
     def test_projection_does_not_leak_mutable_library_objects(self):
         row = self.gbank['RxR-GEN-006']
         original = copy.deepcopy(row)
         card = teaching_card(row, 'generator', False)
         card['teaching']['stages'][0] = 'tampered'
-        card['teaching']['stage_summary'][0]['conditions']['candidate_quotes'].clear()
+        card['teaching']['stage_evidence'][0]['conditions']['candidate_quotes'].clear()
         self.assertEqual(row, original)
 
     def test_source_required_stop_can_be_restored_and_closure_is_not_pass(self):

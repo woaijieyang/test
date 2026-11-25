@@ -5,7 +5,8 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = '803ebf2c9edb5e60bb240dd1a2c411663c1a185e'
+BASE = 'b69e04ddc7097b47f8d201beed2fa5e2d9ffd34e'
+SOURCE_BASE = '33d66756de8d545db001f3854194bf5d5b5a8592'
 PROTECTED = ['shared', 'adapter', 'renderer', 'host/protocol.py',
              'host/template_selector.py', 'host/rxr_retrieval.py', 'host/rxr_assets.py',
              'generator/prompt.md', 'generator/acceptance.md', 'generator/repair.md',
@@ -20,9 +21,9 @@ def git(*args):
 
 
 def check_protected():
-    changed = git('diff', '--name-only', BASE, '--', *PROTECTED).decode().strip()
+    changed = git('diff', '--name-only', SOURCE_BASE, '--', *PROTECTED).decode().strip()
     if changed:
-        raise ValueError('Protected common/R2R behavior source changed: ' + changed)
+        raise ValueError('Imported common/R2R source differs from requested migration source: ' + changed)
     folders = ['generator/templates/RxR', 'reviewer/templates/RxR']
     files = [p for p in git('ls-tree', '-r', '--name-only', BASE, '--', *folders).decode().splitlines()
              if p.endswith('.json')]
@@ -48,8 +49,8 @@ def check_protected():
                 if current['output'][key] != old['output'][key]:
                     raise ValueError('Executable Generator output changed: ' + path + '/' + key)
         if current != old:
-            changed_templates.append(current['template_id'])
-    return dict(baseline_commit=BASE, protected_assets_equal=True,
+            raise ValueError('Retained RxR teaching bytes changed: ' + path)
+    return dict(baseline_commit=BASE, source_baseline_commit=SOURCE_BASE, protected_assets_equal=True,
                 rxr_sources_candidates_and_retrieval_fields_equal=True,
                 rxr_templates_checked=len(files) - legacy_count,
                 legacy_templates_checked=legacy_count, changed_template_ids=sorted(changed_templates))

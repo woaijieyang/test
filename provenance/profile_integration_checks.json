@@ -1,0 +1,24 @@
+{
+  "source_commit": "33d66756de8d545db001f3854194bf5d5b5a8592",
+  "retained_rxr_commit": "b69e04ddc7097b47f8d201beed2fa5e2d9ffd34e",
+  "source_assets_exact": 179,
+  "retained_rxr_assets_exact": 175,
+  "complete_teaching_counts": {
+    "r2r-en/generator": 37,
+    "r2r-en/reviewer": 69,
+    "rxr-en-us/generator": 53,
+    "rxr-en-us/reviewer": 90
+  },
+  "cli_and_schema_source_exact": true,
+  "complete_dynamic_outputs_equal": true,
+  "navigation_evaluated": false,
+  "runtime": {
+    "r2r_inputs": 39,
+    "rxr_inputs": 55,
+    "phases_per_input": 4,
+    "r2r_prompts_schema_selection_equal": true,
+    "rxr_schema_selection_equal": true,
+    "reversed_profile_order_equal": true,
+    "live_model_called": false
+  }
+}
