@@ -75,7 +75,16 @@ def expected():
             }
             retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                                   for role, ids in selections.items()}'''
-    s=replace(s,old,new);out[p]=s
+    s=replace(s,old,new)
+    anchor='        source_payload = {"original_instruction": src.raw}'
+    s=replace(s,anchor,'''        if src.profile == "r2r-en":
+            from host.r2r.selection import validate_bundle
+            from host.r2r.relations import route_family
+            from host.r2r.phase_teaching import validate_phase_pairs
+            validate_bundle(src.raw, selections, selection_mode, source_family=route_family(src.provenance, src.split))
+            validate_phase_pairs()
+'''+anchor)
+    out[p]=s
     for role in ('generator','reviewer'):
         p=role+'/templates_manifest.json';m=json.loads(base(p));policy=m['runtime_policy']['r2r-en']
         if role=='generator':policy['dynamic_generator_examples']=[4,6]

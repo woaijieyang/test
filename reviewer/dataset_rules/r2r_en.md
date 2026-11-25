@@ -20,7 +20,7 @@ Check whether the candidate preserves each phrase's role. An already-open door d
 
 ### R-P2-A2 — Direction owner, count and sustained relation
 
-Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a carpet-bound movement from a movement merely starting at the carpet, and a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after. When clauses are merged, check that each destination and modifier still belongs to its original action; retaining the same words does not establish the same event attachment. A remedy restoring a sustained relation must also preserve the source movement extent, target-directed approach and final placement.
+Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a surface-bound movement, a start from that surface and a stop on it; locate the phrase’s governing event even when it is fronted. Distinguish a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after. When clauses are merged, check that each destination and modifier still belongs to its original action; retaining the same words does not establish the same event attachment. A remedy restoring a sustained relation must also preserve the source movement extent, target-directed approach and final placement.
 
 ### R-P2-A3 — Order, refinement and stopping scope
 

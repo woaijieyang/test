@@ -92,6 +92,8 @@ def metadata(row, skills):
     required = (['conditional_routes'] if tid in ('R2R-GEN-036','R2R-REV-036','R2R-DIAG-30')
                 else ['required_return'] if tid in ('R2R-GEN-037','R2R-REV-037','R2R-DIAG-31') else [])
     extra = row.get('teaching_notes', {}).get('decision_boundary', {}).get('rule_ids', [])
+    # R10 explicitly teaches a source-limited destination and refusal to guess.
+    if tid == 'R2R-CORE-R10': extra = list(extra) + ['R-P2-C1']
     rules = sorted(set(rules) | set(extra))
     return dict(required_query_facets=required,rule_ids=rules,retrieval_skills=sorted(retrieval),facets=facets,
                 teaching_polarity=polarity,route_family=family,

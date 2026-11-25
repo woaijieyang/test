@@ -87,7 +87,7 @@
       "path": "generator/templates/R2R/core/G09_R2R-CORE-G09.json",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "evidence_blob": "1280a7e9f845fdc67aecef94031c0dd8a808f3637905b205a5a1b800b65a27b8",
-      "result_sha256": "93500cb5f6679f6b7e10beb29a47484598f97efdaf699aae0633a7ad1ca4c3d5",
+      "result_sha256": "6f0fc4537a4e8dc072ab4834215ccb0de90c8d87d5b7cb13f33ee94f1134762b",
       "changed": true
     },
     {
@@ -111,7 +111,7 @@
       "path": "generator/templates/R2R/val_seen/002_R2R-GEN-002.json",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "evidence_blob": "c91c7497b45e3e40849d21a30705dfd4a419cdca88added84c780608b9869ce3",
-      "result_sha256": "503f6a488612fb8e507cddd87de666d9c005b1c39b6975e59f09d57074aeb73d",
+      "result_sha256": "668e74df7351df47ca04aeef125bea45da4ef21bc7d9e0fc40695cd742709c6b",
       "changed": true
     },
     {
@@ -479,7 +479,7 @@
       "path": "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "evidence_blob": "51b87ccfc9503a7db329cd76d9fdadf30044a45ad1e39dd07495b4a710c00d55",
-      "result_sha256": "d25fe7895e3ea275260ae6a34f949a011e815e0715220d327d3fdae2492e07f9",
+      "result_sha256": "ec35ac454c1c4ff646f5a3113b3387d5a306be26553b7d04722df69983c35bf9",
       "changed": true
     },
     {
@@ -735,7 +735,7 @@
       "path": "reviewer/templates/R2R/paired/002_R2R-REV-002.json",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "evidence_blob": "a0d6fc861c9dbda265f082c8d3ee257e89b0d39ca89d64784f968b85ee64a94b",
-      "result_sha256": "6f109f376959e4ee10d445e38b36952b42b68e833b6d1a3c9fb0ae1e5f89e825",
+      "result_sha256": "90860fb24bdc7a016f48acee7be0cc96e973b9c7d8b0754bab1681b68ffa82f4",
       "changed": true
     },
     {

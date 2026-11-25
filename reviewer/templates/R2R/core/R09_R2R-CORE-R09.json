@@ -269,6 +269,29 @@
       "stair_target",
       "terminal",
       "scope"
-    ]
+    ],
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "walk forward towards the leather chairs next to the table.",
+        "stop and stand on the wood between the bench and the carpet."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "Walk forward towards the leather chairs next to the table."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "stop and stand on the wood between the bench and the carpet."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The wood between the bench and carpet constrains the final standing placement, not the preceding forward approach. Keep the bench arrival trigger, the approach strength and the exact placement.",
+      "counter_boundary": "Independent synthetic contrast (not part of this route): \"Walk a few paces along the woven runner toward the lamp, then wait.\" preserves a path-wide restriction, approximate extent and approach. \"From the woven runner, walk a few paces toward the lamp, then wait.\" loses that restriction; \"walk to the lamp\" also strengthens the approach. If the source only says \"From the runner, turn right\", do not invent a path restriction.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

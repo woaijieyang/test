@@ -6,6 +6,10 @@ source and actual candidate before any teaching asset is emitted.
 from copy import deepcopy
 
 SPECS = {
+    2: dict(rules=['A4','B3'], source=['walk forward towards the leather chairs next to the table.', 'stop and stand on the wood between the bench and the carpet.'],
+        candidate=[(1,'Walk forward towards the leather chairs next to the table.'),(1,'stop and stand on the wood between the bench and the carpet.')],
+        operation='The wood between the bench and carpet constrains the final standing placement, not the preceding forward approach. Keep the bench arrival trigger, the approach strength and the exact placement.',
+        boundary='Independent synthetic contrast (not part of this route): "Walk a few paces along the woven runner toward the lamp, then wait." preserves a path-wide restriction, approximate extent and approach. "From the woven runner, walk a few paces toward the lamp, then wait." loses that restriction; "walk to the lamp" also strengthens the approach. If the source only says "From the runner, turn right", do not invent a path restriction.'),
     34: dict(rules=['B2','B4'], source=['Move through door into hallway', 'turn right'],
         candidate=[(0,'go through the door into the hallway.'),(1,'From the hallway, turn right')],
         operation='The preceding stage already establishes hallway entry. Omitting the new From the hallway phrase leaves the next right turn uniquely grounded; prefer inheritance when generating afresh.',

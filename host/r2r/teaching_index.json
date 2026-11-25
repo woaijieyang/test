@@ -397,7 +397,7 @@
       "pair_relation": null,
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "93500cb5f6679f6b7e10beb29a47484598f97efdaf699aae0633a7ad1ca4c3d5",
+      "content_sha256": "6f0fc4537a4e8dc072ab4834215ccb0de90c8d87d5b7cb13f33ee94f1134762b",
       "skills": [
         "stair_target",
         "terminal",
@@ -506,7 +506,7 @@
       "pair_relation": null,
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "503f6a488612fb8e507cddd87de666d9c005b1c39b6975e59f09d57074aeb73d",
+      "content_sha256": "668e74df7351df47ca04aeef125bea45da4ef21bc7d9e0fc40695cd742709c6b",
       "skills": [
         "stair_target",
         "terminal",
@@ -2248,7 +2248,7 @@
       "pair_relation": "same_source",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "d25fe7895e3ea275260ae6a34f949a011e815e0715220d327d3fdae2492e07f9",
+      "content_sha256": "ec35ac454c1c4ff646f5a3113b3387d5a306be26553b7d04722df69983c35bf9",
       "skills": [
         "stair_target",
         "terminal",
@@ -2297,7 +2297,8 @@
       "quality": "authored_and_contract_checked",
       "required_query_facets": [],
       "rule_ids": [
-        "R-P2-A1"
+        "R-P2-A1",
+        "R-P2-C1"
       ],
       "retrieval_skills": [
         "target_identity"
@@ -3299,7 +3300,7 @@
       "pair_relation": "same_source",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "6f109f376959e4ee10d445e38b36952b42b68e833b6d1a3c9fb0ae1e5f89e825",
+      "content_sha256": "90860fb24bdc7a016f48acee7be0cc96e973b9c7d8b0754bab1681b68ffa82f4",
       "skills": [
         "stair_target",
         "terminal",

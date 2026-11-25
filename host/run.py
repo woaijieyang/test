@@ -427,6 +427,12 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             role: template_bundle_metadata(role, src.profile, ids)
             for role, ids in selections.items()
         }
+        if src.profile == "r2r-en":
+            from host.r2r.selection import validate_bundle
+            from host.r2r.relations import route_family
+            from host.r2r.phase_teaching import validate_phase_pairs
+            validate_bundle(src.raw, selections, selection_mode, source_family=route_family(src.provenance, src.split))
+            validate_phase_pairs()
         source_payload = {"original_instruction": src.raw}
         g0 = validated_call("generator", "initial", source_payload, lambda out: protocol.generator(src.raw, out))
 

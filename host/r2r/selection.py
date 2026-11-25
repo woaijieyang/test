@@ -2,7 +2,7 @@
 from pathlib import Path
 from functools import lru_cache
 import hashlib,json,re,math
-from host.r2r.relations import facet_signals, FACET_PATTERNS, applicability
+from host.r2r.relations import facet_signals, FACET_PATTERNS, applicability, route_family
 ROOT=Path(__file__).resolve().parents[2]
 PATTERNS={
  'entity_frame':[r'\b(?:left|right) of (?:the |a )?[^,.!?;]{1,50}'],
@@ -90,6 +90,16 @@ def _verify(row,item):
     if digest(raw)!=item['content_sha256'] or digest(_source(row).encode())!=item['source_sha256']:raise ValueError('R2R teaching index content drift: '+row['template_id'])
     if json.loads(raw)!=row:raise ValueError('Cached R2R library differs from indexed asset')
     if not item.get('skills') or not item.get('lesson') or not item.get('counter_boundary'):raise ValueError('Incomplete teaching intent')
+    notes=row['teaching_notes'];source=row['source']
+    lesson=(notes.get('case_rationale') if row['role']=='generator' else notes.get('case_specific_focus')) or notes.get('transfer_rule') or notes.get('review_principle')
+    if (item.get('pair_id') != row.get('pair_id') or item.get('source_family') != source.get('source_key')
+            or item.get('route_family') != route_family(source,source.get('split'))
+            or item.get('lesson') != lesson
+            or item.get('reusable_rule') != (notes.get('reusable_rule') or notes.get('transfer_rule'))
+            or item.get('counter_boundary') != (notes.get('counter_example_boundary') or notes.get('anti_pattern'))
+            or (notes.get('primary_skills') and item['skills'] != notes['primary_skills'])
+            or set(notes.get('decision_boundary',{}).get('rule_ids',()))-set(item['rule_ids'])):
+        raise ValueError('R2R teaching metadata differs from authored evidence: '+row['template_id'])
 
 
 def core_rows(role):
@@ -230,7 +240,7 @@ def select_bundle(text,count=None,*,source_family=None):
     return dict(generator=ids,reviewer=rids,evidence={'generator':ge,'reviewer':revidence},source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity',core_source_overlaps=[r['template_id'] for role in ('generator','reviewer') for r in core_rows(role) if normalized(_source(r))==normalized(text)])
 
 
-def validate_selection(role,ids,mode='adaptive',*,source_text=None):
+def validate_selection(role,ids,mode='adaptive',*,source_text=None,source_family=None):
     from host.template_selector import library
     if role not in ('generator','reviewer'):raise ValueError('Invalid R2R role')
     rows=library(role,'r2r-en');bank={r['template_id']:r for r in rows};index,_=teaching_index()
@@ -240,8 +250,23 @@ def validate_selection(role,ids,mode='adaptive',*,source_text=None):
         if list(ids)!=[r['template_id'] for r in rows]:raise ValueError('Offline all mode must use the complete ordered library')
         return
     if mode!='adaptive':raise ValueError('Unknown selection mode')
+    identities=set();families=set()
+    for tid in ids:
+        item=index[tid];identity=normalized(_source(bank[tid]));family=item.get('route_family')
+        if item['status']!='dynamic':raise ValueError('Inactive R2R dynamic selection: '+tid)
+        # Paired positives and diagnostics are distinct teaching pools.
+        # Match automatic selection: keep family diversity inside each pool;
+        # a different-source diagnostic may still supply an opposite judgment.
+        family_slot=(bool(bank[tid].get('pair_id')),family)
+        if identity in identities or (family is not None and family_slot in families):
+            raise ValueError('Repeated R2R teaching source or route family: '+tid)
+        if source_family is not None and family==source_family:
+            raise ValueError('Selected R2R teaching matches task route family: '+tid)
+        identities.add(identity)
+        if family is not None:families.add(family_slot)
     if source_text is not None:
         if not isinstance(source_text,str):raise TypeError('R2R source must be a string')
+        if normalized(source_text) in identities:raise ValueError('Selected R2R teaching echoes task source')
         facets=facet_signals(source_text)
         invalid=[tid for tid in ids if not applicability(index[tid],facets)]
         if invalid:raise ValueError('Inapplicable R2R specialist selection: '+repr(invalid))
@@ -253,3 +278,15 @@ def validate_selection(role,ids,mode='adaptive',*,source_text=None):
     if not 4<=len(ps)<=6 or not 2<=len(ds)<=3 or list(ids)!=ps+ds or any(bank[i]['pair_id'] not in eligible for i in ps):raise ValueError('R2R Reviewer requires ordered eligible pairs then diagnostics')
     for i in ps:
         if _source(bank[i])!=_source(eligible[bank[i]['pair_id']]):raise ValueError('Reviewer pair source mismatch')
+
+
+def validate_bundle(text,selections,mode='adaptive',*,source_family=None):
+    """Preflight both frozen role selections before any model call."""
+    from host.template_selector import library
+    if set(selections)!= {'generator','reviewer'}:raise ValueError('Missing R2R role selection')
+    for role in ('generator','reviewer'):
+        validate_selection(role,selections[role],mode,source_text=text,source_family=source_family)
+    if mode=='adaptive':
+        bank={r['template_id']:r for r in library('reviewer','r2r-en')}
+        pairs=[bank[i]['pair_id'] for i in selections['reviewer'] if bank[i].get('pair_id')]
+        if pairs!=list(selections['generator']):raise ValueError('R2R paired selection differs from frozen Generator order')

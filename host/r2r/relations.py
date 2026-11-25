@@ -43,7 +43,7 @@ FACET_PATTERNS={
  'maintained_frame':r'\b(?:keep|while|with)\b[^.!?]{0,80}\b(?:left|right|facing)\b',
  'initial_frame':r'\b(?:with|facing)\b[^.!?]{0,80}\b(?:back|behind)\b',
  'turn_until_frame':r'\bturn\b[^.!?]{0,35}\buntil\b',
- 'surface_motion':r'\b(?:walk|go|move|continue|keep walking)\b[^.!?]{0,65}\b(?:on|along)\s+(?:the |a )?(?:[a-z]+\s+){0,2}(?:carpet|rug|path|walkway|floor)\b',
+ 'surface_motion':r'\b(?:walk(?:ing)?|go(?:ing)?|move|moving|continue|proceed|head)\b(?:(?!\b(?:stop|wait|stand|onto|from|turn|enter|exit|leave|with|to)\b)[^.!?,;]){0,65}\b(?:on|along)\s+(?:the |a )?(?:[a-z]+\s+){0,2}(?:carpet|rug|runner|path|walkway|floor)\b|\b(?:follow|following)\s+(?:the |a )?(?:[a-z]+\s+){0,2}(?:carpet|rug|runner|path|walkway)\b|(?:^|[.!?;]\s*)\b(?:on|along)\s+(?:the |a )?(?:[a-z]+\s+){0,2}(?:carpet|rug|runner|path|walkway|floor)\s*,\s*(?:walk|go|move|continue|proceed|head)\b',
  'window_side':r'\b(?:left|right)\b[^.!?]{0,30}\bwindows?\b',
 }
 

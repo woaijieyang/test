@@ -66,3 +66,29 @@ def phase_examples(role, phase):
     raw = (ROOT / role / 'dataset_rules' / filename).read_bytes()
     rules = (ROOT / role / 'dataset_rules/r2r_en.md').read_bytes()
     return deepcopy(_validated(role, phase, raw, rules))
+
+
+def validate_phase_pairs():
+    """Check cross-phase identity, previous advice and actual rendered snapshots.
+
+    Each individual JSON can pass its schema while teaching an inconsistent
+    repair chain. Validate the pair as a chain, before the first model call.
+    """
+    from adapter.source import Source
+    from renderer.freeze import freeze, unchanged
+    gs=phase_examples('generator','repair');rs=phase_examples('reviewer','recheck')
+    if [g['id'] for g in gs]!=[r['id'] for r in rs]:
+        raise ValueError('R2R repair/recheck teaching pair identity mismatch')
+    def snapshot(source, candidate):
+        src=Source('r2r-synthetic-phase-check','R2R','en',source)
+        active=candidate['status']=='ok'
+        view=freeze(src,candidate['subtasks'],'\n') if active else unchanged(src)
+        return dict(status=candidate['status'],subtasks=list(view.stages) if active else [],issues=candidate['issues']),view.rendered
+    for g,r in zip(gs,rs):
+        a,b=g['input'],r['input'];source=a['original_instruction']
+        before,old_text=snapshot(source,a['candidate'])
+        after,new_text=snapshot(source,g['expected_output']['candidate'])
+        if (source!=b['original_instruction'] or before!=b['prior_candidate']
+                or a['review']!=b['prior_review'] or old_text!=b['prior_rendered_instruction']
+                or after!=b['candidate'] or new_text!=b['rendered_instruction']):
+            raise ValueError('R2R repair/recheck teaching chain mismatch: '+g['id'])

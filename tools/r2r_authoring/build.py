@@ -116,7 +116,7 @@ def materialize():
         if any(set(e['rule_ids'])-ids for e in phase_data[role]):raise ValueError('Phase lesson references unknown rule')
         outputs[f'{role}/dataset_rules/{filename}']=encode(phase_data[role])
     from tools.r2r_authoring.rule_coverage import report as coverage_report
-    outputs['provenance/r2r_operation_coverage.json']=encode(coverage_report(rows,phase_data))
+    outputs['provenance/r2r_operation_coverage.json']=encode(coverage_report(rows,phase_data,index,registry))
 
     return outputs
 

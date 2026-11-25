@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 192,
+  "file_count": 193,
   "files": [
     {
       "path": "adapter/README.md",
@@ -20,7 +20,7 @@
     },
     {
       "path": "generator/dataset_rules/r2r_en.md",
-      "git_blob_sha1": "a5f9407f420a6af94d0540ac455e60b38d6f6b65"
+      "git_blob_sha1": "f9ed77aafd34284785c2153ad74d7d259698a547"
     },
     {
       "path": "generator/dataset_rules/r2r_repair_examples.json",
@@ -80,7 +80,7 @@
     },
     {
       "path": "generator/templates/R2R/core/G09_R2R-CORE-G09.json",
-      "git_blob_sha1": "fba0b94c8dec078f595bf746afec1d7dd4764816"
+      "git_blob_sha1": "6589a0f2820a7fc9912db8c9ae2189e07ee1bf38"
     },
     {
       "path": "generator/templates/R2R/core/G10_R2R-CORE-G10.json",
@@ -96,7 +96,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/002_R2R-GEN-002.json",
-      "git_blob_sha1": "d336aee1873fe115dfc2499a1a79ccd49734945f"
+      "git_blob_sha1": "a7d0d03ce35b115d7da00415354da6b7a7ac345b"
     },
     {
       "path": "generator/templates/R2R/val_seen/003_R2R-GEN-003.json",
@@ -240,15 +240,15 @@
     },
     {
       "path": "host/r2r/phase_teaching.py",
-      "git_blob_sha1": "fe1dbfcdb478a6d65c8e20278b377d65ccc4f5de"
+      "git_blob_sha1": "36c0ad95e3ee1fd9d899834363465a4317b7911e"
     },
     {
       "path": "host/r2r/relations.py",
-      "git_blob_sha1": "87c06c98b6bf1f7aae4ef3a1941b4a681da008d8"
+      "git_blob_sha1": "ed722db5065348ff52f11b5fc17685bfee8274b6"
     },
     {
       "path": "host/r2r/selection.py",
-      "git_blob_sha1": "ea2738c657381b2f6df60e408b18a5e741472112"
+      "git_blob_sha1": "43026f25bf3c07c7899fa5e41856e02ff3a2c9cd"
     },
     {
       "path": "host/r2r/teaching.py",
@@ -256,11 +256,11 @@
     },
     {
       "path": "host/r2r/teaching_index.json",
-      "git_blob_sha1": "7b04d9da423b2a457159d276e890ac43a802c910"
+      "git_blob_sha1": "667448cef19f17a040a2a2cb3882a413e356e9d9"
     },
     {
       "path": "host/run.py",
-      "git_blob_sha1": "8a62bccb48f56d9d240efcd8e7f9965f37bb655a"
+      "git_blob_sha1": "ea35c6821c7c0e573e331f5f61eb50c86e42989a"
     },
     {
       "path": "host/template_selector.py",
@@ -272,7 +272,7 @@
     },
     {
       "path": "provenance/r2r_teaching_changes.json",
-      "git_blob_sha1": "cb340b28dd72ad49835b0435b340ea5ecb3dbf26"
+      "git_blob_sha1": "999b3f13c6585b2037308b1d19591a486e025737"
     },
     {
       "path": "renderer/README.md",
@@ -288,7 +288,7 @@
     },
     {
       "path": "reviewer/dataset_rules/r2r_en.md",
-      "git_blob_sha1": "92ade4b5da2fc5c5c334dfc23b0cf2f2238bfeb0"
+      "git_blob_sha1": "df03eea948b5a79a08fcd436a707022e706418a4"
     },
     {
       "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
@@ -348,7 +348,7 @@
     },
     {
       "path": "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json",
-      "git_blob_sha1": "0f56aa3025bd19d24e4a083cdd096d0cf75a0360"
+      "git_blob_sha1": "9e3469a04ad1b49ac972c104320d98e75e99317b"
     },
     {
       "path": "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json",
@@ -480,7 +480,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/002_R2R-REV-002.json",
-      "git_blob_sha1": "fc822eb70676e0f94303316c81827d89c2b6ee64"
+      "git_blob_sha1": "ac0d2f86cedc4f2cd3fd20edfe7d5a918e14604b"
     },
     {
       "path": "reviewer/templates/R2R/paired/003_R2R-REV-003.json",
@@ -667,6 +667,10 @@
       "git_blob_sha1": "2e7b52487b58bddaba4aae73a803ce38aa1ea4f9"
     },
     {
+      "path": "tests/r2r/test_workflow_chain.py",
+      "git_blob_sha1": "8921b5fd10115fd627ae5cc595d12692a4a75a3b"
+    },
+    {
       "path": "tests/test_host_dispatch_profiles.py",
       "git_blob_sha1": "b50357f917178266d7d9eada2070b9faa0125c69"
     },
@@ -692,7 +696,7 @@
     },
     {
       "path": "tools/r2r_authoring/build.py",
-      "git_blob_sha1": "0a888e4f0e4d02e48f5df00700794f1d0839f053"
+      "git_blob_sha1": "4c190bfa3fd63dbe1dbf6eb6411c74e231c8cfb9"
     },
     {
       "path": "tools/r2r_authoring/contrast.py",
@@ -700,7 +704,7 @@
     },
     {
       "path": "tools/r2r_authoring/decision_boundaries.py",
-      "git_blob_sha1": "51071ff6cc22ee9ed55b3bc423a2672b7598b632"
+      "git_blob_sha1": "ce93afdc1d3f1a7200fac25dcede690b2cff81c5"
     },
     {
       "path": "tools/r2r_authoring/detail.py",
@@ -708,11 +712,11 @@
     },
     {
       "path": "tools/r2r_authoring/integrate.py",
-      "git_blob_sha1": "6337bb18cace2d178951ead078f499fc0b82f57b"
+      "git_blob_sha1": "7f36acbcc97af68647fa8ab1992c679b66f16e29"
     },
     {
       "path": "tools/r2r_authoring/metadata.py",
-      "git_blob_sha1": "7c93822b5bf5f4813a4a0029c6b8f7349be6dadc"
+      "git_blob_sha1": "7b7928d4571e17001d8656a5758365fb1993d087"
     },
     {
       "path": "tools/r2r_authoring/phase_lessons.py",
@@ -740,7 +744,7 @@
     },
     {
       "path": "tools/r2r_authoring/rule_coverage.py",
-      "git_blob_sha1": "e27cbd4b73ddfeb56992a911215029f494a978c0"
+      "git_blob_sha1": "83fdbc487a0769b2c5fbc3652b5d7fccb6caf3db"
     },
     {
       "path": "tools/r2r_authoring/runtime_layout.py",
