@@ -1,0 +1,2099 @@
+{
+  "source_commit": "33d66756de8d545db001f3854194bf5d5b5a8592",
+  "retained_rxr_commit": "b69e04ddc7097b47f8d201beed2fa5e2d9ffd34e",
+  "basis": "Complete current file comparison. Exact imported/retained protected assets and behavior are checked independently; these fingerprints do not certify semantic correctness.",
+  "excluded_derived_records": [
+    "FILE_HASHES.json",
+    "provenance/profile_integration_changes.json",
+    "provenance/profile_integration_checks.json",
+    "provenance/profile_integration_validation.json"
+  ],
+  "changes": [
+    {
+      "path": ".github/workflows/profile-integration.yml",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "3c47705946364e006d2d3d3169ea6416d07a5d76",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": ".github/workflows/r2r-development.yml",
+      "source_blob": "6ec2bea5d58559c3f8a5164cbffeaba109eaed09",
+      "previous_target_blob": null,
+      "integrated_blob": "c10cffe681522771ceb88fb78b8060259b4932ee",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": ".github/workflows/rxr-development.yml",
+      "source_blob": "88c66ad5674d2af61e316ffed68fb0cc7fd1e58f",
+      "previous_target_blob": "2f44b82efe56eab6747943e4d0233ab988885127",
+      "integrated_blob": "88c66ad5674d2af61e316ffed68fb0cc7fd1e58f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "source_blob": "541d6d4f978403caed48101737abcbaeefb4d24a",
+      "previous_target_blob": "176017f747804ea69660225197e246eefb77b3fc",
+      "integrated_blob": "541d6d4f978403caed48101737abcbaeefb4d24a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "source_blob": null,
+      "previous_target_blob": "c50addd292479c4fa98f793b6b005b534f60f195",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    },
+    {
+      "path": "CODEX_START_HERE.md",
+      "source_blob": null,
+      "previous_target_blob": "27cb6542b5e1a82dde0c2ca228bc9775afb1f673",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    },
+    {
+      "path": "IMPLEMENTATION.md",
+      "source_blob": null,
+      "previous_target_blob": "e815bd54f68cf43eb51e8c77c8907dd594b1e74a",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    },
+    {
+      "path": "README.md",
+      "source_blob": "4c8712142de5b0f39a64277cf9bbc24e0def478c",
+      "previous_target_blob": "871f295bd2e090488a711a622762f9022b0b005a",
+      "integrated_blob": "37e9339b0f6a913c777413de973d45c678e642c4",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "WORKFLOW.md",
+      "source_blob": null,
+      "previous_target_blob": "35e48f3bd51c5507dc4807e3dfddb0df7411bfd6",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "source_blob": "c50addd292479c4fa98f793b6b005b534f60f195",
+      "previous_target_blob": null,
+      "integrated_blob": "c50addd292479c4fa98f793b6b005b534f60f195",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/CODEX_START_HERE.md",
+      "source_blob": "186b2dd4ef3575fa4f8c0d0a97218606412aab22",
+      "previous_target_blob": null,
+      "integrated_blob": "186b2dd4ef3575fa4f8c0d0a97218606412aab22",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/EXPERIMENT_PLAN.md",
+      "source_blob": "c6cd90e07fc5366360d0889c9201abdc7e2b4672",
+      "previous_target_blob": "24a220990c6f43b0e5f4afc74aa0ce2895d530a9",
+      "integrated_blob": "c6cd90e07fc5366360d0889c9201abdc7e2b4672",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/IMPLEMENTATION.md",
+      "source_blob": "e815bd54f68cf43eb51e8c77c8907dd594b1e74a",
+      "previous_target_blob": null,
+      "integrated_blob": "e815bd54f68cf43eb51e8c77c8907dd594b1e74a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/PROFILE_INTEGRATION.md",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "8b597e687d70804afd09d6a249ac72e29434d1c6",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "docs/R2R_CHAIN_REPORT.md",
+      "source_blob": "62085e07fba7761af78e3952819b2e5e9d1ad7c9",
+      "previous_target_blob": null,
+      "integrated_blob": "62085e07fba7761af78e3952819b2e5e9d1ad7c9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_DETAIL_REFINEMENT.md",
+      "source_blob": "472231edbce329304873c60c0b14856fd8793bcc",
+      "previous_target_blob": null,
+      "integrated_blob": "472231edbce329304873c60c0b14856fd8793bcc",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_FULL_DYNAMIC.md",
+      "source_blob": "ad5538e11a1e89c07ab96f5325a3e5617da57709",
+      "previous_target_blob": null,
+      "integrated_blob": "ad5538e11a1e89c07ab96f5325a3e5617da57709",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_IMPLEMENTATION.md",
+      "source_blob": "80dd3d34fa8d5f41a7cf245e764f540918dcc014",
+      "previous_target_blob": null,
+      "integrated_blob": "80dd3d34fa8d5f41a7cf245e764f540918dcc014",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_MINIMAL_REPORT.md",
+      "source_blob": "e9ccf2874a6907332994ed5e4ef3b745f0093b68",
+      "previous_target_blob": null,
+      "integrated_blob": "e9ccf2874a6907332994ed5e4ef3b745f0093b68",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_REFINEMENT_REPORT.md",
+      "source_blob": "ca35107a825afc56a3eb11afd316b4fb9522ee89",
+      "previous_target_blob": null,
+      "integrated_blob": "ca35107a825afc56a3eb11afd316b4fb9522ee89",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/R2R_STABILITY_REPORT.md",
+      "source_blob": "e000de6d889ee8453f380dad01ebb3ba22bc28f0",
+      "previous_target_blob": null,
+      "integrated_blob": "e000de6d889ee8453f380dad01ebb3ba22bc28f0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/RXR_FINAL_CHECKS.md",
+      "source_blob": "05d826113955c7c67dd04ae09892ffcbc34cbae7",
+      "previous_target_blob": "22e4ef7787e0f58d766fcc4c261500c92e00e8b3",
+      "integrated_blob": "a50fb26b3de024ec84831d2a842fb66be45778df",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "docs/RXR_REFINEMENT.md",
+      "source_blob": null,
+      "previous_target_blob": "4372c4a6351155b0d358677b9d35092f15985f30",
+      "integrated_blob": "85c815f866c41b34350f41015abe68556bf36ae6",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "docs/RXR_ROLE_HIERARCHY.md",
+      "source_blob": null,
+      "previous_target_blob": "bfd1fc8ad2eafd63d32b673238a806920d5bd905",
+      "integrated_blob": "ab848c26c20cac997d5ff4f176356fa0e28d21a9",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "docs/RXR_TEACHING_FOCUS.md",
+      "source_blob": "dad5efc969f5166e6178d78a3d5564b226b5c3e3",
+      "previous_target_blob": "ea941846767330348f127172d6e8d6e250c4cd76",
+      "integrated_blob": "ea941846767330348f127172d6e8d6e250c4cd76",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "docs/RXR_TEACHING_REPAIR.md",
+      "source_blob": "d5fbe83e310fa7930e35103d09ab38433aa7a4fc",
+      "previous_target_blob": "cb1bff949f17be6b1525c8d688b1e1cacfe58251",
+      "integrated_blob": "3ba9d7593ac04df8313cd0dd33f79b62f8c7473b",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "docs/V1_V5_V6_RULE_COMPARISON.md",
+      "source_blob": "64578d1068ac151069e90799ecb258a9b431c7da",
+      "previous_target_blob": "912ab8bf5f77120ece135d1b58632ba557ae511d",
+      "integrated_blob": "64578d1068ac151069e90799ecb258a9b431c7da",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "docs/WORKFLOW.md",
+      "source_blob": "35e48f3bd51c5507dc4807e3dfddb0df7411bfd6",
+      "previous_target_blob": null,
+      "integrated_blob": "35e48f3bd51c5507dc4807e3dfddb0df7411bfd6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "evaluation/r2r_replay.py",
+      "source_blob": "0d5ddd139030bac02ce1b4a50e5edaea30ad5863",
+      "previous_target_blob": null,
+      "integrated_blob": "0d5ddd139030bac02ce1b4a50e5edaea30ad5863",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/compiled_r2r-en.txt",
+      "source_blob": "5087de8c8960508a6b6e75cec14f58c5cc340fc8",
+      "previous_target_blob": "3cc26b2e5a841d5ca47504368164877dd39ba4f8",
+      "integrated_blob": "5087de8c8960508a6b6e75cec14f58c5cc340fc8",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/compiled_repair_r2r-en.txt",
+      "source_blob": "569d62ff835583e923ac5f3517c2802382a2fc69",
+      "previous_target_blob": "9a91cdf9ac84f1a108c56cabdb1915ea014272be",
+      "integrated_blob": "569d62ff835583e923ac5f3517c2802382a2fc69",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/compiled_repair_rxr-en-us.txt",
+      "source_blob": "974bdb10fd19110153a131968baa8f6918e105ab",
+      "previous_target_blob": "4f31eb65895e88a4124c54590e4198601a98721f",
+      "integrated_blob": "279e5d9ce872bfbe227d10a6180803bf9a668b25",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "generator/compiled_rxr-en-us.txt",
+      "source_blob": "f6652a4ab9518d18b5beceb5dc5a4078474f169a",
+      "previous_target_blob": "17983842a59bd462d19cb6e9efeaaf5975b7f46b",
+      "integrated_blob": "eb2b27b051e10631961e0d485b005ba422926328",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "generator/dataset_rules/r2r_en.md",
+      "source_blob": "f9ed77aafd34284785c2153ad74d7d259698a547",
+      "previous_target_blob": "6c85c79e0d058b02cb6d6f2dabed108d80d5ef8c",
+      "integrated_blob": "f9ed77aafd34284785c2153ad74d7d259698a547",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/dataset_rules/r2r_repair_examples.json",
+      "source_blob": "142f5392da976f71279fbc6daf13673ae6b4dc93",
+      "previous_target_blob": null,
+      "integrated_blob": "142f5392da976f71279fbc6daf13673ae6b4dc93",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/dataset_rules/rxr_en_us.md",
+      "source_blob": "0fedbc5d3eb4167f7d374df155f79e1822efb012",
+      "previous_target_blob": "7ff52125c14d997898cbd897015eb3263b14cbbb",
+      "integrated_blob": "79e2ec8ad96759f31d55e11453e8b56def7bf6a1",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "generator/templates/INDEX.md",
+      "source_blob": "e07750a186498d6705b70d6f2493a1b53c76ad99",
+      "previous_target_blob": "6ac4c70544c4d93e17cc64acf2515deff3be7d34",
+      "integrated_blob": "e07750a186498d6705b70d6f2493a1b53c76ad99",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/authored/036_R2R-GEN-036.json",
+      "source_blob": "0f29bd2841b93e096c86f249f15abbd2e28f4d3b",
+      "previous_target_blob": null,
+      "integrated_blob": "0f29bd2841b93e096c86f249f15abbd2e28f4d3b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/authored/037_R2R-GEN-037.json",
+      "source_blob": "5e0c5a8a8edc92933921624bfe381a1ef5655162",
+      "previous_target_blob": null,
+      "integrated_blob": "5e0c5a8a8edc92933921624bfe381a1ef5655162",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G01_R2R-CORE-G01.json",
+      "source_blob": "a5200fd1f2a0bd61728e070ec7520c919e7163c1",
+      "previous_target_blob": "5764d437bc56ef0690781b80da9acfcbff27e5ad",
+      "integrated_blob": "a5200fd1f2a0bd61728e070ec7520c919e7163c1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G02_R2R-CORE-G02.json",
+      "source_blob": "41d620d6074bbd3639df9af5b980694cd074f53e",
+      "previous_target_blob": "c9abf94acbbe541766fb3ce6fa7ee150f5e3f961",
+      "integrated_blob": "41d620d6074bbd3639df9af5b980694cd074f53e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G03_R2R-CORE-G03.json",
+      "source_blob": "93eaa0c5cd338113e14c77f0a6adacd836e4069a",
+      "previous_target_blob": "962bc1a86897c8800b9d2749fa4715492c61181c",
+      "integrated_blob": "93eaa0c5cd338113e14c77f0a6adacd836e4069a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G04_R2R-CORE-G04.json",
+      "source_blob": "4ebd769840cd11b0b69989bbebf386c1dc29140e",
+      "previous_target_blob": "62f8a8390be46257271a40fe05c886b4ade5af76",
+      "integrated_blob": "4ebd769840cd11b0b69989bbebf386c1dc29140e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G05_R2R-CORE-G05.json",
+      "source_blob": "ffc1d9dde9fa0c97f6101b05b94e29622d2df9f3",
+      "previous_target_blob": "742b32c166b1581efc6d437ad7ed59e6e4b969b4",
+      "integrated_blob": "ffc1d9dde9fa0c97f6101b05b94e29622d2df9f3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G06_R2R-CORE-G06.json",
+      "source_blob": "93097403840d991bbe1f07e527bfe69425a8b9c1",
+      "previous_target_blob": "93eabd0ca93c8f00bf9bde50252966158a748ba0",
+      "integrated_blob": "93097403840d991bbe1f07e527bfe69425a8b9c1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G07_R2R-CORE-G07.json",
+      "source_blob": "539023eb6073dbac5315c24e1c259698d8edfd74",
+      "previous_target_blob": "93f073cb09e1cb1f8a969aa5302bf2c20968a45a",
+      "integrated_blob": "539023eb6073dbac5315c24e1c259698d8edfd74",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G08_R2R-CORE-G08.json",
+      "source_blob": "ba489c6d0202d9ed7896f61483c8cccce2eaf54a",
+      "previous_target_blob": "1af3f9be71094cd2043e9bb4df8314d0bae778b5",
+      "integrated_blob": "ba489c6d0202d9ed7896f61483c8cccce2eaf54a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G09_R2R-CORE-G09.json",
+      "source_blob": "6589a0f2820a7fc9912db8c9ae2189e07ee1bf38",
+      "previous_target_blob": "48418382f8ba901633d4e261852536815605600e",
+      "integrated_blob": "6589a0f2820a7fc9912db8c9ae2189e07ee1bf38",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/core/G10_R2R-CORE-G10.json",
+      "source_blob": "f14cbb545f5a8763e4760a23beb7380b883ba471",
+      "previous_target_blob": "7db5286971881cc8f4c3201761059bf5adeabe2c",
+      "integrated_blob": "f14cbb545f5a8763e4760a23beb7380b883ba471",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/001_R2R-GEN-001.json",
+      "source_blob": "b854194c33574ee63d3388e71cf9d4eeb278bc25",
+      "previous_target_blob": "b4e7f5ffcb7096072b5a456390888504e9a3543e",
+      "integrated_blob": "b854194c33574ee63d3388e71cf9d4eeb278bc25",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/002_R2R-GEN-002.json",
+      "source_blob": "a7d0d03ce35b115d7da00415354da6b7a7ac345b",
+      "previous_target_blob": "000197a1e4419f50ca9883ed7b3b18f93ecb3c93",
+      "integrated_blob": "a7d0d03ce35b115d7da00415354da6b7a7ac345b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/003_R2R-GEN-003.json",
+      "source_blob": "278020afc0102d688e304d68660be4ad2f900fff",
+      "previous_target_blob": "8953b924ec4c78c7729669ff6cf8f8e118d79114",
+      "integrated_blob": "278020afc0102d688e304d68660be4ad2f900fff",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/004_R2R-GEN-004.json",
+      "source_blob": "022127ca4948d9ac25e7ab839771d9cf48106d14",
+      "previous_target_blob": "9db2ae2dfe51afc94f8543c22ffe1823ffa4a6c2",
+      "integrated_blob": "022127ca4948d9ac25e7ab839771d9cf48106d14",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/005_R2R-GEN-005.json",
+      "source_blob": "1d81c397f5fe3186408626cdf5eb67f046e2b6de",
+      "previous_target_blob": "7183b4ed3c65b340fd3c8fd3c5b707b4696d39c0",
+      "integrated_blob": "1d81c397f5fe3186408626cdf5eb67f046e2b6de",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/006_R2R-GEN-006.json",
+      "source_blob": "828b1889841b917f28ff37aa8befff7d273dc491",
+      "previous_target_blob": "39919c0a5f369c82744d998072be39046f9fc0ed",
+      "integrated_blob": "828b1889841b917f28ff37aa8befff7d273dc491",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/007_R2R-GEN-007.json",
+      "source_blob": "82726629106c94f566dd51be19b210d01d27acc0",
+      "previous_target_blob": "bd3b3b92373299e3c234112c823975216a46147a",
+      "integrated_blob": "82726629106c94f566dd51be19b210d01d27acc0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/008_R2R-GEN-008.json",
+      "source_blob": "c12e837c926648feac5c2bb359debe67ee1cc41e",
+      "previous_target_blob": "c33401825951a73494bab7d4ba3d7912a7cc1067",
+      "integrated_blob": "c12e837c926648feac5c2bb359debe67ee1cc41e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/009_R2R-GEN-009.json",
+      "source_blob": "932dba83421e687ef39dc1be7d2a138ad7f86c63",
+      "previous_target_blob": "5ef61c657c1d13703da06f742ebf63793ce430b3",
+      "integrated_blob": "932dba83421e687ef39dc1be7d2a138ad7f86c63",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/010_R2R-GEN-010.json",
+      "source_blob": "45400602cec32e9fd243976e9dd049751cc0a6b6",
+      "previous_target_blob": "96d34df394fbc0f7a54b0f8d8f7b4fa628d5d8e1",
+      "integrated_blob": "45400602cec32e9fd243976e9dd049751cc0a6b6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/011_R2R-GEN-011.json",
+      "source_blob": "4bf668474d7b3803f69e16b0abd68431f3dedfc6",
+      "previous_target_blob": "961f0b167cbdd41d492ba19139becde0bde43113",
+      "integrated_blob": "4bf668474d7b3803f69e16b0abd68431f3dedfc6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/012_R2R-GEN-012.json",
+      "source_blob": "66827600e8de56c9c9940df855f725bddc3841f4",
+      "previous_target_blob": "2b6de9cabe25e02f69f114429a1dbb3484db9cba",
+      "integrated_blob": "66827600e8de56c9c9940df855f725bddc3841f4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/013_R2R-GEN-013.json",
+      "source_blob": "a73af059251b440bae6b72e4a6fec0fbdfe82b4d",
+      "previous_target_blob": "81bc8affa1ff0ae34bd5d17ee2eb446636d77685",
+      "integrated_blob": "a73af059251b440bae6b72e4a6fec0fbdfe82b4d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/014_R2R-GEN-014.json",
+      "source_blob": "61021007fb5394df8c19585c2b5de6e6b0d4ba95",
+      "previous_target_blob": "9652ab278394c3685120d98cab911b762dbae733",
+      "integrated_blob": "61021007fb5394df8c19585c2b5de6e6b0d4ba95",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/015_R2R-GEN-015.json",
+      "source_blob": "032e0fa6300d5ab1558d1f8437d4b90edcde47bf",
+      "previous_target_blob": "1e3ed9c11606caa2939c99c86d625781c4e3cd07",
+      "integrated_blob": "032e0fa6300d5ab1558d1f8437d4b90edcde47bf",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/016_R2R-GEN-016.json",
+      "source_blob": "22e699c9fa1c28b1f388c42de3b60aebb6ae9dd5",
+      "previous_target_blob": "71053aa91b548b6cf59e0ff83fefcf8107453681",
+      "integrated_blob": "22e699c9fa1c28b1f388c42de3b60aebb6ae9dd5",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/017_R2R-GEN-017.json",
+      "source_blob": "5ae6e3be19d0ad66293428e76f428222e443608b",
+      "previous_target_blob": "4626a756ce502769cd2813c2269064e74b6b1f90",
+      "integrated_blob": "5ae6e3be19d0ad66293428e76f428222e443608b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/018_R2R-GEN-018.json",
+      "source_blob": "e23e14d542673bf9cdf5be8fa637613c197f6f92",
+      "previous_target_blob": "33a257e7622ac904a1df1c9a610ad6932d9b2048",
+      "integrated_blob": "e23e14d542673bf9cdf5be8fa637613c197f6f92",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/019_R2R-GEN-019.json",
+      "source_blob": "bf97e9fcd4dbac33fa4e31835048751d0bf4c358",
+      "previous_target_blob": "df194b3f3207937ab3665647611ab3c5f6047dc4",
+      "integrated_blob": "bf97e9fcd4dbac33fa4e31835048751d0bf4c358",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/020_R2R-GEN-020.json",
+      "source_blob": "195c2d6c8ebca9e7434c337a1e914b29ee68f001",
+      "previous_target_blob": "d0f37a616698a1cb10c6f8d7171115bfc9bd9d62",
+      "integrated_blob": "195c2d6c8ebca9e7434c337a1e914b29ee68f001",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/021_R2R-GEN-021.json",
+      "source_blob": "702d574f46139beac13c259f01245c95cee0c85b",
+      "previous_target_blob": "4215201333012da313c393069f2fdc091eb98610",
+      "integrated_blob": "702d574f46139beac13c259f01245c95cee0c85b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/022_R2R-GEN-022.json",
+      "source_blob": "432cf909d5218e7a8ddd2bedc2ff63d535e928b2",
+      "previous_target_blob": "e169154f647f2a30c5cde06c980296be9e9c9a49",
+      "integrated_blob": "432cf909d5218e7a8ddd2bedc2ff63d535e928b2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/023_R2R-GEN-023.json",
+      "source_blob": "b51a9a99257e7be744271ef3c55157d90d3e0b68",
+      "previous_target_blob": "cae17cce68758363cb272bd27eae60524f4ab2b6",
+      "integrated_blob": "b51a9a99257e7be744271ef3c55157d90d3e0b68",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/024_R2R-GEN-024.json",
+      "source_blob": "68d64c235081aa2df16539367a09eadbc464dc51",
+      "previous_target_blob": "063383d119dc88e13a3c00af5c652d97a4bf1ee9",
+      "integrated_blob": "68d64c235081aa2df16539367a09eadbc464dc51",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/025_R2R-GEN-025.json",
+      "source_blob": "b41d5c37cbdf5fcab4cb291c53d7b711d3525a2c",
+      "previous_target_blob": "4864816bc16ac396d5fa9b7767d8fceac737c299",
+      "integrated_blob": "b41d5c37cbdf5fcab4cb291c53d7b711d3525a2c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/026_R2R-GEN-026.json",
+      "source_blob": "0300282600b5957aa1537bdc1c5a442c52d97cbd",
+      "previous_target_blob": "c6900e5c7f7aec4cef064ba2297d538c9449a1ad",
+      "integrated_blob": "0300282600b5957aa1537bdc1c5a442c52d97cbd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/027_R2R-GEN-027.json",
+      "source_blob": "50cc473d075c43f7ecde6ec0cc236cac942443a5",
+      "previous_target_blob": "2625e1c69a07cf3c8c7a5733b5b25826b2ca0152",
+      "integrated_blob": "50cc473d075c43f7ecde6ec0cc236cac942443a5",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/028_R2R-GEN-028.json",
+      "source_blob": "ee638ea23fa4979ea1c1141b6365ab7c407216d3",
+      "previous_target_blob": "f8a4ca4ba175c450ae10035ee1c8b07af9b66f64",
+      "integrated_blob": "ee638ea23fa4979ea1c1141b6365ab7c407216d3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/029_R2R-GEN-029.json",
+      "source_blob": "33e545f9aeed60e209ed174d6a688fa88f6b3b32",
+      "previous_target_blob": "5e208e502324dad9a37ed4393d6a4456cdbab5e6",
+      "integrated_blob": "33e545f9aeed60e209ed174d6a688fa88f6b3b32",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/030_R2R-GEN-030.json",
+      "source_blob": "850d3cdd5a2c7fade947bf81dc2a4063f203aca4",
+      "previous_target_blob": "06b887ad58ab29dd5997bc2b123986bef78988b5",
+      "integrated_blob": "850d3cdd5a2c7fade947bf81dc2a4063f203aca4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/031_R2R-GEN-031.json",
+      "source_blob": "c944a4492b4556f6a4e44447bbd60672dfb8f415",
+      "previous_target_blob": "49ea2438898e30bf973504b373e096478db7dbfd",
+      "integrated_blob": "c944a4492b4556f6a4e44447bbd60672dfb8f415",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/032_R2R-GEN-032.json",
+      "source_blob": "95c9dbf574cacaad3b58e3ef0c84cfb29f53aabe",
+      "previous_target_blob": "b234df2bc1a9e6e462a95d73ea8ed864d3d3e94f",
+      "integrated_blob": "95c9dbf574cacaad3b58e3ef0c84cfb29f53aabe",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/033_R2R-GEN-033.json",
+      "source_blob": "aeed99f1f8dfcb86e3613838748cfdd82d2439dd",
+      "previous_target_blob": "7aa504af22643ce2ab4a2231269efab9a47b18d9",
+      "integrated_blob": "aeed99f1f8dfcb86e3613838748cfdd82d2439dd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/034_R2R-GEN-034.json",
+      "source_blob": "b0671fc23388b6b46706894d6797c4fb6d1abb4d",
+      "previous_target_blob": "7a703445b15efe12ee415e824120b1b3618506fe",
+      "integrated_blob": "b0671fc23388b6b46706894d6797c4fb6d1abb4d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/R2R/val_seen/035_R2R-GEN-035.json",
+      "source_blob": "63ae54dd166295195090474e93ec696430e82d91",
+      "previous_target_blob": "e62a01fa965ff343b593e713691d14ac549da33f",
+      "integrated_blob": "63ae54dd166295195090474e93ec696430e82d91",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
+      "source_blob": "aebe22e4c7ccc8665f6f3ca502101a5cfe75f26f",
+      "previous_target_blob": "43e55e4938fd95378a1a0dc5c0e56e48e830a899",
+      "integrated_blob": "43e55e4938fd95378a1a0dc5c0e56e48e830a899",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "generator/templates/RxR/val_seen/006_RxR-GEN-006.json",
+      "source_blob": "0fb35c9954d209d3529d820edf69fa79743f2cc5",
+      "previous_target_blob": "3fd92cf3be959c61650793fb7daf5b4d2ba43dac",
+      "integrated_blob": "3fd92cf3be959c61650793fb7daf5b4d2ba43dac",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "generator/templates/RxR/val_seen/023_RxR-GEN-023.json",
+      "source_blob": "9203468f34307e2e71e3dc01dd082d279ec92027",
+      "previous_target_blob": "b48c58800f00fbb928d74719d59b986430fb5d5f",
+      "integrated_blob": "b48c58800f00fbb928d74719d59b986430fb5d5f",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "generator/templates/RxR/val_seen/027_RxR-GEN-027.json",
+      "source_blob": "e5ee367ee245643454161c05ab65c01faba077f4",
+      "previous_target_blob": "a2300e8d3857f08f193a3146a6791c7b2025f9e9",
+      "integrated_blob": "a2300e8d3857f08f193a3146a6791c7b2025f9e9",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "generator/templates_manifest.json",
+      "source_blob": "c213881526bf498934506fbcbea8403ebd2fad3f",
+      "previous_target_blob": "45af94753875f62ca4f21100c5daaeb5ab630480",
+      "integrated_blob": "c213881526bf498934506fbcbea8403ebd2fad3f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/README.md",
+      "source_blob": "e81f8345b8aada256a7e6f74eff159a742926a2b",
+      "previous_target_blob": "9408eeafb9b6e6179f97e843406ba3a2b5711434",
+      "integrated_blob": "e81f8345b8aada256a7e6f74eff159a742926a2b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/compile.py",
+      "source_blob": "7cb76a0622970db803f177d317a6c6887aef9caf",
+      "previous_target_blob": "3933981d9287ec27f10c722f5709cb90c11b261b",
+      "integrated_blob": "7730fe8b1d0541f8563b59538bd776fec42f188a",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "host/r2r/__init__.py",
+      "source_blob": "a376df65c2e762ae1192cca9c16fd3ca611192d2",
+      "previous_target_blob": null,
+      "integrated_blob": "a376df65c2e762ae1192cca9c16fd3ca611192d2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/r2r/phase_teaching.py",
+      "source_blob": "36c0ad95e3ee1fd9d899834363465a4317b7911e",
+      "previous_target_blob": null,
+      "integrated_blob": "36c0ad95e3ee1fd9d899834363465a4317b7911e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/r2r/relations.py",
+      "source_blob": "ed722db5065348ff52f11b5fc17685bfee8274b6",
+      "previous_target_blob": null,
+      "integrated_blob": "ed722db5065348ff52f11b5fc17685bfee8274b6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/r2r/selection.py",
+      "source_blob": "43026f25bf3c07c7899fa5e41856e02ff3a2c9cd",
+      "previous_target_blob": null,
+      "integrated_blob": "43026f25bf3c07c7899fa5e41856e02ff3a2c9cd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/r2r/teaching.py",
+      "source_blob": "c41612bbc76f3a9ea075c27d39eac61923386637",
+      "previous_target_blob": null,
+      "integrated_blob": "c41612bbc76f3a9ea075c27d39eac61923386637",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/r2r/teaching_index.json",
+      "source_blob": "667448cef19f17a040a2a2cb3882a413e356e9d9",
+      "previous_target_blob": null,
+      "integrated_blob": "667448cef19f17a040a2a2cb3882a413e356e9d9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "host/run.py",
+      "source_blob": "ea35c6821c7c0e573e331f5f61eb50c86e42989a",
+      "previous_target_blob": "c7a0e291fbcd69623977ed09651315ed09e02417",
+      "integrated_blob": "04d8de9bc882db91f8d77e00d3b1f1e584b7d3fc",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "host/rxr_contract.py",
+      "source_blob": null,
+      "previous_target_blob": "1f04af9a7f9893783e940d7022d4f61757111064",
+      "integrated_blob": "1f04af9a7f9893783e940d7022d4f61757111064",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "host/rxr_teaching.py",
+      "source_blob": null,
+      "previous_target_blob": "f20d0872f531381df4c9197c7c90009a0595a0a4",
+      "integrated_blob": "a9fc00f9880dfe10dc889085276fa333853585c2",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "host/template_selector.py",
+      "source_blob": "f98d2efbd433a15e81cbeb1c8ab27ed29c43b085",
+      "previous_target_blob": "3e17e9db46670365e44165e69f8b746f0881bf30",
+      "integrated_blob": "f98d2efbd433a15e81cbeb1c8ab27ed29c43b085",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/README.md",
+      "source_blob": "a954a04449611f237196ff112c0daabdbf6db210",
+      "previous_target_blob": "4b77d24fd1898b3a8b04134804eca2979800fdfd",
+      "integrated_blob": "a954a04449611f237196ff112c0daabdbf6db210",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/build_manifest.json",
+      "source_blob": "1cedd48bec28de4f790edce94a6fdba7d137e9d1",
+      "previous_target_blob": "a5775368832d2ba4cfcc9e0bc5df02fec77d4420",
+      "integrated_blob": "a388a5e5be3b6e357e3152602e1efe7d1704216f",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "provenance/layout_migration.json",
+      "source_blob": "d171aafb5d088a22fb323a253deb11f3ec59fecf",
+      "previous_target_blob": null,
+      "integrated_blob": "d171aafb5d088a22fb323a253deb11f3ec59fecf",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/package_validation.json",
+      "source_blob": "6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
+      "previous_target_blob": null,
+      "integrated_blob": "6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/profile_migration_inventory.json",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "7c72d66e4474080c569cde9f2ae709c2d03c838a",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "provenance/profile_prompt_measurements.json",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "07e7d61d8d31fb716a8ea7619536bc4e20510815",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "provenance/r2r_current_base_isolation.json",
+      "source_blob": "fd1ea04b50d05c59308d5a5b00127734e811afc5",
+      "previous_target_blob": null,
+      "integrated_blob": "fd1ea04b50d05c59308d5a5b00127734e811afc5",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_full_dynamic_migration.json",
+      "source_blob": "71dbb3694630a347f0eab007bf97e52affbdc844",
+      "previous_target_blob": null,
+      "integrated_blob": "71dbb3694630a347f0eab007bf97e52affbdc844",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_full_dynamic_validation.json",
+      "source_blob": "22e78bff651747f434581ee052ade96791ad7d94",
+      "previous_target_blob": null,
+      "integrated_blob": "22e78bff651747f434581ee052ade96791ad7d94",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_issue_ledger.json",
+      "source_blob": "df875a4c0cffd55798cea47b6409ac08f5956d3b",
+      "previous_target_blob": null,
+      "integrated_blob": "df875a4c0cffd55798cea47b6409ac08f5956d3b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_layout_equivalence.json",
+      "source_blob": "b7589268f6ca16bdaf30a14ad8f7f0271fe973e1",
+      "previous_target_blob": null,
+      "integrated_blob": "b7589268f6ca16bdaf30a14ad8f7f0271fe973e1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_operation_coverage.json",
+      "source_blob": "bb58846096baa36da305861f9432cfcf9ba8d39d",
+      "previous_target_blob": null,
+      "integrated_blob": "bb58846096baa36da305861f9432cfcf9ba8d39d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_parent_isolation.json",
+      "source_blob": "06ed33a51636862ad08e1fd105665bf66b02a0cd",
+      "previous_target_blob": null,
+      "integrated_blob": "06ed33a51636862ad08e1fd105665bf66b02a0cd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_profile_integrity.json",
+      "source_blob": "5145c37d0b9d043ba85e413025b45b6b6887d549",
+      "previous_target_blob": "24704cb55e97aea9bd2824d0f3149ab49690cc2a",
+      "integrated_blob": "aa7e914c86897a51c96b6f87d7ce54f1d3a3e03f",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "provenance/r2r_regression_results.json",
+      "source_blob": "8e8b35f20e7f3547cbf82a8a32a1a3f0c61d8f65",
+      "previous_target_blob": null,
+      "integrated_blob": "8e8b35f20e7f3547cbf82a8a32a1a3f0c61d8f65",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_rule_links.json",
+      "source_blob": "734649b5c3be1b96d3429c0415f95771d57c74e6",
+      "previous_target_blob": null,
+      "integrated_blob": "734649b5c3be1b96d3429c0415f95771d57c74e6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_selection_audit.json",
+      "source_blob": "9dccee062da25dd71ce6e99761417662601f7a7a",
+      "previous_target_blob": null,
+      "integrated_blob": "9dccee062da25dd71ce6e99761417662601f7a7a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_shared_runtime_audit.json",
+      "source_blob": "5d746c1fefe0ceeb055dc419b7275777ab685cd0",
+      "previous_target_blob": "eb03ceafd0f75da639cf0cb71398190c9bbd13ca",
+      "integrated_blob": "5d746c1fefe0ceeb055dc419b7275777ab685cd0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_smoke_results.json",
+      "source_blob": "e410f6e5181695ab839f87ba52a31769a248b248",
+      "previous_target_blob": null,
+      "integrated_blob": "e410f6e5181695ab839f87ba52a31769a248b248",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_stability_validation.json",
+      "source_blob": "31d237ed98b4450270fbb124d615e499143d131c",
+      "previous_target_blob": null,
+      "integrated_blob": "31d237ed98b4450270fbb124d615e499143d131c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_teaching_changes.json",
+      "source_blob": "999b3f13c6585b2037308b1d19591a486e025737",
+      "previous_target_blob": null,
+      "integrated_blob": "999b3f13c6585b2037308b1d19591a486e025737",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/r2r_workbook_replay.json",
+      "source_blob": "dfce812517abdf0c9c4fce6ea3c733501ea58877",
+      "previous_target_blob": null,
+      "integrated_blob": "dfce812517abdf0c9c4fce6ea3c733501ea58877",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "provenance/rxr_profile_integrity.json",
+      "source_blob": "8609290da0f6aa7fbddf81864cf0323f57b2ac66",
+      "previous_target_blob": "3d09f29a50cd9403269e1e37d782f993be3693ba",
+      "integrated_blob": "f2231870f56ea3315ff1427c8696f72e7f473c8a",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "provenance/rxr_refinement_validation.json",
+      "source_blob": null,
+      "previous_target_blob": "c4725b8d2c6ad13db9737bd550a95d40bcf9c34d",
+      "integrated_blob": "c4725b8d2c6ad13db9737bd550a95d40bcf9c34d",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "provenance/rxr_role_conversion.json",
+      "source_blob": null,
+      "previous_target_blob": "2e78d0ed8c6de6356b89593768b36d2abbf6e093",
+      "integrated_blob": "641989cd970480115bdf4e74704ee05a536a6ec6",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "provenance/rxr_teaching_changes.json",
+      "source_blob": "be0ee849cfb716a613f978e5a2da274ac4da4a72",
+      "previous_target_blob": "c8b6bb8aa515d6e508e18c9e1a140cabce81168f",
+      "integrated_blob": "c8b6bb8aa515d6e508e18c9e1a140cabce81168f",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "provenance/rxr_validation.json",
+      "source_blob": "f15164928677d2af9974b2f5d17e4e9a21523c27",
+      "previous_target_blob": "fd9d10c90b50acfc2ee005412d4d6a625091e720",
+      "integrated_blob": "fd9d10c90b50acfc2ee005412d4d6a625091e720",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/compiled_r2r-en.txt",
+      "source_blob": "1a82219456d4ff13d09530cd103c6eb70f5542cd",
+      "previous_target_blob": "cf87c4df3acdb00afcb5d7dc83729ede980f10d3",
+      "integrated_blob": "1a82219456d4ff13d09530cd103c6eb70f5542cd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/compiled_rxr-en-us.txt",
+      "source_blob": "ab67facb0d0a3854c45069cb78e69ddd27d334fb",
+      "previous_target_blob": "f531f18c45f969ca83321bd3c579ab5eba2aa7dd",
+      "integrated_blob": "9658bd6e3f9e85df3da91edbbb4da8c007c93025",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "reviewer/dataset_rules/r2r_en.md",
+      "source_blob": "df03eea948b5a79a08fcd436a707022e706418a4",
+      "previous_target_blob": "2d96579588f6e5f35dc3a7b18473e45e852a94ca",
+      "integrated_blob": "df03eea948b5a79a08fcd436a707022e706418a4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
+      "source_blob": "2654fd1d015ac4e62cbaf157edcedfeb0d209969",
+      "previous_target_blob": null,
+      "integrated_blob": "2654fd1d015ac4e62cbaf157edcedfeb0d209969",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/dataset_rules/rxr_en_us.md",
+      "source_blob": "e889ddcd6229b1294ed058a89e30bae0f02b12dc",
+      "previous_target_blob": "e12eb87a64f18ab2fae25d118dfe7e4fe2f8d1d3",
+      "integrated_blob": "8bcb05589587f3f729638e1056e39042cfc030d7",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "reviewer/templates/INDEX.md",
+      "source_blob": "79eba296cd1f9457623b65b359b8eaeff6dfb683",
+      "previous_target_blob": "c9892f25e0d909013825b7ebed7f39a448981300",
+      "integrated_blob": "79eba296cd1f9457623b65b359b8eaeff6dfb683",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/authored/030_R2R-DIAG-30.json",
+      "source_blob": "35ce13a9e65093a8b98fe831c5bddcff210035cd",
+      "previous_target_blob": null,
+      "integrated_blob": "35ce13a9e65093a8b98fe831c5bddcff210035cd",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/authored/031_R2R-DIAG-31.json",
+      "source_blob": "c33c96566b38d86482bc803317fb88dc8179c59e",
+      "previous_target_blob": null,
+      "integrated_blob": "c33c96566b38d86482bc803317fb88dc8179c59e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/authored/036_R2R-REV-036.json",
+      "source_blob": "f6a4c58366044ac042a1085269e9a293b714f752",
+      "previous_target_blob": null,
+      "integrated_blob": "f6a4c58366044ac042a1085269e9a293b714f752",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/authored/037_R2R-REV-037.json",
+      "source_blob": "e4ea2912b9362dd4ea93a7f14afd321a23cbd2ee",
+      "previous_target_blob": null,
+      "integrated_blob": "e4ea2912b9362dd4ea93a7f14afd321a23cbd2ee",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json",
+      "source_blob": "35c8902e2584f1dbe642a50951d139f2559d3ad8",
+      "previous_target_blob": "0ec4bec923b0349ee427a8d3d753383f4d928c5c",
+      "integrated_blob": "35c8902e2584f1dbe642a50951d139f2559d3ad8",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json",
+      "source_blob": "28e66b0f1da672b4ac5f7824826c1b8b08de13a9",
+      "previous_target_blob": "7621d009a9dc3bf42a8de6428bee6edb61c8e1ca",
+      "integrated_blob": "28e66b0f1da672b4ac5f7824826c1b8b08de13a9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json",
+      "source_blob": "800d7ceb5a5b7b709b61afa432c74333c3ea8565",
+      "previous_target_blob": "d4ff09a11a7e07ef81e8eb2dcbefde073c03c568",
+      "integrated_blob": "800d7ceb5a5b7b709b61afa432c74333c3ea8565",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json",
+      "source_blob": "e78bc12eb49ddc78c3ef3682fe1ac027e1a717a1",
+      "previous_target_blob": "fc7c3d64a743f8c0b7adf48428c954f8fc7217f7",
+      "integrated_blob": "e78bc12eb49ddc78c3ef3682fe1ac027e1a717a1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json",
+      "source_blob": "629eec3fd744130ae3b181d0d615fbf287022e6b",
+      "previous_target_blob": "afae6c7e2b423a06b7821f22591a825f57232f84",
+      "integrated_blob": "629eec3fd744130ae3b181d0d615fbf287022e6b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json",
+      "source_blob": "5ed540b55f88c2a59993d240492dc3e71a49763d",
+      "previous_target_blob": "5771e34e99727701a44974420a441e1a38574bd0",
+      "integrated_blob": "5ed540b55f88c2a59993d240492dc3e71a49763d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json",
+      "source_blob": "edeee65f771d5616bd2dff8ce1c6afe61fac99be",
+      "previous_target_blob": "815d1e70944dcf66305ac6e677c25a9acb3ba8a4",
+      "integrated_blob": "edeee65f771d5616bd2dff8ce1c6afe61fac99be",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json",
+      "source_blob": "f2a018c3efd0a21f026092ffb759b0514aa439fe",
+      "previous_target_blob": "6a700b6bfae553a7aed61d5ca7d3c54c99edeed5",
+      "integrated_blob": "f2a018c3efd0a21f026092ffb759b0514aa439fe",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json",
+      "source_blob": "9e3469a04ad1b49ac972c104320d98e75e99317b",
+      "previous_target_blob": "42be76b400dfe9460f59fb1bb74d96c1c3e9f076",
+      "integrated_blob": "9e3469a04ad1b49ac972c104320d98e75e99317b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json",
+      "source_blob": "7690c053fe2b4ffc22d44a8a65fecac968c2827b",
+      "previous_target_blob": "ce8e0322b39d3106c78a87f9bfb10ace407781d9",
+      "integrated_blob": "7690c053fe2b4ffc22d44a8a65fecac968c2827b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/01_R2R-DIAG-01.json",
+      "source_blob": "19193fdfc2e403183eb2f8e69e391659afd7be19",
+      "previous_target_blob": "88a1b2ef34d8e53c39b09bfb527f72f1f634839d",
+      "integrated_blob": "19193fdfc2e403183eb2f8e69e391659afd7be19",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/02_R2R-DIAG-02.json",
+      "source_blob": "fe99332b9af8eb98475826a14a783ed618577fbc",
+      "previous_target_blob": "85dbc2b329f564c190c265a43b45530cee9ae09f",
+      "integrated_blob": "fe99332b9af8eb98475826a14a783ed618577fbc",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/03_R2R-DIAG-03.json",
+      "source_blob": "f8f865c0aa2cb9d2545494b3a3e39df6bce6d58e",
+      "previous_target_blob": "1b5ed85f02814b18e64fb265d7a863d4719388d0",
+      "integrated_blob": "f8f865c0aa2cb9d2545494b3a3e39df6bce6d58e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/04_R2R-DIAG-04.json",
+      "source_blob": "cee3c6fb0f74a277a413b9a5d6855deb59f55be0",
+      "previous_target_blob": "e268997aaf267631318a61317871f5678979ffdd",
+      "integrated_blob": "cee3c6fb0f74a277a413b9a5d6855deb59f55be0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/05_R2R-DIAG-05.json",
+      "source_blob": "d8975e0169e2e34e0e24c377fe35132987c36bee",
+      "previous_target_blob": "f705262ad61be0d64e2b7a20cf09989a05901170",
+      "integrated_blob": "d8975e0169e2e34e0e24c377fe35132987c36bee",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/06_R2R-DIAG-06.json",
+      "source_blob": "c8e047adec6f3d766ef36c11bd4e56f8985b89cc",
+      "previous_target_blob": "20870b4d37b999e866f69461ce50a0b4a7ff09de",
+      "integrated_blob": "c8e047adec6f3d766ef36c11bd4e56f8985b89cc",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/07_R2R-DIAG-07.json",
+      "source_blob": "ce4508e51ac61c707625d8b43d449f0f2d169628",
+      "previous_target_blob": "bad6d329e2e297fbf423f6fa0abd27bf1721dcaf",
+      "integrated_blob": "ce4508e51ac61c707625d8b43d449f0f2d169628",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/08_R2R-DIAG-08.json",
+      "source_blob": "3e3969d3dbe2767f17bf1acaea9c82091d7be658",
+      "previous_target_blob": "c480ae5a58ba1b6064e920a6f8291df375f9ce77",
+      "integrated_blob": "3e3969d3dbe2767f17bf1acaea9c82091d7be658",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/09_R2R-DIAG-09.json",
+      "source_blob": "8e1e523ccce39543bb0b2f6fa28977bf0998ea4d",
+      "previous_target_blob": "2082c0aa624da2d29a24eaf9a9fb8c892bdf95d6",
+      "integrated_blob": "8e1e523ccce39543bb0b2f6fa28977bf0998ea4d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/10_R2R-DIAG-10.json",
+      "source_blob": "d538a0a6a54f60f992a5c3e6d184343e81bb8fff",
+      "previous_target_blob": "267ced00533b722b11c20e5181f87dd591c31108",
+      "integrated_blob": "d538a0a6a54f60f992a5c3e6d184343e81bb8fff",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/11_R2R-DIAG-11.json",
+      "source_blob": "84c9703234b20beeaf0f9c53ebdf13b14156473f",
+      "previous_target_blob": "2a37c0b20aca54466617c89c09b12612353a7c65",
+      "integrated_blob": "84c9703234b20beeaf0f9c53ebdf13b14156473f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/12_R2R-DIAG-12.json",
+      "source_blob": "a75a3d7fa58fe5005f11e1070f9d980d75a3999e",
+      "previous_target_blob": "20d0dabb7f10b7b1a110f58dd203dd01e7c3cf2b",
+      "integrated_blob": "a75a3d7fa58fe5005f11e1070f9d980d75a3999e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/13_R2R-DIAG-13.json",
+      "source_blob": "1f3cbd45a77baed42c14f01b58425b3110994539",
+      "previous_target_blob": "ef7c4bdc6b7f284cc7819d7d3f13d8eeff17a701",
+      "integrated_blob": "1f3cbd45a77baed42c14f01b58425b3110994539",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/14_R2R-DIAG-14.json",
+      "source_blob": "4d119d9a5f06c2943e13144bd031d9de2375a1c8",
+      "previous_target_blob": "32439a24f8aea6c156d63030d72e399059dc5f49",
+      "integrated_blob": "4d119d9a5f06c2943e13144bd031d9de2375a1c8",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/15_R2R-DIAG-15.json",
+      "source_blob": "534adb5b4dff6e7bcc62f741284b53c201c9840f",
+      "previous_target_blob": "7f30c31dceb6ba501a90385d3e46e98acf1421c2",
+      "integrated_blob": "534adb5b4dff6e7bcc62f741284b53c201c9840f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/16_R2R-DIAG-16.json",
+      "source_blob": "7222a5d87986d4b36d2c435644178c08ab3220c1",
+      "previous_target_blob": "39bec10bc00f1db0c28021d1fc5a03b1567c1541",
+      "integrated_blob": "7222a5d87986d4b36d2c435644178c08ab3220c1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/17_R2R-DIAG-17.json",
+      "source_blob": "67a8d4dd89e26fc925f16775b40a37b8f8e22b9f",
+      "previous_target_blob": "c3920fd78a2bb6c9dcaff38f8147847dee0945a1",
+      "integrated_blob": "67a8d4dd89e26fc925f16775b40a37b8f8e22b9f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/18_R2R-DIAG-18.json",
+      "source_blob": "ce11163176f27085ea1fe414a6905a9f644132de",
+      "previous_target_blob": "da50b5c6ebd92100541ecd6d3bf8c9732abe5a05",
+      "integrated_blob": "ce11163176f27085ea1fe414a6905a9f644132de",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/19_R2R-DIAG-19.json",
+      "source_blob": "eb9aff68d00bfe59a7c74d4e7e8fa814f67005cf",
+      "previous_target_blob": "37bac23aee0f385f5eb4fe4cda83884df96ac300",
+      "integrated_blob": "eb9aff68d00bfe59a7c74d4e7e8fa814f67005cf",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/20_R2R-DIAG-20.json",
+      "source_blob": "46a8664c37b8d14d9fac43f527755d17f3d0966c",
+      "previous_target_blob": "fd773c488d27a632692cd4b8ef5c5356c734045f",
+      "integrated_blob": "46a8664c37b8d14d9fac43f527755d17f3d0966c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/27_R2R-DIAG-27.json",
+      "source_blob": "99aeb7fddc15784e5da2554ebb4806b1a4eb6cfa",
+      "previous_target_blob": null,
+      "integrated_blob": "99aeb7fddc15784e5da2554ebb4806b1a4eb6cfa",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/28_R2R-DIAG-28.json",
+      "source_blob": "3663952a77b95c51fb0a2c96e2247f2e41541dd6",
+      "previous_target_blob": null,
+      "integrated_blob": "3663952a77b95c51fb0a2c96e2247f2e41541dd6",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/29_R2R-DIAG-29.json",
+      "source_blob": "61a9c0e5ae5a965cbd8d9de25de04c9e48f6de35",
+      "previous_target_blob": null,
+      "integrated_blob": "61a9c0e5ae5a965cbd8d9de25de04c9e48f6de35",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-21.json",
+      "source_blob": "bead14a0f2c86914bb314049e46b53d47918263f",
+      "previous_target_blob": "bd5cab9dbf6805b04d696753bde3ba8297cc15e6",
+      "integrated_blob": "bead14a0f2c86914bb314049e46b53d47918263f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-22.json",
+      "source_blob": "14ac101a4c664a5b4a1adfb08222c91f705b93d4",
+      "previous_target_blob": "9d5f09627cda01d0e2b8e0045ae8cb310684750c",
+      "integrated_blob": "14ac101a4c664a5b4a1adfb08222c91f705b93d4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-23.json",
+      "source_blob": "dee13dcc46bbd93d8b31923c6b2bb01d37a1554a",
+      "previous_target_blob": "daa89082ce27c0865929a99e3a7d9f81ac39f6a8",
+      "integrated_blob": "dee13dcc46bbd93d8b31923c6b2bb01d37a1554a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-24.json",
+      "source_blob": "a28b3126f8cb0a5ec71deda9d4e5846ca0c6b3b2",
+      "previous_target_blob": "b89a0a30f970aa6cd738b421d6d1241964d63d67",
+      "integrated_blob": "a28b3126f8cb0a5ec71deda9d4e5846ca0c6b3b2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-25.json",
+      "source_blob": "0bf844844460c9fa4a71d0e157efc6416f676e51",
+      "previous_target_blob": "fc3b03d0190c679b574223fe422076c0e8765433",
+      "integrated_blob": "0bf844844460c9fa4a71d0e157efc6416f676e51",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-26.json",
+      "source_blob": "78bfa56d5d7eacd41a19885df74c83cca04860e4",
+      "previous_target_blob": "7f224d0d4443a56d5dfb347034b712729a73a18f",
+      "integrated_blob": "78bfa56d5d7eacd41a19885df74c83cca04860e4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/001_R2R-REV-001.json",
+      "source_blob": "023a12155d904e3b23a8a547247d239e5e5a2c47",
+      "previous_target_blob": "b178e8b889e0fb47565b0c630f5e7dd68b1d9829",
+      "integrated_blob": "023a12155d904e3b23a8a547247d239e5e5a2c47",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/002_R2R-REV-002.json",
+      "source_blob": "ac0d2f86cedc4f2cd3fd20edfe7d5a918e14604b",
+      "previous_target_blob": "03b006af420c65d21ba8a4ee4a133dfe665f7d37",
+      "integrated_blob": "ac0d2f86cedc4f2cd3fd20edfe7d5a918e14604b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/003_R2R-REV-003.json",
+      "source_blob": "01dd1ac722d2cf49a2f1f14208541104791870e4",
+      "previous_target_blob": "3a5c21854d106a5851663313c2595258ede10b84",
+      "integrated_blob": "01dd1ac722d2cf49a2f1f14208541104791870e4",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/004_R2R-REV-004.json",
+      "source_blob": "e63c2a289c6ea6133f1d04516ec5469b75684048",
+      "previous_target_blob": "8530a5969e365309eb3adac693dbeb882b1680e1",
+      "integrated_blob": "e63c2a289c6ea6133f1d04516ec5469b75684048",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/005_R2R-REV-005.json",
+      "source_blob": "f3f0f18cd2da39166f8af13b00a5536531d5ec92",
+      "previous_target_blob": "6186ce6db58cf5b64c0323733c3da766f49f06b3",
+      "integrated_blob": "f3f0f18cd2da39166f8af13b00a5536531d5ec92",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/006_R2R-REV-006.json",
+      "source_blob": "a67724afb71a51da83d6aa4e4e1adfda6495e30a",
+      "previous_target_blob": "685d647a7a037d6c1f258ba118d86a53751bc9e3",
+      "integrated_blob": "a67724afb71a51da83d6aa4e4e1adfda6495e30a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/007_R2R-REV-007.json",
+      "source_blob": "362f24f0e5de3c02e945a240de104d80d5b193f0",
+      "previous_target_blob": "69646a5c4531d372cf01d7254c470f87fe0301ab",
+      "integrated_blob": "362f24f0e5de3c02e945a240de104d80d5b193f0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/008_R2R-REV-008.json",
+      "source_blob": "67df4d6d14d029fb90ec3b66a9eb8fe7b61d7621",
+      "previous_target_blob": "22f7723476d0774306777a9b5afc73fef4bc15d2",
+      "integrated_blob": "67df4d6d14d029fb90ec3b66a9eb8fe7b61d7621",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/009_R2R-REV-009.json",
+      "source_blob": "c7b4fc2056dfcaf1c288f6cc45bab4b9dce237c2",
+      "previous_target_blob": "4809ddc3a91e0f25c08082b5b267c78a570ac97b",
+      "integrated_blob": "c7b4fc2056dfcaf1c288f6cc45bab4b9dce237c2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/010_R2R-REV-010.json",
+      "source_blob": "9e1fb482bbda36c1599bf3a2a6502f0ef7c6d2cc",
+      "previous_target_blob": "3180b8d9a687cf7cdaf19223074d6ac81b5af212",
+      "integrated_blob": "9e1fb482bbda36c1599bf3a2a6502f0ef7c6d2cc",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/011_R2R-REV-011.json",
+      "source_blob": "b5b85727eec21e6e76c3b4d94b68eb4e14ede66f",
+      "previous_target_blob": "e4c7ce49c67701451fd952bc0526db93275885cd",
+      "integrated_blob": "b5b85727eec21e6e76c3b4d94b68eb4e14ede66f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/012_R2R-REV-012.json",
+      "source_blob": "32c6e36b5318d6be8cc4783723b03b6e42170bb3",
+      "previous_target_blob": "2674860b348c3032c707cef0d632349c091036ff",
+      "integrated_blob": "32c6e36b5318d6be8cc4783723b03b6e42170bb3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/013_R2R-REV-013.json",
+      "source_blob": "4007f657f3caf9df6728bbc69fe0a11a45353c55",
+      "previous_target_blob": "1d84814d78ca10066a116c0144f68063fec73650",
+      "integrated_blob": "4007f657f3caf9df6728bbc69fe0a11a45353c55",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/014_R2R-REV-014.json",
+      "source_blob": "b447e8d9e37adc867ae219f9fe99e373f29782f3",
+      "previous_target_blob": "304d09290d50027255919966258498b941112f04",
+      "integrated_blob": "b447e8d9e37adc867ae219f9fe99e373f29782f3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/015_R2R-REV-015.json",
+      "source_blob": "24ab5f281564d73461d5b4acd9051c32f048de55",
+      "previous_target_blob": "0469976cc713e034226a33d4344d255e39779423",
+      "integrated_blob": "24ab5f281564d73461d5b4acd9051c32f048de55",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/016_R2R-REV-016.json",
+      "source_blob": "3f68e6421e2ef762b7e6f6d5c7e8efb128823861",
+      "previous_target_blob": "29cfc92075f7db0b3b0cd3b239a87f5cd92109cc",
+      "integrated_blob": "3f68e6421e2ef762b7e6f6d5c7e8efb128823861",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/017_R2R-REV-017.json",
+      "source_blob": "6f4e96ce9e2aa169445deef121196dc59c9f8fea",
+      "previous_target_blob": "7e38faae15df206e2f6be05d2a4aab50a8d3d5c3",
+      "integrated_blob": "6f4e96ce9e2aa169445deef121196dc59c9f8fea",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/018_R2R-REV-018.json",
+      "source_blob": "c9b9478e969cf09e177e57953b9eacdbee54a57f",
+      "previous_target_blob": "09c3bc0171e8e4c6606e541ed68ddb1c14d5ae2d",
+      "integrated_blob": "c9b9478e969cf09e177e57953b9eacdbee54a57f",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/019_R2R-REV-019.json",
+      "source_blob": "b111f070b71a3618a385a7a4010f5ac888f583b8",
+      "previous_target_blob": "11a63e00104a527f9de048a03eb8a9a189de12ee",
+      "integrated_blob": "b111f070b71a3618a385a7a4010f5ac888f583b8",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/020_R2R-REV-020.json",
+      "source_blob": "ac0f740c39625274d8e81323772753c9ac2f7c94",
+      "previous_target_blob": "10b9a08dbc4324de0c87cf161f2863da46a9ebdf",
+      "integrated_blob": "ac0f740c39625274d8e81323772753c9ac2f7c94",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/021_R2R-REV-021.json",
+      "source_blob": "f7eca6307a7a02336fbc81b3b3d3b0f9bcb9a48d",
+      "previous_target_blob": "f6c39a35166463a63507aedce236570b3360c407",
+      "integrated_blob": "f7eca6307a7a02336fbc81b3b3d3b0f9bcb9a48d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/022_R2R-REV-022.json",
+      "source_blob": "4644e1e2870a73d231d404dfb121acd147982e4c",
+      "previous_target_blob": "1b27a0e263bbc907c2f4a8e78b9a591ebf9d469c",
+      "integrated_blob": "4644e1e2870a73d231d404dfb121acd147982e4c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/023_R2R-REV-023.json",
+      "source_blob": "9983d2279e3d8cf5a37abb8f5696e728465c98e5",
+      "previous_target_blob": "55fa754517473f82a919815413f580099eaf5f70",
+      "integrated_blob": "9983d2279e3d8cf5a37abb8f5696e728465c98e5",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/024_R2R-REV-024.json",
+      "source_blob": "6ab9f549ea5196627d563189aaa6c5eacb97bbac",
+      "previous_target_blob": "4ebe0b93680a8d22272a16efc5533d6b3fec0a9c",
+      "integrated_blob": "6ab9f549ea5196627d563189aaa6c5eacb97bbac",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/025_R2R-REV-025.json",
+      "source_blob": "4f22dbdd2dd350a9eaaea97df7b363dd386d77ba",
+      "previous_target_blob": "fa989925bf048273d51312247d3a21584ffebcee",
+      "integrated_blob": "4f22dbdd2dd350a9eaaea97df7b363dd386d77ba",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/026_R2R-REV-026.json",
+      "source_blob": "8f091a80d4ad7124964523e13284f3028167b5da",
+      "previous_target_blob": "f42b253344b69089d0d3c8c3ad85e32bb795bc8e",
+      "integrated_blob": "8f091a80d4ad7124964523e13284f3028167b5da",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/027_R2R-REV-027.json",
+      "source_blob": "31dcd0030346aa608ffa2bcf255ef452d8f96074",
+      "previous_target_blob": "907496c6fa77b031044247e0c5a370be09713a4f",
+      "integrated_blob": "31dcd0030346aa608ffa2bcf255ef452d8f96074",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/028_R2R-REV-028.json",
+      "source_blob": "8686049d8e4064b044c7a94458f1169d559e7e4b",
+      "previous_target_blob": "63fee7d5c609135c4ca001b28ea2356a3a1fde7e",
+      "integrated_blob": "8686049d8e4064b044c7a94458f1169d559e7e4b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/029_R2R-REV-029.json",
+      "source_blob": "66045c6decb00553fd59a23a03112388a7d70ba3",
+      "previous_target_blob": "d802051a7299a48ab73f674afaf0d165457e6931",
+      "integrated_blob": "66045c6decb00553fd59a23a03112388a7d70ba3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/030_R2R-REV-030.json",
+      "source_blob": "bbf9b889be1eee0106eb6e0c2ce2c4cbec53d7af",
+      "previous_target_blob": "ca539b8b04c901853bfa8d2b46077881f1b247f6",
+      "integrated_blob": "bbf9b889be1eee0106eb6e0c2ce2c4cbec53d7af",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/031_R2R-REV-031.json",
+      "source_blob": "e1dfb43c35adbf842ae9ded2b9a020228acc7873",
+      "previous_target_blob": "7eeba7bcddd4cd8c4487f487584302ee35bd45b9",
+      "integrated_blob": "e1dfb43c35adbf842ae9ded2b9a020228acc7873",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/032_R2R-REV-032.json",
+      "source_blob": "040eab7fbd2cb4bcd44bef8ac97ef1619e1dc166",
+      "previous_target_blob": "0967e6648f72d81c1a27e7095cf2d64f6afccd27",
+      "integrated_blob": "040eab7fbd2cb4bcd44bef8ac97ef1619e1dc166",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/033_R2R-REV-033.json",
+      "source_blob": "008302f78fade0a0acec63a30bc5c4bf6aa4353b",
+      "previous_target_blob": "28758aa6233d2e52d58491823999e5b7b41e45ad",
+      "integrated_blob": "008302f78fade0a0acec63a30bc5c4bf6aa4353b",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/034_R2R-REV-034.json",
+      "source_blob": "24b06da9e59bdbd6a13d0c5c3b7232a424699803",
+      "previous_target_blob": "d6517357e458cca8aecaf57b1dff5e52abe1003a",
+      "integrated_blob": "24b06da9e59bdbd6a13d0c5c3b7232a424699803",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/R2R/paired/035_R2R-REV-035.json",
+      "source_blob": "fb470ed78a515f9e752295c027e52bd4dd31aaa9",
+      "previous_target_blob": "369ed49ba110e5d5b37a3a1869fd715a8b1a0b90",
+      "integrated_blob": "fb470ed78a515f9e752295c027e52bd4dd31aaa9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
+      "source_blob": "f4f2dec457cb5edc9e2104f19cafce54d092e890",
+      "previous_target_blob": "bbe1f7a91587a2b708a03a409b879590b320b234",
+      "integrated_blob": "bbe1f7a91587a2b708a03a409b879590b320b234",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/01_RxR-DIAG-01.json",
+      "source_blob": "66a5b3ee5946d9d7c350a45b5f4b599889bae8b2",
+      "previous_target_blob": "d32df1f1b67e1aa57fd6950e81a6b6ffe14252f0",
+      "integrated_blob": "d32df1f1b67e1aa57fd6950e81a6b6ffe14252f0",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/02_RxR-DIAG-02.json",
+      "source_blob": "1c113972f40de09ddf8bec6c11d16e9ec9c61f98",
+      "previous_target_blob": "b27c3590b480175eabf93f2919ef9abfb6143408",
+      "integrated_blob": "b27c3590b480175eabf93f2919ef9abfb6143408",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/03_RxR-DIAG-03.json",
+      "source_blob": "7225baca8a6f304feca0e72adafe2836290cb1d2",
+      "previous_target_blob": "5825def03145d7436364b83956548c634f913a16",
+      "integrated_blob": "5825def03145d7436364b83956548c634f913a16",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/04_RxR-DIAG-04.json",
+      "source_blob": "19005b6a2999b8100481cbb3f11549d3d17e0fcc",
+      "previous_target_blob": "59cb62fe6a9438466f859bb5b5c2c71a55de26b1",
+      "integrated_blob": "59cb62fe6a9438466f859bb5b5c2c71a55de26b1",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/05_RxR-DIAG-05.json",
+      "source_blob": "8eea11f81a3225956428dc77e9fa9568afd7dffa",
+      "previous_target_blob": "1e15c684fe1be1c19e3bed64aed44e4e31955563",
+      "integrated_blob": "1e15c684fe1be1c19e3bed64aed44e4e31955563",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/06_RxR-DIAG-06.json",
+      "source_blob": "f703891cecaa10fce4465c772d81f67e85480e12",
+      "previous_target_blob": "992b2358b697dddaaf8241f3774b4bf0d4e09ad5",
+      "integrated_blob": "992b2358b697dddaaf8241f3774b4bf0d4e09ad5",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/07_RxR-DIAG-07.json",
+      "source_blob": "6c0ca3816ea6f5476d01230c6832840e95db0b01",
+      "previous_target_blob": "58cd29b71f920c98b2b1032f943f9d9a780ec27d",
+      "integrated_blob": "58cd29b71f920c98b2b1032f943f9d9a780ec27d",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/08_RxR-DIAG-08.json",
+      "source_blob": "6cab347dad4608afc7f3ccf3659b95d66e1b4045",
+      "previous_target_blob": "3a2ffc590fbf39868cbce5fa0bf3995f25cbccab",
+      "integrated_blob": "3a2ffc590fbf39868cbce5fa0bf3995f25cbccab",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/09_RxR-DIAG-09.json",
+      "source_blob": "5a4c6c7229c8b01ae6615e8e12037d80dccd341c",
+      "previous_target_blob": "ab57ed7efa08eb334ab446a91f83ed070ce13130",
+      "integrated_blob": "ab57ed7efa08eb334ab446a91f83ed070ce13130",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/10_RxR-DIAG-10.json",
+      "source_blob": "2dd55b73f45a6173d8ab911c2e1c307ff695dac4",
+      "previous_target_blob": "5e30b726953309142d05f73ccf2a9a3f438681b7",
+      "integrated_blob": "5e30b726953309142d05f73ccf2a9a3f438681b7",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/11_RxR-DIAG-11.json",
+      "source_blob": "b807c797912a56974a1689e0a3b8c4c91dbab4b9",
+      "previous_target_blob": "e181bfc24a9806d5919c759e97db173b09ffd3ca",
+      "integrated_blob": "e181bfc24a9806d5919c759e97db173b09ffd3ca",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/12_RxR-DIAG-12.json",
+      "source_blob": "afa6c63c6f5cce67f6e25350d145689a5b66a558",
+      "previous_target_blob": "7d7e55d896af27bdd253e436a8bc62507bb996ef",
+      "integrated_blob": "7d7e55d896af27bdd253e436a8bc62507bb996ef",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/13_RxR-DIAG-13.json",
+      "source_blob": "afd5c117967f035c75cb49dab973fafe1c4b1707",
+      "previous_target_blob": "9797c77c3eb1541d67517246e7fe6e3fce518023",
+      "integrated_blob": "9797c77c3eb1541d67517246e7fe6e3fce518023",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/14_RxR-DIAG-14.json",
+      "source_blob": "2bb33acde85b130135cdeeb350986f2741cf8879",
+      "previous_target_blob": "a936702964680604b69996c3f81122153f28b620",
+      "integrated_blob": "a936702964680604b69996c3f81122153f28b620",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/15_RxR-DIAG-15.json",
+      "source_blob": "e470cfa0275767762111b484e0edb305dadc77d2",
+      "previous_target_blob": "58520ca7d5169d77c1aba6e44c51a8533e4da505",
+      "integrated_blob": "58520ca7d5169d77c1aba6e44c51a8533e4da505",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/16_RxR-DIAG-16.json",
+      "source_blob": "43370fad108703c8880455d317384f836abc39a8",
+      "previous_target_blob": "24f66ca7bda2f397ab2207161ea38a645d6acd4b",
+      "integrated_blob": "24f66ca7bda2f397ab2207161ea38a645d6acd4b",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/17_RxR-DIAG-17.json",
+      "source_blob": "fd7831b7b63d0f44a4b52551ac56036f4d429ae3",
+      "previous_target_blob": "52ac8460450a51b7ee85bc87ad09b02465ff0c34",
+      "integrated_blob": "52ac8460450a51b7ee85bc87ad09b02465ff0c34",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/18_RxR-DIAG-18.json",
+      "source_blob": "a7a065320f3556bfdd1f8c6c3a14f906beb19f4c",
+      "previous_target_blob": "892b8c1965f43a4422d6fbd95c45052c8741e1b4",
+      "integrated_blob": "892b8c1965f43a4422d6fbd95c45052c8741e1b4",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/19_RxR-DIAG-19.json",
+      "source_blob": "de2892d3334525adb1881dcf9de5e8db662b5521",
+      "previous_target_blob": "5eba9fbb1b3a2f3476261930569c37ac09eaece0",
+      "integrated_blob": "5eba9fbb1b3a2f3476261930569c37ac09eaece0",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/20_RxR-DIAG-20.json",
+      "source_blob": "2abfdaeb8ede24846c443f67222ee2de2738ee18",
+      "previous_target_blob": "1a6fec4a477886173191aa9fe11fc4887f2ba7d9",
+      "integrated_blob": "1a6fec4a477886173191aa9fe11fc4887f2ba7d9",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-22.json",
+      "source_blob": "809633a058381f2340fb4e85805b06c8ba9958eb",
+      "previous_target_blob": "5506b6f1e5ddf8fa5510310caea2c3bf53051327",
+      "integrated_blob": "5506b6f1e5ddf8fa5510310caea2c3bf53051327",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-26.json",
+      "source_blob": "e4b5a1761723e481bd2cb1f2b19dde146d24d64e",
+      "previous_target_blob": "185378115dc508ef7c2cd04cb3f8f94dfcfb5739",
+      "integrated_blob": "185378115dc508ef7c2cd04cb3f8f94dfcfb5739",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/paired/006_RxR-REV-006.json",
+      "source_blob": "39c83f98ac7a21572b50420f0cd8fd11ba5f289e",
+      "previous_target_blob": "d6371e143b0759e3e1d883be6a11ece1306198ea",
+      "integrated_blob": "d6371e143b0759e3e1d883be6a11ece1306198ea",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/paired/023_RxR-REV-023.json",
+      "source_blob": "9e19d6bb0de9b90d75712e9bb598e6e519ea9bc7",
+      "previous_target_blob": "81fdfa42956a907dcb12790b060330daa5716f16",
+      "integrated_blob": "81fdfa42956a907dcb12790b060330daa5716f16",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates/RxR/paired/027_RxR-REV-027.json",
+      "source_blob": "4966644dc43b19d650c2d0db11ce3ea32d7e9657",
+      "previous_target_blob": "fa719c8136dfbe2992b7463ec87fa07448717251",
+      "integrated_blob": "fa719c8136dfbe2992b7463ec87fa07448717251",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "reviewer/templates_manifest.json",
+      "source_blob": "07af49eb396e2fa8861396c14148c358ab35f884",
+      "previous_target_blob": "63a31187e106989a4d7c6310e0056a2d40f76eb8",
+      "integrated_blob": "07af49eb396e2fa8861396c14148c358ab35f884",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "shared/dataset_rules/r2r_en.md",
+      "source_blob": "ecbb2b8a4f02e8b53f2aedbb862bd078095f790c",
+      "previous_target_blob": "0409648992badaaeb9f0b7d7b6d88ff1f270a8be",
+      "integrated_blob": "ecbb2b8a4f02e8b53f2aedbb862bd078095f790c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/__init__.py",
+      "source_blob": "5c4b8b3eb003d8a805291ce59d11a060fe2e6759",
+      "previous_target_blob": null,
+      "integrated_blob": "5c4b8b3eb003d8a805291ce59d11a060fe2e6759",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/fixtures/rxr_prompt_pins.json",
+      "source_blob": "a4d110aba4f8a1a8240a9745a6b322b541fd91e0",
+      "previous_target_blob": "c26aa44fbb6715f66b82d00f185bc9468e2ab72c",
+      "integrated_blob": "06db6e5f82785808f0a4424248c07ccf5ce22a1f",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tests/r2r/__init__.py",
+      "source_blob": "7f73ba6ccccf1a83d367dea28757d18fc18236c1",
+      "previous_target_blob": null,
+      "integrated_blob": "7f73ba6ccccf1a83d367dea28757d18fc18236c1",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_full_dynamic.py",
+      "source_blob": "59f2732f4760fe462a2a0f58a447c94be23c29fe",
+      "previous_target_blob": null,
+      "integrated_blob": "59f2732f4760fe462a2a0f58a447c94be23c29fe",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_hardening.py",
+      "source_blob": "5f59090b5abf8f3976d0b6554e3c2591a5a95807",
+      "previous_target_blob": null,
+      "integrated_blob": "5f59090b5abf8f3976d0b6554e3c2591a5a95807",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_minimal.py",
+      "source_blob": "d582128dcd5d62c554d7a569188e6765f282487a",
+      "previous_target_blob": null,
+      "integrated_blob": "d582128dcd5d62c554d7a569188e6765f282487a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_quality.py",
+      "source_blob": "306167093ad83504491d597f1499740067541361",
+      "previous_target_blob": null,
+      "integrated_blob": "306167093ad83504491d597f1499740067541361",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_refinement.py",
+      "source_blob": "72ec13f89ada09b669f0e4c38959a86dfc0e3f91",
+      "previous_target_blob": null,
+      "integrated_blob": "72ec13f89ada09b669f0e4c38959a86dfc0e3f91",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_stability.py",
+      "source_blob": "2e7b52487b58bddaba4aae73a803ce38aa1ea4f9",
+      "previous_target_blob": null,
+      "integrated_blob": "2e7b52487b58bddaba4aae73a803ce38aa1ea4f9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/r2r/test_workflow_chain.py",
+      "source_blob": "4c9c78ffb09a001880ea37bbea617ad3adfcb624",
+      "previous_target_blob": null,
+      "integrated_blob": "4c9c78ffb09a001880ea37bbea617ad3adfcb624",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_closed_loop_35.py",
+      "source_blob": "adf6e99d5763e7fa7652ec6dd8d0889dd081ee8d",
+      "previous_target_blob": "2ad8763f9307a098a26ee3df8a4c7dede44211ce",
+      "integrated_blob": "adf6e99d5763e7fa7652ec6dd8d0889dd081ee8d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_entry_diagnostics.py",
+      "source_blob": "1ab828b4e6c04e4cd1ef3e8169bb8190f319fc07",
+      "previous_target_blob": "70390a07c52e1d55e265f6fdd72bb813008293a2",
+      "integrated_blob": "1ab828b4e6c04e4cd1ef3e8169bb8190f319fc07",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_example_injection.py",
+      "source_blob": "ea31e8d49f8c9e7cecdfe331c91e6b3d947737bb",
+      "previous_target_blob": "043b0e7fdc5f4f77e6a0ba26e5922360bac05ff4",
+      "integrated_blob": "07e171862de764c223d6a3c32a2fb48509e9dc12",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tests/test_final_best_contract.py",
+      "source_blob": "17cd6b2e8c4813dda3fb7a1dcd240797536dae51",
+      "previous_target_blob": "d4dd27443b31accb4ceaf56634e795ea5e21f27b",
+      "integrated_blob": "17cd6b2e8c4813dda3fb7a1dcd240797536dae51",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_host_dispatch_profiles.py",
+      "source_blob": "b50357f917178266d7d9eada2070b9faa0125c69",
+      "previous_target_blob": "f06fddc395f3c18145df227d53b4666f0f2228fe",
+      "integrated_blob": "b50357f917178266d7d9eada2070b9faa0125c69",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_paired_selection.py",
+      "source_blob": "a355e0d3d1d48f5b670832f134d30470de57d69d",
+      "previous_target_blob": "38b847505c3fc8f60a18b8732e788d8edc7bdd38",
+      "integrated_blob": "a355e0d3d1d48f5b670832f134d30470de57d69d",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_profile_integration.py",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "a9cb48b3a38411beacbd9da543b48e6aebd89605",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "tests/test_r2r_core.py",
+      "source_blob": "0300ae80095dffe9786a0fb59ce5b435f4c86ed9",
+      "previous_target_blob": "cca51ef1b1921ea5129313d0b5149d2091c51fb9",
+      "integrated_blob": "0300ae80095dffe9786a0fb59ce5b435f4c86ed9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_r2r_specialization.py",
+      "source_blob": "95daf18b8dcd6a5d418053cc2f636efd6f68dd28",
+      "previous_target_blob": "60806b026e982b04d00e5c44426adbe86240dc83",
+      "integrated_blob": "8f4c5577d0db9bf9ea4f02e61a1db9e72fc2117e",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tests/test_roles_repair.py",
+      "source_blob": "7180eb256f57a55258c74ee9ba1c8402045ce0d3",
+      "previous_target_blob": "708e1df9a58c830a1c9be42bfafd6bd8ebe8b2c3",
+      "integrated_blob": "7180eb256f57a55258c74ee9ba1c8402045ce0d3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tests/test_rxr_contract.py",
+      "source_blob": null,
+      "previous_target_blob": "0fc04eb6e023382cd4b97885bd6769de934b121a",
+      "integrated_blob": "0fc04eb6e023382cd4b97885bd6769de934b121a",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tests/test_rxr_profile.py",
+      "source_blob": "6b76e68e3b5bd3b13b28ab9df107c8cf5b37084a",
+      "previous_target_blob": "69db4c044e93d95b7f53dd73e293bc984cfd5cbb",
+      "integrated_blob": "20f25df2527a5466d98f0cd374453eafeb910054",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tests/test_rxr_prompt_snapshots.py",
+      "source_blob": "7734227a01cdffeda86dc723ce53d2d571bbc774",
+      "previous_target_blob": "ca548998b364702920b451b3e1c3280562cd58fa",
+      "integrated_blob": "ca548998b364702920b451b3e1c3280562cd58fa",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tests/test_rxr_refinement.py",
+      "source_blob": null,
+      "previous_target_blob": "6cb4601381a1961ca2047af2b84ce7994efc4503",
+      "integrated_blob": "4c579f6967412bbc38e65b50a90694d81e4f1c45",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tests/test_rxr_role_hierarchy.py",
+      "source_blob": null,
+      "previous_target_blob": "28f4929c23dbbdb098e14ef0c6d2e4782278784f",
+      "integrated_blob": "28f4929c23dbbdb098e14ef0c6d2e4782278784f",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tests/test_workflow_integration.py",
+      "source_blob": "51e03ed52edbac5c51efe9c671f6df0497f619a2",
+      "previous_target_blob": "40d333d1e424ffe2fc4bea1c45d708d19b30fe5a",
+      "integrated_blob": "51e03ed52edbac5c51efe9c671f6df0497f619a2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/build_rxr_reviewed.py",
+      "source_blob": "762238b9b7fad54c3469031e031ea410a59c8d11",
+      "previous_target_blob": "43602457defde0354dcc2f2a93b16899d62ae60d",
+      "integrated_blob": "43602457defde0354dcc2f2a93b16899d62ae60d",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tools/check_profile_integration.py",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "04fd917042e85fff59db794555a5038eda7b74f2",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "tools/check_rxr_refinement.py",
+      "source_blob": null,
+      "previous_target_blob": "5358cbbb15427e21d44a854b108bbf0531a63ff9",
+      "integrated_blob": "092e768c32af781d5add92a562fad9879c6872a1",
+      "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "tools/r2r_authoring/__init__.py",
+      "source_blob": "388abaaa9be2d2834f8b6ee4a7f75a0f8b2e8066",
+      "previous_target_blob": null,
+      "integrated_blob": "388abaaa9be2d2834f8b6ee4a7f75a0f8b2e8066",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/audit.py",
+      "source_blob": "8dc5e5a83ac288ebdf7457d54a0766cde103ca3c",
+      "previous_target_blob": null,
+      "integrated_blob": "8dc5e5a83ac288ebdf7457d54a0766cde103ca3c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/build.py",
+      "source_blob": "4c190bfa3fd63dbe1dbf6eb6411c74e231c8cfb9",
+      "previous_target_blob": null,
+      "integrated_blob": "4c190bfa3fd63dbe1dbf6eb6411c74e231c8cfb9",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/contrast.py",
+      "source_blob": "d74bf30bf04876627d42b69ce66fec3226a8e9a0",
+      "previous_target_blob": null,
+      "integrated_blob": "d74bf30bf04876627d42b69ce66fec3226a8e9a0",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/decision_boundaries.py",
+      "source_blob": "ce93afdc1d3f1a7200fac25dcede690b2cff81c5",
+      "previous_target_blob": null,
+      "integrated_blob": "ce93afdc1d3f1a7200fac25dcede690b2cff81c5",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/detail.py",
+      "source_blob": "0dd02131f4d554f51a6978e5c23f1e885be952b3",
+      "previous_target_blob": null,
+      "integrated_blob": "0dd02131f4d554f51a6978e5c23f1e885be952b3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/integrate.py",
+      "source_blob": "7f36acbcc97af68647fa8ab1992c679b66f16e29",
+      "previous_target_blob": null,
+      "integrated_blob": "7f36acbcc97af68647fa8ab1992c679b66f16e29",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/metadata.py",
+      "source_blob": "7b7928d4571e17001d8656a5758365fb1993d087",
+      "previous_target_blob": null,
+      "integrated_blob": "7b7928d4571e17001d8656a5758365fb1993d087",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/phase_lessons.py",
+      "source_blob": "e58b034d965740aef25eacc1d3196ee031057f65",
+      "previous_target_blob": null,
+      "integrated_blob": "e58b034d965740aef25eacc1d3196ee031057f65",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/positive.py",
+      "source_blob": "edf3bb20f34e038d6cc7c7de7c41ad001bb9f4aa",
+      "previous_target_blob": null,
+      "integrated_blob": "edf3bb20f34e038d6cc7c7de7c41ad001bb9f4aa",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/projection_expectations.py",
+      "source_blob": "be0b92ab1555b9296c4c383242d43cf8a2b5982c",
+      "previous_target_blob": null,
+      "integrated_blob": "be0b92ab1555b9296c4c383242d43cf8a2b5982c",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/publish.py",
+      "source_blob": "503ba1df3925dfd21486260b9a6d11f0c63b08a3",
+      "previous_target_blob": null,
+      "integrated_blob": "503ba1df3925dfd21486260b9a6d11f0c63b08a3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/regression.py",
+      "source_blob": "d916269a17d75ff5db22608140caec783cdfff74",
+      "previous_target_blob": null,
+      "integrated_blob": "d916269a17d75ff5db22608140caec783cdfff74",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/review.py",
+      "source_blob": "5acb494a26439c02640deb9d46792f30f6e508b7",
+      "previous_target_blob": null,
+      "integrated_blob": "5acb494a26439c02640deb9d46792f30f6e508b7",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/rule_coverage.py",
+      "source_blob": "83fdbc487a0769b2c5fbc3652b5d7fccb6caf3db",
+      "previous_target_blob": null,
+      "integrated_blob": "83fdbc487a0769b2c5fbc3652b5d7fccb6caf3db",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/runtime_layout.py",
+      "source_blob": "c265a8701d99815f6e2f15bc66dbc0df6853b439",
+      "previous_target_blob": null,
+      "integrated_blob": "c265a8701d99815f6e2f15bc66dbc0df6853b439",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/semantic_refinements.py",
+      "source_blob": "38e1efa8ddb802831f74e884a5ac6095a1dca8d2",
+      "previous_target_blob": null,
+      "integrated_blob": "38e1efa8ddb802831f74e884a5ac6095a1dca8d2",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/smoke.py",
+      "source_blob": "05103324f848cc00187dbf26c380b67715f86846",
+      "previous_target_blob": null,
+      "integrated_blob": "05103324f848cc00187dbf26c380b67715f86846",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/source_inventory.json",
+      "source_blob": "ab6d41ad3a091a3cd0f04528947a4eb50631f81a",
+      "previous_target_blob": null,
+      "integrated_blob": "ab6d41ad3a091a3cd0f04528947a4eb50631f81a",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/test_expectations.py",
+      "source_blob": "8dffa84b0350c6c7539edbf798c21f1095788527",
+      "previous_target_blob": null,
+      "integrated_blob": "8dffa84b0350c6c7539edbf798c21f1095788527",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/verify.py",
+      "source_blob": "79023b8448af507bcd8078bcdb17fdb4db3aeb43",
+      "previous_target_blob": null,
+      "integrated_blob": "79023b8448af507bcd8078bcdb17fdb4db3aeb43",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/r2r_authoring/workflow_policy.py",
+      "source_blob": "826fc8a9b0c68f44fef26b27f8be732b394171b3",
+      "previous_target_blob": null,
+      "integrated_blob": "826fc8a9b0c68f44fef26b27f8be732b394171b3",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "tools/refresh_profile_integrity.py",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "a42944f6e5eeb5e4435a00494177e8ebe9e7781f",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "tools/refresh_rxr_integrity.py",
+      "source_blob": "8eb06914a6d057dc682e742fd31c4213ff6ef3df",
+      "previous_target_blob": "a080bd0e4ed7f8632d38e23548971d68b271eab2",
+      "integrated_blob": "a080bd0e4ed7f8632d38e23548971d68b271eab2",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tools/run_profile_validation.py",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "cf6bb371c570588c4a5c948dd000de558f5785cd",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "tools/rxr_teaching_alignment.py",
+      "source_blob": null,
+      "previous_target_blob": "47e60a048f6926284c82f258fbd4287c5fc3510e",
+      "integrated_blob": "47e60a048f6926284c82f258fbd4287c5fc3510e",
+      "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "source_blob": "d4756b2dc184f87a6fff458edc3ab43ec055ba0e",
+      "previous_target_blob": null,
+      "integrated_blob": "d4756b2dc184f87a6fff458edc3ab43ec055ba0e",
+      "disposition": "matches_requested_source"
+    },
+    {
+      "path": "validation.json",
+      "source_blob": null,
+      "previous_target_blob": "6ebf4c364ed708b64a1593418785bcf62a2ebb9f",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    },
+    {
+      "path": "verify_package.py",
+      "source_blob": null,
+      "previous_target_blob": "0c0d0ca705670fb5116a955856b61fe03c81c0a4",
+      "integrated_blob": null,
+      "disposition": "removed_in_integrated_layout"
+    }
+  ]
+}
