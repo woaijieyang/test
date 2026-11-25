@@ -139,11 +139,19 @@ class RxRRoleHierarchyTests(unittest.TestCase):
         print('RXR_LAYER_MEASUREMENTS=' + json.dumps(measurements, sort_keys=True))
 
     def test_historical_reference_is_pinned_not_silently_reimported(self):
-        expected = {'generator/prompt.md': '18e3c027e9f9e0cd95121b6062a799af3449d95e',
-                    'reviewer/prompt.md': 'dc1bbc9d864f71db8edfbb8dd60c1f9cc0e7f2db'}
+        # Blob IDs independently read from the historical commit, not guessed
+        # from a title, a branch name or a different revision of the prompts.
+        expected = {'generator/prompt.md': '167c2e2c8d28f5ae55d99b4417bd9be6c519e31a',
+                    'reviewer/prompt.md': '1c45b61b404c50bb6d8c9e11e6186f9d7d76a66d'}
+        self.assertEqual(self.data['historical_source_blobs'], expected)
+        historical = {}
         for path, sha in expected.items():
             data = source_at(self.data['historical_commit'], path)
             self.assertEqual(hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest(), sha)
+            historical[path] = data.decode('utf-8')
+        self.assertIn("status='needs_review'", historical['generator/prompt.md'])
+        self.assertIn('## Codex primary ownership', historical['reviewer/prompt.md'])
+        self.assertIn('not another reviewer child', historical['reviewer/prompt.md'])
         decisions = self.data['historical_comparison']
         self.assertTrue(any('not restored' in row['status'] for row in decisions))
         self.assertIs(self.data['semantic_equivalence_certified'], False)

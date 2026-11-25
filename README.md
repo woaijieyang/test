@@ -1,4 +1,4 @@
-# LLM-decompose-v6.6.3
+# LLM-decompose-v6.6.5
 
 **当前权威说明。** 本仓库面向 R2R English 与 RxR en-US。两者共享语义合同、Runtime Schema、Renderer 和 Host 工作流；由 Adapter 的唯一 Profile 选择数据集专属规则、固定教学 Core 和 Dynamic Library。Generator 是唯一候选作者，Reviewer 独立审查并提出局部建议，Host 控制调用与释放，最终只向 AwareVLN 现有指令入口交付一条渲染后的自然语言指令。
 
@@ -13,7 +13,9 @@
 - `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
 - `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
 - `docs/R2R_ENHANCEMENT.md`：R2R English 专属规则、检索、Host 接入、RxR 隔离和验收规范。
-- `docs/RXR_TEACHING_REPAIR.md`：本轮 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
+- `docs/RXR_ROLE_HIERARCHY.md`：本轮角色身份、P0/P1/P2转换、历史能力对照和前置条件／交接验收。
+- `provenance/rxr_role_conversion.json`：原条款到新位置的逐句映射、源文件指纹和四阶段隔离对照。
+- `docs/RXR_TEACHING_REPAIR.md`：已完成的 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
 - `docs/RXR_TEACHING_FOCUS.md`：Core案例级教学、局部覆盖证据、保守正文修订及建议采纳边界。
 - `docs/RXR_DATA_BOUNDARIES.md`：训练来源、生成文件、配对、缓存与写入失败处理。
 - `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
@@ -129,12 +131,18 @@ python -m evaluation.smoke24
 
 ## 当前工程状态
 
-当前分支从 `LLM-decompose-v6.6.2` 的固定提交建立，保留原分支不变。已有 RxR 教学修复及六类局部语义判据继续保留。本轮进一步完善十组Core的案例级教学重点、33条正常覆盖证据及002/020的最小来源保留表达，连同对应Reviewer和依赖诊断一起重建。不改变 R2R 专属资产、通用规则、运行 Schema、Compiler优先级、Renderer 或有界双角色工作流。固定 Core 身份、动态数量、来源和检索策略保持不变。
+当前分支以 `LLM-decompose-v6.6.3` 的固定提交 `081db4b9ea0712ff720c137fe96c240c26f7b15c` 为基础建立，原分支不变。本轮对照 `LLM-decompose-v1` 中标题为 v1.3 的实际两角色Prompt，完成RxR角色专属规则的P0/P1/P2转换，而非重新设计分割策略或浓缩旧规则。
 
-逐字段修正记录见 `provenance/rxr_teaching_changes.json`，作者规格和构建检查见 `tools/build_rxr_reviewed.py`。足床终态现在保留为结果状态而不新增继续移动命令；玻璃窗的矛盾辅助描述不被擅自消歧，也不再将source审计说明放入Actor文本。它们的真实环境解释和导航收益仍未被证明。候选仍需独立语义盲审和导航对照；本轮不宣称追回任何固定数量的成功，也未将计划中的三组新增来源混入修复实验。
+Generator P0明确唯一候选作者及完整路线目标；P1保留原九步、五要素、前置条件、完成到入口的交接、自审和有界返修；P2归位已有场景校准。Reviewer P0明确独立验收与不代写；P1将完整L0—L6作为一个框架项，保留五要素、交接、Finding、判定和R1复核；P2按审核证据风险组织，不与Generator机械镜像。原条款逐句保留并记录去向，不设规则数量或压缩比例。
+
+两份Shared、公共角色Prompt、全部模板、检索、Schema、Compiler、Host及Renderer均不修改。R2R四阶段模型输入、Schema和选例保持独立对照。转换说明见 `docs/RXR_ROLE_HIERARCHY.md`，逐句映射和历史源指纹见 `provenance/rxr_role_conversion.json`。已批准的Prompt指纹在固定查询、选例和Schema下显式更新；CI和测试不会自动重写期望值来通过检查。
+
+此前Core案例级教学、33条局部覆盖证据、002/020保守表达及其配对诊断修复继续保留，记录仍在 `provenance/rxr_teaching_changes.json`。这些历史教学修复不混称本轮的新改动。其语义争议和真实导航收益不能由规则重排自动认证；本轮也不恢复旧三种上下文模式、旧主会话亲审部署限制或旧Schema字段。
+
+工程验证不能证明LLM行为绝对等价或导航指标提升。实际测试结果与缺失的外部配套测试分别记录，固定配置的真实模型盲审和成对导航仍需独立进行。
 
 发布标识仅在 README 展示；新增规则、作者工具、测试和技术文档不加入发布后缀。继承的 Schema 身份、历史来源和兼容路径保留，不为清除字符串而破坏接口或追溯记录。全仓库历史标识与当前新增发布标识分别记录。
 
 ## RxR semantic calibration
 
-RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.
+RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the role-local conversion record](docs/RXR_ROLE_HIERARCHY.md), [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.
