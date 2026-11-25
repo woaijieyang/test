@@ -66,6 +66,7 @@ def expected():
     from tools.rxr_diagnostic_repairs import repair as diagnostics
     from tools.rxr_review_contract import finalize
     from tools.rxr_teaching_focus import refine_positive, refine_core
+    from tools.rxr_teaching_alignment import align_positive, align_diagnostics
     from host.template_selector import validate_template
     from host.compile import runtime_review_output, teaching_card
     from host import protocol
@@ -87,7 +88,9 @@ def expected():
     # Refine the reviewed parent before dependent diagnostics are materialized.
     # This prevents a grouping contrast from retaining an obsolete parent route.
     refine_positive(rows)
+    align_positive(rows)
     contrasts = diagnostics(rows)
+    align_diagnostics(rows)
     finalize(rows)
     refine_core(rows)
     ledger, outputs = [], {}

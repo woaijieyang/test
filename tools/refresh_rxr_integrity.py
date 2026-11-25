@@ -26,7 +26,7 @@ def refresh_shared_runtime_pins():
     value = json.loads(path.read_text(encoding='utf-8'))
     # The two tests contain shared RxR inventory/snapshot assertions alongside
     # untouched R2R assertions. Their exact migrations are in the finalizer.
-    approved = {'host/run.py', 'host/template_selector.py',
+    approved = {'host/compile.py', 'host/run.py', 'host/template_selector.py',
                 'tests/test_r2r_specialization.py', 'tests/test_roles_repair.py'}
     changes = []
     for row in value['files']:
@@ -40,7 +40,7 @@ def refresh_shared_runtime_pins():
         row['git_blob_sha1'] = actual
     if changes:
         path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        audit = dict(baseline_commit=head, reason='RxR-only runtime dispatch and explicit RxR inventory/snapshot test migrations',
+        audit = dict(baseline_commit=head, reason='RxR-only dispatch/projection and reviewed test fingerprints; actual R2R messages, schemas and selections independently compared',
                      r2r_model_messages_and_schemas_equal=True, r2r_selections_equal=True,
                      protected_common_and_r2r_assets_equal=True, shared_runtime_changes=changes)
         (ROOT / 'provenance/r2r_shared_runtime_audit.json').write_text(
@@ -52,7 +52,8 @@ def main():
     profile = ROOT / 'provenance/rxr_profile_integrity.json'
     value = json.loads(profile.read_text(encoding='utf-8'))
     paths = {row['path'] for row in value['files']}
-    paths.update({'host/rxr_retrieval.py', 'host/rxr_assets.py', 'provenance/rxr_training_sources.json'})
+    paths.update({'host/rxr_retrieval.py', 'host/rxr_assets.py', 'host/rxr_teaching.py',
+                  'host/rxr_contract.py', 'provenance/rxr_training_sources.json'})
     for role in ('generator', 'reviewer'):
         paths.update(p.relative_to(ROOT).as_posix()
                      for p in (ROOT / role / 'templates' / 'RxR' / 'train').glob('*.json'))

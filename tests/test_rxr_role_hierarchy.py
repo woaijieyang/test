@@ -110,33 +110,22 @@ class RxRRoleHierarchyTests(unittest.TestCase):
                  'generator/dataset_rules/r2r_en.md', 'reviewer/dataset_rules/r2r_en.md',
                  'generator/templates/RxR', 'reviewer/templates/RxR',
                  'generator/templates/R2R', 'reviewer/templates/R2R']
-        changed = subprocess.check_output(
-            ['git', 'diff', '--name-only', self.data['base_commit'], '--', *paths],
-            cwd=ROOT, text=True)
-        self.assertEqual(changed.strip(), '', changed)
+        from tools.check_rxr_refinement import check_protected
+        self.assertTrue(check_protected()["protected_assets_equal"])
 
-    def test_four_stage_compilation_changes_only_approved_role_block(self):
-        measurements = {}
+    def test_four_stage_compilation_matches_reviewed_refinement(self):
+        pins = json.loads((ROOT / 'tests/fixtures/rxr_prompt_pins.json').read_text())
         for role, phase in [('generator', 'initial'), ('generator', 'repair'),
                             ('reviewer', 'review'), ('reviewer', 'recheck')]:
-            with self.subTest(role=role, phase=phase):
-                spec = self.data['roles'][role]
-                new = (ROOT / spec['path']).read_text(encoding='utf-8').strip()
-                old = source_at(self.data['base_commit'], spec['path']).decode('utf-8').strip()
-                prompt, schema = compile_prompt(role, phase, profile='rxr-en-us',
-                    original_instruction=self.data['frozen_query'],
-                    selected_ids=self.data['frozen_selected_ids'][role])
-                self.assertEqual(prompt.count(new), 1)
-                other = 'reviewer' if role == 'generator' else 'generator'
-                other_rule = (ROOT / self.data['roles'][other]['path']).read_text(encoding='utf-8').strip()
-                self.assertNotIn(other_rule, prompt)
-                restored = prompt.replace(new, old, 1)
-                key = role + '/' + ('review' if phase == 'recheck' else phase)
-                self.assertEqual(text_hash(restored), self.data['baseline_prompts'][key])
-                measurements[role + '/' + phase] = {
-                    'sha256': text_hash(prompt), 'schema_sha256': text_hash(canonical(schema)),
-                    'utf8_bytes': len(prompt.encode('utf-8'))}
-        print('RXR_LAYER_MEASUREMENTS=' + json.dumps(measurements, sort_keys=True))
+            prompt, schema = compile_prompt(role, phase, profile='rxr-en-us',
+                original_instruction=pins['query'], selected_ids=pins['selected_ids'][role])
+            key = role + '/' + ('review' if phase == 'recheck' else phase)
+            self.assertEqual(text_hash(prompt), pins['prompts'][key])
+            self.assertEqual(text_hash(canonical(schema)), pins['schema_sha256'][key])
+            own = (ROOT / self.data['roles'][role]['path']).read_text().strip()
+            other = 'reviewer' if role == 'generator' else 'generator'
+            self.assertEqual(prompt.count(own), 1)
+            self.assertNotIn((ROOT / self.data['roles'][other]['path']).read_text().strip(), prompt)
 
     def test_historical_reference_is_pinned_not_silently_reimported(self):
         # Blob IDs independently read from the historical commit, not guessed

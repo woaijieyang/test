@@ -37,6 +37,8 @@ def dataset_rules_metadata(profile):
             root/"reviewer/dataset_rules/rxr_en_us.md",
             root/"host/rxr_retrieval.py",
             root/"host/rxr_assets.py",
+            root/"host/rxr_teaching.py",
+            root/"host/rxr_contract.py",
             root/"provenance/rxr_training_sources.json",
         ])
         version = "rxr-en-us-profile"
@@ -85,6 +87,8 @@ def prompt_components_metadata(role, phase, profile):
             root/role/"dataset_rules/rxr_en_us.md",
             root/"host/rxr_retrieval.py",
             root/"host/rxr_assets.py",
+            root/"host/rxr_teaching.py",
+            root/"host/rxr_contract.py",
             root/"provenance/rxr_training_sources.json",
         ])
     elif profile == "r2r-en":
@@ -153,6 +157,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                separator="\n", example_count=DEFAULT_EXAMPLES,
                selection_mode="adaptive"):
     """Run at most four semantic calls plus at most two technical corrections per role; preserve exact source fallback on every failure."""
+    runtime_protocol = protocol
+    if src.profile == "rxr-en-us":
+        from host import rxr_contract as runtime_protocol
     events, snapshots = [], []
     rules_frozen = None
     prompt_components_frozen = {}
@@ -402,6 +409,9 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
                                   count=example_count, mode=selection_mode)
             for role in ("generator", "reviewer")
         }
+        if src.profile == "rxr-en-us":
+            from host.rxr_teaching import validate_pair_bundle
+            validate_pair_bundle(selections, selection_mode)
         retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                               for role, ids in selections.items()}
         reviewer_rows_by_id = {
@@ -412,7 +422,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             for role, ids in selections.items()
         }
         source_payload = {"original_instruction": src.raw}
-        g0 = validated_call("generator", "initial", source_payload, lambda out: protocol.generator(src.raw, out))
+        g0 = validated_call("generator", "initial", source_payload, lambda out: runtime_protocol.generator(src.raw, out))
 
         r0_review = None
         r0_candidate = None
@@ -506,7 +516,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             semantic_repairs += 1
             answer = validated_call(
                 "generator", "repair", {**source_payload, "candidate": candidate_snapshot, "review": rv},
-                lambda out: protocol.feedback(src.raw, rv, out), binding
+                lambda out: runtime_protocol.feedback(src.raw, rv, out), binding
             )
             g0 = answer["candidate"]
 

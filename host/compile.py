@@ -202,6 +202,9 @@ def runtime_review_output(example):
 
 def teaching_card(example, role, detailed):
     """Show the authored decision and its textual evidence in a compact demonstration."""
+    if example.get("dataset_scope") in ("RxR", "RxR_prompt_teaching_example"):
+        from host.rxr_teaching import card
+        return card(example, role, detailed, review_output=runtime_review_output)
     notes = example["teaching_notes"]
     if role == "generator":
         out = example["output"]
@@ -310,6 +313,9 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             if len(chosen)!=len(set(chosen)):raise ValueError('Duplicate selected template IDs')
         byid={r['template_id']:r for r in rows}
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
+        if profile == 'rxr-en-us':
+            from host.rxr_teaching import validate_selection
+            validate_selection(role, chosen, rows, selection_mode)
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
             core_label = 'R2R-EN' if profile == 'r2r-en' else 'RXR'
@@ -322,7 +328,11 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
             example = byid[eid]
-            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))
+            detailed = (position == 0)
+            if profile == 'rxr-en-us':
+                from host.rxr_teaching import dynamic_is_detailed
+                detailed = dynamic_is_detailed(role, position)
+            parts.append(canonical(teaching_card(example, role, detailed=detailed)))
         if repair:
             parts.append('TWO REPAIR-ENVELOPE EXAMPLES — active repair Schema, unlike initial-output examples. They teach accepting supported critique and rejecting unsupported advice.')
             parts.extend(canonical(e) for e in json.loads((ROOT/'generator/repair_examples.json').read_text(encoding='utf-8')))
