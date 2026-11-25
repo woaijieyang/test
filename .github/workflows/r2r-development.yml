@@ -25,6 +25,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   validate:
+    # The combined branch runs all R2R tests through read-only profile-integration.yml;
+    # the historical single-profile authoring publisher must not restore old RxR assets.
+    if: github.ref != 'refs/heads/LLM-decompose-v6.6.5'
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
