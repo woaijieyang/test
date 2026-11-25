@@ -53,7 +53,7 @@ jobs:
             echo "R2R_MANAGED=false" >> "$GITHUB_ENV"
           fi
           git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$comparison"
-          echo "R2R_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
+          echo "R2R_BUILD_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
       - name: Validate and materialize authored teaching corrections
         run: |
           python -B tools/build_rxr_reviewed.py --inspect
@@ -71,7 +71,7 @@ jobs:
       - name: Compile profiles and prove R2R isolation
         run: |
           python -B -m host.compile
-          python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
+          python -B tools/check_r2r_isolation.py --baseline "$R2R_BUILD_BASELINE_DIR"
       - name: Exercise renderer and verify deterministic rebuild
         run: |
           python -B -m evaluation.smoke24
@@ -86,8 +86,9 @@ jobs:
       - name: Run inherited and new regression tests
         run: |
           python -B - <<'PY'
-          import json, os, unittest
+          import json, os, sys, unittest
           from pathlib import Path
+          sys.path.insert(0, str(Path("tests").resolve()))
           all_tests=unittest.defaultTestLoader.discover('tests', top_level_dir='.')
           selected=unittest.TestSuite(); external=[]
           def collect(suite):
@@ -114,7 +115,7 @@ jobs:
       - name: Exercise bounded workflow and final R2R isolation
         run: |
           python -B -m examples.demo
-          python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
+          python -B tools/check_r2r_isolation.py --baseline "$R2R_BUILD_BASELINE_DIR"
           python -B tools/build_rxr_reviewed.py --check
       - name: Record actual validation and inherited label audit
         if: env.R2R_MANAGED != 'true'
