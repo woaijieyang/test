@@ -4,6 +4,7 @@ on:
   push:
     branches: ['LLM-decompose-*']
     paths:
+      - '.github/workflows/rxr-development.yml'
       - 'tools/rxr*'
       - 'tools/build_rxr*'
       - 'host/rxr*'
@@ -43,15 +44,30 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Prepare immutable comparison checkout
         run: |
-          git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$BASE_COMMIT"
+          set -euo pipefail
+          comparison="$BASE_COMMIT"
+          if test -f tools/r2r_authoring/source_inventory.json; then
+            comparison="$GITHUB_SHA"
+            echo "R2R_MANAGED=true" >> "$GITHUB_ENV"
+          else
+            echo "R2R_MANAGED=false" >> "$GITHUB_ENV"
+          fi
+          git worktree add --detach "$RUNNER_TEMP/r2r-baseline" "$comparison"
           echo "R2R_BASELINE_DIR=$RUNNER_TEMP/r2r-baseline" >> "$GITHUB_ENV"
       - name: Validate and materialize authored teaching corrections
         run: |
           python -B tools/build_rxr_reviewed.py --inspect
-          python -B tools/build_rxr_reviewed.py --write
+          if test "$R2R_MANAGED" != true; then
+            python -B tools/build_rxr_reviewed.py --write
+          fi
           python -B tools/build_rxr_reviewed.py --check
       - name: Verify official training source and build authored examples
-        run: python -B tools/build_rxr_teaching.py --verify-upstream
+        run: |
+          if test "$R2R_MANAGED" = true; then
+            python -B tools/build_rxr_teaching.py --check
+          else
+            python -B tools/build_rxr_teaching.py --verify-upstream
+          fi
       - name: Compile profiles and prove R2R isolation
         run: |
           python -B -m host.compile
@@ -63,14 +79,16 @@ jobs:
           python -B tools/build_rxr_reviewed.py --check
       - name: Refresh scoped asset manifests and verify complete package
         run: |
-          python -B tools/refresh_rxr_integrity.py
+          if test "$R2R_MANAGED" != true; then
+            python -B tools/refresh_rxr_integrity.py
+          fi
           python -B tools/verify_package.py
       - name: Run inherited and new regression tests
         run: |
           python -B - <<'PY'
           import json, os, unittest
           from pathlib import Path
-          all_tests=unittest.defaultTestLoader.discover('tests')
+          all_tests=unittest.defaultTestLoader.discover('tests', top_level_dir='.')
           selected=unittest.TestSuite(); external=[]
           def collect(suite):
               for test in suite:
@@ -78,7 +96,7 @@ jobs:
                       collect(test)
                       continue
                   error=str(getattr(test,'_exception',''))
-                  missing_external=(test.id()=='unittest.loader._FailedTest.test_release_transaction'
+                  missing_external=(test.id().endswith('.test_release_transaction')
                                     and 'FileNotFoundError' in error and 'manage_release.py' in error)
                   if missing_external:
                       external.append({'test':test.id(),'reason':'Required companion manage_release.py is outside this repository and absent on this runner.'})
@@ -99,6 +117,7 @@ jobs:
           python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
           python -B tools/build_rxr_reviewed.py --check
       - name: Record actual validation and inherited label audit
+        if: env.R2R_MANAGED != 'true'
         run: |
           python -B - <<'PY'
           import json, os, re, subprocess
@@ -134,6 +153,7 @@ jobs:
           python -B tools/refresh_rxr_integrity.py
           python -B tools/verify_package.py
       - name: Commit the complete tested artifact set before pushing
+        if: env.R2R_MANAGED != 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -153,3 +173,10 @@ jobs:
           remote=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
           test "$remote" = "$(git rev-parse HEAD)"
           git rev-parse HEAD
+      - name: Prove read-only RxR verification on the R2R-managed tree
+        if: env.R2R_MANAGED == 'true'
+        run: |
+          set -euo pipefail
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+          python -B tools/verify_package.py
