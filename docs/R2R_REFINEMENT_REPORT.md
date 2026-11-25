@@ -76,17 +76,17 @@ P0保留完整角色定位。Reviewer独立来源清单与候选对齐分开；G
 ## 可重复执行
 
 ```sh
-python -B -m r2r_authoring.integrate
-python -B -m r2r_authoring.build --check
-python -B -m r2r_authoring.test_expectations
+python -B -m tools.r2r_authoring.integrate
+python -B -m tools.r2r_authoring.build --check
+python -B -m tools.r2r_authoring.test_expectations
 python -B -m host.compile
-python -B -m r2r_authoring.verify --isolation
-python -B -m r2r_authoring.audit
-python -B -m r2r_authoring.verify --refresh
+python -B -m tools.r2r_authoring.verify --isolation
+python -B -m tools.r2r_authoring.audit
+python -B -m tools.r2r_authoring.verify --refresh
 python -B tools/verify_package.py
-python -B -m r2r_authoring.regression
-python -B -m r2r_authoring.smoke
-python -B -m r2r_authoring.verify --refresh
+python -B -m tools.r2r_authoring.regression
+python -B -m tools.r2r_authoring.smoke
+python -B -m tools.r2r_authoring.verify --refresh
 python -B tools/verify_package.py
 ```
 

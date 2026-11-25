@@ -70,7 +70,7 @@ class RxRPromptSnapshotTests(unittest.TestCase):
     def test_common_contract_and_compiler_match_the_reviewed_measurement(self):
         # Prompt/schema golden expectations remain unchanged. Shared source
         # may differ only by the reviewed, exact R2R integration delta.
-        from r2r_authoring.integrate import expected as integration, base
+        from tools.r2r_authoring.integrate import expected as integration, base
         protected=(
             'shared/semantic_contract.md','generator/prompt.md','reviewer/prompt.md',
             'generator/repair.md','generator/output.schema.json','generator/repair.schema.json',

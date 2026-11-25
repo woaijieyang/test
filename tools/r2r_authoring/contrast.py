@@ -4,8 +4,8 @@ These examples teach branching and route-history semantics, NOT measured
 navigation performance. Source text is immutable under the addition manifest.
 """
 from copy import deepcopy
-from r2r_authoring.positive import field
-from r2r_authoring.review import levels, make_finding, AXES
+from tools.r2r_authoring.positive import field
+from tools.r2r_authoring.review import levels, make_finding, AXES
 
 BRANCH='If the doorway on your left is open, enter it and stop just inside. Otherwise, go to the doorway on your right and stop in its threshold.'
 RETURN='Leave the doorway, walk around the table, then return to the same doorway and wait there.'

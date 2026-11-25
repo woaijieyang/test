@@ -602,42 +602,42 @@
     {
       "path": "generator/templates/R2R/authored/036_R2R-GEN-036.json",
       "template_id": "R2R-GEN-036",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
       "provenance": "authored_synthetic_not_official"
     },
     {
       "path": "generator/templates/R2R/authored/037_R2R-GEN-037.json",
       "template_id": "R2R-GEN-037",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
       "provenance": "authored_synthetic_not_official"
     },
     {
       "path": "reviewer/templates/R2R/authored/030_R2R-DIAG-30.json",
       "template_id": "R2R-DIAG-30",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "43b77f14d83dc7274e307fc9822cb16421e5ba693068f16f16092c20cb8400ea",
       "provenance": "authored_synthetic_not_official"
     },
     {
       "path": "reviewer/templates/R2R/authored/031_R2R-DIAG-31.json",
       "template_id": "R2R-DIAG-31",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "2885f254022dfe56deee59b3e7b8afd4b11636140ea52888ad61b9cf04472a64",
       "provenance": "authored_synthetic_not_official"
     },
     {
       "path": "reviewer/templates/R2R/authored/036_R2R-REV-036.json",
       "template_id": "R2R-REV-036",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
       "provenance": "authored_synthetic_not_official"
     },
     {
       "path": "reviewer/templates/R2R/authored/037_R2R-REV-037.json",
       "template_id": "R2R-REV-037",
-      "builder": "r2r_authoring.contrast",
+      "builder": "tools.r2r_authoring.contrast",
       "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
       "provenance": "authored_synthetic_not_official"
     }

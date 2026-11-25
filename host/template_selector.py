@@ -364,7 +364,7 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
     if profile == "r2r-en":
-        from r2r.selection import select_bundle
+        from host.r2r.selection import select_bundle
         return select_bundle(source_text, count=count)[role]
 
     gen = library("generator", profile)

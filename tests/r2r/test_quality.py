@@ -7,8 +7,8 @@ from host import protocol
 from host.compile import ROOT,compile_prompt,core_library,runtime_review_output
 from host.run import run_record
 from host.template_selector import library,select_examples
-from r2r.selection import select_bundle,signals,validate_selection,teaching_index
-from r2r.teaching import card
+from host.r2r.selection import select_bundle,signals,validate_selection,teaching_index
+from host.r2r.teaching import card
 EVALUATED='9dd24a655a845d59698e835c0326fbf73db5fbb8'
 
 def rows():
@@ -152,10 +152,10 @@ class Selection(unittest.TestCase):
         self.assertIn('entity_frame',signals(q));self.assertFalse({'KEEP','SPLIT'}&set(signals(q)))
     def test_index_tampering_fails_closed(self):
         index,h=teaching_index();bad=copy.deepcopy(index);bad['R2R-GEN-030']['content_sha256']='0'*64
-        with patch('r2r.selection.teaching_index',return_value=(bad,h)):
+        with patch('host.r2r.selection.teaching_index',return_value=(bad,h)):
             with self.assertRaises(ValueError):select_bundle('Go to the room left of the stairs.')
     def test_trace_candidate_order_has_no_set_iteration_dependence(self):
-        code="import json;from r2r.selection import select_bundle;print(json.dumps(select_bundle('Walk through the hall and enter the second door on the left, then wait.'),sort_keys=True))"
+        code="import json;from host.r2r.selection import select_bundle;print(json.dumps(select_bundle('Walk through the hall and enter the second door on the left, then wait.'),sort_keys=True))"
         import os,sys
         results=[subprocess.check_output([sys.executable,'-B','-c',code],cwd=ROOT,env=dict(os.environ,PYTHONHASHSEED=str(n))) for n in (0,1,42)]
         self.assertEqual(results[0],results[1]);self.assertEqual(results[0],results[2])

@@ -4,8 +4,8 @@ from unittest.mock import patch
 from host.compile import ROOT,compile_prompt,core_library
 from host.template_selector import library
 from host import protocol
-from r2r.selection import select_bundle,teaching_index,_choose
-from r2r.teaching import card,dynamic_is_detailed
+from host.r2r.selection import select_bundle,teaching_index,_choose
+from host.r2r.teaching import card,dynamic_is_detailed
 from shared.identity import canonical,text_hash
 EVIDENCE='9dd24a655a845d59698e835c0326fbf73db5fbb8'
 
@@ -88,7 +88,7 @@ class EvidencePreservation(unittest.TestCase):
             number=int(row['provenance']['core_curated_from'][-3:]) if '-CORE-' in tid else int(tid[-3:])
             if row['source']['split']=='authored_synthetic':
                 self.assertFalse(row['provenance']['is_official_dataset_record'])
-                from r2r_authoring.contrast import examples
+                from tools.r2r_authoring.contrast import examples
                 expected=next(v for v in examples().values() if v['template_id']==tid)
                 self.assertEqual(row,expected)
                 continue
@@ -137,7 +137,7 @@ class EvidencePreservation(unittest.TestCase):
                         for quote in audit[name]['candidate_quotes']:self.assertIn(quote,stage)
 
     def test_full_authoring_deterministically_checks_without_writing(self):
-        from r2r_authoring.build import materialize
+        from tools.r2r_authoring.build import materialize
         outputs=materialize()
         for rel,content in outputs.items():self.assertEqual((ROOT/rel).read_bytes(),content,rel)
 
@@ -171,7 +171,7 @@ class ComplementaryRanking(unittest.TestCase):
         def row(tid,skills):return {'template_id':tid,'input':{'original_instruction':tid},'skills':skills}
         rows=[row('a',['entry','terminal']),row('b',['entry','terminal']),row('c',['ordinal']),row('d',['frame']),row('e',['entry'])]
         index={r['template_id']:{'status':'dynamic','skills':r['skills'],'content_sha256':r['template_id']} for r in rows}
-        with patch('r2r.selection._verify'),patch('r2r.selection.signals',return_value={k:[] for k in ('entry','terminal','ordinal','frame')}):
+        with patch('host.r2r.selection._verify'),patch('host.r2r.selection.signals',return_value={k:[] for k in ('entry','terminal','ordinal','frame')}):
             chosen,trace=_choose(rows,'query',index,[],4,6)
         ids=[r['template_id'] for r in chosen]
         self.assertEqual(set(ids[:3]),{'a','c','d'})

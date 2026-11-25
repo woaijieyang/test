@@ -346,7 +346,7 @@ class R2RCoreTests(unittest.TestCase):
 
     def test_generator_core_cards_expose_primary_boundary_and_case_rationale(self):
         from host.compile import teaching_card
-        from r2r.selection import teaching_index
+        from host.r2r.selection import teaching_index
         index,_=teaching_index()
         for row in core_library("generator","r2r-en"):
             card=teaching_card(row,"generator",detailed=True)

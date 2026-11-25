@@ -5,14 +5,14 @@ precommitted through the repository connection; this publishes tested assets.
 """
 from pathlib import Path
 import json,os,shutil,subprocess,sys,tempfile
-ROOT=Path(__file__).resolve().parents[1]
+ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EXACT={
  'README.md','FILE_HASHES.json','host/compile.py','host/template_selector.py','host/run.py',
  'generator/templates_manifest.json','reviewer/templates_manifest.json',
  'generator/compiled_r2r-en.txt','generator/compiled_repair_r2r-en.txt','reviewer/compiled_r2r-en.txt',
  'generator/templates/INDEX.md','reviewer/templates/INDEX.md','provenance/build_manifest.json',
- 'shared/dataset_rules/r2r_en.md','r2r/teaching_index.json',
+ 'shared/dataset_rules/r2r_en.md','host/r2r/teaching_index.json',
  'generator/dataset_rules/r2r_en.md','reviewer/dataset_rules/r2r_en.md',
  '.github/workflows/r2r-development.yml','.github/workflows/rxr-development.yml',
  'tests/test_r2r_core.py','tests/test_r2r_specialization.py','tests/test_paired_selection.py',
@@ -21,8 +21,8 @@ EXACT={
  'tests/test_example_injection.py','tests/test_rxr_prompt_snapshots.py',
  'tests/test_final_best_contract.py',
 }
-EXACT.update({'CODEX_START_HERE.md','IMPLEMENTATION.md','WORKFLOW.md','CHANGELOG.md','verify_package.py','validation.json','shared/dataset_rules/r2r_teaching_index.json','docs/CODEX_START_HERE.md','docs/IMPLEMENTATION.md','docs/WORKFLOW.md','docs/CHANGELOG.md','tools/verify_package.py','provenance/package_validation.json','provenance/layout_migration.json','provenance/README.md','docs/EXPERIMENT_PLAN.md','docs/V1_V5_V6_RULE_COMPARISON.md','.github/workflows/validate.yml'})
-PREFIX=('r2r/','r2r_authoring/','generator/templates/R2R/','reviewer/templates/R2R/','docs/R2R_','provenance/r2r_')
+EXACT.update({'tests/__init__.py','CODEX_START_HERE.md','IMPLEMENTATION.md','WORKFLOW.md','CHANGELOG.md','verify_package.py','validation.json','shared/dataset_rules/r2r_teaching_index.json','docs/CODEX_START_HERE.md','docs/IMPLEMENTATION.md','docs/WORKFLOW.md','docs/CHANGELOG.md','tools/verify_package.py','provenance/package_validation.json','provenance/layout_migration.json','provenance/README.md','docs/EXPERIMENT_PLAN.md','docs/V1_V5_V6_RULE_COMPARISON.md','.github/workflows/validate.yml'})
+PREFIX=('r2r/','r2r_authoring/','host/r2r/','tests/r2r/','tools/r2r_authoring/','generator/templates/R2R/','reviewer/templates/R2R/','docs/R2R_','provenance/r2r_')
 
 def out(*args,cwd=ROOT):return subprocess.check_output(args,cwd=cwd,text=True).strip()
 def call(*args,cwd=ROOT):subprocess.run(args,cwd=cwd,check=True)
@@ -63,13 +63,13 @@ def main():
     clean=temporary_root/'checkout'/'repository';clean.parent.mkdir(parents=True)
     call('git','worktree','add','--detach',str(clean),final)
     try:
-        for module in ('r2r_authoring.integrate','r2r_authoring.test_expectations'):
+        for module in ('tools.r2r_authoring.integrate','tools.r2r_authoring.test_expectations'):
             call(sys.executable,'-B','-m',module,cwd=clean)
-        call(sys.executable,'-B','-m','r2r_authoring.build','--check',cwd=clean)
+        call(sys.executable,'-B','-m','tools.r2r_authoring.build','--check',cwd=clean)
         call(sys.executable,'-B','tools/verify_package.py',cwd=clean)
         call(sys.executable,'-B','-m','host.compile',cwd=clean)
         call('git','diff','--exit-code',cwd=clean)
-        call(sys.executable,'-B','-m','r2r_authoring.regression',cwd=clean)
+        call(sys.executable,'-B','-m','tools.r2r_authoring.regression',cwd=clean)
         call('git','diff','--exit-code',cwd=clean)
         call(sys.executable,'-B','tools/verify_package.py',cwd=clean)
     finally:

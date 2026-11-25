@@ -205,7 +205,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             self.assertEqual(actual_ids, expected_ids)
 
     def test_r2r_selector_matches_declared_selection_contract(self):
-        from r2r.selection import select_bundle
+        from host.r2r.selection import select_bundle
         from host.template_selector import library, select_examples
         bundle = select_bundle(SOURCE)
         generator_ids = select_examples("generator", "r2r-en", SOURCE)

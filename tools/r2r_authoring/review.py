@@ -4,7 +4,7 @@ These functions operate offline on fixed authored cases. They are not semantic
 validators for live model output and never infer correctness from word presence.
 """
 from copy import deepcopy
-from r2r_authoring.positive import field,evidence
+from tools.r2r_authoring.positive import field,evidence
 LAYERS=('L0_integrity','L1_source_coverage','L2_dependencies','L3_stage_checks','L4_handoffs','L5_grouping','L6_route_readback')
 AXES=('source_fidelity','closure_handoff','segmentation_adequacy')
 

@@ -5,9 +5,9 @@ shared source-byte check admits only the explicit reviewed integration delta.
 """
 from pathlib import Path
 import argparse,json,re,subprocess
-from r2r_authoring.runtime_layout import extend_tests
-from r2r_authoring.projection_expectations import apply as projection
-ROOT=Path(__file__).resolve().parents[1]
+from tools.r2r_authoring.runtime_layout import extend_tests
+from tools.r2r_authoring.projection_expectations import apply as projection
+ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 FILES=('test_r2r_core.py','test_r2r_specialization.py','test_paired_selection.py','test_closed_loop_35.py','test_roles_repair.py','test_workflow_integration.py','test_host_dispatch_profiles.py','test_rxr_profile.py','test_entry_diagnostics.py','test_example_injection.py','test_rxr_prompt_snapshots.py')
 REPLACEMENTS=(
@@ -28,7 +28,7 @@ REPLACEMENTS=(
  ('self.assertIn("## Required decision sequence", generator)','self.assertIn("## G-P0", generator)'),
  ('self.assertIn("## Independent review sequence", reviewer)','self.assertIn("## R-P0", reviewer)'),
  ('self.assertIn("R2R-specific", (ROOT / "shared/dataset_rules/r2r_en.md")','self.assertIn("S-ROLE", (ROOT / "shared/dataset_rules/r2r_en.md")'),
- ("patch('host.run.select_examples',side_effect=ValueError('offline selection failure'))","patch('r2r.selection.select_bundle',side_effect=ValueError('offline selection failure'))"),
+ ("patch('host.run.select_examples',side_effect=ValueError('offline selection failure'))","patch('host.r2r.selection.select_bundle',side_effect=ValueError('offline selection failure'))"),
 )
 
 def main():
@@ -39,7 +39,7 @@ def main():
             if a in new:new=new.replace(a,b);changes.append(a)
         if name=='test_host_dispatch_profiles.py':
             body='''    def test_r2r_selector_matches_declared_selection_contract(self):
-        from r2r.selection import select_bundle
+        from host.r2r.selection import select_bundle
         from host.template_selector import library, select_examples
         bundle = select_bundle(SOURCE)
         generator_ids = select_examples("generator", "r2r-en", SOURCE)
@@ -59,6 +59,9 @@ def main():
         if revised!=new:changes.append('Validate the exact new teaching representation and evidence; keep RxR expected prompt/schema hashes unchanged.')
         previous=revised
         new=extend_tests(name,revised)
+        new=new.replace('from r2r.', 'from host.r2r.').replace("patch('r2r.", "patch('host.r2r.")
+        new=new.replace('from r2r_authoring.', 'from tools.r2r_authoring.')
+        previous=subprocess.check_output(['git','show','d4cce47841c817083217a7fffa3a1e6235316491:'+rel],cwd=ROOT).decode()
         if new==old:continue
         path=ROOT/rel;actual=path.read_text()
         # read_text normalizes CRLF; compare normalized text only for this

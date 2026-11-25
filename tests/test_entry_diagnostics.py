@@ -167,7 +167,7 @@ class EntryDiagnostics(unittest.TestCase):
         out=run_record(src,replay([],sink),pins={})
         self.assertEqual(out['diagnostic']['step'],'configuration_validation')
         self.assertEqual(sink,[])
-        with patch('r2r.selection.select_bundle',side_effect=ValueError('offline selection failure')):
+        with patch('host.r2r.selection.select_bundle',side_effect=ValueError('offline selection failure')):
             out=run_record(src,replay([],sink),pins=PINS)
         self.assertEqual(out['diagnostic']['step'],'example_selection')
         self.assertEqual(sink,[])

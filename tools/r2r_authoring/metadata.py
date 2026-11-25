@@ -85,7 +85,7 @@ def metadata(row, skills):
     # Match source relations, not hypothetical errors in a future candidate.
     if 'grouping' in skills:retrieval.update({'coupled','transit','entry','endpoint'})
     if 'lost_action' in skills:retrieval.update({'direction','entry'} if tid.endswith('05') else {'return'} if tid=='R2R-DIAG-31' else {'transit','entry','attribute'})
-    from r2r.relations import route_family
+    from host.r2r.relations import route_family
     src=row['source'];family=route_family(src,src.get('split'))
     return dict(rule_ids=rules,retrieval_skills=sorted(retrieval),facets=facets,
                 teaching_polarity=polarity,route_family=family,

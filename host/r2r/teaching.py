@@ -5,7 +5,7 @@ lessons keep concrete evidence and never imitate an incompatible old schema.
 This module is not used by RxR.
 """
 from copy import deepcopy
-from r2r.selection import teaching_index, _verify
+from host.r2r.selection import teaching_index, _verify
 
 
 def dynamic_is_detailed(role, selected_ids, position):

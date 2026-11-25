@@ -5,9 +5,9 @@ exact expected result. Unrecognized concurrent runtime changes are refused.
 """
 from pathlib import Path
 import argparse,json,subprocess
-ROOT=Path(__file__).resolve().parents[1]
+ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
-PREVIOUS='a1139e1eb2897e8bbaf2a4fbf6eb2e77b00295e8'
+PREVIOUS='d4cce47841c817083217a7fffa3a1e6235316491'
 
 def base(path):return subprocess.check_output(['git','show',PARENT+':'+path],cwd=ROOT).decode()
 def replace(text,old,new):
@@ -17,12 +17,12 @@ def replace(text,old,new):
 def expected():
     out={}
     p='host/compile.py';s=base(p)
-    s=replace(s,'    notes = example["teaching_notes"]\n','    if example.get("dataset_scope") == "R2R":\n        from r2r.teaching import card\n        return card(example, role, detailed)\n    notes = example["teaching_notes"]\n')
+    s=replace(s,'    notes = example["teaching_notes"]\n','    if example.get("dataset_scope") == "R2R":\n        from host.r2r.teaching import card\n        return card(example, role, detailed)\n    notes = example["teaching_notes"]\n')
     anchor="        if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')"
-    s=replace(s,anchor,anchor+"\n        if profile == 'r2r-en':\n            from r2r.selection import validate_selection\n            validate_selection(role, chosen, selection_mode)")
+    s=replace(s,anchor,anchor+"\n        if profile == 'r2r-en':\n            from host.r2r.selection import validate_selection\n            validate_selection(role, chosen, selection_mode)")
     old='            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))'
     new='''            if profile == 'r2r-en':
-                from r2r.teaching import dynamic_is_detailed
+                from host.r2r.teaching import dynamic_is_detailed
                 detailed = dynamic_is_detailed(role, chosen, position)
             else:
                 detailed = (position == 0)
@@ -33,7 +33,7 @@ def expected():
     s=replace(s,"('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,","('R2R', 'generator'): 25, ('R2R', 'reviewer'): 55,")
     s=replace(s,"expected_diagnostics = 23 if dataset == 'R2R' else 37","expected_diagnostics = 26 if dataset == 'R2R' else 37")
     anchor='    if mode != "adaptive":\n        raise ValueError("Unknown example selection mode")\n'
-    s=replace(s,anchor,anchor+'    if profile == "r2r-en":\n        from r2r.selection import select_bundle\n        return select_bundle(source_text, count=count)[role]\n')
+    s=replace(s,anchor,anchor+'    if profile == "r2r-en":\n        from host.r2r.selection import select_bundle\n        return select_bundle(source_text, count=count)[role]\n')
     s=s.replace('R2R 6-8; RxR 2-4','R2R 4-6; RxR 2-4')
     out[p]=s
     p='host/run.py';s=base(p)
@@ -45,8 +45,8 @@ def expected():
             root/role/"dataset_rules/r2r_en.md",
         ])'''
     s=replace(s,anchor,anchor+'''
-        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py", root/"r2r/relations.py",
-                      root/"r2r/teaching_index.json",
+        paths.extend([root/"host/r2r/selection.py", root/"host/r2r/teaching.py", root/"host/r2r/relations.py",
+                      root/"host/r2r/teaching_index.json",
                       root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])''')
     old='''        selections = {
             role: select_examples(role, src.profile, src.raw,
@@ -56,8 +56,8 @@ def expected():
         retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
                               for role, ids in selections.items()}'''
     new='''        if src.profile == "r2r-en" and selection_mode == "adaptive":
-            from r2r.selection import select_bundle
-            from r2r.relations import route_family
+            from host.r2r.selection import select_bundle
+            from host.r2r.relations import route_family
             plan = select_bundle(src.raw, count=example_count, source_family=route_family(src.provenance, src.split))
             selections = {role: plan[role] for role in ("generator", "reviewer")}
             retrieval_evidence = plan["evidence"]
@@ -86,7 +86,7 @@ def expected():
     s=s.replace("      - '.github/workflows/rxr-development.yml'\n", '')
     out[p]=s
     # README and documentation are human-maintained, never reconstructed from history.
-    from r2r_authoring.runtime_layout import extend
+    from tools.r2r_authoring.runtime_layout import extend
     return extend(out)
 
 def main():

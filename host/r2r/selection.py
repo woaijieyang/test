@@ -2,8 +2,8 @@
 from pathlib import Path
 from functools import lru_cache
 import hashlib,json,re,math
-from r2r.relations import facet_signals, FACET_PATTERNS
-ROOT=Path(__file__).resolve().parents[1]
+from host.r2r.relations import facet_signals, FACET_PATTERNS
+ROOT=Path(__file__).resolve().parents[2]
 PATTERNS={
  'entity_frame':[r'\b(?:left|right) of (?:the |a )?[^,.!?;]{1,50}'],
  'frame':[r'\b(?:on your (?:left|right)|with[^,.!?]{0,50}on your|between[^,.!?]{0,70}and|facing)\b'],
@@ -51,7 +51,7 @@ def _index_blob(blob):
     return index
 
 def teaching_index():
-    blob=(ROOT/'r2r/teaching_index.json').read_bytes()
+    blob=(ROOT/'host/r2r/teaching_index.json').read_bytes()
     return _index_blob(blob),digest(blob)
 
 def signals(text):
@@ -175,7 +175,7 @@ def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=(),prior=(),
 
 
 def _projection_receipts(role,ids,bank):
-    from r2r.teaching import card,dynamic_is_detailed
+    from host.r2r.teaching import card,dynamic_is_detailed
     from shared.identity import canonical
     out=[]
     for position,tid in enumerate(ids):

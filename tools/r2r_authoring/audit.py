@@ -13,12 +13,12 @@ import json
 from pathlib import Path
 from host.compile import compile_prompt, teaching_card
 from host.template_selector import library
-from r2r.relations import route_family
-from r2r.selection import core_rows, normalized, select_bundle, teaching_index
-from r2r.teaching import card, dynamic_is_detailed
+from host.r2r.relations import route_family
+from host.r2r.selection import core_rows, normalized, select_bundle, teaching_index
+from host.r2r.teaching import card, dynamic_is_detailed
 from shared.identity import canonical, text_hash
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def source_records(path: Path | None) -> tuple[list[dict], dict]:

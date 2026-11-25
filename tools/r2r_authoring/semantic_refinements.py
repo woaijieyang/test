@@ -4,7 +4,7 @@ These repairs leave every source and every approved candidate unchanged. They
 correct evidence and explanations; they do not certify model or navigation quality.
 """
 from copy import deepcopy
-from r2r_authoring.positive import field
+from tools.r2r_authoring.positive import field
 
 
 def ending_text(kind, target, scope):

@@ -203,7 +203,7 @@ def runtime_review_output(example):
 def teaching_card(example, role, detailed):
     """Show the authored decision and its textual evidence in a compact demonstration."""
     if example.get("dataset_scope") == "R2R":
-        from r2r.teaching import card
+        from host.r2r.teaching import card
         return card(example, role, detailed)
     notes = example["teaching_notes"]
     if role == "generator":
@@ -314,7 +314,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         byid={r['template_id']:r for r in rows}
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
         if profile == 'r2r-en':
-            from r2r.selection import validate_selection
+            from host.r2r.selection import validate_selection
             validate_selection(role, chosen, selection_mode)
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
@@ -329,7 +329,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         for position, eid in enumerate(chosen):
             example = byid[eid]
             if profile == 'r2r-en':
-                from r2r.teaching import dynamic_is_detailed
+                from host.r2r.teaching import dynamic_is_detailed
                 detailed = dynamic_is_detailed(role, chosen, position)
             else:
                 detailed = (position == 0)

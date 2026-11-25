@@ -5,7 +5,7 @@ parent, not the older evaluated R2R branch. No LLM or navigation claim is made.
 """
 from pathlib import Path
 import argparse,hashlib,json,os,subprocess,sys,tempfile
-ROOT=Path(__file__).resolve().parents[1]
+ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EVALUATED='9dd24a655a845d59698e835c0326fbf73db5fbb8'
 CAPTURE=r'''
@@ -21,7 +21,7 @@ for q in dict.fromkeys(queries):
  for role,phases in [('generator',['initial','repair']),('reviewer',['review','recheck'])]:
   before=select_examples(role,'rxr-en-us',q)
   if os.environ.get('MIXED_PROFILE_CHECK'):
-   from r2r.selection import select_bundle
+   from host.r2r.selection import select_bundle
    select_bundle('Enter the hallway and stop near the first door to the left of the stairs.')
   ids=select_examples(role,'rxr-en-us',q)
   assert ids==before
@@ -44,9 +44,9 @@ def encode(x):return (json.dumps(x,ensure_ascii=False,indent=2)+'\n').encode()
 
 def refresh():
     p=ROOT/'provenance/r2r_profile_integrity.json';m=json.loads(p.read_bytes());names={r['path'] for r in m['files']}
-    for prefix in ('r2r','r2r_authoring','generator/templates/R2R','reviewer/templates/R2R'):
+    for prefix in ('host/r2r','tools/r2r_authoring','tests/r2r','generator/templates/R2R','reviewer/templates/R2R'):
         names.update(x.relative_to(ROOT).as_posix() for x in (ROOT/prefix).rglob('*') if x.is_file() and '__pycache__' not in x.parts and x.suffix!='.pyc')
-    names.update(['r2r/teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
+    names.update(['host/r2r/teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
     m['files']=[dict(path=n,git_blob_sha1=blob(ROOT/n)) for n in sorted(names) if (ROOT/n).is_file()];m['file_count']=len(m['files']);p.write_bytes(encode(m))
     p=ROOT/'FILE_HASHES.json';old=json.loads(p.read_bytes());files={x.relative_to(ROOT).as_posix():x for x in ROOT.rglob('*') if x.is_file() and '.git' not in x.parts and '__pycache__' not in x.parts and x.suffix!='.pyc' and x.relative_to(ROOT).as_posix()!='FILE_HASHES.json'}
     out={}

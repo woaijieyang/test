@@ -9,11 +9,11 @@ from unittest.mock import patch
 from host.compile import ROOT, core_library, compile_prompt
 from host.template_selector import library
 from host import protocol
-from r2r.selection import _choose, select_bundle, teaching_index
-from r2r.relations import route_family
-from r2r.teaching import card
-from r2r_authoring.contrast import examples
-from r2r_authoring.detail import author_paired
+from host.r2r.selection import _choose, select_bundle, teaching_index
+from host.r2r.relations import route_family
+from host.r2r.teaching import card
+from tools.r2r_authoring.contrast import examples
+from tools.r2r_authoring.detail import author_paired
 
 
 def bank():
@@ -102,7 +102,7 @@ class RelationSelection(unittest.TestCase):
         return dict(template_id=tid,input=dict(original_instruction=tid)),dict(status='dynamic',skills=['entry'],retrieval_skills=['entry'],facets=[facet],teaching_polarity=polarity,content_sha256=tid,route_family=family)
 
     def choose(self,rows,index,core=(),prior=(),minimum=4,maximum=6,source_family=None):
-        with patch('r2r.selection._verify'),patch('r2r.selection.signals',return_value={'entry':[]}),patch('r2r.selection.facet_signals',return_value={str(i):[] for i in range(8)}):
+        with patch('host.r2r.selection._verify'),patch('host.r2r.selection.signals',return_value={'entry':[]}),patch('host.r2r.selection.facet_signals',return_value={str(i):[] for i in range(8)}):
             return _choose(rows,'query',index,core,minimum,maximum,prior=prior,source_family=source_family)
 
     def test_optional_slots_use_new_facets_even_when_core_has_same_skill(self):
@@ -157,7 +157,7 @@ class RelationSelection(unittest.TestCase):
         from host.run import prompt_components_metadata
         # The profile freeze must include all runtime retrieval code, not only IDs.
         data=prompt_components_metadata('generator','initial','r2r-en')
-        self.assertIn('r2r/relations.py',[r['path'] for r in data['files']])
+        self.assertIn('host/r2r/relations.py',[r['path'] for r in data['files']])
 
     def test_current_core_overlap_is_reported_without_silent_core_removal(self):
         r=core_library('generator','r2r-en')[0];b=select_bundle(r['input']['original_instruction'])
@@ -172,7 +172,7 @@ class LayoutAndInventory(unittest.TestCase):
         for old,new in moves.items():
             self.assertFalse((ROOT/old).exists(),old);self.assertTrue((ROOT/new).is_file(),new)
         self.assertTrue((ROOT/'FILE_HASHES.json').is_file())
-        from r2r_authoring.integrate import expected
+        from tools.r2r_authoring.integrate import expected
         workflow=expected()['.github/workflows/rxr-development.yml']
         self.assertEqual(workflow,(ROOT/'.github/workflows/rxr-development.yml').read_text())
         self.assertNotIn("      - '.github/workflows/rxr-development.yml'",workflow)
@@ -180,7 +180,7 @@ class LayoutAndInventory(unittest.TestCase):
 
         # A clean build and an incrementally refreshed tree must serialize the
         # same global integrity manifest, regardless of insertion history.
-        from r2r_authoring import verify
+        from tools.r2r_authoring import verify
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);(root/'provenance').mkdir()
             (root/'provenance/r2r_profile_integrity.json').write_text('{"files": []}')
@@ -196,7 +196,7 @@ class LayoutAndInventory(unittest.TestCase):
                 self.assertEqual(expected_bytes,manifest.read_bytes())
 
     def test_author_inventory_has_explicit_synthetic_sources(self):
-        inv=json.loads((ROOT/'r2r_authoring/source_inventory.json').read_bytes())
+        inv=json.loads((ROOT/'tools/r2r_authoring/source_inventory.json').read_bytes())
         self.assertEqual(len(inv['historical']),119);self.assertEqual(len(inv['additions']),6)
         authored=examples()
         for item in inv['additions']:
@@ -204,9 +204,9 @@ class LayoutAndInventory(unittest.TestCase):
             self.assertEqual(item['source_sha256'],hashlib.sha256(source.encode()).hexdigest())
 
     def test_authoring_rejects_unregistered_source_changes(self):
-        from r2r_authoring.build import materialize
+        from tools.r2r_authoring.build import materialize
         data=examples();next(iter(data.values()))['input']['original_instruction']='Unregistered changed source.'
-        with patch('r2r_authoring.contrast.examples',return_value=data):
+        with patch('tools.r2r_authoring.contrast.examples',return_value=data):
             with self.assertRaisesRegex(ValueError,'source drift'):materialize()
 
     def test_rules_keep_existing_hierarchy_size(self):

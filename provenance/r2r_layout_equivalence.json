@@ -1,0 +1,10 @@
+{
+  "base_commit": "d4cce47841c817083217a7fffa3a1e6235316491",
+  "queries": 37,
+  "phase_requests": 148,
+  "selected_ids_equal": true,
+  "projection_bytes_equal": true,
+  "prompt_schema_equal": true,
+  "internal_path_hashes_expected_to_change": true,
+  "navigation_evaluated": false
+}

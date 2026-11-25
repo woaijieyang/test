@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 180,
+  "file_count": 183,
   "files": [
     {
       "path": "adapter/README.md",
@@ -228,15 +228,35 @@
     },
     {
       "path": "host/compile.py",
-      "git_blob_sha1": "b447746949b1c494aa43aa0662a277a3403419e7"
+      "git_blob_sha1": "2bbc2c9bfb67dbb7dc1973aaa74314db26f07135"
+    },
+    {
+      "path": "host/r2r/__init__.py",
+      "git_blob_sha1": "a376df65c2e762ae1192cca9c16fd3ca611192d2"
+    },
+    {
+      "path": "host/r2r/relations.py",
+      "git_blob_sha1": "b650aaaa72f8f127c7148eb12535e10c747deb7c"
+    },
+    {
+      "path": "host/r2r/selection.py",
+      "git_blob_sha1": "8c049a0ac13753163d689b8f72f416f1e8b50951"
+    },
+    {
+      "path": "host/r2r/teaching.py",
+      "git_blob_sha1": "926aa9d6109718fe167af8fb311deed0a3a01e3e"
+    },
+    {
+      "path": "host/r2r/teaching_index.json",
+      "git_blob_sha1": "c2086927a2d26aab5c5496c7b767fec99c7b30f8"
     },
     {
       "path": "host/run.py",
-      "git_blob_sha1": "062f99eab23b9280e601eb281c587d1a819ab697"
+      "git_blob_sha1": "25c9ab702dd40b857b71e16c4985ebe97b52d07a"
     },
     {
       "path": "host/template_selector.py",
-      "git_blob_sha1": "4960fdaccca39cfa145099ae5941eb10e1623d4f"
+      "git_blob_sha1": "f98d2efbd433a15e81cbeb1c8ab27ed29c43b085"
     },
     {
       "path": "provenance/r2r_rule_links.json",
@@ -245,102 +265,6 @@
     {
       "path": "provenance/r2r_teaching_changes.json",
       "git_blob_sha1": "3d16fa8821a6340adf60910d0598aeaef06d7ba2"
-    },
-    {
-      "path": "r2r/relations.py",
-      "git_blob_sha1": "b650aaaa72f8f127c7148eb12535e10c747deb7c"
-    },
-    {
-      "path": "r2r/selection.py",
-      "git_blob_sha1": "a1e6d96c63071f865140bac16c09044ae44c9f5c"
-    },
-    {
-      "path": "r2r/teaching.py",
-      "git_blob_sha1": "d4ee4a7e03d60222bbbbb63f7117151739aeeb45"
-    },
-    {
-      "path": "r2r/teaching_index.json",
-      "git_blob_sha1": "c2086927a2d26aab5c5496c7b767fec99c7b30f8"
-    },
-    {
-      "path": "r2r/test_hardening.py",
-      "git_blob_sha1": "b3c5e01da0a2cbb307e4d0a62bab7b4a12079d8b"
-    },
-    {
-      "path": "r2r/test_quality.py",
-      "git_blob_sha1": "f9de1ab1f983cfa0f7e59cbbda07481bd95e15bf"
-    },
-    {
-      "path": "r2r/test_refinement.py",
-      "git_blob_sha1": "d992b2a7c1ac0135ea319ef640bfda63708ab8d0"
-    },
-    {
-      "path": "r2r_authoring/audit.py",
-      "git_blob_sha1": "847dfc8c0714114529242827dada662a67ab6156"
-    },
-    {
-      "path": "r2r_authoring/build.py",
-      "git_blob_sha1": "d01da5c747335505968df774d6fe78d00ae96d34"
-    },
-    {
-      "path": "r2r_authoring/contrast.py",
-      "git_blob_sha1": "038bb1d5c49e8f83b09269741276c3404cd353c3"
-    },
-    {
-      "path": "r2r_authoring/detail.py",
-      "git_blob_sha1": "5af6341f0c72d6b03d0ac9d21372ac7acbd3443b"
-    },
-    {
-      "path": "r2r_authoring/integrate.py",
-      "git_blob_sha1": "a5df1e82bbae208f21c7f3d2cf39b351dcc0679e"
-    },
-    {
-      "path": "r2r_authoring/metadata.py",
-      "git_blob_sha1": "b22e57362b3ea657f40fb046ea2c0de4114ddaac"
-    },
-    {
-      "path": "r2r_authoring/positive.py",
-      "git_blob_sha1": "edf3bb20f34e038d6cc7c7de7c41ad001bb9f4aa"
-    },
-    {
-      "path": "r2r_authoring/projection_expectations.py",
-      "git_blob_sha1": "8d85386683caf8d528921072567645602e24a258"
-    },
-    {
-      "path": "r2r_authoring/publish.py",
-      "git_blob_sha1": "3725380d85f48c6e025499fc14d0cfb4302717a0"
-    },
-    {
-      "path": "r2r_authoring/regression.py",
-      "git_blob_sha1": "2c1d6aab37a09cd13fae4f92d06dadec3aef5003"
-    },
-    {
-      "path": "r2r_authoring/review.py",
-      "git_blob_sha1": "093a425cdd86b40f438bff628e64d7262fb30e10"
-    },
-    {
-      "path": "r2r_authoring/runtime_layout.py",
-      "git_blob_sha1": "ffa970ae3c1b6f52a8e4fcc6f6e56bd08fdd07f8"
-    },
-    {
-      "path": "r2r_authoring/semantic_refinements.py",
-      "git_blob_sha1": "e9360a65864f006f2f42cabe35f35e450f3ba79f"
-    },
-    {
-      "path": "r2r_authoring/smoke.py",
-      "git_blob_sha1": "33e1a40c73cf45f481a693fc2a31c67b0d16c684"
-    },
-    {
-      "path": "r2r_authoring/source_inventory.json",
-      "git_blob_sha1": "7d0d0e3ed5d957aa5735844f362a98c884abd076"
-    },
-    {
-      "path": "r2r_authoring/test_expectations.py",
-      "git_blob_sha1": "2b8de49d937056dd134e703f20b0b732f0d36729"
-    },
-    {
-      "path": "r2r_authoring/verify.py",
-      "git_blob_sha1": "c872249e390bdb19e3899c75b759a47043d95157"
     },
     {
       "path": "renderer/README.md",
@@ -707,8 +631,24 @@
       "git_blob_sha1": "0305088481df396bfc1d19ee9e89a9c75986a453"
     },
     {
+      "path": "tests/r2r/__init__.py",
+      "git_blob_sha1": "7f73ba6ccccf1a83d367dea28757d18fc18236c1"
+    },
+    {
+      "path": "tests/r2r/test_hardening.py",
+      "git_blob_sha1": "bce29c7293d2d4cc1fd766474b8478b304508aa1"
+    },
+    {
+      "path": "tests/r2r/test_quality.py",
+      "git_blob_sha1": "306167093ad83504491d597f1499740067541361"
+    },
+    {
+      "path": "tests/r2r/test_refinement.py",
+      "git_blob_sha1": "30ca9dfd3e0bd8f2c062b482498265a83f2989be"
+    },
+    {
       "path": "tests/test_host_dispatch_profiles.py",
-      "git_blob_sha1": "8f80f8c3dfa3dfb8530223ec47b0f33fe5a7ffe0"
+      "git_blob_sha1": "b50357f917178266d7d9eada2070b9faa0125c69"
     },
     {
       "path": "tests/test_paired_selection.py",
@@ -716,11 +656,83 @@
     },
     {
       "path": "tests/test_r2r_core.py",
-      "git_blob_sha1": "e8691392c54a4c6bc7484a32312fdb1b885a0f81"
+      "git_blob_sha1": "0300ae80095dffe9786a0fb59ce5b435f4c86ed9"
     },
     {
       "path": "tests/test_r2r_specialization.py",
       "git_blob_sha1": "95daf18b8dcd6a5d418053cc2f636efd6f68dd28"
+    },
+    {
+      "path": "tools/r2r_authoring/__init__.py",
+      "git_blob_sha1": "388abaaa9be2d2834f8b6ee4a7f75a0f8b2e8066"
+    },
+    {
+      "path": "tools/r2r_authoring/audit.py",
+      "git_blob_sha1": "172806aa72d9b706c079cd701d62bfed5a9a90c3"
+    },
+    {
+      "path": "tools/r2r_authoring/build.py",
+      "git_blob_sha1": "7a84631741abd74436d6c4f5bd33a6664b09a264"
+    },
+    {
+      "path": "tools/r2r_authoring/contrast.py",
+      "git_blob_sha1": "d74bf30bf04876627d42b69ce66fec3226a8e9a0"
+    },
+    {
+      "path": "tools/r2r_authoring/detail.py",
+      "git_blob_sha1": "0dd02131f4d554f51a6978e5c23f1e885be952b3"
+    },
+    {
+      "path": "tools/r2r_authoring/integrate.py",
+      "git_blob_sha1": "56ec02a4c9296dd718bac73dda981e2e3945b803"
+    },
+    {
+      "path": "tools/r2r_authoring/metadata.py",
+      "git_blob_sha1": "057eb291e8ef41812e31136951b53e31bc3766b8"
+    },
+    {
+      "path": "tools/r2r_authoring/positive.py",
+      "git_blob_sha1": "edf3bb20f34e038d6cc7c7de7c41ad001bb9f4aa"
+    },
+    {
+      "path": "tools/r2r_authoring/projection_expectations.py",
+      "git_blob_sha1": "be0b92ab1555b9296c4c383242d43cf8a2b5982c"
+    },
+    {
+      "path": "tools/r2r_authoring/publish.py",
+      "git_blob_sha1": "483cbf2cc113c79814ba6a323fea6e21bc01bcde"
+    },
+    {
+      "path": "tools/r2r_authoring/regression.py",
+      "git_blob_sha1": "d916269a17d75ff5db22608140caec783cdfff74"
+    },
+    {
+      "path": "tools/r2r_authoring/review.py",
+      "git_blob_sha1": "5acb494a26439c02640deb9d46792f30f6e508b7"
+    },
+    {
+      "path": "tools/r2r_authoring/runtime_layout.py",
+      "git_blob_sha1": "ffa970ae3c1b6f52a8e4fcc6f6e56bd08fdd07f8"
+    },
+    {
+      "path": "tools/r2r_authoring/semantic_refinements.py",
+      "git_blob_sha1": "38e1efa8ddb802831f74e884a5ac6095a1dca8d2"
+    },
+    {
+      "path": "tools/r2r_authoring/smoke.py",
+      "git_blob_sha1": "05103324f848cc00187dbf26c380b67715f86846"
+    },
+    {
+      "path": "tools/r2r_authoring/source_inventory.json",
+      "git_blob_sha1": "8732d7d82dfe494c79acc8520dd176a71f39d0a2"
+    },
+    {
+      "path": "tools/r2r_authoring/test_expectations.py",
+      "git_blob_sha1": "8dffa84b0350c6c7539edbf798c21f1095788527"
+    },
+    {
+      "path": "tools/r2r_authoring/verify.py",
+      "git_blob_sha1": "82d87df4418cf4d137dfb8d964d772d76679debc"
     }
   ]
 }

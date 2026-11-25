@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib,json,subprocess
 from host.compile import ROOT,build
 from host.template_selector import library
-from r2r.selection import select_bundle
+from host.r2r.selection import select_bundle
 from evaluation.smoke24 import smoke
 from examples.demo import main as demo
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'

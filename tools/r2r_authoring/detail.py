@@ -4,8 +4,8 @@ Existing candidate and audit evidence is retained unless an explicit authored
 correction below applies. No runtime request invokes these functions.
 """
 from copy import deepcopy
-from r2r_authoring.semantic_refinements import ending_text
-from r2r_authoring.positive import LESSONS,CANDIDATES,ENDINGS,CONDITIONS,OWNERS,field,evidence
+from tools.r2r_authoring.semantic_refinements import ending_text
+from tools.r2r_authoring.positive import LESSONS,CANDIDATES,ENDINGS,CONDITIONS,OWNERS,field,evidence
 CANDIDATE_REPAIRS=frozenset({20,23,30,35})
 CONTEXT={
 1:['After the descent and right turn, retain the resulting heading for the rug/bench approach.'],

@@ -16,11 +16,11 @@ Common role prompts, semantic contract, Runtime Schemas, repair envelopes, Rende
 | `generator/dataset_rules/r2r_en.md` | Named Generator P0 identity, P1 full workflow/five elements, P2 scenario operations |
 | `reviewer/dataset_rules/r2r_en.md` | Independent review responsibility, L0-L6 workflow and scenario-specific evidence/repair |
 | `generator/templates/R2R`, `reviewer/templates/R2R` | Source-traceable authored examples, candidates and full audit evidence |
-| `r2r/selection.py` | Source-only complementary selection, strict pairing and true selection/projection trace |
-| `r2r/teaching.py` | Complete or focused teaching projection, never Runtime schema modification |
-| `r2r_authoring/detail.py` | Active offline field-local positive refinements from evaluated examples |
-| `r2r_authoring/review.py` | Explicit source-local corrections for Reviewer teaching |
-| `r2r_authoring/build.py` | Validate and materialize templates, teaching index and rule links |
+| `host/r2r/selection.py` | Source-only complementary selection, strict pairing and true selection/projection trace |
+| `host/r2r/teaching.py` | Complete or focused teaching projection, never Runtime schema modification |
+| `tools/r2r_authoring/detail.py` | Active offline field-local positive refinements from evaluated examples |
+| `tools/r2r_authoring/review.py` | Explicit source-local corrections for Reviewer teaching |
+| `tools/r2r_authoring/build.py` | Validate and materialize templates, teaching index and rule links |
 | `r2r/test_quality.py`, `r2r/test_refinement.py` | R2R contract, teaching, selection and full Host replay regression |
 | `provenance/r2r_*` | Actual integrity, source changes, isolation and test records |
 
@@ -59,18 +59,18 @@ Host freezes this plan and the rules/templates before G0. G0/G1 reuse the Genera
 Authoring needs the immutable Git evidence in a full-history checkout. Production requests use already committed assets and do not run authoring or Git transformations online.
 
 ```sh
-python -B -m r2r_authoring.integrate --write
-python -B -m r2r_authoring.build --write
-python -B -m r2r_authoring.build --check
-python -B -m r2r_authoring.test_expectations --write
+python -B -m tools.r2r_authoring.integrate --write
+python -B -m tools.r2r_authoring.build --write
+python -B -m tools.r2r_authoring.build --check
+python -B -m tools.r2r_authoring.test_expectations --write
 python -B -m host.compile
-python -B -m r2r_authoring.verify --isolation
-python -B -m r2r_authoring.verify --refresh
+python -B -m tools.r2r_authoring.verify --isolation
+python -B -m tools.r2r_authoring.verify --refresh
 python -B tools/verify_package.py
-python -B -m r2r_authoring.regression
-python -B -m r2r_authoring.smoke
-python -B -m r2r_authoring.audit
-python -B -m r2r_authoring.verify --refresh
+python -B -m tools.r2r_authoring.regression
+python -B -m tools.r2r_authoring.smoke
+python -B -m tools.r2r_authoring.audit
+python -B -m tools.r2r_authoring.verify --refresh
 python -B tools/verify_package.py
 ```
 
