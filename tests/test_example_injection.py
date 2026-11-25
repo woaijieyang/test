@@ -28,7 +28,8 @@ class InjectionTests(unittest.TestCase):
                     t=c['teaching']
                     is_fixed_core = c['template_id'] in {x['template_id'] for x in fixed}
                     is_first_dynamic = c['template_id'] == (ids[0] if ids else None)
-                    expects_detailed = is_fixed_core or is_first_dynamic
+                    expects_detailed = is_fixed_core or (
+                        c["template_id"] in ids[:2] if profile == "rxr-en-us" else is_first_dynamic)
                     if role=='generator':
                         self.assertEqual(t['stages'],e['output']['subtasks'])
                         self.assertEqual(t['handoffs'],e['output']['handoffs'])

@@ -189,7 +189,7 @@ class RxRProfileTests(unittest.TestCase):
             "reviewer/dataset_rules/r2r_en.md",
         ])
         self.assertEqual(rxr["version"], "rxr-en-us-profile")
-        self.assertEqual(len(rxr["files"]), 7)
+        self.assertEqual(len(rxr["files"]), 9)
         ids = select_examples("generator", "rxr-en-us", "Go to the kitchen.")
         bundle = template_bundle_metadata("generator", "rxr-en-us", ids)
         self.assertEqual(len(bundle["fixed_core_ids"]), 10)
@@ -199,7 +199,7 @@ class RxRProfileTests(unittest.TestCase):
     def test_rule_metadata_uses_real_section_separators(self):
         metadata = dataset_rules_metadata("rxr-en-us")
         self.assertEqual(metadata["version"], "rxr-en-us-profile")
-        self.assertEqual(len(metadata["files"]), 7)
+        self.assertEqual(len(metadata["files"]), 9)
         self.assertEqual(len(metadata["sha256"]), 64)
         from pathlib import Path
         root = ROOT

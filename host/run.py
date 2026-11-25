@@ -127,10 +127,11 @@ def template_bundle_metadata(role, profile, selected_ids):
         "sha256": text_hash(canonical(bundle)),
     }
 
-def request(role, phase, payload, pin, profile, selected_ids):
+def request(role, phase, payload, pin, profile, selected_ids, *, selection_mode="adaptive"):
     text, active_schema = compile_prompt(
         role, phase, profile=profile, selected_ids=selected_ids,
-        original_instruction=payload.get("original_instruction")
+        original_instruction=payload.get("original_instruction"),
+        selection_mode=selection_mode
     )
     rules = dataset_rules_metadata(profile)
     bundle = template_bundle_metadata(role, profile, selected_ids)
@@ -170,7 +171,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
 
     def call(role, phase, payload, candidate_digest=None):
         context.update(step="request_construction", role=role, phase=phase)
-        req = request(role, phase, payload, pins[role], src.profile, selections[role])
+        req = request(role, phase, payload, pins[role], src.profile, selections[role],
+                      selection_mode=selection_mode)
         need(req["template_bundle"] == template_bundles[role],
              "Selected template content changed during the task",
              code="TEMPLATE_BUNDLE_MUTATED", module="host.run", path="/template_bundle")

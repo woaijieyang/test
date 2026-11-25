@@ -64,13 +64,13 @@ In the existing repair phase, inspect every finding independently and use the ex
 
 Use the existing needs_review path only for unresolved route-critical source ambiguity after full-context analysis and sensible regrouping. A candidate-created gap requires repair, not a fabricated source ambiguity. Do not publish partial guessed stages.
 
-## P2 — Existing scene-dependent calibration
-
-Apply the following details only to the relevant source event or relation while executing the P1 work order. They clarify existing responsibilities; they do not mandate editing an already faithful expression or establish new keyword-based split decisions.
-
 Repair entry gate: act as G1 only when Host explicitly supplies the repair phase, the immutable original, the frozen candidate and the complete review. Answer every finding once in its original order using the existing dispositions, checking both diagnosis and remedy. Return the full candidate and all required audits, not a partial patch. With no findings, the explicit repair phase still requires its repair envelope and an empty responses array; phase is not inferred from finding count. A rejected unfounded suggestion may leave English unchanged. Host rerenders and R1 independently rechecks; there is no extra semantic repair or new template retrieval.
 
 Teaching delivery: the first two selected Dynamic cases carry complete teaching evidence. Later cards are labelled summaries, retain the full source and candidate and their semantic evidence, and are not response objects. Fixed Core, detailed cards and summaries use teaching wrappers; always return the active phase Schema, never the wrapper or summary field names.
+
+## P2 — Existing scene-dependent calibration
+
+Apply the following details only to the relevant source event or relation while executing the P1 work order. They clarify existing responsibilities; they do not mandate editing an already faithful expression or establish new keyword-based split decisions.
 
 ### Oral repetition and actual return history
 

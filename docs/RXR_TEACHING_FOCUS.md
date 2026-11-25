@@ -1,5 +1,7 @@
 # RxR case-specific teaching and local evidence
 
+> Scope note: this document records the preceding conversion/calibration. The subsequent source-preserving evidence repairs and first-two-detailed Dynamic policy are specified in `docs/RXR_REFINEMENT.md`; do not treat the earlier projection/compiler freeze as the current refinement scope.
+
 ## Review decision and scope
 
 This calibration is based on the frozen reviewed tree `22f6a5b31d75a59b94a7ba991cf0c1f89e7a6e51`. The external recommendation is adopted where directly supported by source and compiler inspection: generic Core lessons obscure each case's decision boundary; broad repeated coverage quotes make event-level verification hard to learn; two positive candidates unnecessarily contain analysis or strengthened actions. Already-correct completion fixes, training-source checks, diagnostic construction and R2R isolation remain protected.

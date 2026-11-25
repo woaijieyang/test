@@ -30,7 +30,13 @@ def check_protected():
     if set(files) != present:
         raise ValueError('RxR teaching inventory changed')
     changed_templates = []
+    legacy_count = 0
     for path in files:
+        if "/legacy/" in path:
+            if (ROOT / path).read_bytes() != git("show", BASE + ":" + path):
+                raise ValueError("Historical RxR provenance changed: " + path)
+            legacy_count += 1
+            continue
         old = json.loads(git('show', BASE + ':' + path))
         current = json.loads((ROOT / path).read_bytes())
         for key in ('template_id', 'role', 'dataset_scope', 'language', 'source', 'input',
@@ -45,7 +51,8 @@ def check_protected():
             changed_templates.append(current['template_id'])
     return dict(baseline_commit=BASE, protected_assets_equal=True,
                 rxr_sources_candidates_and_retrieval_fields_equal=True,
-                rxr_templates_checked=len(files), changed_template_ids=sorted(changed_templates))
+                rxr_templates_checked=len(files) - legacy_count,
+                legacy_templates_checked=legacy_count, changed_template_ids=sorted(changed_templates))
 
 
 if __name__ == '__main__':

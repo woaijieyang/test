@@ -1,5 +1,7 @@
 # RxR teaching repair and evidence contract
 
+> Scope note: this document records the preceding conversion/calibration. The subsequent source-preserving evidence repairs and first-two-detailed Dynamic policy are specified in `docs/RXR_REFINEMENT.md`; do not treat the earlier projection/compiler freeze as the current refinement scope.
+
 ## Scope
 
 The source anchor is commit `da277a0f9a6ee7d8eebb78dafa852e469cd1a50e`. Work is limited to RxR authoring, teaching data and dataset-specific guidance. Common semantics, runtime schemas, Adapter, Renderer, Host state machine and R2R model inputs remain protected. A structural test is not a natural-language entailment certificate or a navigation result.

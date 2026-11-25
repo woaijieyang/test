@@ -6,6 +6,8 @@
 
 ## 入口文档
 
+- `docs/RXR_REFINEMENT.md`：当前 RxR 角色操作、证据修复、前两条完整动态教学、摘要保真与隔离验证说明。
+
 - `WORKFLOW.md`：端到端数据流、阶段输入输出、状态和失败回退。
 - `provenance/R2R_CORE_INDEPENDENT_REVIEW.md`：R2R Fixed Core 双轮模型辅助语义审查及来源元数据修复记录。
 - `IMPLEMENTATION.md`：模块职责、关键设计约束和可维护性原则。
@@ -130,6 +132,11 @@ python -m evaluation.smoke24
 正式评测前按原始 split、instruction/episode/path ID、scene/scan ID 和原文哈希交叉核验。当前评测案例不注入 Runtime Few-shot。来源真实、引文存在与教学语义正确是不同验收条件，不能混用。数据定义参考 [R2R task data documentation](https://github.com/peteanderson80/Matterport3DSimulator/blob/master/tasks/R2R/README.md) 和 [RxR dataset repository](https://github.com/google-research-datasets/RxR)。
 
 ## 当前工程状态
+
+**当前增量修复。** 在已完成的角色层次转换上，补充 P2 的触发条件、父框架、局部操作与保护边界；修正 006/023/027、Core 06 及相关诊断的教学证据，不改原始指令、候选正文、边界、检索权重和选例数量。RxR 前两条动态案例完整加载，其余摘要保留完整 source/candidate、五要素、条件、Handoff 与 Finding/repair；仅去除重复过程叙述和部分重复层结论。
+
+新增运行职责位于 `host/rxr_teaching.py`、`host/rxr_contract.py`；离线修复规格位于 `tools/rxr_teaching_alignment.py`。公共合同、Schema、通用 Prompt 与 R2R 路径不改，Host/Compiler 仅增加 RxR 条件派发。当前证据及文件归属以 `docs/RXR_REFINEMENT.md` 为准；以下段落保留此前结构转换的范围说明，不应误读为本轮仍未修改 Compiler 或教学投影。
+
 
 当前分支以 `LLM-decompose-v6.6.3` 的固定提交 `081db4b9ea0712ff720c137fe96c240c26f7b15c` 为基础建立，原分支不变。本轮对照 `LLM-decompose-v1` 中标题为 v1.3 的实际两角色Prompt，完成RxR角色专属规则的P0/P1/P2转换，而非重新设计分割策略或浓缩旧规则。
 

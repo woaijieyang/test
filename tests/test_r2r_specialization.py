@@ -137,6 +137,8 @@ class R2RSpecializationTests(unittest.TestCase):
             "reviewer/dataset_rules/rxr_en_us.md",
             "host/rxr_retrieval.py",
             "host/rxr_assets.py",
+            "host/rxr_teaching.py",
+            "host/rxr_contract.py",
             "provenance/rxr_training_sources.json",
         ])
         self.assertNotIn("shared/dataset_rules/r2r_fragments.json", rxr["files"])

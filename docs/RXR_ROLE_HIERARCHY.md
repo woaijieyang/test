@@ -1,5 +1,7 @@
 # RxR role-local rule organization and conversion record
 
+> Scope note: this document records the preceding conversion/calibration. The subsequent source-preserving evidence repairs and first-two-detailed Dynamic policy are specified in `docs/RXR_REFINEMENT.md`; do not treat the earlier projection/compiler freeze as the current refinement scope.
+
 ## Scope and authorities
 
 This change reorganizes the existing RxR role guidance; it is not a new decomposition policy, a navigation result, or a new runtime interface. The source baseline is commit `081db4b9ea0712ff720c137fe96c240c26f7b15c`. The earlier role prompts inspected for capability continuity are pinned at `739c00f1eeeb9a96234a26d37445dea049d5ec58`. Commit identifiers are provenance, not labels to insert into model instructions.

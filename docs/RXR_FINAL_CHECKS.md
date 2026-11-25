@@ -1,5 +1,7 @@
 # RxR calibration release checks
 
+> Scope note: this document records the preceding conversion/calibration. The subsequent source-preserving evidence repairs and first-two-detailed Dynamic policy are specified in `docs/RXR_REFINEMENT.md`; do not treat the earlier projection/compiler freeze as the current refinement scope.
+
 ## What is being accepted
 
 The reviewed calibration keeps all twenty fixed Core sources and executable candidates, their order, runtime schemas, the shared contract and R2R messages. Ten case-specific lessons per role and thirty-three local Reviewer coverage rows replace generic teaching and whole-stage evidence. Source-preserving edits to positive 002/020 are propagated to their paired reviews and dependent diagnostics. No new templates, retrieval weights, quotas or semantic repair rounds are added.

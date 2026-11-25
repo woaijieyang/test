@@ -9,7 +9,7 @@ from host import protocol, rxr_contract
 from host.compile import compile_prompt, core_library, runtime_review_output, teaching_card
 from host.template_selector import library, select_examples
 from host.rxr_teaching import dynamic_is_detailed, validate_selection, validate_pair_bundle
-from shared.identity import canonical
+from shared.identity import canonical, ContractError
 from tools.check_rxr_refinement import check_protected
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -152,9 +152,9 @@ class RxRRefinementTests(unittest.TestCase):
         candidate['handoffs'][-1] = copy.deepcopy(candidate['handoffs'][0])
         source = row['input']['original_instruction']
         protocol.generator(source, candidate)  # Shared/R2R contract remains unchanged.
-        with self.assertRaises(Exception):
+        with self.assertRaises(ContractError):
             rxr_contract.generator(source, candidate)
-        with self.assertRaises(Exception):
+        with self.assertRaises(ContractError):
             rxr_contract.feedback(source, {'findings': []}, {'candidate': candidate, 'responses': []})
 
     def test_missing_target_is_rejected_without_inventing_object_targets(self):
@@ -163,7 +163,7 @@ class RxRRefinementTests(unittest.TestCase):
         candidate['stage_audit'][0]['target'] = {'text': None, 'candidate_quotes': []}
         source = row['input']['original_instruction']
         protocol.generator(source, candidate)
-        with self.assertRaises(Exception):
+        with self.assertRaises(ContractError):
             rxr_contract.generator(source, candidate)
         rxr_contract.generator(source, row['output'])
 
@@ -182,6 +182,7 @@ class RxRRefinementTests(unittest.TestCase):
     def test_complete_source_and_candidate_inventory_remains_frozen(self):
         report = check_protected()
         self.assertEqual(report['rxr_templates_checked'], 143)
+        self.assertEqual(report['legacy_templates_checked'], 20)
         self.assertTrue(report['rxr_sources_candidates_and_retrieval_fields_equal'])
 
     def test_p2_has_operational_parent_scope_and_p1_owns_layers(self):
@@ -195,6 +196,9 @@ class RxRRefinementTests(unittest.TestCase):
         text = (ROOT / 'reviewer/dataset_rules/rxr_en_us.md').read_text()
         self.assertLess(text.index('### Ordered review framework: L0–L6'), text.index('## P2'))
         self.assertIn('textual change is not a prerequisite', text)
+        generator = (ROOT / 'generator/dataset_rules/rxr_en_us.md').read_text()
+        for marker in ('Repair entry gate:', 'Teaching delivery:'):
+            self.assertLess(generator.index(marker), generator.index('## P2'))
 
 
 if __name__ == '__main__':
