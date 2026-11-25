@@ -1,13 +1,13 @@
-"""Auditable one-time integration against the immutable parent.
+"""Auditable parent-based integration of the R2R-only runtime hooks.
 
-Every replacement is explicit and scoped to R2R. A file must match either the
-parent or this expected result; concurrent edits are never overwritten. The
-resulting runtime files are committed and subsequently verified directly.
+Accept only the immutable parent, the preceding reviewed integration, or the
+exact expected result. Unrecognized concurrent runtime changes are refused.
 """
 from pathlib import Path
 import argparse,json,subprocess
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
+PREVIOUS='465635eb8dad310404dab0e1d684ade3b71ff70b'
 
 def base(path):return subprocess.check_output(['git','show',PARENT+':'+path],cwd=ROOT).decode()
 def replace(text,old,new):
@@ -20,6 +20,14 @@ def expected():
     s=replace(s,'    notes = example["teaching_notes"]\n','    if example.get("dataset_scope") == "R2R":\n        from r2r.teaching import card\n        return card(example, role, detailed)\n    notes = example["teaching_notes"]\n')
     anchor="        if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')"
     s=replace(s,anchor,anchor+"\n        if profile == 'r2r-en':\n            from r2r.selection import validate_selection\n            validate_selection(role, chosen, selection_mode)")
+    old='            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))'
+    new='''            if profile == 'r2r-en':
+                from r2r.teaching import dynamic_is_detailed
+                detailed = dynamic_is_detailed(role, chosen, position)
+            else:
+                detailed = (position == 0)
+            parts.append(canonical(teaching_card(example, role, detailed=detailed)))'''
+    s=replace(s,old,new)
     out[p]=s
     p='host/template_selector.py';s=base(p)
     s=replace(s,"('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,","('R2R', 'generator'): 25, ('R2R', 'reviewer'): 55,")
@@ -68,16 +76,12 @@ def expected():
             policy.update(paired_dynamic_examples=[4,6],diagnostic_dynamic_examples=[2,3])
             m['dataset_profiles']['r2r-en'].update(diagnostics_count=29,runtime_diagnostics_count=26,runtime_dynamic_count=55)
         out[p]=json.dumps(m,ensure_ascii=False,indent=2)+'\n'
-    # Prevent an RxR authoring job from rewriting assets on a pure R2R change.
-    # Its validation steps and runtime behavior remain unchanged.
     p='.github/workflows/rxr-development.yml';s=base(p)
     s=replace(s,"      - 'tools/**'\n      - 'host/**'", "      - 'tools/rxr*'\n      - 'tools/build_rxr*'\n      - 'host/rxr*'")
     s=replace(s,"      - 'tests/**'", "      - 'tests/test_rxr*'")
     out[p]=s
-    p='README.md';s=base(p);lines=s.splitlines();lines[0]='# LLM-decompose-v6.6.4';s='\n'.join(lines)+'\n'
-    for old,new in [('| Generator Dynamic per task | 6–8 |','| Generator Dynamic per task | 4–6 |'),('| Reviewer Paired per task | 6–8 |','| Reviewer Paired per task | 4–6 |'),('| Reviewer Diagnostics Eligible | 23 |','| Reviewer Diagnostics Eligible | 26 |'),('| Reviewer Diagnostics per task | 2–4 |','| Reviewer Diagnostics per task | 2–3 |')]:s=replace(s,old,new)
-    s+='\nR2R 新实现、父分支差异和验证边界见 `docs/R2R_IMPLEMENTATION.md`。完整作者资产用 `python -B -m r2r_authoring.build --check` 校验；当前模型和导航性能仍需独立实验。\n'
-    out[p]=s
+    # README is an already reviewed release display, not a model input.
+    out['README.md']=subprocess.check_output(['git','show',PREVIOUS+':README.md'],cwd=ROOT).decode()
     return out
 
 def main():
@@ -85,7 +89,8 @@ def main():
     for rel,text in expected().items():
         path=ROOT/rel;current=path.read_text()
         if current==text:continue
-        if current!=base(rel):raise ValueError('Unexpected concurrent content: '+rel)
+        previous=subprocess.check_output(['git','show',PREVIOUS+':'+rel],cwd=ROOT).decode()
+        if current not in (base(rel),previous):raise ValueError('Unexpected concurrent content: '+rel)
         changed.append(rel)
         if args.write:path.write_text(text)
     print(json.dumps({'integration_changed':changed,'write':args.write}))
