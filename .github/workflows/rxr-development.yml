@@ -4,7 +4,6 @@ on:
   push:
     branches: ['LLM-decompose-*']
     paths:
-      - '.github/workflows/rxr-development.yml'
       - 'tools/rxr*'
       - 'tools/build_rxr*'
       - 'host/rxr*'
@@ -65,7 +64,7 @@ jobs:
       - name: Refresh scoped asset manifests and verify complete package
         run: |
           python -B tools/refresh_rxr_integrity.py
-          python -B verify_package.py
+          python -B tools/verify_package.py
       - name: Run inherited and new regression tests
         run: |
           python -B - <<'PY'
@@ -133,7 +132,7 @@ jobs:
           print(json.dumps(report))
           PY
           python -B tools/refresh_rxr_integrity.py
-          python -B verify_package.py
+          python -B tools/verify_package.py
       - name: Commit the complete tested artifact set before pushing
         run: |
           git config user.name 'github-actions[bot]'
@@ -147,7 +146,7 @@ jobs:
             git commit -m 'Record reviewed RxR teaching and verified runtime artifacts'
           fi
           test -z "$(git status --porcelain)" || { git status --short; exit 1; }
-          python -B verify_package.py
+          python -B tools/verify_package.py
           current=$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)
           test "$current" = "$GITHUB_SHA" || { echo 'Branch advanced; do not overwrite concurrent work'; exit 1; }
           git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"

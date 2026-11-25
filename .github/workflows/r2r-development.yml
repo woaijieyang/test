@@ -47,10 +47,12 @@ jobs:
           python -B -m host.compile
       - name: Compare parent RxR inputs and mixed-profile behavior
         run: python -B -m r2r_authoring.verify --isolation
+      - name: Audit source-only selection and exact teaching injection
+        run: python -B -m r2r_authoring.audit
       - name: Verify current candidate integrity
         run: |
           python -B -m r2r_authoring.verify --refresh
-          python -B verify_package.py
+          python -B tools/verify_package.py
       - name: Run all repository tests and complete four-phase replay
         run: python -B -m r2r_authoring.regression
       - name: Run Renderer smoke, integration demo and repeat compilation
@@ -58,7 +60,7 @@ jobs:
       - name: Verify final manifests after all result records are written
         run: |
           python -B -m r2r_authoring.verify --refresh
-          python -B verify_package.py
+          python -B tools/verify_package.py
           git diff --check
       - name: Recheck a clean candidate commit and publish without force
         if: github.event_name == 'push'
@@ -74,4 +76,6 @@ jobs:
             provenance/r2r_teaching_changes.json
             provenance/r2r_rule_links.json
             provenance/r2r_smoke_results.json
+            provenance/r2r_selection_audit.json
+            provenance/r2r_issue_ledger.json
           retention-days: 7
