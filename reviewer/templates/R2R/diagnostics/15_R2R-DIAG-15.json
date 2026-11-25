@@ -209,6 +209,7 @@
     "primary_skills": [
       "lost_action"
     ],
-    "decision_reason": "The source requires 'Walk through the outdoors deck area towards the open door beside the stair leading into the yard.'; the actual candidate instead contains 'Walk inside the home'. Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route."
+    "decision_reason": "The source requires 'Walk through the outdoors deck area towards the open door beside the stair leading into the yard.'; the actual candidate instead contains 'Walk inside the home'. Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route.",
+    "reusable_rule": "Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route."
   }
 }

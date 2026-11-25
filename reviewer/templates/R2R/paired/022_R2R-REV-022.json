@@ -133,7 +133,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -150,21 +150,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The second doorway exit after the left turn. Complete the quoted source-directed event.",
+          "text": "The second doorway exit after the left turn. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Turn left and go out that door."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "left",
+          "candidate_quotes": [
+            "left"
+          ]
         },
         "source_quotes": [
           "Go out the door.",
           "turn left and go out that door."
         ],
-        "carryover": [],
+        "carryover": [
+          "The second doorway exit has occurred; the next right and table/stair route remain."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -174,12 +178,14 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "After exiting through that door, turn right and go towards the table"
+          ]
         },
         "target": {
-          "text": "The right-hand stairs as the final directed target.",
+          "text": "The right-hand stairs as the source-directed destination.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ]
@@ -191,16 +197,20 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The right-hand stairs as the final directed target. This is a final approach without an asserted arrival or STOP.",
+          "kind": "explicit_event",
+          "text": "The right-hand stairs as the source-directed destination. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "After; right; through",
+          "candidate_quotes": [
+            "After",
+            "right",
+            "through"
+          ]
         },
         "source_quotes": [
           "Turn right and go toward the table.",
@@ -220,21 +230,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The second doorway exit after the left turn. Complete the quoted source-directed event.",
+          "text": "Turn left and go out that door.",
           "candidate_quote": "Turn left and go out that door."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "After exiting through that door, turn right and go towards the table. Proceed to the stairs on the right."
+          "text": "After exiting through that door, turn right and go towards the table",
+          "candidate_quote": "After exiting through that door, turn right and go towards the table"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The second doorway exit has occurred; the next right and table/stair route remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Execute both door exits in order before the right turn, table-directed movement and stair target."
+        "handoff_rationale": "The second doorway exit has occurred; the next right and table/stair route remain. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -251,7 +266,8 @@
     ],
     "review_principle": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
     "case_specific_focus": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
-    "transfer_rule": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
     "primary_skills": [
       "entry",

@@ -235,6 +235,7 @@
     "primary_skills": [
       "terminal"
     ],
-    "decision_reason": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel."
+    "decision_reason": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
+    "reusable_rule": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel."
   }
 }

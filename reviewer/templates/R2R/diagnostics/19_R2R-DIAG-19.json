@@ -242,6 +242,7 @@
     "review_principle": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
     "case_specific_focus": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
     "transfer_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent.",
-    "decision_reason": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label."
+    "decision_reason": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
+    "reusable_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent."
   }
 }

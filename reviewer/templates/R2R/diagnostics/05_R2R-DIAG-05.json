@@ -237,6 +237,7 @@
     "primary_skills": [
       "lost_action"
     ],
-    "decision_reason": "The source requires 'Turn around, go past the bed, out the door and to the right.'; the actual candidate instead contains 'Go into the next door on the right.'. Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait."
+    "decision_reason": "The source requires 'Turn around, go past the bed, out the door and to the right.'; the actual candidate instead contains 'Go into the next door on the right.'. Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait.",
+    "reusable_rule": "Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait."
   }
 }

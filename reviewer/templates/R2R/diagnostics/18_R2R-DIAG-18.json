@@ -222,6 +222,7 @@
     "primary_skills": [
       "negation"
     ],
-    "decision_reason": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop."
+    "decision_reason": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop.",
+    "reusable_rule": "Restore the first-door prohibition; retain the second-door left and table-side stop."
   }
 }

@@ -137,7 +137,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -154,14 +154,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The actual hallway entry after sitting-area transit. Complete the quoted source-directed event.",
+          "text": "The actual hallway entry after sitting-area transit. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "go through the door into the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "straight through the sitting area",
+          "text": "Operative constraints: straight through the sitting area",
           "candidate_quotes": [
             "straight through the sitting area"
           ]
@@ -171,7 +171,9 @@
           "Move straight through sitting area.",
           "Move through door into hallway, turn right, move straight forward down hallway into the locker room."
         ],
-        "carryover": [],
+        "carryover": [
+          "Actual hallway entry is complete; the right turn and locker-room entry remain."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -182,9 +184,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From the hallway, turn right and move straight forward down the hallway into the locker room"
+          ]
         },
         "target": {
           "text": "Inside the locker room.",
@@ -200,14 +204,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Inside the locker room. Complete the quoted source-directed event.",
+          "text": "Inside the locker room. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Wait inside the locker room."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "From the hallway; Wait inside",
+          "text": "Operative constraints: From the hallway; Wait inside",
           "candidate_quotes": [
             "From the hallway",
             "Wait inside"
@@ -231,21 +235,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The actual hallway entry after sitting-area transit. Complete the quoted source-directed event.",
-          "candidate_quote": "go through the door into the hallway."
+          "text": "Move straight through the sitting area and go through the door into the hallway.",
+          "candidate_quote": "Move straight through the sitting area and go through the door into the hallway."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "From the hallway, turn right and move straight forward down the hallway into the locker room. Wait inside the locker room."
+          "text": "From the hallway, turn right and move straight forward down the hallway into the locker room",
+          "candidate_quote": "From the hallway, turn right and move straight forward down the hallway into the locker room"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Actual hallway entry is complete; the right turn and locker-room entry remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room."
+        "handoff_rationale": "Actual hallway entry is complete; the right turn and locker-room entry remain. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -263,7 +272,8 @@
     ],
     "review_principle": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
     "case_specific_focus": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
-    "transfer_rule": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
     "primary_skills": [
       "transit",

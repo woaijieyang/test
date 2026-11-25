@@ -181,7 +181,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -198,14 +198,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway-side doorway crossing by the glass window. Complete the quoted source-directed event.",
+          "text": "The hallway-side doorway crossing by the glass window. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Go toward the glass window and through the doorway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "You will see an indoor glass window",
+          "text": "Operative constraints: You will see an indoor glass window",
           "candidate_quotes": [
             "You will see an indoor glass window"
           ]
@@ -216,7 +216,9 @@
           "You will see an indoor glass window.",
           "Go toward the glass window and through the doorway."
         ],
-        "carryover": [],
+        "carryover": [
+          "The window-side doorway crossing establishes hallway context for the next right."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -228,9 +230,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "When you are in the hallway by the window, take a right"
+          ]
         },
         "target": {
           "text": "The explicit side-of-stairs arrival position.",
@@ -246,14 +250,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The explicit side-of-stairs arrival position. Complete the quoted source-directed event.",
+          "text": "The explicit side-of-stairs arrival position. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "when you get to the side of the stairs you have arrived."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "When you are in the hallway by the window; when you get to the side of the stairs",
+          "text": "Operative constraints: When you are in the hallway by the window; when you get to the side of the stairs",
           "candidate_quotes": [
             "When you are in the hallway by the window",
             "when you get to the side of the stairs"
@@ -281,14 +285,19 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The hallway-side doorway crossing by the glass window. Complete the quoted source-directed event.",
+          "text": "The hallway-side doorway crossing by the glass window. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quote": "Go toward the glass window and through the doorway."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "When you are in the hallway by the window, take a right. Go toward the table with the pictures on it. Then go toward the wall with the security box or thermostat. Finally take a right; when you get to the side of the stairs you have arrived."
+          "text": "The window-side doorway crossing establishes hallway context for the next right.",
+          "candidate_quote": "When you are in the hallway by the window, take a right."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The window-side doorway crossing establishes hallway context for the next right."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
@@ -299,7 +308,7 @@
           "SRC-07",
           "SRC-08"
         ],
-        "handoff_rationale": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival."
+        "handoff_rationale": "The window-side doorway crossing establishes hallway context for the next right. Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events."
       }
     ],
     "prior_finding_reviews": []
@@ -319,7 +328,8 @@
     "conditions_focus": "temporal/order: when in the hallway by the window, take a right; then move toward the picture table, next toward the wall reference, and finally take a right. descriptive_uncertainty: 'security box or thermostat' is an alternative description of one wall-mounted reference, not two route branches. spatial_frame: hallway by window, right turn, then final side of stairs.",
     "review_principle": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
     "case_specific_focus": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
-    "transfer_rule": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
+    "transfer_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
+    "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
     "counter_example_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
     "primary_skills": [
       "observation",

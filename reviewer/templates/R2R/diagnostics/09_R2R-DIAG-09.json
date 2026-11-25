@@ -197,6 +197,7 @@
     "primary_skills": [
       "terminal"
     ],
-    "decision_reason": "The source requires 'stop in doorway facing sink'; the actual candidate instead contains 'stop in doorway .'. Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location."
+    "decision_reason": "The source requires 'stop in doorway facing sink'; the actual candidate instead contains 'stop in doorway .'. Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location.",
+    "reusable_rule": "Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location."
   }
 }

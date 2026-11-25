@@ -209,6 +209,7 @@
     "primary_skills": [
       "entry"
     ],
-    "decision_reason": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry."
+    "decision_reason": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
+    "reusable_rule": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry."
   }
 }

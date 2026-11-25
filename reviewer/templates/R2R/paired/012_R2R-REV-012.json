@@ -121,7 +121,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -138,21 +138,26 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The completed room exit after the television-side movement. Complete the quoted source-directed event.",
+          "text": "The completed room exit after the television-side movement. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Turn left and exit the room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "left; in front of",
+          "candidate_quotes": [
+            "left",
+            "in front of"
+          ]
         },
         "source_quotes": [
           "move forward in front of the television.",
           "turn left and exit the room."
         ],
-        "carryover": [],
+        "carryover": [
+          "The initial left and room exit are complete; continue in the hall before selecting the left bedroom."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -162,9 +167,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From the room exit, go down the hallway and step into the bedroom on the left"
+          ]
         },
         "target": {
           "text": "The left bedroom interior.",
@@ -180,15 +187,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The left bedroom interior. Complete the quoted source-directed event.",
+          "text": "The left bedroom interior. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "step into the bedroom on the left."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "left",
+          "candidate_quotes": [
+            "left"
+          ]
         },
         "source_quotes": [
           "go down hallway and step into the bedroom on the left."
@@ -206,20 +215,25 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The completed room exit after the television-side movement. Complete the quoted source-directed event.",
+          "text": "Turn left and exit the room.",
           "candidate_quote": "Turn left and exit the room."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "From the room exit, go down the hallway and step into the bedroom on the left."
+          "text": "From the room exit, go down the hallway and step into the bedroom on the left",
+          "candidate_quote": "From the room exit, go down the hallway and step into the bedroom on the left"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The initial left and room exit are complete; continue in the hall before selecting the left bedroom."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The television-front movement and left exit precede the hall traversal and left-bedroom entry."
+        "handoff_rationale": "The initial left and room exit are complete; continue in the hall before selecting the left bedroom. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -238,7 +252,8 @@
     ],
     "review_principle": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
     "case_specific_focus": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
-    "transfer_rule": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "A predicted view of a doorway would not establish that exit.",
     "primary_skills": [
       "entry",

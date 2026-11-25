@@ -133,7 +133,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -150,22 +150,26 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bird-statue pass on the ordered route. Complete the quoted source-directed event.",
+          "text": "The bird-statue pass on the ordered route. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "down the hall past the statue of a bird."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "past",
+          "candidate_quotes": [
+            "past"
+          ]
         },
         "source_quotes": [
           "Walk int past the sink area.",
           "Walk of the door and past the statue of a hand.",
           "Walk down the hall and past the statue of a bird."
         ],
-        "carryover": [],
+        "carryover": [
+          "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -176,9 +180,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "After passing the statue of a bird, enter the bedroom area with the wooden cabinet"
+          ]
         },
         "target": {
           "text": "The bedroom area identified by the wooden cabinet.",
@@ -194,15 +200,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom area identified by the wooden cabinet. Complete the quoted source-directed event.",
+          "text": "The bedroom area identified by the wooden cabinet. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the bedroom area with the wooden cabinet."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "After",
+          "candidate_quotes": [
+            "After"
+          ]
         },
         "source_quotes": [
           "Walk into the bedroom area with the wooden cabinet."
@@ -220,21 +228,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The bird-statue pass on the ordered route. Complete the quoted source-directed event.",
-          "candidate_quote": "down the hall past the statue of a bird."
+          "text": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird.",
+          "candidate_quote": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet."
+          "text": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet",
+          "candidate_quote": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet."
+        "handoff_rationale": "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -252,7 +265,8 @@
     ],
     "review_principle": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
     "case_specific_focus": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
-    "transfer_rule": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "An observed landmark is not automatically a separate visit or stop.",
     "primary_skills": [
       "pass_by",

@@ -133,7 +133,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -150,14 +150,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway entered using the original slight-right/chair description. Complete the quoted source-directed event.",
+          "text": "The hallway entered using the original slight-right/chair description. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the hallway to the slight right past the chair."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "hallway to the slight right past the chair",
+          "text": "Operative constraints: hallway to the slight right past the chair",
           "candidate_quotes": [
             "hallway to the slight right past the chair"
           ]
@@ -166,7 +166,9 @@
           "Exit the pool area and walk toward the stairs",
           "enter the hallway to the slight right past the chair"
         ],
-        "carryover": [],
+        "carryover": [
+          "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -177,7 +179,7 @@
         "subtask_index": 1,
         "entry": {
           "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door.",
           "candidate_quotes": []
         },
         "target": {
@@ -194,14 +196,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The lockers after the right turn and third left-hand door entry. Complete the quoted source-directed event.",
+          "text": "The lockers after the right turn and third left-hand door entry. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Wait by the lockers."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Turn right; third door on the left; by the lockers",
+          "text": "Operative constraints: Turn right; third door on the left; by the lockers",
           "candidate_quotes": [
             "Turn right",
             "third door on the left",
@@ -226,21 +228,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The hallway entered using the original slight-right/chair description. Complete the quoted source-directed event.",
+          "text": "The hallway entered using the original slight-right/chair description. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quote": "enter the hallway to the slight right past the chair."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "Turn right and enter the third door on the left. Wait by the lockers."
+          "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door.",
+          "candidate_quote": "Turn right and enter the third door on the left."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait."
+        "handoff_rationale": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door. Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region."
       }
     ],
     "prior_finding_reviews": []
@@ -261,7 +268,8 @@
     ],
     "review_principle": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
     "case_specific_focus": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
-    "transfer_rule": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "transfer_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
+    "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
     "counter_example_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
     "primary_skills": [
       "attachment",

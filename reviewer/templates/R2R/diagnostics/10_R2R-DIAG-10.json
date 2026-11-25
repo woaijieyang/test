@@ -256,6 +256,7 @@
     "primary_skills": [
       "frame"
     ],
-    "decision_reason": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement."
+    "decision_reason": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
+    "reusable_rule": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement."
   }
 }

@@ -6,25 +6,25 @@
   "compiled_files": 6,
   "r2r_library_source_queries": 25,
   "generator_dynamic_count_distribution": {
-    "4": 22,
-    "5": 3
+    "4": 25
   },
   "reviewer_diagnostic_count_distribution": {
-    "2": 25
+    "2": 23,
+    "3": 2
   },
   "canonical_build_sizes": {
     "generator/compiled_r2r-en.txt": {
-      "current_utf8_bytes": 73847,
+      "current_utf8_bytes": 111643,
       "parent_utf8_bytes": 111172,
       "evaluated_utf8_bytes": 115303
     },
     "reviewer/compiled_r2r-en.txt": {
-      "current_utf8_bytes": 96143,
+      "current_utf8_bytes": 146399,
       "parent_utf8_bytes": 142319,
       "evaluated_utf8_bytes": 148045
     },
     "generator/compiled_repair_r2r-en.txt": {
-      "current_utf8_bytes": 88900,
+      "current_utf8_bytes": 126696,
       "parent_utf8_bytes": 126225,
       "evaluated_utf8_bytes": 130356
     }

@@ -37,7 +37,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The staircase bottom. Complete the quoted source-directed event.",
+          "text": "The staircase bottom. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Go to the bottom of the staircase."
           ],
@@ -67,13 +67,15 @@
         "source_quotes": [
           "Go to the bottom of the staircase, go to the entrance of first room to the left of the staircase, wait by the chair."
         ],
-        "carryover": []
+        "carryover": [
+          "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
           "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left.",
           "candidate_quotes": []
         },
         "target": {
@@ -90,14 +92,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The chair-side position at the entrance of the first room left of the staircase. Complete the quoted source-directed event.",
+          "text": "The chair-side position at the entrance of the first room left of the staircase. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "wait by the chair."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "first room to the left of the staircase; by the chair",
+          "text": "Operative constraints: first room to the left of the staircase; by the chair",
           "candidate_quotes": [
             "first room to the left of the staircase",
             "by the chair"
@@ -115,37 +117,44 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The staircase bottom. Complete the quoted source-directed event.",
+          "text": "Go to the bottom of the staircase.",
           "candidate_quote": "Go to the bottom of the staircase."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left.",
           "candidate_quote": "Go to the entrance of the first room to the left of the staircase and wait by the chair."
         },
-        "shared_context": [],
-        "source_requirement_ids": [],
-        "handoff_rationale": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left."
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "handoff_rationale": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left. Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "bounded_transition_then_distinct_target",
-    "why_this_case_matters": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
-    "reusable_rule": "",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 2: first; left",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Go to the bottom of the staircase.'; stage 2 begins from 'From the bottom of the staircase, go to the entrance of the first room on the left and wait…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Go to the bottom of the staircase.'; stage 2 begins from 'From the bottom of the staircase, go to the entrance of the first room on the left and wait…'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
     "case_rationale": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
     "case_specific_focus": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
-    "transfer_rule": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
-    "counter_example_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
     "primary_skills": [
       "entity_frame",
       "ordinal",
       "terminal"
     ],
+    "counter_example_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
+    "transfer_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
     "decision_reason": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left."
   },
   "retrieval_tags": [

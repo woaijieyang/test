@@ -240,6 +240,7 @@
     "primary_skills": [
       "scope"
     ],
-    "decision_reason": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry."
+    "decision_reason": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
+    "reusable_rule": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry."
   }
 }

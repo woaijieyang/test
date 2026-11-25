@@ -133,7 +133,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -145,19 +145,22 @@
         "process": {
           "text": "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it.",
           "candidate_quotes": [
-            "Turn left. You should now be facing the chandelier above the green table, with a doorway to the left and an open door on the far wall. Walk towards the open door on the far wall and go through it."
+            "Turn left.",
+            "You should now be facing the chandelier above the green table",
+            "with a doorway to the left and an open door on the far wall",
+            "Walk towards the open door on the far wall and go through it."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The far-wall open doorway, identified separately from the chandelier observation. Complete the quoted source-directed event.",
+          "text": "The far-wall open doorway, identified separately from the chandelier observation. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "go through it."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "facing the chandelier above the green table; open door on the far wall",
+          "text": "Operative constraints: facing the chandelier above the green table; open door on the far wall",
           "candidate_quotes": [
             "facing the chandelier above the green table",
             "open door on the far wall"
@@ -167,7 +170,9 @@
           "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL",
           "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR"
         ],
-        "carryover": [],
+        "carryover": [
+          "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -177,9 +182,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
+          ]
         },
         "target": {
           "text": "The room with the blue patterned carpet and middle table.",
@@ -195,14 +202,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The room with the blue patterned carpet and middle table. Complete the quoted source-directed event.",
+          "text": "The room with the blue patterned carpet and middle table. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "blue patterned carpet",
+          "text": "Operative constraints: blue patterned carpet",
           "candidate_quotes": [
             "blue patterned carpet"
           ]
@@ -225,21 +232,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The far-wall open doorway, identified separately from the chandelier observation. Complete the quoted source-directed event.",
-          "candidate_quote": "go through it."
+          "text": "Walk towards the open door on the far wall and go through it.",
+          "candidate_quote": "Walk towards the open door on the far wall and go through it."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle."
+          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle",
+          "candidate_quote": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route."
+        "handoff_rationale": "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway. Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal."
       }
     ],
     "prior_finding_reviews": []
@@ -257,7 +269,8 @@
     ],
     "review_principle": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
     "case_specific_focus": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
-    "transfer_rule": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
+    "transfer_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
+    "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
     "counter_example_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
     "primary_skills": [
       "observation",

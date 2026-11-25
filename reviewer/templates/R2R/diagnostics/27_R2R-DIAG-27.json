@@ -187,6 +187,7 @@
     "transfer_rule": "An entity state must not be promoted to an additional command.",
     "anti_pattern": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
     "decision_reason": "The source identifies already-open doors; the candidate invents a door-opening action.",
-    "review_principle": "The source identifies already-open doors; the candidate invents a door-opening action."
+    "review_principle": "The source identifies already-open doors; the candidate invents a door-opening action.",
+    "reusable_rule": "An entity state must not be promoted to an additional command."
   }
 }

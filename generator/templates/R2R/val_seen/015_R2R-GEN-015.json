@@ -37,7 +37,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -54,29 +54,35 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom exit establishing the next selection region. Complete the quoted source-directed event.",
+          "text": "The bedroom exit establishing the next selection region. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "exit the bedroom."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "exit the bedroom",
+          "text": "Operative constraints: exit the bedroom",
           "candidate_quotes": [
             "exit the bedroom"
           ]
         },
         "source_quotes": [
-          "Exit the bathroom. Walk straight through the bedroom toward the doorway. Exit the bedroom. Turn right into the first door on your right, then turn right again and stop."
+          "Exit the bathroom.",
+          "Walk straight through the bedroom toward the doorway.",
+          "Exit the bedroom."
         ],
-        "carryover": []
+        "carryover": [
+          "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "After exiting the bedroom, turn right into the first door on your right"
+          ]
         },
         "target": {
           "text": "The post-entry right-turn stopping position.",
@@ -92,14 +98,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The post-entry right-turn stopping position. Complete the quoted source-directed event.",
+          "text": "The post-entry right-turn stopping position. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Turn right again and stop."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After exiting the bedroom; first door on your right; Turn right again",
+          "text": "Operative constraints: After exiting the bedroom; first door on your right; Turn right again",
           "candidate_quotes": [
             "After exiting the bedroom",
             "first door on your right",
@@ -107,7 +113,7 @@
           ]
         },
         "source_quotes": [
-          "Exit the bathroom. Walk straight through the bedroom toward the doorway. Exit the bedroom. Turn right into the first door on your right, then turn right again and stop."
+          "Turn right into the first door on your right, then turn right again and stop."
         ],
         "carryover": []
       }
@@ -118,37 +124,45 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The bedroom exit establishing the next selection region. Complete the quoted source-directed event.",
-          "candidate_quote": "exit the bedroom."
+          "text": "Walk straight through the bedroom towards the doorway and exit the bedroom.",
+          "candidate_quote": "Walk straight through the bedroom towards the doorway and exit the bedroom."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "After exiting the bedroom, turn right into the first door on your right. Turn right again and stop."
+          "text": "After exiting the bedroom, turn right into the first door on your right",
+          "candidate_quote": "After exiting the bedroom, turn right into the first door on your right"
         },
-        "shared_context": [],
-        "source_requirement_ids": [],
-        "handoff_rationale": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop."
+        "shared_context": [
+          {
+            "kind": "count_origin",
+            "text": "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain. Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
-    "reusable_rule": "",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: through Stage 2: After; first; right",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk straight through the bedroom towards the doorway and exit the bedroom.'; stage 2 begins from 'After exiting the bedroom, turn right into the first door on your right'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Walk straight through the bedroom towards the doorway and exit the bedroom.'; stage 2 begins from 'After exiting the bedroom, turn right into the first door on your right'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
     "case_rationale": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
     "case_specific_focus": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
-    "transfer_rule": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
-    "counter_example_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
     "primary_skills": [
       "ordinal",
       "entry",
       "frame"
     ],
+    "counter_example_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
+    "transfer_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
     "decision_reason": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop."
   },
   "retrieval_tags": [

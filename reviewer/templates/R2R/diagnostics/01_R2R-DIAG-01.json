@@ -236,6 +236,7 @@
     "review_pattern": "ordinal",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "reusable_rule": null
   }
 }

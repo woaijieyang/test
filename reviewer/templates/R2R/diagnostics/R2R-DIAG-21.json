@@ -315,6 +315,7 @@
       "entry"
     ],
     "decision_reason": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
-    "review_principle": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach."
+    "review_principle": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
+    "reusable_rule": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach."
   }
 }

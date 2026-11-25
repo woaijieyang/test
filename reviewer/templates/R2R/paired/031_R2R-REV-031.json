@@ -133,7 +133,8 @@
     ],
     "review_principle": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
     "case_specific_focus": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
-    "transfer_rule": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "transfer_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
+    "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
     "counter_example_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
     "primary_skills": [
       "uncertainty",

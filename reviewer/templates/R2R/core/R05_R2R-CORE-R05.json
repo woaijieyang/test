@@ -141,7 +141,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -158,14 +158,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-table pass within the coupled living-room route. Complete the quoted source-directed event.",
+          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "past the dining room table."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "taking a left behind the couch; past the dining room table",
+          "text": "Operative constraints: taking a left behind the couch; past the dining room table",
           "candidate_quotes": [
             "taking a left behind the couch",
             "past the dining room table"
@@ -175,7 +175,9 @@
           "Walk straight into the living room passing the chair and the couch",
           "taking a left behind the couch and past the dining room table"
         ],
-        "carryover": [],
+        "carryover": [
+          "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -186,7 +188,7 @@
         "subtask_index": 1,
         "entry": {
           "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain.",
           "candidate_quotes": []
         },
         "target": {
@@ -203,14 +205,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The third tile from the left at the top step. Complete the quoted source-directed event.",
+          "text": "The third tile from the left at the top step. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "stopping on the third tile from the left at the top step."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "third tile from the left; at the top step",
+          "text": "Operative constraints: third tile from the left; at the top step",
           "candidate_quotes": [
             "third tile from the left",
             "at the top step"
@@ -234,21 +236,26 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The dining-table pass within the coupled living-room route. Complete the quoted source-directed event.",
+          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quote": "past the dining room table."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
+          "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain.",
           "candidate_quote": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "temporal_state",
+            "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step."
+        "handoff_rationale": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain. Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement."
       }
     ],
     "prior_finding_reviews": []
@@ -269,10 +276,10 @@
     "case_specific_focus": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
     "semantic_pattern": "hard_pass_terminal_position_and_ordinal_preservation",
     "decision_reason": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
-    "transfer_rule": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "transfer_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
     "anti_pattern": "Do not detach endpoint details, reset the ordinal origin, or create a new stage solely because the final target is described more precisely.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
-    "reusable_rule": "A completed landmark pass-by can support a boundary when a distinct subsequent transition/target follows and the handoff retains the same route frame. Keep ordinal terminal placement attached to the stage that reaches it.",
+    "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
     "counter_example_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
     "primary_skills": [
       "scope",

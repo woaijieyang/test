@@ -22,7 +22,7 @@
     "candidate_corruption_is_authored_not_model_output": false,
     "corruption_pattern": "none_valid_alternative",
     "core_curated_from": "R2R-REV-005",
-    "curation_basis": "Paired reviewer teaching example rebuilt against the revised R2R Generator candidate. Curated semantic target, not trajectory-ground-truth judgement.; semantic decision-boundary coverage; deliberately merged candidate for L5 under-segmentation"
+    "curation_basis": "Authored comparison of faithful coarse and multi-stage organization, not a navigation-ground-truth judgment."
   },
   "review_input": {
     "original_instruction": "Walk through the office passed the table and armchairs. Walk through the door on the other side of the table swith the arched window above. Walk down the hall and into the room at the end of the hallway. Walk towards the circular tables in the middle of the large room. ",
@@ -124,7 +124,7 @@
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The requirements checked at this layer are preserved.",
+        "conclusion": "The candidate explicitly retains office traversal, selected doorway, hall-end room entry and final table approach in usable order. The multi-stage form exposes those objectives, but no specific dependency or local-focus loss is established here. Other evidenced missed-goal cases remain C10 defects.",
         "finding_indices": []
       },
       {
@@ -201,6 +201,7 @@
     "primary_skills": [
       "grouping",
       "endpoint"
-    ]
+    ],
+    "reusable_rule": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect."
   }
 }

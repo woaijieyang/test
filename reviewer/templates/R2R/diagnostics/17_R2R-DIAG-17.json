@@ -207,6 +207,7 @@
     "primary_skills": [
       "terminal"
     ],
-    "decision_reason": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry."
+    "decision_reason": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
+    "reusable_rule": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry."
   }
 }

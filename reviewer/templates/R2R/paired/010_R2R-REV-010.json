@@ -121,7 +121,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -138,21 +138,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway reached through the open bedroom door. Complete the quoted source-directed event.",
+          "text": "The hallway reached through the open bedroom door. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Walk out of the bedroom and into the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "past",
+          "candidate_quotes": [
+            "past"
+          ]
         },
         "source_quotes": [
           "Walk passed the foot of the bed and around to the open door.",
           "Walk out of the bedroom and into the hallway."
         ],
-        "carryover": [],
+        "carryover": [
+          "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -162,9 +166,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From the hallway, walk down it and enter the bedroom with the blue floral blanket"
+          ]
         },
         "target": {
           "text": "The bedroom identified by the blue floral blanket.",
@@ -180,7 +186,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom identified by the blue floral blanket. Complete the quoted source-directed event.",
+          "text": "The bedroom identified by the blue floral blanket. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the bedroom with the blue floral blanket."
           ],
@@ -206,20 +212,25 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The hallway reached through the open bedroom door. Complete the quoted source-directed event.",
+          "text": "Walk out of the bedroom and into the hallway.",
           "candidate_quote": "Walk out of the bedroom and into the hallway."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "From the hallway, walk down it and enter the bedroom with the blue floral blanket."
+          "text": "From the hallway, walk down it and enter the bedroom with the blue floral blanket",
+          "candidate_quote": "From the hallway, walk down it and enter the bedroom with the blue floral blanket"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket."
+        "handoff_rationale": "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -236,7 +247,8 @@
     ],
     "review_principle": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
     "case_specific_focus": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
-    "transfer_rule": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "A source command to open a closed door would be an additional action worth preserving.",
     "primary_skills": [
       "attribute",

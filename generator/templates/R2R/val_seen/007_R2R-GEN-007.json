@@ -37,7 +37,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -54,29 +54,34 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The lobby-like room entered after the initial movement. Complete the quoted source-directed event.",
+          "text": "The lobby-like room entered after the initial movement. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the large room that looks like a lobby."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "proceed to your left",
+          "text": "Operative constraints: proceed to your left",
           "candidate_quotes": [
             "proceed to your left"
           ]
         },
         "source_quotes": [
-          "Turn around and then proceed to your left.  Enter large room that looks like a lobby.  Head left towards stairway.  Then take another left into large dining hall."
+          "Turn around and then proceed to your left.",
+          "Enter large room that looks like a lobby."
         ],
-        "carryover": []
+        "carryover": [
+          "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "Inside the lobby, head left towards the stairway"
+          ]
         },
         "target": {
           "text": "The dining-hall interior after the second left.",
@@ -92,21 +97,22 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-hall interior after the second left. Complete the quoted source-directed event.",
+          "text": "The dining-hall interior after the second left. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Take another left into the large dining hall."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "head left towards the stairway; another left",
+          "text": "Operative constraints: head left towards the stairway; another left",
           "candidate_quotes": [
             "head left towards the stairway",
             "another left"
           ]
         },
         "source_quotes": [
-          "Turn around and then proceed to your left.  Enter large room that looks like a lobby.  Head left towards stairway.  Then take another left into large dining hall."
+          "Head left towards stairway.",
+          "Then take another left into large dining hall."
         ],
         "carryover": []
       }
@@ -117,36 +123,44 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The lobby-like room entered after the initial movement. Complete the quoted source-directed event.",
-          "candidate_quote": "enter the large room that looks like a lobby."
+          "text": "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
+          "candidate_quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "Inside the lobby, head left towards the stairway. Take another left into the large dining hall."
+          "text": "Inside the lobby, head left towards the stairway",
+          "candidate_quote": "Inside the lobby, head left towards the stairway"
         },
-        "shared_context": [],
-        "source_requirement_ids": [],
-        "handoff_rationale": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall."
+        "shared_context": [
+          {
+            "kind": "orientation",
+            "text": "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The entered lobby establishes the frame for the first left and subsequent dining-hall left. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
-    "reusable_rule": "",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left Stage 2: left",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Turn around, proceed to your left, and enter the large room that looks like a lobby.'; stage 2 begins from 'Inside the lobby, head left towards the stairway'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Turn around, proceed to your left, and enter the large room that looks like a lobby.'; stage 2 begins from 'Inside the lobby, head left towards the stairway'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
     "case_rationale": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
     "case_specific_focus": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
-    "transfer_rule": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
-    "counter_example_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
     "primary_skills": [
       "entry",
       "direction"
     ],
+    "counter_example_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "decision_reason": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall."
   },
   "retrieval_tags": [

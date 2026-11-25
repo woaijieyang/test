@@ -121,7 +121,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -138,14 +138,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The next room reached through the small hallway. Complete the quoted source-directed event.",
+          "text": "The next room reached through the small hallway. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the next room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "arched, round design above it; straight",
+          "text": "Operative constraints: arched, round design above it; straight",
           "candidate_quotes": [
             "arched, round design above it",
             "straight"
@@ -155,7 +155,9 @@
           "Exit the room through the only door with an arched, round design above it.",
           "Continue straight through the small hall and enter the next room."
         ],
-        "carryover": [],
+        "carryover": [
+          "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -165,9 +167,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "Inside the next room, stop once you reach the blue mat"
+          ]
         },
         "target": {
           "text": "The blue-mat stopping position.",
@@ -183,14 +187,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The blue-mat stopping position. Complete the quoted source-directed event.",
+          "text": "The blue-mat stopping position. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "stop once you reach the blue mat."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "once you reach the blue mat",
+          "text": "Operative constraints: once you reach the blue mat",
           "candidate_quotes": [
             "once you reach the blue mat"
           ]
@@ -211,20 +215,25 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The next room reached through the small hallway. Complete the quoted source-directed event.",
-          "candidate_quote": "enter the next room."
+          "text": "Continue straight through the small hall and enter the next room.",
+          "candidate_quote": "Continue straight through the small hall and enter the next room."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "Inside the next room, stop once you reach the blue mat."
+          "text": "Inside the next room, stop once you reach the blue mat",
+          "candidate_quote": "Inside the next room, stop once you reach the blue mat"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop."
+        "handoff_rationale": "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -242,7 +251,8 @@
     ],
     "review_principle": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
     "case_specific_focus": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
-    "transfer_rule": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
     "primary_skills": [
       "transit",

@@ -44,20 +44,21 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "source_level_ambiguity_abstention",
-    "why_this_case_matters": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
-    "reusable_rule": "",
+    "why_this_case_matters": "The source contains a route-defining phrase that cannot be safely normalized from language context alone. The model must preserve the ambiguity and return needs_review rather than silently correcting the landmark.",
+    "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
     "retrieval_rule": "Retrieve for route-critical source typos or conflicting target descriptions that cannot be resolved from context.",
     "anti_pattern": "Do not silently correct a plausible typo, infer a landmark, or generate a partial guessed route.",
     "semantic_pattern": "route_critical_source_ambiguity",
     "decision_reason": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
-    "transfer_rule": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+    "transfer_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
     "case_rationale": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
     "case_specific_focus": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
-    "counter_example_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
     "primary_skills": [
       "uncertainty",
       "target_identity"
-    ]
+    ],
+    "counter_example_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope."
   },
   "retrieval_tags": [
     "source_limited_ambiguity",

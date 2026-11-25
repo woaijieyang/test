@@ -391,6 +391,7 @@
       "endpoint"
     ],
     "decision_reason": "The source requires 'when you get to the side of the stairs you have arrived'; the actual candidate instead contains 'Walk towards the stairs.'. Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP.",
-    "review_principle": "The source requires 'when you get to the side of the stairs you have arrived'; the actual candidate instead contains 'Walk towards the stairs.'. Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP."
+    "review_principle": "The source requires 'when you get to the side of the stairs you have arrived'; the actual candidate instead contains 'Walk towards the stairs.'. Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP.",
+    "reusable_rule": "Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP."
   }
 }

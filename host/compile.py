@@ -328,7 +328,12 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
             example = byid[eid]
-            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))
+            if profile == 'r2r-en':
+                from r2r.teaching import dynamic_is_detailed
+                detailed = dynamic_is_detailed(role, chosen, position)
+            else:
+                detailed = (position == 0)
+            parts.append(canonical(teaching_card(example, role, detailed=detailed)))
         if repair:
             parts.append('TWO REPAIR-ENVELOPE EXAMPLES — active repair Schema, unlike initial-output examples. They teach accepting supported critique and rejecting unsupported advice.')
             parts.extend(canonical(e) for e in json.loads((ROOT/'generator/repair_examples.json').read_text(encoding='utf-8')))

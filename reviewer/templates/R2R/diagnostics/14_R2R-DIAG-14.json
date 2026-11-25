@@ -194,6 +194,7 @@
     "primary_skills": [
       "target_identity"
     ],
-    "decision_reason": "The source requires 'With the rocking chair at your back'; the actual candidate instead contains 'With the rocking  at your back'. Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge."
+    "decision_reason": "The source requires 'With the rocking chair at your back'; the actual candidate instead contains 'With the rocking  at your back'. Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge.",
+    "reusable_rule": "Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge."
   }
 }

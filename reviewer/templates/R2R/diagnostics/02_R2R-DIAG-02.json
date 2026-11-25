@@ -220,6 +220,7 @@
     "primary_skills": [
       "direction"
     ],
-    "decision_reason": "The source requires 'Make a left and walk past the stair case.'; the actual candidate instead contains 'Make a right and walk past the stair case.'. Restore only the first left before the stair-case pass; retain the later right and locker-room entry."
+    "decision_reason": "The source requires 'Make a left and walk past the stair case.'; the actual candidate instead contains 'Make a right and walk past the stair case.'. Restore only the first left before the stair-case pass; retain the later right and locker-room entry.",
+    "reusable_rule": "Restore only the first left before the stair-case pass; retain the later right and locker-room entry."
   }
 }

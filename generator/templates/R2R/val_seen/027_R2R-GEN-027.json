@@ -37,7 +37,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -54,29 +54,33 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The open area after the console-table pass. Complete the quoted source-directed event.",
+          "text": "The open area after the console-table pass. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the open area."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "console table on the right",
+          "text": "Operative constraints: console table on the right",
           "candidate_quotes": [
             "console table on the right"
           ]
         },
         "source_quotes": [
-          "Walk forward past the console table on the right into the open area. In the open area take a  right into the living room. In the living room take a right, and stop behind the couch near the right corner."
+          "Walk forward past the console table on the right into the open area."
         ],
-        "carryover": []
+        "carryover": [
+          "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "In the open area, take a right into the living room"
+          ]
         },
         "target": {
           "text": "Behind the couch near the right corner in the living room.",
@@ -92,14 +96,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Behind the couch near the right corner in the living room. Complete the quoted source-directed event.",
+          "text": "Behind the couch near the right corner in the living room. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "stop behind the couch near the right corner."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "In the open area; In the living room; near the right corner",
+          "text": "Operative constraints: In the open area; In the living room; near the right corner",
           "candidate_quotes": [
             "In the open area",
             "In the living room",
@@ -107,7 +111,9 @@
           ]
         },
         "source_quotes": [
-          "Walk forward past the console table on the right into the open area. In the open area take a  right into the living room. In the living room take a right, and stop behind the couch near the right corner."
+          "Walk forward past the console table on the right into the open area.",
+          "In the open area take a  right into the living room.",
+          "In the living room take a right, and stop behind the couch near the right corner."
         ],
         "carryover": []
       }
@@ -118,37 +124,45 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The open area after the console-table pass. Complete the quoted source-directed event.",
-          "candidate_quote": "enter the open area."
+          "text": "Walk forward past the console table on the right and enter the open area.",
+          "candidate_quote": "Walk forward past the console table on the right and enter the open area."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "In the open area, take a right into the living room. In the living room, take a right and stop behind the couch near the right corner."
+          "text": "In the open area, take a right into the living room",
+          "candidate_quote": "In the open area, take a right into the living room"
         },
-        "shared_context": [],
-        "source_requirement_ids": [],
-        "handoff_rationale": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop."
+        "shared_context": [
+          {
+            "kind": "orientation",
+            "text": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
-    "reusable_rule": "",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: right; past Stage 2: right; near; behind",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk forward past the console table on the right and enter the open area.'; stage 2 begins from 'In the open area, take a right into the living room'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Walk forward past the console table on the right and enter the open area.'; stage 2 begins from 'In the open area, take a right into the living room'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
     "case_rationale": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
     "case_specific_focus": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
-    "transfer_rule": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
-    "counter_example_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
     "primary_skills": [
       "entry",
       "frame",
       "terminal"
     ],
+    "counter_example_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "decision_reason": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop."
   },
   "retrieval_tags": [

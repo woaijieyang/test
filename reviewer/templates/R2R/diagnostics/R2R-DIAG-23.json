@@ -275,6 +275,7 @@
       "frame"
     ],
     "decision_reason": "The source requires 'left set of windows'; the actual candidate instead contains 'right set of windows'. Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed.",
-    "review_principle": "The source requires 'left set of windows'; the actual candidate instead contains 'right set of windows'. Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed."
+    "review_principle": "The source requires 'left set of windows'; the actual candidate instead contains 'right set of windows'. Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed.",
+    "reusable_rule": "Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed."
   }
 }

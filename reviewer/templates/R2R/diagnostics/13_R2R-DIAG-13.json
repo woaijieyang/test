@@ -268,6 +268,7 @@
     "primary_skills": [
       "entry"
     ],
-    "decision_reason": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop."
+    "decision_reason": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
+    "reusable_rule": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop."
   }
 }

@@ -192,6 +192,7 @@
     "primary_skills": [
       "ordinal"
     ],
-    "decision_reason": "The source requires 'the third door to your left'; the actual candidate instead contains 'the next door to your left'. Restore third with the original left-side counting frame, preserving the preceding room crossing."
+    "decision_reason": "The source requires 'the third door to your left'; the actual candidate instead contains 'the next door to your left'. Restore third with the original left-side counting frame, preserving the preceding room crossing.",
+    "reusable_rule": "Restore third with the original left-side counting frame, preserving the preceding room crossing."
   }
 }

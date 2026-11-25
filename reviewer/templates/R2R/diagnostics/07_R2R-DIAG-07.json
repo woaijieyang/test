@@ -205,6 +205,7 @@
     "review_principle": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command.",
     "case_specific_focus": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command.",
     "transfer_rule": "Audit the actual changed requirement and keep all unaffected coverage marked covered.",
-    "decision_reason": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command."
+    "decision_reason": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command.",
+    "reusable_rule": "Audit the actual changed requirement and keep all unaffected coverage marked covered."
   }
 }

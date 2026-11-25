@@ -36,7 +36,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -53,21 +53,22 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom-door waiting position. Complete the quoted source-directed event.",
+          "text": "The bedroom-door waiting position. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Wait at the bedroom door."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "until you get to a bedroom; at the bedroom door",
+          "text": "Operative constraints: until you get to a bedroom; at the bedroom door",
           "candidate_quotes": [
             "until you get to a bedroom",
             "at the bedroom door"
           ]
         },
         "source_quotes": [
-          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door."
+          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom.",
+          "Wait at the bedroom door."
         ],
         "carryover": []
       }
@@ -77,21 +78,21 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "single_coherent_stage",
-    "why_this_case_matters": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
-    "reusable_rule": "",
-    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Go through the doorway to the room with the sink and follow the hallway until you get to a…). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
+    "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
     "anti_pattern": "Do not force a split at a room noun or doorway. A different source with a completed visit followed by an independent objective can support a cut.",
     "case_rationale": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
-    "transfer_rule": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
+    "transfer_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
     "case_specific_focus": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
-    "counter_example_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
     "primary_skills": [
       "transit",
       "endpoint",
       "terminal"
     ],
+    "counter_example_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
     "decision_reason": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement."
   },
   "retrieval_tags": [

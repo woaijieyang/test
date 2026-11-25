@@ -113,7 +113,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -130,21 +130,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The living-room interior. Complete the quoted source-directed event.",
+          "text": "The living-room interior. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the living room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "right",
+          "candidate_quotes": [
+            "right"
+          ]
         },
         "source_quotes": [
           "Turn around and walk towards the table with the plant on it.",
           "Turn to the right and walk into the living room and stand just behind the couch and wait."
         ],
-        "carryover": [],
+        "carryover": [
+          "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -154,9 +158,11 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "In the living room, stand just behind the couch and wait"
+          ]
         },
         "target": {
           "text": "The position just behind the couch.",
@@ -172,15 +178,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The position just behind the couch. Complete the quoted source-directed event.",
+          "text": "The position just behind the couch. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "stand just behind the couch and wait."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "behind",
+          "candidate_quotes": [
+            "behind"
+          ]
         },
         "source_quotes": [
           "Turn to the right and walk into the living room and stand just behind the couch and wait."
@@ -198,19 +206,24 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The living-room interior. Complete the quoted source-directed event.",
-          "candidate_quote": "enter the living room."
+          "text": "Turn right and enter the living room.",
+          "candidate_quote": "Turn right and enter the living room."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "In the living room, stand just behind the couch and wait."
+          "text": "In the living room, stand just behind the couch and wait",
+          "candidate_quote": "In the living room, stand just behind the couch and wait"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference."
+        "handoff_rationale": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "prior_finding_reviews": []
@@ -228,7 +241,8 @@
     ],
     "review_principle": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
     "case_specific_focus": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
-    "transfer_rule": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "counter_example_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
     "primary_skills": [
       "entry",

@@ -251,6 +251,7 @@
     "primary_skills": [
       "scope"
     ],
-    "decision_reason": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing."
+    "decision_reason": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
+    "reusable_rule": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing."
   }
 }

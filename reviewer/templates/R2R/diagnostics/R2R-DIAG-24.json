@@ -314,6 +314,7 @@
       "ordinal"
     ],
     "counter_example_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
-    "decision_reason": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy."
+    "decision_reason": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
+    "reusable_rule": "Restore the complete hallway-entry phrase with its slight-right and chair description before the right turn and third-door count. Keep its original modifier attachment; preserve the locker-side wait."
   }
 }

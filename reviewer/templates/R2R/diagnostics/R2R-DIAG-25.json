@@ -351,6 +351,7 @@
     "primary_skills": [
       "coupled",
       "grouping"
-    ]
+    ],
+    "transfer_rule": "Assess the preparatory turn with the ascent it enables in this source; a turn with its own stated observation or placement can be independent."
   }
 }

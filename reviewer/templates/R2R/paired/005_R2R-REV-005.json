@@ -22,8 +22,8 @@
       "status": "ok",
       "subtasks": [
         "Walk through the office past the table and armchairs. Walk through the door on the other side of the table with the arched window above.",
-        "Walk down the hall and enter the room at the end of the hallway.",
-        "Walk towards the circular tables in the middle of the large room."
+        "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+        "Inside the large room, walk towards the circular tables in the middle."
       ]
     }
   },
@@ -66,7 +66,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 1,
-            "quote": "Walk down the hall and enter the room at the end of the hallway."
+            "quote": "From that doorway, walk down the hall and enter the room at the end of the hallway."
           }
         ],
         "status": "covered"
@@ -78,7 +78,7 @@
         "candidate_evidence": [
           {
             "subtask_index": 2,
-            "quote": "Walk towards the circular tables in the middle of the large room."
+            "quote": "Inside the large room, walk towards the circular tables in the middle."
           }
         ],
         "status": "covered"
@@ -134,7 +134,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -151,14 +151,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The specified far-side doorway crossed from the office. Complete the quoted source-directed event.",
+          "text": "The specified far-side doorway crossed from the office. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Walk through the door on the other side of the table with the arched window above."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "on the other side of the table; arched window above",
+          "text": "Operative constraints: on the other side of the table; arched window above",
           "candidate_quotes": [
             "on the other side of the table",
             "arched window above"
@@ -168,7 +168,9 @@
           "Walk through the office passed the table and armchairs.",
           "Walk through the door on the other side of the table swith the arched window above."
         ],
-        "carryover": [],
+        "carryover": [
+          "Continue from the crossed table-side doorway into the hall."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-01",
@@ -178,32 +180,34 @@
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "From that doorway, walk down the hall and enter the room at the end of the hallway"
+          ]
         },
         "target": {
-          "text": "The room entered at the hallway end.",
+          "text": "The room entered at the explicitly stated hallway end.",
           "candidate_quotes": [
             "enter the room at the end of the hallway."
           ]
         },
         "process": {
-          "text": "Walk down the hall and enter the room at the end of the hallway.",
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
           "candidate_quotes": [
-            "Walk down the hall and enter the room at the end of the hallway."
+            "From that doorway, walk down the hall and enter the room at the end of the hallway."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The room entered at the hallway end. Complete the quoted source-directed event.",
+          "text": "The room entered at the explicitly stated hallway end. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "enter the room at the end of the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "at the end of the hallway",
+          "text": "Operative constraints: at the end of the hallway",
           "candidate_quotes": [
             "at the end of the hallway"
           ]
@@ -211,7 +215,9 @@
         "source_quotes": [
           "Walk down the hall and into the room at the end of the hallway."
         ],
-        "carryover": [],
+        "carryover": [
+          "The hallway-end room is the same large room containing the circular tables."
+        ],
         "status": "supported",
         "source_requirement_ids": [
           "SRC-03"
@@ -220,34 +226,37 @@
       {
         "subtask_index": 2,
         "entry": {
-          "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
-          "candidate_quotes": []
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "Inside the large room, walk towards the circular tables in the middle"
+          ]
         },
         "target": {
-          "text": "The circular tables being approached; no arrival threshold is supplied.",
+          "text": "The circular tables in the already entered large room, approached without a stated arrival threshold.",
           "candidate_quotes": [
-            "Walk towards the circular tables in the middle of the large room."
+            "walk towards the circular tables in the middle."
           ]
         },
         "process": {
-          "text": "Walk towards the circular tables in the middle of the large room.",
+          "text": "Inside the large room, walk towards the circular tables in the middle.",
           "candidate_quotes": [
-            "Walk towards the circular tables in the middle of the large room."
+            "Inside the large room, walk towards the circular tables in the middle."
           ]
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "The circular tables being approached; no arrival threshold is supplied. This is a final approach without an asserted arrival or STOP.",
+          "text": "The circular tables in the already entered large room, approached without a stated arrival threshold. The source directs a final approach without specifying arrival or STOP.",
           "candidate_quotes": [
-            "Walk towards the circular tables in the middle of the large room."
+            "walk towards the circular tables in the middle."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "in the middle of the large room",
+          "text": "Operative constraints: Inside the large room; circular tables in the middle",
           "candidate_quotes": [
-            "in the middle of the large room"
+            "Inside the large room",
+            "circular tables in the middle"
           ]
         },
         "source_quotes": [
@@ -266,39 +275,49 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The specified far-side doorway crossed from the office. Complete the quoted source-directed event.",
+          "text": "Walk through the door on the other side of the table with the arched window above.",
           "candidate_quote": "Walk through the door on the other side of the table with the arched window above."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "Walk down the hall and enter the room at the end of the hallway."
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway",
+          "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Continue from the crossed table-side doorway into the hall."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables."
+        "handoff_rationale": "Continue from the crossed table-side doorway into the hall. Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment."
       },
       {
         "from_subtask_index": 1,
         "to_subtask_index": 2,
         "status": "supported",
         "preceding_exit": {
-          "text": "The room entered at the hallway end. Complete the quoted source-directed event.",
-          "candidate_quote": "enter the room at the end of the hallway."
+          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+          "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "Walk towards the circular tables in the middle of the large room."
+          "text": "Inside the large room, walk towards the circular tables in the middle",
+          "candidate_quote": "Inside the large room, walk towards the circular tables in the middle"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The hallway-end room is the same large room containing the circular tables."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables."
+        "handoff_rationale": "The hallway-end room is the same large room containing the circular tables. Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment."
       }
     ],
     "prior_finding_reviews": []
@@ -315,7 +334,8 @@
     ],
     "review_principle": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
     "case_specific_focus": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
-    "transfer_rule": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
+    "transfer_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
+    "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
     "counter_example_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
     "primary_skills": [
       "entry",

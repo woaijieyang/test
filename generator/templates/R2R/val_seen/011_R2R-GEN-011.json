@@ -37,7 +37,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -54,28 +54,30 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The explicitly stated hallway end. Complete the quoted source-directed event.",
+          "text": "The explicitly stated hallway end. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Continue straight to the end of the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "straight to the end of the hallway",
+          "text": "Operative constraints: straight to the end of the hallway",
           "candidate_quotes": [
             "straight to the end of the hallway"
           ]
         },
         "source_quotes": [
-          "Walk around the bed and exit the room going straight to the end of the hallway. Turn left and enter the bedroom. Wait in the doorway."
+          "Walk around the bed and exit the room going straight to the end of the hallway."
         ],
-        "carryover": []
+        "carryover": [
+          "The explicitly reached hallway end establishes where the next left is taken."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
           "mode": "inherited_pose",
-          "text": "Use the preceding source-supported completion and continue with this stage first unperformed action.",
+          "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; no physical stop is implied.",
           "candidate_quotes": []
         },
         "target": {
@@ -92,21 +94,22 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom doorway after the left turn and entry. Complete the quoted source-directed event.",
+          "text": "The bedroom doorway after the left turn and entry. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Wait in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "turn left; in the doorway",
+          "text": "Operative constraints: turn left; in the doorway",
           "candidate_quotes": [
             "turn left",
             "in the doorway"
           ]
         },
         "source_quotes": [
-          "Walk around the bed and exit the room going straight to the end of the hallway. Turn left and enter the bedroom. Wait in the doorway."
+          "Turn left and enter the bedroom.",
+          "Wait in the doorway."
         ],
         "carryover": []
       }
@@ -117,37 +120,45 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The explicitly stated hallway end. Complete the quoted source-directed event.",
+          "text": "Continue straight to the end of the hallway.",
           "candidate_quote": "Continue straight to the end of the hallway."
         },
         "next_entry": {
-          "text": "The next stage continues from this completion; any stated anchor binds context rather than replaying movement.",
-          "candidate_quote": "At the end of the hallway, turn left and enter the bedroom. Wait in the doorway."
+          "text": "At the end of the hallway, turn left and enter the bedroom",
+          "candidate_quote": "At the end of the hallway, turn left and enter the bedroom"
         },
-        "shared_context": [],
-        "source_requirement_ids": [],
-        "handoff_rationale": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway."
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The explicitly reached hallway end establishes where the next left is taken."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The explicitly reached hallway end establishes where the next left is taken. Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement."
       }
     ],
     "issues": []
   },
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
-    "why_this_case_matters": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
-    "reusable_rule": "",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: Path constraints: go around the bed; continue straight to the end of the hallway. Stage 2: left",
+    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Continue straight to the end of the hallway.'; stage 2 begins from 'At the end of the hallway, turn left and enter the bedroom. Wait in the doorway.'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Continue straight to the end of the hallway.'; stage 2 begins from 'At the end of the hallway, turn left and enter the bedroom. Wait in the doorway.'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not invent a hallway endpoint when the source only says down the hall, and do not execute a completed traversal twice.",
     "case_rationale": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
-    "transfer_rule": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
+    "transfer_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
     "case_specific_focus": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
-    "counter_example_boundary": "A generic instruction to go down a hallway does not establish its far end.",
     "primary_skills": [
       "hall_end",
       "direction",
       "terminal"
     ],
+    "counter_example_boundary": "A generic instruction to go down a hallway does not establish its far end.",
     "decision_reason": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway."
   },
   "retrieval_tags": [

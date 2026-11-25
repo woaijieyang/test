@@ -219,6 +219,7 @@
     "primary_skills": [
       "target_identity"
     ],
-    "decision_reason": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns."
+    "decision_reason": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns.",
+    "reusable_rule": "Restore door in the first doorway placement; preserve both subsequent left turns."
   }
 }

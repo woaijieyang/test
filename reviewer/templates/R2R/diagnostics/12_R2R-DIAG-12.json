@@ -237,6 +237,7 @@
     "primary_skills": [
       "direction"
     ],
-    "decision_reason": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway."
+    "decision_reason": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
+    "reusable_rule": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway."
   }
 }

@@ -21,7 +21,8 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. "
+        "Walk past the water fountain and turn left.",
+        "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
       ]
     }
   },
@@ -51,8 +52,8 @@
         "requirement": "Preserve the spatial transition and region/threshold: Walk to the doorway directly across from the stairs.",
         "candidate_evidence": [
           {
-            "subtask_index": 0,
-            "quote": "Walk to the doorway directly across from the stairs."
+            "subtask_index": 1,
+            "quote": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs."
           }
         ],
         "status": "covered"
@@ -63,7 +64,7 @@
         "requirement": "Preserve the completion or stationary-position condition: Stop in the doorway.",
         "candidate_evidence": [
           {
-            "subtask_index": 0,
+            "subtask_index": 1,
             "quote": "Stop in the doorway."
           }
         ],
@@ -97,8 +98,8 @@
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_applicable",
-        "conclusion": "No adjacent stage exists.",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
@@ -120,8 +121,55 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
+        },
+        "target": {
+          "text": "The post-fountain state after the specified left turn.",
+          "candidate_quotes": [
+            "turn left."
+          ]
+        },
+        "process": {
+          "text": "Walk past the water fountain and turn left.",
+          "candidate_quotes": [
+            "Walk past the water fountain and turn left."
+          ]
+        },
+        "ending": {
+          "kind": "bounded_action",
+          "text": "The post-fountain state after the specified left turn. This is the source-directed completion event; it adds no physical STOP.",
+          "candidate_quotes": [
+            "turn left."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Operative constraints: past the water fountain; turn left",
+          "candidate_quotes": [
+            "past the water fountain",
+            "turn left"
+          ]
+        },
+        "source_quotes": [
+          "Walk past the water fountain and turn left."
+        ],
+        "carryover": [
+          "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target."
+        ],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01"
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "entry": {
+          "mode": "explicit_context",
+          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
+          "candidate_quotes": [
+            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
+          ]
         },
         "target": {
           "text": "The doorway directly across from the stairs.",
@@ -130,38 +178,65 @@
           ]
         },
         "process": {
-          "text": "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. ",
+          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left. Walk to the doorway directly across from the stairs.  Stop in the doorway. "
+            "After passing the water fountain and turning left, walk to the doorway directly across from the stairs. Stop in the doorway."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The doorway directly across from the stairs. Complete the quoted source-directed event.",
+          "text": "The doorway directly across from the stairs. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Stop in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "Operative constraints: After passing the water fountain and turning left; directly across from the stairs",
+          "candidate_quotes": [
+            "After passing the water fountain and turning left",
+            "directly across from the stairs"
+          ]
         },
         "source_quotes": [
-          "Walk past the water fountain and turn left.",
           "Walk to the doorway directly across from the stairs.",
           "Stop in the doorway."
         ],
         "carryover": [],
         "status": "supported",
         "source_requirement_ids": [
-          "SRC-01",
           "SRC-02",
           "SRC-03"
         ]
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "Walk past the water fountain and turn left.",
+          "candidate_quote": "Walk past the water fountain and turn left."
+        },
+        "next_entry": {
+          "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs",
+          "candidate_quote": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
+        },
+        "shared_context": [
+          {
+            "kind": "orientation",
+            "text": "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target. Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced."
+      }
+    ],
     "prior_finding_reviews": []
   },
   "teaching_notes": {
@@ -176,15 +251,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
-    "case_specific_focus": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
-    "transfer_rule": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway.",
+    "review_principle": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
+    "case_specific_focus": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
+    "transfer_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
+    "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
     "counter_example_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
     "primary_skills": [
       "coupled",
       "pass_by",
       "terminal"
     ],
-    "decision_reason": "The fountain pass and left turn prepare the approach to the doorway across from the stairs; stop in that doorway."
+    "decision_reason": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP."
   }
 }

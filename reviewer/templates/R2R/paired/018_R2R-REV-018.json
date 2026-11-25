@@ -108,7 +108,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -125,14 +125,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom-door waiting position. Complete the quoted source-directed event.",
+          "text": "The bedroom-door waiting position. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Wait at the bedroom door."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "until you get to a bedroom; at the bedroom door",
+          "text": "Operative constraints: until you get to a bedroom; at the bedroom door",
           "candidate_quotes": [
             "until you get to a bedroom",
             "at the bedroom door"
@@ -166,8 +166,9 @@
     ],
     "review_principle": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
     "case_specific_focus": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
-    "transfer_rule": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
+    "transfer_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
     "anti_pattern": "Do not force a split at a room noun or doorway. A different source with a completed visit followed by an independent objective can support a cut.",
+    "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
     "counter_example_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
     "primary_skills": [
       "transit",

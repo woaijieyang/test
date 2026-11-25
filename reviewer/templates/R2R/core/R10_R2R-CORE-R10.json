@@ -146,6 +146,7 @@
     "decision_reason": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
     "transfer_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
     "anti_pattern": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "reusable_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context."
   }
 }

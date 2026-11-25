@@ -120,7 +120,7 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
@@ -137,14 +137,14 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The top of the prescribed three-step ascent. Complete the quoted source-directed event.",
+          "text": "The top of the prescribed three-step ascent. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "when you get to the top, wait."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "three steps; when you get to the top",
+          "text": "Operative constraints: three steps; when you get to the top",
           "candidate_quotes": [
             "three steps",
             "when you get to the top"
@@ -182,7 +182,8 @@
     ],
     "review_principle": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
     "case_specific_focus": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
-    "transfer_rule": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "transfer_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
+    "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
     "counter_example_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
     "primary_skills": [
       "bounded",

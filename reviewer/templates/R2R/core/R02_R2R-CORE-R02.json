@@ -242,6 +242,7 @@
     "semantic_pattern": "revise_ordinal_target_identity_omission",
     "decision_reason": "The candidate preserves the hallway traversal and terminal position but changes the ordinal target from the first right-side door to the next door on the right. This is a route-critical target-identity error.",
     "transfer_rule": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "reusable_rule": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence."
   }
 }

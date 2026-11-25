@@ -36,11 +36,11 @@
         "subtask_index": 0,
         "entry": {
           "mode": "episode_start",
-          "text": "Begin in the actual episode context.",
+          "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "The stairs as the final directed target.",
+          "text": "The stairs as the source-directed destination.",
           "candidate_quotes": [
             "Continue to the stairs."
           ]
@@ -52,19 +52,22 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The stairs as the final directed target. This is a final approach without an asserted arrival or STOP.",
+          "kind": "explicit_event",
+          "text": "The stairs as the source-directed destination. This is the source-directed completion event; it adds no physical STOP.",
           "candidate_quotes": [
             "Continue to the stairs."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "left",
+          "candidate_quotes": [
+            "left"
+          ]
         },
         "source_quotes": [
-          "Go left down the hall. Continue to the stairs."
+          "Go left down the hall.",
+          "Continue to the stairs."
         ],
         "carryover": []
       }
@@ -74,20 +77,20 @@
   },
   "teaching_notes": {
     "segmentation_pattern": "single_coherent_stage",
-    "why_this_case_matters": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
-    "reusable_rule": "",
-    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Go left down the hall. Continue to the stairs.). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
     "anti_pattern": "Do not split merely because the source contains multiple verbs or sentences; do not invent an intermediate stop or endpoint.",
     "case_rationale": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
     "case_specific_focus": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
-    "transfer_rule": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
-    "counter_example_boundary": "An explicit source wait at the stairs would add a terminal event.",
     "primary_skills": [
       "coupled",
       "final_approach"
     ],
+    "counter_example_boundary": "An explicit source wait at the stairs would add a terminal event.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
     "decision_reason": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop."
   },
   "retrieval_tags": [

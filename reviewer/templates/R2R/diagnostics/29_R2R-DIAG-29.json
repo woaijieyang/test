@@ -257,6 +257,7 @@
     "transfer_rule": "A later completion clause refines the same movement rather than licensing a second movement.",
     "anti_pattern": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
     "decision_reason": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
-    "review_principle": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition."
+    "review_principle": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
+    "reusable_rule": "A later completion clause refines the same movement rather than licensing a second movement."
   }
 }

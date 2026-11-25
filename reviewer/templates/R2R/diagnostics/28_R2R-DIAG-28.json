@@ -281,6 +281,7 @@
     "primary_skills": [
       "grouping",
       "endpoint"
-    ]
+    ],
+    "reusable_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages."
   }
 }

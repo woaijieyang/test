@@ -234,6 +234,7 @@
       "observation",
       "entry",
       "terminal"
-    ]
+    ],
+    "reusable_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately."
   }
 }
