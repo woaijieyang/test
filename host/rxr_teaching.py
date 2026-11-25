@@ -1,7 +1,7 @@
 """RxR-only teaching projection and explicit production-bundle validation.
 
 No authoring, downloads, ranking changes or semantic decisions happen here.
-Summaries retain actual source, candidate, conditions and repair evidence.
+Every Core, Dynamic and Diagnostic retains the complete runtime demonstration.
 """
 from __future__ import annotations
 
@@ -13,27 +13,12 @@ SCOPES = {'RxR', 'RxR_prompt_teaching_example'}
 def dynamic_is_detailed(role, position):
     if role not in ('generator', 'reviewer') or type(position) is not int or position < 0:
         raise ValueError('Invalid RxR role or dynamic position')
-    # Reviewer pairs precede diagnostics, so the same first two cases are detailed.
-    return position < 2
-
-
-def _stage_summary(audit, stages):
-    """Remove duplicated process prose only; never truncate a relation or quote."""
-    result = []
-    for row in audit:
-        item = deepcopy(row)
-        index = item['subtask_index']
-        if not 0 <= index < len(stages):
-            raise ValueError('RxR teaching stage index is out of range')
-        process = item['process']
-        if process.get('text') == stages[index]:
-            # The full executable stage and all process quotes remain visible.
-            process.pop('text')
-        result.append(item)
-    return result
+    # Every selected case is detailed, including Reviewer diagnostics.
+    return True
 
 
 def card(example, role, detailed, *, review_output):
+    """Preserve every runtime output field; the legacy detail flag cannot compress."""
     if example.get('dataset_scope') not in SCOPES or example.get('language') != 'en-US':
         raise ValueError('RxR projection received foreign teaching')
     if example.get('role') != role or type(detailed) is not bool:
@@ -42,31 +27,17 @@ def card(example, role, detailed, *, review_output):
     if role == 'generator':
         output = example['output']
         teaching = dict(source=example['input']['original_instruction'],
-                        decision=example['decision'], stages=output['subtasks'],
-                        handoffs=output['handoffs'], issues=output['issues'])
-        if detailed:
-            teaching['stage_evidence'] = output['stage_audit']
-        else:
-            teaching['stage_summary'] = _stage_summary(output['stage_audit'], output['subtasks'])
+                        decision=example['decision'], status=output['status'],
+                        stages=output['subtasks'], handoffs=output['handoffs'],
+                        issues=output['issues'], stage_evidence=output['stage_audit'])
         lesson = notes.get('case_rationale') or notes.get('reusable_rule') or notes.get('why_this_case_matters')
     elif role == 'reviewer':
         audit = review_output(example)
-        stages = example['review_input']['candidate']['subtasks']
         teaching = dict(review_case=example['review_input'], verdict=audit['verdict'],
-                        dimensions=audit['dimensions'], findings=audit['findings'])
-        if detailed:
-            teaching.update(coverage_evidence=audit['source_coverage'],
-                            stage_checks=audit.get('stage_checks', []),
-                            layer_checks=audit.get('layer_checks', []))
-        else:
-            # All requirements/evidence are retained. Only repeated layer conclusions
-            # and duplicate process narration are summarized, not the actual defect.
-            teaching.update(coverage_summary=audit['source_coverage'],
-                            stage_summary=_stage_summary(audit.get('stage_checks', []), stages),
-                            layer_summary=[{k: row[k] for k in ('layer', 'status', 'finding_indices')}
-                                           for row in audit.get('layer_checks', [])])
-        teaching['handoffs'] = audit['handoffs']
-        teaching['prior_finding_reviews'] = audit.get('prior_finding_reviews', [])
+                        dimensions=audit['dimensions'], findings=audit['findings'],
+                        coverage_evidence=audit['source_coverage'],
+                        stage_checks=audit['stage_checks'], layer_checks=audit['layer_checks'],
+                        handoffs=audit['handoffs'], prior_finding_reviews=audit['prior_finding_reviews'])
         lesson = notes.get('case_specific_focus') or notes.get('review_principle') or notes.get('reuse_rule')
     else:
         raise ValueError('Invalid RxR teaching role')

@@ -1,0 +1,325 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-28",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "pair_id": null,
+  "source": {
+    "split": "val_seen",
+    "role": "standard",
+    "record_id": "18",
+    "episode_id": "18",
+    "instruction_id": null,
+    "scene_id": "mp3d/JeFG25nYj2p/JeFG25nYj2p.glb",
+    "trajectory_id": "180",
+    "source_key": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180"
+  },
+  "provenance": {
+    "kind": "reviewer_only_adversarial_example",
+    "source_status": "source_instruction_from_existing_val_seen_template",
+    "source_template": "R2R-GEN-018",
+    "candidate_corruption_is_authored_not_model_output": false,
+    "corruption_pattern": "none_valid_alternative",
+    "curation_basis": "Contrastive teaching, not trajectory ground truth or observed model output."
+  },
+  "review_input": {
+    "original_instruction": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom. Wait at the bedroom door. ",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go through the doorway to the room with the sink.",
+        "Follow the hallway until you get to a bedroom.",
+        "Wait at the bedroom door."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Go through the doorway to the room with the sink",
+        "requirement": "Cross the doorway identified by the room with the sink.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go through the doorway to the room with the sink."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "follow the hallway until you get to a bedroom.",
+        "requirement": "Follow the hallway until reaching the bedroom.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 1,
+            "quote": "Follow the hallway until you get to a bedroom."
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "Wait at the bedroom door.",
+        "requirement": "Preserve the final wait at that bedroom door.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 2,
+            "quote": "Wait at the bedroom door."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The crossing, hallway-to-bedroom leg and door-specific final placement retain supported entries and local targets. The final wait adds a location relation, not a content-free STOP. A coarser faithful organization is also valid.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "status": "supported",
+        "entry": {
+          "mode": "episode_start",
+          "text": "Use the source episode start.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The room identified by the sink, reached through its doorway.",
+          "candidate_quotes": [
+            "the room with the sink"
+          ]
+        },
+        "process": {
+          "text": "Cross the doorway identified by the room with the sink.",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The room identified by the sink, reached through its doorway. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quotes": [
+            "Go through the doorway to the room with the sink."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "The sink identifies the destination room.",
+          "candidate_quotes": [
+            "the room with the sink"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
+        "source_quotes": [
+          "Go through the doorway to the room with the sink"
+        ],
+        "carryover": [
+          "The source-directed doorway crossing is complete; the remaining hallway movement follows without repeating the crossing."
+        ]
+      },
+      {
+        "subtask_index": 1,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "The source-directed doorway crossing is complete; the remaining hallway movement follows without repeating the crossing.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The bedroom reached along the hallway.",
+          "candidate_quotes": [
+            "a bedroom"
+          ]
+        },
+        "process": {
+          "text": "Follow the hallway until reaching the bedroom.",
+          "candidate_quotes": [
+            "Follow the hallway until you get to a bedroom."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The bedroom reached along the hallway. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quotes": [
+            "Follow the hallway until you get to a bedroom."
+          ],
+          "stop_scope": "none"
+        },
+        "conditions": {
+          "text": "Until binds the hallway movement to bedroom arrival.",
+          "candidate_quotes": [
+            "until you get to a bedroom"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quotes": [
+          "follow the hallway until you get to a bedroom."
+        ],
+        "carryover": [
+          "The source-directed bedroom arrival identifies the bedroom whose door is the remaining waiting position."
+        ]
+      },
+      {
+        "subtask_index": 2,
+        "status": "supported",
+        "entry": {
+          "mode": "inherited_pose",
+          "text": "The source-directed bedroom arrival identifies the bedroom whose door is the remaining waiting position.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The door of that same bedroom as the final waiting position.",
+          "candidate_quotes": [
+            "the bedroom door"
+          ]
+        },
+        "process": {
+          "text": "Preserve the final wait at that bedroom door.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The door of that same bedroom as the final waiting position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
+          "candidate_quotes": [
+            "Wait at the bedroom door."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "At the bedroom door fixes the final placement, without requiring bedroom entry.",
+          "candidate_quotes": [
+            "at the bedroom door"
+          ]
+        },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quotes": [
+          "Wait at the bedroom door."
+        ],
+        "carryover": []
+      }
+    ],
+    "handoffs": [
+      {
+        "from_subtask_index": 0,
+        "to_subtask_index": 1,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The room identified by the sink, reached through its doorway. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "Go through the doorway to the room with the sink."
+        },
+        "next_entry": {
+          "text": "The source-directed doorway crossing is complete; the remaining hallway movement follows without repeating the crossing.",
+          "candidate_quote": "Follow the hallway until you get to a bedroom."
+        },
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The source-directed doorway crossing is complete; the remaining hallway movement follows without repeating the crossing."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "handoff_rationale": "The source-directed doorway crossing is complete; the remaining hallway movement follows without repeating the crossing. The next stage performs only the remaining source-directed action; no extra crossing or stop is inferred."
+      },
+      {
+        "from_subtask_index": 1,
+        "to_subtask_index": 2,
+        "status": "supported",
+        "preceding_exit": {
+          "text": "The bedroom reached along the hallway. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "Follow the hallway until you get to a bedroom."
+        },
+        "next_entry": {
+          "text": "The source-directed bedroom arrival identifies the bedroom whose door is the remaining waiting position.",
+          "candidate_quote": "Wait at the bedroom door."
+        },
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The source-directed bedroom arrival identifies the bedroom whose door is the remaining waiting position."
+          }
+        ],
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
+        "handoff_rationale": "The source-directed bedroom arrival identifies the bedroom whose door is the remaining waiting position. The next stage performs only the remaining source-directed action; no extra crossing or stop is inferred."
+      }
+    ],
+    "prior_finding_reviews": []
+  },
+  "teaching_notes": {
+    "review_pattern": "valid_alternative_grouping",
+    "case_specific_focus": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "transfer_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "anti_pattern": "Do not reject every region transition as oversegmented or force an entire multi-region route into one stage. Require a genuine independent objective at each proposed boundary.",
+    "review_principle": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "decision_reason": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
+    "counter_example_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
+    "primary_skills": [
+      "grouping",
+      "endpoint"
+    ],
+    "reusable_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages."
+  }
+}

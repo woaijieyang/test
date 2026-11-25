@@ -323,7 +323,7 @@ Return only the existing review schema, dimensions, checks and finding identifie
 
 Evidence scope: permitted grammatical editing and the evidential strength of a blocking Finding are different questions. In the Finding field, only material S1/S2-supported defects justify blocking; S3 concerns alone do not. Genuine omissions may have no candidate quote. Separate evidence indices from the minimal repair target and name the unaffected requirements to protect. Closure includes each stage's own ending as well as adjacent handoffs: one stage makes L4 inapplicable, not automatically closure_handoff=pass. Do not propagate one defect into unrelated dimensions.
 
-Teaching cards are source/candidate demonstrations, not necessarily complete runtime response objects. The first two paired Dynamic cards are detailed; later summaries still preserve the actual findings, requirements, stage meanings and handoffs. Regardless of card format, return all fields of the active review Schema and never copy a teaching wrapper. A syntax-valid quote or a familiar noun does not prove entailment.
+Every selected Core, paired Dynamic and Diagnostic carries its complete source/candidate demonstration and all review fields: coverage, layer checks, stage checks, dimensions, findings, handoffs and prior-finding dispositions. No selected case is summarized or truncated. The teaching wrapper is not the response object; return all fields of the active review Schema. On R1, examples with no prior findings do not replace the actual required prior-finding checks. A syntax-valid quote or a familiar noun does not prove entailment.
 
 ### Existing recheck after a Generator repair
 

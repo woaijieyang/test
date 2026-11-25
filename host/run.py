@@ -96,6 +96,15 @@ def prompt_components_metadata(role, phase, profile):
             root/"shared/dataset_rules/r2r_en.md",
             root/role/"dataset_rules/r2r_en.md",
         ])
+        paths.extend([root/"host/r2r/selection.py", root/"host/r2r/teaching.py", root/"host/r2r/relations.py",
+                      root/"host/r2r/teaching_index.json",
+                      root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
+        if phase in ("repair", "recheck"):
+            paths.append(root/"host/r2r/phase_teaching.py")
+        if role == "generator" and phase == "repair":
+            paths.append(root/"generator/dataset_rules/r2r_repair_examples.json")
+        if role == "reviewer" and phase == "recheck":
+            paths.append(root/"reviewer/dataset_rules/r2r_recheck_examples.json")
     files = []
     for path in paths:
         data = path.read_bytes()
@@ -130,8 +139,7 @@ def template_bundle_metadata(role, profile, selected_ids):
 def request(role, phase, payload, pin, profile, selected_ids, *, selection_mode="adaptive"):
     text, active_schema = compile_prompt(
         role, phase, profile=profile, selected_ids=selected_ids,
-        original_instruction=payload.get("original_instruction"),
-        selection_mode=selection_mode
+        original_instruction=payload.get("original_instruction"), selection_mode=selection_mode
     )
     rules = dataset_rules_metadata(profile)
     bundle = template_bundle_metadata(role, profile, selected_ids)
@@ -171,8 +179,7 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
 
     def call(role, phase, payload, candidate_digest=None):
         context.update(step="request_construction", role=role, phase=phase)
-        req = request(role, phase, payload, pins[role], src.profile, selections[role],
-                      selection_mode=selection_mode)
+        req = request(role, phase, payload, pins[role], src.profile, selections[role], selection_mode=selection_mode)
         need(req["template_bundle"] == template_bundles[role],
              "Selected template content changed during the task",
              code="TEMPLATE_BUNDLE_MUTATED", module="host.run", path="/template_bundle")
@@ -406,16 +413,20 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             role: [row["template_id"] for row in core_library(role, src.profile)]
             for role in ("generator", "reviewer")
         }
-        selections = {
-            role: select_examples(role, src.profile, src.raw,
-                                  count=example_count, mode=selection_mode)
-            for role in ("generator", "reviewer")
-        }
-        if src.profile == "rxr-en-us":
-            from host.rxr_teaching import validate_pair_bundle
-            validate_pair_bundle(selections, selection_mode)
-        retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
-                              for role, ids in selections.items()}
+        if src.profile == "r2r-en" and selection_mode == "adaptive":
+            from host.r2r.selection import select_bundle
+            from host.r2r.relations import route_family
+            plan = select_bundle(src.raw, count=example_count, source_family=route_family(src.provenance, src.split))
+            selections = {role: plan[role] for role in ("generator", "reviewer")}
+            retrieval_evidence = plan["evidence"]
+        else:
+            selections = {
+                role: select_examples(role, src.profile, src.raw,
+                                      count=example_count, mode=selection_mode)
+                for role in ("generator", "reviewer")
+            }
+            retrieval_evidence = {role: selection_evidence(role, src.profile, src.raw, ids)
+                                  for role, ids in selections.items()}
         reviewer_rows_by_id = {
             row["template_id"]: row for row in library("reviewer", src.profile)
         }
@@ -423,6 +434,15 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
             role: template_bundle_metadata(role, src.profile, ids)
             for role, ids in selections.items()
         }
+        if src.profile == "r2r-en":
+            from host.r2r.selection import validate_bundle
+            from host.r2r.relations import route_family
+            from host.r2r.phase_teaching import validate_phase_pairs
+            validate_bundle(src.raw, selections, selection_mode, source_family=route_family(src.provenance, src.split))
+            validate_phase_pairs()
+        if src.profile == "rxr-en-us":
+            from host.rxr_teaching import validate_pair_bundle
+            validate_pair_bundle(selections, selection_mode)
         source_payload = {"original_instruction": src.raw}
         g0 = validated_call("generator", "initial", source_payload, lambda out: runtime_protocol.generator(src.raw, out))
 

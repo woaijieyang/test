@@ -40,7 +40,10 @@
         "source_quote": "Walk through the office passed the table and armchairs.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk through the office passed the table and armchairs.",
         "candidate_evidence": [
-          "Walk through the office past the table and armchairs."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the office past the table and armchairs."
+          }
         ],
         "status": "covered"
       },
@@ -49,7 +52,10 @@
         "source_quote": "Walk through the door on the other side of the table swith the arched window above.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk through the door on the other side of the table swith the arched window above.",
         "candidate_evidence": [
-          "Walk through the door on the other side of the table with the arched window above."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the door on the other side of the table with the arched window above."
+          }
         ],
         "status": "covered"
       },
@@ -58,7 +64,10 @@
         "source_quote": "Walk down the hall and into the room at the end of the hallway.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk down the hall and into the room at the end of the hallway.",
         "candidate_evidence": [
-          "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          {
+            "subtask_index": 1,
+            "quote": "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          }
         ],
         "status": "covered"
       },
@@ -67,7 +76,10 @@
         "source_quote": "Walk towards the circular tables in the middle of the large room.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk towards the circular tables in the middle of the large room.",
         "candidate_evidence": [
-          "Inside the large room, walk towards the circular tables in the middle."
+          {
+            "subtask_index": 2,
+            "quote": "Inside the large room, walk towards the circular tables in the middle."
+          }
         ],
         "status": "covered"
       }
@@ -75,38 +87,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -120,7 +139,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk through the door on the other side of the table with the arched window above.",
+          "text": "The specified far-side doorway crossed from the office.",
           "candidate_quotes": [
             "Walk through the door on the other side of the table with the arched window above."
           ]
@@ -133,17 +152,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The specified far-side doorway crossed from the office. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk through the door on the other side of the table with the arched window above."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "through; past",
+          "text": "Verify these source-specified relations in the candidate: on the other side of the table; arched window above",
           "candidate_quotes": [
-            "through",
-            "past"
+            "on the other side of the table",
+            "arched window above"
           ]
         },
         "source_requirement_ids": [
@@ -155,7 +174,7 @@
           "Walk through the door on the other side of the table swith the arched window above."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "Continue from the crossed table-side doorway into the hall."
         ]
       },
       {
@@ -169,9 +188,9 @@
           ]
         },
         "target": {
-          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
+          "text": "The room entered at the explicitly stated hallway end.",
           "candidate_quotes": [
-            "From that doorway, walk down the hall and enter the room at the end of the hallway."
+            "enter the room at the end of the hallway."
           ]
         },
         "process": {
@@ -182,15 +201,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The room entered at the explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "From that doorway, walk down the hall and enter the room at the end of the hallway."
+            "enter the room at the end of the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "Verify these source-specified relations in the candidate: at the end of the hallway",
+          "candidate_quotes": [
+            "at the end of the hallway"
+          ]
         },
         "source_requirement_ids": [
           "SRC-03"
@@ -199,7 +220,7 @@
           "Walk down the hall and into the room at the end of the hallway."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The hallway-end room is the same large room containing the circular tables."
         ]
       },
       {
@@ -213,9 +234,9 @@
           ]
         },
         "target": {
-          "text": "Inside the large room, walk towards the circular tables in the middle.",
+          "text": "The circular tables in the already entered large room, approached without a stated arrival threshold.",
           "candidate_quotes": [
-            "Inside the large room, walk towards the circular tables in the middle."
+            "walk towards the circular tables in the middle."
           ]
         },
         "process": {
@@ -226,15 +247,18 @@
         },
         "ending": {
           "kind": "terminal_goal_directive",
-          "text": "Preserve the final directed approach; the source does not specify a further arrival threshold or physical STOP.",
+          "text": "The circular tables in the already entered large room, approached without a stated arrival threshold. The source directs a final approach without specifying arrival or STOP.",
           "candidate_quotes": [
-            "Inside the large room, walk towards the circular tables in the middle."
+            "walk towards the circular tables in the middle."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "Verify these source-specified relations in the candidate: Inside the large room; circular tables in the middle",
+          "candidate_quotes": [
+            "Inside the large room",
+            "circular tables in the middle"
+          ]
         },
         "source_requirement_ids": [
           "SRC-04"
@@ -251,41 +275,52 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk through the door on the other side of the table with the arched window above.",
+          "text": "The specified far-side doorway crossed from the office. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Walk through the door on the other side of the table with the arched window above."
         },
         "next_entry": {
-          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway",
+          "text": "Continue from the crossed table-side doorway into the hall.",
           "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Continue from the crossed table-side doorway into the hall."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk through the door on the other side of the table with the arched window above.'; the next stage begins with 'From that doorway, walk down the hall and enter the room at the end of the hallway'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Continue from the crossed table-side doorway into the hall."
       },
       {
         "from_subtask_index": 1,
         "to_subtask_index": 2,
         "status": "supported",
         "preceding_exit": {
-          "text": "From that doorway, walk down the hall and enter the room at the end of the hallway.",
-          "candidate_quote": "From that doorway, walk down the hall and enter the room at the end of the hallway."
+          "text": "The room entered at the explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the room at the end of the hallway."
         },
         "next_entry": {
-          "text": "Inside the large room, walk towards the circular tables in the middle",
+          "text": "The hallway-end room is the same large room containing the circular tables.",
           "candidate_quote": "Inside the large room, walk towards the circular tables in the middle"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The hallway-end room is the same large room containing the circular tables."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'From that doorway, walk down the hall and enter the room at the end of the hallway.'; the next stage begins with 'Inside the large room, walk towards the circular tables in the middle'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The hallway-end room is the same large room containing the circular tables."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -297,7 +332,16 @@
       "stairs_or_level_change",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Walk through the office passed the table and armchairs.; Preserve the spatial transition and region/threshold: Walk through the door on the other side of the table swith the…; Preserve the spatial transition and region/threshold: Walk down the hall and into the room at the end of the hallway.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Walk through the office passed the table and armchairs.; Preserve the spatial transition and region/threshold: Walk through the door on the other side of the table swith the…; Preserve the spatial transition and region/threshold: Walk down the hall and into the room at the end of the hallway."
+    "review_principle": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
+    "case_specific_focus": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
+    "transfer_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
+    "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
+    "counter_example_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
+    "primary_skills": [
+      "entry",
+      "target_identity",
+      "final_approach"
+    ],
+    "decision_reason": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables."
   }
 }

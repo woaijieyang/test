@@ -1,0 +1,1013 @@
+{
+  "parent_commit": "081db4b9ea0712ff720c137fe96c240c26f7b15c",
+  "evaluated_commit": "9dd24a655a845d59698e835c0326fbf73db5fbb8",
+  "templates": [
+    {
+      "template_id": "R2R-GEN-036",
+      "path": "generator/templates/R2R/authored/036_R2R-GEN-036.json",
+      "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
+      "evidence_blob": "27149a69feec5d057e9370cfd7c31fbbc6f716434c49989cb905c3f5e87c75cb",
+      "result_sha256": "27149a69feec5d057e9370cfd7c31fbbc6f716434c49989cb905c3f5e87c75cb",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-GEN-037",
+      "path": "generator/templates/R2R/authored/037_R2R-GEN-037.json",
+      "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
+      "evidence_blob": "2a556977d96ef289367c161a1683e77ee35b8c285600796231f311d387ba9544",
+      "result_sha256": "2a556977d96ef289367c161a1683e77ee35b8c285600796231f311d387ba9544",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-CORE-G01",
+      "path": "generator/templates/R2R/core/G01_R2R-CORE-G01.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "1117f6b822194c2bb9f272271fa483da33333be0d5fbba14954472efb6479759",
+      "result_sha256": "73f69df3e9623ba1b28a8514a471243bb3683c9b56e005d7e6630674fc049052",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G02",
+      "path": "generator/templates/R2R/core/G02_R2R-CORE-G02.json",
+      "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
+      "evidence_blob": "f7317c1b5701a5097c91f56dd0c90b4ce2eb84dc6d0a2cb8509b62e4758196b5",
+      "result_sha256": "9446dc765cda489d055f7fcccb20a77ea7f42ab00a9082971d6ea62b0da0fa78",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G03",
+      "path": "generator/templates/R2R/core/G03_R2R-CORE-G03.json",
+      "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
+      "evidence_blob": "a5b4b410c7857647da937cc5171c9c60c7f55f5bf7fba85b5edc9536aa635bc0",
+      "result_sha256": "a2b980f0bc5f042bfca399ef1da9f36e6061d9522f74451424170dc5486c6b40",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G04",
+      "path": "generator/templates/R2R/core/G04_R2R-CORE-G04.json",
+      "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
+      "evidence_blob": "e5783b8277c5c4496c2e0418b87f8db26d41b6ef40b0e6548345982c011235e0",
+      "result_sha256": "89961039d0a1cb9c970e938d11b6037da687de0f0d7a3a2eaf7e52a84773b258",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G05",
+      "path": "generator/templates/R2R/core/G05_R2R-CORE-G05.json",
+      "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
+      "evidence_blob": "763fec9f6a29e24794a26249e112995a1349389fafdb3598452c9f2b05821338",
+      "result_sha256": "61ac33dd6085054c796be4f1b64bb00cf7d7d7ad15c0995ee0545166f17be7c6",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G06",
+      "path": "generator/templates/R2R/core/G06_R2R-CORE-G06.json",
+      "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
+      "evidence_blob": "49def59a4a2942c4747b44b66282874224193ed1bb8b6d26c5d627673efb8645",
+      "result_sha256": "994def72cdf3090c3ae92313e89c6381d22653950c65cbbb982ed8326a575501",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G07",
+      "path": "generator/templates/R2R/core/G07_R2R-CORE-G07.json",
+      "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
+      "evidence_blob": "9b15e3951f565fdde1b0d5a6296b2095674dcc63434152e6fd3ba66f65f42e7d",
+      "result_sha256": "df150e143a83fe0b0c6df8908a834dd677ad2777577533227e14364a2d4880e5",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G08",
+      "path": "generator/templates/R2R/core/G08_R2R-CORE-G08.json",
+      "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
+      "evidence_blob": "3d8673fef428e9de1ded8e7b8265e98cfbf6f08688c62c0a38ef5caea9fe0c60",
+      "result_sha256": "1395810fcc2486916904ba958005229a3fc90122f234859b2264d2178e1a8c22",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G09",
+      "path": "generator/templates/R2R/core/G09_R2R-CORE-G09.json",
+      "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
+      "evidence_blob": "1280a7e9f845fdc67aecef94031c0dd8a808f3637905b205a5a1b800b65a27b8",
+      "result_sha256": "6f0fc4537a4e8dc072ab4834215ccb0de90c8d87d5b7cb13f33ee94f1134762b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-G10",
+      "path": "generator/templates/R2R/core/G10_R2R-CORE-G10.json",
+      "source_sha256": "0d598d742c0acdc9d0decc1e420e4d1806639cf21390fd6eaa35087d680e6b93",
+      "evidence_blob": "1108a25da3cd956900fa7e952430da18f19b36ab3c2a38db924bf347fc0464f5",
+      "result_sha256": "b5a006632f2e56ffd2c459958a21e0fa5d5531defbb4ed85843ba909bc088563",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-001",
+      "path": "generator/templates/R2R/val_seen/001_R2R-GEN-001.json",
+      "source_sha256": "ae7c7a63404afcff7a9912d41fd67e8f6773b4e8056477c9cd58f5d10199a9ff",
+      "evidence_blob": "4a9e87e68a26ed0d50515ad24132a1a3f51e7b26b4368892bdd0e826626789fc",
+      "result_sha256": "6492cafff92bc8f847f9a4d48d9fe960197e32dd691b80d52d870c7dfcaaea66",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-002",
+      "path": "generator/templates/R2R/val_seen/002_R2R-GEN-002.json",
+      "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
+      "evidence_blob": "c91c7497b45e3e40849d21a30705dfd4a419cdca88added84c780608b9869ce3",
+      "result_sha256": "668e74df7351df47ca04aeef125bea45da4ef21bc7d9e0fc40695cd742709c6b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-003",
+      "path": "generator/templates/R2R/val_seen/003_R2R-GEN-003.json",
+      "source_sha256": "92fd326812cb2b661801a7524a0a354c3e39f3d632ab398195823d51dd6ad0ba",
+      "evidence_blob": "fbd343df12167111de598a4c1b99df6abbd6588fee8fda2f855447a27af8d28c",
+      "result_sha256": "a8188f6f6abbbaabd622bad03bf7fedf9989c6ad8a5577e1c7023b7f162eb44c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-004",
+      "path": "generator/templates/R2R/val_seen/004_R2R-GEN-004.json",
+      "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
+      "evidence_blob": "5aa20af6865c7f0e6acf11034ee521c1dba8100eba3a9e7f1d5fda22c3236dd1",
+      "result_sha256": "e9fb24d73d7fadc4f72e4c134503fb458d39447096f00f9ef7f043862565c9cc",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-005",
+      "path": "generator/templates/R2R/val_seen/005_R2R-GEN-005.json",
+      "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
+      "evidence_blob": "e6a4d0d08dff975a3a7f9656bf39e23c7bc1ac8c8841696378fc125d421ec7ab",
+      "result_sha256": "9833cc1480e3f9ad0ffb8332febab7d3e9e36cf5255e4ecaec6288b41e8c1e05",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-006",
+      "path": "generator/templates/R2R/val_seen/006_R2R-GEN-006.json",
+      "source_sha256": "139462c06e474852836b26c6b43a4242b036c2e1a3b36de4cd10b52a40a0f796",
+      "evidence_blob": "16c771bb8f0e2fb50ad084b8bb66eea5cb5b4ac895822a3380a5a4ff9b1a57b5",
+      "result_sha256": "36844e428cd17d3da714277439b4631ec80b3a757f452eac2db323a64f82979f",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-007",
+      "path": "generator/templates/R2R/val_seen/007_R2R-GEN-007.json",
+      "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
+      "evidence_blob": "807576bcf43d73f2b45fc0c59bccc79f8adaad74c58bf82adb3335c639753604",
+      "result_sha256": "9b891547ad0b0241658721c810816af3bcfd1b74cc8e79490a2b8382228921eb",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-008",
+      "path": "generator/templates/R2R/val_seen/008_R2R-GEN-008.json",
+      "source_sha256": "921f4f57f580090753a82ec276412cf4bfec8ccae1c226146d32f911af41eb06",
+      "evidence_blob": "91a7237ff9e27e8cb2b2b0e3c67750a7c547731885bfe79cfb1840a6199b6a99",
+      "result_sha256": "9ade609f793133b718a03b03e46611cd2de83b0290200d3a1a3b857c900db6c7",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-009",
+      "path": "generator/templates/R2R/val_seen/009_R2R-GEN-009.json",
+      "source_sha256": "ec132b0e86c16ffe2c846ed932b94e3d21a5ebd09c6679ee5290f861db7c0999",
+      "evidence_blob": "dfbb7d8e1346be6ea3828f6aceb841a377ff3e65edc1f459a177b8f6e0b5d033",
+      "result_sha256": "bad286ec81a05d276a580d0cbdd05b0078a35969f6e4e4f3883cec22484295a6",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-010",
+      "path": "generator/templates/R2R/val_seen/010_R2R-GEN-010.json",
+      "source_sha256": "1a55da2e196d72e196bf36a79f2890a16e1ee66d248dcb8a97a33daf2e6e6a05",
+      "evidence_blob": "2a184a50bb4ce72d8aef4a200407e36c08b3d193f4e8a5512b0bd3313dae944d",
+      "result_sha256": "adae0caf379e9da3395f9fdc5ba6fb3624aecd4ba7e4a8fa662d77cf9e0fc0cb",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-011",
+      "path": "generator/templates/R2R/val_seen/011_R2R-GEN-011.json",
+      "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
+      "evidence_blob": "a5559f72ff7598e1f6fbc944060a7d326549963dc0dd5c21a87ffb888400b5aa",
+      "result_sha256": "077d79149d29e99104a88fa547707bf12ba7d19a9f98a86a01ec5c631ce77d4e",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-012",
+      "path": "generator/templates/R2R/val_seen/012_R2R-GEN-012.json",
+      "source_sha256": "3925695a9ad99f64fbddba9aba9870d0e4c7ec23a7385f0a4092e409009f6e99",
+      "evidence_blob": "cb36c838fb166ed75bfd69fef5295b0944e6e3da16fab85e88a58d1139c12572",
+      "result_sha256": "9aedd7b71dc7e253af0dd8f570a2983aa222bf660f38f2ffde2a35c79f1e9441",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-013",
+      "path": "generator/templates/R2R/val_seen/013_R2R-GEN-013.json",
+      "source_sha256": "09224da0c0e5fb904f6fe9a3da2e1b6237d8d98ad02ed5f300e05c07005bdd83",
+      "evidence_blob": "5d28946921e9a2f43b3560206233e8b85f11cbe8ef483730b4a2b2e71c265079",
+      "result_sha256": "7d46e9f4c150ad284b078e01b8b17cf9484924e5700d8ea891f24f3b3f4241ca",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-014",
+      "path": "generator/templates/R2R/val_seen/014_R2R-GEN-014.json",
+      "source_sha256": "f08da453dec020f7243dc4e73ed74de4afa08cdfb622f0a2c6ecd10af5cbe364",
+      "evidence_blob": "744f6d7924c5749bcb0f783fb14b95a7a9a38e340e1e7d9df07f0225912e4318",
+      "result_sha256": "971e8c30f92d627a9bd0086f3c030f634e04a5abfbd88d5a397f54f39751702d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-015",
+      "path": "generator/templates/R2R/val_seen/015_R2R-GEN-015.json",
+      "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
+      "evidence_blob": "afcab60cc2bba7a912d35847b2a78e8cb430fd9312aa5cdbaaa54a8cda3c8c05",
+      "result_sha256": "5e99b84a46b21b3526c9bad2d6a3d3b8454df60dbea1a351fd35573aec2bbbf5",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-016",
+      "path": "generator/templates/R2R/val_seen/016_R2R-GEN-016.json",
+      "source_sha256": "6f7c42231838b3c6975b806cec58f2c2fe22e1f6945cb29cbd2d65572f997834",
+      "evidence_blob": "b9eb623cf32c708fc8f9c767350cbaffda073102576e0611c171c1d48e25db05",
+      "result_sha256": "185c71054bc8bdd7a0202cf85fe4da60f2ab8d1f8a57c23c3abd14cb14a4abf0",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-017",
+      "path": "generator/templates/R2R/val_seen/017_R2R-GEN-017.json",
+      "source_sha256": "113be0fedd42aa177dc9a71acef3834dd5313160bb593df82f383fa5b9feb1f8",
+      "evidence_blob": "cb5e5d40dffe5abcaa677d7cfc9fe2b3321462eed0dccd68d1ab3af0fd116659",
+      "result_sha256": "5102db6514b05abd6060db157387908f0cd86f4eedeefc4f913adf024ff9f6fc",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-018",
+      "path": "generator/templates/R2R/val_seen/018_R2R-GEN-018.json",
+      "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
+      "evidence_blob": "bcd27ad6d754283cc4d9c3340b46a6153d8933670b43519e2693567279155ce9",
+      "result_sha256": "45a1532b79545e263c0597250b12fb17138c440c1393d571d4c1b69c3c74f239",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-019",
+      "path": "generator/templates/R2R/val_seen/019_R2R-GEN-019.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "15c9e15dfa9d4fe137a48d033263d892a07690efe6ace4e87de6fd55dbd929d9",
+      "result_sha256": "491fbbebc4b6e94ed7b01a51a5a2782a7d4a172a3984e4087852ab24a00ee85c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-020",
+      "path": "generator/templates/R2R/val_seen/020_R2R-GEN-020.json",
+      "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
+      "evidence_blob": "0e8e3c094b21afea2960934a124bc47eddb4d4d2bbd6e9b8b714c3c218965189",
+      "result_sha256": "996794251a3438953f073631094e28d37bd65d171dd98241cd19cec086fafff7",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-021",
+      "path": "generator/templates/R2R/val_seen/021_R2R-GEN-021.json",
+      "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
+      "evidence_blob": "dbb1d96bf6c5ac2b838f1edcc94164a5f05976e6bff65d595cefa6d4a3916777",
+      "result_sha256": "1d3902a5c6384c9b468175ff5953e1fa31d6e11fd55c7403d44a157504727c3d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-022",
+      "path": "generator/templates/R2R/val_seen/022_R2R-GEN-022.json",
+      "source_sha256": "d88cfa83bec46f06691ca76838e46a560d84d39859132175eb165a617e0f81a3",
+      "evidence_blob": "9afb0bfa4c59e16c4f36e69f4a0a277bf8129d237811e4099c68cf7c0fbe0992",
+      "result_sha256": "7dfd1cd1eccac9bd1e728017b9ed9bd4d8e286145cfe9f831d83a977fa3c7c71",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-023",
+      "path": "generator/templates/R2R/val_seen/023_R2R-GEN-023.json",
+      "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
+      "evidence_blob": "a4bcc13348d6f779942043ef17867dab7e6e84af12e12ef46c97f04dce7faf94",
+      "result_sha256": "59d90bc693838db2ffb4f81268d02128829f0fdefeac57f39314f83261d0288f",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-024",
+      "path": "generator/templates/R2R/val_seen/024_R2R-GEN-024.json",
+      "source_sha256": "21d326541991a811ad5d62ae4769bf109b95ef4e66e0fc693456fb6e84e40351",
+      "evidence_blob": "e6085002f899dcfe21818de0489d9eee2735183b604258195b7a02ff1c5bd792",
+      "result_sha256": "5ceeee2ea2788a2c6df41de516cffcd41a3870092d5161078cf0822fa0ecce25",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-025",
+      "path": "generator/templates/R2R/val_seen/025_R2R-GEN-025.json",
+      "source_sha256": "b162b139cf1791c874b85e6992af5ad56c4f223b7393970d15824f824fe0691d",
+      "evidence_blob": "10e70aac00153c3400ce69bcfb4f40bc86c41a835d88ffbb18bd0e1c9cf1f601",
+      "result_sha256": "527640fb21b759db7ec95c6eac853f6d9b72f7ad48283359e7cfb482bfaef084",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-026",
+      "path": "generator/templates/R2R/val_seen/026_R2R-GEN-026.json",
+      "source_sha256": "78b9119a9a8cc212b632307081de40b9f6a281a168ff6429e7d7b3b87c2ab89d",
+      "evidence_blob": "02f14f253348188688253ef22b335e785b5895fd46d131be6ecd4a07a7adfb16",
+      "result_sha256": "508a791d716928fc5f464404ede47874fc3f799d1b2f601ab9452bd122b7c8f3",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-027",
+      "path": "generator/templates/R2R/val_seen/027_R2R-GEN-027.json",
+      "source_sha256": "3bfd05f54c7f12de83bd55ba2d49fa68d86c394c376c0341b0d27e2d0053be39",
+      "evidence_blob": "54fafbfde721a461e9a8364407f5ccd758f116b09bf1553daa78cf343286cefd",
+      "result_sha256": "731c23508aae65b2d1470e2eb7b3e3d776155003ae01e4172f5777585ca3533b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-028",
+      "path": "generator/templates/R2R/val_seen/028_R2R-GEN-028.json",
+      "source_sha256": "dbdcae2e693c56ac4d98c9e68fdf1952703f8420f0a337d31125322d42c00575",
+      "evidence_blob": "c22a9751b8b1ffad663fe551a3ab385959f8a132c3ff5d9cff164f5b0413945e",
+      "result_sha256": "330b2666eabedcbed8c418f6e50543b86e5d2c115c913ed52ced4363d52dba5e",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-029",
+      "path": "generator/templates/R2R/val_seen/029_R2R-GEN-029.json",
+      "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
+      "evidence_blob": "c1284806c8cb3c890bf356a8c1caebe0c181f8e5c92802e1942e151f9245fede",
+      "result_sha256": "8c206835ba16a2c054a1f702093a10b2b859b43940dcc7a327e51b3528b3fe6c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-030",
+      "path": "generator/templates/R2R/val_seen/030_R2R-GEN-030.json",
+      "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
+      "evidence_blob": "79d24628ee6681b04b0b999e4070b13287d92534561f9a34689a4c8e796e1c99",
+      "result_sha256": "bdeccd59e2e867d6a19f9c2c8c21403911d780dcc7db09fcb51c883110e309be",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-031",
+      "path": "generator/templates/R2R/val_seen/031_R2R-GEN-031.json",
+      "source_sha256": "0d598d742c0acdc9d0decc1e420e4d1806639cf21390fd6eaa35087d680e6b93",
+      "evidence_blob": "3e8e6778847d0b16aafdec0c663ff5473511b174cf5d874d3e70d644f3721a90",
+      "result_sha256": "a950929e71730eba5b32e1d6cf7224120d754d52ce6b7bb1c03ddc3b5f231e94",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-032",
+      "path": "generator/templates/R2R/val_seen/032_R2R-GEN-032.json",
+      "source_sha256": "c6f00355ebd771f8d688490d422130cd15c23c369b667d776fe99390117d0bae",
+      "evidence_blob": "fb682470bddaa1e670f6aecc4143fd2b42ed5830becc58c006e81c3901bc61b4",
+      "result_sha256": "35143db38e5ea18c598d2ec88759c2cd00cdc879b20b259582922b076fcea79e",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-033",
+      "path": "generator/templates/R2R/val_seen/033_R2R-GEN-033.json",
+      "source_sha256": "fb4ac571dd4112164b0b17fb4f4b5e2521ecb801b9eb6e066ea6e4b8a87d39d6",
+      "evidence_blob": "762323a8fb9ca12e710b55e3317d618bede8575a6b63411f10deff8244694a10",
+      "result_sha256": "83e392c7c2720fc9975958ea627d97017f16c8f0843ca529e24a98a7cac98616",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-034",
+      "path": "generator/templates/R2R/val_seen/034_R2R-GEN-034.json",
+      "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
+      "evidence_blob": "8e638f4c6d398aee810331162034c321eac7876d8867234e3e41e90e2d4fe760",
+      "result_sha256": "ea01584b173926b8ac9deee1e48a9103f20170284b6c3089998fac3db4dbf367",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-GEN-035",
+      "path": "generator/templates/R2R/val_seen/035_R2R-GEN-035.json",
+      "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
+      "evidence_blob": "44c196c9c3ad7fae1fbe7eef199a44633cad7b64ad45e3292ab14dae317735ec",
+      "result_sha256": "f8d5152b76fb390f3651a60d9f18efd9e1a920fbfb053facdbfa39108718bf4a",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-30",
+      "path": "reviewer/templates/R2R/authored/030_R2R-DIAG-30.json",
+      "source_sha256": "43b77f14d83dc7274e307fc9822cb16421e5ba693068f16f16092c20cb8400ea",
+      "evidence_blob": "938da96cae9dc494198f60df0dd66cea1a6f147d71a1a8338506f5e49b9c3540",
+      "result_sha256": "938da96cae9dc494198f60df0dd66cea1a6f147d71a1a8338506f5e49b9c3540",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-DIAG-31",
+      "path": "reviewer/templates/R2R/authored/031_R2R-DIAG-31.json",
+      "source_sha256": "2885f254022dfe56deee59b3e7b8afd4b11636140ea52888ad61b9cf04472a64",
+      "evidence_blob": "2e6ae594ff1103da475878065e587edb9f22a6e9b053594d1ac3878c08f2f0ca",
+      "result_sha256": "2e6ae594ff1103da475878065e587edb9f22a6e9b053594d1ac3878c08f2f0ca",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-REV-036",
+      "path": "reviewer/templates/R2R/authored/036_R2R-REV-036.json",
+      "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
+      "evidence_blob": "fc7646cdf9fb21577df2b60d7ff82d0f4663738d7c8fff7b6e8666ceaaea5796",
+      "result_sha256": "fc7646cdf9fb21577df2b60d7ff82d0f4663738d7c8fff7b6e8666ceaaea5796",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-REV-037",
+      "path": "reviewer/templates/R2R/authored/037_R2R-REV-037.json",
+      "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
+      "evidence_blob": "75f13fcb23fa8ad1638711abafd19ccfbca170284a7343feb0aaf768186fd9eb",
+      "result_sha256": "75f13fcb23fa8ad1638711abafd19ccfbca170284a7343feb0aaf768186fd9eb",
+      "changed": false
+    },
+    {
+      "template_id": "R2R-CORE-R01",
+      "path": "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json",
+      "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
+      "evidence_blob": "735b8e26be09a03c5ca9835ff3b918bc6ee1e4e269cdb1c686f43f07211a8707",
+      "result_sha256": "9c4b67fd1ac6215be35ab15d63ca02b7bb1b21c3055a09df96695cd739728d31",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R02",
+      "path": "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json",
+      "source_sha256": "d86a9a57618971750fa27d824b4071772289a359289c301328fdc27594823588",
+      "evidence_blob": "cbb1742f82006c066c448b6f0f11ea82bd9384fe7b65a4582a2cc55cf0bfe48a",
+      "result_sha256": "d7a81e7fd9e923c578707d8e027bd0c23aa5227639870ab8bda75285b8cf8330",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R03",
+      "path": "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "093e97fba8815d495c52d6cb0bd53d39ebc030be58e39a08296395ee963cfb3b",
+      "result_sha256": "861869d84db03cc3e835e9a744dd56fb18e164fc5330a4095e5a09d6fd3cf665",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R04",
+      "path": "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "30828ce3c04ad97f8d0ab9fac8adc8e5625b6e3a94c3e446125ec4a1906385ba",
+      "result_sha256": "b3f342e2a940d5c1dd8cd2a73b3d6e1db84b096205f1cb60089f147679d72818",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R05",
+      "path": "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json",
+      "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
+      "evidence_blob": "04ab6b28bb935185f113a786434e8c5f5c220a2810e17dfaf86bf51f1963c6f6",
+      "result_sha256": "4193eab1da1ea13ebece321852a66630399239300b77d1cf61674de464ce7f15",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R06",
+      "path": "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json",
+      "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
+      "evidence_blob": "64b6b356a46906b6f0f2609e4cb12f51d47861a9ca14f99a6f42ced8f22533a7",
+      "result_sha256": "06567740bee405eb8279a1b9498a6b21d0144151e2d047c3450317ae98facc3f",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R07",
+      "path": "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json",
+      "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
+      "evidence_blob": "21933d8733f44865f26140183d481bdecd7f646be55ae07c991d7f81859568c0",
+      "result_sha256": "d9416f923a30af2f1a6b59a08dfa7a9c2264d332b15144e58e48c2b39c41fd16",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R08",
+      "path": "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json",
+      "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
+      "evidence_blob": "e9454c86727ebd95ca5098a27151f6fc5861330e94d633df2089df6596524f1f",
+      "result_sha256": "96318d5bdb99b5df7966b5cc08ee83672a9360c1902d0dee2f100869ada7af5d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R09",
+      "path": "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json",
+      "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
+      "evidence_blob": "51b87ccfc9503a7db329cd76d9fdadf30044a45ad1e39dd07495b4a710c00d55",
+      "result_sha256": "ec35ac454c1c4ff646f5a3113b3387d5a306be26553b7d04722df69983c35bf9",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-CORE-R10",
+      "path": "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json",
+      "source_sha256": "0d598d742c0acdc9d0decc1e420e4d1806639cf21390fd6eaa35087d680e6b93",
+      "evidence_blob": "b809d6edbb6ae5de857623be69b6f8a510f6629bcf0177f9df019153ec33773f",
+      "result_sha256": "6696e3a6347ba1a08725b1fd3215ed0116b4b8a26462b22152e018125f542241",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-01",
+      "path": "reviewer/templates/R2R/diagnostics/01_R2R-DIAG-01.json",
+      "source_sha256": "d86a9a57618971750fa27d824b4071772289a359289c301328fdc27594823588",
+      "evidence_blob": "fdaf01161eb0b8e864948c1f6c704d8bbad36231c99001392c157f45a809ccf1",
+      "result_sha256": "977eff2b082a13161ec940dc36c9131453929f02c4bc600f2a54910e8c5e6705",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-02",
+      "path": "reviewer/templates/R2R/diagnostics/02_R2R-DIAG-02.json",
+      "source_sha256": "1f0f2d9fe4b493ef3b033ad56851a1bbb7467b0c0d316415f1856b34b2eda6eb",
+      "evidence_blob": "6e697c1e66026de33a3cec04c373176a3ebadba4667567ff75baad88f08509dd",
+      "result_sha256": "87bff319e870b976b414c41637340669b939fca882e52ae4e68430aca2b0907a",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-03",
+      "path": "reviewer/templates/R2R/diagnostics/03_R2R-DIAG-03.json",
+      "source_sha256": "71edfaebcd6655742f7c0f027757685cef706c32872d4bbee5a46316837792a2",
+      "evidence_blob": "9b6607d22dc5d8ad37a9eb6b5b38a4a65bb1eb2572293df1c2bd218aa4ca3924",
+      "result_sha256": "a5533726c0c2ec7c1f6de1245db11c261807c3c41239d8c2c4ba1916e977aa38",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-04",
+      "path": "reviewer/templates/R2R/diagnostics/04_R2R-DIAG-04.json",
+      "source_sha256": "c6fa2bbeca60a1d9ac769d9162b09d465d7789810faaf8f9b2bb7f821c490d0c",
+      "evidence_blob": "bb06e61e78e6303e208405e05f4f4f2d416b7230a4b0017befdb1f4ad0d6de47",
+      "result_sha256": "b38f779df1e68e369cd2078fd63a51430f5bf488f1ad529d22cf74c6ae99a4bf",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-05",
+      "path": "reviewer/templates/R2R/diagnostics/05_R2R-DIAG-05.json",
+      "source_sha256": "774498ee9191e0910f9c100fb07e496a071037d56689cabca169a1e54de30765",
+      "evidence_blob": "40c8133c8a534483ba3c187ac03679b56f8a300aecec07c4526779180b8d2e48",
+      "result_sha256": "8ad9959258082ef5f81767b2b5fdd1c6d8be5d539adeac2f3f55e495f00b98f0",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-06",
+      "path": "reviewer/templates/R2R/diagnostics/06_R2R-DIAG-06.json",
+      "source_sha256": "1f06ff457927fb0c5565801badbbc53af01d62841ebe2fc8024417f6dac26f63",
+      "evidence_blob": "843e339667a04203fc00e9e2b899802a5ceaf4a0ba79be99c5beb340073172fa",
+      "result_sha256": "f844608bb7f45f6d8cc42d015a22200c4444c4ed4b3b9841323cc686f0770703",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-07",
+      "path": "reviewer/templates/R2R/diagnostics/07_R2R-DIAG-07.json",
+      "source_sha256": "a60fdcf0d2565a3071588ca9f679508867c04d1827a0d8ffb7ecb200f5b320b5",
+      "evidence_blob": "ccacf4876d8ce7607727523f8ea63288b78e0a34a82cce8b4e26315edac95336",
+      "result_sha256": "a359296358ff8e823c7ba8fdc553e5b64f67c6996a875d0b3b1b55320d6daaed",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-08",
+      "path": "reviewer/templates/R2R/diagnostics/08_R2R-DIAG-08.json",
+      "source_sha256": "51122ac91372c66e645260605bddf771c0e48074fad69e663613a1159963d678",
+      "evidence_blob": "a155e0f316649a2cb8cfb703e9318034030bf0b2297e946831bcd581f0254484",
+      "result_sha256": "af960aba224e716d4d04e099a5b65000498af5df3b6316224a6f5f398e9d556a",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-09",
+      "path": "reviewer/templates/R2R/diagnostics/09_R2R-DIAG-09.json",
+      "source_sha256": "b47259270b374d8f33f3a7fe37f911903d59464dd1d8a496ec6a1149f4cb82bf",
+      "evidence_blob": "9b4a9f75978340918a97cc5aac604d0db1d1274319eb16229f37a18f82df892e",
+      "result_sha256": "499d72b7fe298f26c913bd8f96c557f81d4dde05504e4fff77664d8d3b4c3b9d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-10",
+      "path": "reviewer/templates/R2R/diagnostics/10_R2R-DIAG-10.json",
+      "source_sha256": "9d26b1d51f65e612e5166b2c41aaed3dc58701dc748720fa309abab0b117ee77",
+      "evidence_blob": "2ebeabf21b0b611fe2ba9abf209156b1447f148d05df9fedb56ae67c340b9358",
+      "result_sha256": "4cafcdcaa8dd97fc671474643b873e3a42f5b228cf7152dff957d0df6ee6f7c6",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-11",
+      "path": "reviewer/templates/R2R/diagnostics/11_R2R-DIAG-11.json",
+      "source_sha256": "f92f327e8538fa95a3a5773ae0fd6ab61ba258c9b4d7e3dfe78a199ae892ef86",
+      "evidence_blob": "19b940ed730ef1f874ce3b8304b003648a40f5f8067cab72556fe541e59f3ba3",
+      "result_sha256": "f4f60b04c6514c7069aafb91ebbcaf45e8214da81b8f11deeeb2062837b4d0fa",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-12",
+      "path": "reviewer/templates/R2R/diagnostics/12_R2R-DIAG-12.json",
+      "source_sha256": "a7575b136ce7b237d4763806be3979d4a965f9ea5c3e6408e9e2cf0040f7ac36",
+      "evidence_blob": "3ed33a5f681c81636d0b47bf9da28f2d51e7759d555b54dbbdf4d92ec06b78de",
+      "result_sha256": "c4289ec2ebd85065de19b849a1a2909425f3862afef5084b20def2796bf72f29",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-13",
+      "path": "reviewer/templates/R2R/diagnostics/13_R2R-DIAG-13.json",
+      "source_sha256": "001d649eedf4cadec93308e46e618dcefd3db5508a8ede6d258943cd92bcc323",
+      "evidence_blob": "f949320389fa589ad1a511970b93e243642bdee5390df4c759b15fdd8fb67317",
+      "result_sha256": "e9bac850be51739be569dc9e1e20afccc9715e17242a42e835e54b437a967ca6",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-14",
+      "path": "reviewer/templates/R2R/diagnostics/14_R2R-DIAG-14.json",
+      "source_sha256": "b7d9d682c69896ab81d59c10e4158b60dea71f193961eef24a452cd71c98946c",
+      "evidence_blob": "ab6195b4e3c0ec34ad12694825a3958d5ef9e524d467bd1721fd21190059f5ec",
+      "result_sha256": "68db1869c0f8126f7f1cf9db51224ef048763efeb167ba8c738c8afa23aa6070",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-15",
+      "path": "reviewer/templates/R2R/diagnostics/15_R2R-DIAG-15.json",
+      "source_sha256": "728576caf79e04a7c396bceb65613cc1cd27eedb64bf72ec4165763c381e41de",
+      "evidence_blob": "3b4e5e0e4220117ce0fe6175e2eb6b30799cbb8191bbedda47fde5190097d00b",
+      "result_sha256": "3c4965bf77bca4a2045fbc3f805afdc2ddb950f61ca775499e03bec52d880939",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-16",
+      "path": "reviewer/templates/R2R/diagnostics/16_R2R-DIAG-16.json",
+      "source_sha256": "f2ed2b3fdc51b1e73c8bcf78a2cc6bcfbe3bd3341894767a35c009f9c7a3e6b4",
+      "evidence_blob": "16eb2ef709fc6393e899e99ee6adfb1457875ddcf08de931e064dbea497b2925",
+      "result_sha256": "425fafc6ea135fe3675085a6714eb98118e64a6f6f9d1c5a78370f5fda55d53c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-17",
+      "path": "reviewer/templates/R2R/diagnostics/17_R2R-DIAG-17.json",
+      "source_sha256": "fbb43a591e4bab4054dcd03fd223ce77a8e910f8bfc5460778a3f97e7c6386e7",
+      "evidence_blob": "d0c9f4a56bc2e3323ac8193023af6e46d5ed97b6903543652fbb5b318071d6db",
+      "result_sha256": "2895e94fa981dfed2cfad5b1ccc5bf5da7e4a4c269f53508fa40749dfefd3149",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-18",
+      "path": "reviewer/templates/R2R/diagnostics/18_R2R-DIAG-18.json",
+      "source_sha256": "d787e57fa30506a206e5035b64d58fab87b7feec339506f78d4008a7c11c7e95",
+      "evidence_blob": "1a79d29c3b32bf86636c2a73370e9d6d4cf2b662a6cbe27f6bc9aa45424804c3",
+      "result_sha256": "d6c8edd44b302bb579a7a02533a479e799dca9973c252981d2491560fa98ada2",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-19",
+      "path": "reviewer/templates/R2R/diagnostics/19_R2R-DIAG-19.json",
+      "source_sha256": "b1ae2111c14db62782efcdc521fc60ed5e113849ee3183c5df5e261204258c4c",
+      "evidence_blob": "2d08f5ab3cd6792575c70f1bf480eae286cbd24127294885526b024f8735da59",
+      "result_sha256": "073ee8f80d0c9a5b04735cfe8874e3a26218ef8c15b1ffe87f5387e84a44123c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-20",
+      "path": "reviewer/templates/R2R/diagnostics/20_R2R-DIAG-20.json",
+      "source_sha256": "2931b772735a7e73f829872cbb727cc7e0badc5348d01f3dfafe2a31dc52a1ca",
+      "evidence_blob": "af2f8061a486a6ee2f49fa6d7546a0419c3aae49e8240d9f306aeed654a002d4",
+      "result_sha256": "6dbab23a7e33ffc4f768a97f6513c70a8c6c01f8af0fece5e6436869307c2eef",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-27",
+      "path": "reviewer/templates/R2R/diagnostics/27_R2R-DIAG-27.json",
+      "source_sha256": "09224da0c0e5fb904f6fe9a3da2e1b6237d8d98ad02ed5f300e05c07005bdd83",
+      "evidence_blob": "4e3748676931b74080cbccb96162076fd97417338892b341a7414283aa8961e0",
+      "result_sha256": "9757a1e18e3d63a82a99fed6acd110a832cca9cab2063cc0025f710a9e40a93e",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-28",
+      "path": "reviewer/templates/R2R/diagnostics/28_R2R-DIAG-28.json",
+      "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
+      "evidence_blob": "7471d80271399e6e2e671bae8af86fb9b176c06b0d2344c185537731c06911a5",
+      "result_sha256": "53b2a527bce55ed29b82a550df1365914c59e16eb705eb9f2101bd30677465a0",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-29",
+      "path": "reviewer/templates/R2R/diagnostics/29_R2R-DIAG-29.json",
+      "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
+      "evidence_blob": "71e67055fbd2ced8c4674129b080d8147b17b1e1e2bdaa619b4e8836bb974315",
+      "result_sha256": "2a6bd4b8e262baf589789f93a64009c117675303dd370b51f8fbedc6df821d9c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-21",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-21.json",
+      "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
+      "evidence_blob": "1836784d0efa822ffd20a9fb789fe96144a4733a709052cf2e86d5fdf74afe92",
+      "result_sha256": "97749bcd34581d5f737a9ce766ae1b32f18c650ab35e983ad9ec0e833695e950",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-22",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-22.json",
+      "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
+      "evidence_blob": "17ca2e6e8e2f482fb7a30e85808ceb302cededd15b35171fbe09f5e93d5eea41",
+      "result_sha256": "fc29fc320931b9945e47dee940c80c65a0a6a8d95eeed9ff1163676195a8b643",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-23",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-23.json",
+      "source_sha256": "6f7c42231838b3c6975b806cec58f2c2fe22e1f6945cb29cbd2d65572f997834",
+      "evidence_blob": "9f0127e6e48ad958c2c4c52d0c29d1f5cb97632c3d3e24cf5c07e8eb5bf27f65",
+      "result_sha256": "4c3527e977879c5b12870717e935dd3b81dab4c41369fcc1aab71f56c69311d6",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-24",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-24.json",
+      "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
+      "evidence_blob": "9c6f0f078aeb1cd598098a0aba178165a75314f2c8d2b6f578ef1d10be87d5d5",
+      "result_sha256": "33c2d1944e84efbf330c634e3fe0c3aaf89afd67f271ae1e98adfc573f2b68af",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-25",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-25.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "2e0277176d957f2b0ba76d52e4e6c8e533d1214e3b77dbd177b3cf66d985119d",
+      "result_sha256": "73bcf03f147fbb432589c6453dd790b145174ef44b9c910cbb2890518afd23bc",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-DIAG-26",
+      "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-26.json",
+      "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
+      "evidence_blob": "6e77dc68e2443cd4323fc764708b278944261f4218d1c86da8ea304b525467fd",
+      "result_sha256": "58e808ea5204eb0821a83dd275f838ce3af6392a0fbab676ce0af1fa1cfbb295",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-001",
+      "path": "reviewer/templates/R2R/paired/001_R2R-REV-001.json",
+      "source_sha256": "ae7c7a63404afcff7a9912d41fd67e8f6773b4e8056477c9cd58f5d10199a9ff",
+      "evidence_blob": "19ce981f3819e5a530ac2c236d9ecef22585b76759d61bbe528591112fefef5f",
+      "result_sha256": "7e32be92399ebfa2b9229248c2a89a7d47f2bc7d189181a9121bbe66efc7043c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-002",
+      "path": "reviewer/templates/R2R/paired/002_R2R-REV-002.json",
+      "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
+      "evidence_blob": "a0d6fc861c9dbda265f082c8d3ee257e89b0d39ca89d64784f968b85ee64a94b",
+      "result_sha256": "90860fb24bdc7a016f48acee7be0cc96e973b9c7d8b0754bab1681b68ffa82f4",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-003",
+      "path": "reviewer/templates/R2R/paired/003_R2R-REV-003.json",
+      "source_sha256": "92fd326812cb2b661801a7524a0a354c3e39f3d632ab398195823d51dd6ad0ba",
+      "evidence_blob": "05097a1fc880e6e6c8ac9c83267a0b8844d02f035725514af8af5dfae32813a6",
+      "result_sha256": "afc63a8c9abddb62d0534bb41dbeef05b73f1242079b1de532e1b464785d4a91",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-004",
+      "path": "reviewer/templates/R2R/paired/004_R2R-REV-004.json",
+      "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
+      "evidence_blob": "a39269fdbe679dd2604a7e54edd44e225a6d76f229f4269c820055efc05fd9f9",
+      "result_sha256": "9dec34580c3aa9449863e5d871b50a84dbef3b030885c82e27a26d3c0e11be8b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-005",
+      "path": "reviewer/templates/R2R/paired/005_R2R-REV-005.json",
+      "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
+      "evidence_blob": "76452f9d1bda8c12dc613960a7b7a19876bdb38b334a62f06b7e69590ed5975b",
+      "result_sha256": "eddc76a8811ce2a0fadff21565a7ab63ea6d16c2b34c4cdde16a0540f7929c64",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-006",
+      "path": "reviewer/templates/R2R/paired/006_R2R-REV-006.json",
+      "source_sha256": "139462c06e474852836b26c6b43a4242b036c2e1a3b36de4cd10b52a40a0f796",
+      "evidence_blob": "e2da9bae56761225cb8101c853b74c569250fed14f3b3e00217fb0caaf5599a9",
+      "result_sha256": "1626bd372ff798c6b669ebc5cb105404bd03eafbc64a6456d888f9239abb3721",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-007",
+      "path": "reviewer/templates/R2R/paired/007_R2R-REV-007.json",
+      "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
+      "evidence_blob": "67c5dcb2f005d9f2ea2c15fc37e69579c5ad2dd5b1283e3cc587dc16bb78d42f",
+      "result_sha256": "84bcd094985de3ccdffcf1b70112b7236671bc51dfbecb0013dc3c98858564a4",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-008",
+      "path": "reviewer/templates/R2R/paired/008_R2R-REV-008.json",
+      "source_sha256": "921f4f57f580090753a82ec276412cf4bfec8ccae1c226146d32f911af41eb06",
+      "evidence_blob": "d9e1f7dbdf10bdce9ab747679f88ddec00cefcecb8c38bd9c4c0dd9628e7cd36",
+      "result_sha256": "d36116bef7c4f20024c774503e6d25176ddb611fd0db66263598d4831f599a06",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-009",
+      "path": "reviewer/templates/R2R/paired/009_R2R-REV-009.json",
+      "source_sha256": "ec132b0e86c16ffe2c846ed932b94e3d21a5ebd09c6679ee5290f861db7c0999",
+      "evidence_blob": "f29a533fe357ecaa53c7be2dea130aaefcce35448511211434ce19f028d9f0d9",
+      "result_sha256": "4fd98408fdccbc79d37f13158f41c26e8c0634a5a1e06b1fd1e78448b4ba1ace",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-010",
+      "path": "reviewer/templates/R2R/paired/010_R2R-REV-010.json",
+      "source_sha256": "1a55da2e196d72e196bf36a79f2890a16e1ee66d248dcb8a97a33daf2e6e6a05",
+      "evidence_blob": "04aa2c8a00d96baa93e975a95e354f7c9ef1fbd5f706c26e0997ccab8fa00044",
+      "result_sha256": "4063a58ae72afd213ce54eea3cc6338a07ddfb0fa291d88c189f3783c1dea41d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-011",
+      "path": "reviewer/templates/R2R/paired/011_R2R-REV-011.json",
+      "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
+      "evidence_blob": "99f1f1c8c9866bde423272fda3ff5a893ded8d0af5076186b3ddb9229191db41",
+      "result_sha256": "0d73e46ed82b06e4000f5ef44d2110a439cf9bc356d1032b8a7dd3b1df4b44ed",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-012",
+      "path": "reviewer/templates/R2R/paired/012_R2R-REV-012.json",
+      "source_sha256": "3925695a9ad99f64fbddba9aba9870d0e4c7ec23a7385f0a4092e409009f6e99",
+      "evidence_blob": "4f177da6db0c296727b24c6715519144ad8aeffd7e0c4179ac508de442873c45",
+      "result_sha256": "8a1ea7139f50044c179e7abb3b956b69290f27ac96d625d34234b9b265337f79",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-013",
+      "path": "reviewer/templates/R2R/paired/013_R2R-REV-013.json",
+      "source_sha256": "09224da0c0e5fb904f6fe9a3da2e1b6237d8d98ad02ed5f300e05c07005bdd83",
+      "evidence_blob": "1ed5c0a034159b819e689ea2eae9238aadf7c42b1281d3e498deaa6571543f1b",
+      "result_sha256": "4799a37d121eb8704d66883ef421dbf3f6787d39c64b7f7a8bfafea202ca0a81",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-014",
+      "path": "reviewer/templates/R2R/paired/014_R2R-REV-014.json",
+      "source_sha256": "f08da453dec020f7243dc4e73ed74de4afa08cdfb622f0a2c6ecd10af5cbe364",
+      "evidence_blob": "8940f9f6ea1ebf4330bfcbde5d9f0604718e09e7e024bf5e08b8c54aba8f0844",
+      "result_sha256": "8411cb3518fae4ea26e356848582f5b94ea28a652a9615486cd3739a5f3ebf30",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-015",
+      "path": "reviewer/templates/R2R/paired/015_R2R-REV-015.json",
+      "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
+      "evidence_blob": "0e7eab828dc08c92985e2add10f4980d14ced4910e0f4a198e74f5e9efaa1601",
+      "result_sha256": "859dd8ce06ea635f17d71867d77815083a71bcc4b10d095681e7c8d5c66e6657",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-016",
+      "path": "reviewer/templates/R2R/paired/016_R2R-REV-016.json",
+      "source_sha256": "6f7c42231838b3c6975b806cec58f2c2fe22e1f6945cb29cbd2d65572f997834",
+      "evidence_blob": "45d3149c77156093ee246c2a75d416bdf975ea0e7db7df8ed9ea236fd96fae08",
+      "result_sha256": "a687f70d6d7541fd71b053c3ae203b8b06036908910ed75416116ca1f157422b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-017",
+      "path": "reviewer/templates/R2R/paired/017_R2R-REV-017.json",
+      "source_sha256": "113be0fedd42aa177dc9a71acef3834dd5313160bb593df82f383fa5b9feb1f8",
+      "evidence_blob": "053b3addd926b9fc2f705a168fdb37b603801843df3630118fadb9122aebe54a",
+      "result_sha256": "ca65db3ca9fa80a7914052a7d19f253047290c5f2ad09e132896f8713f684ee3",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-018",
+      "path": "reviewer/templates/R2R/paired/018_R2R-REV-018.json",
+      "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
+      "evidence_blob": "8ae9e97c2a926d53fd1c9177fee0371e3e060b3693116939cc942910db7bf68c",
+      "result_sha256": "68f473678afa413a6942eca2f41249fcd344f6d098f5554e55864422ed90b40c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-019",
+      "path": "reviewer/templates/R2R/paired/019_R2R-REV-019.json",
+      "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
+      "evidence_blob": "b0a5703f92b5b1cd87f4a2d54bf84de488e4ea541a3582f0703fdb093c5168f5",
+      "result_sha256": "733411c0595b8785c6873338853449d0f91569d7d8f096ddb9c632a3d434c66d",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-020",
+      "path": "reviewer/templates/R2R/paired/020_R2R-REV-020.json",
+      "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
+      "evidence_blob": "44f11ba34240c857b9bfb63bda05ced1cee18d6e22f49f13f2f361043e4f03fd",
+      "result_sha256": "7629f3cda24589f06c8e0abfd13b215c1231a60dd465cb1293bec3086737755e",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-021",
+      "path": "reviewer/templates/R2R/paired/021_R2R-REV-021.json",
+      "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
+      "evidence_blob": "e2020b24d6324e9fe232b8ad5f7de3211df4cf25d138b9c246ab0eb3e6401f52",
+      "result_sha256": "186999f1770f2b5e89b6cfeca37fdbd806d942bc840ba8d83edbd1851bb764af",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-022",
+      "path": "reviewer/templates/R2R/paired/022_R2R-REV-022.json",
+      "source_sha256": "d88cfa83bec46f06691ca76838e46a560d84d39859132175eb165a617e0f81a3",
+      "evidence_blob": "aa3a42b12a962c8227a43e0ea4f6dee267dce772ca6da215567f03649ec0daf7",
+      "result_sha256": "8195c929c6796770639512cd5e2511dcfbfe3688fa544d46ab319e5b74b18ab9",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-023",
+      "path": "reviewer/templates/R2R/paired/023_R2R-REV-023.json",
+      "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
+      "evidence_blob": "0ca2cd22fac2487bcbe0263d1e844618cd488e6a07502b4ca0ba383e47a709b5",
+      "result_sha256": "9ceacd23e24e8257642e55237108fb156a7d1a02d1b9df57342cd431c75648ec",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-024",
+      "path": "reviewer/templates/R2R/paired/024_R2R-REV-024.json",
+      "source_sha256": "21d326541991a811ad5d62ae4769bf109b95ef4e66e0fc693456fb6e84e40351",
+      "evidence_blob": "18701f0c051e0afdfffda6d0bdee8e0bca801cef5e0be70d7dde1b891a05894d",
+      "result_sha256": "aa94bbac41f169efefaab15f2522fc9fcf34af7e92c17e006f806abc15d80b68",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-025",
+      "path": "reviewer/templates/R2R/paired/025_R2R-REV-025.json",
+      "source_sha256": "b162b139cf1791c874b85e6992af5ad56c4f223b7393970d15824f824fe0691d",
+      "evidence_blob": "4eeef205ca6e6e37940e0732af416e05ec02bcc45a78bb09afe0b894dbc1b0a3",
+      "result_sha256": "f0d03989256e440169c85ecb2cab7439d1cd7bbd012175fbf044ec63363f986b",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-026",
+      "path": "reviewer/templates/R2R/paired/026_R2R-REV-026.json",
+      "source_sha256": "78b9119a9a8cc212b632307081de40b9f6a281a168ff6429e7d7b3b87c2ab89d",
+      "evidence_blob": "3a6c309e19f02e54f85a0407f46a9837e281d09f0303551ddb5d7d9b27624236",
+      "result_sha256": "fa452b53657535bc8a943cb1cd630d5a3686c45c2048da47d8ff0afd93f31fd1",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-027",
+      "path": "reviewer/templates/R2R/paired/027_R2R-REV-027.json",
+      "source_sha256": "3bfd05f54c7f12de83bd55ba2d49fa68d86c394c376c0341b0d27e2d0053be39",
+      "evidence_blob": "4834a7eaf1c1bc20e24367c9aafdee6c29f895a368eece72d40315438f801805",
+      "result_sha256": "ca0e06034f15e0b9aba7da4703762090321a006ef46e7fc2238309a7dca170fb",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-028",
+      "path": "reviewer/templates/R2R/paired/028_R2R-REV-028.json",
+      "source_sha256": "dbdcae2e693c56ac4d98c9e68fdf1952703f8420f0a337d31125322d42c00575",
+      "evidence_blob": "51af26ce3e1c57a617a26337d124b9c799bb7a024c477e7a298e441d31d8c0a8",
+      "result_sha256": "6bdb24bf0f3eaaf80713ea1a29d7ef6a669a3cd3d7d0e55b97566ada0a048ea5",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-029",
+      "path": "reviewer/templates/R2R/paired/029_R2R-REV-029.json",
+      "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
+      "evidence_blob": "880649f8b62dbd067ead058aad0b3216491e6fec6e881c10372359e933b6e447",
+      "result_sha256": "972e598aa95d0cf16c099f50b7d0844e1111d93353bc9d964b88a50ae2eb5dcd",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-030",
+      "path": "reviewer/templates/R2R/paired/030_R2R-REV-030.json",
+      "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
+      "evidence_blob": "79ff517dc4b117727eb629b55410ea6656fe0b4f504ca1df1a7d761f4b282707",
+      "result_sha256": "aa19f584bb9d7484882c496123fb25e7642b8d6c389112e1cd0d340799ed43e2",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-031",
+      "path": "reviewer/templates/R2R/paired/031_R2R-REV-031.json",
+      "source_sha256": "0d598d742c0acdc9d0decc1e420e4d1806639cf21390fd6eaa35087d680e6b93",
+      "evidence_blob": "7805ce910ad0ed924304ccf2b82cfdf2e94e2cc36dc4225fcaba172431c2253f",
+      "result_sha256": "ddf84791592a31535df0a3d0718d1ecfd6ebb336c3fa8beb13c413488981a8a0",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-032",
+      "path": "reviewer/templates/R2R/paired/032_R2R-REV-032.json",
+      "source_sha256": "c6f00355ebd771f8d688490d422130cd15c23c369b667d776fe99390117d0bae",
+      "evidence_blob": "8c4d7bf368b5250de95d213d7467c9e0221a8bb8ac0f40f54f7096e41f5468d5",
+      "result_sha256": "a733daf72662a419acd500eb3ce1823152684ac7518f237dced851ec4fcbbfb3",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-033",
+      "path": "reviewer/templates/R2R/paired/033_R2R-REV-033.json",
+      "source_sha256": "fb4ac571dd4112164b0b17fb4f4b5e2521ecb801b9eb6e066ea6e4b8a87d39d6",
+      "evidence_blob": "abcd74b27faf6d321500de8d4e48561b2e292834220b1abab8a5f2e203ada621",
+      "result_sha256": "c70bca62233f03f5787b4951103bc610289216405d87b20b9d8f1ed2275868d4",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-034",
+      "path": "reviewer/templates/R2R/paired/034_R2R-REV-034.json",
+      "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
+      "evidence_blob": "6e8d257f259f848ed8acab82f0b4e880a5269d91cbf896a8c134c70c63919012",
+      "result_sha256": "95b67df45d50b2e7e15220426754865833cd91e246eb624488e1c36d3454179c",
+      "changed": true
+    },
+    {
+      "template_id": "R2R-REV-035",
+      "path": "reviewer/templates/R2R/paired/035_R2R-REV-035.json",
+      "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
+      "evidence_blob": "46446504f5f22764d3cf80133d4db8af02f6bd31db2678648e3b5394b1f875d4",
+      "result_sha256": "4a607dd41ac078c0113afcd35c84e4571602a00d7ab1c7e6795429312b980884",
+      "changed": true
+    }
+  ],
+  "template_count": 125,
+  "runtime_eligible": 102,
+  "source_identities_preserved": true,
+  "active_contracts_validated": true,
+  "review_method": "Explicit source-local model-assisted review; evaluated stage evidence is retained unless a listed field repair applies. No independent human certification.",
+  "semantic_correctness_certified": false,
+  "navigation_evaluated": false
+}

@@ -38,7 +38,10 @@
         "source_quote": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom.",
         "requirement": "Preserve the temporal trigger/order and its scope: Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom.",
         "candidate_evidence": [
-          "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Go through the doorway to the room with the sink and follow the hallway until you get to a bedroom."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Wait at the bedroom door.",
         "requirement": "Preserve the completion or stationary-position condition: Wait at the bedroom door.",
         "candidate_evidence": [
-          "Wait at the bedroom door."
+          {
+            "subtask_index": 0,
+            "quote": "Wait at the bedroom door."
+          }
         ],
         "status": "covered"
       }
@@ -55,38 +61,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -100,7 +113,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Wait at the bedroom door.",
+          "text": "The bedroom-door waiting position.",
           "candidate_quotes": [
             "Wait at the bedroom door."
           ]
@@ -113,17 +126,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The bedroom-door waiting position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait at the bedroom door."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "until; through",
+          "text": "Verify these source-specified relations in the candidate: until you get to a bedroom; at the bedroom door",
           "candidate_quotes": [
-            "until",
-            "through"
+            "until you get to a bedroom",
+            "at the bedroom door"
           ]
         },
         "source_requirement_ids": [
@@ -137,7 +150,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -150,7 +164,17 @@
       "intermediate_stop_or_wait",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the temporal trigger/order and its scope: Go through the doorway to the room with the sink and follow the…; Preserve the completion or stationary-position condition: Wait at the bedroom door.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the temporal trigger/order and its scope: Go through the doorway to the room with the sink and follow the…; Preserve the completion or stationary-position condition: Wait at the bedroom door."
+    "review_principle": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
+    "case_specific_focus": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
+    "transfer_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
+    "anti_pattern": "Do not force a split at a room noun or doorway. A different source with a completed visit followed by an independent objective can support a cut.",
+    "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
+    "counter_example_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
+    "primary_skills": [
+      "transit",
+      "endpoint",
+      "terminal"
+    ],
+    "decision_reason": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement."
   }
 }

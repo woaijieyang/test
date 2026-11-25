@@ -38,7 +38,10 @@
         "source_quote": "Turn around and go down the entranceway, heading toward the staircase.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around and go down the entranceway, heading toward the staircase.",
         "candidate_evidence": [
-          "Turn around and go down the entranceway, heading toward the staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around and go down the entranceway, heading toward the staircase."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Turn to your left and walk past the staircase to the open door way.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn to your left and walk past the staircase to the open door way.",
         "candidate_evidence": [
-          "Turn to your left and walk past the staircase to the open door way."
+          {
+            "subtask_index": 0,
+            "quote": "Turn to your left and walk past the staircase to the open door way."
+          }
         ],
         "status": "covered"
       },
@@ -56,7 +62,10 @@
         "source_quote": "Stop near the front of the doorway to the hall.",
         "requirement": "Preserve the completion or stationary-position condition: Stop near the front of the doorway to the hall.",
         "candidate_evidence": [
-          "Stop near the front of the doorway to the hall."
+          {
+            "subtask_index": 0,
+            "quote": "Stop near the front of the doorway to the hall."
+          }
         ],
         "status": "covered"
       }
@@ -64,38 +73,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -109,7 +125,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Stop near the front of the doorway to the hall.",
+          "text": "Near the front of the hall doorway.",
           "candidate_quotes": [
             "Stop near the front of the doorway to the hall."
           ]
@@ -122,7 +138,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "Near the front of the hall doorway. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Stop near the front of the doorway to the hall."
           ],
@@ -149,7 +165,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -163,7 +180,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Turn around and go down the entranceway, heading…; Preserve the directional/spatial relation and its reference frame: Turn to your left and walk past the staircase to…; Preserve the completion or stationary-position condition: Stop near the front of the doorway to the hall.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Turn around and go down the entranceway, heading…; Preserve the directional/spatial relation and its reference frame: Turn to your left and walk past the staircase to…; Preserve the completion or stationary-position condition: Stop near the front of the doorway to the hall."
+    "review_principle": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together.",
+    "case_specific_focus": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "counter_example_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
+    "primary_skills": [
+      "coupled",
+      "pass_by",
+      "terminal"
+    ],
+    "decision_reason": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together."
   }
 }

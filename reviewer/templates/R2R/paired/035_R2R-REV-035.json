@@ -21,8 +21,8 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Exit the pool area and walk toward the stairs, passing the chair.",
-        "After passing the chair, enter the hallway to the slight right. Turn right and enter the third door on the left. Wait by the lockers."
+        "Exit the pool area and walk toward the stairs, enter the hallway to the slight right past the chair.",
+        "Turn right and enter the third door on the left. Wait by the lockers."
       ]
     }
   },
@@ -36,56 +36,49 @@
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
-        "source_quote": "Exit the pool area",
-        "requirement": "Preserve the spatial transition and region/threshold: Exit the pool area",
+        "source_quote": "Exit the pool area and walk toward the stairs",
+        "requirement": "Exit the pool area and walk toward the stairs",
         "candidate_evidence": [
-          "Exit the pool area and walk toward the stairs, passing the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Exit the pool area and walk toward the stairs"
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
-        "source_quote": "walk toward the stairs",
-        "requirement": "Preserve the spatial transition and region/threshold: walk toward the stairs",
+        "source_quote": "enter the hallway to the slight right past the chair",
+        "requirement": "enter the hallway to the slight right past the chair",
         "candidate_evidence": [
-          "Exit the pool area and walk toward the stairs, passing the chair."
+          {
+            "subtask_index": 0,
+            "quote": "enter the hallway to the slight right past the chair"
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
-        "source_quote": "past the chair",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: past the chair",
+        "source_quote": "turn right and enter the third door on the left",
+        "requirement": "turn right and enter the third door on the left",
         "candidate_evidence": [
-          "After passing the chair, enter the hallway to the slight right.",
-          "Exit the pool area and walk toward the stairs, passing the chair."
+          {
+            "subtask_index": 1,
+            "quote": "Turn right and enter the third door on the left. Wait by the lockers."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-04",
-        "source_quote": "enter the hallway to the slight right",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: enter the hallway to the slight right",
-        "candidate_evidence": [
-          "After passing the chair, enter the hallway to the slight right."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-05",
-        "source_quote": "turn right and enter the third door on the left",
-        "requirement": "Preserve the ordinal target and its counting origin: turn right and enter the third door on the left",
-        "candidate_evidence": [
-          "Turn right and enter the third door on the left."
-        ],
-        "status": "covered"
-      },
-      {
-        "requirement_id": "SRC-06",
         "source_quote": "wait by the lockers",
-        "requirement": "Preserve the completion or stationary-position condition: wait by the lockers",
+        "requirement": "wait by the lockers",
         "candidate_evidence": [
-          "Wait by the lockers."
+          {
+            "subtask_index": 1,
+            "quote": "Turn right and enter the third door on the left. Wait by the lockers."
+          }
         ],
         "status": "covered"
       }
@@ -93,38 +86,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -138,94 +138,85 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "The chair passed on the route toward the stairs.",
+          "text": "The hallway entered using the original slight-right/chair description.",
           "candidate_quotes": [
-            "passing the chair"
+            "enter the hallway to the slight right past the chair."
           ]
         },
         "process": {
-          "text": "Exit the pool area and walk toward the stairs, passing the chair.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
-            "Exit the pool area and walk toward the stairs, passing the chair."
+            "Exit the pool area and walk toward the stairs, enter the hallway to the slight right past the chair."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the explicitly described pass-by event at the chair; no physical stop is added.",
+          "text": "The hallway entered using the original slight-right/chair description. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "passing the chair"
+            "enter the hallway to the slight right past the chair."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "toward the stairs; passing the chair",
+          "text": "Verify these source-specified relations in the candidate: hallway to the slight right past the chair",
           "candidate_quotes": [
-            "toward the stairs",
-            "passing the chair"
+            "hallway to the slight right past the chair"
           ]
         },
         "source_requirement_ids": [
           "SRC-01",
-          "SRC-02",
-          "SRC-03"
+          "SRC-02"
         ],
         "source_quotes": [
-          "Exit the pool area",
-          "walk toward the stairs",
-          "past the chair"
+          "Exit the pool area and walk toward the stairs",
+          "enter the hallway to the slight right past the chair"
         ],
         "carryover": [
-          "The chair has been passed; hallway entry remains the next stage's process."
+          "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
         ]
       },
       {
         "subtask_index": 1,
         "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "Begin immediately after passing the chair; do not assume hallway entry is already complete.",
-          "candidate_quotes": [
-            "After passing the chair"
-          ]
+          "mode": "inherited_pose",
+          "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "The third door on the left after entering the hallway, followed by the locker-side waiting position.",
+          "text": "The locker-side wait following the specified third left-hand door entry.",
           "candidate_quotes": [
-            "third door on the left",
-            "Wait by the lockers"
+            "enter the third door on the left",
+            "Wait by the lockers."
           ]
         },
         "process": {
-          "text": "After passing the chair, enter the hallway to the slight right. Turn right and enter the third door on the left. Wait by the lockers.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
-            "After passing the chair, enter the hallway to the slight right. Turn right and enter the third door on the left. Wait by the lockers."
+            "Turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete entry through the third door on the left and wait by the lockers.",
+          "text": "The locker-side wait following the specified third left-hand door entry. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Wait by the lockers"
+            "Wait by the lockers."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "hallway to the slight right; right turn; third door on the left",
+          "text": "Verify these source-specified relations in the candidate: Turn right; third door on the left; by the lockers",
           "candidate_quotes": [
-            "hallway to the slight right",
             "Turn right",
-            "third door on the left"
+            "third door on the left",
+            "by the lockers"
           ]
         },
         "source_requirement_ids": [
           "SRC-03",
-          "SRC-04",
-          "SRC-05",
-          "SRC-06"
+          "SRC-04"
         ],
         "source_quotes": [
-          "past the chair",
-          "enter the hallway to the slight right",
           "turn right and enter the third door on the left",
           "wait by the lockers"
         ],
@@ -238,25 +229,33 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The first stage ends after passing the chair, before hallway entry.",
-          "candidate_quote": "passing the chair"
+          "text": "The hallway entered using the original slight-right/chair description. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the hallway to the slight right past the chair."
         },
         "next_entry": {
-          "text": "After passing the chair, execute the hallway entry to the slight right.",
-          "candidate_quote": "After passing the chair"
+          "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door.",
+          "candidate_quote": "Turn right and enter the third door on the left."
         },
-        "shared_context": [],
-        "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
+          }
         ],
-        "handoff_rationale": "The source places the hallway past the chair. The earlier candidate ended after hallway entry and began the next stage from the hallway, silently moving the boundary beyond the chair. The corrected candidate preserves the chair as the starting reference and keeps hallway entry in stage 2."
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
+        ],
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
-    "review_pattern": "completed_transition_then_distinct_objective",
-    "why_this_review_matters": "The previous candidate advanced the boundary too far: the chair is the last explicit landmark before hallway entry. A valid second-stage entry is after passing the chair, and the second stage must still enter the hallway.",
+    "review_pattern": "source_grounded_relation_and_handoff",
+    "why_this_review_matters": "Actual hallway entry, not merely a chair pass, supports the later right turn and ordinal selection; the final locker wait remains required.",
     "reviewer_rule": "Do not accept a handoff merely because a later region is named. Check the event order: if the source says that region lies past a landmark, the prior stage may end at the landmark pass-by and the next stage must still perform the region entry.",
     "retrieval_tags": [
       "room_transition",
@@ -268,7 +267,40 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Exit the pool area; Preserve the spatial transition and region/threshold: walk toward the stairs; Preserve the directional/spatial relation and its reference frame: past the chair. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Exit the pool area; Preserve the spatial transition and region/threshold: walk toward the stairs; Preserve the directional/spatial relation and its reference frame: past the chair"
+    "review_principle": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "case_specific_focus": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "transfer_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
+    "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
+    "counter_example_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
+    "primary_skills": [
+      "attachment",
+      "entry",
+      "ordinal"
+    ],
+    "decision_reason": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "enter the hallway to the slight right past the chair",
+        "turn right and enter the third door on the left"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "enter the hallway to the slight right past the chair."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "Turn right and enter the third door on the left."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The slight-right/chair description belongs to hallway entry. Complete that entry before the later right turn and third-left-door choice; the second stage can inherit this established region.",
+      "counter_boundary": "Do not move past the chair onto an unsupported separate waypoint. An added From phrase cannot substitute for an unperformed crossing.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

@@ -1,0 +1,36 @@
+{
+  "renderer_smoke_cases": 24,
+  "historical_renderer_record_unchanged": true,
+  "offline_demo_four_phases": true,
+  "build_idempotent": true,
+  "compiled_files": 6,
+  "r2r_library_source_queries": 27,
+  "generator_dynamic_count_distribution": {
+    "4": 26,
+    "5": 1
+  },
+  "reviewer_diagnostic_count_distribution": {
+    "2": 20,
+    "3": 7
+  },
+  "canonical_build_sizes": {
+    "generator/compiled_r2r-en.txt": {
+      "current_utf8_bytes": 120681,
+      "parent_utf8_bytes": 111172,
+      "evaluated_utf8_bytes": 115303
+    },
+    "reviewer/compiled_r2r-en.txt": {
+      "current_utf8_bytes": 159688,
+      "parent_utf8_bytes": 142319,
+      "evaluated_utf8_bytes": 148045
+    },
+    "generator/compiled_repair_r2r-en.txt": {
+      "current_utf8_bytes": 145735,
+      "parent_utf8_bytes": 126225,
+      "evaluated_utf8_bytes": 130356
+    }
+  },
+  "size_comparison_limit": "Canonical committed empty-input builds may use different selected examples. Bytes do not establish provider tokens or truncation.",
+  "semantic_model_evaluated": false,
+  "navigation_evaluated": false
+}

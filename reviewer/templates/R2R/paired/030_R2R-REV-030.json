@@ -22,7 +22,7 @@
       "status": "ok",
       "subtasks": [
         "Go to the bottom of the staircase.",
-        "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+        "Go to the entrance of the first room to the left of the staircase and wait by the chair."
       ]
     }
   },
@@ -37,27 +37,36 @@
       {
         "requirement_id": "SRC-01",
         "source_quote": "Go to the bottom of the staircase",
-        "requirement": "Preserve the ordered route action or target-identifying landmark: Go to the bottom of the staircase",
+        "requirement": "Reach the staircase bottom.",
         "candidate_evidence": [
-          "Go to the bottom of the staircase."
+          {
+            "subtask_index": 0,
+            "quote": "Go to the bottom of the staircase."
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-02",
         "source_quote": "go to the entrance of first room to the left of the staircase",
-        "requirement": "Preserve the ordinal target and its counting origin: go to the entrance of first room to the left of the staircase",
+        "requirement": "Select the first room left of the staircase, not agent-left, and go to its entrance.",
         "candidate_evidence": [
-          "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+          {
+            "subtask_index": 1,
+            "quote": "Go to the entrance of the first room to the left of the staircase"
+          }
         ],
         "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "wait by the chair",
-        "requirement": "Preserve the completion or stationary-position condition: wait by the chair",
+        "requirement": "Wait by the chair at that selected entrance.",
         "candidate_evidence": [
-          "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+          {
+            "subtask_index": 1,
+            "quote": "wait by the chair."
+          }
         ],
         "status": "covered"
       }
@@ -65,38 +74,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route has a completed turn or region/waypoint transition that supports a useful next local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -110,7 +126,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go to the bottom of the staircase.",
+          "text": "The staircase bottom.",
           "candidate_quotes": [
             "Go to the bottom of the staircase."
           ]
@@ -123,7 +139,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The staircase bottom. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Go to the bottom of the staircase."
           ],
@@ -140,44 +156,43 @@
           "Go to the bottom of the staircase"
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
         ]
       },
       {
         "subtask_index": 1,
         "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair"
-          ]
+          "mode": "inherited_pose",
+          "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair.",
+          "text": "The chair-side position at the selected room entrance, with the staircase-relative direction retained.",
           "candidate_quotes": [
-            "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+            "the entrance of the first room to the left of the staircase",
+            "wait by the chair"
           ]
         },
         "process": {
-          "text": "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
-            "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+            "Go to the entrance of the first room to the left of the staircase and wait by the chair."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The chair-side position at the selected room entrance, with the staircase-relative direction retained. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair."
+            "wait by the chair."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "first; left",
+          "text": "Verify these source-specified relations in the candidate: first room to the left of the staircase; by the chair",
           "candidate_quotes": [
-            "first",
-            "left"
+            "first room to the left of the staircase",
+            "by the chair"
           ]
         },
         "source_requirement_ids": [
@@ -197,26 +212,32 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go to the bottom of the staircase.",
+          "text": "The staircase bottom. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Go to the bottom of the staircase."
         },
         "next_entry": {
-          "text": "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair",
-          "candidate_quote": "From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair"
+          "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left.",
+          "candidate_quote": "Go to the entrance of the first room to the left of the staircase and wait by the chair."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The first stage ends at the source-supported event 'Go to the bottom of the staircase.'; the next stage begins with 'From the bottom of the staircase, go to the entrance of the first room on the left and wait by the chair'. No physical stop is added."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
-    "review_pattern": "bounded_transition_then_distinct_target",
-    "why_this_review_matters": "The route has a completed turn or region/waypoint transition that supports a useful next local objective.",
+    "review_pattern": "source_grounded_relation_and_handoff",
+    "why_this_review_matters": "The staircase remains the spatial reference after reaching its bottom; the final chair-side wait is still required.",
     "reviewer_rule": "Apply the uploaded Reviewer prompt L0-L6 independently. Do not treat a grammatical boundary as sufficient; do not demand redundant From prefixes when a unique preceding endpoint supports inheritance. A stage audit must be reflected in the actual English.",
     "retrieval_tags": [
       "room_transition",
@@ -226,7 +247,34 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the ordered route action or target-identifying landmark: Go to the bottom of the staircase; Preserve the ordinal target and its counting origin: go to the entrance of first room to the left of the staircase; Preserve the completion or stationary-position condition: wait by the chair. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the ordered route action or target-identifying landmark: Go to the bottom of the staircase; Preserve the ordinal target and its counting origin: go to the entrance of first room to the left of the staircase; Preserve the completion or stationary-position condition: wait by the chair"
+    "review_principle": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
+    "case_specific_focus": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
+    "transfer_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
+    "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
+    "counter_example_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
+    "primary_skills": [
+      "entity_frame",
+      "ordinal",
+      "terminal"
+    ],
+    "decision_reason": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "first room to the left of the staircase"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "the first room to the left of the staircase"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. Retain the staircase as the reference object at room selection. Reaching its bottom establishes position, not a new egocentric left.",
+      "counter_boundary": "A source saying on your left has a different reference. Do not remove the object-relative phrase as a redundant entry anchor.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

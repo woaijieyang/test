@@ -39,7 +39,10 @@
         "source_quote": "Go out the door.",
         "requirement": "Preserve the spatial transition and region/threshold: Go out the door.",
         "candidate_evidence": [
-          "Go out the door."
+          {
+            "subtask_index": 0,
+            "quote": "Go out the door."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "turn left and go out that door.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: turn left and go out that door.",
         "candidate_evidence": [
-          "Turn left and go out that door."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and go out that door."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Turn right and go toward the table.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right and go toward the table.",
         "candidate_evidence": [
-          "After exiting through that door, turn right and go towards the table."
+          {
+            "subtask_index": 1,
+            "quote": "After exiting through that door, turn right and go towards the table."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +75,10 @@
         "source_quote": "Proceed to the stairs on the right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Proceed to the stairs on the right.",
         "candidate_evidence": [
-          "Proceed to the stairs on the right."
+          {
+            "subtask_index": 1,
+            "quote": "Proceed to the stairs on the right."
+          }
         ],
         "status": "covered"
       }
@@ -74,38 +86,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -119,7 +138,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left and go out that door.",
+          "text": "The second doorway exit after the left turn.",
           "candidate_quotes": [
             "Turn left and go out that door."
           ]
@@ -132,7 +151,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The second doorway exit after the left turn. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Turn left and go out that door."
           ],
@@ -153,7 +172,7 @@
           "turn left and go out that door."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The second doorway exit has occurred; the next right and table/stair route remain."
         ]
       },
       {
@@ -167,7 +186,7 @@
           ]
         },
         "target": {
-          "text": "Proceed to the stairs on the right.",
+          "text": "The right-hand stairs as the source-directed destination.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ]
@@ -179,8 +198,8 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "Preserve the final directed approach; the source does not specify a further arrival threshold or physical STOP.",
+          "kind": "explicit_event",
+          "text": "The right-hand stairs as the source-directed destination. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Proceed to the stairs on the right."
           ],
@@ -211,23 +230,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn left and go out that door.",
+          "text": "The second doorway exit after the left turn. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Turn left and go out that door."
         },
         "next_entry": {
-          "text": "After exiting through that door, turn right and go towards the table",
+          "text": "The second doorway exit has occurred; the next right and table/stair route remain.",
           "candidate_quote": "After exiting through that door, turn right and go towards the table"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The second doorway exit has occurred; the next right and table/stair route remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn left and go out that door.'; the next stage begins with 'After exiting through that door, turn right and go towards the table'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The second doorway exit has occurred; the next right and table/stair route remain."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -239,7 +264,16 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Go out the door.; Preserve the directional/spatial relation and its reference frame: turn left and go out that door.; Preserve the directional/spatial relation and its reference frame: Turn right and go toward the table.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Go out the door.; Preserve the directional/spatial relation and its reference frame: turn left and go out that door.; Preserve the directional/spatial relation and its reference frame: Turn right and go toward the table."
+    "review_principle": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "case_specific_focus": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
+    "primary_skills": [
+      "entry",
+      "direction",
+      "final_approach"
+    ],
+    "decision_reason": "Execute both door exits in order before the right turn, table-directed movement and stair target."
   }
 }

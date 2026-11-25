@@ -39,8 +39,14 @@
         "source_quote": "Walk over the star tile into the bedroom and walk towards the bed.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk over the star tile into the bedroom and walk towards the bed.",
         "candidate_evidence": [
-          "Walk over the star tile and enter the bedroom.",
-          "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows."
+          {
+            "subtask_index": 0,
+            "quote": "Walk over the star tile and enter the bedroom."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows."
+          }
         ],
         "status": "covered"
       },
@@ -49,7 +55,10 @@
         "source_quote": "Walk around the bed, and stop next to the left set of windows.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk around the bed, and stop next to the left set of windows.",
         "candidate_evidence": [
-          "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows."
+          {
+            "subtask_index": 1,
+            "quote": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows."
+          }
         ],
         "status": "covered"
       }
@@ -57,38 +66,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -102,9 +118,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk over the star tile and enter the bedroom.",
+          "text": "The bedroom reached across the star tile.",
           "candidate_quotes": [
-            "Walk over the star tile and enter the bedroom."
+            "enter the bedroom."
           ]
         },
         "process": {
@@ -115,16 +131,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The bedroom reached across the star tile. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Walk over the star tile and enter the bedroom."
+            "enter the bedroom."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Path constraints: cross over the star tile; enter the bedroom.",
+          "text": "Verify these source-specified relations in the candidate: star tile",
           "candidate_quotes": [
-            "over the star tile"
+            "star tile"
           ]
         },
         "source_requirement_ids": [
@@ -134,7 +150,7 @@
           "Walk over the star tile into the bedroom and walk towards the bed."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The bedroom entry is complete; retain the same bed and the left window set for the remaining route."
         ]
       },
       {
@@ -148,9 +164,9 @@
           ]
         },
         "target": {
-          "text": "The left set of windows beside which the source explicitly asks the agent to stop.",
+          "text": "The left window set after going around the bed.",
           "candidate_quotes": [
-            "stop next to the left set of windows"
+            "stop next to the left set of windows."
           ]
         },
         "process": {
@@ -161,16 +177,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The left window set after going around the bed. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows."
+            "stop next to the left set of windows."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Path constraints: approach the bed, go around it, and stop next to the left set of windows.",
+          "text": "Verify these source-specified relations in the candidate: around it; left set of windows",
           "candidate_quotes": [
-            "go around it"
+            "around it",
+            "left set of windows"
           ]
         },
         "source_requirement_ids": [
@@ -190,21 +207,27 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk over the star tile and enter the bedroom.",
-          "candidate_quote": "Walk over the star tile and enter the bedroom."
+          "text": "The bedroom reached across the star tile. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the bedroom."
         },
         "next_entry": {
-          "text": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows",
+          "text": "The bedroom entry is complete; retain the same bed and the left window set for the remaining route.",
           "candidate_quote": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The bedroom entry is complete; retain the same bed and the left window set for the remaining route."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk over the star tile and enter the bedroom.'; the next stage begins with 'Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The bedroom entry is complete; retain the same bed and the left window set for the remaining route."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -217,7 +240,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk over the star tile into the bedroom and walk…; Preserve the directional/spatial relation and its reference frame: Walk around the bed, and stop next to the left set…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk over the star tile into the bedroom and walk…; Preserve the directional/spatial relation and its reference frame: Walk around the bed, and stop next to the left set…"
+    "review_principle": "The star-tile crossing establishes bedroom entry; the bed approach and route around it end at the left set of windows.",
+    "case_specific_focus": "The star-tile crossing establishes bedroom entry; the bed approach and route around it end at the left set of windows.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "A right-window ending is a target error, not a failure of the already completed bedroom handoff.",
+    "primary_skills": [
+      "entry",
+      "terminal",
+      "frame"
+    ],
+    "decision_reason": "The star-tile crossing establishes bedroom entry; the bed approach and route around it end at the left set of windows."
   }
 }

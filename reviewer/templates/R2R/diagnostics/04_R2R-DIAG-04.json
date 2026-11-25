@@ -42,7 +42,10 @@
         "source_quote": "Make a left and stand in the door way to the hall.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Make a left and stand in the door way to the hall.",
         "candidate_evidence": [
-          "Make another left into the room next door."
+          {
+            "subtask_index": 0,
+            "quote": "stand in the  way to the hall"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -51,7 +54,10 @@
         "source_quote": "Make another left in the hall.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Make another left in the hall.",
         "candidate_evidence": [
-          "Make another left into the room next door."
+          {
+            "subtask_index": 0,
+            "quote": "Make another left in the hall."
+          }
         ],
         "status": "covered"
       },
@@ -60,22 +66,25 @@
         "source_quote": "Make another left into the room next door.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Make another left into the room next door.",
         "candidate_evidence": [
-          "Make another left into the room next door."
+          {
+            "subtask_index": 0,
+            "quote": "Make another left into the room next door."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'.",
         "finding_indices": [
           0
         ]
@@ -83,31 +92,31 @@
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore door in the first doorway placement; preserve both subsequent left turns.",
         "finding_indices": [
           0
         ]
@@ -115,28 +124,35 @@
     ],
     "findings": [
       {
-        "source_quote": "door",
+        "code": "OMISSION",
+        "failed_layer": "L1_source_coverage",
+        "c_check": "C05",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
+        "source_quote": "stand in the door way to the hall",
         "candidate_evidence": [
-          "Make another left into the room next door."
+          {
+            "subtask_index": 0,
+            "quote": "stand in the  way to the hall"
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C2_SUPPORT",
         "evidence_level": "S1",
-        "problem": "The candidate drops a route-identifying landmark that the source uses to locate or select the path.",
-        "execution_consequence": "A route-identifying landmark is removed; the agent may fail to identify the intended corridor, doorway or destination.",
+        "problem": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'.",
+        "execution_consequence": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'.",
         "repair": {
-          "operation": "landmark",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the omitted landmark and its spatial relation.",
+          "instruction": "Restore door in the first doorway placement; preserve both subsequent left turns.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -151,7 +167,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Make another left into the room next door.",
+          "text": "The actual candidate endpoint: Make another left into the room next door.",
           "candidate_quotes": [
             "Make another left into the room next door."
           ]
@@ -163,34 +179,47 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "explicit_event",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
+          "candidate_quotes": [
+            "Make another left into the room next door."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "spatial_frame: left",
+          "text": "The early stand is part of the process before the later left turns. It is not the final endpoint.",
           "candidate_quotes": [
-            "left"
+            "stand in the  way to the hall"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
         "source_quotes": [
-          "Make another left into the room next door.",
+          "Make a left and stand in the door way to the hall.",
           "Make another left in the hall.",
-          "Make a left and stand in the door way to the hall."
+          "Make another left into the room next door."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "landmark",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a landmark corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns.",
+    "case_specific_focus": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns.",
+    "transfer_rule": "Restore door in the first doorway placement; preserve both subsequent left turns.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "target_identity"
+    ],
+    "decision_reason": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns.",
+    "reusable_rule": "Restore door in the first doorway placement; preserve both subsequent left turns."
   }
 }

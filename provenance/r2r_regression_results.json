@@ -1,0 +1,15 @@
+{
+  "tests_run": 391,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "external_fixture_unavailable": [
+    {
+      "test": "unittest.loader._FailedTest.tests.test_release_transaction",
+      "reason": "The inherited companion deployment fixture is absent; not counted as passed."
+    }
+  ],
+  "success": true,
+  "semantic_model_evaluated": false,
+  "navigation_evaluated": false
+}

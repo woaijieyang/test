@@ -1,0 +1,17 @@
+{
+  "generator/initial": {
+    "sha256": "0b9ac81d9da099df22d00e422f868a770fa3169ea4ff4a66854e179bd1bdb2be",
+    "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+    "utf8_bytes": 126426
+  },
+  "generator/repair": {
+    "sha256": "1b497240c253b8a8b5dc8e154ecff6560ff31fa771dedebfa549e003eaf341ba",
+    "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+    "utf8_bytes": 141479
+  },
+  "reviewer/review": {
+    "sha256": "de0fb4650d06fa8b5c49505681e4e613ffe60f79855730daa1231cba2e29558c",
+    "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+    "utf8_bytes": 159995
+  }
+}

@@ -39,7 +39,10 @@
         "source_quote": "move forward in front of the television.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: move forward in front of the television.",
         "candidate_evidence": [
-          "Move forward in front of the television."
+          {
+            "subtask_index": 0,
+            "quote": "Move forward in front of the television."
+          }
         ],
         "status": "covered"
       },
@@ -48,8 +51,10 @@
         "source_quote": "turn left and exit the room.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: turn left and exit the room.",
         "candidate_evidence": [
-          "Turn left and exit the room.",
-          "From the room exit, go down the hallway and step into the bedroom on the left."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and exit the room."
+          }
         ],
         "status": "covered"
       },
@@ -58,7 +63,10 @@
         "source_quote": "go down hallway and step into the bedroom on the left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: go down hallway and step into the bedroom on the left.",
         "candidate_evidence": [
-          "From the room exit, go down the hallway and step into the bedroom on the left."
+          {
+            "subtask_index": 1,
+            "quote": "From the room exit, go down the hallway and step into the bedroom on the left."
+          }
         ],
         "status": "covered"
       }
@@ -66,38 +74,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -111,7 +126,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn left and exit the room.",
+          "text": "The completed room exit after the television-side movement.",
           "candidate_quotes": [
             "Turn left and exit the room."
           ]
@@ -124,7 +139,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The completed room exit after the television-side movement. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Turn left and exit the room."
           ],
@@ -146,7 +161,7 @@
           "turn left and exit the room."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The initial left and room exit are complete; continue in the hall before selecting the left bedroom."
         ]
       },
       {
@@ -160,9 +175,9 @@
           ]
         },
         "target": {
-          "text": "From the room exit, go down the hallway and step into the bedroom on the left.",
+          "text": "The left bedroom interior.",
           "candidate_quotes": [
-            "From the room exit, go down the hallway and step into the bedroom on the left."
+            "step into the bedroom on the left."
           ]
         },
         "process": {
@@ -173,9 +188,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The left bedroom interior. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "From the room exit, go down the hallway and step into the bedroom on the left."
+            "step into the bedroom on the left."
           ],
           "stop_scope": "none"
         },
@@ -186,11 +201,9 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-02",
           "SRC-03"
         ],
         "source_quotes": [
-          "turn left and exit the room.",
           "go down hallway and step into the bedroom on the left."
         ],
         "carryover": []
@@ -202,22 +215,28 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn left and exit the room.",
+          "text": "The completed room exit after the television-side movement. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Turn left and exit the room."
         },
         "next_entry": {
-          "text": "From the room exit, go down the hallway and step into the bedroom on the left",
+          "text": "The initial left and room exit are complete; continue in the hall before selecting the left bedroom.",
           "candidate_quote": "From the room exit, go down the hallway and step into the bedroom on the left"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The initial left and room exit are complete; continue in the hall before selecting the left bedroom."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn left and exit the room.'; the next stage begins with 'From the room exit, go down the hallway and step into the bedroom on the left'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The initial left and room exit are complete; continue in the hall before selecting the left bedroom."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -231,7 +250,15 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the ordered route action or target-identifying landmark: move forward in front of the television.; Preserve the directional/spatial relation and its reference frame: turn left and exit the room.; Preserve the directional/spatial relation and its reference frame: go down hallway and step into the bedroom on the…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the ordered route action or target-identifying landmark: move forward in front of the television.; Preserve the directional/spatial relation and its reference frame: turn left and exit the room.; Preserve the directional/spatial relation and its reference frame: go down hallway and step into the bedroom on the…"
+    "review_principle": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "case_specific_focus": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "A predicted view of a doorway would not establish that exit.",
+    "primary_skills": [
+      "entry",
+      "direction"
+    ],
+    "decision_reason": "The television-front movement and left exit precede the hall traversal and left-bedroom entry."
   }
 }

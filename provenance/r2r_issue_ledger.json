@@ -1,0 +1,470 @@
+{
+  "baseline_commit": "a1139e1eb2897e8bbaf2a4fbf6eb2e77b00295e8",
+  "specification_sha256": "3e86aa1eb4072e3c68aca2798730f7067cc40652d102894310383696cc6fc901",
+  "evidence_boundary": {
+    "original_workbook_available": false,
+    "original_1068_records_available": false,
+    "trajectory_available": false,
+    "navigation_evaluated": false,
+    "semantic_model_evaluated": false,
+    "historical_claims": "Task numbers and spreadsheet row references in the specification are inherited claims, not newly reverified raw evidence."
+  },
+  "issues": [
+    {
+      "issue_id": 1,
+      "title": "模块文件归属",
+      "status": "implemented",
+      "files": [
+        "docs/",
+        "tools/",
+        "provenance/"
+      ],
+      "rule_ids": [],
+      "change": "移动四份文档、校验脚本、验证记录、R2R索引；保留全局哈希与兼容身份",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 2,
+      "title": "硬编码路径与调用",
+      "status": "implemented",
+      "files": [
+        "tools/verify_package.py",
+        ".github/workflows/",
+        "r2r_authoring/publish.py"
+      ],
+      "rule_ids": [],
+      "change": "同步ROOT、REQUIRED、Workflow、发布白名单及索引读取",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 3,
+      "title": "旧构建覆盖当前文件",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/integrate.py"
+      ],
+      "rule_ids": [],
+      "change": "README不再从旧提交覆盖；重建逻辑和迁移路径一致",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 4,
+      "title": "版本身份与来源区分",
+      "status": "implemented",
+      "files": [
+        "VERSION",
+        "generator/VERSION",
+        "reviewer/VERSION"
+      ],
+      "rule_ids": [],
+      "change": "保留真实兼容身份和历史提交；不增加模型可见开发版本",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 5,
+      "title": "保留完整P0",
+      "status": "implemented",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [],
+      "change": "保持角色身份和运行条件，不机械压缩",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 6,
+      "title": "独立来源与候选映射",
+      "status": "implemented",
+      "files": [
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [],
+      "change": "R-P1-A只建来源清单，R-P1-B执行一次候选映射",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 7,
+      "title": "候选冻结职责",
+      "status": "implemented",
+      "files": [
+        "generator/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [],
+      "change": "G-P1-C改为submit；Host与Renderer负责冻结放行",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 8,
+      "title": "规则层级去重",
+      "status": "implemented",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [],
+      "change": "按父规则引用与场景操作分工，维持12/10条P2",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 9,
+      "title": "纠错新增导航事实",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [
+        "G-P2-A2",
+        "G-P2-C1",
+        "R-P2-C1"
+      ],
+      "change": "来源判据和返修双重举证；历史525原始记录缺失",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 10,
+      "title": "最终STOP前移",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3",
+        "R-P2-A3"
+      ],
+      "change": "同一事件、跨越动作、终态作用域三项核对；未重跑556",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 11,
+      "title": "持续关系弱化",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [
+        "G-P2-A4",
+        "R-P2-A2"
+      ],
+      "change": "保持on/from作用域，局部修复保护extent及approach",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 12,
+      "title": "修饰附着风险",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-A4",
+        "R-P2-A2"
+      ],
+      "change": "明确归属与GEN035教学；1623/1311仍为待核实假设",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 13,
+      "title": "连续通行与独立目标",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md",
+        "reviewer/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2",
+        "R-P2-B1"
+      ],
+      "change": "区分连续通行、独立目标、关系细化；不强制改变合法分组",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 14,
+      "title": "锚点与继承",
+      "status": "implemented_effect_unverified",
+      "files": [
+        "generator/dataset_rules/r2r_en.md"
+      ],
+      "rule_ids": [
+        "G-P2-B2",
+        "G-P2-B4"
+      ],
+      "change": "继承、必要锚点、补真实动作三种路径，不按关键词禁用",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 15,
+      "title": "Actor敏感性",
+      "status": "blocked_missing_evidence",
+      "files": [
+        "provenance/r2r_issue_ledger.json"
+      ],
+      "rule_ids": [],
+      "change": "未获得原始Excel/轨迹/推理状态；不新增案例特例",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 16,
+      "title": "分支与返回教学",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/contrast.py"
+      ],
+      "rule_ids": [
+        "G-P2-A6",
+        "R-P2-A4"
+      ],
+      "change": "新增6份显式合成正反教学，未使用评测原文",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 17,
+      "title": "GEN030证据与旧说明",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "change": "不改正确候选；完整对象相对目标引用、阶段源片段、WAIT说明",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 18,
+      "title": "GEN035旧切点说明",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "change": "同步实际hallway entry与后续ordinal目标，移除chair-only边界理由",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 19,
+      "title": "R06判定与说明矛盾",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [
+        "R-P2-B1"
+      ],
+      "change": "保留PASS，补空间条件及具体C10合法替代解释",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 20,
+      "title": "DIAG28审核过粗",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "change": "三项来源要求、目标过程区分、until条件、真实交接，无虚假Finding",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 21,
+      "title": "R04/R08保护",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/review.py"
+      ],
+      "rule_ids": [],
+      "change": "原有高价值判据保留并受既有回归保护",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 22,
+      "title": "重建错误审计与复制自审",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/detail.py",
+        "r2r_authoring/semantic_refinements.py"
+      ],
+      "rule_ids": [],
+      "change": "按scope生成ending；配对Reviewer依据来源和候选，不复制Generator自审",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 23,
+      "title": "显式作者清单",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/source_inventory.json",
+        "r2r_authoring/build.py"
+      ],
+      "rule_ids": [],
+      "change": "119历史blob锁定+6新增精确来源SHA；未登记修改拒绝",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 24,
+      "title": "真实欠分割金标准",
+      "status": "pending_independent_adjudication",
+      "files": [
+        "docs/R2R_REFINEMENT_REPORT.md"
+      ],
+      "rule_ids": [],
+      "change": "未将合法粗粒度强行改判错误；需要独立来源级实质focus-loss证据",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 25,
+      "title": "规则与教学映射",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/metadata.py",
+        "r2r/teaching_index.json"
+      ],
+      "rule_ids": [],
+      "change": "125份资产建立rule_ids、关系子类型、极性和真实教学依据",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 26,
+      "title": "检索技能对齐",
+      "status": "implemented",
+      "files": [
+        "r2r/selection.py",
+        "r2r/relations.py"
+      ],
+      "rule_ids": [],
+      "change": "教学技能与来源检索信号区分；lost_action不预测候选未来错误",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 27,
+      "title": "可选第五第六条",
+      "status": "implemented",
+      "files": [
+        "r2r/selection.py"
+      ],
+      "rule_ids": [],
+      "change": "依据新子关系/正反例价值而非粗标签；测试验证可选slot及不重复补齐",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 28,
+      "title": "Reviewer互补诊断",
+      "status": "implemented",
+      "files": [
+        "r2r/selection.py"
+      ],
+      "rule_ids": [],
+      "change": "配对案例纳入prior；正例不自动抑制负例",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 29,
+      "title": "来源家族和测评隔离",
+      "status": "partial_evaluation_roster_missing",
+      "files": [
+        "r2r/relations.py",
+        "host/run.py",
+        "r2r/selection.py"
+      ],
+      "rule_ids": [],
+      "change": "Host-only显式family排除及core碰撞报告；实际评测家族重叠仍待原始名单",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 30,
+      "title": "完整教学投影",
+      "status": "implemented",
+      "files": [
+        "r2r/teaching.py"
+      ],
+      "rule_ids": [],
+      "change": "保留完整Core/前两Dynamic/首诊断；摘要增加Process与Entry",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 31,
+      "title": "实际注入一致性",
+      "status": "partial_original_1068_missing",
+      "files": [
+        "r2r_authoring/audit.py"
+      ],
+      "rule_ids": [],
+      "change": "37教学来源148阶段核对通过；1068原始输入缺失未复算",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 32,
+      "title": "四阶段接口冻结",
+      "status": "implemented",
+      "files": [
+        "host/run.py",
+        "r2r/test_hardening.py"
+      ],
+      "rule_ids": [],
+      "change": "关系实现纳入freeze；Host-only家族不进入模型；现有回放回归",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 33,
+      "title": "错误分类",
+      "status": "implemented",
+      "files": [
+        "host/protocol.py",
+        "r2r/selection.py"
+      ],
+      "rule_ids": [],
+      "change": "保持既有技术/源级/候选错误契约，缺资产/Hash/配对fail closed",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 34,
+      "title": "发布和重建一致性",
+      "status": "implemented",
+      "files": [
+        "r2r_authoring/publish.py",
+        "r2r_authoring/runtime_layout.py"
+      ],
+      "rule_ids": [],
+      "change": "迁移路径及登记新增资产同步构建、测试和发布",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 35,
+      "title": "工程与语义验证边界",
+      "status": "partial_live_evaluation_unavailable",
+      "files": [
+        "r2r/test_hardening.py",
+        "provenance/r2r_regression_results.json"
+      ],
+      "rule_ids": [],
+      "change": "325回归通过；缺外部fixture单列；未调用真实LLM或导航",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    },
+    {
+      "issue_id": 36,
+      "title": "RxR隔离",
+      "status": "implemented",
+      "files": [
+        "provenance/r2r_parent_isolation.json"
+      ],
+      "rule_ids": [],
+      "change": "205文件、47来源188阶段及混合Profile一致",
+      "verification": "Current repository code and tests; see report. Historical outcome causality is not certified."
+    }
+  ]
+}

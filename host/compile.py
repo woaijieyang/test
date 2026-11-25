@@ -205,6 +205,9 @@ def teaching_card(example, role, detailed):
     if example.get("dataset_scope") in ("RxR", "RxR_prompt_teaching_example"):
         from host.rxr_teaching import card
         return card(example, role, detailed, review_output=runtime_review_output)
+    if example.get("dataset_scope") == "R2R":
+        from host.r2r.teaching import card
+        return card(example, role, detailed)
     notes = example["teaching_notes"]
     if role == "generator":
         out = example["output"]
@@ -316,6 +319,9 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if profile == 'rxr-en-us':
             from host.rxr_teaching import validate_selection
             validate_selection(role, chosen, rows, selection_mode)
+        if profile == 'r2r-en':
+            from host.r2r.selection import validate_selection
+            validate_selection(role, chosen, selection_mode, source_text=original_instruction or '')
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
             core_label = 'R2R-EN' if profile == 'r2r-en' else 'RXR'
@@ -328,8 +334,10 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
             parts.append(f'DYNAMIC {profile.upper()} {role.upper()} EXAMPLES: {len(chosen)} selected from {len(rows)} dynamic teaching cases. These supplement, and never replace, the fixed core. Teaching annotations are evidence demonstrations, not navigation ground truth. Teaching field names differ from the active response schema; use the active schema for your response. Copy no scene facts into the current task. Selected dynamic example IDs in order: '+', '.join(chosen))
         for position, eid in enumerate(chosen):
             example = byid[eid]
-            detailed = (position == 0)
-            if profile == 'rxr-en-us':
+            if profile == 'r2r-en':
+                from host.r2r.teaching import dynamic_is_detailed
+                detailed = dynamic_is_detailed(role, chosen, position)
+            else:
                 from host.rxr_teaching import dynamic_is_detailed
                 detailed = dynamic_is_detailed(role, position)
             parts.append(canonical(teaching_card(example, role, detailed=detailed)))
@@ -350,6 +358,10 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         checks = transfer_checks(original_instruction or "")
         if checks:
             parts.append("When comparing the cases above with this instruction, check: " + " ".join(checks))
+    if examples and profile == 'r2r-en' and phase in ('repair', 'recheck'):
+        parts.append('R2R PHASE-SPECIFIC ADVICE CONTRASTS: prior R0 advice below is intentionally fallible. Transfer the independent source check, not the mistaken advice; expected_output obeys the current phase schema.')
+        from host.r2r.phase_teaching import phase_examples
+        parts.extend(canonical(e) for e in phase_examples(role, phase))
     if profile == 'r2r-en':
         parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     parts.append('ACTUAL INPUT: process only the current independent user message. Do not import a training example into this route. Return the ACTIVE schema JSON object.')

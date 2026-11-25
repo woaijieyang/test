@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference."
   },
   "output": {
     "status": "ok",
@@ -41,9 +41,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn right and enter the living room.",
+          "text": "The living-room interior.",
           "candidate_quotes": [
-            "Turn right and enter the living room."
+            "enter the living room."
           ]
         },
         "process": {
@@ -54,9 +54,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Turn right and enter the living room."
+            "enter the living room."
           ],
           "stop_scope": "none"
         },
@@ -70,7 +70,7 @@
           "Turn around and walk towards the table with the plant on it."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
         ]
       },
       {
@@ -83,9 +83,9 @@
           ]
         },
         "target": {
-          "text": "In the living room, stand just behind the couch and wait.",
+          "text": "The position just behind the couch.",
           "candidate_quotes": [
-            "In the living room, stand just behind the couch and wait."
+            "stand just behind the couch and wait."
           ]
         },
         "process": {
@@ -96,9 +96,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The position just behind the couch. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "In the living room, stand just behind the couch and wait."
+            "stand just behind the couch and wait."
           ],
           "stop_scope": "terminal"
         },
@@ -127,12 +127,17 @@
           "text": "In the living room, stand just behind the couch and wait",
           "candidate_quote": "In the living room, stand just behind the couch and wait"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn right and enter the living room.'; the next stage begins with 'In the living room, stand just behind the couch and wait'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
       }
     ],
     "issues": []
@@ -141,10 +146,20 @@
     "segmentation_pattern": "completed_transition_then_distinct_objective",
     "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Turn right and enter the living room.'; stage 2 begins from 'In the living room, stand just behind the couch and wait'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
     "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: right Stage 2: behind",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Turn right and enter the living room.'; stage 2 begins from 'In the living room, stand just behind the couch and wait'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
+    "case_specific_focus": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
+    "primary_skills": [
+      "entry",
+      "terminal",
+      "frame"
+    ],
+    "counter_example_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "decision_reason": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference."
   },
   "retrieval_tags": [
     "room_transition",

@@ -1,0 +1,890 @@
+{
+  "kind": "operation_evidence_trace",
+  "records": [
+    {
+      "template_id": "R2R-CORE-G01",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B4"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "then turn left.",
+        "Continue up the stairs and stop."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "then turn left. Continue up the stairs and stop."
+        }
+      ],
+      "operation": "Here the left turn prepares the ascent. Preserve the coherent source maneuver without inventing a separate turn-completion goal or cosmetically rewriting the source.",
+      "counter_boundary": "A different source explicitly asking to turn and observe or wait may give the turn an independent objective. Do not transfer this KEEP decision by route length alone.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-CORE-G03",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "Go up the three steps and when you get to the top, wait."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go up the three steps and when you get to the top, wait."
+        }
+      ],
+      "operation": "The top and wait refine the same three-step ascent. Keep the bounded ascent and its final wait together; no second climb is requested.",
+      "counter_boundary": "A matching place name does not license moving a final stop across a separately requested later action. Check event identity, intervening order and stop scope together.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-CORE-G09",
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-B3"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "walk forward towards the leather chairs next to the table.",
+        "stop and stand on the wood between the bench and the carpet."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "Walk forward towards the leather chairs next to the table."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "stop and stand on the wood between the bench and the carpet."
+        }
+      ],
+      "operation": "The wood between the bench and carpet constrains the final standing placement, not the preceding forward approach. Keep the bench arrival trigger, the approach strength and the exact placement.",
+      "counter_boundary": "Independent synthetic contrast (not part of this route): \"Walk a few paces along the woven runner toward the lamp, then wait.\" preserves a path-wide restriction, approximate extent and approach. \"From the woven runner, walk a few paces toward the lamp, then wait.\" loses that restriction; \"walk to the lamp\" also strengthens the approach. If the source only says \"From the runner, turn right\", do not invent a path restriction.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-GEN-011",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "going straight to the end of the hallway.",
+        "Turn left and enter the bedroom."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Continue straight to the end of the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "turn left and enter the bedroom."
+        }
+      ],
+      "operation": "Reaching the stated hallway end establishes the position of the following left turn and bedroom selection. It can support useful local focus, unlike a merely preparatory turn.",
+      "counter_boundary": "The split shown is supported, not a universal obligation. A faithful coarse version is not a C10 defect without a concrete loss of target focus or dependency.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-GEN-015",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B4"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "Exit the bedroom.",
+        "first door on your right",
+        "turn right again"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "exit the bedroom."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "After exiting the bedroom"
+        },
+        {
+          "subtask_index": 1,
+          "quote": "first door on your right"
+        }
+      ],
+      "operation": "The first right-hand door is selected after the bedroom exit; the later right is a distinct turn. Preserve that count origin, either by clear inheritance or a minimal explicit exit anchor.",
+      "counter_boundary": "Do not erase a navigation-critical origin in pursuit of shorter wording. The explicit exit anchor is legal; it is not universally mandatory when the same origin is already unambiguous.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-GEN-030",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "first room to the left of the staircase"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "the first room to the left of the staircase"
+        }
+      ],
+      "operation": "Retain the staircase as the reference object at room selection. Reaching its bottom establishes position, not a new egocentric left.",
+      "counter_boundary": "A source saying on your left has a different reference. Do not remove the object-relative phrase as a redundant entry anchor.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-GEN-034",
+      "rule_ids": [
+        "G-P2-B2",
+        "G-P2-B4"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "Move through door into hallway",
+        "turn right"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "go through the door into the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "From the hallway, turn right"
+        }
+      ],
+      "operation": "The preceding stage already establishes hallway entry. Omitting the new From the hallway phrase leaves the next right turn uniquely grounded; prefer inheritance when generating afresh.",
+      "counter_boundary": "The shown anchored candidate remains faithful and acceptable. Do not demand its rewrite merely for verbosity. If a necessary region, referent or counting frame were unclear, retain the shortest supporting anchor.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-GEN-035",
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "enter the hallway to the slight right past the chair",
+        "turn right and enter the third door on the left"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "enter the hallway to the slight right past the chair."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "Turn right and enter the third door on the left."
+        }
+      ],
+      "operation": "The slight-right/chair description belongs to hallway entry. Complete that entry before the later right turn and third-left-door choice; the second stage can inherit this established region.",
+      "counter_boundary": "Do not move past the chair onto an unsupported separate waypoint. An added From phrase cannot substitute for an unperformed crossing.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-CORE-R03",
+      "rule_ids": [
+        "R-P2-B1"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "then turn left.",
+        "Continue up the stairs and stop."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "then turn left. Continue up the stairs and stop."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. Here the left turn prepares the ascent. Preserve the coherent source maneuver without inventing a separate turn-completion goal or cosmetically rewriting the source.",
+      "counter_boundary": "A different source explicitly asking to turn and observe or wait may give the turn an independent objective. Do not transfer this KEEP decision by route length alone.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-CORE-R09",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "walk forward towards the leather chairs next to the table.",
+        "stop and stand on the wood between the bench and the carpet."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "Walk forward towards the leather chairs next to the table."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "stop and stand on the wood between the bench and the carpet."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The wood between the bench and carpet constrains the final standing placement, not the preceding forward approach. Keep the bench arrival trigger, the approach strength and the exact placement.",
+      "counter_boundary": "Independent synthetic contrast (not part of this route): \"Walk a few paces along the woven runner toward the lamp, then wait.\" preserves a path-wide restriction, approximate extent and approach. \"From the woven runner, walk a few paces toward the lamp, then wait.\" loses that restriction; \"walk to the lamp\" also strengthens the approach. If the source only says \"From the runner, turn right\", do not invent a path restriction.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-REV-011",
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "going straight to the end of the hallway.",
+        "Turn left and enter the bedroom."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Continue straight to the end of the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "turn left and enter the bedroom."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. Reaching the stated hallway end establishes the position of the following left turn and bedroom selection. It can support useful local focus, unlike a merely preparatory turn.",
+      "counter_boundary": "The split shown is supported, not a universal obligation. A faithful coarse version is not a C10 defect without a concrete loss of target focus or dependency.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-REV-015",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "Exit the bedroom.",
+        "first door on your right",
+        "turn right again"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "exit the bedroom."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "After exiting the bedroom"
+        },
+        {
+          "subtask_index": 1,
+          "quote": "first door on your right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The first right-hand door is selected after the bedroom exit; the later right is a distinct turn. Preserve that count origin, either by clear inheritance or a minimal explicit exit anchor.",
+      "counter_boundary": "Do not erase a navigation-critical origin in pursuit of shorter wording. The explicit exit anchor is legal; it is not universally mandatory when the same origin is already unambiguous.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-REV-030",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "first room to the left of the staircase"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "the first room to the left of the staircase"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. Retain the staircase as the reference object at room selection. Reaching its bottom establishes position, not a new egocentric left.",
+      "counter_boundary": "A source saying on your left has a different reference. Do not remove the object-relative phrase as a redundant entry anchor.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-REV-034",
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "Move through door into hallway",
+        "turn right"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "go through the door into the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "From the hallway, turn right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The preceding stage already establishes hallway entry. Omitting the new From the hallway phrase leaves the next right turn uniquely grounded; prefer inheritance when generating afresh.",
+      "counter_boundary": "The shown anchored candidate remains faithful and acceptable. Do not demand its rewrite merely for verbosity. If a necessary region, referent or counting frame were unclear, retain the shortest supporting anchor.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-REV-035",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/decision_boundary",
+      "projected_pointer": "/decision_boundary",
+      "source_quotes": [
+        "enter the hallway to the slight right past the chair",
+        "turn right and enter the third door on the left"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "enter the hallway to the slight right past the chair."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "Turn right and enter the third door on the left."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The slight-right/chair description belongs to hallway entry. Complete that entry before the later right turn and third-left-door choice; the second stage can inherit this established region.",
+      "counter_boundary": "Do not move past the chair onto an unsupported separate waypoint. An added From phrase cannot substitute for an unperformed crossing.",
+      "verification": "source/candidate quotes checked; projection tested, not live model comprehension"
+    },
+    {
+      "template_id": "R2R-CORE-G08",
+      "rule_ids": [
+        "G-P2-A1"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/case_rationale",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "YOU FACE A CHANDELIER",
+        "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "facing the chandelier"
+        },
+        {
+          "subtask_index": 0,
+          "quote": "Walk towards the open door on the far wall"
+        }
+      ],
+      "operation": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
+      "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
+      "verdict": null,
+      "finding_code": null,
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-CORE-G10",
+      "rule_ids": [
+        "G-P2-A2"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/case_rationale",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "pack exit"
+      ],
+      "candidate_evidence": [],
+      "operation": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
+      "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
+      "verdict": null,
+      "finding_code": null,
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-GEN-036",
+      "rule_ids": [
+        "G-P2-A6"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/case_rationale",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "If the doorway on your left is open",
+        "Otherwise"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "If the doorway on your left is open"
+        },
+        {
+          "subtask_index": 0,
+          "quote": "Otherwise"
+        }
+      ],
+      "operation": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "verdict": null,
+      "finding_code": null,
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-GEN-037",
+      "rule_ids": [
+        "G-P2-A6"
+      ],
+      "role": "generator",
+      "phases": [
+        "initial",
+        "repair"
+      ],
+      "evidence_pointer": "/teaching_notes/case_rationale",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "walk around the table",
+        "return to the same doorway"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "walk around the table"
+        },
+        {
+          "subtask_index": 0,
+          "quote": "return to the same doorway"
+        }
+      ],
+      "operation": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "verdict": null,
+      "finding_code": null,
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-CORE-R08",
+      "rule_ids": [
+        "R-P2-A1"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/case_specific_focus",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "YOU FACE A CHANDELIER",
+        "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "stop facing the chandelier"
+        }
+      ],
+      "operation": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry.",
+      "counter_boundary": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
+      "verdict": "revise",
+      "finding_code": "WRONG_TARGET",
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-CORE-R10",
+      "rule_ids": [
+        "R-P2-C1"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/case_specific_focus",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "pack exit"
+      ],
+      "candidate_evidence": [],
+      "operation": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
+      "counter_boundary": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
+      "verdict": "unresolved",
+      "finding_code": "SOURCE_AMBIGUITY",
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-DIAG-30",
+      "rule_ids": [
+        "R-P2-A4"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/case_specific_focus",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "If the hallway on your left is open",
+        "Otherwise"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Then enter the room on your right"
+        }
+      ],
+      "operation": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "verdict": "revise",
+      "finding_code": "DETACHED_CONDITION",
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-DIAG-31",
+      "rule_ids": [
+        "R-P2-A4",
+        "R-P2-B3"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/case_specific_focus",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "Walk away from the doorway to the bench.",
+        "Return to the same doorway"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Wait at the doorway."
+        }
+      ],
+      "operation": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "verdict": "revise",
+      "finding_code": "OMISSION",
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "R2R-DIAG-05",
+      "rule_ids": [
+        "R-P2-B3"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "review",
+        "recheck"
+      ],
+      "evidence_pointer": "/teaching_notes/case_specific_focus",
+      "projected_pointer": "/lesson",
+      "source_quotes": [
+        "Turn around, go past the bed, out the door and to the right."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go into the next door on the right."
+        }
+      ],
+      "operation": "The source requires 'Turn around, go past the bed, out the door and to the right.'; the actual candidate instead contains 'Go into the next door on the right.'. Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait.",
+      "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+      "verdict": "revise",
+      "finding_code": "OMISSION",
+      "verification": "active source/candidate and authored decision checked; not a live model result"
+    },
+    {
+      "template_id": "UNSUPPORTED_COUNT",
+      "rule_ids": [
+        "G-P2-A2",
+        "G-P2-C1",
+        "G-P2-C2"
+      ],
+      "role": "generator",
+      "phases": [
+        "repair"
+      ],
+      "path": "generator/dataset_rules/r2r_repair_examples.json",
+      "evidence_pointer": "/0/expected_output",
+      "source_sha256": "206c510405ee538152bc3d2db323c639caabdb9616aed39a28d2909859114a4c",
+      "verification": "complete phase output passes active contract; erroneous prior advice explicitly labelled"
+    },
+    {
+      "template_id": "UNSUPPORTED_STOP_RELOCATION",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3",
+        "G-P2-C1",
+        "G-P2-C2"
+      ],
+      "role": "generator",
+      "phases": [
+        "repair"
+      ],
+      "path": "generator/dataset_rules/r2r_repair_examples.json",
+      "evidence_pointer": "/1/expected_output",
+      "source_sha256": "931d8273a82cfe9522a4a7a3523295deeb641d8575ea729d8d3d1f0c8b8f2be9",
+      "verification": "complete phase output passes active contract; erroneous prior advice explicitly labelled"
+    },
+    {
+      "template_id": "UNSUPPORTED_COUNT",
+      "rule_ids": [
+        "R-P2-C1",
+        "R-P2-C2",
+        "R-P2-C3"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "recheck"
+      ],
+      "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
+      "evidence_pointer": "/0/expected_output",
+      "source_sha256": "206c510405ee538152bc3d2db323c639caabdb9616aed39a28d2909859114a4c",
+      "verification": "complete phase output passes active contract; erroneous prior advice explicitly labelled"
+    },
+    {
+      "template_id": "UNSUPPORTED_STOP_RELOCATION",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-C1",
+        "R-P2-C2",
+        "R-P2-C3"
+      ],
+      "role": "reviewer",
+      "phases": [
+        "recheck"
+      ],
+      "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
+      "evidence_pointer": "/1/expected_output",
+      "source_sha256": "931d8273a82cfe9522a4a7a3523295deeb641d8575ea729d8d3d1f0c8b8f2be9",
+      "verification": "complete phase output passes active contract; erroneous prior advice explicitly labelled"
+    }
+  ],
+  "priority_rule_gaps": [],
+  "active_p2_witnesses": {
+    "G-P2-A1": [
+      "R2R-CORE-G08"
+    ],
+    "G-P2-A2": [
+      "R2R-CORE-G10",
+      "UNSUPPORTED_COUNT"
+    ],
+    "G-P2-A3": [
+      "R2R-GEN-015",
+      "R2R-GEN-030"
+    ],
+    "G-P2-A4": [
+      "R2R-CORE-G09",
+      "R2R-GEN-035"
+    ],
+    "G-P2-A5": [
+      "R2R-CORE-G03",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "G-P2-A6": [
+      "R2R-GEN-036",
+      "R2R-GEN-037"
+    ],
+    "G-P2-B1": [
+      "R2R-CORE-G01",
+      "R2R-GEN-011",
+      "R2R-GEN-035"
+    ],
+    "G-P2-B2": [
+      "R2R-GEN-011",
+      "R2R-GEN-015",
+      "R2R-GEN-030",
+      "R2R-GEN-034",
+      "R2R-GEN-035"
+    ],
+    "G-P2-B3": [
+      "R2R-CORE-G03",
+      "R2R-CORE-G09",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "G-P2-B4": [
+      "R2R-CORE-G01",
+      "R2R-GEN-015",
+      "R2R-GEN-034"
+    ],
+    "G-P2-C1": [
+      "UNSUPPORTED_COUNT",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "G-P2-C2": [
+      "UNSUPPORTED_COUNT",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "R-P2-A1": [
+      "R2R-CORE-R08"
+    ],
+    "R-P2-A2": [
+      "R2R-CORE-R09",
+      "R2R-REV-015",
+      "R2R-REV-030",
+      "R2R-REV-035"
+    ],
+    "R-P2-A3": [
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "R-P2-A4": [
+      "R2R-DIAG-30",
+      "R2R-DIAG-31"
+    ],
+    "R-P2-B1": [
+      "R2R-CORE-R03",
+      "R2R-REV-011",
+      "R2R-REV-015",
+      "R2R-REV-034",
+      "R2R-REV-035"
+    ],
+    "R-P2-B2": [
+      "R2R-CORE-R09",
+      "R2R-REV-011",
+      "R2R-REV-015",
+      "R2R-REV-030",
+      "R2R-REV-034",
+      "R2R-REV-035"
+    ],
+    "R-P2-B3": [
+      "R2R-DIAG-31",
+      "R2R-DIAG-05"
+    ],
+    "R-P2-C1": [
+      "R2R-CORE-R10",
+      "UNSUPPORTED_COUNT",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "R-P2-C2": [
+      "UNSUPPORTED_COUNT",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ],
+    "R-P2-C3": [
+      "UNSUPPORTED_COUNT",
+      "UNSUPPORTED_STOP_RELOCATION"
+    ]
+  },
+  "active_p2_without_witness": [],
+  "coverage_scope": "At least one active operation witness per P2; not exhaustive coverage of every subcase or verified model adherence.",
+  "limits": [
+    "Rule-ID metadata alone is not counted as demonstrated behavior.",
+    "No independent human or live-model semantic certification.",
+    "No fabricated C10 under-segmentation negative; requires independently established focus loss.",
+    "G09/R09 contrast surface-bound movement, start and endpoint placement; no full standalone surface-motion diagnostic or live-model certification."
+  ]
+}

@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance."
   },
   "output": {
     "status": "ok",
@@ -41,7 +41,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk through the door on the other side of the bedroom, past the bed and lamp.",
+          "text": "The far-side bedroom doorway crossing.",
           "candidate_quotes": [
             "Walk through the door on the other side of the bedroom, past the bed and lamp."
           ]
@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The far-side bedroom doorway crossing. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk through the door on the other side of the bedroom, past the bed and lamp."
           ],
@@ -72,7 +72,7 @@
           "Walk through the door on the other side of the bedroom passed the bed and lamp."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain."
         ]
       },
       {
@@ -85,9 +85,9 @@
           ]
         },
         "target": {
-          "text": "Walk to the entrance of the home and stop in the doorway.",
+          "text": "The home-entrance doorway.",
           "candidate_quotes": [
-            "Walk to the entrance of the home and stop in the doorway."
+            "stop in the doorway."
           ]
         },
         "process": {
@@ -98,9 +98,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The home-entrance doorway. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Walk to the entrance of the home and stop in the doorway."
+            "stop in the doorway."
           ],
           "stop_scope": "terminal"
         },
@@ -130,12 +130,17 @@
           "text": "From the far-side bedroom doorway, walk through the hallway and turn the corner",
           "candidate_quote": "From the far-side bedroom doorway, walk through the hallway and turn the corner"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk through the door on the other side of the bedroom, past the bed and lamp.'; the next stage begins with 'From the far-side bedroom doorway, walk through the hallway and turn the corner'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain. Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it."
       }
     ],
     "issues": []
@@ -143,11 +148,21 @@
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
     "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk through the door on the other side of the bedroom, past the bed and lamp.'; stage 2 begins from 'From the far-side bedroom doorway, walk through the hallway and turn the corner'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: through; past Stage 2: through",
+    "reusable_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Walk through the door on the other side of the bedroom, past the bed and lamp.'; stage 2 begins from 'From the far-side bedroom doorway, walk through the hallway and turn the corner'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not change walk through the open doors into open the doors; do not import an action merely because an attribute can also be a verb.",
+    "case_rationale": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance.",
+    "transfer_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
+    "case_specific_focus": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance.",
+    "primary_skills": [
+      "attribute",
+      "transit",
+      "entry"
+    ],
+    "counter_example_boundary": "An open-door adjective does not request operating the door.",
+    "decision_reason": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance."
   },
   "retrieval_tags": [
     "room_transition",

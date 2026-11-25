@@ -11,7 +11,7 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-CORE-R03](R2R/core/R03_R2R-CORE-R03.json)|R2R-CORE-G05|single_coherent_stage|—|
 |R2R|[R2R-CORE-R04](R2R/core/R04_R2R-CORE-R04.json)|R2R-CORE-G01|C_SEGMENT_GRANULARITY|—|
 |R2R|[R2R-CORE-R05](R2R/core/R05_R2R-CORE-R05.json)|R2R-CORE-G03|completed_transition_then_distinct_objective|—|
-|R2R|[R2R-CORE-R06](R2R/core/R06_R2R-CORE-R06.json)|R2R-CORE-G02|undersegmentation_multiple_completed_objectives|—|
+|R2R|[R2R-CORE-R06](R2R/core/R06_R2R-CORE-R06.json)|R2R-CORE-G02|valid_alternative_grouping|—|
 |R2R|[R2R-CORE-R07](R2R/core/R07_R2R-CORE-R07.json)|R2R-CORE-G06|PREMATURE_HANDOFF_REGION_ASSUMPTION|—|
 |R2R|[R2R-CORE-R08](R2R/core/R08_R2R-CORE-R08.json)|R2R-CORE-G08|target_landmark_expected_observation_confusion|—|
 |R2R|[R2R-CORE-R09](R2R/core/R09_R2R-CORE-R09.json)|R2R-CORE-G09|completed_transition_then_distinct_objective|—|
@@ -60,12 +60,12 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-REV-027](R2R/paired/027_R2R-REV-027.json)|paired|R2R-GEN-027|completed_transition_then_distinct_objective|—|
 |R2R|[R2R-REV-028](R2R/paired/028_R2R-REV-028.json)|paired|R2R-GEN-028|single_coherent_stage|—|
 |R2R|[R2R-REV-029](R2R/paired/029_R2R-REV-029.json)|paired|R2R-GEN-029|single_coherent_stage|—|
-|R2R|[R2R-REV-030](R2R/paired/030_R2R-REV-030.json)|paired|R2R-GEN-030|bounded_transition_then_distinct_target|—|
+|R2R|[R2R-REV-030](R2R/paired/030_R2R-REV-030.json)|paired|R2R-GEN-030|source_grounded_relation_and_handoff|—|
 |R2R|[R2R-REV-031](R2R/paired/031_R2R-REV-031.json)|paired|R2R-GEN-031|source_level_ambiguity_abstention|—|
 |R2R|[R2R-REV-032](R2R/paired/032_R2R-REV-032.json)|paired|R2R-GEN-032|single_coherent_stage|—|
 |R2R|[R2R-REV-033](R2R/paired/033_R2R-REV-033.json)|paired|R2R-GEN-033|single_coherent_stage|—|
 |R2R|[R2R-REV-034](R2R/paired/034_R2R-REV-034.json)|paired|R2R-GEN-034|completed_transition_then_distinct_objective|—|
-|R2R|[R2R-REV-035](R2R/paired/035_R2R-REV-035.json)|paired|R2R-GEN-035|completed_transition_then_distinct_objective|—|
+|R2R|[R2R-REV-035](R2R/paired/035_R2R-REV-035.json)|paired|R2R-GEN-035|source_grounded_relation_and_handoff|—|
 |R2R|[R2R-DIAG-01](R2R/diagnostics/01_R2R-DIAG-01.json)|diagnostics|—|ordinal|—|
 |R2R|[R2R-DIAG-02](R2R/diagnostics/02_R2R-DIAG-02.json)|diagnostics|—|direction|—|
 |R2R|[R2R-DIAG-03](R2R/diagnostics/03_R2R-DIAG-03.json)|diagnostics|—|transition|—|
@@ -75,7 +75,7 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-07](R2R/diagnostics/07_R2R-DIAG-07.json)|diagnostics|—|stop_omission|—|
 |R2R|[R2R-DIAG-08](R2R/diagnostics/08_R2R-DIAG-08.json)|diagnostics|—|negation|—|
 |R2R|[R2R-DIAG-09](R2R/diagnostics/09_R2R-DIAG-09.json)|diagnostics|—|orientation|—|
-|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|referent|—|
+|R2R|[R2R-DIAG-10](R2R/diagnostics/10_R2R-DIAG-10.json)|diagnostics|—|orientation_reference_frame|—|
 |R2R|[R2R-DIAG-11](R2R/diagnostics/11_R2R-DIAG-11.json)|diagnostics|—|ordinal|—|
 |R2R|[R2R-DIAG-12](R2R/diagnostics/12_R2R-DIAG-12.json)|diagnostics|—|direction|—|
 |R2R|[R2R-DIAG-13](R2R/diagnostics/13_R2R-DIAG-13.json)|diagnostics|—|transition|—|
@@ -86,12 +86,19 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-18](R2R/diagnostics/18_R2R-DIAG-18.json)|diagnostics|—|negation|—|
 |R2R|[R2R-DIAG-19](R2R/diagnostics/19_R2R-DIAG-19.json)|diagnostics|—|orientation|—|
 |R2R|[R2R-DIAG-20](R2R/diagnostics/20_R2R-DIAG-20.json)|diagnostics|—|referent|—|
+|R2R|[R2R-DIAG-27](R2R/diagnostics/27_R2R-DIAG-27.json)|diagnostics|—|attribute_promoted_to_action|—|
+|R2R|[R2R-DIAG-28](R2R/diagnostics/28_R2R-DIAG-28.json)|diagnostics|—|valid_alternative_grouping|—|
+|R2R|[R2R-DIAG-29](R2R/diagnostics/29_R2R-DIAG-29.json)|diagnostics|—|endpoint_refinement_replayed_motion|—|
 |R2R|[R2R-DIAG-21](R2R/diagnostics/R2R-DIAG-21.json)|diagnostics|—|transition_weakened|—|
 |R2R|[R2R-DIAG-22](R2R/diagnostics/R2R-DIAG-22.json)|diagnostics|—|explicit_arrival_lost|—|
 |R2R|[R2R-DIAG-23](R2R/diagnostics/R2R-DIAG-23.json)|diagnostics|—|reference_relation_reversed|—|
 |R2R|[R2R-DIAG-24](R2R/diagnostics/R2R-DIAG-24.json)|diagnostics|—|handoff_advanced|—|
 |R2R|[R2R-DIAG-25](R2R/diagnostics/R2R-DIAG-25.json)|diagnostics|—|C_SEGMENT_GRANULARITY|—|
 |R2R|[R2R-DIAG-26](R2R/diagnostics/R2R-DIAG-26.json)|diagnostics|—|PREMATURE_HANDOFF_REGION_ASSUMPTION|—|
+|R2R|[R2R-DIAG-30](R2R/authored/030_R2R-DIAG-30.json)|authored|—|—|branch, entry, terminal|
+|R2R|[R2R-DIAG-31](R2R/authored/031_R2R-DIAG-31.json)|authored|—|—|return, lost_action, terminal|
+|R2R|[R2R-REV-036](R2R/authored/036_R2R-REV-036.json)|authored|R2R-GEN-036|—|branch, attribute, entry, terminal|
+|R2R|[R2R-REV-037](R2R/authored/037_R2R-REV-037.json)|authored|R2R-GEN-037|—|return, scope, terminal|
 |RxR|[RxR-REV-001](RxR/paired/001_RxR-REV-001.json)|paired|RxR-GEN-001|completed_transition_then_distinct_objective|—|
 |RxR|[RxR-REV-002](RxR/paired/002_RxR-REV-002.json)|paired|RxR-GEN-002|completed_transition_then_distinct_objective|—|
 |RxR|[RxR-REV-003](RxR/paired/003_RxR-REV-003.json)|paired|RxR-GEN-003|completed_transition_then_distinct_objective|—|

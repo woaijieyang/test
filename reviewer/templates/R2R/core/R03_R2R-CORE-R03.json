@@ -46,7 +46,10 @@
         "source_quote": "Move forward past the white coach and then turn left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Move forward past the white coach and then turn left.",
         "candidate_evidence": [
-          "Move forward past the white coach and then turn left."
+          {
+            "subtask_index": 0,
+            "quote": "Move forward past the white coach and then turn left."
+          }
         ],
         "status": "covered"
       },
@@ -55,7 +58,10 @@
         "source_quote": "Continue up the stairs and stop.",
         "requirement": "Preserve the completion or stationary-position condition: Continue up the stairs and stop.",
         "candidate_evidence": [
-          "Continue up the stairs and stop."
+          {
+            "subtask_index": 0,
+            "quote": "Continue up the stairs and stop."
+          }
         ],
         "status": "covered"
       }
@@ -63,38 +69,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -108,7 +121,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue up the stairs and stop.",
+          "text": "The stair-ascent stopping state.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ]
@@ -121,7 +134,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The stair-ascent stopping state. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ],
@@ -145,7 +158,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -158,12 +172,37 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Move forward past the white coach and then turn left.; Preserve the completion or stationary-position condition: Continue up the stairs and stop.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Move forward past the white coach and then turn left.; Preserve the completion or stationary-position condition: Continue up the stairs and stop.",
+    "review_principle": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "case_specific_focus": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
     "semantic_pattern": "hard_pass_coupled_movement_without_false_boundary",
-    "decision_reason": "The candidate keeps the pass-by, turn, ascent, and explicit stop in one coherent route stage. No independent intermediate target or supported handoff is lost.",
-    "transfer_rule": "PASS when several ordered actions form one coupled navigation objective and splitting would create an orientation-only or unsupported intermediate stage.",
+    "decision_reason": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
     "anti_pattern": "Do not use this PASS to justify merging a route that contains a completed independent objective and a distinct next target.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "counter_example_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
+    "primary_skills": [
+      "coupled",
+      "direction",
+      "terminal"
+    ],
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-B1"
+      ],
+      "source_quotes": [
+        "then turn left.",
+        "Continue up the stairs and stop."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "then turn left. Continue up the stairs and stop."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. Here the left turn prepares the ascent. Preserve the coherent source maneuver without inventing a separate turn-completion goal or cosmetically rewriting the source.",
+      "counter_boundary": "A different source explicitly asking to turn and observe or wait may give the turn an independent objective. Do not transfer this KEEP decision by route length alone.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

@@ -39,8 +39,10 @@
         "source_quote": "Go down the stairs.",
         "requirement": "Preserve the spatial transition and region/threshold: Go down the stairs.",
         "candidate_evidence": [
-          "Go down the stairs and turn right.",
-          "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+          {
+            "subtask_index": 0,
+            "quote": "Go down the stairs and turn right."
+          }
         ],
         "status": "covered"
       },
@@ -49,7 +51,10 @@
         "source_quote": "Turn right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn right.",
         "candidate_evidence": [
-          "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+          {
+            "subtask_index": 0,
+            "quote": "Go down the stairs and turn right."
+          }
         ],
         "status": "covered"
       },
@@ -58,7 +63,10 @@
         "source_quote": "Go past the glass display case and wait in front of the bench on the right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go past the glass display case and wait in front of the bench on the right.",
         "candidate_evidence": [
-          "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+          {
+            "subtask_index": 1,
+            "quote": "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+          }
         ],
         "status": "covered"
       }
@@ -66,38 +74,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route has a completed turn or region/waypoint transition that supports a useful next local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -111,9 +126,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go down the stairs and turn right.",
+          "text": "The post-descent right-turn state.",
           "candidate_quotes": [
-            "Go down the stairs and turn right."
+            "turn right."
           ]
         },
         "process": {
@@ -123,10 +138,10 @@
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "kind": "bounded_action",
+          "text": "The post-descent right-turn state. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Go down the stairs and turn right."
+            "turn right."
           ],
           "stop_scope": "none"
         },
@@ -137,13 +152,15 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
-          "Go down the stairs."
+          "Go down the stairs.",
+          "Turn right."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "Retain the post-descent right-turn frame; the display case is a pass-by cue on the bench route."
         ]
       },
       {
@@ -157,9 +174,9 @@
           ]
         },
         "target": {
-          "text": "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right.",
+          "text": "The front of the right-hand bench.",
           "candidate_quotes": [
-            "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+            "wait in front of the bench on the right."
           ]
         },
         "process": {
@@ -170,9 +187,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated display-case pass and wait in front of the bench on the right.",
+          "text": "The front of the right-hand bench. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "After going down the stairs and turning right, go past the glass display case and wait in front of the bench on the right."
+            "wait in front of the bench on the right."
           ],
           "stop_scope": "terminal"
         },
@@ -186,13 +203,9 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
           "SRC-03"
         ],
         "source_quotes": [
-          "Go down the stairs.",
-          "Turn right.",
           "Go past the glass display case and wait in front of the bench on the right."
         ],
         "carryover": []
@@ -204,22 +217,28 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go down the stairs and turn right.",
-          "candidate_quote": "Go down the stairs and turn right."
+          "text": "The post-descent right-turn state. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
+          "candidate_quote": "turn right."
         },
         "next_entry": {
-          "text": "After going down the stairs and turning right",
+          "text": "Retain the post-descent right-turn frame; the display case is a pass-by cue on the bench route.",
           "candidate_quote": "After going down the stairs and turning right"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Retain the post-descent right-turn frame; the display case is a pass-by cue on the bench route."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The preceding stage ends with 'Go down the stairs and turn right.'; the next stage begins with 'After going down the stairs and turning right', carrying forward the established direction without replaying the turn."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Retain the post-descent right-turn frame; the display case is a pass-by cue on the bench route."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "bounded_transition_then_distinct_target",
@@ -232,7 +251,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Go down the stairs.; Preserve the directional/spatial relation and its reference frame: Turn right.; Preserve the directional/spatial relation and its reference frame: Go past the glass display case and wait in front of…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Go down the stairs.; Preserve the directional/spatial relation and its reference frame: Turn right.; Preserve the directional/spatial relation and its reference frame: Go past the glass display case and wait in front of…"
+    "review_principle": "Keep the display-case pass on the route to the right-hand bench; inherit the completed descent and right turn.",
+    "case_specific_focus": "Keep the display-case pass on the route to the right-hand bench; inherit the completed descent and right turn.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "Passing a case alone does not establish entry into a different room.",
+    "primary_skills": [
+      "stair_target",
+      "pass_by",
+      "terminal"
+    ],
+    "decision_reason": "Keep the display-case pass on the route to the right-hand bench; inherit the completed descent and right turn."
   }
 }

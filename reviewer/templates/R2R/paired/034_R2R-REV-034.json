@@ -39,8 +39,10 @@
         "source_quote": "Move through pool room door into the sitting area.",
         "requirement": "Preserve the spatial transition and region/threshold: Move through pool room door into the sitting area.",
         "candidate_evidence": [
-          "Move through the pool-room door into the sitting area.",
-          "Move straight through the sitting area and go through the door into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Move through the pool-room door into the sitting area."
+          }
         ],
         "status": "covered"
       },
@@ -49,8 +51,10 @@
         "source_quote": "Move straight through sitting area.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Move straight through sitting area.",
         "candidate_evidence": [
-          "Move straight through the sitting area and go through the door into the hallway.",
-          "Move through the pool-room door into the sitting area."
+          {
+            "subtask_index": 0,
+            "quote": "Move straight through the sitting area and go through the door into the hallway."
+          }
         ],
         "status": "covered"
       },
@@ -59,7 +63,14 @@
         "source_quote": "Move through door into hallway, turn right, move straight forward down hallway into the locker room.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Move through door into hallway, turn right, move straight forward down hallway into the locker room.",
         "candidate_evidence": [
-          "From the hallway, turn right and move straight forward down the hallway into the locker room."
+          {
+            "subtask_index": 0,
+            "quote": "Move through the pool-room door into the sitting area. Move straight through the sitting area and go through the door into the hallway."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "From the hallway, turn right and move straight forward down the hallway into the locker room."
+          }
         ],
         "status": "covered"
       },
@@ -68,7 +79,10 @@
         "source_quote": "Wait inside locker room.",
         "requirement": "Preserve the completion or stationary-position condition: Wait inside locker room.",
         "candidate_evidence": [
-          "Wait inside the locker room."
+          {
+            "subtask_index": 1,
+            "quote": "Wait inside the locker room."
+          }
         ],
         "status": "covered"
       }
@@ -76,38 +90,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -121,9 +142,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Move straight through the sitting area and go through the door into the hallway.",
+          "text": "The actual hallway entry after sitting-area transit.",
           "candidate_quotes": [
-            "Move straight through the sitting area and go through the door into the hallway."
+            "go through the door into the hallway."
           ]
         },
         "process": {
@@ -134,16 +155,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The actual hallway entry after sitting-area transit. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Move straight through the sitting area and go through the door into the hallway."
+            "go through the door into the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "through",
+          "text": "Verify these source-specified relations in the candidate: straight through the sitting area",
           "candidate_quotes": [
-            "through"
+            "straight through the sitting area"
           ]
         },
         "source_requirement_ids": [
@@ -157,7 +178,7 @@
           "Move through door into hallway, turn right, move straight forward down hallway into the locker room."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "Actual hallway entry is complete; the right turn and locker-room entry remain."
         ]
       },
       {
@@ -171,7 +192,7 @@
           ]
         },
         "target": {
-          "text": "Wait inside the locker room.",
+          "text": "Inside the locker room.",
           "candidate_quotes": [
             "Wait inside the locker room."
           ]
@@ -184,16 +205,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "Inside the locker room. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait inside the locker room."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "right",
+          "text": "Verify these source-specified relations in the candidate: From the hallway; Wait inside",
           "candidate_quotes": [
-            "right"
+            "From the hallway",
+            "Wait inside"
           ]
         },
         "source_requirement_ids": [
@@ -213,23 +235,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Move straight through the sitting area and go through the door into the hallway.",
-          "candidate_quote": "Move straight through the sitting area and go through the door into the hallway."
+          "text": "The actual hallway entry after sitting-area transit. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "go through the door into the hallway."
         },
         "next_entry": {
-          "text": "From the hallway, turn right and move straight forward down the hallway into the locker room",
+          "text": "Actual hallway entry is complete; the right turn and locker-room entry remain.",
           "candidate_quote": "From the hallway, turn right and move straight forward down the hallway into the locker room"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "Actual hallway entry is complete; the right turn and locker-room entry remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Move straight through the sitting area and go through the door into the hallway.'; the next stage begins with 'From the hallway, turn right and move straight forward down the hallway into the locker room'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Actual hallway entry is complete; the right turn and locker-room entry remain."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -242,7 +270,39 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Move through pool room door into the sitting area.; Preserve the directional/spatial relation and its reference frame: Move straight through sitting area.; Preserve the directional/spatial relation and its reference frame: Move through door into hallway, turn right, move…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Move through pool room door into the sitting area.; Preserve the directional/spatial relation and its reference frame: Move straight through sitting area.; Preserve the directional/spatial relation and its reference frame: Move through door into hallway, turn right, move…"
+    "review_principle": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
+    "case_specific_focus": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
+    "primary_skills": [
+      "transit",
+      "entry",
+      "terminal"
+    ],
+    "decision_reason": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Move through door into hallway",
+        "turn right"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "go through the door into the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "From the hallway, turn right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The preceding stage already establishes hallway entry. Omitting the new From the hallway phrase leaves the next right turn uniquely grounded; prefer inheritance when generating afresh.",
+      "counter_boundary": "The shown anchored candidate remains faithful and acceptable. Do not demand its rewrite merely for verbosity. If a necessary region, referent or counting frame were unclear, retain the shortest supporting anchor.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

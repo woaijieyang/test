@@ -1,24 +1,14 @@
 {
-  "baseline_commit": "803ebf2c9edb5e60bb240dd1a2c411663c1a185e",
-  "reason": "RxR-only dispatch/projection and reviewed test fingerprints; actual R2R messages, schemas and selections independently compared",
+  "baseline_commit": "da277a0f9a6ee7d8eebb78dafa852e469cd1a50e",
+  "reason": "RxR-only runtime dispatch and explicit RxR inventory/snapshot test migrations",
   "r2r_model_messages_and_schemas_equal": true,
   "r2r_selections_equal": true,
   "protected_common_and_r2r_assets_equal": true,
   "shared_runtime_changes": [
     {
-      "path": "host/compile.py",
-      "previous_git_blob_sha1": "ba93415a430b6c0a7ef402e025727adacdfe0c6e",
-      "current_git_blob_sha1": "3933981d9287ec27f10c722f5709cb90c11b261b"
-    },
-    {
-      "path": "host/run.py",
-      "previous_git_blob_sha1": "33778ae56c77ef522ce627f4b67c46e6c6a95e0c",
-      "current_git_blob_sha1": "c7a0e291fbcd69623977ed09651315ed09e02417"
-    },
-    {
       "path": "tests/test_r2r_specialization.py",
-      "previous_git_blob_sha1": "d76e63f17b157e447ce7af8576807ddb93b22f3a",
-      "current_git_blob_sha1": "60806b026e982b04d00e5c44426adbe86240dc83"
+      "previous_git_blob_sha1": "7b66860d8a6ea68c16fe4954c7c33292b6819798",
+      "current_git_blob_sha1": "d76e63f17b157e447ce7af8576807ddb93b22f3a"
     }
   ]
 }

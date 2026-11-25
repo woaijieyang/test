@@ -38,7 +38,10 @@
         "source_quote": "Walk alongside the staircase through the hall towards the backdoor of the home.",
         "requirement": "Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall towards the backdoor of the home.",
         "candidate_evidence": [
-          "Walk alongside the staircase through the hall towards the backdoor of the home."
+          {
+            "subtask_index": 0,
+            "quote": "Walk alongside the staircase through the hall towards the backdoor of the home."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Turn the corner into the living room area with couches.",
         "requirement": "Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches.",
         "candidate_evidence": [
-          "Turn the corner into the living room area with couches."
+          {
+            "subtask_index": 0,
+            "quote": "Turn the corner into the living room area with couches."
+          }
         ],
         "status": "covered"
       }
@@ -55,38 +61,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -100,7 +113,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn the corner into the living room area with couches.",
+          "text": "The living area entered around the corner.",
           "candidate_quotes": [
             "Turn the corner into the living room area with couches."
           ]
@@ -113,7 +126,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated corner turn into the living-room area with couches.",
+          "text": "The living area entered around the corner. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Turn the corner into the living room area with couches."
           ],
@@ -136,7 +149,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -147,7 +161,15 @@
       "doorway_selection_and_crossing",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall…; Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the ordered route action or target-identifying landmark: Walk alongside the staircase through the hall…; Preserve the spatial transition and region/threshold: Turn the corner into the living room area with couches."
+    "review_principle": "Continue alongside the stairs through the hall, then turn the corner into the couch-filled living area.",
+    "case_specific_focus": "Continue alongside the stairs through the hall, then turn the corner into the couch-filled living area.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "counter_example_boundary": "The stairs are a route-side landmark, not an instruction to climb them.",
+    "primary_skills": [
+      "transit",
+      "entry"
+    ],
+    "decision_reason": "Continue alongside the stairs through the hall, then turn the corner into the couch-filled living area."
   }
 }

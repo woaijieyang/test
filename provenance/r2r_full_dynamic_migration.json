@@ -1,0 +1,37 @@
+{
+  "baseline_commit": "ad9941a66436911b84c26079913e9d324fbfde74",
+  "requested_behavior": "All selected R2R Dynamic examples complete; no summaries",
+  "runtime_changed": [
+    "host/r2r/teaching.py"
+  ],
+  "approved_pin_updates": [
+    {
+      "path": "host/r2r/teaching.py",
+      "before": "394440493cb624642506bb5881a2aeb1ae286c3e",
+      "after": "c41612bbc76f3a9ea075c27d39eac61923386637"
+    },
+    {
+      "path": "tests/r2r/test_hardening.py",
+      "before": "0cccaee0574277ce15718b35438fced730b3d42d",
+      "after": "5f59090b5abf8f3976d0b6554e3c2591a5a95807"
+    },
+    {
+      "path": "tests/r2r/test_minimal.py",
+      "before": "aae8e4c82031693d4785ad2e2dd9cbef7a0345ef",
+      "after": "d582128dcd5d62c554d7a569188e6765f282487a"
+    },
+    {
+      "path": "tests/r2r/test_refinement.py",
+      "before": "30ca9dfd3e0bd8f2c062b482498265a83f2989be",
+      "after": "72ec13f89ada09b669f0e4c38959a86dfc0e3f91"
+    },
+    {
+      "path": "tests/r2r/test_workflow_chain.py",
+      "before": "8921b5fd10115fd627ae5cc595d12692a4a75a3b",
+      "after": "4c9c78ffb09a001880ea37bbea617ad3adfcb624"
+    }
+  ],
+  "new_test": "tests/r2r/test_full_dynamic.py",
+  "selection_rules_schemas_renderer_rxr_changed": false,
+  "initial_test_failures_preserved_in": "outputs/subtaskAdapter/v664-r2r-full-dynamic-20261126-r0/initial-tests.log"
+}

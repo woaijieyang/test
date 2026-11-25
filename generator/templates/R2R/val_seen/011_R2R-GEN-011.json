@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "Split only at a source-supported completed transition that establishes a distinct next navigation focus. The next stage names the necessary inherited region/transition where this prevents a lost reference frame."
+    "rationale": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway."
   },
   "output": {
     "status": "ok",
@@ -41,7 +41,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue straight to the end of the hallway.",
+          "text": "The explicitly stated hallway end.",
           "candidate_quotes": [
             "Continue straight to the end of the hallway."
           ]
@@ -54,16 +54,15 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Continue straight to the end of the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Path constraints: go around the bed; continue straight to the end of the hallway.",
+          "text": "Operative constraints: straight to the end of the hallway",
           "candidate_quotes": [
-            "around the bed",
             "straight to the end of the hallway"
           ]
         },
@@ -71,7 +70,7 @@
           "Walk around the bed and exit the room going straight to the end of the hallway."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The explicitly reached hallway end establishes where the next left is taken."
         ]
       },
       {
@@ -82,7 +81,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Wait in the doorway.",
+          "text": "The bedroom doorway after the left turn and entry.",
           "candidate_quotes": [
             "Wait in the doorway."
           ]
@@ -95,16 +94,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The bedroom doorway after the left turn and entry. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "left",
+          "text": "Operative constraints: turn left; in the doorway",
           "candidate_quotes": [
-            "left"
+            "turn left",
+            "in the doorway"
           ]
         },
         "source_quotes": [
@@ -127,12 +127,17 @@
           "text": "At the end of the hallway, turn left and enter the bedroom",
           "candidate_quote": "At the end of the hallway, turn left and enter the bedroom"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The explicitly reached hallway end establishes where the next left is taken."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Continue straight to the end of the hallway.'; the next stage begins with 'At the end of the hallway, turn left and enter the bedroom'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "The explicitly reached hallway end establishes where the next left is taken. Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement."
       }
     ],
     "issues": []
@@ -140,11 +145,44 @@
   "teaching_notes": {
     "segmentation_pattern": "completed_transition_then_distinct_objective",
     "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Continue straight to the end of the hallway.'; stage 2 begins from 'At the end of the hallway, turn left and enter the bedroom. Wait in the doorway.'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: Path constraints: go around the bed; continue straight to the end of the hallway. Stage 2: left",
+    "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Continue straight to the end of the hallway.'; stage 2 begins from 'At the end of the hallway, turn left and enter the bedroom. Wait in the doorway.'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not invent a hallway endpoint when the source only says down the hall, and do not execute a completed traversal twice.",
+    "case_rationale": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
+    "transfer_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
+    "case_specific_focus": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
+    "primary_skills": [
+      "hall_end",
+      "direction",
+      "terminal"
+    ],
+    "counter_example_boundary": "A generic instruction to go down a hallway does not establish its far end.",
+    "decision_reason": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "source_quotes": [
+        "going straight to the end of the hallway.",
+        "Turn left and enter the bedroom."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Continue straight to the end of the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "turn left and enter the bedroom."
+        }
+      ],
+      "operation": "Reaching the stated hallway end establishes the position of the following left turn and bedroom selection. It can support useful local focus, unlike a merely preparatory turn.",
+      "counter_boundary": "The split shown is supported, not a universal obligation. A faithful coarse version is not a C10 defect without a concrete loss of target focus or dependency.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "room_transition",

@@ -38,7 +38,10 @@
         "source_quote": "Walk between the couch and the window.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk between the couch and the window.",
         "candidate_evidence": [
-          "Walk between the couch and the window."
+          {
+            "subtask_index": 0,
+            "quote": "Walk between the couch and the window."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Turn left and walk towards the stairway.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn left and walk towards the stairway.",
         "candidate_evidence": [
-          "Turn left and walk towards the stairway."
+          {
+            "subtask_index": 0,
+            "quote": "Turn left and walk towards the stairway."
+          }
         ],
         "status": "covered"
       },
@@ -56,7 +62,10 @@
         "source_quote": "Go up the three steps and when you get to the top, wait.",
         "requirement": "Preserve the temporal trigger/order and its scope: Go up the three steps and when you get to the top, wait.",
         "candidate_evidence": [
-          "Go up the three steps and when you get to the top, wait."
+          {
+            "subtask_index": 0,
+            "quote": "Go up the three steps and when you get to the top, wait."
+          }
         ],
         "status": "covered"
       }
@@ -64,38 +73,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -109,9 +125,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go up the three steps and when you get to the top, wait.",
+          "text": "The top of the prescribed three-step ascent.",
           "candidate_quotes": [
-            "Go up the three steps and when you get to the top, wait."
+            "when you get to the top, wait."
           ]
         },
         "process": {
@@ -122,18 +138,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The top of the prescribed three-step ascent. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Go up the three steps and when you get to the top, wait."
+            "when you get to the top, wait."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "when; left; between",
+          "text": "Verify these source-specified relations in the candidate: three steps; when you get to the top",
           "candidate_quotes": [
-            "when",
-            "left",
-            "between"
+            "three steps",
+            "when you get to the top"
           ]
         },
         "source_requirement_ids": [
@@ -149,7 +164,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -164,7 +180,34 @@
       "bounded_motion",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk between the couch and the window.; Preserve the directional/spatial relation and its reference frame: Turn left and walk towards the stairway.; Preserve the temporal trigger/order and its scope: Go up the three steps and when you get to the top, wait.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk between the couch and the window.; Preserve the directional/spatial relation and its reference frame: Turn left and walk towards the stairway.; Preserve the temporal trigger/order and its scope: Go up the three steps and when you get to the top, wait."
+    "review_principle": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "case_specific_focus": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "transfer_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
+    "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
+    "counter_example_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
+    "primary_skills": [
+      "bounded",
+      "endpoint",
+      "terminal"
+    ],
+    "decision_reason": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Go up the three steps and when you get to the top, wait."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go up the three steps and when you get to the top, wait."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The top and wait refine the same three-step ascent. Keep the bounded ascent and its final wait together; no second climb is requested.",
+      "counter_boundary": "A matching place name does not license moving a final stop across a separately requested later action. Check event identity, intervening order and stop scope together.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

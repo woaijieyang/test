@@ -25,7 +25,7 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. "
+        "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
       ]
     }
   },
@@ -42,7 +42,10 @@
         "source_quote": "Turn around.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around.",
         "candidate_evidence": [
-          "Walk down the hall, past the stairs, past the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around."
+          }
         ],
         "status": "covered"
       },
@@ -51,16 +54,22 @@
         "source_quote": "Walk down the hall, past the stairs, past the chair.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk down the hall, past the stairs, past the chair.",
         "candidate_evidence": [
-          "Walk down the hall, past the stairs, past the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Walk down the hall, past the stairs, past the chair."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Stop right there.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Stop right there.",
         "candidate_evidence": [
-          "Walk down the hall, past the stairs, past the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Stop beside the stairs."
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -69,56 +78,59 @@
         "source_quote": "Wait.",
         "requirement": "Preserve the completion or stationary-position condition: Wait.",
         "candidate_evidence": [
-          "Walk down the hall, past the stairs, past the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Wait."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'.",
         "finding_indices": [
           0
         ]
       },
       {
-        "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
-      },
-      {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
         "finding_indices": [
           0
         ]
@@ -126,28 +138,35 @@
     ],
     "findings": [
       {
-        "source_quote": ", past the chair.  Stop right there.  Wait. ",
+        "code": "WRONG_TARGET",
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C11",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-03"
         ],
+        "source_quote": "Stop right there.",
         "candidate_evidence": [
-          "Walk down the hall, past the stairs, past the chair."
+          {
+            "subtask_index": 0,
+            "quote": "Stop beside the stairs."
+          }
         ],
-        "failed_layer": "L1_source_coverage",
-        "c_check": "C4_CONTINUITY",
         "evidence_level": "S1",
-        "problem": "The candidate leaves a deictic reference without preserving the identity of its source-supported antecedent.",
-        "execution_consequence": "The referent is changed or left unresolved; the agent may select the wrong door/object or lose the intended target identity.",
+        "problem": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'.",
+        "execution_consequence": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'.",
         "repair": {
-          "operation": "referent",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
+          "instruction": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -162,46 +181,61 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Wait.",
+          "text": "The actual candidate endpoint: Stop beside the stairs.",
           "candidate_quotes": [
-            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. "
+            "Stop beside the stairs."
           ]
         },
         "process": {
-          "text": "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. ",
+          "text": "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. ",
           "candidate_quotes": [
-            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. "
+            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop beside the stairs.  Wait. "
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Wait.",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
           "candidate_quotes": [
-            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. "
+            "Stop beside the stairs."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "spatial_frame: right; manner_or_constraint: around, past",
+          "text": "Preserve the prior stairs and chair passes; right there intensifies the source location rather than specifying a rightward frame.",
           "candidate_quotes": [
-            "Turn around.  Walk down the hall, past the stairs, past the chair.  Stop right there.  Wait. "
+            "past the stairs, past the chair"
           ]
         },
         "source_requirement_ids": [
-          "SRC-02"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quotes": [
-          ", past the chair.  Stop right there.  Wait. "
+          "Turn around.",
+          "Walk down the hall, past the stairs, past the chair.",
+          "Stop right there.",
+          "Wait."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "referent",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a referent corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
+    "case_specific_focus": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
+    "transfer_rule": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "terminal"
+    ],
+    "decision_reason": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
+    "reusable_rule": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel."
   }
 }

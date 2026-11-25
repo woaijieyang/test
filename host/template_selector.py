@@ -66,7 +66,7 @@ def validate_template(role, row, *, source_path=""):
             f"Invalid {role} teaching template {row.get('template_id')} at "
             f"{source_path or '<unknown>'}:{location}: {error.message}"
         )
-DEFAULT_EXAMPLES = None  # Profile-aware: R2R 6-8; RxR 2-4 in addition to its fixed core.
+DEFAULT_EXAMPLES = None  # Profile-aware: R2R 4-6; RxR 2-4 in addition to its fixed core.
 PROFILES = {'r2r-en': 'R2R', 'rxr-en-us': 'RxR'}
 PATTERNS = {
     'ordinal_target_selection': r'first|second|third|fourth|last|1st|2nd|3rd',
@@ -207,6 +207,8 @@ def library(role, profile):
     dynamic_dirs = ('val_seen',) if role == 'generator' else ('paired', 'diagnostics')
     if profile == 'rxr-en-us':
         dynamic_dirs += ('train',)
+    elif profile == 'r2r-en':
+        dynamic_dirs += ('authored',)
     files = []
     for kind in dynamic_dirs:
         files.extend(sorted((folder/kind).glob('*.json')))
@@ -239,7 +241,7 @@ def library(role, profile):
         rows = [row for row in rows if row['template_id'] not in set(promoted_ids)]
 
     expected_counts = {
-        ('R2R', 'generator'): 25, ('R2R', 'reviewer'): 52,
+        ('R2R', 'generator'): 27, ('R2R', 'reviewer'): 59,
         ('RxR', 'generator'): 43, ('RxR', 'reviewer'): 80,
     }
     if len(rows) != expected_counts[(dataset, role)]:
@@ -257,10 +259,12 @@ def library(role, profile):
         diagnostics = [row for row in rows if not row.get('pair_id')]
         paired_ids = [row['pair_id'] for row in paired]
         expected_pairs = {f'{dataset}-GEN-{i:03d}' for i in range(1, 36)} - promoted_gen_ids
+        if dataset == 'R2R':
+            expected_pairs.update({'R2R-GEN-036','R2R-GEN-037'})
         if dataset == 'RxR':
             expected_pairs = {row['template_id'] for row in library('generator', profile)}
-        expected_paired = 29 if dataset == 'R2R' else 43
-        expected_diagnostics = 23 if dataset == 'R2R' else 37
+        expected_paired = 31 if dataset == 'R2R' else 43
+        expected_diagnostics = 28 if dataset == 'R2R' else 37
         if len(paired) != expected_paired or len(diagnostics) != expected_diagnostics:
             raise ValueError(f'{dataset} Reviewer pool count mismatch: paired={len(paired)}, diagnostics={len(diagnostics)}')
         if len(set(paired_ids)) != len(paired_ids) or not expected_pairs.issubset(set(paired_ids)):
@@ -359,6 +363,9 @@ def select_examples(role, profile, source_text, count=DEFAULT_EXAMPLES, mode="ad
         return [r["template_id"] for r in rows]
     if mode != "adaptive":
         raise ValueError("Unknown example selection mode")
+    if profile == "r2r-en":
+        from host.r2r.selection import select_bundle
+        return select_bundle(source_text, count=count)[role]
 
     gen = library("generator", profile)
     minimum, maximum = (2, 4) if profile == "rxr-en-us" else (6, 8)
@@ -458,6 +465,8 @@ def write_type_index(role):
         allowed = ("val_seen",) if role == "generator" else ("paired", "diagnostics")
         if profile == "rxr-en-us":
             allowed += ("train",)
+        elif profile == "r2r-en":
+            allowed += ("authored",)
         for kind in allowed:
             for path in sorted((folder/dataset/kind).glob("*.json")):
                 row = json.loads(path.read_bytes())

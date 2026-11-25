@@ -4,12 +4,12 @@
       "paired_directory": "templates/R2R/paired",
       "diagnostics_directory": "templates/R2R/diagnostics",
       "paired_count": 35,
-      "diagnostics_count": 26,
+      "diagnostics_count": 29,
       "fixed_core_directory": "templates/R2R/core",
       "fixed_core_count": 10,
       "fixed_core_source": "Curated R2R semantic decision-boundary Reviewer Core R01-R10; pair_id records semantic provenance only",
-      "runtime_paired_dynamic_count": 29,
-      "runtime_diagnostics_count": 23,
+      "runtime_paired_dynamic_count": 31,
+      "runtime_diagnostics_count": 28,
       "promoted_core_source_count": 9,
       "fixed_core_source_template_ids": [
         "R2R-REV-004",
@@ -23,7 +23,7 @@
         "R2R-REV-002",
         "R2R-REV-031"
       ],
-      "runtime_dynamic_count": 52,
+      "runtime_dynamic_count": 59,
       "excluded_promoted_reviewer_template_ids": [
         "R2R-REV-002",
         "R2R-REV-004",
@@ -34,7 +34,10 @@
         "R2R-DIAG-01",
         "R2R-DIAG-25",
         "R2R-DIAG-26"
-      ]
+      ],
+      "authored_directory": "templates/R2R/authored",
+      "authored_count": 4,
+      "authored_source_type": "synthetic semantic teaching, not official dataset records"
     },
     "rxr-en-us": {
       "paired_directory": "templates/RxR/paired",
@@ -52,12 +55,12 @@
   "runtime_policy": {
     "r2r-en": {
       "paired_dynamic_examples": [
-        6,
-        8
+        4,
+        6
       ],
       "diagnostic_dynamic_examples": [
         2,
-        4
+        3
       ],
       "fixed_core": 10,
       "core_order": "R01-R10",

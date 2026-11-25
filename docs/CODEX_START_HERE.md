@@ -18,7 +18,7 @@ Read the actual R2R/RxR source schemas and preserve original instruction text ex
 
 ## Prompt and Template Changes
 
-Edit source prompts, Rules, schemas or teaching Templates only when required. Never hand-edit Compiled Prompt files. Run `python -B -m host.compile`, inspect all six generated prompt files and the Build Manifest, then run `python -B verify_package.py`. Confirm each Role has exactly ten fixed Core examples and Dynamic IDs belong only to the selected Profile allowlist. Legacy is not a runtime source.
+Edit source prompts, Rules, schemas or teaching Templates only when required. Never hand-edit Compiled Prompt files. Run `python -B -m host.compile`, inspect all six generated prompt files and the Build Manifest, then run `python -B tools/verify_package.py`. Confirm each Role has exactly ten fixed Core examples and Dynamic IDs belong only to the selected Profile allowlist. Legacy is not a runtime source.
 
 For teaching examples, verify Source Requirement → Candidate Evidence → Semantic Relation → Finding/Decision → Execution Consequence → Transfer Rule. JSON Schema and quote existence alone do not prove semantic correctness. Never label a curated teaching target as official subtask annotation or navigation ground truth.
 
@@ -38,7 +38,7 @@ Pass only `result['instruction']` to the existing instruction field and verify i
 
 ```bash
 python -B -m host.compile
-python -B verify_package.py
+python -B tools/verify_package.py
 python -B -m unittest discover -s tests -v
 python -m examples.demo
 python -m evaluation.smoke24

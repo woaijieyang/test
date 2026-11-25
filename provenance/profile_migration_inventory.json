@@ -13,7 +13,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "005a2d2d88f7e5fa1b90c264511261a72b4ffd57ae5e3f077cab4c321b0bdb9c"
     },
     {
       "path": ".github/workflows/rxr-development.yml",
@@ -31,7 +33,9 @@
         "sha": "2f44b82efe56eab6747943e4d0233ab988885127"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "import_source_exact",
+      "integrated_sha256": "b25e3dd0efb88272f8a75a3a4a1acd2fc1e36c4adb859f56ae6d6f49b276124d"
     },
     {
       "path": ".github/workflows/validate.yml",
@@ -49,7 +53,9 @@
         "sha": "176017f747804ea69660225197e246eefb77b3fc"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "277a56028aa6acd68c8ed38b47182da05f55220b14c5df68b3d50754bc917917"
     },
     {
       "path": "CHANGELOG.md",
@@ -64,7 +70,9 @@
         "sha": "c50addd292479c4fa98f793b6b005b534f60f195"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     },
     {
       "path": "CODEX_START_HERE.md",
@@ -79,7 +87,9 @@
         "sha": "27cb6542b5e1a82dde0c2ca228bc9775afb1f673"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     },
     {
       "path": "FILE_HASHES.json",
@@ -97,7 +107,9 @@
         "sha": "baae06e07f8ff5d7e1ea4b7746dba70e199aacb9"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3ff781da0dd1570a0b0729619d7e443f01e252b962ed751b1191c51b31e31b44"
     },
     {
       "path": "IMPLEMENTATION.md",
@@ -112,7 +124,9 @@
         "sha": "e815bd54f68cf43eb51e8c77c8907dd594b1e74a"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     },
     {
       "path": "README.md",
@@ -130,7 +144,9 @@
         "sha": "3d81bc6c8697164a146fc8230f465b8faa748fe9"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "4c3fcc6b63ad49fac021c2220857297040f1892947be208c9fd0a961c2df3632"
     },
     {
       "path": "WORKFLOW.md",
@@ -145,7 +161,9 @@
         "sha": "35e48f3bd51c5507dc4807e3dfddb0df7411bfd6"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     },
     {
       "path": "docs/CHANGELOG.md",
@@ -157,7 +175,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b6cdca4a64071b8f451296f809939d472ee6f2d8705d461439a178757360b622"
     },
     {
       "path": "docs/CODEX_START_HERE.md",
@@ -169,7 +189,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "887483e5fec778811efb5983f458c5e377fcb75ba60ad0a568f0e2d07e7eba8e"
     },
     {
       "path": "docs/EXPERIMENT_PLAN.md",
@@ -187,7 +209,9 @@
         "sha": "24a220990c6f43b0e5f4afc74aa0ce2895d530a9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "711897c6e2ce776df5c55ec5d50973d003e3835f943be2b2e67e54d63d555407"
     },
     {
       "path": "docs/IMPLEMENTATION.md",
@@ -199,7 +223,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "214e932a52d45d8df24c91af08aecfbb1679e7dbc3a2f30c88f4b99ddf07a9eb"
     },
     {
       "path": "docs/R2R_CHAIN_REPORT.md",
@@ -211,7 +237,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "64da4cca16af24dc05494c11e2c45881487e8523a5b8e0aa6643faaf17394aee"
     },
     {
       "path": "docs/R2R_DETAIL_REFINEMENT.md",
@@ -223,7 +251,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9a29144299c72f165d0c2437e8fec34446c08c912d5103640f15dceda0f5b377"
     },
     {
       "path": "docs/R2R_FULL_DYNAMIC.md",
@@ -235,7 +265,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a5624f00ac0f01708a3726044fdfaa6755fc7a2195398f89b1601e1d62442379"
     },
     {
       "path": "docs/R2R_IMPLEMENTATION.md",
@@ -247,7 +279,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "631641d39b286d1ae395ea9707d51978bd3abef6b0b15291e5f9fa64803144d0"
     },
     {
       "path": "docs/R2R_MINIMAL_REPORT.md",
@@ -259,7 +293,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "555540441cb588c060c9d71e100473167860afeb146f4d1c76a655090e66c288"
     },
     {
       "path": "docs/R2R_REFINEMENT_REPORT.md",
@@ -271,7 +307,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "db914c2553760bc109d3f691b09d3ada6b3c363769245196a244f53f09a2aa3a"
     },
     {
       "path": "docs/R2R_STABILITY_REPORT.md",
@@ -283,7 +321,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "873e28a2929ac87a3add24cff9f2861a4f406e6dbf4de5099585262973e935bf"
     },
     {
       "path": "docs/RXR_FINAL_CHECKS.md",
@@ -301,7 +341,9 @@
         "sha": "05d826113955c7c67dd04ae09892ffcbc34cbae7"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "ca7b47c1c1e90d077876fa50c8c02fa1fd411b8ec0bab88f44d546b378410018"
     },
     {
       "path": "docs/RXR_REFINEMENT.md",
@@ -313,7 +355,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "2eb977e2fb614324168a78b6a0289245804faee2dea6f2f9970cec29d0ce5065"
     },
     {
       "path": "docs/RXR_ROLE_HIERARCHY.md",
@@ -325,7 +369,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "e334f24c7fa51997f8277d1027928869eb210d2c17ff1e5dfff4050c87e395ce"
     },
     {
       "path": "docs/RXR_TEACHING_FOCUS.md",
@@ -343,7 +389,9 @@
         "sha": "dad5efc969f5166e6178d78a3d5564b226b5c3e3"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "92a99b8cd30739f49d3b11e148faa403d2d343ec6c54819c139c009eff9ebdc6"
     },
     {
       "path": "docs/RXR_TEACHING_REPAIR.md",
@@ -361,7 +409,9 @@
         "sha": "d5fbe83e310fa7930e35103d09ab38433aa7a4fc"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "460396d95f86d72bed3db12fa2835c6a45666a97dc93d7db47f548e1cf0920f2"
     },
     {
       "path": "docs/V1_V5_V6_RULE_COMPARISON.md",
@@ -379,7 +429,9 @@
         "sha": "912ab8bf5f77120ece135d1b58632ba557ae511d"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a210279afc6b189a2707338693b7b15aa071875b4ac647cc9c3ef830a9fcc222"
     },
     {
       "path": "docs/WORKFLOW.md",
@@ -391,7 +443,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b33585731ffe4a25fdf182816d41e13b3a88d710a62eaeedf4b7925a0402aa02"
     },
     {
       "path": "evaluation/r2r_replay.py",
@@ -403,7 +457,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2d3e45f5050f1be03ddfcfe044320f33123696d57af37bd27c4b4a28c3079fda"
     },
     {
       "path": "generator/compiled_r2r-en.txt",
@@ -421,7 +477,9 @@
         "sha": "3cc26b2e5a841d5ca47504368164877dd39ba4f8"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9e671b6276a778cc609fe46a168bba1ca3e83707fb41b330ea561969e5d3dd9a"
     },
     {
       "path": "generator/compiled_repair_r2r-en.txt",
@@ -439,7 +497,9 @@
         "sha": "9a91cdf9ac84f1a108c56cabdb1915ea014272be"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b707f26b71c454991feec06d95b98b93b573010c2fc00136c94505fdab9d12fe"
     },
     {
       "path": "generator/compiled_repair_rxr-en-us.txt",
@@ -457,7 +517,9 @@
         "sha": "974bdb10fd19110153a131968baa8f6918e105ab"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "dc134b2dada28e28f71d138662d214585f983879894f0920a29de291a43b5018"
     },
     {
       "path": "generator/compiled_rxr-en-us.txt",
@@ -475,7 +537,9 @@
         "sha": "f6652a4ab9518d18b5beceb5dc5a4078474f169a"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "721862a06ef55150082ccc6aaf97ec8efc864384b0af8842109d9167a8c4d7af"
     },
     {
       "path": "generator/dataset_rules/r2r_en.md",
@@ -493,7 +557,9 @@
         "sha": "6c85c79e0d058b02cb6d6f2dabed108d80d5ef8c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2c75452120013fab819f831fcbbd091cae1d8f5f3ddab082d851413fe6ceffa2"
     },
     {
       "path": "generator/dataset_rules/r2r_repair_examples.json",
@@ -505,7 +571,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5ee91c70d7b1cddb287fd976fcc4418dac3bb23b1fb11f40a9bee9e1bb8f0264"
     },
     {
       "path": "generator/dataset_rules/rxr_en_us.md",
@@ -523,7 +591,9 @@
         "sha": "0fedbc5d3eb4167f7d374df155f79e1822efb012"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "eec74287baf505d7930b182a2f656123d3f36282453764aa06443cea2960e7c2"
     },
     {
       "path": "generator/templates/INDEX.md",
@@ -541,7 +611,9 @@
         "sha": "6ac4c70544c4d93e17cc64acf2515deff3be7d34"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c50454378279a4cb16bf21c4de163c72ed1ee91318e2ebe8339785881150d50b"
     },
     {
       "path": "generator/templates/R2R/authored/036_R2R-GEN-036.json",
@@ -553,7 +625,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "27149a69feec5d057e9370cfd7c31fbbc6f716434c49989cb905c3f5e87c75cb"
     },
     {
       "path": "generator/templates/R2R/authored/037_R2R-GEN-037.json",
@@ -565,7 +639,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2a556977d96ef289367c161a1683e77ee35b8c285600796231f311d387ba9544"
     },
     {
       "path": "generator/templates/R2R/core/G01_R2R-CORE-G01.json",
@@ -583,7 +659,9 @@
         "sha": "5764d437bc56ef0690781b80da9acfcbff27e5ad"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "73f69df3e9623ba1b28a8514a471243bb3683c9b56e005d7e6630674fc049052"
     },
     {
       "path": "generator/templates/R2R/core/G02_R2R-CORE-G02.json",
@@ -601,7 +679,9 @@
         "sha": "c9abf94acbbe541766fb3ce6fa7ee150f5e3f961"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9446dc765cda489d055f7fcccb20a77ea7f42ab00a9082971d6ea62b0da0fa78"
     },
     {
       "path": "generator/templates/R2R/core/G03_R2R-CORE-G03.json",
@@ -619,7 +699,9 @@
         "sha": "962bc1a86897c8800b9d2749fa4715492c61181c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a2b980f0bc5f042bfca399ef1da9f36e6061d9522f74451424170dc5486c6b40"
     },
     {
       "path": "generator/templates/R2R/core/G04_R2R-CORE-G04.json",
@@ -637,7 +719,9 @@
         "sha": "62f8a8390be46257271a40fe05c886b4ade5af76"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "89961039d0a1cb9c970e938d11b6037da687de0f0d7a3a2eaf7e52a84773b258"
     },
     {
       "path": "generator/templates/R2R/core/G05_R2R-CORE-G05.json",
@@ -655,7 +739,9 @@
         "sha": "742b32c166b1581efc6d437ad7ed59e6e4b969b4"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "61ac33dd6085054c796be4f1b64bb00cf7d7d7ad15c0995ee0545166f17be7c6"
     },
     {
       "path": "generator/templates/R2R/core/G06_R2R-CORE-G06.json",
@@ -673,7 +759,9 @@
         "sha": "93eabd0ca93c8f00bf9bde50252966158a748ba0"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "994def72cdf3090c3ae92313e89c6381d22653950c65cbbb982ed8326a575501"
     },
     {
       "path": "generator/templates/R2R/core/G07_R2R-CORE-G07.json",
@@ -691,7 +779,9 @@
         "sha": "93f073cb09e1cb1f8a969aa5302bf2c20968a45a"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "df150e143a83fe0b0c6df8908a834dd677ad2777577533227e14364a2d4880e5"
     },
     {
       "path": "generator/templates/R2R/core/G08_R2R-CORE-G08.json",
@@ -709,7 +799,9 @@
         "sha": "1af3f9be71094cd2043e9bb4df8314d0bae778b5"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1395810fcc2486916904ba958005229a3fc90122f234859b2264d2178e1a8c22"
     },
     {
       "path": "generator/templates/R2R/core/G09_R2R-CORE-G09.json",
@@ -727,7 +819,9 @@
         "sha": "48418382f8ba901633d4e261852536815605600e"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6f0fc4537a4e8dc072ab4834215ccb0de90c8d87d5b7cb13f33ee94f1134762b"
     },
     {
       "path": "generator/templates/R2R/core/G10_R2R-CORE-G10.json",
@@ -745,7 +839,9 @@
         "sha": "7db5286971881cc8f4c3201761059bf5adeabe2c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b5a006632f2e56ffd2c459958a21e0fa5d5531defbb4ed85843ba909bc088563"
     },
     {
       "path": "generator/templates/R2R/val_seen/001_R2R-GEN-001.json",
@@ -763,7 +859,9 @@
         "sha": "b4e7f5ffcb7096072b5a456390888504e9a3543e"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6492cafff92bc8f847f9a4d48d9fe960197e32dd691b80d52d870c7dfcaaea66"
     },
     {
       "path": "generator/templates/R2R/val_seen/002_R2R-GEN-002.json",
@@ -781,7 +879,9 @@
         "sha": "000197a1e4419f50ca9883ed7b3b18f93ecb3c93"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "668e74df7351df47ca04aeef125bea45da4ef21bc7d9e0fc40695cd742709c6b"
     },
     {
       "path": "generator/templates/R2R/val_seen/003_R2R-GEN-003.json",
@@ -799,7 +899,9 @@
         "sha": "8953b924ec4c78c7729669ff6cf8f8e118d79114"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a8188f6f6abbbaabd622bad03bf7fedf9989c6ad8a5577e1c7023b7f162eb44c"
     },
     {
       "path": "generator/templates/R2R/val_seen/004_R2R-GEN-004.json",
@@ -817,7 +919,9 @@
         "sha": "9db2ae2dfe51afc94f8543c22ffe1823ffa4a6c2"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "e9fb24d73d7fadc4f72e4c134503fb458d39447096f00f9ef7f043862565c9cc"
     },
     {
       "path": "generator/templates/R2R/val_seen/005_R2R-GEN-005.json",
@@ -835,7 +939,9 @@
         "sha": "7183b4ed3c65b340fd3c8fd3c5b707b4696d39c0"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9833cc1480e3f9ad0ffb8332febab7d3e9e36cf5255e4ecaec6288b41e8c1e05"
     },
     {
       "path": "generator/templates/R2R/val_seen/006_R2R-GEN-006.json",
@@ -853,7 +959,9 @@
         "sha": "39919c0a5f369c82744d998072be39046f9fc0ed"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "36844e428cd17d3da714277439b4631ec80b3a757f452eac2db323a64f82979f"
     },
     {
       "path": "generator/templates/R2R/val_seen/007_R2R-GEN-007.json",
@@ -871,7 +979,9 @@
         "sha": "bd3b3b92373299e3c234112c823975216a46147a"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9b891547ad0b0241658721c810816af3bcfd1b74cc8e79490a2b8382228921eb"
     },
     {
       "path": "generator/templates/R2R/val_seen/008_R2R-GEN-008.json",
@@ -889,7 +999,9 @@
         "sha": "c33401825951a73494bab7d4ba3d7912a7cc1067"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9ade609f793133b718a03b03e46611cd2de83b0290200d3a1a3b857c900db6c7"
     },
     {
       "path": "generator/templates/R2R/val_seen/009_R2R-GEN-009.json",
@@ -907,7 +1019,9 @@
         "sha": "5ef61c657c1d13703da06f742ebf63793ce430b3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "bad286ec81a05d276a580d0cbdd05b0078a35969f6e4e4f3883cec22484295a6"
     },
     {
       "path": "generator/templates/R2R/val_seen/010_R2R-GEN-010.json",
@@ -925,7 +1039,9 @@
         "sha": "96d34df394fbc0f7a54b0f8d8f7b4fa628d5d8e1"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "adae0caf379e9da3395f9fdc5ba6fb3624aecd4ba7e4a8fa662d77cf9e0fc0cb"
     },
     {
       "path": "generator/templates/R2R/val_seen/011_R2R-GEN-011.json",
@@ -943,7 +1059,9 @@
         "sha": "961f0b167cbdd41d492ba19139becde0bde43113"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "077d79149d29e99104a88fa547707bf12ba7d19a9f98a86a01ec5c631ce77d4e"
     },
     {
       "path": "generator/templates/R2R/val_seen/012_R2R-GEN-012.json",
@@ -961,7 +1079,9 @@
         "sha": "2b6de9cabe25e02f69f114429a1dbb3484db9cba"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9aedd7b71dc7e253af0dd8f570a2983aa222bf660f38f2ffde2a35c79f1e9441"
     },
     {
       "path": "generator/templates/R2R/val_seen/013_R2R-GEN-013.json",
@@ -979,7 +1099,9 @@
         "sha": "81bc8affa1ff0ae34bd5d17ee2eb446636d77685"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7d46e9f4c150ad284b078e01b8b17cf9484924e5700d8ea891f24f3b3f4241ca"
     },
     {
       "path": "generator/templates/R2R/val_seen/014_R2R-GEN-014.json",
@@ -997,7 +1119,9 @@
         "sha": "9652ab278394c3685120d98cab911b762dbae733"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "971e8c30f92d627a9bd0086f3c030f634e04a5abfbd88d5a397f54f39751702d"
     },
     {
       "path": "generator/templates/R2R/val_seen/015_R2R-GEN-015.json",
@@ -1015,7 +1139,9 @@
         "sha": "1e3ed9c11606caa2939c99c86d625781c4e3cd07"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5e99b84a46b21b3526c9bad2d6a3d3b8454df60dbea1a351fd35573aec2bbbf5"
     },
     {
       "path": "generator/templates/R2R/val_seen/016_R2R-GEN-016.json",
@@ -1033,7 +1159,9 @@
         "sha": "71053aa91b548b6cf59e0ff83fefcf8107453681"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "185c71054bc8bdd7a0202cf85fe4da60f2ab8d1f8a57c23c3abd14cb14a4abf0"
     },
     {
       "path": "generator/templates/R2R/val_seen/017_R2R-GEN-017.json",
@@ -1051,7 +1179,9 @@
         "sha": "4626a756ce502769cd2813c2269064e74b6b1f90"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5102db6514b05abd6060db157387908f0cd86f4eedeefc4f913adf024ff9f6fc"
     },
     {
       "path": "generator/templates/R2R/val_seen/018_R2R-GEN-018.json",
@@ -1069,7 +1199,9 @@
         "sha": "33a257e7622ac904a1df1c9a610ad6932d9b2048"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "45a1532b79545e263c0597250b12fb17138c440c1393d571d4c1b69c3c74f239"
     },
     {
       "path": "generator/templates/R2R/val_seen/019_R2R-GEN-019.json",
@@ -1087,7 +1219,9 @@
         "sha": "df194b3f3207937ab3665647611ab3c5f6047dc4"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "491fbbebc4b6e94ed7b01a51a5a2782a7d4a172a3984e4087852ab24a00ee85c"
     },
     {
       "path": "generator/templates/R2R/val_seen/020_R2R-GEN-020.json",
@@ -1105,7 +1239,9 @@
         "sha": "d0f37a616698a1cb10c6f8d7171115bfc9bd9d62"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "996794251a3438953f073631094e28d37bd65d171dd98241cd19cec086fafff7"
     },
     {
       "path": "generator/templates/R2R/val_seen/021_R2R-GEN-021.json",
@@ -1123,7 +1259,9 @@
         "sha": "4215201333012da313c393069f2fdc091eb98610"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1d3902a5c6384c9b468175ff5953e1fa31d6e11fd55c7403d44a157504727c3d"
     },
     {
       "path": "generator/templates/R2R/val_seen/022_R2R-GEN-022.json",
@@ -1141,7 +1279,9 @@
         "sha": "e169154f647f2a30c5cde06c980296be9e9c9a49"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7dfd1cd1eccac9bd1e728017b9ed9bd4d8e286145cfe9f831d83a977fa3c7c71"
     },
     {
       "path": "generator/templates/R2R/val_seen/023_R2R-GEN-023.json",
@@ -1159,7 +1299,9 @@
         "sha": "cae17cce68758363cb272bd27eae60524f4ab2b6"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "59d90bc693838db2ffb4f81268d02128829f0fdefeac57f39314f83261d0288f"
     },
     {
       "path": "generator/templates/R2R/val_seen/024_R2R-GEN-024.json",
@@ -1177,7 +1319,9 @@
         "sha": "063383d119dc88e13a3c00af5c652d97a4bf1ee9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5ceeee2ea2788a2c6df41de516cffcd41a3870092d5161078cf0822fa0ecce25"
     },
     {
       "path": "generator/templates/R2R/val_seen/025_R2R-GEN-025.json",
@@ -1195,7 +1339,9 @@
         "sha": "4864816bc16ac396d5fa9b7767d8fceac737c299"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "527640fb21b759db7ec95c6eac853f6d9b72f7ad48283359e7cfb482bfaef084"
     },
     {
       "path": "generator/templates/R2R/val_seen/026_R2R-GEN-026.json",
@@ -1213,7 +1359,9 @@
         "sha": "c6900e5c7f7aec4cef064ba2297d538c9449a1ad"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "508a791d716928fc5f464404ede47874fc3f799d1b2f601ab9452bd122b7c8f3"
     },
     {
       "path": "generator/templates/R2R/val_seen/027_R2R-GEN-027.json",
@@ -1231,7 +1379,9 @@
         "sha": "2625e1c69a07cf3c8c7a5733b5b25826b2ca0152"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "731c23508aae65b2d1470e2eb7b3e3d776155003ae01e4172f5777585ca3533b"
     },
     {
       "path": "generator/templates/R2R/val_seen/028_R2R-GEN-028.json",
@@ -1249,7 +1399,9 @@
         "sha": "f8a4ca4ba175c450ae10035ee1c8b07af9b66f64"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "330b2666eabedcbed8c418f6e50543b86e5d2c115c913ed52ced4363d52dba5e"
     },
     {
       "path": "generator/templates/R2R/val_seen/029_R2R-GEN-029.json",
@@ -1267,7 +1419,9 @@
         "sha": "5e208e502324dad9a37ed4393d6a4456cdbab5e6"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "8c206835ba16a2c054a1f702093a10b2b859b43940dcc7a327e51b3528b3fe6c"
     },
     {
       "path": "generator/templates/R2R/val_seen/030_R2R-GEN-030.json",
@@ -1285,7 +1439,9 @@
         "sha": "06b887ad58ab29dd5997bc2b123986bef78988b5"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "bdeccd59e2e867d6a19f9c2c8c21403911d780dcc7db09fcb51c883110e309be"
     },
     {
       "path": "generator/templates/R2R/val_seen/031_R2R-GEN-031.json",
@@ -1303,7 +1459,9 @@
         "sha": "49ea2438898e30bf973504b373e096478db7dbfd"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a950929e71730eba5b32e1d6cf7224120d754d52ce6b7bb1c03ddc3b5f231e94"
     },
     {
       "path": "generator/templates/R2R/val_seen/032_R2R-GEN-032.json",
@@ -1321,7 +1479,9 @@
         "sha": "b234df2bc1a9e6e462a95d73ea8ed864d3d3e94f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "35143db38e5ea18c598d2ec88759c2cd00cdc879b20b259582922b076fcea79e"
     },
     {
       "path": "generator/templates/R2R/val_seen/033_R2R-GEN-033.json",
@@ -1339,7 +1499,9 @@
         "sha": "7aa504af22643ce2ab4a2231269efab9a47b18d9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "83e392c7c2720fc9975958ea627d97017f16c8f0843ca529e24a98a7cac98616"
     },
     {
       "path": "generator/templates/R2R/val_seen/034_R2R-GEN-034.json",
@@ -1357,7 +1519,9 @@
         "sha": "7a703445b15efe12ee415e824120b1b3618506fe"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ea01584b173926b8ac9deee1e48a9103f20170284b6c3089998fac3db4dbf367"
     },
     {
       "path": "generator/templates/R2R/val_seen/035_R2R-GEN-035.json",
@@ -1375,7 +1539,9 @@
         "sha": "e62a01fa965ff343b593e713691d14ac549da33f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f8d5152b76fb390f3651a60d9f18efd9e1a920fbfb053facdbfa39108718bf4a"
     },
     {
       "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
@@ -1393,7 +1559,9 @@
         "sha": "aebe22e4c7ccc8665f6f3ca502101a5cfe75f26f"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "8f5e6325d48d5c6b348d279552594ff70369e2b1d49a2735ea2af4833c6a2b73"
     },
     {
       "path": "generator/templates/RxR/val_seen/006_RxR-GEN-006.json",
@@ -1411,7 +1579,9 @@
         "sha": "0fb35c9954d209d3529d820edf69fa79743f2cc5"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "01ebd55d4ff255efad2be86a61dcde787c22dc5e0ba41cd1c763a8139a42da46"
     },
     {
       "path": "generator/templates/RxR/val_seen/023_RxR-GEN-023.json",
@@ -1429,7 +1599,9 @@
         "sha": "9203468f34307e2e71e3dc01dd082d279ec92027"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "41ff2bef8a60b41865a02e5f5aec7cd46cd123c8b73e1f7ac73f66c8e13ba7ab"
     },
     {
       "path": "generator/templates/RxR/val_seen/027_RxR-GEN-027.json",
@@ -1447,7 +1619,9 @@
         "sha": "e5ee367ee245643454161c05ab65c01faba077f4"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "53aefd626b6a6e86f92cc39976e6b35f3927e2f130c19765db7eaf069d0b0c77"
     },
     {
       "path": "generator/templates_manifest.json",
@@ -1465,7 +1639,9 @@
         "sha": "45af94753875f62ca4f21100c5daaeb5ab630480"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4e65c0d3f3cf06f333f5b30eae716af3b93814045b627d945362945b0e35431b"
     },
     {
       "path": "host/README.md",
@@ -1483,7 +1659,9 @@
         "sha": "9408eeafb9b6e6179f97e843406ba3a2b5711434"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "09c13029868d992c060c5df78c288622d0eb66aca539fbf8a9f15dad0967133e"
     },
     {
       "path": "host/compile.py",
@@ -1501,7 +1679,9 @@
         "sha": "ba93415a430b6c0a7ef402e025727adacdfe0c6e"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "0a0d891c9c008337baf58e824b58381ff153f08542817cce4e823a6e07f4838f"
     },
     {
       "path": "host/r2r/__init__.py",
@@ -1513,7 +1693,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "306868481cd01c94cc406652c78189bdfcbeb64230e825154526945a779ffea0"
     },
     {
       "path": "host/r2r/phase_teaching.py",
@@ -1525,7 +1707,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "55131dde0b328ef9092b84626eceeb72138953f1dd461a98360a5d27d8f4d988"
     },
     {
       "path": "host/r2r/relations.py",
@@ -1537,7 +1721,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4269394a2eb9d15dfb213544e565951a95132286b2b7d95ad18ed8e8a663109e"
     },
     {
       "path": "host/r2r/selection.py",
@@ -1549,7 +1735,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a26dda69a75c54ed29f19a614d97d5b1f83725189df888d4712a241511849ae1"
     },
     {
       "path": "host/r2r/teaching.py",
@@ -1561,7 +1749,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4aef0c94ae5765f69f997b02c760c3cf43eab5e9d37327d7e93286239c39d2a1"
     },
     {
       "path": "host/r2r/teaching_index.json",
@@ -1573,7 +1763,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6454e084f5dae124e8b185a56220427a072785c8e04c4f7b6df93914146d4233"
     },
     {
       "path": "host/run.py",
@@ -1591,7 +1783,9 @@
         "sha": "33778ae56c77ef522ce627f4b67c46e6c6a95e0c"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "9fe490e0cd5921551a0877037512ebff32d12935cd92dc2c4b0f0223e4b92f76"
     },
     {
       "path": "host/rxr_contract.py",
@@ -1603,7 +1797,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "107d32b52406a853ca8b3ddfd92c33eccec7a2d11536e16eddf42b6ac019e7a1"
     },
     {
       "path": "host/rxr_teaching.py",
@@ -1615,7 +1811,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "e6ea4796c0f7695ce8290f618ed1f2aae3520b921f5ce6138ef95623f7adc08a"
     },
     {
       "path": "host/template_selector.py",
@@ -1633,7 +1831,9 @@
         "sha": "3e17e9db46670365e44165e69f8b746f0881bf30"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ef9eb588dc516f642fb9683134e22d08a77c7225c7ef1c40ca33118c633e0dab"
     },
     {
       "path": "provenance/README.md",
@@ -1651,7 +1851,9 @@
         "sha": "4b77d24fd1898b3a8b04134804eca2979800fdfd"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "673d5dc034aa29b679a903def48f7867332cc5219d96095e673320cee0651d98"
     },
     {
       "path": "provenance/build_manifest.json",
@@ -1669,7 +1871,9 @@
         "sha": "5e6517f2f0b614429efb187472bae77b51a91f1c"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ba747a7a09b0d605a7f77556bf4047426558e7567f1c61caa1ed6799fd5f227d"
     },
     {
       "path": "provenance/layout_migration.json",
@@ -1681,7 +1885,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3846ed11785a928e2852f17c0cc6a7cbac9b476e251ad82dea512c1a9628327a"
     },
     {
       "path": "provenance/package_validation.json",
@@ -1693,7 +1899,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b7827a8fee6f25348b1683fbe7ee54113e177a2447a051fa140266c09967023e"
     },
     {
       "path": "provenance/r2r_current_base_isolation.json",
@@ -1705,7 +1913,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "0ad496e09236009cf2a7e35e68efd44f0b073116eec1033777784081cfebfbdf"
     },
     {
       "path": "provenance/r2r_full_dynamic_migration.json",
@@ -1717,7 +1927,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "bf8d26334118b3cd6370e2660ee11f6551aef56e7db796ae2761be5a66687bff"
     },
     {
       "path": "provenance/r2r_full_dynamic_validation.json",
@@ -1729,7 +1941,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ad707a03d4b236c47968f0e93a42f06eb1e166b369d29cdac83d34d38d55f0dc"
     },
     {
       "path": "provenance/r2r_issue_ledger.json",
@@ -1741,7 +1955,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b9a994f0b6b495fd957bca30fa742dde902a1d8bd9dc0488ed67ad3f4fa81dba"
     },
     {
       "path": "provenance/r2r_layout_equivalence.json",
@@ -1753,7 +1969,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d892b8939ae629b55abb2dcf20e8cff1dffe1628930d178035553c610690e6e6"
     },
     {
       "path": "provenance/r2r_operation_coverage.json",
@@ -1765,7 +1983,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "087ec757d10fab29d9f5263f9a72d0c4ae0a5a3ede73cb536526f7d39a96eb71"
     },
     {
       "path": "provenance/r2r_parent_isolation.json",
@@ -1777,7 +1997,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "01620f42e3e4d42d2c71ae65a3de9ae1d6b7cd34032da46a3deddcec14a257c2"
     },
     {
       "path": "provenance/r2r_profile_integrity.json",
@@ -1795,7 +2017,9 @@
         "sha": "e88561166feafad7a5937caa2955c41934a7c600"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5051315cd615d8dc1bfdb4822b4072a8c2b2dfcdf15755538fffdb8c35d1cd79"
     },
     {
       "path": "provenance/r2r_regression_results.json",
@@ -1807,7 +2031,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "985297b0ae055084bac4fa17d95a22413ac15a1b7819327097879c0f9a782408"
     },
     {
       "path": "provenance/r2r_rule_links.json",
@@ -1819,7 +2045,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a6be125db007dab73924bd46c9917710791044b276c821196a25bfc65b628c80"
     },
     {
       "path": "provenance/r2r_selection_audit.json",
@@ -1831,7 +2059,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "aaa55134b61f42aa5dfc8e5e7770e915c09e18fef60deeaaaa8534790bcd8b14"
     },
     {
       "path": "provenance/r2r_shared_runtime_audit.json",
@@ -1849,7 +2079,9 @@
         "sha": "5d746c1fefe0ceeb055dc419b7275777ab685cd0"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2916bcd482210f0e00f7b01364120a09a23cd9415a1f047420208213473ea5e2"
     },
     {
       "path": "provenance/r2r_smoke_results.json",
@@ -1861,7 +2093,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c982cf2ed36a75ee647d3a11545b0a058848607efdc12f7083693923cfb0ef2b"
     },
     {
       "path": "provenance/r2r_stability_validation.json",
@@ -1873,7 +2107,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "e542b96b906ec22cc567487163d579ad19832be40621164c531ba70b26fed755"
     },
     {
       "path": "provenance/r2r_teaching_changes.json",
@@ -1885,7 +2121,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "98d06205dd2a1245a81eec6291e3f4743903ae09bb75350b82c2ee822f64efba"
     },
     {
       "path": "provenance/r2r_workbook_replay.json",
@@ -1897,7 +2135,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "74204d5e66bd064c4a1e8c851961a6f8a0fd38b95f5c3372a15d683b5e814930"
     },
     {
       "path": "provenance/rxr_profile_integrity.json",
@@ -1915,7 +2155,9 @@
         "sha": "8609290da0f6aa7fbddf81864cf0323f57b2ac66"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "25795194ef9951e69dd4f3b428191a69ed7d0427654f05f271412647b7f534a1"
     },
     {
       "path": "provenance/rxr_refinement_validation.json",
@@ -1927,7 +2169,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "3fab7cea569041b1a7cf1b6cda3d1d01675f07194634ab71c6c3a17327f46087"
     },
     {
       "path": "provenance/rxr_role_conversion.json",
@@ -1939,7 +2183,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "ac530548308d3946f1296e12e70045c2df36c0465923d5f2c444a668677faca3"
     },
     {
       "path": "provenance/rxr_teaching_changes.json",
@@ -1957,7 +2203,9 @@
         "sha": "be0ee849cfb716a613f978e5a2da274ac4da4a72"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "edc8ef3827fc7a1262225071c225ae4558fe51f73ce3cef5d1233f0c6e0e48dc"
     },
     {
       "path": "provenance/rxr_validation.json",
@@ -1975,7 +2223,9 @@
         "sha": "f15164928677d2af9974b2f5d17e4e9a21523c27"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "a708c9768726de8f94caaabebd9850a9bf794f772e5981cd121f43dc83b42341"
     },
     {
       "path": "reviewer/compiled_r2r-en.txt",
@@ -1993,7 +2243,9 @@
         "sha": "cf87c4df3acdb00afcb5d7dc83729ede980f10d3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7cabf88375afc4cef4af5de1f4405c613979767f8345ca2b75142c3543329bfd"
     },
     {
       "path": "reviewer/compiled_rxr-en-us.txt",
@@ -2011,7 +2263,9 @@
         "sha": "ab67facb0d0a3854c45069cb78e69ddd27d334fb"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "1e906b18309d0e5b0411451e801d0edc164307e6d2ead15e5e30f806b9696a1d"
     },
     {
       "path": "reviewer/dataset_rules/r2r_en.md",
@@ -2029,7 +2283,9 @@
         "sha": "2d96579588f6e5f35dc3a7b18473e45e852a94ca"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c649e9619f173f50b00f1008d2172432b7b5d946af88553d42c14a7736766183"
     },
     {
       "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
@@ -2041,7 +2297,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1c0a24240c2338faf15f9aadac576b580da72b2a5a60aeeeec1d37c0adae6ba1"
     },
     {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
@@ -2059,7 +2317,9 @@
         "sha": "e889ddcd6229b1294ed058a89e30bae0f02b12dc"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "56d589b6f87fa423d7329005ac57212ea470aa60722059cd24585ad54945dd50"
     },
     {
       "path": "reviewer/templates/INDEX.md",
@@ -2077,7 +2337,9 @@
         "sha": "c9892f25e0d909013825b7ebed7f39a448981300"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "53aebd259346a38b8881f9dac40a536b52425e5b5ebe64843a28c20d333826c7"
     },
     {
       "path": "reviewer/templates/R2R/authored/030_R2R-DIAG-30.json",
@@ -2089,7 +2351,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "938da96cae9dc494198f60df0dd66cea1a6f147d71a1a8338506f5e49b9c3540"
     },
     {
       "path": "reviewer/templates/R2R/authored/031_R2R-DIAG-31.json",
@@ -2101,7 +2365,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2e6ae594ff1103da475878065e587edb9f22a6e9b053594d1ac3878c08f2f0ca"
     },
     {
       "path": "reviewer/templates/R2R/authored/036_R2R-REV-036.json",
@@ -2113,7 +2379,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "fc7646cdf9fb21577df2b60d7ff82d0f4663738d7c8fff7b6e8666ceaaea5796"
     },
     {
       "path": "reviewer/templates/R2R/authored/037_R2R-REV-037.json",
@@ -2125,7 +2393,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "75f13fcb23fa8ad1638711abafd19ccfbca170284a7343feb0aaf768186fd9eb"
     },
     {
       "path": "reviewer/templates/R2R/core/R01_R2R-CORE-R01.json",
@@ -2143,7 +2413,9 @@
         "sha": "0ec4bec923b0349ee427a8d3d753383f4d928c5c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9c4b67fd1ac6215be35ab15d63ca02b7bb1b21c3055a09df96695cd739728d31"
     },
     {
       "path": "reviewer/templates/R2R/core/R02_R2R-CORE-R02.json",
@@ -2161,7 +2433,9 @@
         "sha": "7621d009a9dc3bf42a8de6428bee6edb61c8e1ca"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d7a81e7fd9e923c578707d8e027bd0c23aa5227639870ab8bda75285b8cf8330"
     },
     {
       "path": "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json",
@@ -2179,7 +2453,9 @@
         "sha": "d4ff09a11a7e07ef81e8eb2dcbefde073c03c568"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "861869d84db03cc3e835e9a744dd56fb18e164fc5330a4095e5a09d6fd3cf665"
     },
     {
       "path": "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json",
@@ -2197,7 +2473,9 @@
         "sha": "fc7c3d64a743f8c0b7adf48428c954f8fc7217f7"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b3f342e2a940d5c1dd8cd2a73b3d6e1db84b096205f1cb60089f147679d72818"
     },
     {
       "path": "reviewer/templates/R2R/core/R05_R2R-CORE-R05.json",
@@ -2215,7 +2493,9 @@
         "sha": "afae6c7e2b423a06b7821f22591a825f57232f84"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4193eab1da1ea13ebece321852a66630399239300b77d1cf61674de464ce7f15"
     },
     {
       "path": "reviewer/templates/R2R/core/R06_R2R-CORE-R06.json",
@@ -2233,7 +2513,9 @@
         "sha": "5771e34e99727701a44974420a441e1a38574bd0"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "06567740bee405eb8279a1b9498a6b21d0144151e2d047c3450317ae98facc3f"
     },
     {
       "path": "reviewer/templates/R2R/core/R07_R2R-CORE-R07.json",
@@ -2251,7 +2533,9 @@
         "sha": "815d1e70944dcf66305ac6e677c25a9acb3ba8a4"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d9416f923a30af2f1a6b59a08dfa7a9c2264d332b15144e58e48c2b39c41fd16"
     },
     {
       "path": "reviewer/templates/R2R/core/R08_R2R-CORE-R08.json",
@@ -2269,7 +2553,9 @@
         "sha": "6a700b6bfae553a7aed61d5ca7d3c54c99edeed5"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "96318d5bdb99b5df7966b5cc08ee83672a9360c1902d0dee2f100869ada7af5d"
     },
     {
       "path": "reviewer/templates/R2R/core/R09_R2R-CORE-R09.json",
@@ -2287,7 +2573,9 @@
         "sha": "42be76b400dfe9460f59fb1bb74d96c1c3e9f076"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ec35ac454c1c4ff646f5a3113b3387d5a306be26553b7d04722df69983c35bf9"
     },
     {
       "path": "reviewer/templates/R2R/core/R10_R2R-CORE-R10.json",
@@ -2305,7 +2593,9 @@
         "sha": "ce8e0322b39d3106c78a87f9bfb10ace407781d9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6696e3a6347ba1a08725b1fd3215ed0116b4b8a26462b22152e018125f542241"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/01_R2R-DIAG-01.json",
@@ -2323,7 +2613,9 @@
         "sha": "88a1b2ef34d8e53c39b09bfb527f72f1f634839d"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "977eff2b082a13161ec940dc36c9131453929f02c4bc600f2a54910e8c5e6705"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/02_R2R-DIAG-02.json",
@@ -2341,7 +2633,9 @@
         "sha": "85dbc2b329f564c190c265a43b45530cee9ae09f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "87bff319e870b976b414c41637340669b939fca882e52ae4e68430aca2b0907a"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/03_R2R-DIAG-03.json",
@@ -2359,7 +2653,9 @@
         "sha": "1b5ed85f02814b18e64fb265d7a863d4719388d0"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a5533726c0c2ec7c1f6de1245db11c261807c3c41239d8c2c4ba1916e977aa38"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/04_R2R-DIAG-04.json",
@@ -2377,7 +2673,9 @@
         "sha": "e268997aaf267631318a61317871f5678979ffdd"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b38f779df1e68e369cd2078fd63a51430f5bf488f1ad529d22cf74c6ae99a4bf"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/05_R2R-DIAG-05.json",
@@ -2395,7 +2693,9 @@
         "sha": "f705262ad61be0d64e2b7a20cf09989a05901170"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "8ad9959258082ef5f81767b2b5fdd1c6d8be5d539adeac2f3f55e495f00b98f0"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/06_R2R-DIAG-06.json",
@@ -2413,7 +2713,9 @@
         "sha": "20870b4d37b999e866f69461ce50a0b4a7ff09de"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f844608bb7f45f6d8cc42d015a22200c4444c4ed4b3b9841323cc686f0770703"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/07_R2R-DIAG-07.json",
@@ -2431,7 +2733,9 @@
         "sha": "bad6d329e2e297fbf423f6fa0abd27bf1721dcaf"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a359296358ff8e823c7ba8fdc553e5b64f67c6996a875d0b3b1b55320d6daaed"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/08_R2R-DIAG-08.json",
@@ -2449,7 +2753,9 @@
         "sha": "c480ae5a58ba1b6064e920a6f8291df375f9ce77"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "af960aba224e716d4d04e099a5b65000498af5df3b6316224a6f5f398e9d556a"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/09_R2R-DIAG-09.json",
@@ -2467,7 +2773,9 @@
         "sha": "2082c0aa624da2d29a24eaf9a9fb8c892bdf95d6"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "499d72b7fe298f26c913bd8f96c557f81d4dde05504e4fff77664d8d3b4c3b9d"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/10_R2R-DIAG-10.json",
@@ -2485,7 +2793,9 @@
         "sha": "267ced00533b722b11c20e5181f87dd591c31108"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4cafcdcaa8dd97fc671474643b873e3a42f5b228cf7152dff957d0df6ee6f7c6"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/11_R2R-DIAG-11.json",
@@ -2503,7 +2813,9 @@
         "sha": "2a37c0b20aca54466617c89c09b12612353a7c65"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f4f60b04c6514c7069aafb91ebbcaf45e8214da81b8f11deeeb2062837b4d0fa"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/12_R2R-DIAG-12.json",
@@ -2521,7 +2833,9 @@
         "sha": "20d0dabb7f10b7b1a110f58dd203dd01e7c3cf2b"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c4289ec2ebd85065de19b849a1a2909425f3862afef5084b20def2796bf72f29"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/13_R2R-DIAG-13.json",
@@ -2539,7 +2853,9 @@
         "sha": "ef7c4bdc6b7f284cc7819d7d3f13d8eeff17a701"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "e9bac850be51739be569dc9e1e20afccc9715e17242a42e835e54b437a967ca6"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/14_R2R-DIAG-14.json",
@@ -2557,7 +2873,9 @@
         "sha": "32439a24f8aea6c156d63030d72e399059dc5f49"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "68db1869c0f8126f7f1cf9db51224ef048763efeb167ba8c738c8afa23aa6070"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/15_R2R-DIAG-15.json",
@@ -2575,7 +2893,9 @@
         "sha": "7f30c31dceb6ba501a90385d3e46e98acf1421c2"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3c4965bf77bca4a2045fbc3f805afdc2ddb950f61ca775499e03bec52d880939"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/16_R2R-DIAG-16.json",
@@ -2593,7 +2913,9 @@
         "sha": "39bec10bc00f1db0c28021d1fc5a03b1567c1541"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "425fafc6ea135fe3675085a6714eb98118e64a6f6f9d1c5a78370f5fda55d53c"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/17_R2R-DIAG-17.json",
@@ -2611,7 +2933,9 @@
         "sha": "c3920fd78a2bb6c9dcaff38f8147847dee0945a1"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2895e94fa981dfed2cfad5b1ccc5bf5da7e4a4c269f53508fa40749dfefd3149"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/18_R2R-DIAG-18.json",
@@ -2629,7 +2953,9 @@
         "sha": "da50b5c6ebd92100541ecd6d3bf8c9732abe5a05"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d6c8edd44b302bb579a7a02533a479e799dca9973c252981d2491560fa98ada2"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/19_R2R-DIAG-19.json",
@@ -2647,7 +2973,9 @@
         "sha": "37bac23aee0f385f5eb4fe4cda83884df96ac300"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "073ee8f80d0c9a5b04735cfe8874e3a26218ef8c15b1ffe87f5387e84a44123c"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/20_R2R-DIAG-20.json",
@@ -2665,7 +2993,9 @@
         "sha": "fd773c488d27a632692cd4b8ef5c5356c734045f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6dbab23a7e33ffc4f768a97f6513c70a8c6c01f8af0fece5e6436869307c2eef"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/27_R2R-DIAG-27.json",
@@ -2677,7 +3007,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9757a1e18e3d63a82a99fed6acd110a832cca9cab2063cc0025f710a9e40a93e"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/28_R2R-DIAG-28.json",
@@ -2689,7 +3021,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "53b2a527bce55ed29b82a550df1365914c59e16eb705eb9f2101bd30677465a0"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/29_R2R-DIAG-29.json",
@@ -2701,7 +3035,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2a6bd4b8e262baf589789f93a64009c117675303dd370b51f8fbedc6df821d9c"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-21.json",
@@ -2719,7 +3055,9 @@
         "sha": "bd5cab9dbf6805b04d696753bde3ba8297cc15e6"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "97749bcd34581d5f737a9ce766ae1b32f18c650ab35e983ad9ec0e833695e950"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-22.json",
@@ -2737,7 +3075,9 @@
         "sha": "9d5f09627cda01d0e2b8e0045ae8cb310684750c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "fc29fc320931b9945e47dee940c80c65a0a6a8d95eeed9ff1163676195a8b643"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-23.json",
@@ -2755,7 +3095,9 @@
         "sha": "daa89082ce27c0865929a99e3a7d9f81ac39f6a8"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4c3527e977879c5b12870717e935dd3b81dab4c41369fcc1aab71f56c69311d6"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-24.json",
@@ -2773,7 +3115,9 @@
         "sha": "b89a0a30f970aa6cd738b421d6d1241964d63d67"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "33c2d1944e84efbf330c634e3fe0c3aaf89afd67f271ae1e98adfc573f2b68af"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-25.json",
@@ -2791,7 +3135,9 @@
         "sha": "fc3b03d0190c679b574223fe422076c0e8765433"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "73bcf03f147fbb432589c6453dd790b145174ef44b9c910cbb2890518afd23bc"
     },
     {
       "path": "reviewer/templates/R2R/diagnostics/R2R-DIAG-26.json",
@@ -2809,7 +3155,9 @@
         "sha": "7f224d0d4443a56d5dfb347034b712729a73a18f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "58e808ea5204eb0821a83dd275f838ce3af6392a0fbab676ce0af1fa1cfbb295"
     },
     {
       "path": "reviewer/templates/R2R/paired/001_R2R-REV-001.json",
@@ -2827,7 +3175,9 @@
         "sha": "b178e8b889e0fb47565b0c630f5e7dd68b1d9829"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7e32be92399ebfa2b9229248c2a89a7d47f2bc7d189181a9121bbe66efc7043c"
     },
     {
       "path": "reviewer/templates/R2R/paired/002_R2R-REV-002.json",
@@ -2845,7 +3195,9 @@
         "sha": "03b006af420c65d21ba8a4ee4a133dfe665f7d37"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "90860fb24bdc7a016f48acee7be0cc96e973b9c7d8b0754bab1681b68ffa82f4"
     },
     {
       "path": "reviewer/templates/R2R/paired/003_R2R-REV-003.json",
@@ -2863,7 +3215,9 @@
         "sha": "3a5c21854d106a5851663313c2595258ede10b84"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "afc63a8c9abddb62d0534bb41dbeef05b73f1242079b1de532e1b464785d4a91"
     },
     {
       "path": "reviewer/templates/R2R/paired/004_R2R-REV-004.json",
@@ -2881,7 +3235,9 @@
         "sha": "8530a5969e365309eb3adac693dbeb882b1680e1"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9dec34580c3aa9449863e5d871b50a84dbef3b030885c82e27a26d3c0e11be8b"
     },
     {
       "path": "reviewer/templates/R2R/paired/005_R2R-REV-005.json",
@@ -2899,7 +3255,9 @@
         "sha": "6186ce6db58cf5b64c0323733c3da766f49f06b3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "eddc76a8811ce2a0fadff21565a7ab63ea6d16c2b34c4cdde16a0540f7929c64"
     },
     {
       "path": "reviewer/templates/R2R/paired/006_R2R-REV-006.json",
@@ -2917,7 +3275,9 @@
         "sha": "685d647a7a037d6c1f258ba118d86a53751bc9e3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1626bd372ff798c6b669ebc5cb105404bd03eafbc64a6456d888f9239abb3721"
     },
     {
       "path": "reviewer/templates/R2R/paired/007_R2R-REV-007.json",
@@ -2935,7 +3295,9 @@
         "sha": "69646a5c4531d372cf01d7254c470f87fe0301ab"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "84bcd094985de3ccdffcf1b70112b7236671bc51dfbecb0013dc3c98858564a4"
     },
     {
       "path": "reviewer/templates/R2R/paired/008_R2R-REV-008.json",
@@ -2953,7 +3315,9 @@
         "sha": "22f7723476d0774306777a9b5afc73fef4bc15d2"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d36116bef7c4f20024c774503e6d25176ddb611fd0db66263598d4831f599a06"
     },
     {
       "path": "reviewer/templates/R2R/paired/009_R2R-REV-009.json",
@@ -2971,7 +3335,9 @@
         "sha": "4809ddc3a91e0f25c08082b5b267c78a570ac97b"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4fd98408fdccbc79d37f13158f41c26e8c0634a5a1e06b1fd1e78448b4ba1ace"
     },
     {
       "path": "reviewer/templates/R2R/paired/010_R2R-REV-010.json",
@@ -2989,7 +3355,9 @@
         "sha": "3180b8d9a687cf7cdaf19223074d6ac81b5af212"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4063a58ae72afd213ce54eea3cc6338a07ddfb0fa291d88c189f3783c1dea41d"
     },
     {
       "path": "reviewer/templates/R2R/paired/011_R2R-REV-011.json",
@@ -3007,7 +3375,9 @@
         "sha": "e4c7ce49c67701451fd952bc0526db93275885cd"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "0d73e46ed82b06e4000f5ef44d2110a439cf9bc356d1032b8a7dd3b1df4b44ed"
     },
     {
       "path": "reviewer/templates/R2R/paired/012_R2R-REV-012.json",
@@ -3025,7 +3395,9 @@
         "sha": "2674860b348c3032c707cef0d632349c091036ff"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "8a1ea7139f50044c179e7abb3b956b69290f27ac96d625d34234b9b265337f79"
     },
     {
       "path": "reviewer/templates/R2R/paired/013_R2R-REV-013.json",
@@ -3043,7 +3415,9 @@
         "sha": "1d84814d78ca10066a116c0144f68063fec73650"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4799a37d121eb8704d66883ef421dbf3f6787d39c64b7f7a8bfafea202ca0a81"
     },
     {
       "path": "reviewer/templates/R2R/paired/014_R2R-REV-014.json",
@@ -3061,7 +3435,9 @@
         "sha": "304d09290d50027255919966258498b941112f04"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "8411cb3518fae4ea26e356848582f5b94ea28a652a9615486cd3739a5f3ebf30"
     },
     {
       "path": "reviewer/templates/R2R/paired/015_R2R-REV-015.json",
@@ -3079,7 +3455,9 @@
         "sha": "0469976cc713e034226a33d4344d255e39779423"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "859dd8ce06ea635f17d71867d77815083a71bcc4b10d095681e7c8d5c66e6657"
     },
     {
       "path": "reviewer/templates/R2R/paired/016_R2R-REV-016.json",
@@ -3097,7 +3475,9 @@
         "sha": "29cfc92075f7db0b3b0cd3b239a87f5cd92109cc"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a687f70d6d7541fd71b053c3ae203b8b06036908910ed75416116ca1f157422b"
     },
     {
       "path": "reviewer/templates/R2R/paired/017_R2R-REV-017.json",
@@ -3115,7 +3495,9 @@
         "sha": "7e38faae15df206e2f6be05d2a4aab50a8d3d5c3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ca65db3ca9fa80a7914052a7d19f253047290c5f2ad09e132896f8713f684ee3"
     },
     {
       "path": "reviewer/templates/R2R/paired/018_R2R-REV-018.json",
@@ -3133,7 +3515,9 @@
         "sha": "09c3bc0171e8e4c6606e541ed68ddb1c14d5ae2d"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "68f473678afa413a6942eca2f41249fcd344f6d098f5554e55864422ed90b40c"
     },
     {
       "path": "reviewer/templates/R2R/paired/019_R2R-REV-019.json",
@@ -3151,7 +3535,9 @@
         "sha": "11a63e00104a527f9de048a03eb8a9a189de12ee"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "733411c0595b8785c6873338853449d0f91569d7d8f096ddb9c632a3d434c66d"
     },
     {
       "path": "reviewer/templates/R2R/paired/020_R2R-REV-020.json",
@@ -3169,7 +3555,9 @@
         "sha": "10b9a08dbc4324de0c87cf161f2863da46a9ebdf"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7629f3cda24589f06c8e0abfd13b215c1231a60dd465cb1293bec3086737755e"
     },
     {
       "path": "reviewer/templates/R2R/paired/021_R2R-REV-021.json",
@@ -3187,7 +3575,9 @@
         "sha": "f6c39a35166463a63507aedce236570b3360c407"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "186999f1770f2b5e89b6cfeca37fdbd806d942bc840ba8d83edbd1851bb764af"
     },
     {
       "path": "reviewer/templates/R2R/paired/022_R2R-REV-022.json",
@@ -3205,7 +3595,9 @@
         "sha": "1b27a0e263bbc907c2f4a8e78b9a591ebf9d469c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "8195c929c6796770639512cd5e2511dcfbfe3688fa544d46ab319e5b74b18ab9"
     },
     {
       "path": "reviewer/templates/R2R/paired/023_R2R-REV-023.json",
@@ -3223,7 +3615,9 @@
         "sha": "55fa754517473f82a919815413f580099eaf5f70"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9ceacd23e24e8257642e55237108fb156a7d1a02d1b9df57342cd431c75648ec"
     },
     {
       "path": "reviewer/templates/R2R/paired/024_R2R-REV-024.json",
@@ -3241,7 +3635,9 @@
         "sha": "4ebe0b93680a8d22272a16efc5533d6b3fec0a9c"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "aa94bbac41f169efefaab15f2522fc9fcf34af7e92c17e006f806abc15d80b68"
     },
     {
       "path": "reviewer/templates/R2R/paired/025_R2R-REV-025.json",
@@ -3259,7 +3655,9 @@
         "sha": "fa989925bf048273d51312247d3a21584ffebcee"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f0d03989256e440169c85ecb2cab7439d1cd7bbd012175fbf044ec63363f986b"
     },
     {
       "path": "reviewer/templates/R2R/paired/026_R2R-REV-026.json",
@@ -3277,7 +3675,9 @@
         "sha": "f42b253344b69089d0d3c8c3ad85e32bb795bc8e"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "fa452b53657535bc8a943cb1cd630d5a3686c45c2048da47d8ff0afd93f31fd1"
     },
     {
       "path": "reviewer/templates/R2R/paired/027_R2R-REV-027.json",
@@ -3295,7 +3695,9 @@
         "sha": "907496c6fa77b031044247e0c5a370be09713a4f"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ca0e06034f15e0b9aba7da4703762090321a006ef46e7fc2238309a7dca170fb"
     },
     {
       "path": "reviewer/templates/R2R/paired/028_R2R-REV-028.json",
@@ -3313,7 +3715,9 @@
         "sha": "63fee7d5c609135c4ca001b28ea2356a3a1fde7e"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "6bdb24bf0f3eaaf80713ea1a29d7ef6a669a3cd3d7d0e55b97566ada0a048ea5"
     },
     {
       "path": "reviewer/templates/R2R/paired/029_R2R-REV-029.json",
@@ -3331,7 +3735,9 @@
         "sha": "d802051a7299a48ab73f674afaf0d165457e6931"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "972e598aa95d0cf16c099f50b7d0844e1111d93353bc9d964b88a50ae2eb5dcd"
     },
     {
       "path": "reviewer/templates/R2R/paired/030_R2R-REV-030.json",
@@ -3349,7 +3755,9 @@
         "sha": "ca539b8b04c901853bfa8d2b46077881f1b247f6"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "aa19f584bb9d7484882c496123fb25e7642b8d6c389112e1cd0d340799ed43e2"
     },
     {
       "path": "reviewer/templates/R2R/paired/031_R2R-REV-031.json",
@@ -3367,7 +3775,9 @@
         "sha": "7eeba7bcddd4cd8c4487f487584302ee35bd45b9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ddf84791592a31535df0a3d0718d1ecfd6ebb336c3fa8beb13c413488981a8a0"
     },
     {
       "path": "reviewer/templates/R2R/paired/032_R2R-REV-032.json",
@@ -3385,7 +3795,9 @@
         "sha": "0967e6648f72d81c1a27e7095cf2d64f6afccd27"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a733daf72662a419acd500eb3ce1823152684ac7518f237dced851ec4fcbbfb3"
     },
     {
       "path": "reviewer/templates/R2R/paired/033_R2R-REV-033.json",
@@ -3403,7 +3815,9 @@
         "sha": "28758aa6233d2e52d58491823999e5b7b41e45ad"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c70bca62233f03f5787b4951103bc610289216405d87b20b9d8f1ed2275868d4"
     },
     {
       "path": "reviewer/templates/R2R/paired/034_R2R-REV-034.json",
@@ -3421,7 +3835,9 @@
         "sha": "d6517357e458cca8aecaf57b1dff5e52abe1003a"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "95b67df45d50b2e7e15220426754865833cd91e246eb624488e1c36d3454179c"
     },
     {
       "path": "reviewer/templates/R2R/paired/035_R2R-REV-035.json",
@@ -3439,7 +3855,9 @@
         "sha": "369ed49ba110e5d5b37a3a1869fd715a8b1a0b90"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4a607dd41ac078c0113afcd35c84e4571602a00d7ab1c7e6795429312b980884"
     },
     {
       "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
@@ -3457,7 +3875,9 @@
         "sha": "f4f2dec457cb5edc9e2104f19cafce54d092e890"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "6b3e5ebab5f4f5eb79120601881f186c38c5873f6510c03ccfc5789a489709f8"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/01_RxR-DIAG-01.json",
@@ -3475,7 +3895,9 @@
         "sha": "66a5b3ee5946d9d7c350a45b5f4b599889bae8b2"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "e17d2cfe10f9f999e85feb11284dcfe1ee8ec3ab874aa7c557fa6499e7b71543"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/02_RxR-DIAG-02.json",
@@ -3493,7 +3915,9 @@
         "sha": "1c113972f40de09ddf8bec6c11d16e9ec9c61f98"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "e27751c67ba709eec9805fff6cfd21a224126cb6d1afd8c74320e554fef16567"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/03_RxR-DIAG-03.json",
@@ -3511,7 +3935,9 @@
         "sha": "7225baca8a6f304feca0e72adafe2836290cb1d2"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "ff1cb88b98a3b49d8288d141d6f961d15b3024f7c1567fce4c032bcff47d0ce1"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/04_RxR-DIAG-04.json",
@@ -3529,7 +3955,9 @@
         "sha": "19005b6a2999b8100481cbb3f11549d3d17e0fcc"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "3c059aa4068f764dd345880f265b54b49422e5f3d9b65d24ffe4ba528a536ed6"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/05_RxR-DIAG-05.json",
@@ -3547,7 +3975,9 @@
         "sha": "8eea11f81a3225956428dc77e9fa9568afd7dffa"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "27ef3c878b9fdce80d07458b836005eff54b8e04a50ddf26e984219959e869e1"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/06_RxR-DIAG-06.json",
@@ -3565,7 +3995,9 @@
         "sha": "f703891cecaa10fce4465c772d81f67e85480e12"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "29bfbc96efecaa0601df4a17e5e1e19e2a0a374db7aec4c9b3eab18369b88515"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/07_RxR-DIAG-07.json",
@@ -3583,7 +4015,9 @@
         "sha": "6c0ca3816ea6f5476d01230c6832840e95db0b01"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "81a375b1a58aab1b72f3fbb72fd65fd8fd78f034f3d808cab759da28019c82ab"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/08_RxR-DIAG-08.json",
@@ -3601,7 +4035,9 @@
         "sha": "6cab347dad4608afc7f3ccf3659b95d66e1b4045"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "79f7adbd4408ba5faf40dc25418fe0983c2453276fa7399f23285884d9f46823"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/09_RxR-DIAG-09.json",
@@ -3619,7 +4055,9 @@
         "sha": "5a4c6c7229c8b01ae6615e8e12037d80dccd341c"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "6445316ec2804057c52714d008ff7b79bd419d02d8c0c4e708eda1c26bbed7a2"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/10_RxR-DIAG-10.json",
@@ -3637,7 +4075,9 @@
         "sha": "2dd55b73f45a6173d8ab911c2e1c307ff695dac4"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "5358931c677f16bc6befc37b2047adc9907dc9c0309510ba5ab859b94bba5778"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/11_RxR-DIAG-11.json",
@@ -3655,7 +4095,9 @@
         "sha": "b807c797912a56974a1689e0a3b8c4c91dbab4b9"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "7b1c50cba3e28e86806ec74a96ea5278066f0282aba268e0cc9b25fe1206449a"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/12_RxR-DIAG-12.json",
@@ -3673,7 +4115,9 @@
         "sha": "afa6c63c6f5cce67f6e25350d145689a5b66a558"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "fde294b59f71a8b15690bf836a360c4769e1e3447c7891164e8507d9e35bbb08"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/13_RxR-DIAG-13.json",
@@ -3691,7 +4135,9 @@
         "sha": "afd5c117967f035c75cb49dab973fafe1c4b1707"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "36a35b69849602bf7f6b3e257e67ab6a70df15def236b787a4ecef7e61e36cb1"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/14_RxR-DIAG-14.json",
@@ -3709,7 +4155,9 @@
         "sha": "2bb33acde85b130135cdeeb350986f2741cf8879"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "2bce0cb7fdab8c25c905d3645509164124d642f667e8ff6b171905998325019c"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/15_RxR-DIAG-15.json",
@@ -3727,7 +4175,9 @@
         "sha": "e470cfa0275767762111b484e0edb305dadc77d2"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "00ea63b77a99ac43945095e9dd8a120433dc6241ebc6369e0474dd450818bb58"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/16_RxR-DIAG-16.json",
@@ -3745,7 +4195,9 @@
         "sha": "43370fad108703c8880455d317384f836abc39a8"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "3eb13a60ba970fd0fa69815bf991b48fbd6c77797e1874c696ba2480c688c0d5"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/17_RxR-DIAG-17.json",
@@ -3763,7 +4215,9 @@
         "sha": "fd7831b7b63d0f44a4b52551ac56036f4d429ae3"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "600c3f236c5291c96bc65a87814169c4a70163f123680d536a71ef939edb6eca"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/18_RxR-DIAG-18.json",
@@ -3781,7 +4235,9 @@
         "sha": "a7a065320f3556bfdd1f8c6c3a14f906beb19f4c"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "b8fb70ed20b480b16463224e7489e56e9f03dd07ea31939c202aff4a6f3e315e"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/19_RxR-DIAG-19.json",
@@ -3799,7 +4255,9 @@
         "sha": "de2892d3334525adb1881dcf9de5e8db662b5521"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "46106d78a3bc5d19ac84642535ccc8ede74004d80de8e10afbc3711d6cddb71c"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/20_RxR-DIAG-20.json",
@@ -3817,7 +4275,9 @@
         "sha": "2abfdaeb8ede24846c443f67222ee2de2738ee18"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "61587309beb4994404186db7c59e5509870aab42f22db77864f92816a9c45d02"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-22.json",
@@ -3835,7 +4295,9 @@
         "sha": "809633a058381f2340fb4e85805b06c8ba9958eb"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "3f02a5c1900b23a33f3b49fad821c6192701c8f70d301d356be5a2cd50a0ecf5"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-26.json",
@@ -3853,7 +4315,9 @@
         "sha": "e4b5a1761723e481bd2cb1f2b19dde146d24d64e"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "0ab7a1e4f82f827fba833416632db63e90544617a4230ff98767a06117fea49a"
     },
     {
       "path": "reviewer/templates/RxR/paired/006_RxR-REV-006.json",
@@ -3871,7 +4335,9 @@
         "sha": "39c83f98ac7a21572b50420f0cd8fd11ba5f289e"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "b82024189d11871c4820d8595b9094ceb834bc69db6923024f4c138a4720dd16"
     },
     {
       "path": "reviewer/templates/RxR/paired/023_RxR-REV-023.json",
@@ -3889,7 +4355,9 @@
         "sha": "9e19d6bb0de9b90d75712e9bb598e6e519ea9bc7"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "29ace0b26944896be58703a24c8d2e166e6b72e07a25a5146b9d289a9be21d37"
     },
     {
       "path": "reviewer/templates/RxR/paired/027_RxR-REV-027.json",
@@ -3907,7 +4375,9 @@
         "sha": "4966644dc43b19d650c2d0db11ce3ea32d7e9657"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "e8812c2a57397e7f32afecf121dd38c425edac780616aed77f688fd92195e3e3"
     },
     {
       "path": "reviewer/templates_manifest.json",
@@ -3925,7 +4395,9 @@
         "sha": "63a31187e106989a4d7c6310e0056a2d40f76eb8"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "036090b300cd9bcd21bca7155f1b95af09e66d7e6b8ee88aaf2aacaba9d6a6b2"
     },
     {
       "path": "shared/dataset_rules/r2r_en.md",
@@ -3943,7 +4415,9 @@
         "sha": "0409648992badaaeb9f0b7d7b6d88ff1f270a8be"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2bc2773f9c3691c2f9bb559bc67d162f21af5c3ec216d95310bc78b170fd1136"
     },
     {
       "path": "tests/__init__.py",
@@ -3955,7 +4429,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "0a6e5dd615a8ab1da5ba8be8f54fc7893fc41c5fc352a44a6e992f11f2a1b8f9"
     },
     {
       "path": "tests/fixtures/rxr_prompt_pins.json",
@@ -3973,7 +4449,9 @@
         "sha": "a4d110aba4f8a1a8240a9745a6b322b541fd91e0"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "b29dd9ff1fdc62dbd270e2b4c215530826e951cd63310eacf55760e7553c15f1"
     },
     {
       "path": "tests/r2r/__init__.py",
@@ -3985,7 +4463,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "9dfcaef972ccb81cd5e44127aa4035a8f7d02fe4351c07163714bf073f853d4f"
     },
     {
       "path": "tests/r2r/test_full_dynamic.py",
@@ -3997,7 +4477,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3d9dc0162a0efccd70a0b13df291f466b1a531f7b7d08b4c6afcc2bcd885c3df"
     },
     {
       "path": "tests/r2r/test_hardening.py",
@@ -4009,7 +4491,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "e12c32bcf0410e93170134b5487e675b4a26ef76124571522cff2e4888917a09"
     },
     {
       "path": "tests/r2r/test_minimal.py",
@@ -4021,7 +4505,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3bf99ec7795e8d59780aa9d85ef11b4fffa126de7e3da9ab411f6280311a354a"
     },
     {
       "path": "tests/r2r/test_quality.py",
@@ -4033,7 +4519,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5f6efa3bb2f344fddc813d3041577c6ed5596cbcdbeb9d60e7d443a91a738fd5"
     },
     {
       "path": "tests/r2r/test_refinement.py",
@@ -4045,7 +4533,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "93e7172be48a81ccc982f83b297672c4b3f9f664c1eac4922a8eedbb453f72bc"
     },
     {
       "path": "tests/r2r/test_stability.py",
@@ -4057,7 +4547,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2fee0600ec8f412c762ec6e11fa2a0911a293b0e56026bbe4f5deeab13438c48"
     },
     {
       "path": "tests/r2r/test_workflow_chain.py",
@@ -4069,7 +4561,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f7cb6803d87526f4de2bda1cea03d976ab38744a67651db9bd6f95e4288f9d73"
     },
     {
       "path": "tests/test_closed_loop_35.py",
@@ -4087,7 +4581,9 @@
         "sha": "2ad8763f9307a098a26ee3df8a4c7dede44211ce"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "c88cc91b0609afb740a70ec836086430be46c035c552b218c4aa7ee632d8b40b"
     },
     {
       "path": "tests/test_entry_diagnostics.py",
@@ -4105,7 +4601,9 @@
         "sha": "70390a07c52e1d55e265f6fdd72bb813008293a2"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4a126a59ec98861d8220b2de4d40b4d61eea3da8b8912e2f70cc2ecbeeeab0a9"
     },
     {
       "path": "tests/test_example_injection.py",
@@ -4123,7 +4621,9 @@
         "sha": "68678ead20c3690902d7e99bb2c5e4524bb64089"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "2cc247bc0732d86ebda279b0e6989a23e1f7ec65c64250b2549a6ced7ea6464d"
     },
     {
       "path": "tests/test_final_best_contract.py",
@@ -4141,7 +4641,9 @@
         "sha": "d4dd27443b31accb4ceaf56634e795ea5e21f27b"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "0b8c4896425b0357e7a3c023c74a1f23fdcb8258fdd09e42d5c8b5f60d9cbdcf"
     },
     {
       "path": "tests/test_host_dispatch_profiles.py",
@@ -4159,7 +4661,9 @@
         "sha": "f06fddc395f3c18145df227d53b4666f0f2228fe"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2373b9e7e30b04d37d1d234671ff7a032e06f30855ba5ab3f45e63d432f42f7c"
     },
     {
       "path": "tests/test_paired_selection.py",
@@ -4177,7 +4681,9 @@
         "sha": "38b847505c3fc8f60a18b8732e788d8edc7bdd38"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "d66b82aff2fb5e4dde4dbc6eb843b4e174efdae366fec79bc9500ef812aa491c"
     },
     {
       "path": "tests/test_r2r_core.py",
@@ -4195,7 +4701,9 @@
         "sha": "cca51ef1b1921ea5129313d0b5149d2091c51fb9"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1c25cd34e341c6adefb1fbb22bde9e8b5c3de94990fd30c32a00f5c053f7b422"
     },
     {
       "path": "tests/test_r2r_specialization.py",
@@ -4213,7 +4721,9 @@
         "sha": "d76e63f17b157e447ce7af8576807ddb93b22f3a"
       },
       "both_changed": true,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "088da0110e8ae2937ea55170988116f0fc63815298aec8372b021288f73f2a0a"
     },
     {
       "path": "tests/test_roles_repair.py",
@@ -4231,7 +4741,9 @@
         "sha": "708e1df9a58c830a1c9be42bfafd6bd8ebe8b2c3"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a33ee99b4d30db622f4ff560e5726ba4a41eb5fee107f3334c0933bd3e77c374"
     },
     {
       "path": "tests/test_rxr_contract.py",
@@ -4243,7 +4755,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "d7859bb3ae9d6b48d2007293950913aab067aa28c3f1d81055666c8a5b79543b"
     },
     {
       "path": "tests/test_rxr_profile.py",
@@ -4261,7 +4775,9 @@
         "sha": "b9a7f4f767031a0e3f2dba9c66a4162cdf5ce95c"
       },
       "both_changed": true,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "source_with_reviewed_profile_reconciliation",
+      "integrated_sha256": "522412e7da78b1d72cf5cfd9846ae6e8e8c8a72f05688ca0b05665831d849e98"
     },
     {
       "path": "tests/test_rxr_prompt_snapshots.py",
@@ -4279,7 +4795,9 @@
         "sha": "ca548998b364702920b451b3e1c3280562cd58fa"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "d153a7236381f8683330f135e87cd5b510156c598c02d4e51884d2eaa4286126"
     },
     {
       "path": "tests/test_rxr_refinement.py",
@@ -4291,7 +4809,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "63dfb8d63e59eb08803ccb845fd846570f456516f965e9a7027071296972affb"
     },
     {
       "path": "tests/test_rxr_role_hierarchy.py",
@@ -4303,7 +4823,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "c5325e701e95eb9d01971109ec300aadee2f42084336e3b450f54af8a8f3820d"
     },
     {
       "path": "tests/test_workflow_integration.py",
@@ -4321,7 +4843,9 @@
         "sha": "40d333d1e424ffe2fc4bea1c45d708d19b30fe5a"
       },
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "3eac3827d8987938a70425cc9cbaf9e965821079bf374341695917cba57c64a4"
     },
     {
       "path": "tools/build_rxr_reviewed.py",
@@ -4339,7 +4863,9 @@
         "sha": "762238b9b7fad54c3469031e031ea410a59c8d11"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "7d394ac4e3ff719a08c8f681e77eb0f3c67b6a1d8dddb183f5d56f2a32df927a"
     },
     {
       "path": "tools/check_rxr_refinement.py",
@@ -4351,7 +4877,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "7511da4b5392a1a7cbc815c7b8185b550e127e50811c02e5ef490e2a26ac123f"
     },
     {
       "path": "tools/r2r_authoring/__init__.py",
@@ -4363,7 +4891,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "b283843a4d43a2272fd8c11260af7b364dee2d9d787b4c8910331926cfa2763e"
     },
     {
       "path": "tools/r2r_authoring/audit.py",
@@ -4375,7 +4905,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7dd213eb0254a750b197a8ff6d1ffa5bc412c548c1585ea16ec023aa8a72f33d"
     },
     {
       "path": "tools/r2r_authoring/build.py",
@@ -4387,7 +4919,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "872d6f81f13509b9fb1e9d365610c868e204892096c6221cd77e9e11b2b6ba2f"
     },
     {
       "path": "tools/r2r_authoring/contrast.py",
@@ -4399,7 +4933,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "270b826d3f70fb20ced220e59164c89443ecb77463d63279d6ffd019288b0ae4"
     },
     {
       "path": "tools/r2r_authoring/decision_boundaries.py",
@@ -4411,7 +4947,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "a355791a853daf595b6cef96f2c13257d0cc9185a77e844d940c8594e1073a85"
     },
     {
       "path": "tools/r2r_authoring/detail.py",
@@ -4423,7 +4961,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "7dd55c317736b7fd4665c6ed39f351b609f15895dd3d850b18d3e7c4a411c4bf"
     },
     {
       "path": "tools/r2r_authoring/integrate.py",
@@ -4435,7 +4975,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5f0a5a2c4507781d44e33e9a37bb6052a9acb0b090878ad42e4f381a8f589181"
     },
     {
       "path": "tools/r2r_authoring/metadata.py",
@@ -4447,7 +4989,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "994348263f6faf45404c7bec3d9763240746e0e77c972f4815c7e21a2c58514d"
     },
     {
       "path": "tools/r2r_authoring/phase_lessons.py",
@@ -4459,7 +5003,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "edd579ebc2a7c04e34609b3e4c08f61fd46b56e02430197979c899ebb108e231"
     },
     {
       "path": "tools/r2r_authoring/positive.py",
@@ -4471,7 +5017,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "565c7e6006cfcb8a97baec9bbb1c95b29a884afa7d24b3fed996bb14c437f7f8"
     },
     {
       "path": "tools/r2r_authoring/projection_expectations.py",
@@ -4483,7 +5031,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "bdb63b51338c328ce59ae9d0a245525764b408fb6f1d268f6c662a5fa9db7cc6"
     },
     {
       "path": "tools/r2r_authoring/publish.py",
@@ -4495,7 +5045,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "90c5d1a7d4275df95cf7a1a6b0193d9ab61d85fa414e93f17a4205f9fcd21efc"
     },
     {
       "path": "tools/r2r_authoring/regression.py",
@@ -4507,7 +5059,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "1c6202ad21d2dae59809020b3eb0bbe84a733e768108fa7ca394a687c087c320"
     },
     {
       "path": "tools/r2r_authoring/review.py",
@@ -4519,7 +5073,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4cec009657b193731defface1ce093cc1bb4649461a444823c45d81e73c4687a"
     },
     {
       "path": "tools/r2r_authoring/rule_coverage.py",
@@ -4531,7 +5087,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "310761f5603291d03f7fdeb2f02e0fe8a7dd979e8281033a841342dbd6b93b0e"
     },
     {
       "path": "tools/r2r_authoring/runtime_layout.py",
@@ -4543,7 +5101,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "4e8b0e2288475c98cbf3727da47c0b912ec66433a8e9c6ee62e8823400961014"
     },
     {
       "path": "tools/r2r_authoring/semantic_refinements.py",
@@ -4555,7 +5115,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "cd4030c8826df367206cf3820306b965939d0453d7222f75b247e1a0654abd74"
     },
     {
       "path": "tools/r2r_authoring/smoke.py",
@@ -4567,7 +5129,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "2abbe41cd6ade58a47a55999b129220c3682e50cdd9dc54c1784ed5a007c66a2"
     },
     {
       "path": "tools/r2r_authoring/source_inventory.json",
@@ -4579,7 +5143,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "5713324fa66be87d391a545c5459514496b1a76579873fbc7a6a6ebe206cbf6a"
     },
     {
       "path": "tools/r2r_authoring/test_expectations.py",
@@ -4591,7 +5157,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "682473e018e01c96e12186e0bc326c2a4046929a36e703d9f40127c93fdcec6d"
     },
     {
       "path": "tools/r2r_authoring/verify.py",
@@ -4603,7 +5171,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "ff24c2ea601e55816c29c686112bbf486b81be9d23f295f28d859a98588dee14"
     },
     {
       "path": "tools/r2r_authoring/workflow_policy.py",
@@ -4615,7 +5185,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "f32a0c5b51f5cbd0b9684119ff07a5e8bb11eca3f9fea73cda4c7591a709c96e"
     },
     {
       "path": "tools/refresh_rxr_integrity.py",
@@ -4633,7 +5205,9 @@
         "sha": "8eb06914a6d057dc682e742fd31c4213ff6ef3df"
       },
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "417fa00ccfde94c21d252d2c9d5533d41cf3edcc5930a1b692ac4adf62fcaa88"
     },
     {
       "path": "tools/rxr_teaching_alignment.py",
@@ -4645,7 +5219,9 @@
       },
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "preserve_rxr"
+      "proposed_action": "preserve_rxr",
+      "action": "preserve_target_rxr",
+      "integrated_sha256": "ef1f764832685da797525cfbd7c0200f5181ba883246a7848a495030a5ee6472"
     },
     {
       "path": "tools/verify_package.py",
@@ -4657,7 +5233,9 @@
       "target": null,
       "merge_base": null,
       "both_changed": false,
-      "proposed_action": "import_source"
+      "proposed_action": "import_source",
+      "action": "import_source_exact",
+      "integrated_sha256": "dc58529d19680638b4c92375ba530540ff80501ec5144ac9dd15bb033c80b808"
     },
     {
       "path": "validation.json",
@@ -4672,7 +5250,9 @@
         "sha": "6ebf4c364ed708b64a1593418785bcf62a2ebb9f"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     },
     {
       "path": "verify_package.py",
@@ -4687,7 +5267,10 @@
         "sha": "0c0d0ca705670fb5116a955856b61fe03c81c0a4"
       },
       "both_changed": false,
-      "proposed_action": "remove_or_reconcile"
+      "proposed_action": "remove_or_reconcile",
+      "action": "adopt_source_removal",
+      "integrated_sha256": null
     }
-  ]
+  ],
+  "materialized": true
 }

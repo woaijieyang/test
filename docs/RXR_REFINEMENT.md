@@ -1,3 +1,5 @@
+> Historical scoped record. Current full-Dynamic policy, common/R2R integration and comparison baselines are specified in `PROFILE_INTEGRATION.md`. Earlier first-two/summary and frozen-old-R2R claims are not the current combined contract.
+
 # Scoped RxR role, teaching and execution refinement
 
 ## Purpose and boundaries

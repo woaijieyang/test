@@ -1,0 +1,182 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-REV-037",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "authored_synthetic",
+    "role": "teaching",
+    "record_id": "return-loop",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null,
+    "trajectory_id": null,
+    "source_key": "R2R|authored_synthetic|return-loop"
+  },
+  "provenance": {
+    "source_type": "authored_synthetic",
+    "is_official_dataset_record": false,
+    "derivation": "Hand-authored semantic contrast, not copied from an evaluation episode.",
+    "navigation_ground_truth": false
+  },
+  "teaching_notes": {
+    "case_rationale": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "case_specific_focus": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "decision_reason": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "reusable_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "transfer_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "review_principle": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+    "primary_skills": [
+      "return",
+      "scope",
+      "terminal"
+    ],
+    "counter_example_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+    "why_this_case_matters": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion."
+  },
+  "retrieval_tags": [
+    "return",
+    "scope",
+    "terminal"
+  ],
+  "pair_id": "R2R-GEN-037",
+  "review_input": {
+    "original_instruction": "Leave the doorway, walk around the table, then return to the same doorway and wait there.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Leave the doorway, walk around the table, then return to the same doorway and wait there."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "pass",
+    "dimensions": {
+      "source_fidelity": "pass",
+      "closure_handoff": "pass",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Leave the doorway, walk around the table",
+        "requirement": "Perform the departure and table circuit before returning.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Leave the doorway, walk around the table"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "then return to the same doorway and wait there.",
+        "requirement": "Revisit the original doorway after the excursion and wait.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "then return to the same doorway and wait there."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      }
+    ],
+    "findings": [],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start at the source episode position; no observed completion is assumed.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The original doorway revisited after the table circuit.",
+          "candidate_quotes": [
+            "return to the same doorway"
+          ]
+        },
+        "process": {
+          "text": "Execute only the ordered or conditional process explicitly stated in this source.",
+          "candidate_quotes": [
+            "Leave the doorway, walk around the table, then return to the same doorway and wait there."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "Wait at the original doorway only after the departure, table circuit and return.",
+          "candidate_quotes": [
+            "return to the same doorway and wait there"
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "Preserve the intervening travel and the identity of the revisited doorway.",
+          "candidate_quotes": [
+            "Leave the doorway",
+            "walk around the table",
+            "then return to the same doorway"
+          ]
+        },
+        "source_quotes": [
+          "Leave the doorway, walk around the table",
+          "then return to the same doorway and wait there."
+        ],
+        "carryover": [],
+        "status": "supported",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "prior_finding_reviews": []
+  }
+}

@@ -18,7 +18,7 @@
     "kind": "reviewer_only_adversarial_example",
     "source_status": "source_instruction_from_uploaded_val_seen",
     "candidate_corruption_is_authored_not_model_output": true,
-    "corruption_pattern": "ORIENTATION"
+    "corruption_pattern": "REFERENCE_FRAME_AND_TERMINAL_OMISSION"
   },
   "review_input": {
     "original_instruction": "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are facing the stairs and stop in the doorway just inside the hall. ",
@@ -33,94 +33,157 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "pass",
+      "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
       {
         "requirement_id": "SRC-01",
-        "source_quote": "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are facing the stairs and stop in the doorway just inside the hall.",
-        "requirement": "Preserve the directional/spatial relation and its reference frame: With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are facing the stairs and stop in the doorway just inside the hall.",
+        "source_quote": "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs",
+        "requirement": "Preserve the ordered approach, piano turn and stair-relative hallway selection.",
         "candidate_evidence": [
-          "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are ."
+          {
+            "subtask_index": 0,
+            "quote": "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs"
+          }
+        ],
+        "status": "covered"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "if you are facing the stairs",
+        "requirement": "Retain the hypothetical facing frame used to identify the hallway; do not add a turn command.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "if you are ."
+          }
         ],
         "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "stop in the doorway just inside the hall",
+        "requirement": "Retain the explicit doorway stop just inside the hall.",
+        "candidate_evidence": [],
+        "status": "omitted"
       }
     ],
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered snapshot is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "Preserved approach is covered; facing frame and final stop are defective.",
         "finding_indices": [
-          0
+          0,
+          1
         ]
       },
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The hypothetical facing frame is incomplete.",
         "finding_indices": [
           0
         ]
       },
       {
         "layer": "L3_stage_checks",
-        "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-        "finding_indices": []
+        "status": "issue",
+        "conclusion": "The required terminal stop and placement are absent.",
+        "finding_indices": [
+          1
+        ]
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent handoff exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The actual candidate preserves the requirements assessed at this layer.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Both missing requirements must be repaired.",
         "finding_indices": [
-          0
+          0,
+          1
         ]
       }
     ],
     "findings": [
       {
-        "source_quote": "facing the stairs and stop in the doorway just inside the hall",
-        "source_requirement_ids": [
-          "SRC-01"
-        ],
-        "candidate_evidence": [
-          "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are ."
-        ],
+        "code": "WRONG_REFERENCE_FRAME",
         "failed_layer": "L2_dependencies",
-        "c_check": "C4_CONTINUITY",
-        "evidence_level": "S1",
-        "problem": "The candidate drops a source-specified orientation or facing relation needed to interpret the endpoint.",
-        "execution_consequence": "The stated orientation/side relation is lost; the agent may approach the correct area from the wrong facing or side.",
+        "c_check": "C06",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
+        "source_quote": "if you are facing the stairs",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "if you are ."
+          }
+        ],
+        "evidence_level": "S2",
+        "problem": "The condition defining the reference frame is truncated.",
+        "execution_consequence": "The left-of-stairs hallway choice loses its specified facing frame.",
         "repair": {
-          "operation": "orientation",
-          "affected_stage_indices": [
+          "operation": "clarify_reference",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the orientation at the same stage and preserve whether it is initial, maintained, or terminal.",
+          "instruction": "Restore facing the stairs as a reference-frame condition, not an additional movement.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve every unaffected action, target identity, direction, ordinal, condition and terminal relation."
+          ]
+        }
+      },
+      {
+        "code": "OMISSION",
+        "failed_layer": "L3_stage_checks",
+        "c_check": "C11",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
+        "source_quote": "stop in the doorway just inside the hall",
+        "candidate_evidence": [],
+        "evidence_level": "S2",
+        "problem": "The candidate also deletes the explicit final stop and inside-doorway placement.",
+        "execution_consequence": "Correcting orientation alone would leave the required endpoint unexpressed.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0
+          ],
+          "instruction": "Restore the original terminal stop and just-inside relation.",
+          "protected_requirements": [
+            "Preserve every unaffected action, target identity, direction, ordinal, condition and terminal relation."
           ]
         }
       }
@@ -135,7 +198,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are .",
+          "text": "The candidate selects a hallway but omits the required inside-doorway terminal placement.",
           "candidate_quotes": [
             "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are ."
           ]
@@ -147,24 +210,21 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
+          "kind": "unspecified",
+          "text": "The source explicitly commands a doorway stop; the candidate has no corresponding ending.",
           "candidate_quotes": [],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "branch: if; spatial_frame: on your, right, left; manner_or_constraint: past, around",
+          "text": "The initial side and turn sequence remain; the hypothetical facing frame is incomplete.",
           "candidate_quotes": [
-            "if",
-            "on your",
-            "right",
-            "left",
-            "past",
-            "around"
+            "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are ."
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
         ],
         "source_quotes": [
           "With the couch on your right go forward past the table and loves eta and take a right to go around the piano and take a left into the hallway on the left of the stairs if you are facing the stairs and stop in the doorway just inside the hall."
@@ -172,12 +232,17 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "orientation",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a orientation corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
+    "case_specific_focus": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
+    "transfer_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent.",
+    "decision_reason": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
+    "reusable_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent."
   }
 }

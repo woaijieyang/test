@@ -24,7 +24,7 @@
   "decision": {
     "status": "ok",
     "mode": "split",
-    "rationale": "The source explicitly completes the first turn/room traversal/waypoint, then gives a distinct next objective. The cut exposes that local transition without inventing a stop."
+    "rationale": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP."
   },
   "output": {
     "status": "ok",
@@ -41,9 +41,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk past the water fountain and turn left.",
+          "text": "The post-fountain state after the specified left turn.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left."
+            "turn left."
           ]
         },
         "process": {
@@ -53,25 +53,25 @@
           ]
         },
         "ending": {
-          "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "kind": "bounded_action",
+          "text": "The post-fountain state after the specified left turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Walk past the water fountain and turn left."
+            "turn left."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; past",
+          "text": "Operative constraints: past the water fountain; turn left",
           "candidate_quotes": [
-            "left",
-            "past"
+            "past the water fountain",
+            "turn left"
           ]
         },
         "source_quotes": [
           "Walk past the water fountain and turn left."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target."
         ]
       },
       {
@@ -84,7 +84,7 @@
           ]
         },
         "target": {
-          "text": "Stop in the doorway.",
+          "text": "The doorway directly across from the stairs.",
           "candidate_quotes": [
             "Stop in the doorway."
           ]
@@ -97,17 +97,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The doorway directly across from the stairs. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Stop in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; left",
+          "text": "Operative constraints: After passing the water fountain and turning left; directly across from the stairs",
           "candidate_quotes": [
-            "After",
-            "left"
+            "After passing the water fountain and turning left",
+            "directly across from the stairs"
           ]
         },
         "source_quotes": [
@@ -131,11 +131,16 @@
           "text": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs",
           "candidate_quote": "After passing the water fountain and turning left, walk to the doorway directly across from the stairs"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "orientation",
+            "text": "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
-        "handoff_rationale": "The first stage ends at the source-supported event 'Walk past the water fountain and turn left.'; the next stage begins with 'After passing the water fountain and turning left, walk to the doorway directly across from the stairs'. No physical stop is added."
+        "handoff_rationale": "The fountain pass and left turn are complete; the doorway across from the stairs remains the stopping target. Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced."
       }
     ],
     "issues": []
@@ -143,11 +148,21 @@
   "teaching_notes": {
     "segmentation_pattern": "bounded_transition_then_distinct_target",
     "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Walk past the water fountain and turn left.'; stage 2 begins from 'After passing the water fountain and turning left, walk to the doorway directly across from…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
-    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: left; past Stage 2: After; left",
+    "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "Stage 1 ends with 'Walk past the water fountain and turn left.'; stage 2 begins from 'After passing the water fountain and turning left, walk to the doorway directly across from…'.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
-    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP."
+    "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
+    "case_rationale": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
+    "case_specific_focus": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
+    "primary_skills": [
+      "coupled",
+      "pass_by",
+      "terminal"
+    ],
+    "counter_example_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
+    "transfer_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
+    "decision_reason": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP."
   },
   "retrieval_tags": [
     "doorway_selection_and_crossing",

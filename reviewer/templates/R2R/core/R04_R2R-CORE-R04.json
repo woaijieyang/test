@@ -48,7 +48,10 @@
         "source_quote": "Move forward past the white coach",
         "requirement": "Preserve the forward movement and completed coach pass-by as the route reference.",
         "candidate_evidence": [
-          "Move forward past the white coach."
+          {
+            "subtask_index": 0,
+            "quote": "Move forward past the white coach."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +60,10 @@
         "source_quote": "then turn left",
         "requirement": "Preserve the left turn in sequence with the onward stair movement; do not isolate it as a no-target stage.",
         "candidate_evidence": [
-          "Turn left."
+          {
+            "subtask_index": 1,
+            "quote": "Turn left."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +72,10 @@
         "source_quote": "Continue up the stairs and stop.",
         "requirement": "Preserve the stair ascent and explicit final stop.",
         "candidate_evidence": [
-          "Continue up the stairs and stop."
+          {
+            "subtask_index": 2,
+            "quote": "Continue up the stairs and stop."
+          }
         ],
         "status": "covered"
       }
@@ -74,7 +83,7 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
+        "status": "not_applicable",
         "conclusion": "No rendered instruction is supplied; only candidate semantics are assessed.",
         "finding_indices": []
       },
@@ -123,7 +132,7 @@
       {
         "code": "OVERSEGMENTED",
         "failed_layer": "L5_grouping",
-        "c_check": "C12",
+        "c_check": "C10",
         "dimension": "segmentation_adequacy",
         "related_dimensions": [],
         "affected_subtask_indices": [
@@ -153,7 +162,7 @@
         ],
         "evidence_level": "S2",
         "problem": "The candidate isolates the preparatory left turn as a standalone stage with no independent destination or useful local objective. The source couples the turn to the subsequent stair ascent; the cut adds a task boundary without exposing a separately completed navigation goal.",
-        "execution_consequence": "The navigator receives an orientation-only micro-goal with no distinct destination, creating an unnecessary subtask transition before the stair approach and weakening focus on the coupled turn-and-climb leg.",
+        "execution_consequence": "This preparatory turn has no separate local target in this source and is better grouped with its coupled ascent; the turn itself is executable.",
         "repair": {
           "operation": "merge",
           "affected_subtask_indices": [
@@ -344,7 +353,11 @@
     "anti_pattern": "Do not call every two-stage route over-segmented. A completed independent objective with a supported next entry is a valid boundary.",
     "semantic_pattern": "revise_oversegmentation_orientation_only_stage",
     "decision_reason": "The candidate isolates a preparatory turn as a standalone stage without an independent target or meaningful local objective; the source couples it to the subsequent stair ascent.",
-    "transfer_rule": "REVISE for under-useful fragmentation only when a stage has no independent target/process and the source supports merging it with the next coupled maneuver. Preserve the route order and explicit terminal condition.",
-    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding."
+    "transfer_rule": "Assess the preparatory turn with the ascent it enables in this source; a turn with its own stated observation or placement can be independent.",
+    "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
+    "primary_skills": [
+      "coupled",
+      "grouping"
+    ]
   }
 }

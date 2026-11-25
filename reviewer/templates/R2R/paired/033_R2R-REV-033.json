@@ -38,7 +38,10 @@
         "source_quote": "Walk past fan.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk past fan.",
         "candidate_evidence": [
-          "Walk past fan."
+          {
+            "subtask_index": 0,
+            "quote": "Walk past fan."
+          }
         ],
         "status": "covered"
       },
@@ -47,7 +50,10 @@
         "source_quote": "Walk past baptismal font.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk past baptismal font.",
         "candidate_evidence": [
-          "Walk past baptismal font."
+          {
+            "subtask_index": 0,
+            "quote": "Walk past baptismal font."
+          }
         ],
         "status": "covered"
       },
@@ -56,7 +62,10 @@
         "source_quote": "Wait at in-ground baptismal pond.",
         "requirement": "Preserve the completion or stationary-position condition: Wait at in-ground baptismal pond.",
         "candidate_evidence": [
-          "Wait at in-ground baptismal pond."
+          {
+            "subtask_index": 0,
+            "quote": "Wait at in-ground baptismal pond."
+          }
         ],
         "status": "covered"
       }
@@ -64,38 +73,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -109,7 +125,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Wait at in-ground baptismal pond.",
+          "text": "The in-ground baptismal pond.",
           "candidate_quotes": [
             "Wait at in-ground baptismal pond."
           ]
@@ -122,7 +138,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The in-ground baptismal pond. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait at in-ground baptismal pond."
           ],
@@ -147,7 +163,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -158,7 +175,15 @@
       "intermediate_stop_or_wait",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk past fan.; Preserve the directional/spatial relation and its reference frame: Walk past baptismal font.; Preserve the completion or stationary-position condition: Wait at in-ground baptismal pond.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk past fan.; Preserve the directional/spatial relation and its reference frame: Walk past baptismal font.; Preserve the completion or stationary-position condition: Wait at in-ground baptismal pond."
+    "review_principle": "The fan and baptismal font are ordered pass-by landmarks; the in-ground pond is the waiting target.",
+    "case_specific_focus": "The fan and baptismal font are ordered pass-by landmarks; the in-ground pond is the waiting target.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "counter_example_boundary": "Reaching the font does not complete the later pond placement.",
+    "primary_skills": [
+      "pass_by",
+      "terminal"
+    ],
+    "decision_reason": "The fan and baptismal font are ordered pass-by landmarks; the in-ground pond is the waiting target."
   }
 }

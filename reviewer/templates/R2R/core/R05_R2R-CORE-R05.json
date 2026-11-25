@@ -29,8 +29,8 @@
     "candidate": {
       "status": "ok",
       "subtasks": [
-        "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
-        "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+        "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table.",
+        "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
       ]
     }
   },
@@ -47,7 +47,10 @@
         "source_quote": "Walk straight into the living room passing the chair and the couch",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk straight into the living room passing the chair and the couch",
         "candidate_evidence": [
-          "Walk straight into the living room, passing the chair and the couch."
+          {
+            "subtask_index": 0,
+            "quote": "Walk straight into the living room passing the chair and the couch"
+          }
         ],
         "status": "covered"
       },
@@ -56,7 +59,10 @@
         "source_quote": "taking a left behind the couch and past the dining room table",
         "requirement": "Preserve the directional/spatial relation and its reference frame: taking a left behind the couch and past the dining room table",
         "candidate_evidence": [
-          "Take a left behind the couch and continue past the dining room table."
+          {
+            "subtask_index": 0,
+            "quote": "taking a left behind the couch and past the dining room table"
+          }
         ],
         "status": "covered"
       },
@@ -65,7 +71,10 @@
         "source_quote": "up the stairs into the entry way",
         "requirement": "Preserve the spatial transition and region/threshold: up the stairs into the entry way",
         "candidate_evidence": [
-          "After passing the dining room table, go up the stairs into the entryway."
+          {
+            "subtask_index": 1,
+            "quote": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
+          }
         ],
         "status": "covered"
       },
@@ -74,7 +83,10 @@
         "source_quote": "stopping on the third tile from the left at the top step",
         "requirement": "Preserve the ordinal target and its counting origin: stopping on the third tile from the left at the top step",
         "candidate_evidence": [
-          "Stop on the third tile from the left at the top step."
+          {
+            "subtask_index": 1,
+            "quote": "stopping on the third tile from the left at the top step"
+          }
         ],
         "status": "covered"
       }
@@ -82,38 +94,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The first stage completes the living-room/couch route and dining-table pass-by; the next stage has a distinct stair-ascent and entryway objective. The exact third-tile position remains attached to the final stage."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -127,31 +146,30 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Take a left behind the couch and continue past the dining room table.",
+          "text": "The dining-table pass within the coupled living-room route.",
           "candidate_quotes": [
-            "Take a left behind the couch and continue past the dining room table."
+            "past the dining room table."
           ]
         },
         "process": {
-          "text": "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
-            "Walk straight into the living room, passing the chair and the couch. Take a left behind the couch and continue past the dining room table."
+            "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Take a left behind the couch and continue past the dining room table."
+            "past the dining room table."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left; past; behind",
+          "text": "Verify these source-specified relations in the candidate: taking a left behind the couch; past the dining room table",
           "candidate_quotes": [
-            "left",
-            "past",
-            "behind"
+            "taking a left behind the couch",
+            "past the dining room table"
           ]
         },
         "source_requirement_ids": [
@@ -163,45 +181,42 @@
           "taking a left behind the couch and past the dining room table"
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
         ]
       },
       {
         "subtask_index": 1,
         "status": "supported",
         "entry": {
-          "mode": "explicit_context",
-          "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
-          "candidate_quotes": [
-            "After passing the dining room table, go up the stairs into the entryway"
-          ]
+          "mode": "inherited_pose",
+          "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain.",
+          "candidate_quotes": []
         },
         "target": {
-          "text": "Stop on the third tile from the left at the top step.",
+          "text": "The third tile from the left at the top step.",
           "candidate_quotes": [
-            "Stop on the third tile from the left at the top step."
+            "stopping on the third tile from the left at the top step."
           ]
         },
         "process": {
-          "text": "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
-            "After passing the dining room table, go up the stairs into the entryway. Stop on the third tile from the left at the top step."
+            "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The third tile from the left at the top step. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Stop on the third tile from the left at the top step."
+            "stopping on the third tile from the left at the top step."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; third; left",
+          "text": "Verify these source-specified relations in the candidate: third tile from the left; at the top step",
           "candidate_quotes": [
-            "After",
-            "third",
-            "left"
+            "third tile from the left",
+            "at the top step"
           ]
         },
         "source_requirement_ids": [
@@ -221,23 +236,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Take a left behind the couch and continue past the dining room table.",
-          "candidate_quote": "Take a left behind the couch and continue past the dining room table."
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "past the dining room table."
         },
         "next_entry": {
-          "text": "After passing the dining room table, go up the stairs into the entryway",
-          "candidate_quote": "After passing the dining room table, go up the stairs into the entryway"
+          "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain.",
+          "candidate_quote": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Take a left behind the couch and continue past the dining room table.'; the next stage begins with 'After passing the dining room table, go up the stairs into the entryway'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -251,13 +272,19 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Verify the living-room entry, chair/couch pass-by, left turn behind the couch, dining-table pass-by, stair ascent, entryway entry, and exact third-tile position at the top step. The cut is justified by the completed dining-table pass-by followed by a distinct stair/entryway objective, not by the final tile detail alone.",
-    "case_specific_focus": "The boundary follows the completed dining-table pass-by. The next stage executes the distinct stair ascent and entryway transition; the third-tile position remains attached to that final stage as its terminal refinement.",
+    "review_principle": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "case_specific_focus": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
     "semantic_pattern": "hard_pass_terminal_position_and_ordinal_preservation",
-    "decision_reason": "The candidate preserves the route through the intermediate landmark and keeps the exact ordinal terminal tile position with the stair-top reference. The final position is a refinement of the same terminal objective, not a separate stage.",
-    "transfer_rule": "PASS when a detailed terminal position or ordinal refines the same final movement and remains attached to the stage that executes it.",
+    "decision_reason": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
+    "transfer_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
     "anti_pattern": "Do not detach endpoint details, reset the ordinal origin, or create a new stage solely because the final target is described more precisely.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
-    "reusable_rule": "A completed landmark pass-by can support a boundary when a distinct subsequent transition/target follows and the handoff retains the same route frame. Keep ordinal terminal placement attached to the stage that reaches it."
+    "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
+    "counter_example_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
+    "primary_skills": [
+      "scope",
+      "stair_target",
+      "ordinal"
+    ]
   }
 }

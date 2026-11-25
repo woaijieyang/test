@@ -3,7 +3,7 @@
   "files": [
     {
       "path": "generator/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "7ff52125c14d997898cbd897015eb3263b14cbbb"
+      "git_blob_sha1": "79e2ec8ad96759f31d55e11453e8b56def7bf6a1"
     },
     {
       "path": "generator/output.schema.json",
@@ -287,7 +287,7 @@
     },
     {
       "path": "host/rxr_teaching.py",
-      "git_blob_sha1": "f20d0872f531381df4c9197c7c90009a0595a0a4"
+      "git_blob_sha1": "a9fc00f9880dfe10dc889085276fa333853585c2"
     },
     {
       "path": "provenance/rxr_training_sources.json",
@@ -299,7 +299,7 @@
     },
     {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "e12eb87a64f18ab2fae25d118dfe7e4fe2f8d1d3"
+      "git_blob_sha1": "8bcb05589587f3f729638e1056e39042cfc030d7"
     },
     {
       "path": "reviewer/output.schema.json",

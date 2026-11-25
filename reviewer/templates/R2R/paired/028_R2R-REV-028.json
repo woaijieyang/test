@@ -38,7 +38,10 @@
         "source_quote": "pass bottom of stairs, go to center door on right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: pass bottom of stairs, go to center door on right.",
         "candidate_evidence": [
-          "pass bottom of stairs, go to center door on right."
+          {
+            "subtask_index": 0,
+            "quote": "pass bottom of stairs, go to center door on right."
+          }
         ],
         "status": "covered"
       }
@@ -46,38 +49,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
-        "conclusion": "Single-stage route; no inter-stage handoff exists."
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route is short or tightly coupled; its intermediate actions do not provide a separately supported local completion state."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -91,9 +101,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "pass bottom of stairs, go to center door on right.",
+          "text": "The center door on the right after the stair-bottom pass.",
           "candidate_quotes": [
-            "pass bottom of stairs, go to center door on right."
+            "go to center door on right."
           ]
         },
         "process": {
@@ -104,9 +114,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The center door on the right after the stair-bottom pass. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "pass bottom of stairs, go to center door on right."
+            "go to center door on right."
           ],
           "stop_scope": "none"
         },
@@ -125,7 +135,8 @@
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "single_coherent_stage",
@@ -137,7 +148,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: pass bottom of stairs, go to center door on right.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: pass bottom of stairs, go to center door on right."
+    "review_principle": "Pass the bottom of the stairs before selecting the center door on the right; preserve the compact whole maneuver.",
+    "case_specific_focus": "Pass the bottom of the stairs before selecting the center door on the right; preserve the compact whole maneuver.",
+    "transfer_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
+    "reusable_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
+    "counter_example_boundary": "A center-door descriptor is not interchangeable with an ordinal door count.",
+    "primary_skills": [
+      "coupled",
+      "target_identity",
+      "final_approach"
+    ],
+    "decision_reason": "Pass the bottom of the stairs before selecting the center door on the right; preserve the compact whole maneuver."
   }
 }

@@ -39,7 +39,10 @@
         "source_quote": "Walk forward past the console table on the right into the open area.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk forward past the console table on the right into the open area.",
         "candidate_evidence": [
-          "Walk forward past the console table on the right and enter the open area."
+          {
+            "subtask_index": 0,
+            "quote": "Walk forward past the console table on the right and enter the open area."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "In the open area take a  right into the living room.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: In the open area take a  right into the living room.",
         "candidate_evidence": [
-          "In the open area, take a right into the living room."
+          {
+            "subtask_index": 1,
+            "quote": "In the open area, take a right into the living room."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "In the living room take a right, and stop behind the couch near the right corner.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: In the living room take a right, and stop behind the couch near the right corner.",
         "candidate_evidence": [
-          "In the living room, take a right and stop behind the couch near the right corner."
+          {
+            "subtask_index": 1,
+            "quote": "In the living room, take a right and stop behind the couch near the right corner."
+          }
         ],
         "status": "covered"
       }
@@ -65,38 +74,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -110,9 +126,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk forward past the console table on the right and enter the open area.",
+          "text": "The open area after the console-table pass.",
           "candidate_quotes": [
-            "Walk forward past the console table on the right and enter the open area."
+            "enter the open area."
           ]
         },
         "process": {
@@ -123,17 +139,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The open area after the console-table pass. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Walk forward past the console table on the right and enter the open area."
+            "enter the open area."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "right; past",
+          "text": "Verify these source-specified relations in the candidate: console table on the right",
           "candidate_quotes": [
-            "right",
-            "past"
+            "console table on the right"
           ]
         },
         "source_requirement_ids": [
@@ -143,7 +158,7 @@
           "Walk forward past the console table on the right into the open area."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
         ]
       },
       {
@@ -157,9 +172,9 @@
           ]
         },
         "target": {
-          "text": "In the living room, take a right and stop behind the couch near the right corner.",
+          "text": "Behind the couch near the right corner in the living room.",
           "candidate_quotes": [
-            "In the living room, take a right and stop behind the couch near the right corner."
+            "stop behind the couch near the right corner."
           ]
         },
         "process": {
@@ -170,27 +185,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "Behind the couch near the right corner in the living room. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "In the living room, take a right and stop behind the couch near the right corner."
+            "stop behind the couch near the right corner."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "right; near; behind",
+          "text": "Verify these source-specified relations in the candidate: In the open area; In the living room; near the right corner",
           "candidate_quotes": [
-            "right",
-            "near",
-            "behind"
+            "In the open area",
+            "In the living room",
+            "near the right corner"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
         "source_quotes": [
-          "Walk forward past the console table on the right into the open area.",
           "In the open area take a  right into the living room.",
           "In the living room take a right, and stop behind the couch near the right corner."
         ],
@@ -203,22 +216,28 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk forward past the console table on the right and enter the open area.",
-          "candidate_quote": "Walk forward past the console table on the right and enter the open area."
+          "text": "The open area after the console-table pass. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the open area."
         },
         "next_entry": {
-          "text": "In the open area, take a right into the living room",
+          "text": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner.",
           "candidate_quote": "In the open area, take a right into the living room"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk forward past the console table on the right and enter the open area.'; the next stage begins with 'In the open area, take a right into the living room'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -231,7 +250,16 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk forward past the console table on the right…; Preserve the directional/spatial relation and its reference frame: In the open area take a right into the living room.; Preserve the directional/spatial relation and its reference frame: In the living room take a right, and stop behind…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk forward past the console table on the right…; Preserve the directional/spatial relation and its reference frame: In the open area take a right into the living room.; Preserve the directional/spatial relation and its reference frame: In the living room take a right, and stop behind…"
+    "review_principle": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
+    "case_specific_focus": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
+    "primary_skills": [
+      "entry",
+      "frame",
+      "terminal"
+    ],
+    "decision_reason": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop."
   }
 }

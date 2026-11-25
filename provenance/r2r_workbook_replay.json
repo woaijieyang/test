@@ -1,0 +1,116 @@
+{
+  "base_commit": "d4cce47841c817083217a7fffa3a1e6235316491",
+  "workbook": {
+    "workbook_sha256": "d1e500b609bb075c15752394c1ada80aa9a81b678165b50b0a7a600245b81163",
+    "sheet": "指令问题定位",
+    "count": 1068,
+    "fields_used": [
+      "任务键",
+      "原始 Instruction"
+    ],
+    "path_ids_available": false,
+    "caveat": "No trajectory identity inferred from episode IDs. Development replay, not held-out navigation evaluation."
+  },
+  "source_records_sha256": "45a57eed9bc07d737a12cd1d5af9e765982f993ca15bfc179847be7883d4ef7a",
+  "exact_source_identity_verified": true,
+  "queries": 1068,
+  "phase_requests_per_implementation": 4272,
+  "full_audit_sha256": {
+    "baseline": "3961b9cb10b7e6e5adfb063f1fb296f68c40b517e39fa8b5b81407e69f92a851",
+    "candidate": "5fc23ebf99901ce16f85d788e1b327da0e9bfe72efcabb6861a5051b9fe24007"
+  },
+  "baseline": {
+    "query_count": 1068,
+    "phase_count": 4272,
+    "deterministic_selection": true,
+    "selected_projection_verified": true,
+    "fixed_core_verified": true,
+    "generator_dynamic_counts": {
+      "4": 1047,
+      "5": 21
+    },
+    "reviewer_diagnostic_counts": {
+      "2": 739,
+      "3": 329
+    },
+    "generator_selection_reasons": {
+      "broad_calibration": 31,
+      "specific_complement": 4241,
+      "uncovered_facet_or_contrast": 3,
+      "uncovered_skill": 18
+    },
+    "unmatched_query_skills": {
+      "negation": 4
+    },
+    "core_text_overlap_queries": 0,
+    "core_family_overlap_queries": 0,
+    "semantic_model_evaluated": false,
+    "navigation_evaluated": false
+  },
+  "candidate": {
+    "query_count": 1068,
+    "phase_count": 4272,
+    "deterministic_selection": true,
+    "selected_projection_verified": true,
+    "fixed_core_verified": true,
+    "phase_teaching_verified": true,
+    "generator_dynamic_counts": {
+      "4": 1047,
+      "5": 21
+    },
+    "reviewer_diagnostic_counts": {
+      "2": 743,
+      "3": 325
+    },
+    "generator_selection_reasons": {
+      "broad_calibration": 35,
+      "specific_complement": 4237,
+      "uncovered_facet_or_contrast": 3,
+      "uncovered_skill": 18
+    },
+    "unmatched_query_skills": {
+      "branch": 7,
+      "negation": 4,
+      "return": 2
+    },
+    "core_text_overlap_queries": 0,
+    "core_family_overlap_queries": 0,
+    "semantic_model_evaluated": false,
+    "navigation_evaluated": false
+  },
+  "specialist_eligibility_violations": {
+    "generator": {
+      "baseline": 380,
+      "candidate": 0
+    },
+    "diagnostics": {
+      "baseline": 129,
+      "candidate": 0
+    }
+  },
+  "teaching_self_check_violations": {
+    "generator": {
+      "baseline": 9,
+      "candidate": 0
+    },
+    "diagnostics": {
+      "baseline": 1,
+      "candidate": 0
+    }
+  },
+  "changed_selections": {
+    "generator": 367,
+    "reviewer": 430
+  },
+  "all_candidate_projections_verified": true,
+  "counters_are_selection_slots_not_navigation_failures": true,
+  "path_family_isolation_certified": false,
+  "live_model_evaluated": false,
+  "navigation_evaluated": false,
+  "limits": [
+    "Eligibility is source-cue-based retrieval gating, not a semantic oracle.",
+    "Weak lexical branch/back-to cues without the specialist relation intentionally remain uncovered by that specialist.",
+    "No inferred trajectory IDs; zero exact-text core overlap does not certify full source-family isolation.",
+    "Prompt and schema replay does not measure SR/SPL/nDTW or live model rule-following."
+  ]
+}

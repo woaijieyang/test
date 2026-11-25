@@ -39,7 +39,10 @@
         "source_quote": "Walk through the bedroom.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk through the bedroom.",
         "candidate_evidence": [
-          "Walk through the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Walk through the bedroom."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Take a right turn and stop at the glass doors before the outside exit.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Take a right turn and stop at the glass doors before the outside exit.",
         "candidate_evidence": [
-          "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit."
+          {
+            "subtask_index": 1,
+            "quote": "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit."
+          }
         ],
         "status": "covered"
       }
@@ -56,38 +62,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The route has a completed turn or region/waypoint transition that supports a useful next local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -101,7 +114,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk through the bedroom.",
+          "text": "The completion of the source bedroom traversal.",
           "candidate_quotes": [
             "Walk through the bedroom."
           ]
@@ -114,16 +127,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The completion of the source bedroom traversal. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk through the bedroom."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "through",
+          "text": "Verify these source-specified relations in the candidate: through the bedroom",
           "candidate_quotes": [
-            "through"
+            "through the bedroom"
           ]
         },
         "source_requirement_ids": [
@@ -133,7 +146,7 @@
           "Walk through the bedroom."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The source bedroom traversal precedes the right turn and glass-door placement; no outside crossing is established."
         ]
       },
       {
@@ -147,9 +160,9 @@
           ]
         },
         "target": {
-          "text": "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit.",
+          "text": "The glass doors before the outside exit.",
           "candidate_quotes": [
-            "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit."
+            "stop at the glass doors before the outside exit."
           ]
         },
         "process": {
@@ -160,27 +173,23 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The glass doors before the outside exit. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit."
+            "stop at the glass doors before the outside exit."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; before; right; through",
+          "text": "Verify these source-specified relations in the candidate: After walking through the bedroom; before the outside exit",
           "candidate_quotes": [
-            "After",
-            "before",
-            "right",
-            "through"
+            "After walking through the bedroom",
+            "before the outside exit"
           ]
         },
         "source_requirement_ids": [
-          "SRC-01",
           "SRC-02"
         ],
         "source_quotes": [
-          "Walk through the bedroom.",
           "Take a right turn and stop at the glass doors before the outside exit."
         ],
         "carryover": []
@@ -192,21 +201,27 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk through the bedroom.",
+          "text": "The completion of the source bedroom traversal. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Walk through the bedroom."
         },
         "next_entry": {
-          "text": "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit",
+          "text": "The source bedroom traversal precedes the right turn and glass-door placement; no outside crossing is established.",
           "candidate_quote": "After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The source bedroom traversal precedes the right turn and glass-door placement; no outside crossing is established."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The first stage ends at the source-supported event 'Walk through the bedroom.'; the next stage begins with 'After walking through the bedroom, take a right turn and stop at the glass doors before the outside exit'. No physical stop is added."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The source bedroom traversal precedes the right turn and glass-door placement; no outside crossing is established."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "bounded_transition_then_distinct_target",
@@ -220,7 +235,16 @@
       "orientation_or_reference_frame",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Walk through the bedroom.; Preserve the directional/spatial relation and its reference frame: Take a right turn and stop at the glass doors…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Walk through the bedroom.; Preserve the directional/spatial relation and its reference frame: Take a right turn and stop at the glass doors…"
+    "review_principle": "The completed bedroom traversal is followed by a right turn and glass-door stop before the outside exit. A faithful combined maneuver is also possible; preserve the before-exit limit in either grouping.",
+    "case_specific_focus": "The completed bedroom traversal is followed by a right turn and glass-door stop before the outside exit. A faithful combined maneuver is also possible; preserve the before-exit limit in either grouping.",
+    "transfer_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
+    "reusable_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
+    "counter_example_boundary": "A distinct visit completed inside the bedroom would change the grouping test.",
+    "primary_skills": [
+      "coupled",
+      "transit",
+      "terminal"
+    ],
+    "decision_reason": "The completed bedroom traversal is followed by a right turn and glass-door stop before the outside exit. A faithful combined maneuver is also possible; preserve the before-exit limit in either grouping."
   }
 }

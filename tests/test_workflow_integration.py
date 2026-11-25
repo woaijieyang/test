@@ -36,7 +36,7 @@ class Integration(unittest.TestCase):
                 if profile == "rxr-en-us":
                     self.assertTrue((2 <= len(ids) <= 4) if role == "generator" else (2 <= len(ids) <= 6))
                 else:
-                    self.assertTrue((6 <= len(ids) <= 8) if role == "generator" else (8 <= len(ids) <= 12))
+                    self.assertTrue((4 <= len(ids) <= 6) if role == "generator" else (6 <= len(ids) <= 9))
                 self.assertEqual(ids,select_examples(role, profile, text))
                 for phase in phases:
                     prompt,spec=compile_prompt(role,phase,profile=profile,selected_ids=ids)

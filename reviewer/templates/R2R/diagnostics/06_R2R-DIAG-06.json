@@ -42,7 +42,10 @@
         "source_quote": "Go straight towards the kitchen and turn right after the kitchen table.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Go straight towards the kitchen and turn right after the kitchen table.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          {
+            "subtask_index": 0,
+            "quote": "turn right  the kitchen table"
+          }
         ],
         "status": "altered_or_missing"
       },
@@ -51,16 +54,22 @@
         "source_quote": "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          {
+            "subtask_index": 0,
+            "quote": "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          }
         ],
-        "status": "altered_or_missing"
+        "status": "covered"
       },
       {
         "requirement_id": "SRC-03",
         "source_quote": "Keep going straight beyond the chair on your right.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Keep going straight beyond the chair on your right.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          {
+            "subtask_index": 0,
+            "quote": "Keep going straight beyond the chair on your right."
+          }
         ],
         "status": "covered"
       },
@@ -69,7 +78,10 @@
         "source_quote": "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          {
+            "subtask_index": 0,
+            "quote": "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom."
+          }
         ],
         "status": "covered"
       }
@@ -77,14 +89,14 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered instruction is supplied; review the candidate text itself, but do not infer a renderer mismatch.",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
         "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "issue",
-        "conclusion": "Only the specific source requirement changed by the corruption is marked altered_or_missing; unaffected requirements remain covered.",
+        "conclusion": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'.",
         "finding_indices": [
           0
         ]
@@ -92,7 +104,7 @@
       {
         "layer": "L2_dependencies",
         "status": "issue",
-        "conclusion": "Check only the affected dependency/count/frame/temporal relation; do not propagate unrelated issues.",
+        "conclusion": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'.",
         "finding_indices": [
           0
         ]
@@ -100,25 +112,25 @@
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
-        "status": "not_assessable",
-        "conclusion": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
         "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The diagnostic is testing a source-requirement corruption, not a segmentation-boundary defect.",
+        "conclusion": "The requirements checked at this layer are preserved.",
         "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "issue",
-        "conclusion": "The route readback identifies the localized changed requirement; unaffected actions remain covered.",
+        "conclusion": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
         "finding_indices": [
           0
         ]
@@ -126,28 +138,35 @@
     ],
     "findings": [
       {
-        "source_quote": "after the kitchen table.  Walk towards the end table and turn left to walk behind the",
+        "code": "DETACHED_CONDITION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C04",
+        "dimension": "source_fidelity",
+        "related_dimensions": [],
+        "affected_subtask_indices": [
+          0
+        ],
         "source_requirement_ids": [
           "SRC-01"
         ],
+        "source_quote": "turn right after the kitchen table",
         "candidate_evidence": [
-          "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left."
+          {
+            "subtask_index": 0,
+            "quote": "turn right  the kitchen table"
+          }
         ],
-        "failed_layer": "L2_dependencies",
-        "c_check": "C3_ORDER",
         "evidence_level": "S1",
-        "problem": "The candidate removes a temporal trigger or ordering relation, changing when the associated action should occur.",
-        "execution_consequence": "The temporal trigger/order is removed; the agent may execute the action too early or detach it from the condition that governs it.",
+        "problem": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'.",
+        "execution_consequence": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'.",
         "repair": {
-          "operation": "temporal",
-          "affected_stage_indices": [
+          "operation": "restore",
+          "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the temporal connective and keep its condition attached to the action it governs.",
+          "instruction": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
           "protected_requirements": [
-            "Preserve all other source-supported actions and landmarks.",
-            "Do not add unsupported stops or route segments.",
-            "Keep original conditions, directions, counts, and spatial relations."
+            "Preserve the remaining source actions, target identities, counting origins, reference frames and final placement."
           ]
         }
       }
@@ -162,9 +181,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
+          "text": "The actual candidate endpoint: walk into the bedroom.",
           "candidate_quotes": [
-            "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom."
+            "walk into the bedroom."
           ]
         },
         "process": {
@@ -174,9 +193,11 @@
           ]
         },
         "ending": {
-          "kind": "terminal_goal_directive",
-          "text": "The source gives a final goal-directed endpoint but does not specify an additional stop or wait action.",
-          "candidate_quotes": [],
+          "kind": "explicit_event",
+          "text": "The candidate explicitly expresses this ending; the Finding separately checks its fidelity to the source.",
+          "candidate_quotes": [
+            "walk into the bedroom."
+          ],
           "stop_scope": "none"
         },
         "conditions": {
@@ -191,23 +212,35 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
+          "SRC-04"
         ],
         "source_quotes": [
-          "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom.",
-          "Keep going straight beyond the chair on your right.",
+          "Go straight towards the kitchen and turn right after the kitchen table.",
           "Walk towards the end table and turn left to walk behind the couch with the kitchen island on your left.",
-          "Go straight towards the kitchen and turn right after the kitchen table."
+          "Keep going straight beyond the chair on your right.",
+          "Facing the pictures on the wall go right, down the hall to the door at the end and walk into the bedroom."
         ],
         "carryover": []
       }
     ],
-    "handoffs": []
+    "handoffs": [],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "temporal",
     "reuse_rule": "Cite exact source and candidate evidence, state execution consequence, and prescribe one local repair.",
     "anti_pattern": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-    "review_principle": "This is a temporal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested."
+    "review_principle": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
+    "case_specific_focus": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
+    "transfer_rule": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
+    "counter_example_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
+    "primary_skills": [
+      "scope"
+    ],
+    "decision_reason": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
+    "reusable_rule": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry."
   }
 }

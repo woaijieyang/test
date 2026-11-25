@@ -39,7 +39,10 @@
         "source_quote": "Turn around and walk towards the table with the plant on it.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around and walk towards the table with the plant on it.",
         "candidate_evidence": [
-          "Turn around and walk towards the table with the plant on it."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around and walk towards the table with the plant on it."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,14 @@
         "source_quote": "Turn to the right and walk into the living room and stand just behind the couch and wait.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn to the right and walk into the living room and stand just behind the couch and wait.",
         "candidate_evidence": [
-          "In the living room, stand just behind the couch and wait."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around and walk towards the table with the plant on it. Turn right and enter the living room."
+          },
+          {
+            "subtask_index": 1,
+            "quote": "In the living room, stand just behind the couch and wait."
+          }
         ],
         "status": "covered"
       }
@@ -56,38 +66,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -101,9 +118,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn right and enter the living room.",
+          "text": "The living-room interior.",
           "candidate_quotes": [
-            "Turn right and enter the living room."
+            "enter the living room."
           ]
         },
         "process": {
@@ -114,9 +131,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Turn right and enter the living room."
+            "enter the living room."
           ],
           "stop_scope": "none"
         },
@@ -127,13 +144,15 @@
           ]
         },
         "source_requirement_ids": [
-          "SRC-01"
+          "SRC-01",
+          "SRC-02"
         ],
         "source_quotes": [
-          "Turn around and walk towards the table with the plant on it."
+          "Turn around and walk towards the table with the plant on it.",
+          "Turn to the right and walk into the living room and stand just behind the couch and wait."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
         ]
       },
       {
@@ -147,9 +166,9 @@
           ]
         },
         "target": {
-          "text": "In the living room, stand just behind the couch and wait.",
+          "text": "The position just behind the couch.",
           "candidate_quotes": [
-            "In the living room, stand just behind the couch and wait."
+            "stand just behind the couch and wait."
           ]
         },
         "process": {
@@ -160,9 +179,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The position just behind the couch. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "In the living room, stand just behind the couch and wait."
+            "stand just behind the couch and wait."
           ],
           "stop_scope": "terminal"
         },
@@ -187,21 +206,27 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn right and enter the living room.",
-          "candidate_quote": "Turn right and enter the living room."
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the living room."
         },
         "next_entry": {
-          "text": "In the living room, stand just behind the couch and wait",
+          "text": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position.",
           "candidate_quote": "In the living room, stand just behind the couch and wait"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn right and enter the living room.'; the next stage begins with 'In the living room, stand just behind the couch and wait'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -214,7 +239,16 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Turn around and walk towards the table with the…; Preserve the directional/spatial relation and its reference frame: Turn to the right and walk into the living room and…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Turn around and walk towards the table with the…; Preserve the directional/spatial relation and its reference frame: Turn to the right and walk into the living room and…"
+    "review_principle": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
+    "case_specific_focus": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
+    "primary_skills": [
+      "entry",
+      "terminal",
+      "frame"
+    ],
+    "decision_reason": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference."
   }
 }

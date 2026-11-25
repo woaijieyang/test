@@ -39,7 +39,10 @@
         "source_quote": "Exit the bathroom.",
         "requirement": "Preserve the spatial transition and region/threshold: Exit the bathroom.",
         "candidate_evidence": [
-          "Exit the bathroom."
+          {
+            "subtask_index": 0,
+            "quote": "Exit the bathroom."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Walk straight through the bedroom toward the doorway.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk straight through the bedroom toward the doorway.",
         "candidate_evidence": [
-          "Walk straight through the bedroom towards the doorway and exit the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Walk straight through the bedroom towards the doorway and exit the bedroom."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Exit the bedroom.",
         "requirement": "Preserve the spatial transition and region/threshold: Exit the bedroom.",
         "candidate_evidence": [
-          "Walk straight through the bedroom towards the doorway and exit the bedroom."
+          {
+            "subtask_index": 0,
+            "quote": "Walk straight through the bedroom towards the doorway and exit the bedroom."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +75,10 @@
         "source_quote": "Turn right into the first door on your right, then turn right again and stop.",
         "requirement": "Preserve the ordinal target and its counting origin: Turn right into the first door on your right, then turn right again and stop.",
         "candidate_evidence": [
-          "After exiting the bedroom, turn right into the first door on your right."
+          {
+            "subtask_index": 1,
+            "quote": "After exiting the bedroom, turn right into the first door on your right."
+          }
         ],
         "status": "covered"
       }
@@ -74,38 +86,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -119,9 +138,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk straight through the bedroom towards the doorway and exit the bedroom.",
+          "text": "The bedroom exit establishing the next selection region.",
           "candidate_quotes": [
-            "Walk straight through the bedroom towards the doorway and exit the bedroom."
+            "exit the bedroom."
           ]
         },
         "process": {
@@ -132,16 +151,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The bedroom exit establishing the next selection region. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Walk straight through the bedroom towards the doorway and exit the bedroom."
+            "exit the bedroom."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "through",
+          "text": "Verify these source-specified relations in the candidate: exit the bedroom",
           "candidate_quotes": [
-            "through"
+            "exit the bedroom"
           ]
         },
         "source_requirement_ids": [
@@ -155,7 +174,7 @@
           "Exit the bedroom."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain."
         ]
       },
       {
@@ -169,7 +188,7 @@
           ]
         },
         "target": {
-          "text": "Turn right again and stop.",
+          "text": "The post-entry right-turn stopping position.",
           "candidate_quotes": [
             "Turn right again and stop."
           ]
@@ -182,18 +201,18 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The post-entry right-turn stopping position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Turn right again and stop."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "After; first; right",
+          "text": "Verify these source-specified relations in the candidate: After exiting the bedroom; first door on your right; Turn right again",
           "candidate_quotes": [
-            "After",
-            "first",
-            "right"
+            "After exiting the bedroom",
+            "first door on your right",
+            "Turn right again"
           ]
         },
         "source_requirement_ids": [
@@ -211,23 +230,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk straight through the bedroom towards the doorway and exit the bedroom.",
-          "candidate_quote": "Walk straight through the bedroom towards the doorway and exit the bedroom."
+          "text": "The bedroom exit establishing the next selection region. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "exit the bedroom."
         },
         "next_entry": {
-          "text": "After exiting the bedroom, turn right into the first door on your right",
+          "text": "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain.",
           "candidate_quote": "After exiting the bedroom, turn right into the first door on your right"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "count_origin",
+            "text": "The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk straight through the bedroom towards the doorway and exit the bedroom.'; the next stage begins with 'After exiting the bedroom, turn right into the first door on your right'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The bedroom exit establishes the region and count origin for the first door on the right; entering that door and turning right again remain."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -242,7 +267,45 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the spatial transition and region/threshold: Exit the bathroom.; Preserve the directional/spatial relation and its reference frame: Walk straight through the bedroom toward the doorway.; Preserve the spatial transition and region/threshold: Exit the bedroom.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the spatial transition and region/threshold: Exit the bathroom.; Preserve the directional/spatial relation and its reference frame: Walk straight through the bedroom toward the doorway.; Preserve the spatial transition and region/threshold: Exit the bedroom."
+    "review_principle": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
+    "case_specific_focus": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
+    "transfer_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
+    "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
+    "counter_example_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
+    "primary_skills": [
+      "ordinal",
+      "entry",
+      "frame"
+    ],
+    "decision_reason": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Exit the bedroom.",
+        "first door on your right",
+        "turn right again"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "exit the bedroom."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "After exiting the bedroom"
+        },
+        {
+          "subtask_index": 1,
+          "quote": "first door on your right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The first right-hand door is selected after the bedroom exit; the later right is a distinct turn. Preserve that count origin, either by clear inheritance or a minimal explicit exit anchor.",
+      "counter_boundary": "Do not erase a navigation-critical origin in pursuit of shorter wording. The explicit exit anchor is legal; it is not universally mandatory when the same origin is already unambiguous.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

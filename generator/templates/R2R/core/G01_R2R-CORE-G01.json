@@ -27,7 +27,7 @@
   "decision": {
     "status": "ok",
     "mode": "keep",
-    "rationale": "Keep the complete route as one executable stage because the source does not provide a useful intermediate completion point without detaching a coupled maneuver or inventing a state."
+    "rationale": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop."
   },
   "output": {
     "status": "ok",
@@ -43,7 +43,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Continue up the stairs and stop.",
+          "text": "The stair-ascent stopping state.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ]
@@ -56,7 +56,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The stair-ascent stopping state. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ],
@@ -83,13 +83,40 @@
     "segmentation_pattern": "single_coherent_stage",
     "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Move forward past the white coach and then turn left. Continue up the stairs and stop.). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
     "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
-    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
     "anti_pattern": "Do not split at every turn or movement verb. If the turn itself completes a distinct source-supported objective and a later independent target benefits from local focus, reassess the boundary.",
     "semantic_pattern": "coupled_turn_and_continuation",
-    "decision_reason": "The turn changes orientation for the same continuous route leg; no independently completed intermediate objective is established before the following movement.",
-    "transfer_rule": "Keep preparatory turns with the movement they enable when the source supplies no separate completed target or useful handoff. Count objectives and supported outcomes, not verbs."
+    "decision_reason": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
+    "case_rationale": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "case_specific_focus": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "primary_skills": [
+      "coupled",
+      "direction",
+      "terminal"
+    ],
+    "counter_example_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B4"
+      ],
+      "source_quotes": [
+        "then turn left.",
+        "Continue up the stairs and stop."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "then turn left. Continue up the stairs and stop."
+        }
+      ],
+      "operation": "Here the left turn prepares the ascent. Preserve the coherent source maneuver without inventing a separate turn-completion goal or cosmetically rewriting the source.",
+      "counter_boundary": "A different source explicitly asking to turn and observe or wait may give the turn an independent objective. Do not transfer this KEEP decision by route length alone.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "stairs_or_level_change",

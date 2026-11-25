@@ -155,19 +155,18 @@
           }
         ],
         "evidence_level": "S1",
-        "problem": "The candidate promotes an expected orientation observation (the chandelier/table seen after turning) into the terminal navigation target, while omitting the source-selected far-wall doorway approach, crossing, hallway traversal, and room entry.",
+        "problem": "The chandelier observation becomes an unsupported stopping target, while the far-wall door selection, crossing, hallway route and destination room are omitted.",
         "execution_consequence": "The navigator may stop at the initial observation point and never reach or enter the source-required destination room.",
         "repair": {
           "operation": "restore",
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Retain the chandelier/table only as the expected orientation cue, then restore the approach to the open door on the far wall, the completed doorway crossing, hallway traversal, and entry into the room with the blue patterned carpet. Do not add an unsupported stop at the chandelier.",
+          "instruction": "Preserve the initial left turn and orientation cue; restore the far-wall open-door selection and crossing, hallway traversal, and room with blue patterned carpet and a table in the middle. Keep the route endpoint at the requested room, without a chandelier STOP.",
           "protected_requirements": [
-            "Preserve the initial left turn.",
-            "Do not promote the chandelier or green table into the destination.",
-            "Preserve the far-wall doorway identity and crossing.",
-            "Preserve hallway traversal and destination-room entry."
+            "Preserve the initial left turn and expected orientation.",
+            "Preserve the far-wall door identity and its actual crossing.",
+            "Preserve the blue patterned carpet and table in the destination room."
           ]
         }
       }
@@ -193,11 +192,11 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The candidate adds an unsupported stop at the observation point; the source does not instruct stopping there.",
+          "text": "The candidate actually adds a chandelier-facing stop; the Finding identifies why this endpoint is unsupported.",
           "candidate_quotes": [
-            "stop facing the chandelier"
+            "stop facing the chandelier above the green table"
           ],
-          "stop_scope": "none"
+          "stop_scope": "terminal"
         },
         "conditions": {
           "text": null,
@@ -224,12 +223,18 @@
   "teaching_notes": {
     "review_pattern": "target_landmark_expected_observation_confusion",
     "semantic_pattern": "expected_observation_promoted_to_navigation_target",
-    "decision_reason": "The chandelier is an expected orientation observation after turning; the far-wall doorway is the selected target and the hallway/room entry are required subsequent events. The candidate stops at the observation and omits the route.",
+    "decision_reason": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry.",
     "transfer_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately.",
     "anti_pattern": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case, not a prior or vote. Independently inventory the current source requirements and candidate evidence before deciding.",
     "reviewer_rule": "Read source and candidate independently, map each requirement to exact candidate evidence, then consult this case only if the same target/landmark/observation relation is present.",
-    "review_principle": "Independently identify the commanded destination from the source action. The chandelier/table is an expected observation after turning; the far-wall doorway and the room beyond it remain the route target and required transition.",
-    "case_specific_focus": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry."
+    "review_principle": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry.",
+    "case_specific_focus": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry.",
+    "primary_skills": [
+      "observation",
+      "entry",
+      "terminal"
+    ],
+    "reusable_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately."
   }
 }

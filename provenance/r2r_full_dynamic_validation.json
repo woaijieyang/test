@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-26",
+  "runtime_commit": "724c47e65fdd13e5d537571c318c9ed99c314520",
+  "runtime_tests_with_companion_fixture": 395,
+  "compiled_phase_prompts_checked": 40,
+  "normal_records": 10,
+  "normal_real_model_calls": 20,
+  "authored_diagnostic_real_model_calls": 6,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "full_selected_runtime_output_equality": true,
+  "source_and_snapshot_replay_verified": true,
+  "navigation_evaluated": false,
+  "universal_semantic_correctness_certified": false,
+  "diagnostic_boundary": "Authored starting candidate or prior advice; no fake model G0/R0 receipt. Diagnostic harness uses production compiler, selector, protocol and renderer."
+}

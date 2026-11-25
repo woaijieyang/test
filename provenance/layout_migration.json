@@ -1,0 +1,41 @@
+{
+  "moves": {
+    "CODEX_START_HERE.md": "docs/CODEX_START_HERE.md",
+    "IMPLEMENTATION.md": "docs/IMPLEMENTATION.md",
+    "WORKFLOW.md": "docs/WORKFLOW.md",
+    "CHANGELOG.md": "docs/CHANGELOG.md",
+    "verify_package.py": "tools/verify_package.py",
+    "validation.json": "provenance/package_validation.json",
+    "shared/dataset_rules/r2r_teaching_index.json": "host/r2r/teaching_index.json",
+    "r2r/relations.py": "host/r2r/relations.py",
+    "r2r/selection.py": "host/r2r/selection.py",
+    "r2r/teaching.py": "host/r2r/teaching.py",
+    "r2r/teaching_index.json": "host/r2r/teaching_index.json",
+    "r2r/test_hardening.py": "tests/r2r/test_hardening.py",
+    "r2r/test_quality.py": "tests/r2r/test_quality.py",
+    "r2r/test_refinement.py": "tests/r2r/test_refinement.py",
+    "r2r_authoring/audit.py": "tools/r2r_authoring/audit.py",
+    "r2r_authoring/build.py": "tools/r2r_authoring/build.py",
+    "r2r_authoring/contrast.py": "tools/r2r_authoring/contrast.py",
+    "r2r_authoring/detail.py": "tools/r2r_authoring/detail.py",
+    "r2r_authoring/integrate.py": "tools/r2r_authoring/integrate.py",
+    "r2r_authoring/metadata.py": "tools/r2r_authoring/metadata.py",
+    "r2r_authoring/positive.py": "tools/r2r_authoring/positive.py",
+    "r2r_authoring/projection_expectations.py": "tools/r2r_authoring/projection_expectations.py",
+    "r2r_authoring/publish.py": "tools/r2r_authoring/publish.py",
+    "r2r_authoring/regression.py": "tools/r2r_authoring/regression.py",
+    "r2r_authoring/review.py": "tools/r2r_authoring/review.py",
+    "r2r_authoring/runtime_layout.py": "tools/r2r_authoring/runtime_layout.py",
+    "r2r_authoring/semantic_refinements.py": "tools/r2r_authoring/semantic_refinements.py",
+    "r2r_authoring/smoke.py": "tools/r2r_authoring/smoke.py",
+    "r2r_authoring/source_inventory.json": "tools/r2r_authoring/source_inventory.json",
+    "r2r_authoring/test_expectations.py": "tools/r2r_authoring/test_expectations.py",
+    "r2r_authoring/verify.py": "tools/r2r_authoring/verify.py"
+  },
+  "root_exceptions": {
+    "FILE_HASHES.json": "Repository-wide release integrity contract; excludes only itself and interpreter caches. Owned by tools/verify_package.py.",
+    "VERSION": "Existing compatibility identity; not a development version and not injected into model instructions.",
+    "README.md": "Project entry point.",
+    "requirements.txt": "Environment dependency contract."
+  }
+}

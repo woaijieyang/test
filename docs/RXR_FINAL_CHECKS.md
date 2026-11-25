@@ -1,3 +1,5 @@
+> Historical scoped record. Current full-Dynamic policy, common/R2R integration and comparison baselines are specified in `PROFILE_INTEGRATION.md`. Earlier first-two/summary and frozen-old-R2R claims are not the current combined contract.
+
 # RxR calibration release checks
 
 > Scope note: this document records the preceding conversion/calibration. The subsequent source-preserving evidence repairs and first-two-detailed Dynamic policy are specified in `docs/RXR_REFINEMENT.md`; do not treat the earlier projection/compiler freeze as the current refinement scope.

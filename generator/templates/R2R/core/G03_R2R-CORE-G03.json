@@ -27,7 +27,7 @@
   "decision": {
     "status": "ok",
     "mode": "keep",
-    "rationale": "Keep the complete route as one executable stage because the source does not provide a useful intermediate completion point without detaching a coupled maneuver or inventing a state."
+    "rationale": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent."
   },
   "output": {
     "status": "ok",
@@ -43,9 +43,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go up the three steps and when you get to the top, wait.",
+          "text": "The top of the prescribed three-step ascent.",
           "candidate_quotes": [
-            "Go up the three steps and when you get to the top, wait."
+            "when you get to the top, wait."
           ]
         },
         "process": {
@@ -56,18 +56,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Perform the explicitly requested final placement or stop/wait in this stage.",
+          "text": "The top of the prescribed three-step ascent. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
-            "Go up the three steps and when you get to the top, wait."
+            "when you get to the top, wait."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "when; left; between",
+          "text": "Operative constraints: three steps; when you get to the top",
           "candidate_quotes": [
-            "when",
-            "left",
-            "between"
+            "three steps",
+            "when you get to the top"
           ]
         },
         "source_quotes": [
@@ -84,14 +83,40 @@
   "teaching_notes": {
     "segmentation_pattern": "single_coherent_stage",
     "why_this_case_matters": "KEEP example: the instruction forms one coherent local route objective (Walk between the couch and the window. Turn left and walk towards the stairway. Go up the…). The apparent action clauses do not establish a separate completed target with a useful, source-supported handoff.",
-    "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
-    "five_element_focus": "Check entry, target, complete ordered process, supported ending, and scoped conditions in the actual English text. Audit fields cannot replace missing words.",
+    "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
+    "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
     "handoff_focus": "A boundary is not a physical stop. Verify the previous exit and next entry refer to the same established region/object/frame.",
     "retrieval_rule": "Retrieve for short or tightly coupled routes where splitting at a turn, pass-by cue or descriptive observation would create an orientation-only stage without an independent navigation target.",
     "anti_pattern": "Do not add a distance, arrival, or extra stop. Do not split a count-bounded action from its endpoint condition.",
     "semantic_pattern": "bounded_movement_and_terminal_wait",
-    "decision_reason": "The three-step ascent is a bounded movement whose completion is the top; the wait is explicitly tied to that endpoint. The earlier turns and approach do not establish separate completed objectives.",
-    "transfer_rule": "Preserve stated counts and bounded endpoints exactly. A bounded action is not an arrival at an unstated destination; retain a stop/wait only where the source specifies it."
+    "decision_reason": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "transfer_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
+    "case_rationale": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "case_specific_focus": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "primary_skills": [
+      "bounded",
+      "endpoint",
+      "terminal"
+    ],
+    "counter_example_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3"
+      ],
+      "source_quotes": [
+        "Go up the three steps and when you get to the top, wait."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go up the three steps and when you get to the top, wait."
+        }
+      ],
+      "operation": "The top and wait refine the same three-step ascent. Keep the bounded ascent and its final wait together; no second climb is requested.",
+      "counter_boundary": "A matching place name does not license moving a final stop across a separately requested later action. Check event identity, intervening order and stop scope together.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "stairs_or_level_change",

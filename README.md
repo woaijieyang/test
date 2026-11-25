@@ -4,20 +4,27 @@
 
 本仓库的工程测试不等于真实模型语义准确率或导航性能。没有明确记录的实验结果，不得表述为 SR、SPL、nDTW 或导航成功率提升。
 
+## 当前 R2R 最小改动交付
+
+运行时专属能力位于 `host/r2r/`，离线作者工具位于 `tools/r2r_authoring/`，测试位于 `tests/r2r/`；根目录旧模块已移除。详见 `docs/R2R_MINIMAL_REPORT.md`。当前380项回归通过；显式选例、真实规则链接和阶段教学的入口校验已补齐，RxR集成CI在本树只读验证。详见 `docs/R2R_STABILITY_REPORT.md`。RxR受保护文件与四阶段请求保持一致；原始1068条来源重放与前一提交逐字节一致，不代表真实LLM或导航收益。
+
+## 当前双数据集集成
+
+通用配置与 R2R 资产完整采用源分支固定提交；保留本分支 RxR 专属规则、已修复模板和校验。所有选中的动态模板均完整输入，不再压缩。当前验收以 `docs/PROFILE_INTEGRATION.md` 与 `provenance/profile_integration_validation.json` 为准；下方旧报告的数字和隔离基准属于各自历史阶段。
+
 ## 入口文档
 
-- `docs/RXR_REFINEMENT.md`：当前 RxR 角色操作、证据修复、前两条完整动态教学、摘要保真与隔离验证说明。
+- `docs/PROFILE_INTEGRATION.md`：迁移边界、CLI、完整教学和双基线验收。
+- `docs/RXR_REFINEMENT.md`：此前 RxR 语义与证据修复记录，完整教学以当前集成说明为准。
 
-- `WORKFLOW.md`：端到端数据流、阶段输入输出、状态和失败回退。
+- `docs/WORKFLOW.md`：端到端数据流、阶段输入输出、状态和失败回退。
 - `provenance/R2R_CORE_INDEPENDENT_REVIEW.md`：R2R Fixed Core 双轮模型辅助语义审查及来源元数据修复记录。
-- `IMPLEMENTATION.md`：模块职责、关键设计约束和可维护性原则。
-- `CODEX_START_HERE.md`：开发、集成和验收步骤。
+- `docs/IMPLEMENTATION.md`：模块职责、关键设计约束和可维护性原则。
+- `docs/CODEX_START_HERE.md`：开发、集成和验收步骤。
 - `host/README.md`：Runtime Schema、Host 调派、状态机和 Release Contract。
 - `docs/EXPERIMENT_PLAN.md`：当前双 Profile 系统的受控语义、审查、格式和导航评测流程。
 - `docs/R2R_ENHANCEMENT.md`：R2R English 专属规则、检索、Host 接入、RxR 隔离和验收规范。
-- `docs/RXR_ROLE_HIERARCHY.md`：本轮角色身份、P0/P1/P2转换、历史能力对照和前置条件／交接验收。
-- `provenance/rxr_role_conversion.json`：原条款到新位置的逐句映射、源文件指纹和四阶段隔离对照。
-- `docs/RXR_TEACHING_REPAIR.md`：已完成的 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
+- `docs/RXR_TEACHING_REPAIR.md`：本轮 RxR 教学修复、规则澄清、作者构建、实际教学卡及未验证事项。
 - `docs/RXR_TEACHING_FOCUS.md`：Core案例级教学、局部覆盖证据、保守正文修订及建议采纳边界。
 - `docs/RXR_DATA_BOUNDARIES.md`：训练来源、生成文件、配对、缓存与写入失败处理。
 - `docs/FORMAT_CONTRACT.md`：Source 字节、Renderer 和真实 Actor 请求/tokenization receipt 合同。
@@ -67,12 +74,12 @@ G0/R0/G1/R1 均绑定同一个 Source Identity。G0/G1 使用同一 Generator Co
 |---|---:|---:|
 | Generator Fixed Core | 10（G01–G10） | 10（G01–G10） |
 | Reviewer Fixed Core | 10（R01–R10） | 10（R01–R10） |
-| Generator Dynamic Eligible | 25 | 43（35原有＋8训练源） |
-| Generator Dynamic per task | 6–8 | 2–4 |
-| Reviewer Paired Dynamic Eligible | 29 | 43（35原有＋8训练源） |
-| Reviewer Paired per task | 6–8 | 2–4 |
-| Reviewer Diagnostics Eligible | 23 | 37（29原有＋8训练源） |
-| Reviewer Diagnostics per task | 2–4 | 0–2 |
+| Generator Dynamic Eligible | 27（25原有＋2合成教学） | 43（35原有＋8训练源） |
+| Generator Dynamic per task | 4–6 | 2–4 |
+| Reviewer Paired Library | 31（27可配对选择＋4保留源） | 43（35原有＋8训练源） |
+| Reviewer Paired per task | 4–6 | 2–4 |
+| Reviewer Diagnostics Eligible | 28（26原有＋2合成反例） | 37（29原有＋8训练源） |
+| Reviewer Diagnostics per task | 2–3 | 0–2 |
 
 磁盘来源数、Core 数、Dynamic Eligible 数和单任务实际选择数是不同概念，禁止混用。固定 Core 无条件加载且顺序稳定；Dynamic 只从当前 Profile 的白名单目录检索；Legacy 仅用于来源追溯，不进入运行时。
 
@@ -113,7 +120,7 @@ Reviewer 的 PASS/REVISE/UNRESOLVED 必须来自当前 Source 和 Candidate 的�
 ```bash
 python -B tools/build_rxr_reviewed.py --check
 python -B -m host.compile
-python -B verify_package.py
+python -B tools/verify_package.py
 python -B -m unittest discover -s tests -v
 python -m examples.demo
 python -m evaluation.smoke24
@@ -133,23 +140,28 @@ python -m evaluation.smoke24
 
 ## 当前工程状态
 
-**当前增量修复。** 在已完成的角色层次转换上，补充 P2 的触发条件、父框架、局部操作与保护边界；修正 006/023/027、Core 06 及相关诊断的教学证据，不改原始指令、候选正文、边界、检索权重和选例数量。RxR 前两条动态案例完整加载，其余摘要保留完整 source/candidate、五要素、条件、Handoff 与 Finding/repair；仅去除重复过程叙述和部分重复层结论。
+当前分支从 `LLM-decompose-v6.6.2` 的固定提交建立，保留原分支不变。已有 RxR 教学修复及六类局部语义判据继续保留。本轮进一步完善十组Core的案例级教学重点、33条正常覆盖证据及002/020的最小来源保留表达，连同对应Reviewer和依赖诊断一起重建。不改变 R2R 专属资产、通用规则、运行 Schema、Compiler优先级、Renderer 或有界双角色工作流。固定 Core 身份、动态数量、来源和检索策略保持不变。
 
-新增运行职责位于 `host/rxr_teaching.py`、`host/rxr_contract.py`；离线修复规格位于 `tools/rxr_teaching_alignment.py`。公共合同、Schema、通用 Prompt 与 R2R 路径不改，Host/Compiler 仅增加 RxR 条件派发。当前证据及文件归属以 `docs/RXR_REFINEMENT.md` 为准；以下段落保留此前结构转换的范围说明，不应误读为本轮仍未修改 Compiler 或教学投影。
-
-
-当前分支以 `LLM-decompose-v6.6.3` 的固定提交 `081db4b9ea0712ff720c137fe96c240c26f7b15c` 为基础建立，原分支不变。本轮对照 `LLM-decompose-v1` 中标题为 v1.3 的实际两角色Prompt，完成RxR角色专属规则的P0/P1/P2转换，而非重新设计分割策略或浓缩旧规则。
-
-Generator P0明确唯一候选作者及完整路线目标；P1保留原九步、五要素、前置条件、完成到入口的交接、自审和有界返修；P2归位已有场景校准。Reviewer P0明确独立验收与不代写；P1将完整L0—L6作为一个框架项，保留五要素、交接、Finding、判定和R1复核；P2按审核证据风险组织，不与Generator机械镜像。原条款逐句保留并记录去向，不设规则数量或压缩比例。
-
-两份Shared、公共角色Prompt、全部模板、检索、Schema、Compiler、Host及Renderer均不修改。R2R四阶段模型输入、Schema和选例保持独立对照。转换说明见 `docs/RXR_ROLE_HIERARCHY.md`，逐句映射和历史源指纹见 `provenance/rxr_role_conversion.json`。已批准的Prompt指纹在固定查询、选例和Schema下显式更新；CI和测试不会自动重写期望值来通过检查。
-
-此前Core案例级教学、33条局部覆盖证据、002/020保守表达及其配对诊断修复继续保留，记录仍在 `provenance/rxr_teaching_changes.json`。这些历史教学修复不混称本轮的新改动。其语义争议和真实导航收益不能由规则重排自动认证；本轮也不恢复旧三种上下文模式、旧主会话亲审部署限制或旧Schema字段。
-
-工程验证不能证明LLM行为绝对等价或导航指标提升。实际测试结果与缺失的外部配套测试分别记录，固定配置的真实模型盲审和成对导航仍需独立进行。
+逐字段修正记录见 `provenance/rxr_teaching_changes.json`，作者规格和构建检查见 `tools/build_rxr_reviewed.py`。足床终态现在保留为结果状态而不新增继续移动命令；玻璃窗的矛盾辅助描述不被擅自消歧，也不再将source审计说明放入Actor文本。它们的真实环境解释和导航收益仍未被证明。候选仍需独立语义盲审和导航对照；本轮不宣称追回任何固定数量的成功，也未将计划中的三组新增来源混入修复实验。
 
 发布标识仅在 README 展示；新增规则、作者工具、测试和技术文档不加入发布后缀。继承的 Schema 身份、历史来源和兼容路径保留，不为清除字符串而破坏接口或追溯记录。全仓库历史标识与当前新增发布标识分别记录。
 
 ## RxR semantic calibration
 
-RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the role-local conversion record](docs/RXR_ROLE_HIERARCHY.md), [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.
+RxR-only event, correction, relation and entry calibration with eight verified train-guide lesson groups. Fixed Core and per-request example counts are unchanged. R2R is protected by four-phase prompt/schema and selection comparisons. See [the implementation and validation contract](docs/RXR_ENHANCEMENT.md), [the teaching repair contract](docs/RXR_TEACHING_REPAIR.md), [the case-specific teaching calibration](docs/RXR_TEACHING_FOCUS.md) and [the data-boundary checks](docs/RXR_DATA_BOUNDARIES.md). Engineering checks do not establish navigation gains.
+
+R2R 新实现、父分支差异和验证边界见 `docs/R2R_IMPLEMENTATION.md`。完整作者资产用 `python -B -m tools.r2r_authoring.build --check` 校验；当前模型和导航性能仍需独立实验。
+
+## R2R 精细化整改与已知限制
+
+当前 R2R 保留原119份来源资产，另显式登记6份合成教学资产，用于条件分支和返回路线的正反对照。这些不是官方R2R指令或评测失败样本。两个角色各10条固定Core保持不变；Generator选择4–6条Dynamic，Reviewer跟随相同配对并补充2–3条Diagnostics。
+
+模块归属与36项实施台账见 [R2R整改记录](docs/R2R_REFINEMENT_REPORT.md)；机器可读状态见 `provenance/r2r_issue_ledger.json`。教学索引归属 `host/r2r/teaching_index.json`，作者来源清单归属 `tools/r2r_authoring/source_inventory.json`，完整性校验入口为 `python -B tools/verify_package.py`。根目录 `FILE_HASHES.json` 保留为全仓库完整性契约。
+
+`python -B -m tools.r2r_authoring.audit` 对37条教学来源执行148个阶段编译与投影核对。这是开发自检，不是独立测试集。可以通过 `--records <JSON或JSONL路径> --output <报告路径>` 接入真实冻结来源清单，输入字段为 `original_instruction`、可选 `task_id`、`source`、`split`，不得将成绩或轨迹作为检索特征。
+
+原始Excel、1068条原始运行记录及导航轨迹本次未提供，因此没有复算73条退化与52条恢复，也没有进行真实LLM或导航测评。尚缺有独立实质损害依据的C10欠分割金标准案例；不能将合法粗粒度分组改标为错误以补齐数量。固定Core仍含val_seen来源，重叠报告不等于正式测评隔离认证。
+
+## R2R complete Dynamic loading
+
+Every selected R2R Generator, paired Reviewer, and diagnostic Reviewer Dynamic case now uses a complete runtime demonstration in G0/R0/G1/R1. The summary path is disabled. Full `expected_output` fields, exact source and Reviewer candidate are retained; authoring provenance remains Host-side. Core IDs, selection counts, retrieval, pairing, semantic rules, Runtime Schemas, Renderer and RxR behavior are unchanged. See `docs/R2R_FULL_DYNAMIC.md` for the contract and validation boundary.

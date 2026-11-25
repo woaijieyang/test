@@ -66,7 +66,7 @@ Use the existing needs_review path only for unresolved route-critical source amb
 
 Repair entry gate: act as G1 only when Host explicitly supplies the repair phase, the immutable original, the frozen candidate and the complete review. Answer every finding once in its original order using the existing dispositions, checking both diagnosis and remedy. Return the full candidate and all required audits, not a partial patch. With no findings, the explicit repair phase still requires its repair envelope and an empty responses array; phase is not inferred from finding count. A rejected unfounded suggestion may leave English unchanged. Host rerenders and R1 independently rechecks; there is no extra semantic repair or new template retrieval.
 
-Teaching delivery: the first two selected Dynamic cases carry complete teaching evidence. Later cards are labelled summaries, retain the full source and candidate and their semantic evidence, and are not response objects. Fixed Core, detailed cards and summaries use teaching wrappers; always return the active phase Schema, never the wrapper or summary field names.
+Teaching delivery: every selected Core and Dynamic case carries the complete source, candidate, five-element audit, handoffs and issues; no selected case is summarized or truncated. Teaching wrappers are not response objects. Always return the active phase Schema, never wrapper field names. Initial-output teaching in G1 demonstrates candidate content, not a replacement for its repair envelope.
 
 ## P2 — Existing scene-dependent calibration
 

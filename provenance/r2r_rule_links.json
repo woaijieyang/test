@@ -1,0 +1,246 @@
+{
+  "common_authority": "shared/semantic_contract.md",
+  "shared_interpretations": "shared/dataset_rules/r2r_en.md",
+  "nodes": [
+    {
+      "id": "G-P0",
+      "role": "generator",
+      "level": 0,
+      "parent": null,
+      "title": "Role, route authority and useful output",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-A",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Read, bind and model the complete route",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Entity role and target selection",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Grounded language repair and uncertain names",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A3",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Spatial owner, viewpoint and counting origin",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A4",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Sustained constraints and modifier attachment",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A5",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Same-event refinement and terminal scope",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-A6",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-A",
+      "title": "Alternatives, corrections and route history",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-B",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Group, express and audit every local objective",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Coupled transit and independent objectives",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Minimal sufficient entry and event handoff",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B3",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Destination strength and local stopping position",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-B4",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-B",
+      "title": "Economical expression and successful alternatives",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P1-C",
+      "role": "generator",
+      "level": 1,
+      "parent": "G-P0",
+      "title": "Read back, repair and submit the candidate",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-C1",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-C",
+      "title": "Selective acceptance of fallible advice",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "G-P2-C2",
+      "role": "generator",
+      "level": 2,
+      "parent": "G-P1-C",
+      "title": "Repair closure without new regression",
+      "path": "generator/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P0",
+      "role": "reviewer",
+      "level": 0,
+      "parent": null,
+      "title": "Independent review role and acceptance responsibility",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-A",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Independently reconstruct source requirements",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Action, attribute, observation and identity",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Direction owner, count and sustained relation",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A3",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Order, refinement and stopping scope",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-A4",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-A",
+      "title": "Branches, return history and source interpretation",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-B",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Apply L0-L6 to the actual candidate",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-B1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-B",
+      "title": "Supported grouping versus a preference",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-B2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-B",
+      "title": "Exact completion and preserved entry",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-B3",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-B",
+      "title": "Consistent fields and material findings",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P1-C",
+      "role": "reviewer",
+      "level": 1,
+      "parent": "R-P0",
+      "title": "Give a minimal remedy and recheck the whole route",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-C1",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-C",
+      "title": "Source-grounded correction and refusal review",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-C2",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-C",
+      "title": "Selective repair and protection",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    },
+    {
+      "id": "R-P2-C3",
+      "role": "reviewer",
+      "level": 2,
+      "parent": "R-P1-C",
+      "title": "Fresh recheck and legitimate unchanged release",
+      "path": "reviewer/dataset_rules/r2r_en.md"
+    }
+  ]
+}

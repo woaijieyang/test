@@ -39,7 +39,10 @@
         "source_quote": "Walk int past the sink area.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk int past the sink area.",
         "candidate_evidence": [
-          "Walk past the sink area."
+          {
+            "subtask_index": 0,
+            "quote": "Walk past the sink area."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Walk of the door and past the statue of a hand.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk of the door and past the statue of a hand.",
         "candidate_evidence": [
-          "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+          {
+            "subtask_index": 0,
+            "quote": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Walk down the hall and past the statue of a bird.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk down the hall and past the statue of a bird.",
         "candidate_evidence": [
-          "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+          {
+            "subtask_index": 0,
+            "quote": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +75,10 @@
         "source_quote": "Walk into the bedroom area with the wooden cabinet.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk into the bedroom area with the wooden cabinet.",
         "candidate_evidence": [
-          "After passing the statue of a bird, enter the bedroom area with the wooden cabinet."
+          {
+            "subtask_index": 1,
+            "quote": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet."
+          }
         ],
         "status": "covered"
       }
@@ -74,38 +86,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -119,9 +138,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird.",
+          "text": "The bird-statue pass on the ordered route.",
           "candidate_quotes": [
-            "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+            "down the hall past the statue of a bird."
           ]
         },
         "process": {
@@ -132,9 +151,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The bird-statue pass on the ordered route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+            "down the hall past the statue of a bird."
           ],
           "stop_scope": "none"
         },
@@ -155,7 +174,7 @@
           "Walk down the hall and past the statue of a bird."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains."
         ]
       },
       {
@@ -169,9 +188,9 @@
           ]
         },
         "target": {
-          "text": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet.",
+          "text": "The bedroom area identified by the wooden cabinet.",
           "candidate_quotes": [
-            "After passing the statue of a bird, enter the bedroom area with the wooden cabinet."
+            "enter the bedroom area with the wooden cabinet."
           ]
         },
         "process": {
@@ -182,9 +201,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The bedroom area identified by the wooden cabinet. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "After passing the statue of a bird, enter the bedroom area with the wooden cabinet."
+            "enter the bedroom area with the wooden cabinet."
           ],
           "stop_scope": "none"
         },
@@ -209,23 +228,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird.",
-          "candidate_quote": "Go out of the door, past the statue of a hand, and down the hall past the statue of a bird."
+          "text": "The bird-statue pass on the ordered route. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "down the hall past the statue of a bird."
         },
         "next_entry": {
-          "text": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet",
+          "text": "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains.",
           "candidate_quote": "After passing the statue of a bird, enter the bedroom area with the wooden cabinet"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The bird statue has been passed on the source route; cabinet-identified bedroom entry remains."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Go out of the door, past the statue of a hand, and down the hall past the statue of a bird.'; the next stage begins with 'After passing the statue of a bird, enter the bedroom area with the wooden cabinet'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The bird statue has been passed on the source route; cabinet-identified bedroom entry remains."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -238,7 +263,16 @@
       "landmark_conditioned_navigation",
       "single_stage_keep"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk int past the sink area.; Preserve the directional/spatial relation and its reference frame: Walk of the door and past the statue of a hand.; Preserve the directional/spatial relation and its reference frame: Walk down the hall and past the statue of a bird.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk int past the sink area.; Preserve the directional/spatial relation and its reference frame: Walk of the door and past the statue of a hand.; Preserve the directional/spatial relation and its reference frame: Walk down the hall and past the statue of a bird."
+    "review_principle": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
+    "case_specific_focus": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "An observed landmark is not automatically a separate visit or stop.",
+    "primary_skills": [
+      "pass_by",
+      "entry",
+      "target_identity"
+    ],
+    "decision_reason": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet."
   }
 }

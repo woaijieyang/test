@@ -39,7 +39,10 @@
         "source_quote": "Turn around and then proceed to your left.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Turn around and then proceed to your left.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Enter large room that looks like a lobby.",
         "requirement": "Preserve the spatial transition and region/threshold: Enter large room that looks like a lobby.",
         "candidate_evidence": [
-          "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          {
+            "subtask_index": 0,
+            "quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Head left towards stairway.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Head left towards stairway.",
         "candidate_evidence": [
-          "Inside the lobby, head left towards the stairway."
+          {
+            "subtask_index": 1,
+            "quote": "Inside the lobby, head left towards the stairway."
+          }
         ],
         "status": "covered"
       },
@@ -66,7 +75,10 @@
         "source_quote": "Then take another left into large dining hall.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Then take another left into large dining hall.",
         "candidate_evidence": [
-          "Take another left into the large dining hall."
+          {
+            "subtask_index": 1,
+            "quote": "Take another left into the large dining hall."
+          }
         ],
         "status": "covered"
       }
@@ -74,38 +86,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "Each meaningful source event is grouped at event/sentence level and linked to the actual candidate stage(s); no noun-only evidence is treated as action coverage."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Independently checked actual English for entry, target, complete ordered process, semantically correct ending type and scoped conditions. Generator audit fields are not accepted as proof."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Compared the actual preceding completion with the next stage entry. A landmark cue/observation is not treated as arrival at a later doorway or region."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "Cross-checked L1 source coverage, L3 stage semantics and L4 handoff evidence; each event keeps the same meaning across all three layers."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -119,9 +138,9 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
+          "text": "The lobby-like room entered after the initial movement.",
           "candidate_quotes": [
-            "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+            "enter the large room that looks like a lobby."
           ]
         },
         "process": {
@@ -132,16 +151,16 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The lobby-like room entered after the initial movement. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+            "enter the large room that looks like a lobby."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
+          "text": "Verify these source-specified relations in the candidate: proceed to your left",
           "candidate_quotes": [
-            "left"
+            "proceed to your left"
           ]
         },
         "source_requirement_ids": [
@@ -153,7 +172,7 @@
           "Enter large room that looks like a lobby."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
         ]
       },
       {
@@ -167,7 +186,7 @@
           ]
         },
         "target": {
-          "text": "Take another left into the large dining hall.",
+          "text": "The dining-hall interior after the second left.",
           "candidate_quotes": [
             "Take another left into the large dining hall."
           ]
@@ -180,16 +199,17 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the explicitly required turn into the large dining hall. A stage boundary does not add a STOP.",
+          "text": "The dining-hall interior after the second left. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Take another left into the large dining hall."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "left",
+          "text": "Verify these source-specified relations in the candidate: head left towards the stairway; another left",
           "candidate_quotes": [
-            "left"
+            "head left towards the stairway",
+            "another left"
           ]
         },
         "source_requirement_ids": [
@@ -209,23 +229,29 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "candidate_quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          "text": "The lobby-like room entered after the initial movement. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the large room that looks like a lobby."
         },
         "next_entry": {
-          "text": "Inside the lobby, head left towards the stairway",
+          "text": "The entered lobby establishes the frame for the first left and subsequent dining-hall left.",
           "candidate_quote": "Inside the lobby, head left towards the stairway"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Turn around, proceed to your left, and enter the large room that looks like a lobby.'; the next stage begins with 'Inside the lobby, head left towards the stairway'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The entered lobby establishes the frame for the first left and subsequent dining-hall left."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -237,7 +263,15 @@
       "orientation_or_reference_frame",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Turn around and then proceed to your left.; Preserve the spatial transition and region/threshold: Enter large room that looks like a lobby.; Preserve the directional/spatial relation and its reference frame: Head left towards stairway.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Turn around and then proceed to your left.; Preserve the spatial transition and region/threshold: Enter large room that looks like a lobby.; Preserve the directional/spatial relation and its reference frame: Head left towards stairway."
+    "review_principle": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
+    "case_specific_focus": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
+    "primary_skills": [
+      "entry",
+      "direction"
+    ],
+    "decision_reason": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall."
   }
 }

@@ -39,7 +39,10 @@
         "source_quote": "Walk passed the foot of the bed and around to the open door.",
         "requirement": "Preserve the directional/spatial relation and its reference frame: Walk passed the foot of the bed and around to the open door.",
         "candidate_evidence": [
-          "Walk past the foot of the bed and around to the open door."
+          {
+            "subtask_index": 0,
+            "quote": "Walk past the foot of the bed and around to the open door."
+          }
         ],
         "status": "covered"
       },
@@ -48,7 +51,10 @@
         "source_quote": "Walk out of the bedroom and into the hallway.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk out of the bedroom and into the hallway.",
         "candidate_evidence": [
-          "Walk out of the bedroom and into the hallway."
+          {
+            "subtask_index": 0,
+            "quote": "Walk out of the bedroom and into the hallway."
+          }
         ],
         "status": "covered"
       },
@@ -57,7 +63,10 @@
         "source_quote": "Walk down the hall and into the bedroom with the blue floral blanket.",
         "requirement": "Preserve the spatial transition and region/threshold: Walk down the hall and into the bedroom with the blue floral blanket.",
         "candidate_evidence": [
-          "From the hallway, walk down it and enter the bedroom with the blue floral blanket."
+          {
+            "subtask_index": 1,
+            "quote": "From the hallway, walk down it and enter the bedroom with the blue floral blanket."
+          }
         ],
         "status": "covered"
       }
@@ -65,38 +74,45 @@
     "layer_checks": [
       {
         "layer": "L0_integrity",
-        "status": "not_assessable",
-        "conclusion": "No rendered_instruction is supplied; inspect the actual candidate text and do not infer a renderer mismatch."
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
       },
       {
         "layer": "L1_source_coverage",
         "status": "pass",
-        "conclusion": "The stage strings collectively preserve the original route actions and target cues; compare the complete source rather than isolated nouns."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L2_dependencies",
         "status": "pass",
-        "conclusion": "The temporal order, direction references, room transitions and target dependencies are retained in their original scope."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L3_stage_checks",
         "status": "pass",
-        "conclusion": "Each stage has an actual entry context, target, complete process, supported ending and scoped conditions; no audit-only repair is needed."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L4_handoffs",
         "status": "pass",
-        "conclusion": "Each adjacent stage continues from the preceding intended transition without an invented physical stop."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L5_grouping",
         "status": "pass",
-        "conclusion": "The cut follows a completed room/doorway/landmark transition and the next stage has a distinct local objective."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       },
       {
         "layer": "L6_route_readback",
         "status": "pass",
-        "conclusion": "No additional action is introduced beyond source-supported grammatical repair and the route remains in source order."
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
       }
     ],
     "findings": [],
@@ -110,7 +126,7 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "Walk out of the bedroom and into the hallway.",
+          "text": "The hallway reached through the open bedroom door.",
           "candidate_quotes": [
             "Walk out of the bedroom and into the hallway."
           ]
@@ -123,7 +139,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The hallway reached through the open bedroom door. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk out of the bedroom and into the hallway."
           ],
@@ -144,7 +160,7 @@
           "Walk out of the bedroom and into the hallway."
         ],
         "carryover": [
-          "Carry forward the intended endpoint, retained orientation, and any uniquely selected landmark; do not replay the completed movement."
+          "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains."
         ]
       },
       {
@@ -158,9 +174,9 @@
           ]
         },
         "target": {
-          "text": "From the hallway, walk down it and enter the bedroom with the blue floral blanket.",
+          "text": "The bedroom identified by the blue floral blanket.",
           "candidate_quotes": [
-            "From the hallway, walk down it and enter the bedroom with the blue floral blanket."
+            "enter the bedroom with the blue floral blanket."
           ]
         },
         "process": {
@@ -171,9 +187,9 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Complete the stated transition or landmark event; a stage boundary is not a physical stop.",
+          "text": "The bedroom identified by the blue floral blanket. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
-            "From the hallway, walk down it and enter the bedroom with the blue floral blanket."
+            "enter the bedroom with the blue floral blanket."
           ],
           "stop_scope": "none"
         },
@@ -196,22 +212,28 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk out of the bedroom and into the hallway.",
+          "text": "The hallway reached through the open bedroom door. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Walk out of the bedroom and into the hallway."
         },
         "next_entry": {
-          "text": "From the hallway, walk down it and enter the bedroom with the blue floral blanket",
+          "text": "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains.",
           "candidate_quote": "From the hallway, walk down it and enter the bedroom with the blue floral blanket"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-01",
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The previous stage explicitly ends with 'Walk out of the bedroom and into the hallway.'; the next stage begins with 'From the hallway, walk down it and enter the bedroom with the blue floral blanket'. The handoff carries the established location/reference frame without adding a physical stop."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The original bedroom has been exited into the hallway; entry into the blue-floral-bedroom remains."
       }
-    ]
+    ],
+    "prior_finding_reviews": []
   },
   "teaching_notes": {
     "review_pattern": "completed_transition_then_distinct_objective",
@@ -223,7 +245,16 @@
       "stairs_or_level_change",
       "multi_stage_split"
     ],
-    "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Walk passed the foot of the bed and around to the…; Preserve the spatial transition and region/threshold: Walk out of the bedroom and into the hallway.; Preserve the spatial transition and region/threshold: Walk down the hall and into the bedroom with the blue floral…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Walk passed the foot of the bed and around to the…; Preserve the spatial transition and region/threshold: Walk out of the bedroom and into the hallway.; Preserve the spatial transition and region/threshold: Walk down the hall and into the bedroom with the blue floral…"
+    "review_principle": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
+    "case_specific_focus": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
+    "transfer_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
+    "counter_example_boundary": "A source command to open a closed door would be an additional action worth preserving.",
+    "primary_skills": [
+      "attribute",
+      "entry",
+      "target_identity"
+    ],
+    "decision_reason": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket."
   }
 }
