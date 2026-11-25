@@ -93,7 +93,26 @@
     ],
     "counter_example_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
     "transfer_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
-    "decision_reason": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop."
+    "decision_reason": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B4"
+      ],
+      "source_quotes": [
+        "then turn left.",
+        "Continue up the stairs and stop."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "then turn left. Continue up the stairs and stop."
+        }
+      ],
+      "operation": "Here the left turn prepares the ascent. Preserve the coherent source maneuver without inventing a separate turn-completion goal or cosmetically rewriting the source.",
+      "counter_boundary": "A different source explicitly asking to turn and observe or wait may give the turn an independent objective. Do not transfer this KEEP decision by route length alone.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "stairs_or_level_change",

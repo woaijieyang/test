@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 183,
+  "file_count": 189,
   "files": [
     {
       "path": "adapter/README.md",
@@ -20,7 +20,11 @@
     },
     {
       "path": "generator/dataset_rules/r2r_en.md",
-      "git_blob_sha1": "5099549e5335afe2565ec093694cd808d01e77b3"
+      "git_blob_sha1": "a5f9407f420a6af94d0540ac455e60b38d6f6b65"
+    },
+    {
+      "path": "generator/dataset_rules/r2r_repair_examples.json",
+      "git_blob_sha1": "142f5392da976f71279fbc6daf13673ae6b4dc93"
     },
     {
       "path": "generator/output.schema.json",
@@ -44,7 +48,7 @@
     },
     {
       "path": "generator/templates/R2R/core/G01_R2R-CORE-G01.json",
-      "git_blob_sha1": "69d3eca92e1df0107279915eefd81e95c818836b"
+      "git_blob_sha1": "a5200fd1f2a0bd61728e070ec7520c919e7163c1"
     },
     {
       "path": "generator/templates/R2R/core/G02_R2R-CORE-G02.json",
@@ -52,7 +56,7 @@
     },
     {
       "path": "generator/templates/R2R/core/G03_R2R-CORE-G03.json",
-      "git_blob_sha1": "f83a180cadacb4ff2e4c7fbf294bc3c716997a54"
+      "git_blob_sha1": "93eaa0c5cd338113e14c77f0a6adacd836e4069a"
     },
     {
       "path": "generator/templates/R2R/core/G04_R2R-CORE-G04.json",
@@ -128,7 +132,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/011_R2R-GEN-011.json",
-      "git_blob_sha1": "c6a49ec095ee9ade1ba01690e12ce8d87cf8a68a"
+      "git_blob_sha1": "4bf668474d7b3803f69e16b0abd68431f3dedfc6"
     },
     {
       "path": "generator/templates/R2R/val_seen/012_R2R-GEN-012.json",
@@ -144,7 +148,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/015_R2R-GEN-015.json",
-      "git_blob_sha1": "71b5ddbd8f68ffdf60227e9edb4f74c87bd28fca"
+      "git_blob_sha1": "032e0fa6300d5ab1558d1f8437d4b90edcde47bf"
     },
     {
       "path": "generator/templates/R2R/val_seen/016_R2R-GEN-016.json",
@@ -160,7 +164,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/019_R2R-GEN-019.json",
-      "git_blob_sha1": "6854b487c8796ba7282686dbde676b16e7fb6fb6"
+      "git_blob_sha1": "bf97e9fcd4dbac33fa4e31835048751d0bf4c358"
     },
     {
       "path": "generator/templates/R2R/val_seen/020_R2R-GEN-020.json",
@@ -168,7 +172,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/021_R2R-GEN-021.json",
-      "git_blob_sha1": "2f06ec3fa60b13ede9eae95ebd51dd4f0ecc712a"
+      "git_blob_sha1": "702d574f46139beac13c259f01245c95cee0c85b"
     },
     {
       "path": "generator/templates/R2R/val_seen/022_R2R-GEN-022.json",
@@ -204,7 +208,7 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/030_R2R-GEN-030.json",
-      "git_blob_sha1": "8fc943def3488d64c1e1d09e936417baac5acbaa"
+      "git_blob_sha1": "850d3cdd5a2c7fade947bf81dc2a4063f203aca4"
     },
     {
       "path": "generator/templates/R2R/val_seen/031_R2R-GEN-031.json",
@@ -220,15 +224,15 @@
     },
     {
       "path": "generator/templates/R2R/val_seen/034_R2R-GEN-034.json",
-      "git_blob_sha1": "1e07d35f70df726e97abb5aec6f23ca9fadb7fc7"
+      "git_blob_sha1": "b0671fc23388b6b46706894d6797c4fb6d1abb4d"
     },
     {
       "path": "generator/templates/R2R/val_seen/035_R2R-GEN-035.json",
-      "git_blob_sha1": "841a47b9d9c3f84686eaa13ae9c1ceec990c4876"
+      "git_blob_sha1": "63ae54dd166295195090474e93ec696430e82d91"
     },
     {
       "path": "host/compile.py",
-      "git_blob_sha1": "2bbc2c9bfb67dbb7dc1973aaa74314db26f07135"
+      "git_blob_sha1": "26728bc6d5ee719e2116ab41734c973fbc21ddbb"
     },
     {
       "path": "host/r2r/__init__.py",
@@ -236,23 +240,23 @@
     },
     {
       "path": "host/r2r/relations.py",
-      "git_blob_sha1": "b650aaaa72f8f127c7148eb12535e10c747deb7c"
+      "git_blob_sha1": "b1a80ba9a2ceed3ab69fef985a7369cec92e5912"
     },
     {
       "path": "host/r2r/selection.py",
-      "git_blob_sha1": "8c049a0ac13753163d689b8f72f416f1e8b50951"
+      "git_blob_sha1": "0cff5ae269d892e67adec2f9c68bc0656ab66aaf"
     },
     {
       "path": "host/r2r/teaching.py",
-      "git_blob_sha1": "926aa9d6109718fe167af8fb311deed0a3a01e3e"
+      "git_blob_sha1": "394440493cb624642506bb5881a2aeb1ae286c3e"
     },
     {
       "path": "host/r2r/teaching_index.json",
-      "git_blob_sha1": "c2086927a2d26aab5c5496c7b767fec99c7b30f8"
+      "git_blob_sha1": "7b04d9da423b2a457159d276e890ac43a802c910"
     },
     {
       "path": "host/run.py",
-      "git_blob_sha1": "25c9ab702dd40b857b71e16c4985ebe97b52d07a"
+      "git_blob_sha1": "7e9067d0bbc89ca9538345d30321747bbb42d73f"
     },
     {
       "path": "host/template_selector.py",
@@ -260,11 +264,11 @@
     },
     {
       "path": "provenance/r2r_rule_links.json",
-      "git_blob_sha1": "01d869a6f31a9a6a3c43c5f9eb113be1228182be"
+      "git_blob_sha1": "734649b5c3be1b96d3429c0415f95771d57c74e6"
     },
     {
       "path": "provenance/r2r_teaching_changes.json",
-      "git_blob_sha1": "3d16fa8821a6340adf60910d0598aeaef06d7ba2"
+      "git_blob_sha1": "cb340b28dd72ad49835b0435b340ea5ecb3dbf26"
     },
     {
       "path": "renderer/README.md",
@@ -280,7 +284,11 @@
     },
     {
       "path": "reviewer/dataset_rules/r2r_en.md",
-      "git_blob_sha1": "9b18373376eca9151d14503bd9e33c16e209a4e3"
+      "git_blob_sha1": "92ade4b5da2fc5c5c334dfc23b0cf2f2238bfeb0"
+    },
+    {
+      "path": "reviewer/dataset_rules/r2r_recheck_examples.json",
+      "git_blob_sha1": "2654fd1d015ac4e62cbaf157edcedfeb0d209969"
     },
     {
       "path": "reviewer/output.schema.json",
@@ -312,7 +320,7 @@
     },
     {
       "path": "reviewer/templates/R2R/core/R03_R2R-CORE-R03.json",
-      "git_blob_sha1": "4e5f9bd8312337c9e96c2b8af7464bcc4da54c5c"
+      "git_blob_sha1": "800d7ceb5a5b7b709b61afa432c74333c3ea8565"
     },
     {
       "path": "reviewer/templates/R2R/core/R04_R2R-CORE-R04.json",
@@ -504,7 +512,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/011_R2R-REV-011.json",
-      "git_blob_sha1": "9dd17aa4ab5acd1dbeac0b915660b810ddd92bd3"
+      "git_blob_sha1": "b5b85727eec21e6e76c3b4d94b68eb4e14ede66f"
     },
     {
       "path": "reviewer/templates/R2R/paired/012_R2R-REV-012.json",
@@ -520,7 +528,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/015_R2R-REV-015.json",
-      "git_blob_sha1": "1e7b8dd9061fb911844308d30a7e91817f93d4e3"
+      "git_blob_sha1": "24ab5f281564d73461d5b4acd9051c32f048de55"
     },
     {
       "path": "reviewer/templates/R2R/paired/016_R2R-REV-016.json",
@@ -536,7 +544,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/019_R2R-REV-019.json",
-      "git_blob_sha1": "1c09bc0331c7f988aea0756fa8548a47725e38b7"
+      "git_blob_sha1": "b111f070b71a3618a385a7a4010f5ac888f583b8"
     },
     {
       "path": "reviewer/templates/R2R/paired/020_R2R-REV-020.json",
@@ -544,7 +552,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/021_R2R-REV-021.json",
-      "git_blob_sha1": "20b96a21dd158db9591055bca3caadc10efc274c"
+      "git_blob_sha1": "f7eca6307a7a02336fbc81b3b3d3b0f9bcb9a48d"
     },
     {
       "path": "reviewer/templates/R2R/paired/022_R2R-REV-022.json",
@@ -580,7 +588,7 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/030_R2R-REV-030.json",
-      "git_blob_sha1": "4cd9c2384ec989c9ea8624226debe6a923829b3e"
+      "git_blob_sha1": "bbf9b889be1eee0106eb6e0c2ce2c4cbec53d7af"
     },
     {
       "path": "reviewer/templates/R2R/paired/031_R2R-REV-031.json",
@@ -596,11 +604,11 @@
     },
     {
       "path": "reviewer/templates/R2R/paired/034_R2R-REV-034.json",
-      "git_blob_sha1": "b730fe9f8907cdbbda2bed791556c61c91e7723c"
+      "git_blob_sha1": "24b06da9e59bdbd6a13d0c5c3b7232a424699803"
     },
     {
       "path": "reviewer/templates/R2R/paired/035_R2R-REV-035.json",
-      "git_blob_sha1": "83de74313eb2be4a893ddfbb37d206f0a01bd16f"
+      "git_blob_sha1": "fb470ed78a515f9e752295c027e52bd4dd31aaa9"
     },
     {
       "path": "shared/dataset_rules/r2r_en.md",
@@ -639,6 +647,10 @@
       "git_blob_sha1": "bce29c7293d2d4cc1fd766474b8478b304508aa1"
     },
     {
+      "path": "tests/r2r/test_minimal.py",
+      "git_blob_sha1": "aae8e4c82031693d4785ad2e2dd9cbef7a0345ef"
+    },
+    {
       "path": "tests/r2r/test_quality.py",
       "git_blob_sha1": "306167093ad83504491d597f1499740067541361"
     },
@@ -668,15 +680,19 @@
     },
     {
       "path": "tools/r2r_authoring/audit.py",
-      "git_blob_sha1": "172806aa72d9b706c079cd701d62bfed5a9a90c3"
+      "git_blob_sha1": "8dc5e5a83ac288ebdf7457d54a0766cde103ca3c"
     },
     {
       "path": "tools/r2r_authoring/build.py",
-      "git_blob_sha1": "7a84631741abd74436d6c4f5bd33a6664b09a264"
+      "git_blob_sha1": "0a888e4f0e4d02e48f5df00700794f1d0839f053"
     },
     {
       "path": "tools/r2r_authoring/contrast.py",
       "git_blob_sha1": "d74bf30bf04876627d42b69ce66fec3226a8e9a0"
+    },
+    {
+      "path": "tools/r2r_authoring/decision_boundaries.py",
+      "git_blob_sha1": "51071ff6cc22ee9ed55b3bc423a2672b7598b632"
     },
     {
       "path": "tools/r2r_authoring/detail.py",
@@ -684,11 +700,15 @@
     },
     {
       "path": "tools/r2r_authoring/integrate.py",
-      "git_blob_sha1": "56ec02a4c9296dd718bac73dda981e2e3945b803"
+      "git_blob_sha1": "67b1ac0aa7d42b7f37037c6a925ed273059d6abb"
     },
     {
       "path": "tools/r2r_authoring/metadata.py",
-      "git_blob_sha1": "057eb291e8ef41812e31136951b53e31bc3766b8"
+      "git_blob_sha1": "7c93822b5bf5f4813a4a0029c6b8f7349be6dadc"
+    },
+    {
+      "path": "tools/r2r_authoring/phase_lessons.py",
+      "git_blob_sha1": "e58b034d965740aef25eacc1d3196ee031057f65"
     },
     {
       "path": "tools/r2r_authoring/positive.py",
@@ -700,7 +720,7 @@
     },
     {
       "path": "tools/r2r_authoring/publish.py",
-      "git_blob_sha1": "483cbf2cc113c79814ba6a323fea6e21bc01bcde"
+      "git_blob_sha1": "00540ecc1806c17ee985fe15e19c9bdbfa2be7e6"
     },
     {
       "path": "tools/r2r_authoring/regression.py",
@@ -711,8 +731,12 @@
       "git_blob_sha1": "5acb494a26439c02640deb9d46792f30f6e508b7"
     },
     {
+      "path": "tools/r2r_authoring/rule_coverage.py",
+      "git_blob_sha1": "e27cbd4b73ddfeb56992a911215029f494a978c0"
+    },
+    {
       "path": "tools/r2r_authoring/runtime_layout.py",
-      "git_blob_sha1": "ffa970ae3c1b6f52a8e4fcc6f6e56bd08fdd07f8"
+      "git_blob_sha1": "afd416d46776a5f3ce75b3d7c9a99769158d2f6e"
     },
     {
       "path": "tools/r2r_authoring/semantic_refinements.py",
@@ -724,7 +748,7 @@
     },
     {
       "path": "tools/r2r_authoring/source_inventory.json",
-      "git_blob_sha1": "8732d7d82dfe494c79acc8520dd176a71f39d0a2"
+      "git_blob_sha1": "ab6d41ad3a091a3cd0f04528947a4eb50631f81a"
     },
     {
       "path": "tools/r2r_authoring/test_expectations.py",
@@ -732,7 +756,7 @@
     },
     {
       "path": "tools/r2r_authoring/verify.py",
-      "git_blob_sha1": "82d87df4418cf4d137dfb8d964d772d76679debc"
+      "git_blob_sha1": "79023b8448af507bcd8078bcdb17fdb4db3aeb43"
     }
   ]
 }

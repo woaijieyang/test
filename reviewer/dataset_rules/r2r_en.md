@@ -20,7 +20,7 @@ Check whether the candidate preserves each phrase's role. An already-open door d
 
 ### R-P2-A2 — Direction owner, count and sustained relation
 
-Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a carpet-bound movement from a movement merely starting at the carpet, and a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after. A remedy restoring a sustained relation must also preserve the source movement extent, target-directed approach and final placement.
+Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a carpet-bound movement from a movement merely starting at the carpet, and a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after. When clauses are merged, check that each destination and modifier still belongs to its original action; retaining the same words does not establish the same event attachment. A remedy restoring a sustained relation must also preserve the source movement extent, target-directed approach and final placement.
 
 ### R-P2-A3 — Order, refinement and stopping scope
 
@@ -46,7 +46,7 @@ Use the common ending taxonomy: explicit source event, bounded action, linked sa
 
 ### R-P2-B1 — Supported grouping versus a preference
 
-For a missed cut, establish a completed earlier objective, a distinct later objective, a supported next entry and concrete focus loss. Name the objective or dependency actually obscured by this candidate; length, room count or preference for another wording is not that evidence. For an excessive cut, identify the particular coupled action, selection dependency or completion condition detached by it. An independently executable turn can still be preparatory in this source; another source may give that turn its own observation or stopping objective. A separate final wait/placement can be meaningful when the target relation and entry are supported. Accept equivalent usable grouping; preserve evidence-backed C10 defects rather than adopting either a blanket SPLIT or blanket KEEP policy.
+For a missed cut, establish a completed earlier objective, a distinct later objective, a supported next entry and concrete focus loss. Name the objective or dependency actually obscured by this candidate; length, room count or preference for another wording is not that evidence. For an excessive cut, identify the particular coupled action, selection dependency or completion condition detached by it. An independently executable turn can still be preparatory in this source; another source may give that turn its own observation or stopping objective. A separate final wait/placement can be meaningful when the target relation and entry are supported. A harmless optional anchor or faithful paraphrase does not become a blocking defect merely because Generator could have used fewer edits. Accept equivalent usable grouping; preserve evidence-backed C10 defects rather than adopting either a blanket SPLIT or blanket KEEP policy.
 
 ### R-P2-B2 — Exact completion and preserved entry
 
@@ -62,9 +62,9 @@ Under R-P0 and S-REPAIR, a blocking Finding identifies the changed requirement, 
 
 Check both the diagnosis and remedy against the source. The remedy may restore an omitted action, bind a condition, correct an identified relation or regroup the affected maneuver; it should not rewrite unrelated route segments. After repair, R1 independently checks the complete new candidate and its exact rendered snapshot, not merely G1's explanation or compliance with the old advice.
 
-### R-P2-C1 — Correct refusal only with unique source support
+### R-P2-C1 — Source-grounded correction and refusal review
 
-When G0 returns needs_review, first decide whether the source term can simply be retained without changing the route. If you recommend a correction affecting number, direction, identity or completion, show why the whole source uniquely establishes it. Establish both that the original candidate is defective and that the proposed remedy is uniquely source-supported. Retaining a usable unfamiliar name is preferable to guessing. Mere spelling or phonetic plausibility is insufficient to add a count, while an unambiguous grammatical correction need not cause source refusal. Distinguish a candidate-created grouping gap, which is repairable, from a source-critical limitation that persists after reasonable interpretation and regrouping.
+For every proposed correction, including corrections to an active candidate, first check whether the source wording can be retained without changing the route. When G0 returns needs_review, apply the same test before alleging over-rejection. If you recommend a correction affecting number, direction, identity or completion, show why the whole source uniquely establishes it. Establish both that the original candidate is defective and that the proposed remedy is uniquely source-supported. Retaining a usable unfamiliar name is preferable to guessing. Mere spelling or phonetic plausibility is insufficient to add a count, while an unambiguous grammatical correction need not cause source refusal. Distinguish a candidate-created grouping gap, which is repairable, from a source-critical limitation that persists after reasonable interpretation and regrouping.
 
 ### R-P2-C2 — Selective repair and protection
 

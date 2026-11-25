@@ -159,7 +159,30 @@
       "terminal"
     ],
     "counter_example_boundary": "A generic instruction to go down a hallway does not establish its far end.",
-    "decision_reason": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway."
+    "decision_reason": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "source_quotes": [
+        "going straight to the end of the hallway.",
+        "Turn left and enter the bedroom."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Continue straight to the end of the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "turn left and enter the bedroom."
+        }
+      ],
+      "operation": "Reaching the stated hallway end establishes the position of the following left turn and bedroom selection. It can support useful local focus, unlike a merely preparatory turn.",
+      "counter_boundary": "The split shown is supported, not a universal obligation. A faithful coarse version is not a C10 defect without a concrete loss of target focus or dependency.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "room_transition",

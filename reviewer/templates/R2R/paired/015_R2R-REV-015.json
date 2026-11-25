@@ -277,6 +277,35 @@
       "entry",
       "frame"
     ],
-    "decision_reason": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop."
+    "decision_reason": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Exit the bedroom.",
+        "first door on your right",
+        "turn right again"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "exit the bedroom."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "After exiting the bedroom"
+        },
+        {
+          "subtask_index": 1,
+          "quote": "first door on your right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The first right-hand door is selected after the bedroom exit; the later right is a distinct turn. Preserve that count origin, either by clear inheritance or a minimal explicit exit anchor.",
+      "counter_boundary": "Do not erase a navigation-critical origin in pursuit of shorter wording. The explicit exit anchor is legal; it is not universally mandatory when the same origin is already unambiguous.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

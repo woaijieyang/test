@@ -277,6 +277,30 @@
       "entry",
       "ordinal"
     ],
-    "decision_reason": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait."
+    "decision_reason": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "enter the hallway to the slight right past the chair",
+        "turn right and enter the third door on the left"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "enter the hallway to the slight right past the chair."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "Turn right and enter the third door on the left."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The slight-right/chair description belongs to hallway entry. Complete that entry before the later right turn and third-left-door choice; the second stage can inherit this established region.",
+      "counter_boundary": "Do not move past the chair onto an unsupported separate waypoint. An added From phrase cannot substitute for an unperformed crossing.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

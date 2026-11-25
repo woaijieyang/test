@@ -280,6 +280,29 @@
       "entry",
       "terminal"
     ],
-    "decision_reason": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room."
+    "decision_reason": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Move through door into hallway",
+        "turn right"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "go through the door into the hallway."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "From the hallway, turn right"
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The preceding stage already establishes hallway entry. Omitting the new From the hallway phrase leaves the next right turn uniquely grounded; prefer inheritance when generating afresh.",
+      "counter_boundary": "The shown anchored candidate remains faithful and acceptable. Do not demand its rewrite merely for verbosity. If a necessary region, referent or counting frame were unclear, retain the shortest supporting anchor.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

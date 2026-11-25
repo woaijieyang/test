@@ -36,6 +36,9 @@ def card(example, role, detailed):
                   lesson=item['lesson'], reusable_rule=item.get('reusable_rule'),
                   counter_boundary=item['counter_boundary'], skills=item['skills'],
                   format='lesson_summary')
+    boundary = example.get('teaching_notes', {}).get('decision_boundary')
+    if boundary:
+        result['decision_boundary'] = deepcopy(boundary)
     if not result['reusable_rule']:
         raise ValueError('Missing reusable teaching operation')
     out = example['output'] if role == 'generator' else example['expected_review']

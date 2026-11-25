@@ -87,6 +87,12 @@ def metadata(row, skills):
     if 'lost_action' in skills:retrieval.update({'direction','entry'} if tid.endswith('05') else {'return'} if tid=='R2R-DIAG-31' else {'transit','entry','attribute'})
     from host.r2r.relations import route_family
     src=row['source'];family=route_family(src,src.get('split'))
-    return dict(rule_ids=rules,retrieval_skills=sorted(retrieval),facets=facets,
+    # These authored cases teach conditional routes/actual revisits. Shared
+    # scope, entry or terminal words alone do not make them applicable.
+    required = (['conditional_routes'] if tid in ('R2R-GEN-036','R2R-REV-036','R2R-DIAG-30')
+                else ['required_return'] if tid in ('R2R-GEN-037','R2R-REV-037','R2R-DIAG-31') else [])
+    extra = row.get('teaching_notes', {}).get('decision_boundary', {}).get('rule_ids', [])
+    rules = sorted(set(rules) | set(extra))
+    return dict(required_query_facets=required,rule_ids=rules,retrieval_skills=sorted(retrieval),facets=facets,
                 teaching_polarity=polarity,route_family=family,
                 mapping_basis='Authored lesson and case-local contrast, not query keyword occurrence')

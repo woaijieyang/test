@@ -15,17 +15,17 @@
   },
   "canonical_build_sizes": {
     "generator/compiled_r2r-en.txt": {
-      "current_utf8_bytes": 113955,
+      "current_utf8_bytes": 117210,
       "parent_utf8_bytes": 111172,
       "evaluated_utf8_bytes": 115303
     },
     "reviewer/compiled_r2r-en.txt": {
-      "current_utf8_bytes": 148508,
+      "current_utf8_bytes": 152185,
       "parent_utf8_bytes": 142319,
       "evaluated_utf8_bytes": 148045
     },
     "generator/compiled_repair_r2r-en.txt": {
-      "current_utf8_bytes": 129008,
+      "current_utf8_bytes": 142264,
       "parent_utf8_bytes": 126225,
       "evaluated_utf8_bytes": 130356
     }

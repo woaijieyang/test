@@ -30,7 +30,7 @@ Carry the reference entity, viewpoint and time of each relation. A room left of 
 
 ### G-P2-A4 — Sustained constraints and modifier attachment
 
-Determine whether a phrase specifies a start, the whole movement, or the endpoint. A walk on a carpet remains on that surface; from the carpet expresses only a start. Bind while/keep/stay over the stated process, repeating a still-active restriction across an affected boundary only when needed. Restoring a path-wide relation must preserve bounded or approximate movement, approach strength and the original stopping position; never repair one constraint by strengthening another. When merging sentences, retain which event a direction, participle or prepositional phrase modifies. Preserve the source attachment when rearranging it would choose an unsupported order or object-to-object relation.
+Determine whether a phrase specifies a start, the whole movement, or the endpoint. A walk on a carpet remains on that surface; from the carpet expresses only a start. Bind while/keep/stay over the stated process, repeating a still-active restriction across an affected boundary only when needed. Restoring a path-wide relation must preserve bounded or approximate movement, approach strength and the original stopping position; never repair one constraint by strengthening another. Before and after merging, identify the action owned by each direction, destination phrase and sustained constraint. Keeping all verbs and landmarks is insufficient if their attachment changes. Do not turn the target of a later ordered action into a direction modifier of the earlier action without unique source support. Preserve the source attachment when rearranging it would choose an unsupported order or object-to-object relation.
 
 ### G-P2-A5 — Same-event refinement and terminal scope
 
@@ -60,7 +60,7 @@ First distinguish continuing transit, an independently completed objective, and 
 
 ### G-P2-B2 — Minimal sufficient entry and event handoff
 
-Begin the next stage with its first unperformed action. Inherit ordinary current pose and an unambiguous just-selected entity. Add the shortest phrase needed for a critical doorway identity, region-relative choice, counting origin or frame. Use three outcomes: inherit a uniquely established state; state the minimal source-supported dependency when a selection would otherwise be unclear; or move the cut, restore the missing action or merge when the prerequisite event is unperformed. If the preceding stage has not expressed or uniquely established entry into a hallway, perform that entry before using the hallway as context. A new From/Inside phrase cannot perform that crossing. Retain a necessary bedroom-exit count origin even when the ordinal word itself survives. A context phrase refers to completed events; it does not command their repetition or assert sensor verification.
+Begin the next stage with its first unperformed action. Inherit ordinary current pose and an unambiguous just-selected entity. Before adding an entry phrase, temporarily omit it and check whether the next target, region, count origin and reference frame remain uniquely determined by the full source and preceding completion. If they do, inherit them. Otherwise add only the shortest source-supported phrase resolving that specific dependency. Use three outcomes: inherit a uniquely established state; state the minimal source-supported dependency when a selection would otherwise be unclear; or move the cut, restore the missing action or merge when the prerequisite event is unperformed. If the preceding stage has not expressed or uniquely established entry into a hallway, perform that entry before using the hallway as context. A new From/Inside phrase cannot perform that crossing. Retain a necessary bedroom-exit count origin even when the ordinal word itself survives. A context phrase refers to completed events; it does not command their repetition or assert sensor verification.
 
 ### G-P2-B3 — Destination strength and local stopping position
 
@@ -68,7 +68,9 @@ Preserve the distinctions among towards, to, through, at a doorway, just inside,
 
 ### G-P2-B4 — Economical expression and successful alternatives
 
-Retain clear source wording, order and deixis unless the candidate needs a specific repair. A useful local anchor may improve interpretation; a boilerplate From/Inside/After on every stage does not. Compare the actual dependency with the teaching case before transferring its phrasing or stage count. Keep necessary reference binding and endpoint refinement even when the route is short. Prefer an exact coherent single-goal source over cosmetic rewriting, while still exposing distinct useful objectives when warranted.
+Complete full-source interpretation and boundary judgment first; then prefer already-clear contiguous source spans when expressing stages. Make a local edit only to resolve a specific target identity, reference, count origin, action dependency or uniquely recoverable grammar. Do not repeat an already established ordinary position merely to make each stage look self-contained. Among equally faithful, executable organizations that expose the needed objectives, prefer the one with fewer unnecessary edits. This is not a word-count or edit-distance objective.
+
+Keep necessary reference binding and endpoint refinement even for short routes. A useful local anchor may improve interpretation; boilerplate From/Inside/After on every stage does not. Compare the source dependency with the teaching case before transferring its phrasing or stage count. A faithful alternative with a redundant but harmless anchor is still valid; this generation preference does not create a Reviewer defect.
 
 ## G-P1-C — Read back, repair and submit the candidate
 

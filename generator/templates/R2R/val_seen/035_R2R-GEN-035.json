@@ -161,7 +161,31 @@
     ],
     "counter_example_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
     "transfer_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
-    "decision_reason": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait."
+    "decision_reason": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "source_quotes": [
+        "enter the hallway to the slight right past the chair",
+        "turn right and enter the third door on the left"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "enter the hallway to the slight right past the chair."
+        },
+        {
+          "subtask_index": 1,
+          "quote": "Turn right and enter the third door on the left."
+        }
+      ],
+      "operation": "The slight-right/chair description belongs to hallway entry. Complete that entry before the later right turn and third-left-door choice; the second stage can inherit this established region.",
+      "counter_boundary": "Do not move past the chair onto an unsupported separate waypoint. An added From phrase cannot substitute for an unperformed crossing.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "room_transition",

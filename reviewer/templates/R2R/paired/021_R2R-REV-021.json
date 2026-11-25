@@ -190,6 +190,24 @@
       "endpoint",
       "terminal"
     ],
-    "decision_reason": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent."
+    "decision_reason": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
+    "decision_boundary": {
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "source_quotes": [
+        "Go up the three steps and when you get to the top, wait."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go up the three steps and when you get to the top, wait."
+        }
+      ],
+      "operation": "Independently check the source/candidate evidence below. The top and wait refine the same three-step ascent. Keep the bounded ascent and its final wait together; no second climb is requested.",
+      "counter_boundary": "A matching place name does not license moving a final stop across a separately requested later action. Check event identity, intervening order and stop scope together.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   }
 }

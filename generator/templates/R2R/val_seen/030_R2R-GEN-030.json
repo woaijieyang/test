@@ -157,7 +157,25 @@
     ],
     "counter_example_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
     "transfer_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
-    "decision_reason": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left."
+    "decision_reason": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "source_quotes": [
+        "first room to the left of the staircase"
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 1,
+          "quote": "the first room to the left of the staircase"
+        }
+      ],
+      "operation": "Retain the staircase as the reference object at room selection. Reaching its bottom establishes position, not a new egocentric left.",
+      "counter_boundary": "A source saying on your left has a different reference. Do not remove the object-relative phrase as a redundant entry anchor.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "room_transition",

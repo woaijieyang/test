@@ -2,7 +2,7 @@
 import re
 FACET_PATTERNS={
  'conditional_routes':r'\bif\b[^.!?]{0,180}(?:[.!?]\s*)?\botherwise\b',
- 'required_return':r'\b(?:return|backtrack|retrace|back to)\b',
+ 'required_return':r'\b(?:return|backtrack|retrace)\b|\bback\s+to\s+(?:the\s+)?(?:same|original)\b',
  'stair_turn':r'\b(?:stairs?|staircase)\b[^.!?]{0,70}\b(?:turn|right|left)\b',
  'landmark_placement':r'\b(?:stop|wait|stand)\b[^.!?]{0,80}\b(?:near|by|beside|behind|front|at)\b',
  'arrival_trigger':r'\b(?:once|when|until)\b[^.!?]{0,80}\b(?:reach|get|at|see)\b',
@@ -33,7 +33,7 @@ FACET_PATTERNS={
  'center_door_selection':r'\b(?:center|middle)\s+door\b',
  'object_relative_room':r'\b(?:room|door)\b[^.!?]{0,45}\b(?:left|right) of (?:the )?(?:stairs?|staircase)\b',
  'ordinal_room':r'\b(?:first|second|third|fourth)\s+room\b',
- 'uncertain_name':r'\b(?:unclear|unknown|not sure|either)\b',
+ 'uncertain_name':r"\b(?:unclear|unknown|not sure|cannot tell|can't tell)\b",
  'stair_destination':r'\b(?:continue|proceed|go|walk)\b[^.!?]{0,55}\b(?:stairs?|staircase)\b',
  'hall_entry':r'\b(?:enter|into)\s+(?:the |a )?(?:hall|hallway|corridor)\b',
  'turnaround_entry':r'\bturn\s+around\b',
@@ -43,13 +43,34 @@ FACET_PATTERNS={
  'maintained_frame':r'\b(?:keep|while|with)\b[^.!?]{0,80}\b(?:left|right|facing)\b',
  'initial_frame':r'\b(?:with|facing)\b[^.!?]{0,80}\b(?:back|behind)\b',
  'turn_until_frame':r'\bturn\b[^.!?]{0,35}\buntil\b',
+ 'surface_motion':r'\b(?:walk|go|move|continue|keep walking)\b[^.!?]{0,65}\b(?:on|along)\s+(?:the |a )?(?:[a-z]+\s+){0,2}(?:carpet|rug|path|walkway|floor)\b',
  'window_side':r'\b(?:left|right)\b[^.!?]{0,30}\bwindows?\b',
 }
 
+def applicability(item, query_facets):
+    """Source-only eligibility for specialist teaching, before ranking.
+
+    Ordinary lessons have no gate. A missing specialist relation is a normal
+    exclusion, not a technical failure or a request to alter the source.
+    """
+    required = item.get('required_query_facets', [])
+    if not isinstance(required, list) or any(f not in FACET_PATTERNS for f in required):
+        raise ValueError('Invalid specialist applicability metadata')
+    return not required or bool(set(required) & set(query_facets))
+
+
 def facet_signals(text):
     if not isinstance(text,str):raise TypeError('Source must be a string')
-    return {name:[dict(start=m.start(),end=m.end(),quote=m.group()) for m in re.finditer(pattern,text,re.I)]
-            for name,pattern in FACET_PATTERNS.items() if re.search(pattern,text,re.I)}
+    out = {}
+    for name, pattern in FACET_PATTERNS.items():
+        spans = []
+        for match in re.finditer(pattern, text, re.I):
+            if name == 'required_return' and re.search(r"(?:do not|don't|never)\s+(?:go\s+)?$", text[:match.start()], re.I):
+                continue  # a prohibition is not an instruction to revisit
+            spans.append(dict(start=match.start(), end=match.end(), quote=match.group()))
+        if spans:
+            out[name] = spans
+    return out
 
 
 def route_family(provenance, split):

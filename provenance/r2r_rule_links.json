@@ -223,7 +223,7 @@
       "role": "reviewer",
       "level": 2,
       "parent": "R-P1-C",
-      "title": "Correct refusal only with unique source support",
+      "title": "Source-grounded correction and refusal review",
       "path": "reviewer/dataset_rules/r2r_en.md"
     },
     {

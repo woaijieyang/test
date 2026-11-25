@@ -351,6 +351,10 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         checks = transfer_checks(original_instruction or "")
         if checks:
             parts.append("When comparing the cases above with this instruction, check: " + " ".join(checks))
+    if examples and profile == 'r2r-en' and phase in ('repair', 'recheck'):
+        filename = 'r2r_repair_examples.json' if role == 'generator' else 'r2r_recheck_examples.json'
+        parts.append('R2R PHASE-SPECIFIC ADVICE CONTRASTS: prior R0 advice below is intentionally fallible. Transfer the independent source check, not the mistaken advice; expected_output obeys the current phase schema.')
+        parts.extend(canonical(e) for e in json.loads((d/'dataset_rules'/filename).read_text(encoding='utf-8')))
     if profile == 'r2r-en':
         parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     parts.append('ACTUAL INPUT: process only the current independent user message. Do not import a training example into this route. Return the ACTIVE schema JSON object.')

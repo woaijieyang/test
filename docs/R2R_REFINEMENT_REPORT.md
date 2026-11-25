@@ -1,5 +1,7 @@
 # R2R 专项整改记录
 
+> 历史交付记录。后续目录归属、检索适用性、规则教学与原始工作簿重放以 `R2R_MINIMAL_REPORT.md` 为准；下述缺失文件与测试数量描述的是当轮状态。
+
 ## 本次实现边界
 
 基于 `a1139e1eb2897e8bbaf2a4fbf6eb2e77b00295e8` 完成模块归属、现有规则细化、模板证据、独立Reviewer作者逻辑及来源关系互补检索。Shared通用契约、通用角色Prompt、Adapter、Renderer、输出Schema、Actor及RxR专属行为不变。不承诺导航收益。

@@ -1,0 +1,10 @@
+{
+  "base_commit": "d4cce47841c817083217a7fffa3a1e6235316491",
+  "protected_files": 205,
+  "queries": 47,
+  "phase_requests": 188,
+  "protected_files_equal": true,
+  "prompt_schema_ids_equal": true,
+  "mixed_profile_equal": true,
+  "navigation_evaluated": false
+}

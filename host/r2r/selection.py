@@ -2,7 +2,7 @@
 from pathlib import Path
 from functools import lru_cache
 import hashlib,json,re,math
-from host.r2r.relations import facet_signals, FACET_PATTERNS
+from host.r2r.relations import facet_signals, FACET_PATTERNS, applicability
 ROOT=Path(__file__).resolve().parents[2]
 PATTERNS={
  'entity_frame':[r'\b(?:left|right) of (?:the |a )?[^,.!?;]{1,50}'],
@@ -27,7 +27,7 @@ PATTERNS={
  'negation':[r"\b(?:do not|don't|never|without)\b"],
  'branch':[r'\b(?:if|otherwise|either)\b'],
  'return':[r'\b(?:return|backtrack|retrace|back to|same door)\b'],
- 'uncertainty':[r'\b(?:either|unclear|not sure|or)\b'],
+ 'uncertainty':[r"\b(?:unclear|unknown|not sure|cannot tell|can't tell)\b"],
 }
 # Transparent specificity priorities, not learned navigation-success estimates.
 SPECIFIC=frozenset({'entity_frame','ordinal','bounded','hall_end','attribute','observation','negation','branch','return','attachment'})
@@ -47,6 +47,9 @@ def _index_blob(blob):
         prefix='G-' if item['role']=='generator' else 'R-'
         if not item.get('rule_ids') or any(not r.startswith(prefix) for r in item['rule_ids']):raise ValueError('Missing or cross-role teaching-rule mapping')
         if not item.get('retrieval_skills') or set(item.get('facets',()))-set(FACET_PATTERNS):raise ValueError('Invalid teaching relation metadata')
+        if 'required_query_facets' not in item:
+            raise ValueError('Missing specialist applicability declaration')
+        applicability(item, set())  # validate gate structure before any selection
         if item.get('teaching_polarity') not in ('generate','accept','detect','source_limitation'):raise ValueError('Invalid teaching polarity')
     return index
 
@@ -118,6 +121,9 @@ def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=(),prior=(),
             excluded.append(dict(template_id=tid,reason='same_source'));continue
         if source_family is not None and family==source_family:
             excluded.append(dict(template_id=tid,reason='same_route_family'));continue
+        if not applicability(item, query_facets):
+            excluded.append(dict(template_id=tid,reason='inapplicable_specialist',required_query_facets=item['required_query_facets']))
+            continue
         matched=query & set(item.get('retrieval_skills',item['skills']))
         facets=query_facets & set(item.get('facets',()))
         terms=set(re.findall(r'[a-z]+',_source(row).casefold()))
@@ -161,6 +167,8 @@ def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=(),prior=(),
             matched_skills=sorted(best['matched']),added_coverage=sorted(best['matched']-covered),
             optional_coverage=sorted(optional_skills(best)) if not base else [],
             core_overlap=sorted(best['matched']&core_focus),matched_facets=sorted(best['facets']),
+            applicability_basis='specialist_relation' if best['item'].get('required_query_facets') else 'general_calibration',
+            required_query_facets=list(best['item'].get('required_query_facets', [])),
             added_lesson_units=sorted(new_units(best)),teaching_polarity=best['item'].get('teaching_polarity'),
             matched_source_spans={s:hits[s] for s in sorted(best['matched'])},
             matched_facet_spans={f:facet_hits[f] for f in sorted(best['facets'])}))

@@ -98,7 +98,25 @@
       "endpoint",
       "terminal"
     ],
-    "counter_example_boundary": "Completing the entire staircase before climbing three more steps repeats movement."
+    "counter_example_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
+    "decision_boundary": {
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3"
+      ],
+      "source_quotes": [
+        "Go up the three steps and when you get to the top, wait."
+      ],
+      "candidate_evidence": [
+        {
+          "subtask_index": 0,
+          "quote": "Go up the three steps and when you get to the top, wait."
+        }
+      ],
+      "operation": "The top and wait refine the same three-step ascent. Keep the bounded ascent and its final wait together; no second climb is requested.",
+      "counter_boundary": "A matching place name does not license moving a final stop across a separately requested later action. Check event identity, intervening order and stop scope together.",
+      "framing": "Generation preference is not a new review rejection criterion; no stage-count or edit-distance optimization."
+    }
   },
   "retrieval_tags": [
     "stairs_or_level_change",

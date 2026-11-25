@@ -90,6 +90,12 @@ def audit(records: list[dict], origin: dict) -> dict:
                 for core in core_rows(role):
                     if prompt.count(canonical(teaching_card(core, role, detailed=True))) != 1:
                         raise AssertionError('Fixed Core not injected exactly once')
+                if phase in ('repair','recheck'):
+                    filename='r2r_repair_examples.json' if role=='generator' else 'r2r_recheck_examples.json'
+                    phase_lessons=json.loads((ROOT/role/'dataset_rules'/filename).read_bytes())
+                    for lesson in phase_lessons:
+                        if lesson['phase']!=phase or prompt.count(canonical(lesson))!=1:
+                            raise AssertionError('Phase lesson not injected exactly once in correct phase')
                 snapshots.append(dict(role=role, phase=phase, ids=ids,
                     prompt_sha256=text_hash(prompt), schema_sha256=text_hash(canonical(schema)),
                     utf8_bytes=len(prompt.encode('utf-8')), projection=receipts))
@@ -103,7 +109,7 @@ def audit(records: list[dict], origin: dict) -> dict:
             unmatched_query_skills=bundle['evidence']['generator']['unmatched_query_skills'],
             snapshots=snapshots))
     return dict(origin=origin, query_count=len(records), phase_count=4*len(records),
-        deterministic_selection=True, selected_projection_verified=True, fixed_core_verified=True,
+        deterministic_selection=True, selected_projection_verified=True, fixed_core_verified=True, phase_teaching_verified=True,
         generator_dynamic_counts=dict(sorted(counts.items())),
         reviewer_diagnostic_counts=dict(sorted(diagnostics.items())),
         generator_selection_reasons=dict(sorted(reasons.items())),

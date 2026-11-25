@@ -49,6 +49,8 @@ def materialize():
     finalize_detail(rows)
     from tools.r2r_authoring.semantic_refinements import apply as refine
     refine(rows)
+    from tools.r2r_authoring.decision_boundaries import apply as boundaries
+    boundaries(rows)
     from tools.r2r_authoring.contrast import examples as contrast_examples
     additions=contrast_examples()
     declared={e['path']:e for e in inventory['additions']}
@@ -106,6 +108,16 @@ def materialize():
     if any(set(item['facets'])-set(FACET_PATTERNS) for item in index):raise ValueError('Unknown authored relation facet')
     if len(ids)!=len(registry) or not registry or any(r['parent'] and r['parent'] not in ids for r in registry):raise ValueError('Broken role-rule inheritance')
     outputs['provenance/r2r_rule_links.json']=encode({'common_authority':'shared/semantic_contract.md','shared_interpretations':'shared/dataset_rules/r2r_en.md','nodes':registry})
+    from tools.r2r_authoring.phase_lessons import lessons, SPECS
+    phase_data=lessons()
+    expected_phase=[dict(id=s['id'],source_sha256=sha(s['source'].encode()),builder='tools.r2r_authoring.phase_lessons',source_type='authored_synthetic') for s in SPECS]
+    if inventory.get('phase_lessons')!=expected_phase:raise ValueError('Unregistered phase teaching source')
+    for role,filename in [('generator','r2r_repair_examples.json'),('reviewer','r2r_recheck_examples.json')]:
+        if any(set(e['rule_ids'])-ids for e in phase_data[role]):raise ValueError('Phase lesson references unknown rule')
+        outputs[f'{role}/dataset_rules/{filename}']=encode(phase_data[role])
+    from tools.r2r_authoring.rule_coverage import report as coverage_report
+    outputs['provenance/r2r_operation_coverage.json']=encode(coverage_report(rows,phase_data))
+
     return outputs
 
 def main():

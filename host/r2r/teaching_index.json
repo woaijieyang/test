@@ -21,6 +21,9 @@
       "reusable_rule": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "conditional_routes"
+      ],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A6",
@@ -59,6 +62,9 @@
       "reusable_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "required_return"
+      ],
       "rule_ids": [
         "G-P2-A4",
         "G-P2-A5",
@@ -86,7 +92,7 @@
       "pair_relation": null,
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "d50c52bedeb04c2f2f0489c341a0c7228f87ceb474ab3ade38742d7da6a34b90",
+      "content_sha256": "73f69df3e9623ba1b28a8514a471243bb3683c9b56e005d7e6630674fc049052",
       "skills": [
         "coupled",
         "direction",
@@ -96,10 +102,12 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B1",
-        "G-P2-B3"
+        "G-P2-B3",
+        "G-P2-B4"
       ],
       "retrieval_skills": [
         "coupled",
@@ -132,6 +140,7 @@
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -161,7 +170,7 @@
       "pair_relation": null,
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "3a95bbaf734135c05edbc2729222f519b033079416f17fb0d720479a79e7b773",
+      "content_sha256": "a2b980f0bc5f042bfca399ef1da9f36e6061d9522f74451424170dc5486c6b40",
       "skills": [
         "bounded",
         "endpoint",
@@ -171,6 +180,7 @@
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A5",
         "G-P2-B3"
@@ -206,6 +216,7 @@
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A5",
@@ -244,6 +255,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A4",
@@ -281,6 +293,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2"
@@ -316,6 +329,7 @@
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-A4",
@@ -355,6 +369,7 @@
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -392,6 +407,7 @@
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A4",
         "G-P2-A5",
@@ -429,6 +445,7 @@
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A2",
@@ -463,6 +480,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A midway limit would constrain the descent itself rather than a new full descent.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B3"
@@ -498,6 +516,7 @@
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A4",
         "G-P2-A5",
@@ -536,6 +555,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Passing a case alone does not establish entry into a different room.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A4",
@@ -574,6 +594,7 @@
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -611,6 +632,7 @@
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -650,6 +672,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A5",
         "G-P2-B1",
@@ -686,6 +709,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2"
@@ -721,6 +745,7 @@
       "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
       "counter_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A4",
@@ -759,6 +784,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A room name alone is not a mandatory stage boundary.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B2",
@@ -797,6 +823,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A source command to open a closed door would be an additional action worth preserving.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -824,7 +851,7 @@
       "pair_relation": null,
       "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
       "source_family": "R2R|val_seen|standard|record_id=11|episode_id=11|trajectory_id=139",
-      "content_sha256": "35e299a4a5b9a60706003b6e55f1846da4f25fa5452440d650322585e428cdd2",
+      "content_sha256": "077d79149d29e99104a88fa547707bf12ba7d19a9f98a86a01ec5c631ce77d4e",
       "skills": [
         "hall_end",
         "direction",
@@ -834,9 +861,11 @@
       "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
       "counter_boundary": "A generic instruction to go down a hallway does not establish its far end.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B1",
+        "G-P2-B2",
         "G-P2-B3"
       ],
       "retrieval_skills": [
@@ -871,6 +900,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A predicted view of a doorway would not establish that exit.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2"
@@ -906,6 +936,7 @@
       "reusable_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
       "counter_boundary": "An open-door adjective does not request operating the door.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-B1",
@@ -943,6 +974,7 @@
       "reusable_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
       "counter_boundary": "A distinct visit completed inside the bedroom would change the grouping test.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B3"
@@ -968,7 +1000,7 @@
       "pair_relation": null,
       "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
       "source_family": "R2R|val_seen|standard|record_id=15|episode_id=15|trajectory_id=149",
-      "content_sha256": "008fa7ea4d6421382f0a9418003be754862b8132acc8d429145ea042c8c7cf5d",
+      "content_sha256": "5e99b84a46b21b3526c9bad2d6a3d3b8454df60dbea1a351fd35573aec2bbbf5",
       "skills": [
         "ordinal",
         "entry",
@@ -978,9 +1010,11 @@
       "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
       "counter_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
-        "G-P2-B2"
+        "G-P2-B2",
+        "G-P2-B4"
       ],
       "retrieval_skills": [
         "entry",
@@ -1014,6 +1048,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A right-window ending is a target error, not a failure of the already completed bedroom handoff.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2",
@@ -1051,6 +1086,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "An observed landmark is not automatically a separate visit or stop.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -1089,6 +1125,7 @@
       "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
       "counter_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A5",
         "G-P2-B1",
@@ -1116,7 +1153,7 @@
       "pair_relation": null,
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "774c1b68e56f2022765443a641727a337e9a1af24716fdc01c6fde61ea3ca871",
+      "content_sha256": "491fbbebc4b6e94ed7b01a51a5a2782a7d4a172a3984e4087852ab24a00ee85c",
       "skills": [
         "coupled",
         "direction",
@@ -1126,10 +1163,12 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B1",
-        "G-P2-B3"
+        "G-P2-B3",
+        "G-P2-B4"
       ],
       "retrieval_skills": [
         "coupled",
@@ -1162,6 +1201,7 @@
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-A4",
@@ -1191,7 +1231,7 @@
       "pair_relation": null,
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "6efd3742cecae281399114770efa238e5cde340b8d0f165b8f67d295c38d4e53",
+      "content_sha256": "1d3902a5c6384c9b468175ff5953e1fa31d6e11fd55c7403d44a157504727c3d",
       "skills": [
         "bounded",
         "endpoint",
@@ -1201,6 +1241,7 @@
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A5",
         "G-P2-B3"
@@ -1236,6 +1277,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2",
@@ -1273,6 +1315,7 @@
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A5",
@@ -1311,6 +1354,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Turn count or sentence count alone does not establish independent local targets.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B1",
@@ -1348,6 +1392,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2",
@@ -1384,6 +1429,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "The stairs are a route-side landmark, not an instruction to climb them.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B2"
@@ -1419,6 +1465,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-B2",
@@ -1456,6 +1503,7 @@
       "reusable_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
       "counter_boundary": "A center-door descriptor is not interchangeable with an ordinal door count.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A3",
@@ -1493,6 +1541,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A4",
@@ -1521,7 +1570,7 @@
       "pair_relation": null,
       "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
       "source_family": "R2R|val_seen|standard|record_id=30|episode_id=30|trajectory_id=339",
-      "content_sha256": "56f7efcc77b8040ee606af7811dd74a94de172af1690a8df2ac8f6b9ed940b83",
+      "content_sha256": "bdeccd59e2e867d6a19f9c2c8c21403911d780dcc7db09fcb51c883110e309be",
       "skills": [
         "entity_frame",
         "ordinal",
@@ -1531,8 +1580,10 @@
       "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
       "counter_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
+        "G-P2-B2",
         "G-P2-B3"
       ],
       "retrieval_skills": [
@@ -1567,6 +1618,7 @@
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A2",
@@ -1601,6 +1653,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An explicit source wait at the stairs would add a terminal event.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B3"
@@ -1635,6 +1688,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Reaching the font does not complete the later pond placement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A1",
         "G-P2-A4",
@@ -1661,7 +1715,7 @@
       "pair_relation": null,
       "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
       "source_family": "R2R|val_seen|standard|record_id=34|episode_id=34|trajectory_id=356",
-      "content_sha256": "30580729efd4271fd37759e1c122dde997159755c587d3db70f774c59d6a9934",
+      "content_sha256": "ea01584b173926b8ac9deee1e48a9103f20170284b6c3089998fac3db4dbf367",
       "skills": [
         "transit",
         "entry",
@@ -1671,10 +1725,12 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-B1",
         "G-P2-B2",
-        "G-P2-B3"
+        "G-P2-B3",
+        "G-P2-B4"
       ],
       "retrieval_skills": [
         "entry",
@@ -1698,7 +1754,7 @@
       "pair_relation": null,
       "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
       "source_family": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356",
-      "content_sha256": "f9ec0168d55fb976f1ce68af5a987fd71bc9305641b2cc2ff90a304a7cdbe1e2",
+      "content_sha256": "f8d5152b76fb390f3651a60d9f18efd9e1a920fbfb053facdbfa39108718bf4a",
       "skills": [
         "attachment",
         "entry",
@@ -1708,9 +1764,11 @@
       "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
       "counter_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "G-P2-A3",
         "G-P2-A4",
+        "G-P2-B1",
         "G-P2-B2"
       ],
       "retrieval_skills": [
@@ -1746,6 +1804,9 @@
       "reusable_rule": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "conditional_routes"
+      ],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-A4",
@@ -1782,6 +1843,9 @@
       "reusable_rule": "The same final doorway does not justify deleting the trip to the bench and the return event.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "required_return"
+      ],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-A4",
@@ -1819,6 +1883,9 @@
       "reusable_rule": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "conditional_routes"
+      ],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -1857,6 +1924,9 @@
       "reusable_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
       "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [
+        "required_return"
+      ],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -1894,6 +1964,7 @@
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B2"
@@ -1928,6 +1999,7 @@
       "reusable_rule": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence.",
       "counter_boundary": "Do not infer a defect from harmless rewording of the same ordinal or from a landmark description that leaves the counted target unchanged.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -1950,7 +2022,7 @@
       "pair_relation": "analogy",
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "0eddf6eeeef79eb4e88c075403f44a707750b3bac42c3151029adcbda18e8fe9",
+      "content_sha256": "861869d84db03cc3e835e9a744dd56fb18e164fc5330a4095e5a09d6fd3cf665",
       "skills": [
         "coupled",
         "direction",
@@ -1960,6 +2032,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -1996,6 +2069,7 @@
       "reusable_rule": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
       "counter_boundary": "Do not call every two-stage route over-segmented. A completed independent objective with a supported next entry is a valid boundary.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B1"
       ],
@@ -2031,6 +2105,7 @@
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -2067,6 +2142,7 @@
       "reusable_rule": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",
       "counter_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -2106,6 +2182,7 @@
       "reusable_rule": "Restore entry into the hallway to the slight right at the beginning of stage 2, before the right turn and third-door count; keep chair pass-by as stage 1's endpoint.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -2143,6 +2220,7 @@
       "reusable_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately.",
       "counter_boundary": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -2180,6 +2258,7 @@
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -2216,6 +2295,7 @@
       "reusable_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
       "counter_boundary": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1"
       ],
@@ -2246,6 +2326,7 @@
       "reusable_rule": null,
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -2276,6 +2357,7 @@
       "reusable_rule": "Restore only the first left before the stair-case pass; retain the later right and locker-room entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -2306,6 +2388,7 @@
       "reusable_rule": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B2"
       ],
@@ -2337,6 +2420,7 @@
       "reusable_rule": "Restore door in the first doorway placement; preserve both subsequent left turns.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1"
       ],
@@ -2367,6 +2451,7 @@
       "reusable_rule": "Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B3"
       ],
@@ -2398,6 +2483,7 @@
       "reusable_rule": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3"
@@ -2429,6 +2515,7 @@
       "reusable_rule": "Audit the actual changed requirement and keep all unaffected coverage marked covered.",
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -2461,6 +2548,7 @@
       "reusable_rule": "Restore the prohibition on entering the first doorway; retain the second-door right turn and desk-side stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A4"
       ],
@@ -2491,6 +2579,7 @@
       "reusable_rule": "Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -2522,6 +2611,7 @@
       "reusable_rule": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -2552,6 +2642,7 @@
       "reusable_rule": "Restore third with the original left-side counting frame, preserving the preceding room crossing.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -2582,6 +2673,7 @@
       "reusable_rule": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -2613,6 +2705,7 @@
       "reusable_rule": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B2"
       ],
@@ -2644,6 +2737,7 @@
       "reusable_rule": "Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1"
       ],
@@ -2674,6 +2768,7 @@
       "reusable_rule": "Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B3"
       ],
@@ -2707,6 +2802,7 @@
       "reusable_rule": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3"
@@ -2738,6 +2834,7 @@
       "reusable_rule": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -2769,6 +2866,7 @@
       "reusable_rule": "Restore the first-door prohibition; retain the second-door left and table-side stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A4"
       ],
@@ -2800,6 +2898,7 @@
       "reusable_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent.",
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -2834,6 +2933,7 @@
       "reusable_rule": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -2865,6 +2965,7 @@
       "reusable_rule": "An entity state must not be promoted to an additional command.",
       "counter_boundary": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1"
       ],
@@ -2896,6 +2997,7 @@
       "reusable_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
       "counter_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -2932,6 +3034,7 @@
       "reusable_rule": "A later completion clause refines the same movement rather than licensing a second movement.",
       "counter_boundary": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3"
@@ -2963,6 +3066,7 @@
       "reusable_rule": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B2"
       ],
@@ -2993,6 +3097,7 @@
       "reusable_rule": "Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -3024,6 +3129,7 @@
       "reusable_rule": "Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2"
       ],
@@ -3056,6 +3162,7 @@
       "reusable_rule": "Restore the complete hallway-entry phrase with its slight-right and chair description before the right turn and third-door count. Keep its original modifier attachment; preserve the locker-side wait.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -3092,6 +3199,7 @@
       "reusable_rule": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
       "counter_boundary": "Do not invent STOP, arrival, entry, or an endpoint to make a cut appear closed.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B1"
       ],
@@ -3127,6 +3235,7 @@
       "reusable_rule": "Restore entry into the hallway to the slight right at the beginning of stage 2, before the right turn and third-door count; keep chair pass-by as stage 1's endpoint.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -3163,6 +3272,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A midway limit would constrain the descent itself rather than a new full descent.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -3199,6 +3309,7 @@
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -3237,6 +3348,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Passing a case alone does not establish entry into a different room.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -3275,6 +3387,7 @@
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B2"
@@ -3311,6 +3424,7 @@
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B2"
@@ -3348,6 +3462,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -3384,6 +3499,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -3419,6 +3535,7 @@
       "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
       "counter_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -3457,6 +3574,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A room name alone is not a mandatory stage boundary.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -3495,6 +3613,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A source command to open a closed door would be an additional action worth preserving.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B2"
@@ -3521,7 +3640,7 @@
       "pair_relation": "same_source",
       "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
       "source_family": "R2R|val_seen|standard|record_id=11|episode_id=11|trajectory_id=139",
-      "content_sha256": "2ced5e700c12ff812dd8bb9210545063bc24842ac40006cc688f78d2ba3966c8",
+      "content_sha256": "0d73e46ed82b06e4000f5ef44d2110a439cf9bc356d1032b8a7dd3b1df4b44ed",
       "skills": [
         "hall_end",
         "direction",
@@ -3531,6 +3650,7 @@
       "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
       "counter_boundary": "A generic instruction to go down a hallway does not establish its far end.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -3569,6 +3689,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A predicted view of a doorway would not establish that exit.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -3604,6 +3725,7 @@
       "reusable_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
       "counter_boundary": "An open-door adjective does not request operating the door.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B1",
@@ -3641,6 +3763,7 @@
       "reusable_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
       "counter_boundary": "A distinct visit completed inside the bedroom would change the grouping test.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -3667,7 +3790,7 @@
       "pair_relation": "same_source",
       "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
       "source_family": "R2R|val_seen|standard|record_id=15|episode_id=15|trajectory_id=149",
-      "content_sha256": "a8ecdf5fce9adfc7109c3fe6bac3d3ffec6c0907426cd81434a044257c3077b2",
+      "content_sha256": "859dd8ce06ea635f17d71867d77815083a71bcc4b10d095681e7c8d5c66e6657",
       "skills": [
         "ordinal",
         "entry",
@@ -3677,8 +3800,10 @@
       "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
       "counter_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
+        "R-P2-B1",
         "R-P2-B2"
       ],
       "retrieval_skills": [
@@ -3713,6 +3838,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A right-window ending is a target error, not a failure of the already completed bedroom handoff.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -3750,6 +3876,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "An observed landmark is not automatically a separate visit or stop.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B2"
@@ -3786,6 +3913,7 @@
       "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
       "counter_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -3813,7 +3941,7 @@
       "pair_relation": "same_source",
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "cf91f053eb78c2765820a03e62d1c99952f4c1cac5c6f1b44bd7c0f38b7740f7",
+      "content_sha256": "733411c0595b8785c6873338853449d0f91569d7d8f096ddb9c632a3d434c66d",
       "skills": [
         "coupled",
         "direction",
@@ -3823,6 +3951,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -3860,6 +3989,7 @@
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -3887,7 +4017,7 @@
       "pair_relation": "same_source",
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "8a01d248ae9a5e2c7aed9507c08929b0d296c2e26b910f571910a87305083f59",
+      "content_sha256": "186999f1770f2b5e89b6cfeca37fdbd806d942bc840ba8d83edbd1851bb764af",
       "skills": [
         "bounded",
         "endpoint",
@@ -3897,6 +4027,7 @@
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B2"
@@ -3932,6 +4063,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-B2"
@@ -3968,6 +4100,7 @@
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -4005,6 +4138,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Turn count or sentence count alone does not establish independent local targets.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -4043,6 +4177,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -4079,6 +4214,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "The stairs are a route-side landmark, not an instruction to climb them.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B1",
         "R-P2-B2"
@@ -4114,6 +4250,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -4151,6 +4288,7 @@
       "reusable_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
       "counter_boundary": "A center-door descriptor is not interchangeable with an ordinal door count.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-B1",
@@ -4187,6 +4325,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -4215,7 +4354,7 @@
       "pair_relation": "same_source",
       "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
       "source_family": "R2R|val_seen|standard|record_id=30|episode_id=30|trajectory_id=339",
-      "content_sha256": "474362bf9e39eb3bf74c5e22495fe0822f3f928b5035569bcb1857675fa06695",
+      "content_sha256": "aa19f584bb9d7484882c496123fb25e7642b8d6c389112e1cd0d340799ed43e2",
       "skills": [
         "entity_frame",
         "ordinal",
@@ -4225,6 +4364,7 @@
       "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
       "counter_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
         "R-P2-A3",
@@ -4262,6 +4402,7 @@
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-C1"
@@ -4295,6 +4436,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An explicit source wait at the stairs would add a terminal event.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-B1",
         "R-P2-B2"
@@ -4329,6 +4471,7 @@
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Reaching the font does not complete the later pond placement.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A1",
         "R-P2-A3",
@@ -4355,7 +4498,7 @@
       "pair_relation": "same_source",
       "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
       "source_family": "R2R|val_seen|standard|record_id=34|episode_id=34|trajectory_id=356",
-      "content_sha256": "30e1deb2bbb431aa958cf29d6593d1d1c0d073a64b9b598bd1cba17afe2d60ea",
+      "content_sha256": "95b67df45d50b2e7e15220426754865833cd91e246eb624488e1c36d3454179c",
       "skills": [
         "transit",
         "entry",
@@ -4365,6 +4508,7 @@
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A3",
         "R-P2-B1",
@@ -4392,7 +4536,7 @@
       "pair_relation": "same_source",
       "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
       "source_family": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356",
-      "content_sha256": "f09032750a8481191c816cf89bf96139d110a1bb25339f53c415a5604872147d",
+      "content_sha256": "4a607dd41ac078c0113afcd35c84e4571602a00d7ab1c7e6795429312b980884",
       "skills": [
         "attachment",
         "entry",
@@ -4402,8 +4546,10 @@
       "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
       "counter_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
       "quality": "authored_and_contract_checked",
+      "required_query_facets": [],
       "rule_ids": [
         "R-P2-A2",
+        "R-P2-B1",
         "R-P2-B2"
       ],
       "retrieval_skills": [

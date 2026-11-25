@@ -21,7 +21,7 @@ EXACT={
  'tests/test_example_injection.py','tests/test_rxr_prompt_snapshots.py',
  'tests/test_final_best_contract.py',
 }
-EXACT.update({'tests/__init__.py','CODEX_START_HERE.md','IMPLEMENTATION.md','WORKFLOW.md','CHANGELOG.md','verify_package.py','validation.json','shared/dataset_rules/r2r_teaching_index.json','docs/CODEX_START_HERE.md','docs/IMPLEMENTATION.md','docs/WORKFLOW.md','docs/CHANGELOG.md','tools/verify_package.py','provenance/package_validation.json','provenance/layout_migration.json','provenance/README.md','docs/EXPERIMENT_PLAN.md','docs/V1_V5_V6_RULE_COMPARISON.md','.github/workflows/validate.yml'})
+EXACT.update({'evaluation/r2r_replay.py','tests/__init__.py','generator/dataset_rules/r2r_repair_examples.json','reviewer/dataset_rules/r2r_recheck_examples.json','CODEX_START_HERE.md','IMPLEMENTATION.md','WORKFLOW.md','CHANGELOG.md','verify_package.py','validation.json','shared/dataset_rules/r2r_teaching_index.json','docs/CODEX_START_HERE.md','docs/IMPLEMENTATION.md','docs/WORKFLOW.md','docs/CHANGELOG.md','tools/verify_package.py','provenance/package_validation.json','provenance/layout_migration.json','provenance/README.md','docs/EXPERIMENT_PLAN.md','docs/V1_V5_V6_RULE_COMPARISON.md','.github/workflows/validate.yml'})
 PREFIX=('r2r/','r2r_authoring/','host/r2r/','tests/r2r/','tools/r2r_authoring/','generator/templates/R2R/','reviewer/templates/R2R/','docs/R2R_','provenance/r2r_')
 
 def out(*args,cwd=ROOT):return subprocess.check_output(args,cwd=cwd,text=True).strip()

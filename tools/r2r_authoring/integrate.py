@@ -47,7 +47,11 @@ def expected():
     s=replace(s,anchor,anchor+'''
         paths.extend([root/"host/r2r/selection.py", root/"host/r2r/teaching.py", root/"host/r2r/relations.py",
                       root/"host/r2r/teaching_index.json",
-                      root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])''')
+                      root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
+        if role == "generator" and phase == "repair":
+            paths.append(root/"generator/dataset_rules/r2r_repair_examples.json")
+        if role == "reviewer" and phase == "recheck":
+            paths.append(root/"reviewer/dataset_rules/r2r_recheck_examples.json")''')
     old='''        selections = {
             role: select_examples(role, src.profile, src.raw,
                                   count=example_count, mode=selection_mode)

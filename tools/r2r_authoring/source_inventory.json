@@ -642,5 +642,19 @@
       "provenance": "authored_synthetic_not_official"
     }
   ],
-  "addition_policy": "Any added case must be explicitly authored from a non-evaluation source, identify synthetic provenance where applicable, and pass independent semantic and active-contract checks. Never infer a C10 defect from stage count alone."
+  "addition_policy": "Any added case must be explicitly authored from a non-evaluation source, identify synthetic provenance where applicable, and pass independent semantic and active-contract checks. Never infer a C10 defect from stage count alone.",
+  "phase_lessons": [
+    {
+      "id": "UNSUPPORTED_COUNT",
+      "source_sha256": "206c510405ee538152bc3d2db323c639caabdb9616aed39a28d2909859114a4c",
+      "builder": "tools.r2r_authoring.phase_lessons",
+      "source_type": "authored_synthetic"
+    },
+    {
+      "id": "UNSUPPORTED_STOP_RELOCATION",
+      "source_sha256": "931d8273a82cfe9522a4a7a3523295deeb641d8575ea729d8d3d1f0c8b8f2be9",
+      "builder": "tools.r2r_authoring.phase_lessons",
+      "source_type": "authored_synthetic"
+    }
+  ]
 }

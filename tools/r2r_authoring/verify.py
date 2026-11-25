@@ -46,7 +46,7 @@ def refresh():
     p=ROOT/'provenance/r2r_profile_integrity.json';m=json.loads(p.read_bytes());names={r['path'] for r in m['files']}
     for prefix in ('host/r2r','tools/r2r_authoring','tests/r2r','generator/templates/R2R','reviewer/templates/R2R'):
         names.update(x.relative_to(ROOT).as_posix() for x in (ROOT/prefix).rglob('*') if x.is_file() and '__pycache__' not in x.parts and x.suffix!='.pyc')
-    names.update(['host/r2r/teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
+    names.update(['generator/dataset_rules/r2r_repair_examples.json','reviewer/dataset_rules/r2r_recheck_examples.json','host/r2r/teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
     m['files']=[dict(path=n,git_blob_sha1=blob(ROOT/n)) for n in sorted(names) if (ROOT/n).is_file()];m['file_count']=len(m['files']);p.write_bytes(encode(m))
     p=ROOT/'FILE_HASHES.json';old=json.loads(p.read_bytes());files={x.relative_to(ROOT).as_posix():x for x in ROOT.rglob('*') if x.is_file() and '.git' not in x.parts and '__pycache__' not in x.parts and x.suffix!='.pyc' and x.relative_to(ROOT).as_posix()!='FILE_HASHES.json'}
     out={}

@@ -95,6 +95,10 @@ def prompt_components_metadata(role, phase, profile):
         paths.extend([root/"host/r2r/selection.py", root/"host/r2r/teaching.py", root/"host/r2r/relations.py",
                       root/"host/r2r/teaching_index.json",
                       root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
+        if role == "generator" and phase == "repair":
+            paths.append(root/"generator/dataset_rules/r2r_repair_examples.json")
+        if role == "reviewer" and phase == "recheck":
+            paths.append(root/"reviewer/dataset_rules/r2r_recheck_examples.json")
     files = []
     for path in paths:
         data = path.read_bytes()
