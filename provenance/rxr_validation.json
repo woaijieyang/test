@@ -1,5 +1,5 @@
 {
-  "tests_run": 273,
+  "tests_run": 291,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
@@ -11,7 +11,7 @@
   ],
   "navigation_evaluated": false,
   "semantic_correctness_certified": false,
-  "source_commit": "3b715ac0d936dd994958420d034327358acce4ad",
+  "source_commit": "1fbcb2bd5e42764bf1b2837e29d6efa5dfa41fb9",
   "baseline_commit": "da277a0f9a6ee7d8eebb78dafa852e469cd1a50e",
   "source_archive_verified": true,
   "r2r_prompt_schema_selection_equal": true,
@@ -20,7 +20,7 @@
   "runtime_source_and_tests_rewritten_by_ci": false,
   "reviewed_teaching_materialized": true,
   "reviewed_teaching_count": 119,
-  "reviewed_teaching_field_changes": 4505,
+  "reviewed_teaching_field_changes": 4640,
   "current_rxr_release_labels_outside_readme": 0,
   "inherited_technical_or_historical_label_file_count": 505,
   "literal_repository_wide_zero_version_labels": false
