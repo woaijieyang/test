@@ -8,14 +8,14 @@ from __future__ import annotations
 from host import protocol
 
 
-def _accepted(candidate):
+def _accepted(candidate, *, prefix=''):
     if candidate['status'] != 'ok':
         return
     expected = [(i, i + 1) for i in range(len(candidate['subtasks']) - 1)]
     actual = [(h['from_subtask_index'], h['to_subtask_index']) for h in candidate['handoffs']]
     protocol.check(actual == expected,
                    'RxR accepted candidate must cover each adjacent handoff exactly once in order',
-                   code='RXR_HANDOFF_SEQUENCE_INVALID', path='/handoffs',
+                   code='RXR_HANDOFF_SEQUENCE_INVALID', path=prefix + '/handoffs',
                    expected=expected, actual=actual)
     for i, stage in enumerate(candidate['stage_audit']):
         target = stage['target']
@@ -23,7 +23,7 @@ def _accepted(candidate):
                        and bool(target['candidate_quotes']),
                        'RxR accepted audit must identify its source-supported objective; it may be a movement or orientation, not necessarily an object',
                        code='RXR_TARGET_EVIDENCE_MISSING',
-                       path=f'/stage_audit/{i}/target', stage_index=i)
+                       path=f'{prefix}/stage_audit/{i}/target', stage_index=i)
 
 
 def generator(source, candidate):
@@ -33,4 +33,4 @@ def generator(source, candidate):
 
 def feedback(source, review, answer):
     protocol.feedback(source, review, answer)
-    _accepted(answer['candidate'])
+    _accepted(answer['candidate'], prefix='/candidate')
