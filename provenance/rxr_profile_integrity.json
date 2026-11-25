@@ -3,7 +3,7 @@
   "files": [
     {
       "path": "generator/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "0fedbc5d3eb4167f7d374df155f79e1822efb012"
+      "git_blob_sha1": "e6139cd059637e2437ca2bbe835a82a1856c6bf9"
     },
     {
       "path": "generator/output.schema.json",
@@ -291,7 +291,7 @@
     },
     {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "e889ddcd6229b1294ed058a89e30bae0f02b12dc"
+      "git_blob_sha1": "a3481614e90f4b2e6bb65e99acc051a9bc5a3224"
     },
     {
       "path": "reviewer/output.schema.json",
