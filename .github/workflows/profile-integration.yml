@@ -10,7 +10,7 @@ concurrency:
 jobs:
   integrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
@@ -21,11 +21,24 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
-      - name: Materialize reviewed source and profile-specific reconciliation
+      - name: Apply reviewed expectation migration once
         run: |
-          if test -f tools/materialize_profile_integration.py; then python -B tools/materialize_profile_integration.py; fi
+          if test -f tools/finalize_profile_checks.py; then
+            python -B tools/finalize_profile_checks.py
+            git rm tools/finalize_profile_checks.py
+          fi
           python -B -m host.compile > "$RUNNER_TEMP/compiled.json"
-          python -B - <<'PY'
+      - name: Independent asset, full-input and dual-worktree verification
+        run: |
+          python -B tools/check_profile_integration.py --runtime --output provenance/profile_integration_checks.json
+          python -B tools/build_rxr_reviewed.py --check
+          python -B tools/build_rxr_teaching.py --check
+          python -B -m tools.r2r_authoring.build --check
+          python -B -m evaluation.smoke24
+          python -B -m examples.demo
+      - name: Refresh actual manifests after independent comparison
+        run: |
+          cat > "$RUNNER_TEMP/refresh.py" <<'PY'
           import hashlib,json,subprocess
           from pathlib import Path
           for name in ('r2r','rxr'):
@@ -34,8 +47,7 @@ jobs:
               for row in data['files']:
                   p=Path(row['path'])
                   if not p.is_file():raise ValueError('Manifest path absent: '+str(p))
-                  raw=p.read_bytes();digest=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
-                  row['git_blob_sha1']=digest
+                  raw=p.read_bytes();row['git_blob_sha1']=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
               path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
           names=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
           names+=subprocess.check_output(['git','ls-files','--others','--exclude-standard','-z']).decode().split('\0')
@@ -46,41 +58,37 @@ jobs:
               raw=p.read_bytes();hashes[name]='gitblob-sha1:'+hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
           Path('FILE_HASHES.json').write_text(json.dumps(hashes,ensure_ascii=False,indent=2)+'\n')
           PY
-      - name: Run all tests and preserve exact failure evidence
+          python -B "$RUNNER_TEMP/refresh.py"
+          python -B tools/verify_package.py
+      - name: All inherited and integrated tests without masking failures
         run: |
           python -B - <<'PY'
           import json,sys,unittest,os
           from pathlib import Path
           sys.path.insert(0,str(Path('tests').resolve()))
-          suite=unittest.defaultTestLoader.discover('tests',top_level_dir='.')
           selected=unittest.TestSuite();external=[]
           def add(s):
               for t in s:
                   if isinstance(t,unittest.TestSuite):add(t);continue
                   e=str(getattr(t,'_exception',''))
                   if t.id().endswith('.test_release_transaction') and 'manage_release.py' in e and 'FileNotFoundError' in e:
-                      external.append({'test':t.id(),'reason':e})
+                      external.append({'test':t.id(),'reason':'Missing external manage_release.py; not counted as passed.'})
                   else:selected.addTest(t)
-          add(suite)
+          add(unittest.defaultTestLoader.discover('tests',top_level_dir='.'))
           result=unittest.TextTestRunner(verbosity=1).run(selected)
           report={'tests_run':result.testsRun,'failures':[{'test':str(t),'traceback':e} for t,e in result.failures], 'errors':[{'test':str(t),'traceback':e} for t,e in result.errors], 'skipped':[(str(t),reason) for t,reason in result.skipped], 'external_fixture_tests_not_run':external,'success':result.wasSuccessful(),'workflow_run':os.environ['GITHUB_RUN_ID'],'source_commit':os.environ['GITHUB_SHA'],'navigation_evaluated':False,'live_provider_evaluated':False}
           Path('provenance/profile_integration_validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-          from host.compile import compile_prompt
-          from shared.identity import canonical,text_hash
-          pins=json.loads(Path('tests/fixtures/rxr_prompt_pins.json').read_bytes());measure={}
-          for key in pins['prompts']:
-              role,phase=key.split('/');prompt,schema=compile_prompt(role,phase,profile='rxr-en-us',original_instruction=pins['query'],selected_ids=pins['selected_ids'][role])
-              measure[key]={'sha256':text_hash(prompt),'schema_sha256':text_hash(canonical(schema)),'utf8_bytes':len(prompt.encode())}
-          Path('provenance/profile_prompt_measurements.json').write_text(json.dumps(measure,indent=2)+'\n')
-          print(json.dumps({k:v for k,v in report.items() if k not in ('failures','errors','external_fixture_tests_not_run')},indent=2))
-          print('FAILURES='+json.dumps([x['test'] for x in report['failures']+report['errors']]))
+          print('FAILED_TESTS='+json.dumps([x['test'] for x in report['failures']+report['errors']]))
           PY
-      - name: Preserve inspection tree on isolated branch only
+      - name: Preserve tested work branch only and report actual outcome
         run: |
+          python -B "$RUNNER_TEMP/refresh.py"
+          python -B tools/verify_package.py
+          git diff --check
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add --all
-          git commit -m 'Materialize combined profiles and record full regression evidence'
+          git commit -m 'Record dual-baseline integration verification and full teaching tests'
           test "$(git ls-remote origin refs/heads/profile-integration-work | cut -f1)" = "$GITHUB_SHA"
           git push origin HEAD:refs/heads/profile-integration-work
           python - <<'PY'
