@@ -23,16 +23,19 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements.txt
-      - name: Materialize explicitly reviewed source edits on work branch only
+      - name: Materialize reviewed integration once and remove source patch helpers
         run: |
-          python -B tools/apply_rxr_refinement.py
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add host/compile.py host/run.py tools/build_rxr_reviewed.py tools/refresh_rxr_integrity.py generator/dataset_rules/rxr_en_us.md reviewer/dataset_rules/rxr_en_us.md tests/test_rxr_role_hierarchy.py provenance/rxr_role_conversion.json
-          if ! git diff --cached --quiet; then git commit -m 'Apply source-scoped RxR teaching and role refinements'; fi
-          current=$(git ls-remote origin refs/heads/rxr-refinement-work | cut -f1)
-          test "$current" = "$GITHUB_SHA"
-          git push origin HEAD:refs/heads/rxr-refinement-work
+          if test -f tools/finalize_rxr_refinement.py; then
+            python -B tools/finalize_rxr_refinement.py
+            git rm tools/apply_rxr_refinement.py tools/finalize_rxr_refinement.py
+            git add host/run.py generator/dataset_rules/rxr_en_us.md tools/check_rxr_refinement.py tests/test_example_injection.py tests/test_r2r_specialization.py tests/test_rxr_profile.py tests/test_rxr_refinement.py README.md docs/RXR_ROLE_HIERARCHY.md docs/RXR_TEACHING_REPAIR.md docs/RXR_TEACHING_FOCUS.md docs/RXR_FINAL_CHECKS.md provenance/rxr_role_conversion.json
+            git commit -m 'Close RxR selection-mode propagation and framework placement gaps'
+            current=$(git ls-remote origin refs/heads/rxr-refinement-work | cut -f1)
+            test "$current" = "$GITHUB_SHA"
+            git push origin HEAD:refs/heads/rxr-refinement-work
+          fi
           echo "MATERIALIZED_SOURCE=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Build reviewed assets and compare protected behavior
         run: |
@@ -43,11 +46,11 @@ jobs:
           python -B tools/build_rxr_reviewed.py --check
           python -B tools/build_rxr_teaching.py --verify-upstream
           python -B -m host.compile
-          python -B tools/check_rxr_refinement.py
+          python -B tools/check_rxr_refinement.py > "$RUNNER_TEMP/preservation.json"
+          cat "$RUNNER_TEMP/preservation.json"
           python -B tools/check_r2r_isolation.py --baseline "$RUNNER_TEMP/r2r-baseline"
-          python -B tools/check_rxr_selection_isolation.py
-      - name: Record measurements without rewriting expected snapshots
-        if: success()
+          env -u R2R_BASELINE_DIR python -B tools/check_rxr_selection_isolation.py
+      - name: Measure actual prompts without updating expectations
         run: |
           python -B - <<'PY'
           import json,os
@@ -60,16 +63,20 @@ jobs:
               role,phase=key.split('/')
               prompt,schema=compile_prompt(role,phase,profile='rxr-en-us',original_instruction=pins['query'],selected_ids=pins['selected_ids'][role])
               rows[key]={'sha256':text_hash(prompt),'schema_sha256':text_hash(canonical(schema)),'utf8_bytes':len(prompt.encode())}
-          print('REFINEMENT_MEASUREMENTS='+json.dumps({'source_commit':os.environ['MATERIALIZED_SOURCE'],'prompts':rows},sort_keys=True))
+          report={'source_commit':os.environ['MATERIALIZED_SOURCE'],'prompts':rows}
+          Path(os.environ['RUNNER_TEMP'],'measurements.json').write_text(json.dumps(report,indent=2)+'\n')
+          print('REFINEMENT_MEASUREMENTS='+json.dumps(report,sort_keys=True))
           PY
           python -B tools/refresh_rxr_integrity.py
           python -B verify_package.py
-      - name: Execute all regressions and keep missing external fixture visible
+      - name: Run complete regression suite without masking failures
         run: |
-          python -B - <<'PY'
-          import json,unittest
-          all_tests=unittest.defaultTestLoader.discover('tests')
-          selected=unittest.TestSuite(); external=[]
+          cat > "$RUNNER_TEMP/run_checks.py" <<'PY'
+          import json,os,sys,unittest
+          from pathlib import Path
+          sys.path.insert(0,str(Path.cwd()))
+          os.environ.pop('R2R_BASELINE_DIR',None)
+          selected=unittest.TestSuite();external=[]
           def collect(suite):
               for test in suite:
                   if isinstance(test,unittest.TestSuite): collect(test);continue
@@ -77,21 +84,45 @@ jobs:
                   if test.id()=='unittest.loader._FailedTest.test_release_transaction' and 'FileNotFoundError' in error and 'manage_release.py' in error:
                       external.append({'test':test.id(),'reason':'Missing external manage_release.py; not counted as passed.'})
                   else: selected.addTest(test)
-          collect(all_tests)
+          collect(unittest.defaultTestLoader.discover('tests'))
           result=unittest.TextTestRunner(verbosity=2).run(selected)
-          print('REFINEMENT_TESTS='+json.dumps({'tests_run':result.testsRun,'failures':[str(t) for t,e in result.failures],'errors':[str(t) for t,e in result.errors],'external_fixture_tests_not_run':external,'success':result.wasSuccessful()}))
+          report={'tests_run':result.testsRun,'failures':[str(t) for t,e in result.failures],'errors':[str(t) for t,e in result.errors],
+                  'skipped':len(result.skipped),'external_fixture_tests_not_run':external,'success':result.wasSuccessful(),
+                  'semantic_correctness_certified':False,'navigation_evaluated':False,'token_budget_verified':False}
+          Path(os.environ['RUNNER_TEMP'],'refinement-tests.json').write_text(json.dumps(report,indent=2)+'\n')
+          print('REFINEMENT_TESTS='+json.dumps(report))
           raise SystemExit(0 if result.wasSuccessful() else 1)
           PY
-      - name: Publish only fully tested derived assets to work branch
+          python -B "$RUNNER_TEMP/run_checks.py"
+      - name: Validate cleaned final tree and publish work branch only
         run: |
           python -B -m examples.demo
           python -B -m evaluation.smoke24
           python -B tools/check_rxr_reproducibility.py
+          git rm .github/workflows/rxr-refinement.yml
+          python -B - <<'PY'
+          import json,os
+          from pathlib import Path
+          temp=Path(os.environ['RUNNER_TEMP'])
+          report=json.loads((temp/'refinement-tests.json').read_text())
+          report.update(source_commit=os.environ['MATERIALIZED_SOURCE'],baseline_commit=os.environ['BASE_COMMIT'],
+                        workflow_run=int(os.environ['GITHUB_RUN_ID']),
+                        preservation=json.loads((temp/'preservation.json').read_text()),
+                        prompt_measurements=json.loads((temp/'measurements.json').read_text()),
+                        r2r_inputs_compared=38,phases_per_input=4,source_archive_verified=True)
+          Path('provenance/rxr_refinement_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
           python -B tools/refresh_rxr_integrity.py
           python -B verify_package.py
+          python -B "$RUNNER_TEMP/run_checks.py"
+          python -B tools/build_rxr_reviewed.py --check
+          python -B tools/check_r2r_isolation.py --baseline "$R2R_BASELINE_DIR"
           git add generator/templates/RxR reviewer/templates/RxR provenance FILE_HASHES.json generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md evaluation/renderer_smoke24.json
-          if ! git diff --cached --quiet; then git commit -m 'Record validated scoped RxR teaching assets'; fi
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+          if ! git diff --cached --quiet; then git commit -m 'Record validated RxR refinement and remove temporary authoring workflow'; fi
           test -z "$(git status --porcelain)"
+          python -B verify_package.py
           current=$(git ls-remote origin refs/heads/rxr-refinement-work | cut -f1)
           test "$current" = "$MATERIALIZED_SOURCE"
           git push origin HEAD:refs/heads/rxr-refinement-work
