@@ -6,7 +6,7 @@
 
 ## 当前 R2R 最小改动交付
 
-运行时专属能力位于 `host/r2r/`，离线作者工具位于 `tools/r2r_authoring/`，测试位于 `tests/r2r/`；根目录旧模块已移除。详见 `docs/R2R_MINIMAL_REPORT.md`。当前349项回归通过，RxR受保护文件与四阶段请求保持一致；原始1068条来源已完成编译重放，不代表真实LLM或导航收益。
+运行时专属能力位于 `host/r2r/`，离线作者工具位于 `tools/r2r_authoring/`，测试位于 `tests/r2r/`；根目录旧模块已移除。详见 `docs/R2R_MINIMAL_REPORT.md`。当前380项回归通过；显式选例、真实规则链接和阶段教学的入口校验已补齐，RxR集成CI在本树只读验证。详见 `docs/R2R_STABILITY_REPORT.md`。RxR受保护文件与四阶段请求保持一致；原始1068条来源重放与前一提交逐字节一致，不代表真实LLM或导航收益。
 
 ## 入口文档
 

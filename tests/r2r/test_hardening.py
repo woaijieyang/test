@@ -175,7 +175,11 @@ class LayoutAndInventory(unittest.TestCase):
         from tools.r2r_authoring.integrate import expected
         workflow=expected()['.github/workflows/rxr-development.yml']
         self.assertEqual(workflow,(ROOT/'.github/workflows/rxr-development.yml').read_text())
-        self.assertNotIn("      - '.github/workflows/rxr-development.yml'",workflow)
+        # Workflow edits now trigger verification, but never the RxR publisher
+        # on a R2R-managed tree. Protect the behavior, not the retired trigger ban.
+        self.assertIn("      - '.github/workflows/rxr-development.yml'",workflow)
+        self.assertIn("Prove read-only RxR verification on the R2R-managed tree", workflow)
+        self.assertIn("if: env.R2R_MANAGED != 'true'", workflow)
         self.assertIn('workflow_dispatch:',workflow)
 
         # A clean build and an incrementally refreshed tree must serialize the

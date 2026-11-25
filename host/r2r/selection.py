@@ -53,9 +53,24 @@ def _index_blob(blob):
         if item.get('teaching_polarity') not in ('generate','accept','detect','source_limitation'):raise ValueError('Invalid teaching polarity')
     return index
 
+@lru_cache(maxsize=8)
+def _linked_index(blob, generator_rules, reviewer_rules):
+    # Cache by actual rule bytes as well as index bytes. A changed active rule
+    # cannot keep an obsolete link alive via the already loaded index cache.
+    index=_index_blob(blob)
+    for role,raw in (('generator',generator_rules),('reviewer',reviewer_rules)):
+        ids=set(re.findall(r'^#{2,3} ([GR]-P[012](?:-[A-Z][0-9]?)?)\s+—',raw.decode('utf-8'),re.M))
+        if not ids:raise ValueError('Missing active R2R role rules: '+role)
+        for item in index.values():
+            if item['role']==role and set(item['rule_ids'])-ids:
+                raise ValueError('Teaching refers to unknown active role rule: '+item['template_id'])
+    return index
+
+
 def teaching_index():
     blob=(ROOT/'host/r2r/teaching_index.json').read_bytes()
-    return _index_blob(blob),digest(blob)
+    rules=[(ROOT/role/'dataset_rules/r2r_en.md').read_bytes() for role in ('generator','reviewer')]
+    return _linked_index(blob,*rules),digest(blob)
 
 def signals(text):
     if not isinstance(text,str):raise TypeError('R2R source must be a string')
@@ -215,7 +230,7 @@ def select_bundle(text,count=None,*,source_family=None):
     return dict(generator=ids,reviewer=rids,evidence={'generator':ge,'reviewer':revidence},source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity',core_source_overlaps=[r['template_id'] for role in ('generator','reviewer') for r in core_rows(role) if normalized(_source(r))==normalized(text)])
 
 
-def validate_selection(role,ids,mode='adaptive'):
+def validate_selection(role,ids,mode='adaptive',*,source_text=None):
     from host.template_selector import library
     if role not in ('generator','reviewer'):raise ValueError('Invalid R2R role')
     rows=library(role,'r2r-en');bank={r['template_id']:r for r in rows};index,_=teaching_index()
@@ -225,6 +240,11 @@ def validate_selection(role,ids,mode='adaptive'):
         if list(ids)!=[r['template_id'] for r in rows]:raise ValueError('Offline all mode must use the complete ordered library')
         return
     if mode!='adaptive':raise ValueError('Unknown selection mode')
+    if source_text is not None:
+        if not isinstance(source_text,str):raise TypeError('R2R source must be a string')
+        facets=facet_signals(source_text)
+        invalid=[tid for tid in ids if not applicability(index[tid],facets)]
+        if invalid:raise ValueError('Inapplicable R2R specialist selection: '+repr(invalid))
     if role=='generator':
         if not 4<=len(ids)<=6:raise ValueError('R2R Generator requires 4..6 Dynamic examples')
         return

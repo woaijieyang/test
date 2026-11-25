@@ -54,7 +54,8 @@ def applicability(item, query_facets):
     exclusion, not a technical failure or a request to alter the source.
     """
     required = item.get('required_query_facets', [])
-    if not isinstance(required, list) or any(f not in FACET_PATTERNS for f in required):
+    if (not isinstance(required, list) or any(not isinstance(f,str) or f not in FACET_PATTERNS for f in required)
+            or len(set(required)) != len(required)):
         raise ValueError('Invalid specialist applicability metadata')
     return not required or bool(set(required) & set(query_facets))
 

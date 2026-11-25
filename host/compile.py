@@ -315,7 +315,7 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')
         if profile == 'r2r-en':
             from host.r2r.selection import validate_selection
-            validate_selection(role, chosen, selection_mode)
+            validate_selection(role, chosen, selection_mode, source_text=original_instruction or '')
         if fixed:
             core_ids=[r['template_id'] for r in fixed]
             core_label = 'R2R-EN' if profile == 'r2r-en' else 'RXR'
@@ -352,9 +352,9 @@ def compile_prompt(role,phase='initial',*,profile,examples=True,
         if checks:
             parts.append("When comparing the cases above with this instruction, check: " + " ".join(checks))
     if examples and profile == 'r2r-en' and phase in ('repair', 'recheck'):
-        filename = 'r2r_repair_examples.json' if role == 'generator' else 'r2r_recheck_examples.json'
         parts.append('R2R PHASE-SPECIFIC ADVICE CONTRASTS: prior R0 advice below is intentionally fallible. Transfer the independent source check, not the mistaken advice; expected_output obeys the current phase schema.')
-        parts.extend(canonical(e) for e in json.loads((d/'dataset_rules'/filename).read_text(encoding='utf-8')))
+        from host.r2r.phase_teaching import phase_examples
+        parts.extend(canonical(e) for e in phase_examples(role, phase))
     if profile == 'r2r-en':
         parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\n'+canonical(schema))
     parts.append('ACTUAL INPUT: process only the current independent user message. Do not import a training example into this route. Return the ACTIVE schema JSON object.')

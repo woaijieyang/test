@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 189,
+  "file_count": 192,
   "files": [
     {
       "path": "adapter/README.md",
@@ -232,19 +232,23 @@
     },
     {
       "path": "host/compile.py",
-      "git_blob_sha1": "26728bc6d5ee719e2116ab41734c973fbc21ddbb"
+      "git_blob_sha1": "7cb76a0622970db803f177d317a6c6887aef9caf"
     },
     {
       "path": "host/r2r/__init__.py",
       "git_blob_sha1": "a376df65c2e762ae1192cca9c16fd3ca611192d2"
     },
     {
+      "path": "host/r2r/phase_teaching.py",
+      "git_blob_sha1": "fe1dbfcdb478a6d65c8e20278b377d65ccc4f5de"
+    },
+    {
       "path": "host/r2r/relations.py",
-      "git_blob_sha1": "b1a80ba9a2ceed3ab69fef985a7369cec92e5912"
+      "git_blob_sha1": "87c06c98b6bf1f7aae4ef3a1941b4a681da008d8"
     },
     {
       "path": "host/r2r/selection.py",
-      "git_blob_sha1": "0cff5ae269d892e67adec2f9c68bc0656ab66aaf"
+      "git_blob_sha1": "ea2738c657381b2f6df60e408b18a5e741472112"
     },
     {
       "path": "host/r2r/teaching.py",
@@ -256,7 +260,7 @@
     },
     {
       "path": "host/run.py",
-      "git_blob_sha1": "7e9067d0bbc89ca9538345d30321747bbb42d73f"
+      "git_blob_sha1": "8a62bccb48f56d9d240efcd8e7f9965f37bb655a"
     },
     {
       "path": "host/template_selector.py",
@@ -644,7 +648,7 @@
     },
     {
       "path": "tests/r2r/test_hardening.py",
-      "git_blob_sha1": "bce29c7293d2d4cc1fd766474b8478b304508aa1"
+      "git_blob_sha1": "0cccaee0574277ce15718b35438fced730b3d42d"
     },
     {
       "path": "tests/r2r/test_minimal.py",
@@ -657,6 +661,10 @@
     {
       "path": "tests/r2r/test_refinement.py",
       "git_blob_sha1": "30ca9dfd3e0bd8f2c062b482498265a83f2989be"
+    },
+    {
+      "path": "tests/r2r/test_stability.py",
+      "git_blob_sha1": "41f123dbfcabcb951c93bba004c932f363872207"
     },
     {
       "path": "tests/test_host_dispatch_profiles.py",
@@ -700,7 +708,7 @@
     },
     {
       "path": "tools/r2r_authoring/integrate.py",
-      "git_blob_sha1": "67b1ac0aa7d42b7f37037c6a925ed273059d6abb"
+      "git_blob_sha1": "6337bb18cace2d178951ead078f499fc0b82f57b"
     },
     {
       "path": "tools/r2r_authoring/metadata.py",
@@ -736,7 +744,7 @@
     },
     {
       "path": "tools/r2r_authoring/runtime_layout.py",
-      "git_blob_sha1": "afd416d46776a5f3ce75b3d7c9a99769158d2f6e"
+      "git_blob_sha1": "c265a8701d99815f6e2f15bc66dbc0df6853b439"
     },
     {
       "path": "tools/r2r_authoring/semantic_refinements.py",
@@ -757,6 +765,10 @@
     {
       "path": "tools/r2r_authoring/verify.py",
       "git_blob_sha1": "79023b8448af507bcd8078bcdb17fdb4db3aeb43"
+    },
+    {
+      "path": "tools/r2r_authoring/workflow_policy.py",
+      "git_blob_sha1": "c604f3de6d653c32f7bb5ceda0b67fc9c7b7735a"
     }
   ]
 }

@@ -7,7 +7,7 @@ from pathlib import Path
 import argparse,json,subprocess
 ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
-PREVIOUS='d4cce47841c817083217a7fffa3a1e6235316491'
+PREVIOUS='d07674e382318cdfc832b6ecd7bf96424fc58d7d'
 
 def base(path):return subprocess.check_output(['git','show',PARENT+':'+path],cwd=ROOT).decode()
 def replace(text,old,new):
@@ -19,7 +19,7 @@ def expected():
     p='host/compile.py';s=base(p)
     s=replace(s,'    notes = example["teaching_notes"]\n','    if example.get("dataset_scope") == "R2R":\n        from host.r2r.teaching import card\n        return card(example, role, detailed)\n    notes = example["teaching_notes"]\n')
     anchor="        if any(x not in byid for x in chosen):raise ValueError('Selected dynamic template ID not in this dataset/role library')"
-    s=replace(s,anchor,anchor+"\n        if profile == 'r2r-en':\n            from host.r2r.selection import validate_selection\n            validate_selection(role, chosen, selection_mode)")
+    s=replace(s,anchor,anchor+"\n        if profile == 'r2r-en':\n            from host.r2r.selection import validate_selection\n            validate_selection(role, chosen, selection_mode, source_text=original_instruction or '')")
     old='            parts.append(canonical(teaching_card(example, role, detailed=(position == 0))))'
     new='''            if profile == 'r2r-en':
                 from host.r2r.teaching import dynamic_is_detailed
@@ -48,6 +48,8 @@ def expected():
         paths.extend([root/"host/r2r/selection.py", root/"host/r2r/teaching.py", root/"host/r2r/relations.py",
                       root/"host/r2r/teaching_index.json",
                       root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
+        if phase in ("repair", "recheck"):
+            paths.append(root/"host/r2r/phase_teaching.py")
         if role == "generator" and phase == "repair":
             paths.append(root/"generator/dataset_rules/r2r_repair_examples.json")
         if role == "reviewer" and phase == "recheck":
@@ -85,10 +87,11 @@ def expected():
     s=replace(s,"      - 'tools/**'\n      - 'host/**'", "      - 'tools/rxr*'\n      - 'tools/build_rxr*'\n      - 'host/rxr*'")
     s=replace(s,"      - 'tests/**'", "      - 'tests/test_rxr*'")
     s=s.replace('verify_package.py','tools/verify_package.py')
-    # Workflow-only maintenance must not launch the RxR authoring writer.
-    # Manual dispatch remains available; R2R CI independently verifies RxR isolation.
+    # Normalize the legacy trigger before adding the managed read-only policy.
+    # R2R-managed trees verify RxR without rewriting or publishing its assets.
     s=s.replace("      - '.github/workflows/rxr-development.yml'\n", '')
-    out[p]=s
+    from tools.r2r_authoring.workflow_policy import rxr_workflow
+    out[p]=rxr_workflow(s)
     # README and documentation are human-maintained, never reconstructed from history.
     from tools.r2r_authoring.runtime_layout import extend
     return extend(out)

@@ -1,0 +1,43 @@
+{
+  "base_commit": "d07674e382318cdfc832b6ecd7bf96424fc58d7d",
+  "workbook": {
+    "workbook_sha256": "d1e500b609bb075c15752394c1ada80aa9a81b678165b50b0a7a600245b81163",
+    "sheet": "指令问题定位",
+    "count": 1068,
+    "fields_used": [
+      "任务键",
+      "原始 Instruction"
+    ],
+    "path_ids_available": false,
+    "caveat": "No trajectory identity inferred from episode IDs. Development replay, not held-out navigation evaluation."
+  },
+  "source_records_sha256": "45a57eed9bc07d737a12cd1d5af9e765982f993ca15bfc179847be7883d4ef7a",
+  "replay": {
+    "queries": 1068,
+    "phase_requests_per_implementation": 4272,
+    "audit_bytes_equal": true,
+    "baseline_audit_sha256": "5fc23ebf99901ce16f85d788e1b327da0e9bfe72efcabb6861a5051b9fe24007",
+    "candidate_audit_sha256": "5fc23ebf99901ce16f85d788e1b327da0e9bfe72efcabb6861a5051b9fe24007",
+    "selected_ids_prompt_schema_projection_equal": true,
+    "generator_dynamic_counts": {
+      "4": 1047,
+      "5": 21
+    },
+    "reviewer_diagnostic_counts": {
+      "2": 743,
+      "3": 325
+    },
+    "core_text_overlap_queries": 0,
+    "path_ids_available": false
+  },
+  "rxr_isolation_report": "provenance/r2r_parent_isolation.json",
+  "regression_report": "provenance/r2r_regression_results.json",
+  "scope": "Guard-only hardening after the approved minimal-change implementation. Normal R2R requests and all RxR runtime assets are unchanged.",
+  "semantic_model_evaluated": false,
+  "navigation_evaluated": false,
+  "limitations": [
+    "The workbook is development evidence, not a held-out generalization set.",
+    "Zero exact source collision does not certify route-family isolation without path IDs.",
+    "The external manage_release.py fixture is absent and not counted as passed."
+  ]
+}

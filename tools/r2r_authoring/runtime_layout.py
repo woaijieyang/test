@@ -18,7 +18,7 @@ def extend(outputs):
         outputs[name]=json.dumps(m,ensure_ascii=False,indent=2)+'\n'
     name='host/compile.py'
     anchor="    if profile == 'r2r-en':\n        parts.append('ACTIVE OUTPUT SCHEMA for this phase (JSON only):\\n'+canonical(schema))"
-    block="    if examples and profile == 'r2r-en' and phase in ('repair', 'recheck'):\n        filename = 'r2r_repair_examples.json' if role == 'generator' else 'r2r_recheck_examples.json'\n        parts.append('R2R PHASE-SPECIFIC ADVICE CONTRASTS: prior R0 advice below is intentionally fallible. Transfer the independent source check, not the mistaken advice; expected_output obeys the current phase schema.')\n        parts.extend(canonical(e) for e in json.loads((d/'dataset_rules'/filename).read_text(encoding='utf-8')))\n"
+    block="    if examples and profile == 'r2r-en' and phase in ('repair', 'recheck'):\n        parts.append('R2R PHASE-SPECIFIC ADVICE CONTRASTS: prior R0 advice below is intentionally fallible. Transfer the independent source check, not the mistaken advice; expected_output obeys the current phase schema.')\n        from host.r2r.phase_teaching import phase_examples\n        parts.extend(canonical(e) for e in phase_examples(role, phase))\n"
     if outputs[name].count(anchor)!=1:raise ValueError('Phase-lesson integration anchor drift')
     outputs[name]=outputs[name].replace(anchor,block+anchor)
     return outputs
