@@ -130,16 +130,18 @@
       {
         "carryover": [],
         "conditions": {
+          "text": "Select the door to the right of the bear head, preserve the two-step extent and final window-facing/bed-side state. Turning left describes a conditional view, not an unconditional additional turn.",
           "candidate_quotes": [
-            "Take two more steps towards the foot of the bed",
+            "the door that is on the right of the bear head",
+            "Take two more steps towards the foot of the bed.",
+            "Once you are there, you should be facing the big window",
             "if we turn to the left, we should see the bed",
-            "standing on the left side of the bed",
-            "facing the big window"
-          ],
-          "text": "conditional_observation: turning left is used to inspect/confirm that the bed is visible; it is not an alternative route branch. Conditions also preserve the two-step movement toward the foot of the bed and the final standing position on the bed's left side, with the big window as endpoint orientation."
+            "We should be standing on the left side of the bed, and you are done."
+          ]
         },
         "ending": {
           "candidate_quotes": [
+            "Once you are there, you should be facing the big window",
             "We should be standing on the left side of the bed, and you are done."
           ],
           "kind": "explicit_event",
@@ -188,6 +190,6 @@
     "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
     "conditions_focus": "conditional_observation: turning left is used to inspect/confirm that the bed is visible; it is not an alternative route branch. Conditions also preserve the two-step movement toward the foot of the bed and the final standing position on the bed's left side, with the big window as endpoint orientation.",
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Turn around completely, and take the door that is…; Preserve the ordered route action or target-identifying landmark: Take two more steps towards the foot of the bed.; Preserve the conditional observation cue and its expected visual result; do not convert it into a route branch.. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Turn around completely, and take the door that is…; Preserve the ordered route action or target-identifying landmark: Take two more steps towards the foot of the bed.; Preserve the conditional observation cue and its expected visual result; do not convert it into a route branch."
+    "case_specific_focus": "Check door identity, two-step extent, final bedside placement and window-facing evidence together. Do not turn the conditional bed observation into an unconditional left turn or weaken the stated final placement."
   }
 }

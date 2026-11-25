@@ -45,7 +45,12 @@
           "candidate_quote": "At the top of these stairs, turn to the right.",
           "text": "At the top of these stairs, turn to the right."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-05",
           "SRC-11"
@@ -64,7 +69,12 @@
           "candidate_quote": "Walk out the glass doors with a pool directly in front of you.",
           "text": "Walk out the glass doors with a pool directly in front of you."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-13",
           "SRC-07"
@@ -281,15 +291,19 @@
     ],
     "stage_checks": [
       {
-        "carryover": [],
+        "carryover": [
+          "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+        ],
         "conditions": {
+          "text": "Preserve the initial closet-facing state, between-furniture passage, bed-relative path, stair ascent and the right turn at its top.",
           "candidate_quotes": [
-            "facing",
-            "between",
-            "left",
-            "right"
-          ],
-          "text": "spatial_frame: facing, between, left, right"
+            "facing some brown closet doors",
+            "between the bathtub and all of the wood furniture",
+            "taking a left and walking toward the bed",
+            "to the left of the bed",
+            "Go up a few stairs.",
+            "At the top of these stairs, turn to the right."
+          ]
         },
         "ending": {
           "candidate_quotes": [
@@ -335,15 +349,17 @@
       },
       {
         "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
+          "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
         ],
         "conditions": {
+          "text": "The descent is a stair or two. Preserve the piano ahead, passage on its left past the fireplace, and the pool ahead when exiting through the glass doors.",
           "candidate_quotes": [
             "a stair or two",
             "piano directly in front of you",
-            "to the left of the piano"
-          ],
-          "text": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors."
+            "to the left of the piano",
+            "passing a large fireplace",
+            "Walk out the glass doors with a pool directly in front of you."
+          ]
         },
         "ending": {
           "candidate_quotes": [
@@ -354,11 +370,11 @@
           "text": "Walk out the glass doors with a pool directly in front of you."
         },
         "entry": {
+          "mode": "explicit_context",
+          "text": "At the stair top after the preceding right turn; the descent is not yet performed.",
           "candidate_quotes": [
-            "From the top of these stairs, go down a stair or two"
-          ],
-          "mode": "inherited_entity",
-          "text": "From the top of these stairs, go down a stair or two"
+            "From the top of these stairs"
+          ]
         },
         "process": {
           "candidate_quotes": [
@@ -388,9 +404,7 @@
         }
       },
       {
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ],
+        "carryover": [],
         "conditions": {
           "candidate_quotes": [
             "With the pool on the right and the home to your left",
@@ -451,6 +465,7 @@
     "reuse_rule": "Review the natural-language stages, not the Generator's private explanation. Validate every actual stage and handoff; accept different valid segmentations and do not over-correct style.",
     "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: We start off facing some brown closet doors and you…; Preserve the directional/spatial relation and its reference frame: Walk between the bathtub and all of the wood…; Preserve the directional/spatial relation and its reference frame: Walking to the left of the bed and walking down a…. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: We start off facing some brown closet doors and you…; Preserve the directional/spatial relation and its reference frame: Walk between the bathtub and all of the wood…; Preserve the directional/spatial relation and its reference frame: Walking to the left of the bed and walking down a…"
+    "case_specific_focus": "Use the completed stair-top turn and actual glass-door exit for the two handoffs. Distinguish the sustained pool/home relation from the final plant cue, preserve the approximate patio extent, and require the pool-edge stop rather than a visit to the plant.",
+    "five_element_focus": "Pool-right and home-left apply during patio movement. Mostly to the end remains approximate. The stop is at the pool edge; the plant-left observation identifies the final position."
   }
 }

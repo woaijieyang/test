@@ -44,7 +44,12 @@
           "candidate_quote": "Go inside the room and take a left into the bathroom.",
           "text": "Go inside the room and take a left into the bathroom."
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "entity_or_region",
+            "text": "The bathroom entered by the preceding left turn; the return remains unperformed."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-02",
           "SRC-03",
@@ -210,15 +215,16 @@
     ],
     "stage_checks": [
       {
-        "carryover": [],
+        "carryover": [
+          "Bathroom entry is complete; the next stage performs its own turn-around and return."
+        ],
         "conditions": {
+          "text": "Initial couch-facing view has TV left and coffee table ahead. The 180-degree turn is an orientation change; the later left turn selects bathroom entry.",
           "candidate_quotes": [
-            "180 degrees",
-            "Facing",
-            "left",
-            "ahead"
-          ],
-          "text": "ordinal_or_count: 180 degrees; spatial_frame: Facing, left, ahead"
+            "Facing the couch, with the TV on the left and the coffee table straight ahead",
+            "turn 180 degrees and exit the room",
+            "take a left into the bathroom"
+          ]
         },
         "ending": {
           "candidate_quotes": [
@@ -257,17 +263,20 @@
         }
       },
       {
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ],
+        "carryover": [],
         "conditions": {
+          "text": "After bathroom entry, turn around and return by the specified veer-right path. Preserve the open-area reference relations, approximate chair count, three stools, the later TV-left/chairs-right traversal and final between-objects placement.",
           "candidate_quotes": [
+            "Once in the bathroom",
+            "turn 180 degrees and head back",
+            "not straight, but veer right",
+            "just to the left of where you came out of and to the right of the small area between the bar",
             "7 or 8 white chairs",
-            "TV and translucent wall on your left",
-            "dining room chairs on your right",
-            "veer right"
-          ],
-          "text": "approximate_quantity: the source says 7 or 8 white chairs; preserve this approximate count, not a route branch. spatial_frame: TV/translucent wall on the left and dining chairs on the right; return path veers right into the open area."
+            "To the left are 3 bar stools",
+            "in front of you is a TV on a translucent wall",
+            "with the TV and translucent wall on your left and the dining room chairs on your right",
+            "between the dining room chairs and the TV"
+          ]
         },
         "ending": {
           "candidate_quotes": [
@@ -327,6 +336,7 @@
     "anti_pattern": "Do not accept an audit row that claims a missing action/entry/endpoint is present in the candidate text.",
     "conditions_focus": "approximate_quantity: the source says 7 or 8 white chairs; preserve this approximate count, not a route branch. spatial_frame: TV/translucent wall on the left and dining chairs on the right; return path veers right into the open area.",
     "review_principle": "Independently verify this case's source-specific requirements: Preserve the directional/spatial relation and its reference frame: Facing the couch, with the TV on the left and the…; Preserve the directional/spatial relation and its reference frame: Go inside the room, take a left into the bathroom.; Preserve the temporal trigger/order and its scope: Once in the bathroom. Use local candidate evidence, check each stage's five elements, and compare each actual preceding exit with the next stage's first unperformed action.",
-    "case_specific_focus": "Preserve the directional/spatial relation and its reference frame: Facing the couch, with the TV on the left and the…; Preserve the directional/spatial relation and its reference frame: Go inside the room, take a left into the bathroom.; Preserve the temporal trigger/order and its scope: Once in the bathroom"
+    "case_specific_focus": "Match the two turn-around events to their own stages. Verify bathroom entry, the subsequent return and veer, approximate chair count, path-wide TV/chair sides and final between-objects position independently.",
+    "five_element_focus": "Keep the initial frame, bathroom-entry completion, actual return, approximate chair count, sustained side constraints and final between-objects position tied to their own events."
   }
 }

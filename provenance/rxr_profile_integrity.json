@@ -1,9 +1,9 @@
 {
-  "file_count": 182,
+  "file_count": 184,
   "files": [
     {
       "path": "generator/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "e6139cd059637e2437ca2bbe835a82a1856c6bf9"
+      "git_blob_sha1": "7ff52125c14d997898cbd897015eb3263b14cbbb"
     },
     {
       "path": "generator/output.schema.json",
@@ -39,7 +39,7 @@
     },
     {
       "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
-      "git_blob_sha1": "aebe22e4c7ccc8665f6f3ca502101a5cfe75f26f"
+      "git_blob_sha1": "43e55e4938fd95378a1a0dc5c0e56e48e830a899"
     },
     {
       "path": "generator/templates/RxR/core/G07_RxR-CORE-G07.json",
@@ -155,7 +155,7 @@
     },
     {
       "path": "generator/templates/RxR/val_seen/006_RxR-GEN-006.json",
-      "git_blob_sha1": "0fb35c9954d209d3529d820edf69fa79743f2cc5"
+      "git_blob_sha1": "3fd92cf3be959c61650793fb7daf5b4d2ba43dac"
     },
     {
       "path": "generator/templates/RxR/val_seen/007_RxR-GEN-007.json",
@@ -223,7 +223,7 @@
     },
     {
       "path": "generator/templates/RxR/val_seen/023_RxR-GEN-023.json",
-      "git_blob_sha1": "9203468f34307e2e71e3dc01dd082d279ec92027"
+      "git_blob_sha1": "b48c58800f00fbb928d74719d59b986430fb5d5f"
     },
     {
       "path": "generator/templates/RxR/val_seen/024_RxR-GEN-024.json",
@@ -239,7 +239,7 @@
     },
     {
       "path": "generator/templates/RxR/val_seen/027_RxR-GEN-027.json",
-      "git_blob_sha1": "e5ee367ee245643454161c05ab65c01faba077f4"
+      "git_blob_sha1": "a2300e8d3857f08f193a3146a6791c7b2025f9e9"
     },
     {
       "path": "generator/templates/RxR/val_seen/028_RxR-GEN-028.json",
@@ -278,8 +278,16 @@
       "git_blob_sha1": "08c9208f921236898a78024de4a7c791b79c040f"
     },
     {
+      "path": "host/rxr_contract.py",
+      "git_blob_sha1": "1f04af9a7f9893783e940d7022d4f61757111064"
+    },
+    {
       "path": "host/rxr_retrieval.py",
       "git_blob_sha1": "457b7bf4ce057abe319d2bb8b89ec51e32537d42"
+    },
+    {
+      "path": "host/rxr_teaching.py",
+      "git_blob_sha1": "f20d0872f531381df4c9197c7c90009a0595a0a4"
     },
     {
       "path": "provenance/rxr_training_sources.json",
@@ -291,7 +299,7 @@
     },
     {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
-      "git_blob_sha1": "a3481614e90f4b2e6bb65e99acc051a9bc5a3224"
+      "git_blob_sha1": "e12eb87a64f18ab2fae25d118dfe7e4fe2f8d1d3"
     },
     {
       "path": "reviewer/output.schema.json",
@@ -323,7 +331,7 @@
     },
     {
       "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
-      "git_blob_sha1": "f4f2dec457cb5edc9e2104f19cafce54d092e890"
+      "git_blob_sha1": "bbe1f7a91587a2b708a03a409b879590b320b234"
     },
     {
       "path": "reviewer/templates/RxR/core/G07_RxR-CORE-R07.json",
@@ -347,83 +355,83 @@
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/01_RxR-DIAG-01.json",
-      "git_blob_sha1": "66a5b3ee5946d9d7c350a45b5f4b599889bae8b2"
+      "git_blob_sha1": "d32df1f1b67e1aa57fd6950e81a6b6ffe14252f0"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/02_RxR-DIAG-02.json",
-      "git_blob_sha1": "1c113972f40de09ddf8bec6c11d16e9ec9c61f98"
+      "git_blob_sha1": "b27c3590b480175eabf93f2919ef9abfb6143408"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/03_RxR-DIAG-03.json",
-      "git_blob_sha1": "7225baca8a6f304feca0e72adafe2836290cb1d2"
+      "git_blob_sha1": "5825def03145d7436364b83956548c634f913a16"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/04_RxR-DIAG-04.json",
-      "git_blob_sha1": "19005b6a2999b8100481cbb3f11549d3d17e0fcc"
+      "git_blob_sha1": "59cb62fe6a9438466f859bb5b5c2c71a55de26b1"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/05_RxR-DIAG-05.json",
-      "git_blob_sha1": "8eea11f81a3225956428dc77e9fa9568afd7dffa"
+      "git_blob_sha1": "1e15c684fe1be1c19e3bed64aed44e4e31955563"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/06_RxR-DIAG-06.json",
-      "git_blob_sha1": "f703891cecaa10fce4465c772d81f67e85480e12"
+      "git_blob_sha1": "992b2358b697dddaaf8241f3774b4bf0d4e09ad5"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/07_RxR-DIAG-07.json",
-      "git_blob_sha1": "6c0ca3816ea6f5476d01230c6832840e95db0b01"
+      "git_blob_sha1": "58cd29b71f920c98b2b1032f943f9d9a780ec27d"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/08_RxR-DIAG-08.json",
-      "git_blob_sha1": "6cab347dad4608afc7f3ccf3659b95d66e1b4045"
+      "git_blob_sha1": "3a2ffc590fbf39868cbce5fa0bf3995f25cbccab"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/09_RxR-DIAG-09.json",
-      "git_blob_sha1": "5a4c6c7229c8b01ae6615e8e12037d80dccd341c"
+      "git_blob_sha1": "ab57ed7efa08eb334ab446a91f83ed070ce13130"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/10_RxR-DIAG-10.json",
-      "git_blob_sha1": "2dd55b73f45a6173d8ab911c2e1c307ff695dac4"
+      "git_blob_sha1": "5e30b726953309142d05f73ccf2a9a3f438681b7"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/11_RxR-DIAG-11.json",
-      "git_blob_sha1": "b807c797912a56974a1689e0a3b8c4c91dbab4b9"
+      "git_blob_sha1": "e181bfc24a9806d5919c759e97db173b09ffd3ca"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/12_RxR-DIAG-12.json",
-      "git_blob_sha1": "afa6c63c6f5cce67f6e25350d145689a5b66a558"
+      "git_blob_sha1": "7d7e55d896af27bdd253e436a8bc62507bb996ef"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/13_RxR-DIAG-13.json",
-      "git_blob_sha1": "afd5c117967f035c75cb49dab973fafe1c4b1707"
+      "git_blob_sha1": "9797c77c3eb1541d67517246e7fe6e3fce518023"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/14_RxR-DIAG-14.json",
-      "git_blob_sha1": "2bb33acde85b130135cdeeb350986f2741cf8879"
+      "git_blob_sha1": "a936702964680604b69996c3f81122153f28b620"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/15_RxR-DIAG-15.json",
-      "git_blob_sha1": "e470cfa0275767762111b484e0edb305dadc77d2"
+      "git_blob_sha1": "58520ca7d5169d77c1aba6e44c51a8533e4da505"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/16_RxR-DIAG-16.json",
-      "git_blob_sha1": "43370fad108703c8880455d317384f836abc39a8"
+      "git_blob_sha1": "24f66ca7bda2f397ab2207161ea38a645d6acd4b"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/17_RxR-DIAG-17.json",
-      "git_blob_sha1": "fd7831b7b63d0f44a4b52551ac56036f4d429ae3"
+      "git_blob_sha1": "52ac8460450a51b7ee85bc87ad09b02465ff0c34"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/18_RxR-DIAG-18.json",
-      "git_blob_sha1": "a7a065320f3556bfdd1f8c6c3a14f906beb19f4c"
+      "git_blob_sha1": "892b8c1965f43a4422d6fbd95c45052c8741e1b4"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/19_RxR-DIAG-19.json",
-      "git_blob_sha1": "de2892d3334525adb1881dcf9de5e8db662b5521"
+      "git_blob_sha1": "5eba9fbb1b3a2f3476261930569c37ac09eaece0"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/20_RxR-DIAG-20.json",
-      "git_blob_sha1": "2abfdaeb8ede24846c443f67222ee2de2738ee18"
+      "git_blob_sha1": "1a6fec4a477886173191aa9fe11fc4887f2ba7d9"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-21.json",
@@ -431,7 +439,7 @@
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-22.json",
-      "git_blob_sha1": "809633a058381f2340fb4e85805b06c8ba9958eb"
+      "git_blob_sha1": "5506b6f1e5ddf8fa5510310caea2c3bf53051327"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-23.json",
@@ -447,7 +455,7 @@
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-26.json",
-      "git_blob_sha1": "e4b5a1761723e481bd2cb1f2b19dde146d24d64e"
+      "git_blob_sha1": "185378115dc508ef7c2cd04cb3f8f94dfcfb5739"
     },
     {
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-27.json",
@@ -523,7 +531,7 @@
     },
     {
       "path": "reviewer/templates/RxR/paired/006_RxR-REV-006.json",
-      "git_blob_sha1": "39c83f98ac7a21572b50420f0cd8fd11ba5f289e"
+      "git_blob_sha1": "d6371e143b0759e3e1d883be6a11ece1306198ea"
     },
     {
       "path": "reviewer/templates/RxR/paired/007_RxR-REV-007.json",
@@ -591,7 +599,7 @@
     },
     {
       "path": "reviewer/templates/RxR/paired/023_RxR-REV-023.json",
-      "git_blob_sha1": "9e19d6bb0de9b90d75712e9bb598e6e519ea9bc7"
+      "git_blob_sha1": "81fdfa42956a907dcb12790b060330daa5716f16"
     },
     {
       "path": "reviewer/templates/RxR/paired/024_RxR-REV-024.json",
@@ -607,7 +615,7 @@
     },
     {
       "path": "reviewer/templates/RxR/paired/027_RxR-REV-027.json",
-      "git_blob_sha1": "4966644dc43b19d650c2d0db11ce3ea32d7e9657"
+      "git_blob_sha1": "fa719c8136dfbe2992b7463ec87fa07448717251"
     },
     {
       "path": "reviewer/templates/RxR/paired/028_RxR-REV-028.json",

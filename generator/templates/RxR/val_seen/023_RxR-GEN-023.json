@@ -61,29 +61,34 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "spatial_frame: facing, between, left, right",
+          "text": "Preserve the initial closet-facing state, between-furniture passage, bed-relative path, stair ascent and the right turn at its top.",
           "candidate_quotes": [
-            "facing",
-            "between",
-            "left",
-            "right"
+            "facing some brown closet doors",
+            "between the bathtub and all of the wood furniture",
+            "taking a left and walking toward the bed",
+            "to the left of the bed",
+            "Go up a few stairs.",
+            "At the top of these stairs, turn to the right."
           ]
         },
         "source_quotes": [
           "At the top of these stairs, we will turn to the right.",
           "Walking to the left of the bed and walking down a hallway, a very long hallway.",
           "We start off facing some brown closet doors and you will see a bathtub.",
-          "Walk between the bathtub and all of the wood furniture Taking a left walking toward the bed.Exiting out of the bedroom."
+          "Walk between the bathtub and all of the wood furniture Taking a left walking toward the bed.Exiting out of the bedroom.",
+          "Now we will go up a few stairs."
         ],
-        "carryover": []
+        "carryover": [
+          "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+        ]
       },
       {
         "subtask_index": 1,
         "entry": {
-          "mode": "inherited_entity",
-          "text": "From the top of these stairs, go down a stair or two",
+          "mode": "explicit_context",
+          "text": "At the stair top after the preceding right turn; the descent is not yet performed.",
           "candidate_quotes": [
-            "From the top of these stairs, go down a stair or two"
+            "From the top of these stairs"
           ]
         },
         "target": {
@@ -107,11 +112,13 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors.",
+          "text": "The descent is a stair or two. Preserve the piano ahead, passage on its left past the fireplace, and the pool ahead when exiting through the glass doors.",
           "candidate_quotes": [
             "a stair or two",
             "piano directly in front of you",
-            "to the left of the piano"
+            "to the left of the piano",
+            "passing a large fireplace",
+            "Walk out the glass doors with a pool directly in front of you."
           ]
         },
         "source_quotes": [
@@ -121,7 +128,7 @@
           "Going down a stair or two."
         ],
         "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
+          "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
         ]
       },
       {
@@ -168,9 +175,7 @@
           "With the pool on the right and the home to your left, walk to the end, mostly to the end of this brick patio.",
           "Now turn to the left."
         ],
-        "carryover": [
-          "Retain the immediately preceding endpoint and orientation."
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -186,7 +191,12 @@
           "text": "From the top of these stairs, go down a stair or two",
           "candidate_quote": "From the top of these stairs, go down a stair or two"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-05",
           "SRC-11"
@@ -205,7 +215,12 @@
           "text": "Once outside, turn to the left",
           "candidate_quote": "Once outside, turn to the left"
         },
-        "shared_context": [],
+        "shared_context": [
+          {
+            "kind": "inherited_context",
+            "text": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+          }
+        ],
         "source_requirement_ids": [
           "SRC-13",
           "SRC-07"
@@ -221,9 +236,10 @@
     "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
     "executable_reuse_test": "For every stage, verify entry state, complete ordered process, target, supported completion event or final goal directive, and scoped conditions. For every cut, verify the preceding exit and next entry can be connected without teleportation or an invented stop.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
-    "five_element_focus": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: spatial_frame: facing, between, left, right Stage 2: approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed,… Stage 3: At the terminal position, the pool is on the right, the home is on the left, and the potted plant is on the…",
+    "five_element_focus": "Pool-right and home-left apply during patio movement. Mostly to the end remains approximate. The stop is at the pool edge; the plant-left observation identifies the final position.",
     "handoff_focus": "Stage 1 ends with 'At the top of these stairs, turn to the right.'; stage 2 begins from 'From the top of these stairs, go down a stair or two'. Stage 2 ends with 'Walk out the glass doors with a pool directly in front of you.'; stage 3 begins from 'Once outside, turn to the left'.",
-    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages."
+    "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
+    "case_rationale": "Keep the stair-top right turn with its established completion, then descend and exit through the glass doors. On the patio, pool-right/home-left constrains the movement; mostly to the end remains approximate, while the pool edge is the stop and the plant is a terminal reference."
   },
   "retrieval_tags": [
     "room_transition",

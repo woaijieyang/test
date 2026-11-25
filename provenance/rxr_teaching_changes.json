@@ -694,10 +694,25 @@
       "path": "generator/templates/RxR/core/G06_RxR-CORE-G06.json",
       "source_sha256": "727caa257cd516fdc396f918f3c83e0a7a060aa370da646fbe0ed058b91a1e32",
       "before_sha256": "2e6de9cf694f7df4408c1927d0b1ba0b6d2d03248b37faa8de93f7367a2cbae2",
-      "after_sha256": "c98c4403dc5a4646839d8d9b3045f91135542e06f1971e705496460a1173a9c2",
+      "after_sha256": "8f5e6325d48d5c6b348d279552594ff70369e2b1d49a2735ea2af4833c6a2b73",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/0",
+          "before": "then",
+          "after": "about halfway down the staircase"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/1",
+          "before": "halfway",
+          "after": "then stop and wait there."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/text",
+          "before": "temporal: then; ordinal_or_count: halfway",
+          "after": "About halfway limits the same staircase descent; stop and wait at that approximate position, not after a full descent."
+        },
         {
           "path": "/teaching_notes/anti_pattern",
           "before": "Do not execute a full descent and then repeat the descent to halfway.",
@@ -1953,7 +1968,7 @@
       "path": "reviewer/templates/RxR/core/G06_RxR-CORE-R06.json",
       "source_sha256": "727caa257cd516fdc396f918f3c83e0a7a060aa370da646fbe0ed058b91a1e32",
       "before_sha256": "910c51759ef330e95f0077229f99848b0dd818cee83401319f02d731515366f8",
-      "after_sha256": "262b2e0240bbdcb7aa03b35d73da012f4eaa0dae195508eac60b2a0f5462f312",
+      "after_sha256": "6b3e5ebab5f4f5eb79120601881f186c38c5873f6510c03ccfc5789a489709f8",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -2059,6 +2074,21 @@
           "path": "/expected_review/source_coverage/2/requirement",
           "before": "Preserve this route event or constraint in its source order.",
           "after": "Wait at the same approximately halfway position after stopping."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
+          "before": "then",
+          "after": "about halfway down the staircase"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
+          "before": "halfway",
+          "after": "then stop and wait there."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "temporal: then; ordinal_or_count: halfway",
+          "after": "About halfway limits the same staircase descent; stop and wait at that approximate position, not after a full descent."
         },
         {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
@@ -2771,7 +2801,7 @@
       "path": "reviewer/templates/RxR/diagnostics/01_RxR-DIAG-01.json",
       "source_sha256": "04714df420c3cef988a86bcb783bdd66ab10f14c9eb20d85770868c1799954ed",
       "before_sha256": "8bc1d47b8c0d25dea5e100613f2f5a90fc44ba28c515cc96a762f53f95de30e1",
-      "after_sha256": "0015dfb428ea31780c90885f427fdc7f603c34ac16be72998777d1bce0b957e3",
+      "after_sha256": "e17d2cfe10f9f999e85feb11284dcfe1ee8ec3ab874aa7c557fa6499e7b71543",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -2836,7 +2866,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the exact ordinal and preserve its counting origin.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -3082,7 +3112,7 @@
       "path": "reviewer/templates/RxR/diagnostics/02_RxR-DIAG-02.json",
       "source_sha256": "8707c7f0beccbb0e37506704338ddfd928dde98852daac3e402f7371930c3e5f",
       "before_sha256": "5b9be37b679d524dc087717358c3ee0b60204ca4a38c3416332c9b63fa9a1049",
-      "after_sha256": "53d5e74f4f7df9d0d2154b593709424626dfd22184b43cedae79f6d26e1f0cee",
+      "after_sha256": "e27751c67ba709eec9805fff6cfd21a224126cb6d1afd8c74320e554fef16567",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -3147,7 +3177,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the original direction and its source reference frame.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -3709,7 +3739,7 @@
       "path": "reviewer/templates/RxR/diagnostics/03_RxR-DIAG-03.json",
       "source_sha256": "f95fec4553cf8f9844cb659ea96cf29c9eff166d85ae18724b6ab9696d879d31",
       "before_sha256": "96774f072f8b96212ce312b53f0e8671a67890b1c75f71305e6a66437799af56",
-      "after_sha256": "2cdec34ba0f216a2293b54ecd0fdcd2ef38ffb4c806fab13f2fba7259306b6fc",
+      "after_sha256": "ff1cb88b98a3b49d8288d141d6f961d15b3024f7c1567fce4c032bcff47d0ce1",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -3779,7 +3809,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the exact source transition semantics.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -4180,7 +4210,7 @@
       "path": "reviewer/templates/RxR/diagnostics/04_RxR-DIAG-04.json",
       "source_sha256": "01d95e905030f704e82d8ca3bf6c77f9ed31a13ad05d314425421abd574bcdde",
       "before_sha256": "cc9aec4635fe22f51b488666aa124217e401db9e5d1c23dd592819b40899935b",
-      "after_sha256": "743bf2ef7698b1e8f20c14f7544381b0750f9bd585fee7f7634c201b3821e2cd",
+      "after_sha256": "3c059aa4068f764dd345880f265b54b49422e5f3d9b65d24ffe4ba528a536ed6",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -4245,7 +4275,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the omitted landmark and its spatial relation.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -4519,7 +4549,7 @@
       "path": "reviewer/templates/RxR/diagnostics/05_RxR-DIAG-05.json",
       "source_sha256": "959939c3774eac4486d84a0038fee1f77fd64a6fec833d90570dcae06249cfc9",
       "before_sha256": "57c1dad376804fcee5baca65c5405848d5f73508e98abaf06bc76b6dcda1a404",
-      "after_sha256": "055ff26bde06b5ffaa1b83bd2fbef86b707f28adf50e22ce0a9a46b0ee13a87e",
+      "after_sha256": "27ef3c878b9fdce80d07458b836005eff54b8e04a50ddf26e984219959e869e1",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -4585,7 +4615,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the omitted action in its original temporal position.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -5114,7 +5144,7 @@
       "path": "reviewer/templates/RxR/diagnostics/06_RxR-DIAG-06.json",
       "source_sha256": "71d47558db7d8dfe5ae6fecb5185d8febfab16b5ca236fe888f991b7b4737618",
       "before_sha256": "9fcfe28ead622111d2c29c749dd6641a20c2287d3c143bf4e12cc8b51819c0b6",
-      "after_sha256": "bfc05cf84826c0364baa688974c57bac4ae6b1cd738dbde7db74c9075f01d87c",
+      "after_sha256": "29bfbc96efecaa0601df4a17e5e1e19e2a0a374db7aec4c9b3eab18369b88515",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -5174,7 +5204,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the temporal connective and keep its condition attached to the action it governs.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -5524,15 +5554,10 @@
       "path": "reviewer/templates/RxR/diagnostics/07_RxR-DIAG-07.json",
       "source_sha256": "38c4366b7cf024e87ae735b1a47559f9e9665b1e1249e50669ac29d5b00a475e",
       "before_sha256": "69472c1bc5b142e423863b786388fcceffb7e363371e3d1c2e10b7abb4907531",
-      "after_sha256": "fd78f8ade7738e43104f3a4161410186cc3ae7a4cb797fb8e01906b57a639402",
+      "after_sha256": "81a375b1a58aab1b72f3fbb72fd65fd8fd78f034f3d808cab759da28019c82ab",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
-        {
-          "path": "/expected_review/dimensions/closure_handoff",
-          "before": "issue",
-          "after": "pass"
-        },
         {
           "path": "/expected_review/findings/0/affected_subtask_indices",
           "added": [
@@ -5566,18 +5591,15 @@
           "after": "The candidate no longer preserves the stated stopping position."
         },
         {
-          "path": "/expected_review/findings/0/failed_layer",
-          "before": "L3_stage_checks",
-          "after": "L2_dependencies"
-        },
-        {
           "path": "/expected_review/findings/0/problem",
           "before": "The candidate drops an explicitly requested stop or wait at its source-defined location.",
           "after": "An explicit final stop is replaced by an instruction to continue past that position."
         },
         {
           "path": "/expected_review/findings/0/related_dimensions",
-          "added": []
+          "added": [
+            "closure_handoff"
+          ]
         },
         {
           "path": "/expected_review/findings/0/repair/affected_stage_indices",
@@ -5594,7 +5616,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the stop/wait at the exact source location; do not move it to another stage.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Replace the unsupported continuation with the original stop at the cited position. Restore that required stopping condition; preserve the preceding route and do not invent other stops or destinations."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -5661,12 +5683,12 @@
         {
           "path": "/expected_review/layer_checks/3/conclusion",
           "before": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-          "after": "An explicit final stop is replaced by an instruction to continue past that position."
+          "after": "The required terminal stop is lost; the stage continues beyond its prescribed endpoint."
         },
         {
           "path": "/expected_review/layer_checks/4/conclusion",
           "before": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-          "after": "There is one candidate stage, so there is no inter-stage handoff."
+          "after": "One stage has no adjacent handoff; its terminal closure is checked separately by L3."
         },
         {
           "path": "/expected_review/layer_checks/4/status",
@@ -6113,6 +6135,11 @@
         {
           "path": "/teaching_notes/case_specific_focus",
           "added": "An explicit final stop is replaced by an instruction to continue past that position. The candidate no longer preserves the stated stopping position."
+        },
+        {
+          "path": "/teaching_notes/review_principle",
+          "before": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+          "after": "The changed terminal requirement affects both source fidelity and this stage's ending. There is no adjacent handoff in the one-stage candidate, so L4 remains not applicable. Do not infer an unrelated grouping defect from this local stop loss."
         }
       ]
     },
@@ -6121,7 +6148,7 @@
       "path": "reviewer/templates/RxR/diagnostics/08_RxR-DIAG-08.json",
       "source_sha256": "42f29c915ff7362001d667ddbb518005f736766b3ab2aca9b8cec8effafc4ad6",
       "before_sha256": "e816f55fd51879954f1bac2b88b59287a09b37b46cc620fd20a6437470a71f72",
-      "after_sha256": "283ef0fb282c45d9878ddb81c52f2ac87b13de0fdbadc36ccfd5b839ed69fce2",
+      "after_sha256": "79f7adbd4408ba5faf40dc25418fe0983c2453276fa7399f23285884d9f46823",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -6186,7 +6213,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the negation and retain its original scope.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -6758,7 +6785,7 @@
       "path": "reviewer/templates/RxR/diagnostics/09_RxR-DIAG-09.json",
       "source_sha256": "9cd24fb6c0b372c0e7cbe79d9d58f3180275a704c580816ce4e9284962349fae",
       "before_sha256": "4ffa429e92ae0035a5f8edb54cdd402305367e4bf6f9e8c5f791447ec472afac",
-      "after_sha256": "82d8d6f65fd57f0e7011d590414be251b51b00bc0d4319032fca7851775785af",
+      "after_sha256": "6445316ec2804057c52714d008ff7b79bd419d02d8c0c4e708eda1c26bbed7a2",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -6818,7 +6845,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the orientation at the same stage and preserve whether it is initial, maintained, or terminal.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -7265,7 +7292,7 @@
       "path": "reviewer/templates/RxR/diagnostics/10_RxR-DIAG-10.json",
       "source_sha256": "f225b2c55c0136dc0df792442da4e48f54455420bcc174df1987e8906acf6fcd",
       "before_sha256": "6f763b487de6bbcfa01d90e500ffd04dc53667d937586303dbce236b0153e198",
-      "after_sha256": "f3c6f1a5939b75305ea2695d760ad2efc448f662a1cbf18a2e4e243cd0cff3d6",
+      "after_sha256": "5358931c677f16bc6befc37b2047adc9907dc9c0309510ba5ab859b94bba5778",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -7330,7 +7357,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -7739,7 +7766,7 @@
       "path": "reviewer/templates/RxR/diagnostics/11_RxR-DIAG-11.json",
       "source_sha256": "6c58474fa5a4c44f55063f1eb04bdd13d4d5d48b48b83cd797ac645d83cbdf40",
       "before_sha256": "d76808bc60a9c47bc16581ec6d66ce888bf384cc2fad9d45a9979e6526e42343",
-      "after_sha256": "1fce6f7675eeb3edce7faa0751db687c7503c9c76fe1bd69f4ac1d2592fbd76b",
+      "after_sha256": "7b1c50cba3e28e86806ec74a96ea5278066f0282aba268e0cc9b25fe1206449a",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -7804,7 +7831,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the exact ordinal and preserve its counting origin.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -8131,7 +8158,7 @@
       "path": "reviewer/templates/RxR/diagnostics/12_RxR-DIAG-12.json",
       "source_sha256": "5f36bd475a574b4f407bd397897fbfb6683186c847294027b2b34b369185ec37",
       "before_sha256": "e18a26ced44c22e4798f947895cafacbd210e9840285f8d1125fb0ce90413129",
-      "after_sha256": "67b72d83ae452e383a4b77c0e4c25a6cb75e925e434f1c3296fe078c7c9e4a45",
+      "after_sha256": "fde294b59f71a8b15690bf836a360c4769e1e3447c7891164e8507d9e35bbb08",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -8196,7 +8223,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the original direction and its source reference frame.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -8580,7 +8607,7 @@
       "path": "reviewer/templates/RxR/diagnostics/13_RxR-DIAG-13.json",
       "source_sha256": "a910afbe0619449b5bb70658166c5cd8cd0c91c6e0e94f24721362a206036114",
       "before_sha256": "324d00e8d8f32a400359a150350581c0dc09a04ded9d9c45e1ed42e51e1549ba",
-      "after_sha256": "134e20a22896b32067a319bd6d14ca13e03aca9430451e1b15a6028019a1df7e",
+      "after_sha256": "36a35b69849602bf7f6b3e257e67ab6a70df15def236b787a4ecef7e61e36cb1",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -8650,7 +8677,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the exact source transition semantics.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -8963,7 +8990,7 @@
       "path": "reviewer/templates/RxR/diagnostics/14_RxR-DIAG-14.json",
       "source_sha256": "ea7b3f0aafb4251370f754f8111d63c0222f9ede8baab2ff7c918f28f7fe812d",
       "before_sha256": "1abefb58eb5afa1d266570d9782d21b42ad020610e4a6131a03f5aa864c8d4ba",
-      "after_sha256": "343cdd9ebcf9ad90e391b67f4ce2d92104b55565443acb1a8492e022f6d2326b",
+      "after_sha256": "2bce0cb7fdab8c25c905d3645509164124d642f667e8ff6b171905998325019c",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -9028,7 +9055,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the omitted landmark and its spatial relation.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -9274,7 +9301,7 @@
       "path": "reviewer/templates/RxR/diagnostics/15_RxR-DIAG-15.json",
       "source_sha256": "f908e7be49dd7fe8653f4e41b8599002c3812e4443d4eca54790e6c72e206adf",
       "before_sha256": "5f1486e7aeeb45be2a5761cf7e1a967adfca263b443c4d4bc299dc303308f641",
-      "after_sha256": "5a5e39bc3f7f76436fdcb1c1cfad3fa46b0984f2316a30565b3ae0adb488de1e",
+      "after_sha256": "00ea63b77a99ac43945095e9dd8a120433dc6241ebc6369e0474dd450818bb58",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -9340,7 +9367,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the omitted action in its original temporal position.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -9570,7 +9597,7 @@
       "path": "reviewer/templates/RxR/diagnostics/16_RxR-DIAG-16.json",
       "source_sha256": "a3982ae946ae8ecd3052f2f54232b3fc29d3294ca956e234f9a4782896ffea3a",
       "before_sha256": "b4dbfb7f3463149af7a1f4a1d44edc8d118042077218abb6b19e75dd41d85ddf",
-      "after_sha256": "08b1b90172af6e34bba7eaf55ce39e38e72787cddcbd5c2d14ce518aa86fc970",
+      "after_sha256": "3eb13a60ba970fd0fa69815bf991b48fbd6c77797e1874c696ba2480c688c0d5",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -9630,7 +9657,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the temporal connective and keep its condition attached to the action it governs.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -10013,15 +10040,10 @@
       "path": "reviewer/templates/RxR/diagnostics/17_RxR-DIAG-17.json",
       "source_sha256": "8cc27aaf6d9ec6788bd0a48bea7d5424ec264e8fdbc7e6e43a27dea6b41b3370",
       "before_sha256": "f05b36837cfecac3451293c54158e850425557a6da68c8a5433926bd99210050",
-      "after_sha256": "db8aa548d8e6a977c88c09b60641fb86b7e1fa0d44b2be0d5dd921aaf7bcd5e3",
+      "after_sha256": "600c3f236c5291c96bc65a87814169c4a70163f123680d536a71ef939edb6eca",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
-        {
-          "path": "/expected_review/dimensions/closure_handoff",
-          "before": "issue",
-          "after": "pass"
-        },
         {
           "path": "/expected_review/findings/0/affected_subtask_indices",
           "added": [
@@ -10055,18 +10077,15 @@
           "after": "The terminal stop is no longer preserved; earlier handoffs are not implicated."
         },
         {
-          "path": "/expected_review/findings/0/failed_layer",
-          "before": "L3_stage_checks",
-          "after": "L2_dependencies"
-        },
-        {
           "path": "/expected_review/findings/0/problem",
           "before": "The candidate drops an explicitly requested stop or wait at its source-defined location.",
           "after": "The explicit stop at the pink bathtub is replaced by additional movement past it."
         },
         {
           "path": "/expected_review/findings/0/related_dimensions",
-          "added": []
+          "added": [
+            "closure_handoff"
+          ]
         },
         {
           "path": "/expected_review/findings/0/repair/affected_stage_indices",
@@ -10083,7 +10102,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the stop/wait at the exact source location; do not move it to another stage.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Replace the unsupported continuation with the original stop at the cited position. Restore that required stopping condition; preserve the preceding route and do not invent other stops or destinations."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -10150,12 +10169,12 @@
         {
           "path": "/expected_review/layer_checks/3/conclusion",
           "before": "A single-stage candidate has no inter-stage handoff; mark a stage gap only when the actual required process or completion condition is incomplete.",
-          "after": "The explicit stop at the pink bathtub is replaced by additional movement past it."
+          "after": "The required terminal stop is lost; the stage continues beyond its prescribed endpoint."
         },
         {
           "path": "/expected_review/layer_checks/4/conclusion",
           "before": "The candidate contains one stage, so there is no adjacent stage handoff to assess.",
-          "after": "There is one candidate stage, so there is no inter-stage handoff."
+          "after": "One stage has no adjacent handoff; its terminal closure is checked separately by L3."
         },
         {
           "path": "/expected_review/layer_checks/4/status",
@@ -10497,6 +10516,11 @@
         {
           "path": "/teaching_notes/case_specific_focus",
           "added": "The explicit stop at the pink bathtub is replaced by additional movement past it. The terminal stop is no longer preserved; earlier handoffs are not implicated."
+        },
+        {
+          "path": "/teaching_notes/review_principle",
+          "before": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+          "after": "The changed terminal requirement affects both source fidelity and this stage's ending. There is no adjacent handoff in the one-stage candidate, so L4 remains not applicable. Do not infer an unrelated grouping defect from this local stop loss."
         }
       ]
     },
@@ -10505,7 +10529,7 @@
       "path": "reviewer/templates/RxR/diagnostics/18_RxR-DIAG-18.json",
       "source_sha256": "d5707777d146d6ec29d53caf80567d75089d62738f8c2332f92285d257d8917d",
       "before_sha256": "0aa1a2e9ab7fb4067c84055b1d751a7a313496f24e17444d22afbbb87d1e3f4a",
-      "after_sha256": "328ec13c449e886d05957f0765ad26f0903ef12e77a0917a0af0f863f7fa0730",
+      "after_sha256": "b8fb70ed20b480b16463224e7489e56e9f03dd07ea31939c202aff4a6f3e315e",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -10570,7 +10594,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the negation and retain its original scope.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -11065,7 +11089,7 @@
       "path": "reviewer/templates/RxR/diagnostics/19_RxR-DIAG-19.json",
       "source_sha256": "49fd934ed4b4bde70716b0716bfd188877442e4d1aa3a8957d918e53d59e6236",
       "before_sha256": "d60e51c4a569a8fd912eda8bd2bfb933b3e5802cacf158fc1c6144390ec931e4",
-      "after_sha256": "e27579a6242bcabccf6d2ef2970a99af502f29d7ef52bf288216bd20bbe9f6ad",
+      "after_sha256": "46106d78a3bc5d19ac84642535ccc8ede74004d80de8e10afbc3711d6cddb71c",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -11125,7 +11149,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Restore the orientation at the same stage and preserve whether it is initial, maintained, or terminal.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -11564,7 +11588,7 @@
       "path": "reviewer/templates/RxR/diagnostics/20_RxR-DIAG-20.json",
       "source_sha256": "de17b38ad21e026d30a02c9b82d4f2e0ed6f87d9d47c32a519868a060a03d419",
       "before_sha256": "32d9aef17af132b2aa3a05708c3e4c4f6e9f67860f6ac950d094d60c82e8a804",
-      "after_sha256": "44cb627168aaf122845eb366a8c5ece217b94e513495dabbf27345ea006f353d",
+      "after_sha256": "61587309beb4994404186db7c59e5509870aab42f22db77864f92816a9c45d02",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -11629,7 +11653,7 @@
         {
           "path": "/expected_review/findings/0/repair/instruction",
           "before": "Resolve the referent from the complete source or merge the dependent clauses if it cannot be resolved.",
-          "after": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint."
+          "after": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint."
         },
         {
           "path": "/expected_review/findings/0/repair/operation",
@@ -12733,7 +12757,7 @@
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-22.json",
       "source_sha256": "7417a0113728b33015892f26c48d9e0fa397686af93ada2607247d452545fcbe",
       "before_sha256": "7006d1a581996186d544a5c1b0ed5f4a6cd7e36129a54164562211740469c419",
-      "after_sha256": "0d9b0b39c0ff9d26aef8323693a2ef22d356afb2c54cc467c5f0c4eb4fec36ef",
+      "after_sha256": "3f02a5c1900b23a33f3b49fad821c6192701c8f70d301d356be5a2cd50a0ecf5",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -12842,6 +12866,13 @@
           "after": "At the top of these stairs, turn to the right."
         },
         {
+          "path": "/expected_review/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+          }
+        },
+        {
           "path": "/expected_review/handoffs/0/source_requirement_ids/0",
           "before": "SRC-01",
           "after": "SRC-05"
@@ -12875,6 +12906,13 @@
           "path": "/expected_review/handoffs/1/preceding_exit/text",
           "before": "The actual preceding candidate stage (corrupted for this diagnostic).",
           "after": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/expected_review/handoffs/1/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+          }
         },
         {
           "path": "/expected_review/handoffs/1/source_requirement_ids/0",
@@ -13234,21 +13272,38 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/carryover/0",
+          "added": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+        },
+        {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
           "before": "We start off facing some brown closet doors, and you will see a bathtub. Walk between the bathtub and all of the wood furniture, taking a left and walking toward the bed. Exit the bedroom. Walk to the left of the bed and down a very long hallway. Go up a few stairs. At the top of these stairs, turn to the right.",
-          "after": "facing"
+          "after": "facing some brown closet doors"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
-          "added": "between"
+          "added": "between the bathtub and all of the wood furniture"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
-          "added": "left"
+          "added": "taking a left and walking toward the bed"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
-          "added": "right"
+          "added": "to the left of the bed"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/4",
+          "added": "Go up a few stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/5",
+          "added": "At the top of these stairs, turn to the right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "spatial_frame: facing, between, left, right",
+          "after": "Preserve the initial closet-facing state, between-furniture passage, bed-relative path, stair ascent and the right turn at its top."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/candidate_quotes/0",
@@ -13282,6 +13337,11 @@
           "after": "At the top of these stairs, turn to the right."
         },
         {
+          "path": "/expected_review/stage_checks/1/carryover/0",
+          "before": "Retain the immediately preceding endpoint and orientation.",
+          "after": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+        },
+        {
           "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/0",
           "before": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
           "after": "a stair or two"
@@ -13295,9 +13355,37 @@
           "added": "to the left of the piano"
         },
         {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/3",
+          "added": "passing a large fireplace"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/4",
+          "added": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/text",
+          "before": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors.",
+          "after": "The descent is a stair or two. Preserve the piano ahead, passage on its left past the fireplace, and the pool ahead when exiting through the glass doors."
+        },
+        {
           "path": "/expected_review/stage_checks/1/ending/candidate_quotes/0",
           "before": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
           "after": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/candidate_quotes/0",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "From the top of these stairs"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/mode",
+          "before": "inherited_entity",
+          "after": "explicit_context"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/text",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "At the stair top after the preceding right turn; the descent is not yet performed."
         },
         {
           "path": "/expected_review/stage_checks/1/source_quotes/0",
@@ -13332,6 +13420,10 @@
           "path": "/expected_review/stage_checks/1/target/candidate_quotes/0",
           "before": "From the top of these stairs, go down a stair or two. You will see a piano directly in front of you. Walk to the left of the piano, passing a large fireplace. Walk out the glass doors with a pool directly in front of you.",
           "after": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/expected_review/stage_checks/2/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
         },
         {
           "path": "/expected_review/stage_checks/2/conditions/candidate_quotes/0",
@@ -14910,7 +15002,7 @@
       "path": "reviewer/templates/RxR/diagnostics/RxR-DIAG-26.json",
       "source_sha256": "d5e4df620762a3a89f1b9eec0a52bcb416e39d2e72cacb45da5a56d13fdc9ec5",
       "before_sha256": "b5fad86e498ffc2724de27715dabaa7801b7402845327363909114f35ed3d113",
-      "after_sha256": "5745cce02c45aef9a7ec47207dfde3bf465df1b410e4565c003f4644a9f8b75a",
+      "after_sha256": "0ab7a1e4f82f827fba833416632db63e90544617a4230ff98767a06117fea49a",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -15025,6 +15117,13 @@
           "path": "/expected_review/handoffs/0/preceding_exit/text",
           "before": "The actual preceding candidate stage (corrupted for this diagnostic).",
           "after": "Go inside the room and take a left into the bathroom."
+        },
+        {
+          "path": "/expected_review/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "entity_or_region",
+            "text": "The bathroom entered by the preceding left turn; the return remains unperformed."
+          }
         },
         {
           "path": "/expected_review/handoffs/0/source_requirement_ids/0",
@@ -15294,21 +15393,26 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/carryover/0",
+          "added": "Bathroom entry is complete; the next stage performs its own turn-around and return."
+        },
+        {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
           "before": "Facing the couch, with the TV on the left and the coffee table straight ahead, turn 180 degrees and exit the room. Go inside the room and take a left into the bathroom.",
-          "after": "180 degrees"
+          "after": "Facing the couch, with the TV on the left and the coffee table straight ahead"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
-          "added": "Facing"
+          "added": "turn 180 degrees and exit the room"
         },
         {
           "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
-          "added": "left"
+          "added": "take a left into the bathroom"
         },
         {
-          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
-          "added": "ahead"
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "ordinal_or_count: 180 degrees; spatial_frame: Facing, left, ahead",
+          "after": "Initial couch-facing view has TV left and coffee table ahead. The 180-degree turn is an orientation change; the later left turn selects bathroom entry."
         },
         {
           "path": "/expected_review/stage_checks/0/ending/candidate_quotes/0",
@@ -15340,21 +15444,45 @@
           "after": "Go inside the room and take a left into the bathroom."
         },
         {
+          "path": "/expected_review/stage_checks/1/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
+        },
+        {
           "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/0",
           "before": "Once in the bathroom, turn 180 degrees and head back, not straight, but veer right into the open area just to the left of where you came out of and to the right of the small area between the bar. To the right you will see a glass dining room table with 7 or 8 white chairs around it. To the left are 3 bar stools, and in front of you is a TV on a translucent wall. Walk straight ahead turn left toward the dining room chairs. Once you are between the dining room chairs and the TV, you are done.",
-          "after": "7 or 8 white chairs"
+          "after": "Once in the bathroom"
         },
         {
           "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/1",
-          "added": "Turn left and walk towards the dining room chairs."
+          "added": "turn 180 degrees and head back"
         },
         {
           "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/2",
-          "added": "Turn left and walk towards the dining room chairs."
+          "added": "not straight, but veer right"
         },
         {
           "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/3",
-          "added": "veer right"
+          "added": "just to the left of where you came out of and to the right of the small area between the bar"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/4",
+          "added": "7 or 8 white chairs"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/5",
+          "added": "To the left are 3 bar stools"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/6",
+          "added": "in front of you is a TV on a translucent wall"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/7",
+          "added": "Turn left and walk towards the dining room chairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/8",
+          "added": "between the dining room chairs and the TV"
         },
         {
           "path": "/expected_review/stage_checks/1/conditions/text",
@@ -17346,7 +17474,7 @@
       "path": "generator/templates/RxR/val_seen/006_RxR-GEN-006.json",
       "source_sha256": "d5e4df620762a3a89f1b9eec0a52bcb416e39d2e72cacb45da5a56d13fdc9ec5",
       "before_sha256": "6aa836b35049588107d76eff7c761984ab288eb48b0a2f14faca80029bd1dabe",
-      "after_sha256": "2bc20ff86bff262073810e2785249c9f65fc8e0bcf3e2dc5440cedc9977aa658",
+      "after_sha256": "01ebd55d4ff255efad2be86a61dcde787c22dc5e0ba41cd1c763a8139a42da46",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -17354,6 +17482,13 @@
           "path": "/output/handoffs/0/handoff_rationale",
           "before": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.",
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
+        },
+        {
+          "path": "/output/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "entity_or_region",
+            "text": "The bathroom entered by the preceding left turn; the return remains unperformed."
+          }
         },
         {
           "path": "/output/handoffs/0/source_requirement_ids/0",
@@ -17368,6 +17503,135 @@
         {
           "path": "/output/handoffs/0/source_requirement_ids/2",
           "added": "SRC-04"
+        },
+        {
+          "path": "/output/stage_audit/0/carryover/0",
+          "added": "Bathroom entry is complete; the next stage performs its own turn-around and return."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/0",
+          "before": "180 degrees",
+          "after": "Facing the couch, with the TV on the left and the coffee table straight ahead"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/1",
+          "before": "Facing",
+          "after": "turn 180 degrees and exit the room"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/2",
+          "before": "left",
+          "after": "take a left into the bathroom"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/3",
+          "removed": "ahead"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/text",
+          "before": "ordinal_or_count: 180 degrees; spatial_frame: Facing, left, ahead",
+          "after": "Initial couch-facing view has TV left and coffee table ahead. The 180-degree turn is an orientation change; the later left turn selects bathroom entry."
+        },
+        {
+          "path": "/output/stage_audit/0/source_quotes/0",
+          "before": "Go inside the room, take a left into the bathroom.",
+          "after": "Facing the couch, with the TV on the left and the coffee table straight ahead, turn 180 degrees and exit the room."
+        },
+        {
+          "path": "/output/stage_audit/0/source_quotes/1",
+          "before": "Facing the couch, with the TV on the left and the coffee table straight ahead, turn 180 degrees and exit the room.",
+          "after": "Go inside the room, take a left into the bathroom."
+        },
+        {
+          "path": "/output/stage_audit/0/source_quotes/2",
+          "removed": "turn 180 degrees and head back"
+        },
+        {
+          "path": "/output/stage_audit/0/source_quotes/3",
+          "removed": "Walk straight ahead with the TV and translucent wall on your left and the dining room chairs on your right."
+        },
+        {
+          "path": "/output/stage_audit/1/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/0",
+          "before": "7 or 8 white chairs",
+          "after": "Once in the bathroom"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/1",
+          "before": "Once you are between the dining room chairs and the TV",
+          "after": "turn 180 degrees and head back"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/2",
+          "added": "not straight, but veer right"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/3",
+          "added": "just to the left of where you came out of and to the right of the small area between the bar"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/4",
+          "added": "7 or 8 white chairs"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/5",
+          "added": "To the left are 3 bar stools"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/6",
+          "added": "in front of you is a TV on a translucent wall"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/7",
+          "added": "with the TV and translucent wall on your left and the dining room chairs on your right"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/8",
+          "added": "between the dining room chairs and the TV"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/text",
+          "before": "approximate_quantity: 7 or 8 white chairs; temporal: once; spatial_frame: TV on left, dining chairs on right; endpoint relation: between chairs and TV.",
+          "after": "After bathroom entry, turn around and return by the specified veer-right path. Preserve the open-area reference relations, approximate chair count, three stools, the later TV-left/chairs-right traversal and final between-objects placement."
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/0",
+          "before": "Walk straight ahead with the TV and translucent wall on your left and the dining room chairs on your right.",
+          "after": "Once in the bathroom"
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/1",
+          "before": "To the left 3 bar stools and in front of you a TV on a translucent wall.",
+          "after": "turn 180 degrees and head back"
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/3",
+          "before": "turn 180 degrees and head back",
+          "after": "To the right you'll see a glass dining room table with 7, 8 white chairs around it."
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/4",
+          "added": "To the left 3 bar stools and in front of you a TV on a translucent wall."
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/5",
+          "added": "Walk straight ahead with the TV and translucent wall on your left and the dining room chairs on your right."
+        },
+        {
+          "path": "/output/stage_audit/1/source_quotes/6",
+          "added": "Once you're between the dining room chairs and the TV, you're done."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Retain the bathroom-entry leg before the actual turn-around and return. Bind the initial couch/TV frame to the first turn, the veer-right return to its own event, and the TV-left/chairs-right relation to the final traversal. Seven or eight is an approximate chair count, not a branch."
+        },
+        {
+          "path": "/teaching_notes/five_element_focus",
+          "before": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: ordinal_or_count: 180 degrees; spatial_frame: Facing, left, ahead Stage 2: approximate_quantity: 7 or 8 white chairs; temporal: once; spatial_frame: TV on left, dining chairs on…",
+          "after": "Keep the initial frame, bathroom-entry completion, actual return, approximate chair count, sustained side constraints and final between-objects position tied to their own events."
         }
       ]
     },
@@ -18031,7 +18295,7 @@
       "path": "generator/templates/RxR/val_seen/023_RxR-GEN-023.json",
       "source_sha256": "7417a0113728b33015892f26c48d9e0fa397686af93ada2607247d452545fcbe",
       "before_sha256": "b22cc931727b22aaa0683dccdfcc38127bcd4ce83c47f02ac8395d9e425b87e0",
-      "after_sha256": "ec12238438186871391948a8204d359bbf7008adf21e362b80b4863aa5a43fad",
+      "after_sha256": "41ff2bef8a60b41865a02e5f5aec7cd46cd123c8b73e1f7ac73f66c8e13ba7ab",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -18039,6 +18303,13 @@
           "path": "/output/handoffs/0/handoff_rationale",
           "before": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.",
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
+        },
+        {
+          "path": "/output/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+          }
         },
         {
           "path": "/output/handoffs/0/source_requirement_ids/0",
@@ -18056,6 +18327,13 @@
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
         },
         {
+          "path": "/output/handoffs/1/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+          }
+        },
+        {
           "path": "/output/handoffs/1/source_requirement_ids/0",
           "before": "SRC-02",
           "after": "SRC-13"
@@ -18064,6 +18342,84 @@
           "path": "/output/handoffs/1/source_requirement_ids/1",
           "before": "SRC-03",
           "after": "SRC-07"
+        },
+        {
+          "path": "/output/stage_audit/0/carryover/0",
+          "added": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/0",
+          "before": "facing",
+          "after": "facing some brown closet doors"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/1",
+          "before": "between",
+          "after": "between the bathtub and all of the wood furniture"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/2",
+          "before": "left",
+          "after": "taking a left and walking toward the bed"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/3",
+          "before": "right",
+          "after": "to the left of the bed"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/4",
+          "added": "Go up a few stairs."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/5",
+          "added": "At the top of these stairs, turn to the right."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/text",
+          "before": "spatial_frame: facing, between, left, right",
+          "after": "Preserve the initial closet-facing state, between-furniture passage, bed-relative path, stair ascent and the right turn at its top."
+        },
+        {
+          "path": "/output/stage_audit/0/source_quotes/4",
+          "added": "Now we will go up a few stairs."
+        },
+        {
+          "path": "/output/stage_audit/1/carryover/0",
+          "before": "Retain the immediately preceding endpoint and orientation.",
+          "after": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/3",
+          "added": "passing a large fireplace"
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/candidate_quotes/4",
+          "added": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/output/stage_audit/1/conditions/text",
+          "before": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors.",
+          "after": "The descent is a stair or two. Preserve the piano ahead, passage on its left past the fireplace, and the pool ahead when exiting through the glass doors."
+        },
+        {
+          "path": "/output/stage_audit/1/entry/candidate_quotes/0",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "From the top of these stairs"
+        },
+        {
+          "path": "/output/stage_audit/1/entry/mode",
+          "before": "inherited_entity",
+          "after": "explicit_context"
+        },
+        {
+          "path": "/output/stage_audit/1/entry/text",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "At the stair top after the preceding right turn; the descent is not yet performed."
+        },
+        {
+          "path": "/output/stage_audit/2/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
         },
         {
           "path": "/output/stage_audit/2/conditions/candidate_quotes/0",
@@ -18101,6 +18457,15 @@
           "path": "/output/subtasks/2",
           "before": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side.",
           "after": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Keep the stair-top right turn with its established completion, then descend and exit through the glass doors. On the patio, pool-right/home-left constrains the movement; mostly to the end remains approximate, while the pool edge is the stop and the plant is a terminal reference."
+        },
+        {
+          "path": "/teaching_notes/five_element_focus",
+          "before": "For each actual stage, verify entry, target, complete ordered process, source-supported ending and operative conditions. Stage 1: spatial_frame: facing, between, left, right Stage 2: approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed,… Stage 3: At the terminal position, the pool is on the right, the home is on the left, and the potted plant is on the…",
+          "after": "Pool-right and home-left apply during patio movement. Mostly to the end remains approximate. The stop is at the pool edge; the plant-left observation identifies the final position."
         }
       ]
     },
@@ -18154,10 +18519,51 @@
       "path": "generator/templates/RxR/val_seen/027_RxR-GEN-027.json",
       "source_sha256": "a388711a59662f718a8f0521dc4110e3867fd02e3490db083e627389f4288f62",
       "before_sha256": "6d42f0d1fefc3f8340ed42314e860e3d1f48ff65de77122b94592960ced9d974",
-      "after_sha256": "6d42f0d1fefc3f8340ed42314e860e3d1f48ff65de77122b94592960ced9d974",
+      "after_sha256": "53aefd626b6a6e86f92cc39976e6b35f3927e2f130c19765db7eaf069d0b0c77",
       "candidate_changed": false,
-      "status": "unchanged",
-      "fields": []
+      "status": "authored_correction",
+      "fields": [
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/0",
+          "before": "if we turn to the left",
+          "after": "the door that is on the right of the bear head"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/1",
+          "before": "we should see the bed",
+          "after": "Take two more steps towards the foot of the bed."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/2",
+          "added": "Once you are there, you should be facing the big window"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/3",
+          "added": "if we turn to the left, we should see the bed"
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/candidate_quotes/4",
+          "added": "We should be standing on the left side of the bed, and you are done."
+        },
+        {
+          "path": "/output/stage_audit/0/conditions/text",
+          "before": "conditional_observation: if turning left, the bed should be visible; this describes expected view/orientation, not an alternative navigation branch.",
+          "after": "Select the door to the right of the bear head, preserve the two-step extent and final window-facing/bed-side state. Turning left describes a conditional view, not an unconditional additional turn."
+        },
+        {
+          "path": "/output/stage_audit/0/ending/candidate_quotes/0",
+          "before": "We should be standing on the left side of the bed, and you are done.",
+          "after": "Once you are there, you should be facing the big window"
+        },
+        {
+          "path": "/output/stage_audit/0/ending/candidate_quotes/1",
+          "added": "We should be standing on the left side of the bed, and you are done."
+        },
+        {
+          "path": "/teaching_notes/case_rationale",
+          "added": "Preserve the door selected relative to the bear head, the bounded two-step approach and final bed-side position. The window-facing state and conditional leftward view are different relations; the conditional description alone does not command another turn."
+        }
+      ]
     },
     {
       "template_id": "RxR-GEN-028",
@@ -19452,7 +19858,7 @@
       "path": "reviewer/templates/RxR/paired/006_RxR-REV-006.json",
       "source_sha256": "d5e4df620762a3a89f1b9eec0a52bcb416e39d2e72cacb45da5a56d13fdc9ec5",
       "before_sha256": "259222ad03e47ef8cfb75e85310b9ad76ec1a631c33d997efa70980d0eea172c",
-      "after_sha256": "c66170a816716fa892a840f558f1b06a12ec12b013ad21299a34bde68cf7ebce",
+      "after_sha256": "b82024189d11871c4820d8595b9094ceb834bc69db6923024f4c138a4720dd16",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -19460,6 +19866,13 @@
           "path": "/expected_review/handoffs/0/handoff_rationale",
           "before": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.",
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
+        },
+        {
+          "path": "/expected_review/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "entity_or_region",
+            "text": "The bathroom entered by the preceding left turn; the return remains unperformed."
+          }
         },
         {
           "path": "/expected_review/handoffs/0/source_requirement_ids/0",
@@ -19585,6 +19998,34 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/carryover/0",
+          "added": "Bathroom entry is complete; the next stage performs its own turn-around and return."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
+          "before": "180 degrees",
+          "after": "Facing the couch, with the TV on the left and the coffee table straight ahead"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
+          "before": "Facing",
+          "after": "turn 180 degrees and exit the room"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
+          "before": "left",
+          "after": "take a left into the bathroom"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
+          "removed": "ahead"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "ordinal_or_count: 180 degrees; spatial_frame: Facing, left, ahead",
+          "after": "Initial couch-facing view has TV left and coffee table ahead. The 180-degree turn is an orientation change; the later left turn selects bathroom entry."
+        },
+        {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
           "before": "Go inside the room, take a left into the bathroom.",
           "after": "Facing the couch, with the TV on the left and the coffee table straight ahead, turn 180 degrees and exit the room."
@@ -19601,6 +20042,55 @@
         {
           "path": "/expected_review/stage_checks/0/source_quotes/3",
           "removed": "Walk straight ahead with the TV and translucent wall on your left and the dining room chairs on your right."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/0",
+          "before": "7 or 8 white chairs",
+          "after": "Once in the bathroom"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/1",
+          "before": "TV and translucent wall on your left",
+          "after": "turn 180 degrees and head back"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/2",
+          "before": "dining room chairs on your right",
+          "after": "not straight, but veer right"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/3",
+          "before": "veer right",
+          "after": "just to the left of where you came out of and to the right of the small area between the bar"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/4",
+          "added": "7 or 8 white chairs"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/5",
+          "added": "To the left are 3 bar stools"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/6",
+          "added": "in front of you is a TV on a translucent wall"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/7",
+          "added": "with the TV and translucent wall on your left and the dining room chairs on your right"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/8",
+          "added": "between the dining room chairs and the TV"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/text",
+          "before": "approximate_quantity: the source says 7 or 8 white chairs; preserve this approximate count, not a route branch. spatial_frame: TV/translucent wall on the left and dining chairs on the right; return path veers right into the open area.",
+          "after": "After bathroom entry, turn around and return by the specified veer-right path. Preserve the open-area reference relations, approximate chair count, three stools, the later TV-left/chairs-right traversal and final between-objects placement."
         },
         {
           "path": "/expected_review/stage_checks/1/source_quotes/0",
@@ -19628,6 +20118,15 @@
         {
           "path": "/expected_review/stage_checks/1/source_quotes/6",
           "added": "Once you're between the dining room chairs and the TV, you're done."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "before": "Preserve the directional/spatial relation and its reference frame: Facing the couch, with the TV on the left and the…; Preserve the directional/spatial relation and its reference frame: Go inside the room, take a left into the bathroom.; Preserve the temporal trigger/order and its scope: Once in the bathroom",
+          "after": "Match the two turn-around events to their own stages. Verify bathroom entry, the subsequent return and veer, approximate chair count, path-wide TV/chair sides and final between-objects position independently."
+        },
+        {
+          "path": "/teaching_notes/five_element_focus",
+          "added": "Keep the initial frame, bathroom-entry completion, actual return, approximate chair count, sustained side constraints and final between-objects position tied to their own events."
         }
       ]
     },
@@ -22644,7 +23143,7 @@
       "path": "reviewer/templates/RxR/paired/023_RxR-REV-023.json",
       "source_sha256": "7417a0113728b33015892f26c48d9e0fa397686af93ada2607247d452545fcbe",
       "before_sha256": "6280daf53099f0cfd11fbadcd4b2c9cc5115cf56217f92424a22d6b759c51898",
-      "after_sha256": "708642a290cb1f719cb28ad5b1c8565969fb069def21d105c89d2b0fe6e62879",
+      "after_sha256": "29ace0b26944896be58703a24c8d2e166e6b72e07a25a5146b9d289a9be21d37",
       "candidate_changed": true,
       "status": "authored_correction",
       "fields": [
@@ -22652,6 +23151,13 @@
           "path": "/expected_review/handoffs/0/handoff_rationale",
           "before": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.",
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
+        },
+        {
+          "path": "/expected_review/handoffs/0/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+          }
         },
         {
           "path": "/expected_review/handoffs/0/source_requirement_ids/0",
@@ -22667,6 +23173,13 @@
           "path": "/expected_review/handoffs/1/handoff_rationale",
           "before": "The next stage continues from the immediately preceding intended endpoint; no extra physical stop or unmentioned route is introduced.",
           "after": "The cited preceding outcome supports the next first unperformed action. The boundary adds no physical stop or route; any stop explicitly required by the source remains mandatory."
+        },
+        {
+          "path": "/expected_review/handoffs/1/shared_context/0",
+          "added": {
+            "kind": "inherited_context",
+            "text": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+          }
         },
         {
           "path": "/expected_review/handoffs/1/source_requirement_ids/0",
@@ -22853,6 +23366,43 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/carryover/0",
+          "added": "At the top of these stairs after the stated right turn; the downward stair movement remains next."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
+          "before": "facing",
+          "after": "facing some brown closet doors"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
+          "before": "between",
+          "after": "between the bathtub and all of the wood furniture"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
+          "before": "left",
+          "after": "taking a left and walking toward the bed"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
+          "before": "right",
+          "after": "to the left of the bed"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/4",
+          "added": "Go up a few stairs."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/5",
+          "added": "At the top of these stairs, turn to the right."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "spatial_frame: facing, between, left, right",
+          "after": "Preserve the initial closet-facing state, between-furniture passage, bed-relative path, stair ascent and the right turn at its top."
+        },
+        {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
           "before": "At the top of these stairs, we will turn to the right.",
           "after": "We start off facing some brown closet doors and you will see a bathtub."
@@ -22875,6 +23425,39 @@
         {
           "path": "/expected_review/stage_checks/0/source_quotes/4",
           "added": "At the top of these stairs, we will turn to the right."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/carryover/0",
+          "before": "Retain the immediately preceding endpoint and orientation.",
+          "after": "Outside the glass doors with the pool ahead; the next left turn remains unperformed."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/3",
+          "added": "passing a large fireplace"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/candidate_quotes/4",
+          "added": "Walk out the glass doors with a pool directly in front of you."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/conditions/text",
+          "before": "approximate_quantity: a stair or two; spatial_frame: piano in front, pass to its left, fireplace passed, pool ahead through glass doors.",
+          "after": "The descent is a stair or two. Preserve the piano ahead, passage on its left past the fireplace, and the pool ahead when exiting through the glass doors."
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/candidate_quotes/0",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "From the top of these stairs"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/mode",
+          "before": "inherited_entity",
+          "after": "explicit_context"
+        },
+        {
+          "path": "/expected_review/stage_checks/1/entry/text",
+          "before": "From the top of these stairs, go down a stair or two",
+          "after": "At the stair top after the preceding right turn; the descent is not yet performed."
         },
         {
           "path": "/expected_review/stage_checks/1/source_quotes/1",
@@ -22902,6 +23485,10 @@
         {
           "path": "/expected_review/stage_checks/1/source_requirement_ids/3",
           "added": "SRC-13"
+        },
+        {
+          "path": "/expected_review/stage_checks/2/carryover/0",
+          "removed": "Retain the immediately preceding endpoint and orientation."
         },
         {
           "path": "/expected_review/stage_checks/2/conditions/candidate_quotes/0",
@@ -22959,6 +23546,15 @@
           "path": "/review_input/candidate/subtasks/2",
           "before": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side.",
           "after": "Once outside, turn to the left. With the pool on the right and the home to your left, walk to the end, mostly to the end of the brick patio. Stop when you are at the edge of the pool. There will be a potted plant on your left-hand side."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "before": "Preserve the directional/spatial relation and its reference frame: We start off facing some brown closet doors and you…; Preserve the directional/spatial relation and its reference frame: Walk between the bathtub and all of the wood…; Preserve the directional/spatial relation and its reference frame: Walking to the left of the bed and walking down a…",
+          "after": "Use the completed stair-top turn and actual glass-door exit for the two handoffs. Distinguish the sustained pool/home relation from the final plant cue, preserve the approximate patio extent, and require the pool-edge stop rather than a visit to the plant."
+        },
+        {
+          "path": "/teaching_notes/five_element_focus",
+          "added": "Pool-right and home-left apply during patio movement. Mostly to the end remains approximate. The stop is at the pool edge; the plant-left observation identifies the final position."
         }
       ]
     },
@@ -23528,7 +24124,7 @@
       "path": "reviewer/templates/RxR/paired/027_RxR-REV-027.json",
       "source_sha256": "a388711a59662f718a8f0521dc4110e3867fd02e3490db083e627389f4288f62",
       "before_sha256": "9888647202732c2f88df225c616888677533ff66cabca679cbdb2925dc4225dd",
-      "after_sha256": "0195a7b18cabc176e4c0df7b3f741587cdf4b79a675cbead275a4723ea5c3027",
+      "after_sha256": "e8812c2a57397e7f32afecf121dd38c425edac780616aed77f688fd92195e3e3",
       "candidate_changed": false,
       "status": "authored_correction",
       "fields": [
@@ -23602,6 +24198,44 @@
           }
         },
         {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/0",
+          "before": "Take two more steps towards the foot of the bed",
+          "after": "the door that is on the right of the bear head"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/1",
+          "before": "if we turn to the left, we should see the bed",
+          "after": "Take two more steps towards the foot of the bed."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/2",
+          "before": "standing on the left side of the bed",
+          "after": "Once you are there, you should be facing the big window"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/3",
+          "before": "facing the big window",
+          "after": "if we turn to the left, we should see the bed"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/candidate_quotes/4",
+          "added": "We should be standing on the left side of the bed, and you are done."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/conditions/text",
+          "before": "conditional_observation: turning left is used to inspect/confirm that the bed is visible; it is not an alternative route branch. Conditions also preserve the two-step movement toward the foot of the bed and the final standing position on the bed's left side, with the big window as endpoint orientation.",
+          "after": "Select the door to the right of the bear head, preserve the two-step extent and final window-facing/bed-side state. Turning left describes a conditional view, not an unconditional additional turn."
+        },
+        {
+          "path": "/expected_review/stage_checks/0/ending/candidate_quotes/0",
+          "before": "We should be standing on the left side of the bed, and you are done.",
+          "after": "Once you are there, you should be facing the big window"
+        },
+        {
+          "path": "/expected_review/stage_checks/0/ending/candidate_quotes/1",
+          "added": "We should be standing on the left side of the bed, and you are done."
+        },
+        {
           "path": "/expected_review/stage_checks/0/source_quotes/0",
           "before": "We should be standing on the left side of the bed, and you are done.",
           "after": "Turn around completely, and take the door that is on the right of the bear head."
@@ -23620,6 +24254,11 @@
           "path": "/expected_review/stage_checks/0/source_quotes/3",
           "before": "Turn around completely, and take the door that is on the right of the bear head.",
           "after": "We should be standing on the left side of the bed, and you are done."
+        },
+        {
+          "path": "/teaching_notes/case_specific_focus",
+          "before": "Preserve the directional/spatial relation and its reference frame: Turn around completely, and take the door that is…; Preserve the ordered route action or target-identifying landmark: Take two more steps towards the foot of the bed.; Preserve the conditional observation cue and its expected visual result; do not convert it into a route branch.",
+          "after": "Check door identity, two-step extent, final bedside placement and window-facing evidence together. Do not turn the conditional bed observation into an unconditional left turn or weaken the stated final placement."
         }
       ]
     },

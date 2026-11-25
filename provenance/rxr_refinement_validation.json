@@ -1,0 +1,81 @@
+{
+  "tests_run": 291,
+  "failures": [],
+  "errors": [],
+  "skipped": 0,
+  "external_fixture_tests_not_run": [
+    {
+      "test": "unittest.loader._FailedTest.test_release_transaction",
+      "reason": "Missing external manage_release.py; not counted as passed."
+    }
+  ],
+  "success": true,
+  "semantic_correctness_certified": false,
+  "navigation_evaluated": false,
+  "token_budget_verified": false,
+  "source_commit": "a423bbeb723d0a40dd47c2c3b7c85b5bceb1d74a",
+  "baseline_commit": "803ebf2c9edb5e60bb240dd1a2c411663c1a185e",
+  "workflow_run": 45641766604,
+  "preservation": {
+    "baseline_commit": "803ebf2c9edb5e60bb240dd1a2c411663c1a185e",
+    "protected_assets_equal": true,
+    "rxr_sources_candidates_and_retrieval_fields_equal": true,
+    "rxr_templates_checked": 143,
+    "legacy_templates_checked": 20,
+    "changed_template_ids": [
+      "RXR-CORE-G06",
+      "RXR-CORE-R06",
+      "RxR-DIAG-01",
+      "RxR-DIAG-02",
+      "RxR-DIAG-03",
+      "RxR-DIAG-04",
+      "RxR-DIAG-05",
+      "RxR-DIAG-06",
+      "RxR-DIAG-07",
+      "RxR-DIAG-08",
+      "RxR-DIAG-09",
+      "RxR-DIAG-10",
+      "RxR-DIAG-11",
+      "RxR-DIAG-12",
+      "RxR-DIAG-13",
+      "RxR-DIAG-14",
+      "RxR-DIAG-15",
+      "RxR-DIAG-16",
+      "RxR-DIAG-17",
+      "RxR-DIAG-18",
+      "RxR-DIAG-19",
+      "RxR-DIAG-20",
+      "RxR-DIAG-22",
+      "RxR-DIAG-26",
+      "RxR-GEN-006",
+      "RxR-GEN-023",
+      "RxR-GEN-027",
+      "RxR-REV-006",
+      "RxR-REV-023",
+      "RxR-REV-027"
+    ]
+  },
+  "prompt_measurements": {
+    "source_commit": "a423bbeb723d0a40dd47c2c3b7c85b5bceb1d74a",
+    "prompts": {
+      "generator/initial": {
+        "sha256": "721862a06ef55150082ccc6aaf97ec8efc864384b0af8842109d9167a8c4d7af",
+        "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+        "utf8_bytes": 126218
+      },
+      "generator/repair": {
+        "sha256": "dc134b2dada28e28f71d138662d214585f983879894f0920a29de291a43b5018",
+        "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+        "utf8_bytes": 141271
+      },
+      "reviewer/review": {
+        "sha256": "1e906b18309d0e5b0411451e801d0edc164307e6d2ead15e5e30f806b9696a1d",
+        "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+        "utf8_bytes": 159886
+      }
+    }
+  },
+  "r2r_inputs_compared": 38,
+  "phases_per_input": 4,
+  "source_archive_verified": true
+}

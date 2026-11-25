@@ -121,11 +121,11 @@
       {
         "carryover": [],
         "conditions": {
+          "text": "About halfway limits the same staircase descent; stop and wait at that approximate position, not after a full descent.",
           "candidate_quotes": [
-            "then",
-            "halfway"
-          ],
-          "text": "temporal: then; ordinal_or_count: halfway"
+            "about halfway down the staircase",
+            "then stop and wait there."
+          ]
         },
         "ending": {
           "candidate_quotes": [

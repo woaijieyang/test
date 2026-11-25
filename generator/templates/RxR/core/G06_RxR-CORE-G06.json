@@ -59,10 +59,10 @@
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "temporal: then; ordinal_or_count: halfway",
+          "text": "About halfway limits the same staircase descent; stop and wait at that approximate position, not after a full descent.",
           "candidate_quotes": [
-            "then",
-            "halfway"
+            "about halfway down the staircase",
+            "then stop and wait there."
           ]
         },
         "source_quotes": [

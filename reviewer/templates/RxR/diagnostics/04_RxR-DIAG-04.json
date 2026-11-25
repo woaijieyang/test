@@ -178,7 +178,7 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
+          "instruction": "Restore the cited source meaning at this occurrence, including any source-required stop. Preserve unaffected route text; do not invent an unsupported STOP, traversal or endpoint.",
           "protected_requirements": [
             "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
             "Do not reject an equivalent phrasing or another valid grouping."

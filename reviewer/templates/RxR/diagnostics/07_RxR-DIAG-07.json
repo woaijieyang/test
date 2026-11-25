@@ -32,7 +32,7 @@
     "verdict": "revise",
     "dimensions": {
       "source_fidelity": "issue",
-      "closure_handoff": "pass",
+      "closure_handoff": "issue",
       "segmentation_adequacy": "pass"
     },
     "source_coverage": [
@@ -246,13 +246,13 @@
         "finding_indices": [
           0
         ],
-        "conclusion": "An explicit final stop is replaced by an instruction to continue past that position."
+        "conclusion": "The required terminal stop is lost; the stage continues beyond its prescribed endpoint."
       },
       {
         "layer": "L4_handoffs",
         "status": "not_applicable",
         "finding_indices": [],
-        "conclusion": "There is one candidate stage, so there is no inter-stage handoff."
+        "conclusion": "One stage has no adjacent handoff; its terminal closure is checked separately by L3."
       },
       {
         "layer": "L5_grouping",
@@ -272,10 +272,12 @@
     "findings": [
       {
         "code": "UNSUPPORTED_ADDITION",
-        "failed_layer": "L2_dependencies",
+        "failed_layer": "L3_stage_checks",
         "c_check": "C11",
         "dimension": "source_fidelity",
-        "related_dimensions": [],
+        "related_dimensions": [
+          "closure_handoff"
+        ],
         "affected_subtask_indices": [
           0
         ],
@@ -298,7 +300,7 @@
           "affected_subtask_indices": [
             0
           ],
-          "instruction": "Restore the cited source meaning at this occurrence; preserve all unaffected route text and do not add STOP or a new endpoint.",
+          "instruction": "Replace the unsupported continuation with the original stop at the cited position. Restore that required stopping condition; preserve the preceding route and do not invent other stops or destinations.",
           "protected_requirements": [
             "Keep all unaffected source actions, conditions, approximate quantities and event identities.",
             "Do not reject an equivalent phrasing or another valid grouping."
@@ -384,7 +386,7 @@
     "review_pattern": "stop_omission",
     "reuse_rule": "Cite the exact source phrase and candidate evidence, explain the navigation consequence, and prescribe one local repair.",
     "anti_pattern": "Diagnose this actual local change only. A related noun, repeated word, absent connective or diagnostic label is not evidence of another error.",
-    "review_principle": "This is a stop_omission corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
+    "review_principle": "The changed terminal requirement affects both source fidelity and this stage's ending. There is no adjacent handoff in the one-stage candidate, so L4 remains not applicable. Do not infer an unrelated grouping defect from this local stop loss.",
     "case_specific_focus": "An explicit final stop is replaced by an instruction to continue past that position. The candidate no longer preserves the stated stopping position."
   }
 }
