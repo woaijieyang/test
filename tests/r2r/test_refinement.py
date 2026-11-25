@@ -34,11 +34,10 @@ class DetailedRequests(unittest.TestCase):
                     self.assertIn('expected_output',projected)
                     protocol.validate(schema,projected['expected_output'])
                     self.assertEqual(projected['expected_output'],row['output'] if role=='generator' else row['expected_review'])
-                    compact=card(row,role,False)
-                    self.assertNotIn('expected_output',compact)
-                    self.assertEqual(compact['format'],'lesson_summary')
+                    with self.assertRaisesRegex(ValueError, 'summary projection is disabled'):
+                        card(row,role,False)
 
-    def test_two_complete_dynamic_pairs_and_first_diagnostic_in_all_phases(self):
+    def test_all_dynamic_cards_are_complete_in_all_phases(self):
         source='Exit the bedroom and take the first door on your right, then stop by the chair.'
         bundle=select_bundle(source)
         for role,phases in [('generator',('initial','repair')),('reviewer',('review','recheck'))]:
@@ -49,9 +48,11 @@ class DetailedRequests(unittest.TestCase):
                 self.assertEqual([c['template_id'] for c in cards],[r['template_id'] for r in core_library(role,'r2r-en')]+ids)
                 for pos,shown in enumerate(cards):
                     self.assertEqual(shown['source'],(by[shown['template_id']].get('input') or by[shown['template_id']]['review_input'])['original_instruction'])
-                    expected_detail=pos<10 or dynamic_is_detailed(role,ids,pos-10)
-                    self.assertEqual('expected_output' in shown,expected_detail)
-                self.assertGreaterEqual(sum('expected_output' in c for c in cards[10:]),2)
+                    original=by[shown['template_id']]
+                    self.assertIn('expected_output',shown)
+                    self.assertEqual(shown['expected_output'],original['output'] if role=='generator' else original['expected_review'])
+                    self.assertNotEqual(shown['format'],'lesson_summary')
+                self.assertEqual(sum('expected_output' in c for c in cards[10:]),len(ids))
                 if role=='reviewer':
                     first_diag=next(i for i in ids if not by[i].get('pair_id'))
                     self.assertIn('expected_output',next(c for c in cards if c['template_id']==first_diag))

@@ -90,10 +90,11 @@ class AuthoredEvidence(unittest.TestCase):
             self.assertEqual(a['dimensions']['segmentation_adequacy'],'pass')
             self.assertTrue(a['findings'][0]['repair']['protected_requirements'])
 
-    def test_compact_projection_retains_actual_process(self):
+    def test_full_projection_retains_actual_process(self):
         for r in bank().values():
-            c=card(r,r['role'],False)
-            for s in c['stage_semantics']:
+            c=card(r,r['role'],True)
+            stages=c['expected_output']['stage_audit' if r['role']=='generator' else 'stage_checks']
+            for s in stages:
                 self.assertIn('process',s);self.assertIn('entry',s)
 
 

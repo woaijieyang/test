@@ -17,7 +17,7 @@ R2R Generator 从显式允许的 `templates/R2R/val_seen/` 检索，使用 R2R-o
 
 | Profile | Generator Dynamic | Reviewer Paired | Reviewer Diagnostics |
 |---|---:|---:|---:|
-| R2R | 6–8 / task | 6–8 / task | 2–4 / task |
+| R2R | 4–6 / task | 4–6 / task | 2–3 / task |
 | RxR | 2–4 / task | 2–4 / task | 0–2 / task |
 
 磁盘来源数量、可检索数量、Core 数量和单任务选择数量必须分别记录。Reviewer Paired 选择依赖当前任务选中的非 Core Generator Dynamic IDs；Diagnostics 独立补充。Reviewer Core 的 `pair_id` 是教学来源关系，不是运行时强制配对顺序。

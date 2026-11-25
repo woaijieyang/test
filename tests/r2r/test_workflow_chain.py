@@ -79,7 +79,7 @@ class TeachingChain(unittest.TestCase):
         index,_=teaching_index()
         for role,tid in [('generator','R2R-CORE-G09'),('reviewer','R2R-CORE-R09')]:
             row=json.loads((ROOT/index[tid]['path']).read_bytes())
-            for detailed in (True,False):
+            for detailed in (True,):
                 contrast=teaching_card(row,role,detailed)['decision_boundary']
                 self.assertIn('along the woven runner',contrast['counter_boundary'])
                 self.assertIn('From the woven runner',contrast['counter_boundary'])
@@ -95,7 +95,7 @@ class TeachingChain(unittest.TestCase):
             if 'projected_pointer' not in item:continue  # separately validated G1/R1 examples
             row=index[item['template_id']];self.assertIn(row['status'],('fixed_core','dynamic'))
             asset=json.loads((ROOT/row['path']).read_bytes())
-            for detailed in (True,False):
+            for detailed in (True,):
                 projected=teaching_card(asset,item['role'],detailed)
                 value=projected[item['projected_pointer'].lstrip('/')]
                 self.assertEqual(value['counter_boundary'] if isinstance(value,dict) else value,

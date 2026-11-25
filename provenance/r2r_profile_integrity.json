@@ -1,6 +1,6 @@
 {
   "description": "Content fingerprints for the preserved R2R runtime assets, shared interfaces and R2R teaching pools. These hashes are an integrity contract, not a release comparison.",
-  "file_count": 193,
+  "file_count": 194,
   "files": [
     {
       "path": "adapter/README.md",
@@ -252,7 +252,7 @@
     },
     {
       "path": "host/r2r/teaching.py",
-      "git_blob_sha1": "394440493cb624642506bb5881a2aeb1ae286c3e"
+      "git_blob_sha1": "c41612bbc76f3a9ea075c27d39eac61923386637"
     },
     {
       "path": "host/r2r/teaching_index.json",
@@ -647,12 +647,16 @@
       "git_blob_sha1": "7f73ba6ccccf1a83d367dea28757d18fc18236c1"
     },
     {
+      "path": "tests/r2r/test_full_dynamic.py",
+      "git_blob_sha1": "59f2732f4760fe462a2a0f58a447c94be23c29fe"
+    },
+    {
       "path": "tests/r2r/test_hardening.py",
-      "git_blob_sha1": "0cccaee0574277ce15718b35438fced730b3d42d"
+      "git_blob_sha1": "5f59090b5abf8f3976d0b6554e3c2591a5a95807"
     },
     {
       "path": "tests/r2r/test_minimal.py",
-      "git_blob_sha1": "aae8e4c82031693d4785ad2e2dd9cbef7a0345ef"
+      "git_blob_sha1": "d582128dcd5d62c554d7a569188e6765f282487a"
     },
     {
       "path": "tests/r2r/test_quality.py",
@@ -660,7 +664,7 @@
     },
     {
       "path": "tests/r2r/test_refinement.py",
-      "git_blob_sha1": "30ca9dfd3e0bd8f2c062b482498265a83f2989be"
+      "git_blob_sha1": "72ec13f89ada09b669f0e4c38959a86dfc0e3f91"
     },
     {
       "path": "tests/r2r/test_stability.py",
@@ -668,7 +672,7 @@
     },
     {
       "path": "tests/r2r/test_workflow_chain.py",
-      "git_blob_sha1": "8921b5fd10115fd627ae5cc595d12692a4a75a3b"
+      "git_blob_sha1": "4c9c78ffb09a001880ea37bbea617ad3adfcb624"
     },
     {
       "path": "tests/test_host_dispatch_profiles.py",

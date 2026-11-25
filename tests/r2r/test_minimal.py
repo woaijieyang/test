@@ -73,10 +73,10 @@ class TeachingBoundaries(unittest.TestCase):
         row=self.bank()['R2R-GEN-034'];b=teaching_card(row,'generator',True)['decision_boundary']
         self.assertIn('acceptable',b['counter_boundary']);self.assertIn('Omitting',b['operation'])
         self.assertEqual(self.bank()['R2R-REV-034']['expected_review']['verdict'],'pass')
-    def test_boundaries_survive_compact_and_full_projection(self):
+    def test_boundaries_survive_full_projection(self):
         for tid in ('R2R-GEN-015','R2R-GEN-034','R2R-GEN-035','R2R-REV-034'):
             row=self.bank()[tid]
-            for detail in (False,True):self.assertEqual(teaching_card(row,row['role'],detail)['decision_boundary'],row['teaching_notes']['decision_boundary'])
+            for detail in (True,):self.assertEqual(teaching_card(row,row['role'],detail)['decision_boundary'],row['teaching_notes']['decision_boundary'])
     def test_rule_evidence_matches_quotes(self):
         for row in self.bank().values():
             b=row['teaching_notes'].get('decision_boundary')
