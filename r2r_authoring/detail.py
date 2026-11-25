@@ -113,7 +113,8 @@ def author_generator(row,number):
             quote=parts[i+1].split('. ')[0].rstrip('.')+'.' if '. ' in parts[i+1] else parts[i+1]
             if quote not in parts[i+1]:raise ValueError('No exact next-entry event quote')
             h['next_entry']=dict(text=context,candidate_quote=quote)
-        h['shared_context']=[context];h['handoff_rationale']=context+' '+reusable
+        kind='count_origin' if number==15 else 'orientation' if number in (1,2,3,7,8,27) else 'temporal_state' if number==20 else 'entity_or_region'
+        h['shared_context']=[dict(kind=kind,text=context)];h['handoff_rationale']=context+' '+reusable
     out['handoffs']=hands
 
 def author_paired(row,generator,number):
