@@ -22,7 +22,8 @@ def replace(text, before, after, count=1):
 def edit(path, transform):
     source = old(path)
     content = transform(source)
-    if (ROOT / path).read_text() not in (source, content):
+    # Read bytes so inherited CRLF is not silently normalized before comparison.
+    if (ROOT / path).read_bytes().decode() not in (source, content):
         raise ValueError('Refuse independent source change: ' + path)
     updates[path] = content
 
@@ -90,11 +91,10 @@ def test_patch(text):
 def readme_patch(text):
     text = replace(text, '## 入口文档\n',
         '## 入口文档\n\n- `docs/RXR_REFINEMENT.md`：当前 RxR 角色操作、证据修复、前两条完整动态教学、摘要保真与隔离验证说明。\n')
-    text = replace(text, '## 当前工程状态\n',
+    return replace(text, '## 当前工程状态\n',
         '## 当前工程状态\n\n'
         '**当前增量修复。** 在已完成的角色层次转换上，补充 P2 的触发条件、父框架、局部操作与保护边界；修正 006/023/027、Core 06 及相关诊断的教学证据，不改原始指令、候选正文、边界、检索权重和选例数量。RxR 前两条动态案例完整加载，其余摘要保留完整 source/candidate、五要素、条件、Handoff 与 Finding/repair；仅去除重复过程叙述和部分重复层结论。\n\n'
         '新增运行职责位于 `host/rxr_teaching.py`、`host/rxr_contract.py`；离线修复规格位于 `tools/rxr_teaching_alignment.py`。公共合同、Schema、通用 Prompt 与 R2R 路径不改，Host/Compiler 仅增加 RxR 条件派发。当前证据及文件归属以 `docs/RXR_REFINEMENT.md` 为准；以下段落保留此前结构转换的范围说明，不应误读为本轮仍未修改 Compiler 或教学投影。\n\n')
-    return text
 
 
 edit('host/run.py', run_patch)
@@ -119,5 +119,5 @@ for path, content in updates.items():
     if path.endswith('.py'):
         compile(content, path, 'exec')
 for path, content in updates.items():
-    (ROOT / path).write_text(content)
+    (ROOT / path).write_bytes(content.encode())
 print(json.dumps({'reviewed_integration_paths': sorted(updates)}))
