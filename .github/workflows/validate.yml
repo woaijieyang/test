@@ -22,7 +22,7 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
       - name: Verify committed source tree integrity
-        run: python -B verify_package.py
+        run: python -B tools/verify_package.py
       - name: Compile all profile prompts and template indexes
         run: python -B -m host.compile
       - name: Refresh generated-file integrity and persist compiled artifacts
@@ -49,7 +49,7 @@ jobs:
               manifest[name] = "gitblob-sha1:" + digest
           manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
-          python -B verify_package.py
+          python -B tools/verify_package.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add FILE_HASHES.json generator/compiled_r2r-en.txt generator/compiled_repair_r2r-en.txt reviewer/compiled_r2r-en.txt generator/compiled_rxr-en-us.txt generator/compiled_repair_rxr-en-us.txt reviewer/compiled_rxr-en-us.txt generator/templates/INDEX.md reviewer/templates/INDEX.md provenance/build_manifest.json
