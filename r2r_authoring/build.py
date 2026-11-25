@@ -1,14 +1,9 @@
-"""Reproducible R2R authoring from immutable evaluated source evidence.
-
-Candidate edits and field corrections are explicit author specifications, not
-online semantic rewriting. Every generated asset is checked before writing.
-"""
+"""Reproducible source-local R2R authoring; no online semantic rewriting."""
 from pathlib import Path
 import argparse,copy,hashlib,json,re,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
-from r2r_authoring.detail import author_generator,finalize_detail
-from r2r_authoring.positive import author_paired
+from r2r_authoring.detail import author_generator,author_paired,finalize_detail
 from r2r_authoring.review import repair_diagnostic,finalize_special,levels
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EVALUATED='9dd24a655a845d59698e835c0326fbf73db5fbb8'
@@ -23,7 +18,12 @@ def materialize():
     rows={r['template_id']:r for r in data.values()}
     if len(rows)!=119:raise ValueError('Unexpected source inventory')
     gens={int(t[-3:]):r for t,r in rows.items() if t.startswith('R2R-GEN-')}
-    for n,row in gens.items():author_generator(row,n)
+    author_errors=[]
+    for n,row in gens.items():
+        try:author_generator(row,n)
+        except Exception as exc:author_errors.append({'template_id':row['template_id'],'error':str(exc)})
+    if author_errors:
+        print('AUTHOR_SPEC_ERRORS '+json.dumps(author_errors,ensure_ascii=False));raise ValueError('Explicit positive authoring specification requires correction')
     for tid,row in rows.items():
         if tid.startswith('R2R-CORE-G'):author_generator(row,int(row['provenance']['core_curated_from'][-3:]))
         elif tid.startswith('R2R-REV-'):author_paired(row,gens[int(tid[-3:])],int(tid[-3:]))
@@ -32,20 +32,17 @@ def materialize():
         if tid.startswith('R2R-DIAG-'):repair_diagnostic(row,int(tid[-2:]))
     finalize_special(rows)
     for row in rows.values():
-        notes=row['teaching_notes']
-        lesson=notes.get('case_rationale') if row['role']=='generator' else notes.get('case_specific_focus')
+        notes=row['teaching_notes'];lesson=notes.get('case_rationale') if row['role']=='generator' else notes.get('case_specific_focus')
         if lesson:
             notes['decision_reason']=lesson
             if row['role']=='reviewer':notes['review_principle']=lesson
-        if row['role']=='reviewer' and row['expected_review']['verdict']=='pass':
-            levels(row['expected_review'],{},len(row['review_input']['candidate']['subtasks']))
+        if row['role']=='reviewer' and row['expected_review']['verdict']=='pass':levels(row['expected_review'],{},len(row['review_input']['candidate']['subtasks']))
     finalize_detail(rows)
     from host import protocol
     from host.template_selector import validate_template
     errors=[]
     for path,row in data.items():
-        src=(row.get('input') or row['review_input'])['original_instruction']
-        old=original[path];oldsrc=(old.get('input') or old['review_input'])['original_instruction']
+        src=(row.get('input') or row['review_input'])['original_instruction'];old=original[path];oldsrc=(old.get('input') or old['review_input'])['original_instruction']
         if src!=oldsrc or row['source']!=old['source']:raise ValueError('Source identity changed: '+path)
         try:
             validate_template(row['role'],row,source_path=path)
@@ -53,8 +50,7 @@ def materialize():
             else:protocol.reviewer(src,row['review_input']['candidate'],row['expected_review'])
         except Exception as exc:errors.append({'template_id':row['template_id'],'error':str(exc)})
     if errors:
-        print('AUTHORING_ERRORS '+json.dumps(errors,ensure_ascii=False))
-        raise ValueError(f'{len(errors)} authored templates fail active contracts')
+        print('AUTHORING_ERRORS '+json.dumps(errors,ensure_ascii=False));raise ValueError(f'{len(errors)} authored templates fail active contracts')
     gc=[rows[f'R2R-CORE-G{i:02d}'] for i in range(1,11)];rc=[rows[f'R2R-CORE-R{i:02d}'] for i in range(1,11)]
     pg={r['provenance']['core_curated_from'] for r in gc};pr={r['provenance']['core_curated_from'] for r in rc}
     index=[];changes=[]
@@ -87,8 +83,7 @@ def materialize():
     return outputs
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');args=p.parse_args()
-    outputs=materialize();changed=[]
+    p=argparse.ArgumentParser();p.add_argument('--write',action='store_true');p.add_argument('--check',action='store_true');args=p.parse_args();outputs=materialize();changed=[]
     for rel,blob in outputs.items():
         path=ROOT/rel
         if not path.exists() or path.read_bytes()!=blob:
