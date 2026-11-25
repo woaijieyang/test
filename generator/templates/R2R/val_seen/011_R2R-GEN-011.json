@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The explicitly stated hallway end. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Continue straight to the end of the hallway."
           ],
@@ -94,7 +94,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom doorway after the left turn and entry. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom doorway after the left turn and entry. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait in the doorway."
           ],

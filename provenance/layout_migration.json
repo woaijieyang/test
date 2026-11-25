@@ -1,0 +1,17 @@
+{
+  "moves": {
+    "CODEX_START_HERE.md": "docs/CODEX_START_HERE.md",
+    "IMPLEMENTATION.md": "docs/IMPLEMENTATION.md",
+    "WORKFLOW.md": "docs/WORKFLOW.md",
+    "CHANGELOG.md": "docs/CHANGELOG.md",
+    "verify_package.py": "tools/verify_package.py",
+    "validation.json": "provenance/package_validation.json",
+    "shared/dataset_rules/r2r_teaching_index.json": "r2r/teaching_index.json"
+  },
+  "root_exceptions": {
+    "FILE_HASHES.json": "Repository-wide release integrity contract; excludes only itself and interpreter caches. Owned by tools/verify_package.py.",
+    "VERSION": "Existing compatibility identity; not a development version and not injected into model instructions.",
+    "README.md": "Project entry point.",
+    "requirements.txt": "Environment dependency contract."
+  }
+}

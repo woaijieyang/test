@@ -4,6 +4,7 @@ import argparse,copy,hashlib,json,re,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from r2r_authoring.detail import author_generator,author_paired,finalize_detail
+from r2r_authoring.metadata import metadata
 from r2r_authoring.review import repair_diagnostic,finalize_special,levels
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EVALUATED='9dd24a655a845d59698e835c0326fbf73db5fbb8'
@@ -12,11 +13,19 @@ def sha(data):return hashlib.sha256(data).hexdigest()
 def encode(obj):return (json.dumps(obj,ensure_ascii=False,indent=2)+'\n').encode()
 
 def materialize():
-    paths=[n for n in git('ls-tree','-r','--name-only',EVALUATED).decode().splitlines() if '/templates/R2R/' in n and n.endswith('.json')]
+    inventory=json.loads((ROOT/'r2r_authoring/source_inventory.json').read_bytes())
+    if inventory['evaluated_commit']!=EVALUATED:raise ValueError('Wrong source inventory base')
+    entries=inventory['historical'];paths=[e['path'] for e in entries]
+    if len(paths)!=inventory['historical_template_count'] or len(set(paths))!=len(paths):raise ValueError('Source inventory count/identity mismatch')
+    actual=[n for n in git('ls-tree','-r','--name-only',EVALUATED).decode().splitlines() if '/templates/R2R/' in n and n.endswith('.json')]
+    if sorted(actual)!=sorted(paths):raise ValueError('Incomplete historical source inventory')
+    for entry in entries:
+        if git('rev-parse',EVALUATED+':'+entry['path']).decode().strip()!=entry['source_blob_sha1']:raise ValueError('Historical blob drift')
+
     raw={p:git('show',EVALUATED+':'+p) for p in paths}
     data={p:json.loads(v) for p,v in raw.items()};original=copy.deepcopy(data)
     rows={r['template_id']:r for r in data.values()}
-    if len(rows)!=119:raise ValueError('Unexpected source inventory')
+    if len(rows)!=inventory['historical_template_count'] or {r['template_id'] for r in data.values()}!={e['template_id'] for e in entries}:raise ValueError('Unexpected source inventory')
     gens={int(t[-3:]):r for t,r in rows.items() if t.startswith('R2R-GEN-')}
     author_errors=[]
     for n,row in gens.items():
@@ -38,6 +47,20 @@ def materialize():
             if row['role']=='reviewer':notes['review_principle']=lesson
         if row['role']=='reviewer' and row['expected_review']['verdict']=='pass':levels(row['expected_review'],{},len(row['review_input']['candidate']['subtasks']))
     finalize_detail(rows)
+    from r2r_authoring.semantic_refinements import apply as refine
+    refine(rows)
+    from r2r_authoring.contrast import examples as contrast_examples
+    additions=contrast_examples()
+    declared={e['path']:e for e in inventory['additions']}
+    if set(additions)!=set(declared):raise ValueError('Unregistered authored additions')
+    for path,row in additions.items():
+        entry=declared[path];src=(row.get('input') or row['review_input'])['original_instruction']
+        if (entry['builder']!='r2r_authoring.contrast' or entry['template_id']!=row['template_id']
+                or entry['source_sha256']!=sha(src.encode()) or row['source']['split']!='authored_synthetic'
+                or row['provenance'].get('is_official_dataset_record') is not False):
+            raise ValueError('Invalid synthetic provenance or source drift')
+        if row['template_id'] in rows:raise ValueError('Duplicate authored ID')
+        data[path]=row;rows[row['template_id']]=row;original[path]=copy.deepcopy(row);raw[path]=encode(row)
     from host import protocol
     from host.template_selector import validate_template
     errors=[]
@@ -66,10 +89,10 @@ def materialize():
             other=rows[pair];relation='same_source' if source==(other.get('input') or other['review_input'])['original_instruction'] else 'analogy'
         lesson=(notes.get('case_rationale') if row['role']=='generator' else notes.get('case_specific_focus')) or notes.get('transfer_rule') or notes.get('review_principle')
         if not lesson:raise ValueError('Missing concrete lesson: '+tid)
-        index.append(dict(template_id=tid,path=path,role=row['role'],status=status,pair_id=pair,pair_relation=relation,source_sha256=sha(source.encode()),source_family=row['source'].get('source_key'),content_sha256=sha(blob),skills=skills,lesson=lesson,reusable_rule=notes.get('reusable_rule') or notes.get('transfer_rule'),counter_boundary=notes.get('counter_example_boundary') or notes.get('anti_pattern'),quality='authored_and_contract_checked'))
+        index.append(dict(template_id=tid,path=path,role=row['role'],status=status,pair_id=pair,pair_relation=relation,source_sha256=sha(source.encode()),source_family=row['source'].get('source_key'),content_sha256=sha(blob),skills=skills,lesson=lesson,reusable_rule=notes.get('reusable_rule') or notes.get('transfer_rule'),counter_boundary=notes.get('counter_example_boundary') or notes.get('anti_pattern'),quality='authored_and_contract_checked',**metadata(row,skills)))
         changes.append(dict(template_id=tid,path=path,source_sha256=sha(source.encode()),evidence_blob=sha(raw[path]),result_sha256=sha(blob),changed=original[path]!=row))
     outputs={p:encode(r) for p,r in data.items()}
-    outputs['shared/dataset_rules/r2r_teaching_index.json']=encode({'profile':'r2r-en','items':index})
+    outputs['r2r/teaching_index.json']=encode({'profile':'r2r-en','items':index})
     outputs['provenance/r2r_teaching_changes.json']=encode(dict(parent_commit=PARENT,evaluated_commit=EVALUATED,templates=changes,template_count=len(data),runtime_eligible=sum(r['status'] in ('fixed_core','dynamic') for r in index),source_identities_preserved=True,active_contracts_validated=True,review_method='Explicit source-local model-assisted review; evaluated stage evidence is retained unless a listed field repair applies. No independent human certification.',semantic_correctness_certified=False,navigation_evaluated=False))
     registry=[]
     for role in ('generator','reviewer'):
@@ -78,6 +101,9 @@ def materialize():
             rid,title=m.groups();level=int(rid[3]);parent=None if level==0 else rid[0]+'-P0' if level==1 else rid[0]+'-P1-'+rid.split('-')[-1][0]
             registry.append(dict(id=rid,role=role,level=level,parent=parent,title=title,path=f'{role}/dataset_rules/r2r_en.md'))
     ids={r['id'] for r in registry}
+    if any(set(item['rule_ids'])-ids for item in index):raise ValueError('Teaching refers to unknown role rule')
+    from r2r.relations import FACET_PATTERNS
+    if any(set(item['facets'])-set(FACET_PATTERNS) for item in index):raise ValueError('Unknown authored relation facet')
     if len(ids)!=len(registry) or not registry or any(r['parent'] and r['parent'] not in ids for r in registry):raise ValueError('Broken role-rule inheritance')
     outputs['provenance/r2r_rule_links.json']=encode({'common_authority':'shared/semantic_contract.md','shared_interpretations':'shared/dataset_rules/r2r_en.md','nodes':registry})
     return outputs

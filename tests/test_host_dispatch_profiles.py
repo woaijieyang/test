@@ -194,7 +194,7 @@ class HostDispatchProfileTests(unittest.TestCase):
             core_folder = folder / "core"
             core_rows = [__import__("json").loads(p.read_bytes()) for p in core_folder.glob("*.json")]
             promoted = {row["provenance"]["core_curated_from"] for row in core_rows}
-            dynamic_kinds = ("val_seen",) if role == "generator" else ("paired", "diagnostics")
+            dynamic_kinds = (("val_seen",) if role == "generator" else ("paired", "diagnostics")) + ("authored",)
             expected_paths = [
                 p for kind in dynamic_kinds for p in sorted((folder / kind).glob("*.json"))
                 if __import__("json").loads(p.read_bytes())["template_id"] not in promoted

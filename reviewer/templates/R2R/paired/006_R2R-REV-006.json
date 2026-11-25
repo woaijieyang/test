@@ -119,6 +119,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -138,34 +139,34 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The next room reached through the small hallway. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The next room reached through the small hallway. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the next room."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: arched, round design above it; straight",
+          "text": "Verify these source-specified relations in the candidate: arched, round design above it; straight",
           "candidate_quotes": [
             "arched, round design above it",
             "straight"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Exit the room through the only door with an arched, round design above it.",
           "Continue straight through the small hall and enter the next room."
         ],
         "carryover": [
           "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -187,26 +188,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The blue-mat stopping position. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The blue-mat stopping position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop once you reach the blue mat."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: once you reach the blue mat",
+          "text": "Verify these source-specified relations in the candidate: once you reach the blue mat",
           "candidate_quotes": [
             "once you reach the blue mat"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03"
+        ],
         "source_quotes": [
           "Stop once you reach the blue mat."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -215,11 +215,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Continue straight through the small hall and enter the next room.",
-          "candidate_quote": "Continue straight through the small hall and enter the next room."
+          "text": "The next room reached through the small hallway. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the next room."
         },
         "next_entry": {
-          "text": "Inside the next room, stop once you reach the blue mat",
+          "text": "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry.",
           "candidate_quote": "Inside the next room, stop once you reach the blue mat"
         },
         "shared_context": [
@@ -233,7 +233,7 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The entered next room contains the uniquely specified blue mat; continue to that mat without repeating entry."
       }
     ],
     "prior_finding_reviews": []

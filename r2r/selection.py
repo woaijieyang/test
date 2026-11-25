@@ -2,6 +2,7 @@
 from pathlib import Path
 from functools import lru_cache
 import hashlib,json,re,math
+from r2r.relations import facet_signals, FACET_PATTERNS
 ROOT=Path(__file__).resolve().parents[1]
 PATTERNS={
  'entity_frame':[r'\b(?:left|right) of (?:the |a )?[^,.!?;]{1,50}'],
@@ -42,10 +43,15 @@ def _index_blob(blob):
     if obj.get('profile')!='r2r-en':raise ValueError('Cross-profile teaching index')
     items=obj['items'];index={r['template_id']:r for r in items}
     if len(index)!=len(items):raise ValueError('Duplicate teaching index identity')
+    for item in items:
+        prefix='G-' if item['role']=='generator' else 'R-'
+        if not item.get('rule_ids') or any(not r.startswith(prefix) for r in item['rule_ids']):raise ValueError('Missing or cross-role teaching-rule mapping')
+        if not item.get('retrieval_skills') or set(item.get('facets',()))-set(FACET_PATTERNS):raise ValueError('Invalid teaching relation metadata')
+        if item.get('teaching_polarity') not in ('generate','accept','detect','source_limitation'):raise ValueError('Invalid teaching polarity')
     return index
 
 def teaching_index():
-    blob=(ROOT/'shared/dataset_rules/r2r_teaching_index.json').read_bytes()
+    blob=(ROOT/'r2r/teaching_index.json').read_bytes()
     return _index_blob(blob),digest(blob)
 
 def signals(text):
@@ -80,47 +86,92 @@ def core_rows(role):
     return rows
 
 
-def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=()):
-    if count is not None and (type(count) is not int or not minimum<=count<=maximum):raise ValueError(f'R2R count must be {minimum}..{maximum}')
-    hits=signals(text);query=set(hits);words=set(re.findall(r'[a-z]+',text.casefold()))
-    core_focus=set()
-    for r in core:
-        item=index[r['template_id']];_verify(r,item)
-        core_focus.update(item['skills'][:1])
+def _lesson_units(item, query_facets):
+    """A positive example is not a negative contrast, even for the same facet."""
+    polarity=item.get('teaching_polarity','unspecified')
+    return {facet+'|'+polarity for facet in set(item.get('facets',())) & query_facets}
+
+
+def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=(),prior=(),source_family=None):
+    if count is not None and (type(count) is not int or not minimum<=count<=maximum):
+        raise ValueError(f'R2R count must be {minimum}..{maximum}')
+    hits=signals(text);query=set(hits);facet_hits=facet_signals(text);query_facets=set(facet_hits)
+    words=set(re.findall(r'[a-z]+',text.casefold()))
+    core_focus=set();core_units=set();prior_units=set();prior_skills=set()
+    for row in core:
+        item=index[row['template_id']];_verify(row,item)
+        core_focus.update(item.get('retrieval_skills',item['skills']))
+        core_units.update(_lesson_units(item,query_facets))
+    for row in prior:
+        item=index[row['template_id']];_verify(row,item)
+        prior_skills.update(query & set(item.get('retrieval_skills',item['skills'])))
+        prior_units.update(_lesson_units(item,query_facets))
     options=[];excluded=[];blocked={normalized(text),*(normalized(x) for x in exclude)}
     for row in rows:
         tid=row['template_id'];item=index.get(tid)
         if item is None:raise ValueError('Missing R2R teaching metadata: '+tid)
         _verify(row,item)
-        identity=normalized(_source(row))
-        if item['status']!='dynamic':excluded.append(dict(template_id=tid,reason=item['status']));continue
-        if identity in blocked:excluded.append(dict(template_id=tid,reason='same_source'));continue
-        matched=query&set(item['skills']);terms=set(re.findall(r'[a-z]+',_source(row).casefold()))
+        identity=normalized(_source(row));family=item.get('route_family')
+        if item['status']!='dynamic':
+            excluded.append(dict(template_id=tid,reason=item['status']));continue
+        if identity in blocked:
+            excluded.append(dict(template_id=tid,reason='same_source'));continue
+        if source_family is not None and family==source_family:
+            excluded.append(dict(template_id=tid,reason='same_route_family'));continue
+        matched=query & set(item.get('retrieval_skills',item['skills']))
+        facets=query_facets & set(item.get('facets',()))
+        terms=set(re.findall(r'[a-z]+',_source(row).casefold()))
         lexical=len(words&terms)/math.sqrt(max(1,len(terms)))
-        options.append(dict(row=row,identity=identity,matched=matched,lexical=lexical,cost=len(_source(row).encode()),item=item))
-    if len({x['identity'] for x in options})<(count or minimum):raise ValueError('Insufficient eligible R2R calibration library')
-    selected=[];trace=[];covered=set();ranking=[];initial_pool=sorted(x['row']['template_id'] for x in options)
+        options.append(dict(row=row,identity=identity,family=family,matched=matched,
+                            facets=facets,units=_lesson_units(item,query_facets),lexical=lexical,
+                            cost=len(_source(row).encode()),item=item))
+    if len({x['family'] or x['identity'] for x in options})<(count or minimum):
+        raise ValueError('Insufficient eligible R2R calibration library')
+    selected=[];trace=[];covered=set();covered_units=set();ranking=[]
+    initial_pool=sorted(x['row']['template_id'] for x in options)
+    available_skills=set().union(*(x['matched'] for x in options)) if options else set()
     while options and len(selected)<(count or maximum):
         base=len(selected)<(count or minimum)
-        eligible=options if base else [x for x in options if x['matched']-covered-core_focus]
+        def new_units(x):return x['units']-covered_units-core_units-prior_units
+        def optional_skills(x):return x['matched']-covered-core_focus-prior_skills
+        eligible=options if base else [x for x in options if new_units(x) or optional_skills(x)]
         if not eligible:break
         def components(x):
             novelty=x['matched']-covered
-            # Actual new Dynamic skills lead; fixed Core overlap is a soft cost.
-            incremental=_weight(novelty)-0.25*_weight(novelty&core_focus)
-            return incremental,_weight(x['matched']),_weight(x['matched']&covered)
+            # Core is a soft cost during mandatory selection; paired examples
+            # reduce redundant diagnosis, not opposite-polarity contrasts.
+            inc=_weight(novelty)-0.25*_weight(novelty&core_focus)-0.15*_weight(novelty&prior_skills)
+            inc+=2*len(new_units(x))
+            repeat=_weight(x['matched']&covered)+len(x['units']&(covered_units|prior_units))
+            return inc,_weight(x['matched'])+len(x['facets']),repeat
         def key(x):
             inc,fit,repeat=components(x)
-            return (not bool(x['matched']),-inc,-fit,repeat,-.2*x['lexical'],x['cost'],x['row']['template_id'])
+            return (not bool(x['matched'] or x['facets']),-inc,-fit,repeat,-.2*x['lexical'],x['cost'],x['row']['template_id'])
         ordered=sorted(eligible,key=key);best=ordered[0];tid=best['row']['template_id']
-        ranking.append(dict(slot=len(selected),ordered_candidates=[dict(template_id=x['row']['template_id'],matched_skills=sorted(x['matched']),incremental_skills=sorted(x['matched']-covered),core_overlap=sorted(x['matched']&core_focus),incremental_score=components(x)[0],relation_score=components(x)[1],redundancy_score=components(x)[2],lexical=round(x['lexical'],10),source_bytes=x['cost'],content_sha256=x['item']['content_sha256']) for x in ordered]))
-        reason='explicit_count' if count is not None else 'specific_complement' if base and best['matched'] else 'broad_calibration' if base else 'uncovered_skill'
-        trace.append(dict(template_id=tid,selection_reason=reason,matched_skills=sorted(best['matched']),added_coverage=sorted(best['matched']-covered),optional_coverage=sorted(best['matched']-covered-core_focus) if not base else [],core_overlap=sorted(best['matched']&core_focus),matched_source_spans={s:hits[s] for s in sorted(best['matched'])}))
-        selected.append(best['row']);covered.update(best['matched'])
-        duplicates=[x for x in options if x['identity']==best['identity'] and x['row']['template_id']!=tid]
+        ranking.append(dict(slot=len(selected),ordered_candidates=[dict(
+            template_id=x['row']['template_id'],matched_skills=sorted(x['matched']),
+            incremental_skills=sorted(x['matched']-covered),core_overlap=sorted(x['matched']&core_focus),
+            incremental_score=components(x)[0],relation_score=components(x)[1],redundancy_score=components(x)[2],
+            added_lesson_units=sorted(new_units(x)),matched_facets=sorted(x['facets']),
+            lexical=round(x['lexical'],10),source_bytes=x['cost'],content_sha256=x['item']['content_sha256']) for x in ordered]))
+        if count is not None:reason='explicit_count'
+        elif base:reason='specific_complement' if best['matched'] or best['facets'] else 'broad_calibration'
+        else:reason='uncovered_facet_or_contrast' if new_units(best) else 'uncovered_skill'
+        trace.append(dict(template_id=tid,selection_reason=reason,
+            matched_skills=sorted(best['matched']),added_coverage=sorted(best['matched']-covered),
+            optional_coverage=sorted(optional_skills(best)) if not base else [],
+            core_overlap=sorted(best['matched']&core_focus),matched_facets=sorted(best['facets']),
+            added_lesson_units=sorted(new_units(best)),teaching_polarity=best['item'].get('teaching_polarity'),
+            matched_source_spans={s:hits[s] for s in sorted(best['matched'])},
+            matched_facet_spans={f:facet_hits[f] for f in sorted(best['facets'])}))
+        selected.append(best['row']);covered.update(best['matched']);covered_units.update(best['units'])
+        duplicates=[x for x in options if (x['identity']==best['identity'] or (best['family'] is not None and x['family']==best['family'])) and x['row']['template_id']!=tid]
         excluded.extend(dict(template_id=x['row']['template_id'],reason='selected_source_family',selected_id=tid) for x in duplicates)
-        options=[x for x in options if x['identity']!=best['identity']]
-    return selected,dict(selected=trace,excluded=excluded,ranking=ranking,eligible_pool=initial_pool,query_signals=hits)
+        options=[x for x in options if x['identity']!=best['identity'] and (best['family'] is None or x['family']!=best['family'])]
+    return selected,dict(selected=trace,excluded=excluded,ranking=ranking,eligible_pool=initial_pool,
+        query_signals=hits,query_facets=facet_hits,prior_lesson_units=sorted(prior_units),
+        unmatched_query_skills=sorted(query-available_skills-core_focus),
+        source_family_exclusion_applied=source_family is not None)
 
 
 def _projection_receipts(role,ids,bank):
@@ -134,11 +185,11 @@ def _projection_receipts(role,ids,bank):
     return out
 
 
-def select_bundle(text,count=None):
+def select_bundle(text,count=None,*,source_family=None):
     from host.template_selector import library
     index,index_sha=teaching_index()
     gen=library('generator','r2r-en')
-    gs,ge=_choose(gen,text,index,core_rows('generator'),4,6,count)
+    gs,ge=_choose(gen,text,index,core_rows('generator'),4,6,count,source_family=source_family)
     rev=library('reviewer','r2r-en');pairs={r['pair_id']:r for r in rev if r.get('pair_id')}
     if len(pairs)!=sum(bool(r.get('pair_id')) for r in rev):raise ValueError('Duplicate Reviewer pair')
     ids=[r['template_id'] for r in gs]
@@ -147,11 +198,13 @@ def select_bundle(text,count=None):
     for g,r in zip(gs,paired):
         _verify(r,index[r['template_id']])
         if _source(g)!=_source(r):raise ValueError('Dynamic paired source mismatch')
-    ds,de=_choose([r for r in rev if not r.get('pair_id')],text,index,core_rows('reviewer'),2,3,exclude=[_source(r) for r in paired])
+    ds,de=_choose([r for r in rev if not r.get('pair_id')],text,index,core_rows('reviewer'),2,3,exclude=[_source(r) for r in paired],prior=paired,source_family=source_family)
     rids=[r['template_id'] for r in paired+ds]
+    ge['fixed_core_overlap']=[dict(template_id=r['template_id'],match='exact_text' if normalized(_source(r))==normalized(text) else 'route_family') for r in core_rows('generator') if normalized(_source(r))==normalized(text) or (source_family is not None and index[r['template_id']].get('route_family')==source_family)]
+    ge['fixed_core_overlap_policy']='reported_not_filtered; evaluation exclusion must be handled by the dataset protocol'
     ge['projection']=_projection_receipts('generator',ids,{r['template_id']:r for r in gs})
     revidence=dict(paired=[dict(template_id=r['template_id'],pair_id=r['pair_id'],selection_reason='frozen_generator_pair') for r in paired],diagnostics=de,projection=_projection_receipts('reviewer',rids,{r['template_id']:r for r in paired+ds}))
-    return dict(generator=ids,reviewer=rids,evidence={'generator':ge,'reviewer':revidence},source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity')
+    return dict(generator=ids,reviewer=rids,evidence={'generator':ge,'reviewer':revidence},source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity',core_source_overlaps=[r['template_id'] for role in ('generator','reviewer') for r in core_rows(role) if normalized(_source(r))==normalized(text)])
 
 
 def validate_selection(role,ids,mode='adaptive'):

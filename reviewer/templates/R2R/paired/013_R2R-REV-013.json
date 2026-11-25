@@ -131,6 +131,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -150,7 +151,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The far-side bedroom doorway crossing. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The far-side bedroom doorway crossing. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk through the door on the other side of the bedroom, past the bed and lamp."
           ],
@@ -163,21 +164,21 @@
             "past"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Walk through the open doors and into the bedroom.",
           "Walk through the door on the other side of the bedroom passed the bed and lamp."
         ],
         "carryover": [
           "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -199,7 +200,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The home-entrance doorway. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The home-entrance doorway. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop in the doorway."
           ],
@@ -211,16 +212,15 @@
             "through"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "Walk through the hallway and turn the corner.",
           "Walk to the entrance of the home and stop in the doorway."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -229,11 +229,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk through the door on the other side of the bedroom, past the bed and lamp.",
+          "text": "The far-side bedroom doorway crossing. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Walk through the door on the other side of the bedroom, past the bed and lamp."
         },
         "next_entry": {
-          "text": "From the far-side bedroom doorway, walk through the hallway and turn the corner",
+          "text": "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain.",
           "candidate_quote": "From the far-side bedroom doorway, walk through the hallway and turn the corner"
         },
         "shared_context": [
@@ -248,7 +248,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain. Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The far bedroom doorway is crossed; the hallway/corner route and home-entrance stop remain."
       }
     ],
     "prior_finding_reviews": []

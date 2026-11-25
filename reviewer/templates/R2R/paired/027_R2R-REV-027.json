@@ -119,6 +119,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -138,31 +139,31 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The open area after the console-table pass. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The open area after the console-table pass. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the open area."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: console table on the right",
+          "text": "Verify these source-specified relations in the candidate: console table on the right",
           "candidate_quotes": [
             "console table on the right"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "Walk forward past the console table on the right into the open area."
         ],
         "carryover": [
           "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -184,30 +185,29 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Behind the couch near the right corner in the living room. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "Behind the couch near the right corner in the living room. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop behind the couch near the right corner."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: In the open area; In the living room; near the right corner",
+          "text": "Verify these source-specified relations in the candidate: In the open area; In the living room; near the right corner",
           "candidate_quotes": [
             "In the open area",
             "In the living room",
             "near the right corner"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
         "source_quotes": [
           "In the open area take a  right into the living room.",
           "In the living room take a right, and stop behind the couch near the right corner."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -216,16 +216,16 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk forward past the console table on the right and enter the open area.",
-          "candidate_quote": "Walk forward past the console table on the right and enter the open area."
+          "text": "The open area after the console-table pass. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the open area."
         },
         "next_entry": {
-          "text": "In the open area, take a right into the living room",
+          "text": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner.",
           "candidate_quote": "In the open area, take a right into the living room"
         },
         "shared_context": [
           {
-            "kind": "orientation",
+            "kind": "entity_or_region",
             "text": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
           }
         ],
@@ -234,7 +234,7 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The open area establishes the next right-turn frame; the living-room right turn has its own later owner. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The open area establishes the next right-turn frame; the living-room right turn has its own later owner."
       }
     ],
     "prior_finding_reviews": []

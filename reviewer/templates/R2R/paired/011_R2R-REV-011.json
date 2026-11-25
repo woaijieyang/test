@@ -119,6 +119,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -138,31 +139,31 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The explicitly stated hallway end. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Continue straight to the end of the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: straight to the end of the hallway",
+          "text": "Verify these source-specified relations in the candidate: straight to the end of the hallway",
           "candidate_quotes": [
             "straight to the end of the hallway"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "Walk around the bed and exit the room going straight to the end of the hallway."
         ],
         "carryover": [
           "The explicitly reached hallway end establishes where the next left is taken."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "inherited_pose",
           "text": "Continue from the immediately preceding stage's intended endpoint and retained orientation; no physical stop is implied.",
@@ -182,29 +183,28 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom doorway after the left turn and entry. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom doorway after the left turn and entry. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait in the doorway."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: turn left; in the doorway",
+          "text": "Verify these source-specified relations in the candidate: turn left; in the doorway",
           "candidate_quotes": [
             "turn left",
             "in the doorway"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
         "source_quotes": [
           "Turn left and enter the bedroom.",
           "Wait in the doorway."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -213,11 +213,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Continue straight to the end of the hallway.",
+          "text": "The explicitly stated hallway end. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Continue straight to the end of the hallway."
         },
         "next_entry": {
-          "text": "At the end of the hallway, turn left and enter the bedroom",
+          "text": "The explicitly reached hallway end establishes where the next left is taken.",
           "candidate_quote": "At the end of the hallway, turn left and enter the bedroom"
         },
         "shared_context": [
@@ -231,7 +231,7 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "The explicitly reached hallway end establishes where the next left is taken. Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The explicitly reached hallway end establishes where the next left is taken."
       }
     ],
     "prior_finding_reviews": []

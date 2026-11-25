@@ -128,6 +128,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -147,7 +148,7 @@
         },
         "ending": {
           "kind": "bounded_action",
-          "text": "The post-descent state after the right turn. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The post-descent state after the right turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "take a right."
           ],
@@ -159,19 +160,19 @@
             "right"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "Go down the stairs, and take a right ."
         ],
         "carryover": [
           "After the descent and right turn, retain the bench identity and right-side selection for the remaining approach."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "inherited_pose",
           "text": "Continue from the completed stair descent and right turn; the forward approach is the first unperformed action.",
@@ -191,29 +192,28 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The wood between the bench and carpet, on reaching the bench at the right. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The wood between the bench and carpet, on reaching the bench at the right. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop and stand on the wood between the bench and the carpet."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: Once you reach the bench on your right; between the bench and the carpet",
+          "text": "Verify these source-specified relations in the candidate: Once you reach the bench on your right; between the bench and the carpet",
           "candidate_quotes": [
             "Once you reach the bench on your right",
             "between the bench and the carpet"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-02",
+          "SRC-03"
+        ],
         "source_quotes": [
           "walk forward towards the leather chairs next to the table.",
           "Once you reach the bench on your right stop and stand on the wood between the bench and the carpet."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-02",
-          "SRC-03"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -222,16 +222,16 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Go down the stairs and take a right.",
-          "candidate_quote": "Go down the stairs and take a right."
+          "text": "The post-descent state after the right turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
+          "candidate_quote": "take a right."
         },
         "next_entry": {
-          "text": "Walk forward towards the leather chairs next to the table",
+          "text": "After the descent and right turn, retain the bench identity and right-side selection for the remaining approach.",
           "candidate_quote": "Walk forward towards the leather chairs next to the table"
         },
         "shared_context": [
           {
-            "kind": "orientation",
+            "kind": "entity_or_region",
             "text": "After the descent and right turn, retain the bench identity and right-side selection for the remaining approach."
           }
         ],
@@ -240,7 +240,7 @@
           "SRC-02",
           "SRC-03"
         ],
-        "handoff_rationale": "After the descent and right turn, retain the bench identity and right-side selection for the remaining approach. Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. After the descent and right turn, retain the bench identity and right-side selection for the remaining approach."
       }
     ],
     "prior_finding_reviews": []

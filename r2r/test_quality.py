@@ -101,11 +101,11 @@ class Teaching(unittest.TestCase):
         self.assertEqual(f['source_requirement_ids'],['SRC-02']);self.assertIn('kitchen bar',f['candidate_evidence'][0]['quote'])
         self.assertEqual(bank['R2R-DIAG-09']['expected_review']['findings'][0]['c_check'],'C11')
     def test_source_identity_and_library_partition(self):
-        index,_=teaching_index();self.assertEqual(len(index),119)
+        index,_=teaching_index();self.assertEqual(len(index),125)
         self.assertEqual(sum(i['status']=='fixed_core' for i in index.values()),20)
         self.assertEqual(sum(i['status']=='source_archive' for i in index.values()),19)
         self.assertEqual(sum(i['status']=='retained_pair' for i in index.values()),4)
-        self.assertEqual(sum(i['status']=='dynamic' for i in index.values()),76)
+        self.assertEqual(sum(i['status']=='dynamic' for i in index.values()),82)
         for role in ('generator','reviewer'):
             for r in core_library(role,'r2r-en'):self.assertEqual(r['source']['split'],'val_seen')
     def test_compact_cards_are_not_old_protocol_lookalikes(self):

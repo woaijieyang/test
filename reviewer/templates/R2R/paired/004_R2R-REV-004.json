@@ -131,6 +131,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -153,34 +154,34 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The far-wall open doorway, identified separately from the chandelier observation. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The far-wall open doorway, identified separately from the chandelier observation. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "go through it."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: facing the chandelier above the green table; open door on the far wall",
+          "text": "Verify these source-specified relations in the candidate: facing the chandelier above the green table; open door on the far wall",
           "candidate_quotes": [
             "facing the chandelier above the green table",
             "open door on the far wall"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "TURN LEFT YOU FACE A CHANDELIER ABOVE A GREEN TABLE WITH A DOOR WAY TO THE LEFT AND AN OPEN DOOR ON THE FAR WALL",
           "WALK TOWARDS THE OPEN DOOR ON THE FAR WALL, WALK THOUGH THE DOOR"
         ],
         "carryover": [
           "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -202,28 +203,27 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The room with the blue patterned carpet and middle table. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The room with the blue patterned carpet and middle table. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: blue patterned carpet",
+          "text": "Verify these source-specified relations in the candidate: blue patterned carpet",
           "candidate_quotes": [
             "blue patterned carpet"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "DOWN THE HALLWAY",
           "INTO A ROOM WITH A BLUE PATTERNED CARPET AND A TABLE IN THE MIDDLE OF THE ROOM"
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -232,11 +232,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk towards the open door on the far wall and go through it.",
-          "candidate_quote": "Walk towards the open door on the far wall and go through it."
+          "text": "The far-wall open doorway, identified separately from the chandelier observation. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "go through it."
         },
         "next_entry": {
-          "text": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle",
+          "text": "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway.",
           "candidate_quote": "From the far-wall doorway, walk down the hallway into the room with the blue patterned carpet and the table in the middle"
         },
         "shared_context": [
@@ -251,7 +251,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway. Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The selected far-wall doorway has actually been crossed; the next movement continues into the stated hallway."
       }
     ],
     "prior_finding_reviews": []

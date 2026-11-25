@@ -12,7 +12,7 @@ All approved stages are presented together to the Actor. Ordinary pose and a uni
 
 Under R-P0 and S-ROLE/S-SCOPE, read the source before accepting any candidate explanation. Inventory meaningful events, target-identifying descriptions, observations, order, logical and spatial constraints, quantities, corrections, intermediate stops, terminal placement and route history. Group requirements by the events they constrain rather than by individual tokens or one whole-route row. Distinguish what the source commands from what it merely describes or predicts.
 
-Map each requirement to the actual stage or stages that express it. Exact source quotes establish the original requirement; indexed candidate quotes establish its realization. The presence of a word is not proof that its action, owner or temporal scope survived. A candidate may retain every source substring yet add an incompatible command. A paraphrase can preserve a requirement without copying the source substring. Genuine omissions may have no candidate quote; represent absence honestly.
+At this step establish source requirements and exact source evidence only, without assuming the candidate realizes them. Carry that inventory into R-P1-B; L1 performs the candidate mapping once.
 
 ### R-P2-A1 — Action, attribute, observation and identity
 
@@ -20,7 +20,7 @@ Check whether the candidate preserves each phrase's role. An already-open door d
 
 ### R-P2-A2 — Direction owner, count and sustained relation
 
-Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a carpet-bound movement from a movement merely starting at the carpet, and a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after.
+Check who is left/right of what, at what time, and for which movement. Keep object-relative directions distinct from agent-relative directions after a turn. Preserve ordinal object class, origin and region. Distinguish a carpet-bound movement from a movement merely starting at the carpet, and a final facing requirement from a path-wide orientation invariant. Quote enough of the relation to establish scope, not just left/on/after. A remedy restoring a sustained relation must also preserve the source movement extent, target-directed approach and final placement.
 
 ### R-P2-A3 — Order, refinement and stopping scope
 
@@ -28,14 +28,14 @@ Read later clauses before assessing earlier completion. A later limit may refine
 
 ### R-P2-A4 — Branches, return history and source interpretation
 
-Keep executable if/otherwise branches mutually exclusive and distinguish conditional observation from a route branch. Preserve approximate quantity and descriptive uncertainty when route execution remains defined. A return to the same door includes the intervening travel, even if its coordinates would equal an earlier location. For a spelling correction or refusal correction, determine whether retaining the source term is sufficient or whether the full source uniquely supports the proposed replacement. A guessed number, direction, identity or endpoint is not licensed by fluency.
+Keep executable if/otherwise branches mutually exclusive and distinguish conditional observation from a route branch. Preserve approximate quantity and descriptive uncertainty when route execution remains defined. A return to the same door includes the intervening travel, even if its coordinates would equal an earlier location. For source-language and refusal corrections use R-P2-C1. Do not collapse an approximate observation or an uncertain descriptive name into a route branch.
 
 ## R-P1-B — Apply L0-L6 to the actual candidate
 
 Under R-P0 and S-BOUNDARY/S-ENTRY, perform the existing ordered workflow:
 
 1. **L0 integrity:** compare the supplied candidate and Renderer-frozen text under the existing technical contract. Formatting alone is not a semantic defect; a lexical integrity mismatch belongs to Host's technical path.
-2. **L1 coverage:** complete the independent event-level inventory and its exact candidate mapping. Mark only the actual omissions, alterations and unsupported additions; unaffected requirements remain covered.
+2. **L1 coverage:** map the independent R-P1-A inventory to the actual stage or stages using indexed candidate quotes. Check action, owner and temporal scope, not just word occurrence. Faithful paraphrases may pass; genuine omissions may have no candidate quote. Mark only actual omissions, alterations and unsupported additions; unaffected requirements remain covered.
 3. **L2 dependencies:** check time, correction, alternatives, referents, counts, repeated events, relation owners and terminal scope across the complete route.
 4. **L3 five-element stage check:** for each actual stage, independently derive Entry, Target, Process, Ending and Conditions. Entry needs an adequate source-supported starting context; Target identifies the actual requested entity/event and its selecting relation; Process contains the complete actions; Ending classifies the event that closes this stage; Conditions preserve the operative owners and scopes. Quote the English that exists. A valid audit cannot compensate for absent executable words.
 5. **L4 adjacent handoff:** contrast the previous completed event with the next first unperformed action and the state actually established between them. Check pose, entity, count origin, frame and history only where needed. Shared room names alone do not prove continuity.
@@ -46,7 +46,7 @@ Use the common ending taxonomy: explicit source event, bounded action, linked sa
 
 ### R-P2-B1 — Supported grouping versus a preference
 
-For a missed cut, establish a completed earlier objective, a distinct later objective, a supported next entry and concrete focus loss. For an excessive cut, identify the particular coupled action, selection dependency or completion condition detached by it. An independently executable turn can still be preparatory in this source; another source may give that turn its own observation or stopping objective. A separate final wait/placement can be meaningful when the target relation and entry are supported. Accept equivalent usable grouping; preserve evidence-backed C10 defects rather than adopting either a blanket SPLIT or blanket KEEP policy.
+For a missed cut, establish a completed earlier objective, a distinct later objective, a supported next entry and concrete focus loss. Name the objective or dependency actually obscured by this candidate; length, room count or preference for another wording is not that evidence. For an excessive cut, identify the particular coupled action, selection dependency or completion condition detached by it. An independently executable turn can still be preparatory in this source; another source may give that turn its own observation or stopping objective. A separate final wait/placement can be meaningful when the target relation and entry are supported. Accept equivalent usable grouping; preserve evidence-backed C10 defects rather than adopting either a blanket SPLIT or blanket KEEP policy.
 
 ### R-P2-B2 — Exact completion and preserved entry
 
@@ -64,7 +64,7 @@ Check both the diagnosis and remedy against the source. The remedy may restore a
 
 ### R-P2-C1 — Correct refusal only with unique source support
 
-When G0 returns needs_review, first decide whether the source term can simply be retained without changing the route. If you recommend a correction affecting number, direction, identity or completion, show why the whole source uniquely establishes it. Mere spelling plausibility is insufficient, while an unambiguous grammatical correction need not cause source refusal. Distinguish a candidate-created grouping gap, which is repairable, from a source-critical limitation that persists after reasonable interpretation and regrouping.
+When G0 returns needs_review, first decide whether the source term can simply be retained without changing the route. If you recommend a correction affecting number, direction, identity or completion, show why the whole source uniquely establishes it. Establish both that the original candidate is defective and that the proposed remedy is uniquely source-supported. Retaining a usable unfamiliar name is preferable to guessing. Mere spelling or phonetic plausibility is insufficient to add a count, while an unambiguous grammatical correction need not cause source refusal. Distinguish a candidate-created grouping gap, which is repairable, from a source-critical limitation that persists after reasonable interpretation and regrouping.
 
 ### R-P2-C2 — Selective repair and protection
 

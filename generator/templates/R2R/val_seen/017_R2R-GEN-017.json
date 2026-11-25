@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bird-statue pass on the ordered route. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bird-statue pass on the ordered route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "down the hall past the statue of a bird."
           ],
@@ -98,7 +98,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom area identified by the wooden cabinet. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom area identified by the wooden cabinet. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the bedroom area with the wooden cabinet."
           ],

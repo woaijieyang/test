@@ -60,12 +60,12 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-REV-027](R2R/paired/027_R2R-REV-027.json)|paired|R2R-GEN-027|completed_transition_then_distinct_objective|—|
 |R2R|[R2R-REV-028](R2R/paired/028_R2R-REV-028.json)|paired|R2R-GEN-028|single_coherent_stage|—|
 |R2R|[R2R-REV-029](R2R/paired/029_R2R-REV-029.json)|paired|R2R-GEN-029|single_coherent_stage|—|
-|R2R|[R2R-REV-030](R2R/paired/030_R2R-REV-030.json)|paired|R2R-GEN-030|bounded_transition_then_distinct_target|—|
+|R2R|[R2R-REV-030](R2R/paired/030_R2R-REV-030.json)|paired|R2R-GEN-030|source_grounded_relation_and_handoff|—|
 |R2R|[R2R-REV-031](R2R/paired/031_R2R-REV-031.json)|paired|R2R-GEN-031|source_level_ambiguity_abstention|—|
 |R2R|[R2R-REV-032](R2R/paired/032_R2R-REV-032.json)|paired|R2R-GEN-032|single_coherent_stage|—|
 |R2R|[R2R-REV-033](R2R/paired/033_R2R-REV-033.json)|paired|R2R-GEN-033|single_coherent_stage|—|
 |R2R|[R2R-REV-034](R2R/paired/034_R2R-REV-034.json)|paired|R2R-GEN-034|completed_transition_then_distinct_objective|—|
-|R2R|[R2R-REV-035](R2R/paired/035_R2R-REV-035.json)|paired|R2R-GEN-035|completed_transition_then_distinct_objective|—|
+|R2R|[R2R-REV-035](R2R/paired/035_R2R-REV-035.json)|paired|R2R-GEN-035|source_grounded_relation_and_handoff|—|
 |R2R|[R2R-DIAG-01](R2R/diagnostics/01_R2R-DIAG-01.json)|diagnostics|—|ordinal|—|
 |R2R|[R2R-DIAG-02](R2R/diagnostics/02_R2R-DIAG-02.json)|diagnostics|—|direction|—|
 |R2R|[R2R-DIAG-03](R2R/diagnostics/03_R2R-DIAG-03.json)|diagnostics|—|transition|—|
@@ -95,6 +95,10 @@ Fixed Core is loaded unconditionally in stable ID order. Dynamic entries are eli
 |R2R|[R2R-DIAG-24](R2R/diagnostics/R2R-DIAG-24.json)|diagnostics|—|handoff_advanced|—|
 |R2R|[R2R-DIAG-25](R2R/diagnostics/R2R-DIAG-25.json)|diagnostics|—|C_SEGMENT_GRANULARITY|—|
 |R2R|[R2R-DIAG-26](R2R/diagnostics/R2R-DIAG-26.json)|diagnostics|—|PREMATURE_HANDOFF_REGION_ASSUMPTION|—|
+|R2R|[R2R-DIAG-30](R2R/authored/030_R2R-DIAG-30.json)|authored|—|—|branch, entry, terminal|
+|R2R|[R2R-DIAG-31](R2R/authored/031_R2R-DIAG-31.json)|authored|—|—|return, lost_action, terminal|
+|R2R|[R2R-REV-036](R2R/authored/036_R2R-REV-036.json)|authored|R2R-GEN-036|—|branch, attribute, entry, terminal|
+|R2R|[R2R-REV-037](R2R/authored/037_R2R-REV-037.json)|authored|R2R-GEN-037|—|return, scope, terminal|
 |RxR|[RxR-REV-001](RxR/paired/001_RxR-REV-001.json)|paired|RxR-GEN-001|completed_transition_then_distinct_objective|—|
 |RxR|[RxR-REV-002](RxR/paired/002_RxR-REV-002.json)|paired|RxR-GEN-002|completed_transition_then_distinct_objective|—|
 |RxR|[RxR-REV-003](RxR/paired/003_RxR-REV-003.json)|paired|RxR-GEN-003|completed_transition_then_distinct_objective|—|

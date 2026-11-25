@@ -94,6 +94,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -113,26 +114,25 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The center door on the right after the stair-bottom pass. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The center door on the right after the stair-bottom pass. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "go to center door on right."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Select the center door in the right-side set after the stair-bottom pass.",
+          "text": "right",
           "candidate_quotes": [
-            "center door on right"
+            "right"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "pass bottom of stairs, go to center door on right."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [],

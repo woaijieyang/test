@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom exit establishing the next selection region. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom exit establishing the next selection region. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "exit the bedroom."
           ],
@@ -98,7 +98,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The post-entry right-turn stopping position. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The post-entry right-turn stopping position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Turn right again and stop."
           ],

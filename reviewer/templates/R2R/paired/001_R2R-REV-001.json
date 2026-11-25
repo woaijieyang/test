@@ -111,6 +111,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -130,7 +131,7 @@
         },
         "ending": {
           "kind": "bounded_action",
-          "text": "The post-descent state after the right turn. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The post-descent state after the right turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "turn right."
           ],
@@ -142,19 +143,19 @@
             "right"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "Walk down the stairs, turn right, and walk towards place with a rug."
         ],
         "carryover": [
           "After the descent and right turn, retain the resulting heading for the rug/bench approach."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The next stage explicitly binds its entry to the completed stair descent and right turn.",
@@ -176,7 +177,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The waiting place near the bench and piano along the right wall. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The waiting place near the bench and piano along the right wall. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait near the bench and piano along the right side of the wall."
           ],
@@ -190,16 +191,15 @@
             "near"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Walk down the stairs, turn right, and walk towards place with a rug.",
           "Wait near the bench and piano along the right side of the wall."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -208,16 +208,16 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk down the stairs and turn right.",
-          "candidate_quote": "Walk down the stairs and turn right."
+          "text": "The post-descent state after the right turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
+          "candidate_quote": "turn right."
         },
         "next_entry": {
-          "text": "After going down the stairs and turning right",
+          "text": "After the descent and right turn, retain the resulting heading for the rug/bench approach.",
           "candidate_quote": "After going down the stairs and turning right"
         },
         "shared_context": [
           {
-            "kind": "orientation",
+            "kind": "entity_or_region",
             "text": "After the descent and right turn, retain the resulting heading for the rug/bench approach."
           }
         ],
@@ -225,7 +225,7 @@
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "After the descent and right turn, retain the resulting heading for the rug/bench approach. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. After the descent and right turn, retain the resulting heading for the rug/bench approach."
       }
     ],
     "prior_finding_reviews": []

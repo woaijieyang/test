@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The living-room interior. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the living room."
           ],
@@ -96,7 +96,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The position just behind the couch. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The position just behind the couch. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stand just behind the couch and wait."
           ],

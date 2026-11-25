@@ -131,6 +131,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -150,33 +151,33 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The lobby-like room entered after the initial movement. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The lobby-like room entered after the initial movement. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the large room that looks like a lobby."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: proceed to your left",
+          "text": "Verify these source-specified relations in the candidate: proceed to your left",
           "candidate_quotes": [
             "proceed to your left"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Turn around and then proceed to your left.",
           "Enter large room that looks like a lobby."
         ],
         "carryover": [
           "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -198,29 +199,28 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-hall interior after the second left. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-hall interior after the second left. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Take another left into the large dining hall."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: head left towards the stairway; another left",
+          "text": "Verify these source-specified relations in the candidate: head left towards the stairway; another left",
           "candidate_quotes": [
             "head left towards the stairway",
             "another left"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "Head left towards stairway.",
           "Then take another left into large dining hall."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -229,16 +229,16 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn around, proceed to your left, and enter the large room that looks like a lobby.",
-          "candidate_quote": "Turn around, proceed to your left, and enter the large room that looks like a lobby."
+          "text": "The lobby-like room entered after the initial movement. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the large room that looks like a lobby."
         },
         "next_entry": {
-          "text": "Inside the lobby, head left towards the stairway",
+          "text": "The entered lobby establishes the frame for the first left and subsequent dining-hall left.",
           "candidate_quote": "Inside the lobby, head left towards the stairway"
         },
         "shared_context": [
           {
-            "kind": "orientation",
+            "kind": "entity_or_region",
             "text": "The entered lobby establishes the frame for the first left and subsequent dining-hall left."
           }
         ],
@@ -248,7 +248,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The entered lobby establishes the frame for the first left and subsequent dining-hall left. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The entered lobby establishes the frame for the first left and subsequent dining-hall left."
       }
     ],
     "prior_finding_reviews": []

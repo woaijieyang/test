@@ -15,7 +15,7 @@ def main():
                 external.append({'test':test.id(),'reason':'The inherited companion deployment fixture is absent; not counted as passed.'})
             else:selected.addTest(test)
     collect(discovered)
-    for name in ('r2r.test_quality','r2r.test_refinement'):
+    for name in ('r2r.test_quality','r2r.test_refinement','r2r.test_hardening'):
         selected.addTests(unittest.defaultTestLoader.loadTestsFromName(name))
     result=unittest.TextTestRunner(verbosity=2).run(selected)
     report=dict(tests_run=result.testsRun,failures=[{'test':t.id(),'traceback':e} for t,e in result.failures],errors=[{'test':t.id(),'traceback':e} for t,e in result.errors],skipped=[{'test':t.id(),'reason':r} for t,r in result.skipped],external_fixture_unavailable=external,success=result.wasSuccessful(),semantic_model_evaluated=False,navigation_evaluated=False)

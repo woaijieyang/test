@@ -57,7 +57,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway-side doorway crossing by the glass window. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The hallway-side doorway crossing by the glass window. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Go toward the glass window and through the doorway."
           ],
@@ -102,7 +102,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The explicit side-of-stairs arrival position. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The explicit side-of-stairs arrival position. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "when you get to the side of the stairs you have arrived."
           ],
@@ -130,7 +130,7 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The hallway-side doorway crossing by the glass window. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The hallway-side doorway crossing by the glass window. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "Go toward the glass window and through the doorway."
         },
         "next_entry": {

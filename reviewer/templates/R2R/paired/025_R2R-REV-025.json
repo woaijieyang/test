@@ -111,6 +111,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -130,7 +131,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The living-room interior. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the living room."
           ],
@@ -142,21 +143,21 @@
             "right"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Turn around and walk towards the table with the plant on it.",
           "Turn to the right and walk into the living room and stand just behind the couch and wait."
         ],
         "carryover": [
           "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -178,7 +179,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The position just behind the couch. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The position just behind the couch. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stand just behind the couch and wait."
           ],
@@ -190,14 +191,13 @@
             "behind"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-02"
+        ],
         "source_quotes": [
           "Turn to the right and walk into the living room and stand just behind the couch and wait."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-02"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -206,11 +206,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Turn right and enter the living room.",
-          "candidate_quote": "Turn right and enter the living room."
+          "text": "The living-room interior. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the living room."
         },
         "next_entry": {
-          "text": "In the living room, stand just behind the couch and wait",
+          "text": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position.",
           "candidate_quote": "In the living room, stand just behind the couch and wait"
         },
         "shared_context": [
@@ -223,7 +223,7 @@
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The living room has been entered; the plant table is a reference on the way to the behind-couch waiting position."
       }
     ],
     "prior_finding_reviews": []

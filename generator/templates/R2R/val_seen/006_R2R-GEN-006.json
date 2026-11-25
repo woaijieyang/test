@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The next room reached through the small hallway. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The next room reached through the small hallway. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the next room."
           ],
@@ -98,7 +98,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The blue-mat stopping position. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The blue-mat stopping position. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop once you reach the blue mat."
           ],

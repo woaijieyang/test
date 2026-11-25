@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The staircase bottom. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The staircase bottom. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Go to the bottom of the staircase."
           ],
@@ -65,7 +65,7 @@
           "candidate_quotes": []
         },
         "source_quotes": [
-          "Go to the bottom of the staircase, go to the entrance of first room to the left of the staircase, wait by the chair."
+          "Go to the bottom of the staircase"
         ],
         "carryover": [
           "The staircase remains the spatial reference for the first room to its left; reaching its bottom does not supply a new egocentric left."
@@ -79,9 +79,10 @@
           "candidate_quotes": []
         },
         "target": {
-          "text": "The chair-side position at the entrance of the first room left of the staircase.",
+          "text": "The chair-side waiting position at the entrance of the first room to the left of the staircase.",
           "candidate_quotes": [
-            "wait by the chair."
+            "the entrance of the first room to the left of the staircase",
+            "wait by the chair"
           ]
         },
         "process": {
@@ -92,7 +93,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The chair-side position at the entrance of the first room left of the staircase. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The chair-side waiting position at the entrance of the first room to the left of the staircase. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "wait by the chair."
           ],
@@ -106,7 +107,8 @@
           ]
         },
         "source_quotes": [
-          "Go to the bottom of the staircase, go to the entrance of first room to the left of the staircase, wait by the chair."
+          "go to the entrance of first room to the left of the staircase",
+          "wait by the chair"
         ],
         "carryover": []
       }
@@ -139,11 +141,11 @@
     "issues": []
   },
   "teaching_notes": {
-    "segmentation_pattern": "bounded_transition_then_distinct_target",
-    "why_this_case_matters": "SPLIT example with 2 stages. Stage 1 ends with 'Go to the bottom of the staircase.'; stage 2 begins from 'From the bottom of the staircase, go to the entrance of the first room on the left and wait…'. The split is useful because the later stage has a distinct target while the preceding event establishes its entry context.",
+    "segmentation_pattern": "staircase_bottom_then_object_relative_room_and_wait",
+    "why_this_case_matters": "Reaching the staircase bottom establishes position, not a new agent-relative left. Select the first room relative to the staircase, then preserve the chair-side wait.",
     "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
     "five_element_focus": "Check Entry, Target, Process, Ending and Conditions against exact case-specific evidence; preserve the operative relation and scope.",
-    "handoff_focus": "Stage 1 ends with 'Go to the bottom of the staircase.'; stage 2 begins from 'From the bottom of the staircase, go to the entrance of the first room on the left and wait…'.",
+    "handoff_focus": "The completed staircase-bottom approach retains the staircase as the reference for the room selection.",
     "retrieval_rule": "Retrieve for multi-leg routes with a completed transition and a distinct next target; match the specific transition, ordinal, condition or reference-frame pattern rather than the number of stages.",
     "anti_pattern": "Do not move an unperformed entry/turn into the previous stage; do not treat a visible cue as arrival or a stage boundary as STOP.",
     "case_rationale": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",

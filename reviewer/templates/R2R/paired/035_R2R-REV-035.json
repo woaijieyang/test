@@ -131,6 +131,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -143,83 +144,83 @@
           ]
         },
         "process": {
-          "text": "Exit the pool area and walk toward the stairs, enter the hallway to the slight right past the chair.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
             "Exit the pool area and walk toward the stairs, enter the hallway to the slight right past the chair."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway entered using the original slight-right/chair description. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The hallway entered using the original slight-right/chair description. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the hallway to the slight right past the chair."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: hallway to the slight right past the chair",
+          "text": "Verify these source-specified relations in the candidate: hallway to the slight right past the chair",
           "candidate_quotes": [
             "hallway to the slight right past the chair"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Exit the pool area and walk toward the stairs",
           "enter the hallway to the slight right past the chair"
         ],
         "carryover": [
           "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "inherited_pose",
           "text": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door.",
           "candidate_quotes": []
         },
         "target": {
-          "text": "The lockers after the right turn and third left-hand door entry.",
+          "text": "The locker-side wait following the specified third left-hand door entry.",
           "candidate_quotes": [
+            "enter the third door on the left",
             "Wait by the lockers."
           ]
         },
         "process": {
-          "text": "Turn right and enter the third door on the left. Wait by the lockers.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
             "Turn right and enter the third door on the left. Wait by the lockers."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The lockers after the right turn and third left-hand door entry. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The locker-side wait following the specified third left-hand door entry. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait by the lockers."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: Turn right; third door on the left; by the lockers",
+          "text": "Verify these source-specified relations in the candidate: Turn right; third door on the left; by the lockers",
           "candidate_quotes": [
             "Turn right",
             "third door on the left",
             "by the lockers"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "turn right and enter the third door on the left",
           "wait by the lockers"
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -228,7 +229,7 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The hallway entered using the original slight-right/chair description. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The hallway entered using the original slight-right/chair description. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "enter the hallway to the slight right past the chair."
         },
         "next_entry": {
@@ -247,14 +248,14 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door. Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Actual slight-right hallway entry is complete; retain that hallway frame for the subsequent right turn and third left-hand door."
       }
     ],
     "prior_finding_reviews": []
   },
   "teaching_notes": {
-    "review_pattern": "completed_transition_then_distinct_objective",
-    "why_this_review_matters": "The previous candidate advanced the boundary too far: the chair is the last explicit landmark before hallway entry. A valid second-stage entry is after passing the chair, and the second stage must still enter the hallway.",
+    "review_pattern": "source_grounded_relation_and_handoff",
+    "why_this_review_matters": "Actual hallway entry, not merely a chair pass, supports the later right turn and ordinal selection; the final locker wait remains required.",
     "reviewer_rule": "Do not accept a handoff merely because a later region is named. Check the event order: if the source says that region lies past a landmark, the prior stage may end at the landmark pass-by and the next stage must still perform the region entry.",
     "retrieval_tags": [
       "room_transition",

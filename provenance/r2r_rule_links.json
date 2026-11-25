@@ -111,7 +111,7 @@
       "role": "generator",
       "level": 1,
       "parent": "G-P0",
-      "title": "Read back, repair and deliver the frozen candidate",
+      "title": "Read back, repair and submit the candidate",
       "path": "generator/dataset_rules/r2r_en.md"
     },
     {

@@ -46,12 +46,12 @@ def refresh():
     p=ROOT/'provenance/r2r_profile_integrity.json';m=json.loads(p.read_bytes());names={r['path'] for r in m['files']}
     for prefix in ('r2r','r2r_authoring','generator/templates/R2R','reviewer/templates/R2R'):
         names.update(x.relative_to(ROOT).as_posix() for x in (ROOT/prefix).rglob('*') if x.is_file() and '__pycache__' not in x.parts and x.suffix!='.pyc')
-    names.update(['shared/dataset_rules/r2r_teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
+    names.update(['r2r/teaching_index.json','provenance/r2r_rule_links.json','provenance/r2r_teaching_changes.json'])
     m['files']=[dict(path=n,git_blob_sha1=blob(ROOT/n)) for n in sorted(names) if (ROOT/n).is_file()];m['file_count']=len(m['files']);p.write_bytes(encode(m))
     p=ROOT/'FILE_HASHES.json';old=json.loads(p.read_bytes());files={x.relative_to(ROOT).as_posix():x for x in ROOT.rglob('*') if x.is_file() and '.git' not in x.parts and '__pycache__' not in x.parts and x.suffix!='.pyc' and x.relative_to(ROOT).as_posix()!='FILE_HASHES.json'}
     out={}
-    for n in [*old,*sorted(set(files)-set(old))]:
-        if n not in files:continue
+    # Canonical ordering must not depend on the number of earlier refreshes.
+    for n in sorted(files):
         v=old.get(n,'gitblob-sha1:')
         out[n]='gitblob-sha1:'+blob(files[n]) if v.startswith('gitblob-sha1:') else ('sha256:' if v.startswith('sha256:') else '')+hashlib.sha256(files[n].read_bytes()).hexdigest()
     p.write_bytes(encode(out))

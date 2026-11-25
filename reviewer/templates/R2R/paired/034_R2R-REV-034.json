@@ -135,6 +135,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -154,18 +155,23 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The actual hallway entry after sitting-area transit. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The actual hallway entry after sitting-area transit. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "go through the door into the hallway."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: straight through the sitting area",
+          "text": "Verify these source-specified relations in the candidate: straight through the sitting area",
           "candidate_quotes": [
             "straight through the sitting area"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
         "source_quotes": [
           "Move through pool room door into the sitting area.",
           "Move straight through sitting area.",
@@ -173,16 +179,11 @@
         ],
         "carryover": [
           "Actual hallway entry is complete; the right turn and locker-room entry remain."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02",
-          "SRC-03"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -204,29 +205,28 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Inside the locker room. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "Inside the locker room. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Wait inside the locker room."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: From the hallway; Wait inside",
+          "text": "Verify these source-specified relations in the candidate: From the hallway; Wait inside",
           "candidate_quotes": [
             "From the hallway",
             "Wait inside"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "Move through door into hallway, turn right, move straight forward down hallway into the locker room.",
           "Wait inside locker room."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -235,11 +235,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Move straight through the sitting area and go through the door into the hallway.",
-          "candidate_quote": "Move straight through the sitting area and go through the door into the hallway."
+          "text": "The actual hallway entry after sitting-area transit. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "go through the door into the hallway."
         },
         "next_entry": {
-          "text": "From the hallway, turn right and move straight forward down the hallway into the locker room",
+          "text": "Actual hallway entry is complete; the right turn and locker-room entry remain.",
           "candidate_quote": "From the hallway, turn right and move straight forward down the hallway into the locker room"
         },
         "shared_context": [
@@ -254,7 +254,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "Actual hallway entry is complete; the right turn and locker-room entry remain. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. Actual hallway entry is complete; the right turn and locker-room entry remain."
       }
     ],
     "prior_finding_reviews": []

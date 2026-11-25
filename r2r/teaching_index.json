@@ -2,6 +2,82 @@
   "profile": "r2r-en",
   "items": [
     {
+      "template_id": "R2R-GEN-036",
+      "path": "generator/templates/R2R/authored/036_R2R-GEN-036.json",
+      "role": "generator",
+      "status": "dynamic",
+      "pair_id": null,
+      "pair_relation": null,
+      "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
+      "source_family": "R2R|authored_synthetic|conditional-door",
+      "content_sha256": "27149a69feec5d057e9370cfd7c31fbbc6f716434c49989cb905c3f5e87c75cb",
+      "skills": [
+        "branch",
+        "attribute",
+        "entry",
+        "terminal"
+      ],
+      "lesson": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
+      "reusable_rule": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A6",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "branch",
+        "entry",
+        "terminal"
+      ],
+      "facets": [
+        "conditional_routes"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
+      "template_id": "R2R-GEN-037",
+      "path": "generator/templates/R2R/authored/037_R2R-GEN-037.json",
+      "role": "generator",
+      "status": "dynamic",
+      "pair_id": null,
+      "pair_relation": null,
+      "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
+      "source_family": "R2R|authored_synthetic|return-loop",
+      "content_sha256": "2a556977d96ef289367c161a1683e77ee35b8c285600796231f311d387ba9544",
+      "skills": [
+        "return",
+        "scope",
+        "terminal"
+      ],
+      "lesson": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+      "reusable_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-A5",
+        "G-P2-A6",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "return",
+        "scope",
+        "terminal"
+      ],
+      "facets": [
+        "required_return"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
       "template_id": "R2R-CORE-G01",
       "path": "generator/templates/R2R/core/G01_R2R-CORE-G01.json",
       "role": "generator",
@@ -10,7 +86,7 @@
       "pair_relation": null,
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "1d228751ee3ac003cd5ee535eb50e31b934d80f7d1aae935e8b31ced847aab18",
+      "content_sha256": "d50c52bedeb04c2f2f0489c341a0c7228f87ceb474ab3ade38742d7da6a34b90",
       "skills": [
         "coupled",
         "direction",
@@ -19,7 +95,23 @@
       "lesson": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G02",
@@ -30,7 +122,7 @@
       "pair_relation": null,
       "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
       "source_family": "R2R|val_seen|standard|record_id=5|episode_id=5|trajectory_id=93",
-      "content_sha256": "619ff7899d3efedd7c36f1eb560078acc79f29610fc3b7eda599ce3092dac078",
+      "content_sha256": "9446dc765cda489d055f7fcccb20a77ea7f42ab00a9082971d6ea62b0da0fa78",
       "skills": [
         "entry",
         "target_identity",
@@ -39,7 +131,26 @@
       "lesson": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "final_approach",
+        "target_identity"
+      ],
+      "facets": [
+        "door_identity",
+        "hall_end_entry",
+        "final_approach"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G03",
@@ -50,7 +161,7 @@
       "pair_relation": null,
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "0c192ebf12f20b1ec2daaace651d823e71bf88b264880d582cf9e0993e3bf908",
+      "content_sha256": "3a95bbaf734135c05edbc2729222f519b033079416f17fb0d720479a79e7b773",
       "skills": [
         "bounded",
         "endpoint",
@@ -59,7 +170,22 @@
       "lesson": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "bounded",
+        "endpoint",
+        "terminal"
+      ],
+      "facets": [
+        "bounded_ascent_refinement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G04",
@@ -70,7 +196,7 @@
       "pair_relation": null,
       "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
       "source_family": "R2R|val_seen|standard|record_id=23|episode_id=23|trajectory_id=193",
-      "content_sha256": "2c93775b051c4ab3d8557e7b8e60c7dbeddb4644d19efb0679810f9128bd0103",
+      "content_sha256": "89961039d0a1cb9c970e938d11b6037da687de0f0d7a3a2eaf7e52a84773b258",
       "skills": [
         "observation",
         "entry",
@@ -79,7 +205,25 @@
       "lesson": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A5",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "entry",
+        "observation"
+      ],
+      "facets": [
+        "expected_view",
+        "explicit_arrival"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G05",
@@ -90,7 +234,7 @@
       "pair_relation": null,
       "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
       "source_family": "R2R|val_seen|standard|record_id=29|episode_id=29|trajectory_id=339",
-      "content_sha256": "1a4ad897250a480ad5079802819d1ce217b9689047e15a32b2e0edca42b25299",
+      "content_sha256": "61ac33dd6085054c796be4f1b64bb00cf7d7d7ad15c0995ee0545166f17be7c6",
       "skills": [
         "coupled",
         "pass_by",
@@ -99,7 +243,25 @@
       "lesson": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "pass_then_placement",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G06",
@@ -110,7 +272,7 @@
       "pair_relation": null,
       "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
       "source_family": "R2R|val_seen|standard|record_id=7|episode_id=7|trajectory_id=111",
-      "content_sha256": "6bd99c7304a6d212cc9b5bf18f9f9ea9636dfef3378c59f651b65a65a19b93a9",
+      "content_sha256": "994def72cdf3090c3ae92313e89c6381d22653950c65cbbb982ed8326a575501",
       "skills": [
         "entry",
         "direction"
@@ -118,7 +280,22 @@
       "lesson": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "ordered_turns",
+        "room_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G07",
@@ -129,7 +306,7 @@
       "pair_relation": null,
       "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
       "source_family": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185",
-      "content_sha256": "508cde2a21fed692425b3e29740284d21227ea2d562a69d203a4a25b4cbc17ac",
+      "content_sha256": "df150e143a83fe0b0c6df8908a834dd677ad2777577533227e14364a2d4880e5",
       "skills": [
         "scope",
         "stair_target",
@@ -138,7 +315,26 @@
       "lesson": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-A4",
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "ordinal",
+        "scope",
+        "stair_target"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "ordinal_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G08",
@@ -149,7 +345,7 @@
       "pair_relation": null,
       "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
       "source_family": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93",
-      "content_sha256": "f91e86011e7805b136e5082407ce6a10aa884a2372d9f2de125a225cdf266f84",
+      "content_sha256": "1395810fcc2486916904ba958005229a3fc90122f234859b2264d2178e1a8c22",
       "skills": [
         "observation",
         "target_identity",
@@ -158,7 +354,24 @@
       "lesson": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "observation",
+        "target_identity"
+      ],
+      "facets": [
+        "expected_view",
+        "door_identity"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G09",
@@ -169,7 +382,7 @@
       "pair_relation": null,
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "1cb8f253ba9198cf5bf35bd20ee65d6e190faa4bb25c96d896805bd5186271eb",
+      "content_sha256": "93500cb5f6679f6b7e10beb29a47484598f97efdaf699aae0633a7ad1ca4c3d5",
       "skills": [
         "stair_target",
         "terminal",
@@ -178,7 +391,25 @@
       "lesson": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "scope",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-G10",
@@ -197,7 +428,22 @@
       "lesson": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A2",
+        "G-P2-A3"
+      ],
+      "retrieval_skills": [
+        "target_identity",
+        "uncertainty"
+      ],
+      "facets": [
+        "uncertain_name"
+      ],
+      "teaching_polarity": "source_limitation",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-001",
@@ -208,7 +454,7 @@
       "pair_relation": null,
       "source_sha256": "ae7c7a63404afcff7a9912d41fd67e8f6773b4e8056477c9cd58f5d10199a9ff",
       "source_family": "R2R|val_seen|standard|record_id=1|episode_id=1|trajectory_id=37",
-      "content_sha256": "f7e1e1762fe61db6673193fb89178d9258b77c35328233e398bd5ea292589196",
+      "content_sha256": "6492cafff92bc8f847f9a4d48d9fe960197e32dd691b80d52d870c7dfcaaea66",
       "skills": [
         "stair_target",
         "terminal"
@@ -216,7 +462,22 @@
       "lesson": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A midway limit would constrain the descent itself rather than a new full descent.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-002",
@@ -227,7 +488,7 @@
       "pair_relation": null,
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "21f5a29ba440836ce08f81fb6201eff5f911918ef2341961b2f3b4929c9bb410",
+      "content_sha256": "503f6a488612fb8e507cddd87de666d9c005b1c39b6975e59f09d57074aeb73d",
       "skills": [
         "stair_target",
         "terminal",
@@ -236,7 +497,25 @@
       "lesson": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A4",
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "scope",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-003",
@@ -247,7 +526,7 @@
       "pair_relation": null,
       "source_sha256": "92fd326812cb2b661801a7524a0a354c3e39f3d632ab398195823d51dd6ad0ba",
       "source_family": "R2R|val_seen|standard|record_id=3|episode_id=3|trajectory_id=37",
-      "content_sha256": "8e66ff9add967f411b2d7c0399ae0ff90b6bbf6c440f1ec97dc4f18261f3bf6c",
+      "content_sha256": "a8188f6f6abbbaabd622bad03bf7fedf9989c6ad8a5577e1c7023b7f162eb44c",
       "skills": [
         "stair_target",
         "pass_by",
@@ -256,7 +535,25 @@
       "lesson": "Keep the display-case pass on the route to the right-hand bench; inherit the completed descent and right turn.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Passing a case alone does not establish entry into a different room.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "pass_by",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "pass_then_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-004",
@@ -267,7 +564,7 @@
       "pair_relation": null,
       "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
       "source_family": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93",
-      "content_sha256": "a8336c8537a6dbaae9cf3144550f672133da8ea8fd6887313302af7d70439c97",
+      "content_sha256": "e9fb24d73d7fadc4f72e4c134503fb458d39447096f00f9ef7f043862565c9cc",
       "skills": [
         "observation",
         "target_identity",
@@ -276,7 +573,24 @@
       "lesson": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "observation",
+        "target_identity"
+      ],
+      "facets": [
+        "expected_view",
+        "door_identity"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-005",
@@ -287,7 +601,7 @@
       "pair_relation": null,
       "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
       "source_family": "R2R|val_seen|standard|record_id=5|episode_id=5|trajectory_id=93",
-      "content_sha256": "bbeaa22c1c7b698f012df711abfec929fab68a572352ed0ab1460023084f5618",
+      "content_sha256": "9833cc1480e3f9ad0ffb8332febab7d3e9e36cf5255e4ecaec6288b41e8c1e05",
       "skills": [
         "entry",
         "target_identity",
@@ -296,7 +610,26 @@
       "lesson": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "final_approach",
+        "target_identity"
+      ],
+      "facets": [
+        "door_identity",
+        "hall_end_entry",
+        "final_approach"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-006",
@@ -307,7 +640,7 @@
       "pair_relation": null,
       "source_sha256": "139462c06e474852836b26c6b43a4242b036c2e1a3b36de4cd10b52a40a0f796",
       "source_family": "R2R|val_seen|standard|record_id=6|episode_id=6|trajectory_id=93",
-      "content_sha256": "58db12cadb19b46b97ee1c85e3ceb2e08dc7b3e2878b642293bb2278d9d84d9e",
+      "content_sha256": "36844e428cd17d3da714277439b4631ec80b3a757f452eac2db323a64f82979f",
       "skills": [
         "transit",
         "endpoint",
@@ -316,7 +649,24 @@
       "lesson": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-007",
@@ -327,7 +677,7 @@
       "pair_relation": null,
       "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
       "source_family": "R2R|val_seen|standard|record_id=7|episode_id=7|trajectory_id=111",
-      "content_sha256": "c4092cd373d511f3d85d2f2d490b891a3a953d636f84048118a8f4eec81c56b8",
+      "content_sha256": "9b891547ad0b0241658721c810816af3bcfd1b74cc8e79490a2b8382228921eb",
       "skills": [
         "entry",
         "direction"
@@ -335,7 +685,22 @@
       "lesson": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "ordered_turns",
+        "room_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-008",
@@ -346,7 +711,7 @@
       "pair_relation": null,
       "source_sha256": "921f4f57f580090753a82ec276412cf4bfec8ccae1c226146d32f911af41eb06",
       "source_family": "R2R|val_seen|standard|record_id=8|episode_id=8|trajectory_id=111",
-      "content_sha256": "9ebb87aa9367d94646b39d58785b0e15a732c41bf5c54d4f46c026a113e19daa",
+      "content_sha256": "9ade609f793133b718a03b03e46611cd2de83b0290200d3a1a3b857c900db6c7",
       "skills": [
         "coupled",
         "pass_by",
@@ -355,7 +720,25 @@
       "lesson": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
       "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
       "counter_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "pass_then_turn",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-009",
@@ -366,7 +749,7 @@
       "pair_relation": null,
       "source_sha256": "ec132b0e86c16ffe2c846ed932b94e3d21a5ebd09c6679ee5290f861db7c0999",
       "source_family": "R2R|val_seen|standard|record_id=9|episode_id=9|trajectory_id=111",
-      "content_sha256": "18d494f5a79dfc548d59a2fc053444d06a7867274b97e116f76e6523cbc00e7e",
+      "content_sha256": "bad286ec81a05d276a580d0cbdd05b0078a35969f6e4e4f3883cec22484295a6",
       "skills": [
         "transit",
         "entry",
@@ -375,7 +758,25 @@
       "lesson": "The big room is transit to the banquet hall; retain both left movements and the final position near the hall door.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A room name alone is not a mandatory stage boundary.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "room_entry",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-010",
@@ -386,7 +787,7 @@
       "pair_relation": null,
       "source_sha256": "1a55da2e196d72e196bf36a79f2890a16e1ee66d248dcb8a97a33daf2e6e6a05",
       "source_family": "R2R|val_seen|standard|record_id=10|episode_id=10|trajectory_id=139",
-      "content_sha256": "16d58777303f72e60e1709a80a677fcda24d963b5760312cf1ab0e9033de3390",
+      "content_sha256": "adae0caf379e9da3395f9fdc5ba6fb3624aecd4ba7e4a8fa662d77cf9e0fc0cb",
       "skills": [
         "attribute",
         "entry",
@@ -395,7 +796,24 @@
       "lesson": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A source command to open a closed door would be an additional action worth preserving.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "entry",
+        "target_identity"
+      ],
+      "facets": [
+        "open_door_attribute",
+        "room_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-011",
@@ -406,7 +824,7 @@
       "pair_relation": null,
       "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
       "source_family": "R2R|val_seen|standard|record_id=11|episode_id=11|trajectory_id=139",
-      "content_sha256": "8917efffbb3caf9962229d18defad32a35485dcd3f7bf1eddde5c1d8dbd5ed84",
+      "content_sha256": "35e299a4a5b9a60706003b6e55f1846da4f25fa5452440d650322585e428cdd2",
       "skills": [
         "hall_end",
         "direction",
@@ -415,7 +833,25 @@
       "lesson": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
       "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
       "counter_boundary": "A generic instruction to go down a hallway does not establish its far end.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "hall_end",
+        "terminal"
+      ],
+      "facets": [
+        "hall_end_entry",
+        "ordered_turns",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-012",
@@ -426,7 +862,7 @@
       "pair_relation": null,
       "source_sha256": "3925695a9ad99f64fbddba9aba9870d0e4c7ec23a7385f0a4092e409009f6e99",
       "source_family": "R2R|val_seen|standard|record_id=12|episode_id=12|trajectory_id=139",
-      "content_sha256": "150d60955e929ae327a59410541f5fd66e0c11b2eb9cb4449b06931eb7223f4a",
+      "content_sha256": "9aedd7b71dc7e253af0dd8f570a2983aa222bf660f38f2ffde2a35c79f1e9441",
       "skills": [
         "entry",
         "direction"
@@ -434,7 +870,22 @@
       "lesson": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A predicted view of a doorway would not establish that exit.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "ordered_turns",
+        "room_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-013",
@@ -445,7 +896,7 @@
       "pair_relation": null,
       "source_sha256": "09224da0c0e5fb904f6fe9a3da2e1b6237d8d98ad02ed5f300e05c07005bdd83",
       "source_family": "R2R|val_seen|standard|record_id=13|episode_id=13|trajectory_id=149",
-      "content_sha256": "0fece52a6d26463b5724043e1c3173c2287b71d19b6fb866fec3b57946f1e529",
+      "content_sha256": "7d46e9f4c150ad284b078e01b8b17cf9484924e5700d8ea891f24f3b3f4241ca",
       "skills": [
         "attribute",
         "transit",
@@ -454,7 +905,24 @@
       "lesson": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance.",
       "reusable_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
       "counter_boundary": "An open-door adjective does not request operating the door.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "open_door_attribute",
+        "hall_transit"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-014",
@@ -465,7 +933,7 @@
       "pair_relation": null,
       "source_sha256": "f08da453dec020f7243dc4e73ed74de4afa08cdfb622f0a2c6ecd10af5cbe364",
       "source_family": "R2R|val_seen|standard|record_id=14|episode_id=14|trajectory_id=149",
-      "content_sha256": "a3987fd90febf8417eca583b247926d7c9f313ce212aea3731ab82c7e102a8d8",
+      "content_sha256": "971e8c30f92d627a9bd0086f3c030f634e04a5abfbd88d5a397f54f39751702d",
       "skills": [
         "coupled",
         "transit",
@@ -474,7 +942,22 @@
       "lesson": "The completed bedroom traversal is followed by a right turn and glass-door stop before the outside exit. A faithful combined maneuver is also possible; preserve the before-exit limit in either grouping.",
       "reusable_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
       "counter_boundary": "A distinct visit completed inside the bedroom would change the grouping test.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "transit_before_exit_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-015",
@@ -485,7 +968,7 @@
       "pair_relation": null,
       "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
       "source_family": "R2R|val_seen|standard|record_id=15|episode_id=15|trajectory_id=149",
-      "content_sha256": "5545f62bd7327cbfac1cb023f0ab6d83974478c16d62a7acbd1c5073b2d4a736",
+      "content_sha256": "008fa7ea4d6421382f0a9418003be754862b8132acc8d429145ea042c8c7cf5d",
       "skills": [
         "ordinal",
         "entry",
@@ -494,7 +977,23 @@
       "lesson": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
       "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
       "counter_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "ordinal"
+      ],
+      "facets": [
+        "door_count_origin",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-016",
@@ -505,7 +1004,7 @@
       "pair_relation": null,
       "source_sha256": "6f7c42231838b3c6975b806cec58f2c2fe22e1f6945cb29cbd2d65572f997834",
       "source_family": "R2R|val_seen|standard|record_id=16|episode_id=16|trajectory_id=180",
-      "content_sha256": "912039f2d8888dd68e02bc5bae8152ff5df40eaa7ef622c9e2645ae6419cd75c",
+      "content_sha256": "185c71054bc8bdd7a0202cf85fe4da60f2ab8d1f8a57c23c3abd14cb14a4abf0",
       "skills": [
         "entry",
         "terminal",
@@ -514,7 +1013,24 @@
       "lesson": "The star-tile crossing establishes bedroom entry; the bed approach and route around it end at the left set of windows.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A right-window ending is a target error, not a failure of the already completed bedroom handoff.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "room_entry",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-017",
@@ -525,7 +1041,7 @@
       "pair_relation": null,
       "source_sha256": "113be0fedd42aa177dc9a71acef3834dd5313160bb593df82f383fa5b9feb1f8",
       "source_family": "R2R|val_seen|standard|record_id=17|episode_id=17|trajectory_id=180",
-      "content_sha256": "ad67c1032a9f7b3e5ab67094ef4b96383e84f61dc153f1678625e27d89b6a86e",
+      "content_sha256": "5102db6514b05abd6060db157387908f0cd86f4eedeefc4f913adf024ff9f6fc",
       "skills": [
         "pass_by",
         "entry",
@@ -534,7 +1050,25 @@
       "lesson": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "An observed landmark is not automatically a separate visit or stop.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-A4",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "pass_by",
+        "target_identity"
+      ],
+      "facets": [
+        "ordered_landmarks",
+        "door_identity"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-018",
@@ -545,7 +1079,7 @@
       "pair_relation": null,
       "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
       "source_family": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180",
-      "content_sha256": "801b546f54ced070d3d3f6db9d2831a1e41d85bcb51a8d765eb1e19634e2db8e",
+      "content_sha256": "45a1532b79545e263c0597250b12fb17138c440c1393d571d4c1b69c3c74f239",
       "skills": [
         "transit",
         "endpoint",
@@ -554,7 +1088,24 @@
       "lesson": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
       "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
       "counter_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_until_bedroom",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-019",
@@ -565,7 +1116,7 @@
       "pair_relation": null,
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "69e2a866c123e1d3136d4228599d9fe63939a434b9bc6d70fde5195249af121f",
+      "content_sha256": "774c1b68e56f2022765443a641727a337e9a1af24716fdc01c6fde61ea3ca871",
       "skills": [
         "coupled",
         "direction",
@@ -574,7 +1125,23 @@
       "lesson": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-020",
@@ -585,7 +1152,7 @@
       "pair_relation": null,
       "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
       "source_family": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185",
-      "content_sha256": "a11d85f63f28aa9580028a346e4594809f2000e789f5f05de48edadb1388ca59",
+      "content_sha256": "996794251a3438953f073631094e28d37bd65d171dd98241cd19cec086fafff7",
       "skills": [
         "scope",
         "stair_target",
@@ -594,7 +1161,26 @@
       "lesson": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-A4",
+        "G-P2-A5",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "ordinal",
+        "scope",
+        "stair_target"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "ordinal_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-021",
@@ -605,7 +1191,7 @@
       "pair_relation": null,
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "2a0c8aba809941e0e659b249dfe201f19b5c304f769f59543e168302552887a7",
+      "content_sha256": "6efd3742cecae281399114770efa238e5cde340b8d0f165b8f67d295c38d4e53",
       "skills": [
         "bounded",
         "endpoint",
@@ -614,7 +1200,22 @@
       "lesson": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A5",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "bounded",
+        "endpoint",
+        "terminal"
+      ],
+      "facets": [
+        "bounded_ascent_refinement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-022",
@@ -625,7 +1226,7 @@
       "pair_relation": null,
       "source_sha256": "d88cfa83bec46f06691ca76838e46a560d84d39859132175eb165a617e0f81a3",
       "source_family": "R2R|val_seen|standard|record_id=22|episode_id=22|trajectory_id=193",
-      "content_sha256": "0cca540f987f6d15b37def3592e960619a6e62321d4846f09356e887c40de711",
+      "content_sha256": "7dfd1cd1eccac9bd1e728017b9ed9bd4d8e286145cfe9f831d83a977fa3c7c71",
       "skills": [
         "entry",
         "direction",
@@ -634,7 +1235,24 @@
       "lesson": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry",
+        "final_approach"
+      ],
+      "facets": [
+        "ordered_crossings",
+        "final_approach"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-023",
@@ -645,7 +1263,7 @@
       "pair_relation": null,
       "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
       "source_family": "R2R|val_seen|standard|record_id=23|episode_id=23|trajectory_id=193",
-      "content_sha256": "e3c419f1c387837f5b8444ecf628821a8d9f76163e09dac1a63bbe610ac014d0",
+      "content_sha256": "59d90bc693838db2ffb4f81268d02128829f0fdefeac57f39314f83261d0288f",
       "skills": [
         "observation",
         "entry",
@@ -654,7 +1272,25 @@
       "lesson": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A5",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "entry",
+        "observation"
+      ],
+      "facets": [
+        "expected_view",
+        "explicit_arrival"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-024",
@@ -665,7 +1301,7 @@
       "pair_relation": null,
       "source_sha256": "21d326541991a811ad5d62ae4769bf109b95ef4e66e0fc693456fb6e84e40351",
       "source_family": "R2R|val_seen|standard|record_id=24|episode_id=24|trajectory_id=193",
-      "content_sha256": "67955efad3d5927ad1fccf32a5fb61635e97d8e5764009c469297516a08845c8",
+      "content_sha256": "5ceeee2ea2788a2c6df41de516cffcd41a3870092d5161078cf0822fa0ecce25",
       "skills": [
         "coupled",
         "direction",
@@ -674,7 +1310,24 @@
       "lesson": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Turn count or sentence count alone does not establish independent local targets.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_turns",
+        "stair_wait"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-025",
@@ -685,7 +1338,7 @@
       "pair_relation": null,
       "source_sha256": "b162b139cf1791c874b85e6992af5ad56c4f223b7393970d15824f824fe0691d",
       "source_family": "R2R|val_seen|standard|record_id=25|episode_id=25|trajectory_id=251",
-      "content_sha256": "2af41aeaaebc242ba7a5cd801eb22ef1ae7c4c9f2de4dd3fbffe4df9f8ce4928",
+      "content_sha256": "527640fb21b759db7ec95c6eac853f6d9b72f7ad48283359e7cfb482bfaef084",
       "skills": [
         "entry",
         "terminal",
@@ -694,7 +1347,24 @@
       "lesson": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "room_entry",
+        "behind_target"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-026",
@@ -705,7 +1375,7 @@
       "pair_relation": null,
       "source_sha256": "78b9119a9a8cc212b632307081de40b9f6a281a168ff6429e7d7b3b87c2ab89d",
       "source_family": "R2R|val_seen|standard|record_id=26|episode_id=26|trajectory_id=251",
-      "content_sha256": "509960d424c245beb76fb2451c753491b83e3750b2b033682c2739555a4c7eba",
+      "content_sha256": "508a791d716928fc5f464404ede47874fc3f799d1b2f601ab9452bd122b7c8f3",
       "skills": [
         "transit",
         "entry"
@@ -713,7 +1383,22 @@
       "lesson": "Continue alongside the stairs through the hall, then turn the corner into the couch-filled living area.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "The stairs are a route-side landmark, not an instruction to climb them.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "room_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-027",
@@ -724,7 +1409,7 @@
       "pair_relation": null,
       "source_sha256": "3bfd05f54c7f12de83bd55ba2d49fa68d86c394c376c0341b0d27e2d0053be39",
       "source_family": "R2R|val_seen|standard|record_id=27|episode_id=27|trajectory_id=251",
-      "content_sha256": "3aad9fa902480787e7e6a54b6c884a07ff62e7a1ef2c1fb12929bbe677ee2d26",
+      "content_sha256": "731c23508aae65b2d1470e2eb7b3e3d776155003ae01e4172f5777585ca3533b",
       "skills": [
         "entry",
         "frame",
@@ -733,7 +1418,24 @@
       "lesson": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_turns",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-028",
@@ -744,7 +1446,7 @@
       "pair_relation": null,
       "source_sha256": "dbdcae2e693c56ac4d98c9e68fdf1952703f8420f0a337d31125322d42c00575",
       "source_family": "R2R|val_seen|standard|record_id=28|episode_id=28|trajectory_id=339",
-      "content_sha256": "f91469815eee6193640142f4ebc48360cb1f96a347c6154afec01a2dc1bcae8f",
+      "content_sha256": "330b2666eabedcbed8c418f6e50543b86e5d2c115c913ed52ced4363d52dba5e",
       "skills": [
         "coupled",
         "target_identity",
@@ -753,7 +1455,24 @@
       "lesson": "Pass the bottom of the stairs before selecting the center door on the right; preserve the compact whole maneuver.",
       "reusable_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
       "counter_boundary": "A center-door descriptor is not interchangeable with an ordinal door count.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A3",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "final_approach",
+        "target_identity"
+      ],
+      "facets": [
+        "center_door_selection"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-029",
@@ -764,7 +1483,7 @@
       "pair_relation": null,
       "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
       "source_family": "R2R|val_seen|standard|record_id=29|episode_id=29|trajectory_id=339",
-      "content_sha256": "08d8ba0670aa88dfbf4531c1a96f81c08462097bbffd60de8060630b6496b3ef",
+      "content_sha256": "8c206835ba16a2c054a1f702093a10b2b859b43940dcc7a327e51b3528b3fe6c",
       "skills": [
         "coupled",
         "pass_by",
@@ -773,7 +1492,25 @@
       "lesson": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A4",
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "pass_then_placement",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-030",
@@ -784,7 +1521,7 @@
       "pair_relation": null,
       "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
       "source_family": "R2R|val_seen|standard|record_id=30|episode_id=30|trajectory_id=339",
-      "content_sha256": "035485dd8a7d23ee9100b1a6b29505487fb2aa4fe2abb0d17537f6703c0721a6",
+      "content_sha256": "56f7efcc77b8040ee606af7811dd74a94de172af1690a8df2ac8f6b9ed940b83",
       "skills": [
         "entity_frame",
         "ordinal",
@@ -793,7 +1530,24 @@
       "lesson": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
       "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
       "counter_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entity_frame",
+        "ordinal",
+        "terminal"
+      ],
+      "facets": [
+        "object_relative_room",
+        "ordinal_room",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-031",
@@ -812,7 +1566,22 @@
       "lesson": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A2",
+        "G-P2-A3"
+      ],
+      "retrieval_skills": [
+        "target_identity",
+        "uncertainty"
+      ],
+      "facets": [
+        "uncertain_name"
+      ],
+      "teaching_polarity": "source_limitation",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-032",
@@ -823,7 +1592,7 @@
       "pair_relation": null,
       "source_sha256": "c6f00355ebd771f8d688490d422130cd15c23c369b667d776fe99390117d0bae",
       "source_family": "R2R|val_seen|standard|record_id=32|episode_id=32|trajectory_id=355",
-      "content_sha256": "db23343085430c2d40442ad2eb7b5974546230ddeef8d7616b389db5e83aea7a",
+      "content_sha256": "35143db38e5ea18c598d2ec88759c2cd00cdc879b20b259582922b076fcea79e",
       "skills": [
         "coupled",
         "final_approach"
@@ -831,7 +1600,22 @@
       "lesson": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An explicit source wait at the stairs would add a terminal event.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "final_approach"
+      ],
+      "facets": [
+        "hall_transit",
+        "stair_destination"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-033",
@@ -842,7 +1626,7 @@
       "pair_relation": null,
       "source_sha256": "fb4ac571dd4112164b0b17fb4f4b5e2521ecb801b9eb6e066ea6e4b8a87d39d6",
       "source_family": "R2R|val_seen|standard|record_id=33|episode_id=33|trajectory_id=355",
-      "content_sha256": "7b3cde938fca6493114d5d2858530491009162f48ad27de9f05417271b2baba0",
+      "content_sha256": "83e392c7c2720fc9975958ea627d97017f16c8f0843ca529e24a98a7cac98616",
       "skills": [
         "pass_by",
         "terminal"
@@ -850,7 +1634,23 @@
       "lesson": "The fan and baptismal font are ordered pass-by landmarks; the in-ground pond is the waiting target.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Reaching the font does not complete the later pond placement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A1",
+        "G-P2-A4",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_landmarks",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-034",
@@ -861,7 +1661,7 @@
       "pair_relation": null,
       "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
       "source_family": "R2R|val_seen|standard|record_id=34|episode_id=34|trajectory_id=356",
-      "content_sha256": "c1a2d4dabb52b5bbdc3269bc57054837360eeb76f25f0c83f2b87c025ed841c0",
+      "content_sha256": "30580729efd4271fd37759e1c122dde997159755c587d3db70f774c59d6a9934",
       "skills": [
         "transit",
         "entry",
@@ -870,7 +1670,24 @@
       "lesson": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-B1",
+        "G-P2-B2",
+        "G-P2-B3"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "hall_entry"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-GEN-035",
@@ -881,7 +1698,7 @@
       "pair_relation": null,
       "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
       "source_family": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356",
-      "content_sha256": "b0d469b3ab2dd6aca489f414d4fb0f3cd83ff4e902230180d7e314df7cf15d28",
+      "content_sha256": "f9ec0168d55fb976f1ce68af5a987fd71bc9305641b2cc2ff90a304a7cdbe1e2",
       "skills": [
         "attachment",
         "entry",
@@ -890,7 +1707,173 @@
       "lesson": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
       "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
       "counter_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "G-P2-A3",
+        "G-P2-A4",
+        "G-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attachment",
+        "entry",
+        "ordinal"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "hall_entry",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "generate",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
+      "template_id": "R2R-DIAG-30",
+      "path": "reviewer/templates/R2R/authored/030_R2R-DIAG-30.json",
+      "role": "reviewer",
+      "status": "dynamic",
+      "pair_id": null,
+      "pair_relation": null,
+      "source_sha256": "43b77f14d83dc7274e307fc9822cb16421e5ba693068f16f16092c20cb8400ea",
+      "source_family": "R2R|authored_synthetic|conditional-hall-contrast",
+      "content_sha256": "938da96cae9dc494198f60df0dd66cea1a6f147d71a1a8338506f5e49b9c3540",
+      "skills": [
+        "branch",
+        "entry",
+        "terminal"
+      ],
+      "lesson": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+      "reusable_rule": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-A4",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "branch",
+        "entry",
+        "terminal"
+      ],
+      "facets": [
+        "conditional_routes"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
+      "template_id": "R2R-DIAG-31",
+      "path": "reviewer/templates/R2R/authored/031_R2R-DIAG-31.json",
+      "role": "reviewer",
+      "status": "dynamic",
+      "pair_id": null,
+      "pair_relation": null,
+      "source_sha256": "2885f254022dfe56deee59b3e7b8afd4b11636140ea52888ad61b9cf04472a64",
+      "source_family": "R2R|authored_synthetic|return-bench-contrast",
+      "content_sha256": "2e6ae594ff1103da475878065e587edb9f22a6e9b053594d1ac3878c08f2f0ca",
+      "skills": [
+        "return",
+        "lost_action",
+        "terminal"
+      ],
+      "lesson": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+      "reusable_rule": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-A4",
+        "R-P2-B2",
+        "R-P2-B3"
+      ],
+      "retrieval_skills": [
+        "return",
+        "terminal"
+      ],
+      "facets": [
+        "required_return"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
+      "template_id": "R2R-REV-036",
+      "path": "reviewer/templates/R2R/authored/036_R2R-REV-036.json",
+      "role": "reviewer",
+      "status": "dynamic",
+      "pair_id": "R2R-GEN-036",
+      "pair_relation": "same_source",
+      "source_sha256": "a86207fbac7ee1bc63dce783d0c93e767c55c943190109eedf1f893d81b43d45",
+      "source_family": "R2R|authored_synthetic|conditional-door",
+      "content_sha256": "fc7646cdf9fb21577df2b60d7ff82d0f4663738d7c8fff7b6e8666ceaaea5796",
+      "skills": [
+        "branch",
+        "attribute",
+        "entry",
+        "terminal"
+      ],
+      "lesson": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
+      "reusable_rule": "Keep executable alternatives mutually exclusive. Each branch includes its own source-specified stop; the closed-door case does not authorize opening or entering the left doorway.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-A4",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "branch",
+        "entry",
+        "terminal"
+      ],
+      "facets": [
+        "conditional_routes"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
+    },
+    {
+      "template_id": "R2R-REV-037",
+      "path": "reviewer/templates/R2R/authored/037_R2R-REV-037.json",
+      "role": "reviewer",
+      "status": "dynamic",
+      "pair_id": "R2R-GEN-037",
+      "pair_relation": "same_source",
+      "source_sha256": "51b244cb92be0f9fa070618ab325e8cb8fb7393ca7ba6e85167c2850dd6f11f8",
+      "source_family": "R2R|authored_synthetic|return-loop",
+      "content_sha256": "75f13fcb23fa8ad1638711abafd19ccfbca170284a7343feb0aaf768186fd9eb",
+      "skills": [
+        "return",
+        "scope",
+        "terminal"
+      ],
+      "lesson": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+      "reusable_rule": "Returning to the same doorway requires the departure and intervening table circuit; matching the initial and final place does not execute the excursion.",
+      "counter_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-A4",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "return",
+        "scope",
+        "terminal"
+      ],
+      "facets": [
+        "required_return"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R01",
@@ -901,7 +1884,7 @@
       "pair_relation": "analogy",
       "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
       "source_family": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93",
-      "content_sha256": "09815548927544b3c598b061f3b61d057d5781bb39e2a1c19c0e82401a412f91",
+      "content_sha256": "9c4b67fd1ac6215be35ab15d63ca02b7bb1b21c3055a09df96695cd739728d31",
       "skills": [
         "observation",
         "target_identity",
@@ -910,7 +1893,23 @@
       "lesson": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "observation",
+        "target_identity"
+      ],
+      "facets": [
+        "expected_view",
+        "door_identity"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R02",
@@ -928,7 +1927,19 @@
       "lesson": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence.",
       "reusable_rule": "REVISE when the candidate changes an ordinal, counting category, or origin that selects a different target. Cite the exact source and candidate phrases and explain the route consequence.",
       "counter_boundary": "Do not infer a defect from harmless rewording of the same ordinal or from a landmark description that leaves the counted target unchanged.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "ordinal"
+      ],
+      "facets": [
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R03",
@@ -939,7 +1950,7 @@
       "pair_relation": "analogy",
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "2fc0fbe45b1af147245a5f7291df4c679203b2668faa4258c69971e89bb89979",
+      "content_sha256": "0eddf6eeeef79eb4e88c075403f44a707750b3bac42c3151029adcbda18e8fe9",
       "skills": [
         "coupled",
         "direction",
@@ -948,7 +1959,24 @@
       "lesson": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R04",
@@ -967,7 +1995,22 @@
       "lesson": "Assess the preparatory turn with the ascent it enables in this source; a turn with its own stated observation or placement can be independent.",
       "reusable_rule": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
       "counter_boundary": "Do not call every two-stage route over-segmented. A completed independent objective with a supported next entry is a valid boundary.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B1"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "endpoint",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R05",
@@ -978,7 +2021,7 @@
       "pair_relation": "analogy",
       "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
       "source_family": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185",
-      "content_sha256": "aa992fba016abe87a39dd9be103687da76a3fe67f053b1bdd46d20d71213f991",
+      "content_sha256": "4193eab1da1ea13ebece321852a66630399239300b77d1cf61674de464ce7f15",
       "skills": [
         "scope",
         "stair_target",
@@ -987,7 +2030,24 @@
       "lesson": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1"
+      ],
+      "retrieval_skills": [
+        "ordinal",
+        "scope",
+        "stair_target"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "ordinal_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R06",
@@ -998,7 +2058,7 @@
       "pair_relation": "same_source",
       "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
       "source_family": "R2R|val_seen|standard|record_id=5|episode_id=5|trajectory_id=93",
-      "content_sha256": "7a860ad9236a7cb1d1097420cc1c01d9627e8d6c0e46362e1bafb2d365474c73",
+      "content_sha256": "06567740bee405eb8279a1b9498a6b21d0144151e2d047c3450317ae98facc3f",
       "skills": [
         "grouping",
         "endpoint"
@@ -1006,7 +2066,26 @@
       "lesson": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",
       "reusable_rule": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",
       "counter_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "endpoint",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "door_identity",
+        "hall_end_entry",
+        "final_approach"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R07",
@@ -1026,7 +2105,24 @@
       "lesson": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
       "reusable_rule": "Restore entry into the hallway to the slight right at the beginning of stage 2, before the right turn and third-door count; keep chair pass-by as stage 1's endpoint.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attachment",
+        "entry",
+        "ordinal"
+      ],
+      "facets": [
+        "hall_entry",
+        "modifier_attachment",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R08",
@@ -1046,7 +2142,24 @@
       "lesson": "Do not promote the expected chandelier observation into a terminal target. Check whether the candidate preserves the source-selected far-wall doorway, crossing, hallway traversal, and destination-room entry.",
       "reusable_rule": "Distinguish Navigation Target, Reference Landmark, and Expected Observation by the source's commanded action and event role. A visible or predicted object may disambiguate orientation without becoming a destination. Require evidence for approach, arrival, crossing, and entry separately.",
       "counter_boundary": "Do not promote a salient object or 'you will see' clause into a required visit. Do not infer that observation establishes arrival, threshold contact, crossing, or entry.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "observation",
+        "terminal"
+      ],
+      "facets": [
+        "expected_view",
+        "door_identity"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R09",
@@ -1057,7 +2170,7 @@
       "pair_relation": "same_source",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "ac9d56e5e2586a59a7ef62d4b352b14f0ff6811c79bfe6b5c4f5873236a028ba",
+      "content_sha256": "d25fe7895e3ea275260ae6a34f949a011e815e0715220d327d3fdae2492e07f9",
       "skills": [
         "stair_target",
         "terminal",
@@ -1066,7 +2179,25 @@
       "lesson": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "scope",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-CORE-R10",
@@ -1084,7 +2215,19 @@
       "lesson": "The route-defining phrase 'pack exit' cannot be uniquely resolved from the supplied instruction. Guessing 'back exit' could change the selected destination.",
       "reusable_rule": "Use UNRESOLVED only when a source-level ambiguity changes a route-critical target and cannot be uniquely resolved from the complete instruction context.",
       "counter_boundary": "Do not infer a typo correction solely because one alternative seems likely. Do not use UNRESOLVED for an error introduced only by the Candidate.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1"
+      ],
+      "retrieval_skills": [
+        "target_identity"
+      ],
+      "facets": [
+        "uncertain_name"
+      ],
+      "teaching_polarity": "source_limitation",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-01",
@@ -1102,7 +2245,19 @@
       "lesson": "This is a ordinal corruption. Block Source Fidelity for the exact changed requirement; Closure & Handoff is affected only if the omission makes the stage's required process/completion incomplete. There is no inter-stage handoff in this one-stage candidate, and Segmentation Adequacy remains pass because no cut is being tested.",
       "reusable_rule": null,
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "ordinal"
+      ],
+      "facets": [
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-02",
@@ -1120,7 +2275,19 @@
       "lesson": "The source requires 'Make a left and walk past the stair case.'; the actual candidate instead contains 'Make a right and walk past the stair case.'. Restore only the first left before the stair-case pass; retain the later right and locker-room entry.",
       "reusable_rule": "Restore only the first left before the stair-case pass; retain the later right and locker-room entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "direction"
+      ],
+      "facets": [
+        "ordered_turns"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-03",
@@ -1138,7 +2305,20 @@
       "lesson": "The source requires 'Walk through the kitchen passed the sink.'; the actual candidate instead contains 'Walk towards the kitchen passed the sink.'. Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
       "reusable_rule": "Restore traversal through the kitchen past the sink; retain the following left and wooden-room entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry"
+      ],
+      "facets": [
+        "hall_transit",
+        "room_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-04",
@@ -1156,7 +2336,19 @@
       "lesson": "The source requires 'stand in the door way to the hall'; the actual candidate instead contains 'stand in the  way to the hall'. Restore door in the first doorway placement; preserve both subsequent left turns.",
       "reusable_rule": "Restore door in the first doorway placement; preserve both subsequent left turns.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1"
+      ],
+      "retrieval_skills": [
+        "target_identity"
+      ],
+      "facets": [
+        "doorway_stop"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-05",
@@ -1174,7 +2366,20 @@
       "lesson": "The source requires 'Turn around, go past the bed, out the door and to the right.'; the actual candidate instead contains 'Go into the next door on the right.'. Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait.",
       "reusable_rule": "Restore the omitted initial turn-around, bed pass, exit and rightward movement before the next-door entry; retain quilt identification and wait.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B3"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "turnaround_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-06",
@@ -1192,7 +2397,20 @@
       "lesson": "The source requires 'turn right after the kitchen table'; the actual candidate instead contains 'turn right  the kitchen table'. Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
       "reusable_rule": "Restore after the kitchen table as the trigger for this right turn. Preserve the later end-table left, couch route and bedroom entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3"
+      ],
+      "retrieval_skills": [
+        "scope"
+      ],
+      "facets": [
+        "turn_after_landmark"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-07",
@@ -1210,7 +2428,21 @@
       "lesson": "Identify the omitted Stop in SRC-02, not the unchanged ordinal requirement in SRC-01. A location fragment is not an explicit stop command.",
       "reusable_rule": "Audit the actual changed requirement and keep all unaffected coverage marked covered.",
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "terminal"
+      ],
+      "facets": [
+        "ordinal_placement",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-08",
@@ -1228,7 +2460,19 @@
       "lesson": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the prohibition on entering the first doorway; retain the second-door right turn and desk-side stop.",
       "reusable_rule": "Restore the prohibition on entering the first doorway; retain the second-door right turn and desk-side stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A4"
+      ],
+      "retrieval_skills": [
+        "negation"
+      ],
+      "facets": [
+        "prohibited_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-09",
@@ -1246,7 +2490,20 @@
       "lesson": "The source requires 'stop in doorway facing sink'; the actual candidate instead contains 'stop in doorway .'. Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location.",
       "reusable_rule": "Restore facing sink at the doorway stop; preserve the two earlier right turns and the existing stopping location.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "terminal"
+      ],
+      "facets": [
+        "final_facing"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-10",
@@ -1264,7 +2521,19 @@
       "lesson": "The source requires 'the sunken seating area is on your left and the stairs going up are to your right'; the actual candidate instead contains 'the sunken seating area is on your right and the stairs going up are to your left'. Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
       "reusable_rule": "Restore the specified seating-left/stairs-right frame after the turn; preserve both chairs and all later placement.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "frame"
+      ],
+      "facets": [
+        "maintained_frame"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-11",
@@ -1282,7 +2551,19 @@
       "lesson": "The source requires 'the third door to your left'; the actual candidate instead contains 'the next door to your left'. Restore third with the original left-side counting frame, preserving the preceding room crossing.",
       "reusable_rule": "Restore third with the original left-side counting frame, preserving the preceding room crossing.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "ordinal"
+      ],
+      "facets": [
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-12",
@@ -1300,7 +2581,20 @@
       "lesson": "The source requires 'Turn left and walk to the end of the kitchen bar.'; the actual candidate instead contains 'Turn right and walk to the end of the kitchen bar.'. Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
       "reusable_rule": "Restore left only in the kitchen-bar approach. Keep the subsequent right around the chair and final left into the hallway.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "direction"
+      ],
+      "facets": [
+        "ordered_turns",
+        "hall_end_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-13",
@@ -1318,7 +2612,20 @@
       "lesson": "The source requires 'go through the doorway on the right'; the actual candidate instead contains 'go towards the doorway on the right'. Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
       "reusable_rule": "Restore the right-doorway crossing, preserving all earlier turns and the final just-inside-bedroom stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry"
+      ],
+      "facets": [
+        "door_identity",
+        "room_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-14",
@@ -1336,7 +2643,19 @@
       "lesson": "The source requires 'With the rocking chair at your back'; the actual candidate instead contains 'With the rocking  at your back'. Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge.",
       "reusable_rule": "Restore chair in the initial reference. Preserve the existing stop at the wall at the brown-rug edge.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1"
+      ],
+      "retrieval_skills": [
+        "target_identity"
+      ],
+      "facets": [
+        "initial_frame"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-15",
@@ -1354,7 +2673,22 @@
       "lesson": "The source requires 'Walk through the outdoors deck area towards the open door beside the stair leading into the yard.'; the actual candidate instead contains 'Walk inside the home'. Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route.",
       "reusable_rule": "Restore the deck traversal and identified door approach before home entry; preserve the corner and living-room route.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B3"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "open_door_attribute",
+        "hall_transit"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-16",
@@ -1372,7 +2706,20 @@
       "lesson": "The source requires 'TURN TO THE RIGHT UNTIL YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'; the actual candidate instead contains 'TURN TO THE RIGHT  YOU THE DINNING TABLE IS ON THE RIGHT AND PILLARS ARE ON THE LEFT'. Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
       "reusable_rule": "Restore UNTIL with the table-right/pillars-left condition on the initial turn. Preserve the later turn and doorway crossing.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3"
+      ],
+      "retrieval_skills": [
+        "scope"
+      ],
+      "facets": [
+        "turn_until_frame"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-17",
@@ -1390,7 +2737,20 @@
       "lesson": "The source requires 'wait in front of the white couch by the window'; the actual candidate instead contains 'in front of the white couch by the window'. Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
       "reusable_rule": "Restore wait at the retained white-couch location; preserve porch steps, covered-porch entry and house entry.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "terminal"
+      ],
+      "facets": [
+        "landmark_placement"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-18",
@@ -1408,7 +2768,19 @@
       "lesson": "The source requires 'Do not enter the first doorway.'; the actual candidate instead contains 'enter the first doorway'. Restore the first-door prohibition; retain the second-door left and table-side stop.",
       "reusable_rule": "Restore the first-door prohibition; retain the second-door left and table-side stop.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A4"
+      ],
+      "retrieval_skills": [
+        "negation"
+      ],
+      "facets": [
+        "prohibited_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-19",
@@ -1427,7 +2799,23 @@
       "lesson": "Two defects require coverage: the reference-frame condition is truncated and the explicit terminal STOP is absent. Do not inspect only the template label.",
       "reusable_rule": "Review every material defect in the actual candidate and keep the verdict, dimensions, coverage and stage checks consistent.",
       "counter_boundary": "Do not duplicate findings, rewrite the full plan, or reject style-only differences.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "maintained_frame",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-20",
@@ -1445,7 +2833,20 @@
       "lesson": "The source requires 'Stop right there.'; the actual candidate instead contains 'Stop beside the stairs.'. Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
       "reusable_rule": "Stop at the source-defined position after passing the chair, retaining the final Wait and all preceding travel.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "terminal"
+      ],
+      "facets": [
+        "landmark_placement"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": null,
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-27",
@@ -1463,7 +2864,19 @@
       "lesson": "The source identifies already-open doors; the candidate invents a door-opening action.",
       "reusable_rule": "An entity state must not be promoted to an additional command.",
       "counter_boundary": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1"
+      ],
+      "retrieval_skills": [
+        "attribute"
+      ],
+      "facets": [
+        "open_door_attribute"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-28",
@@ -1474,7 +2887,7 @@
       "pair_relation": null,
       "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
       "source_family": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180",
-      "content_sha256": "e9109e119a4ed4970b5c0e7b20889ed176c259f2236e9cfa7f89bb5ce267804d",
+      "content_sha256": "53b2a527bce55ed29b82a550df1365914c59e16eb705eb9f2101bd30677465a0",
       "skills": [
         "grouping",
         "endpoint"
@@ -1482,7 +2895,25 @@
       "lesson": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
       "reusable_rule": "The bedroom arrival and the explicitly named bedroom-door wait can remain separate with supported handoff. Keeping them in one maneuver is also valid. Judge their actual relation rather than imposing a universal ban on terminal placement stages.",
       "counter_boundary": "A real missing target, changed condition or unsupported completion remains a material defect.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "endpoint",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "hall_until_bedroom",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-29",
@@ -1500,7 +2931,20 @@
       "lesson": "The source commands one three-step ascent; the candidate repeats that ascent before executing its completion condition.",
       "reusable_rule": "A later completion clause refines the same movement rather than licensing a second movement.",
       "counter_boundary": "Do not transfer this verdict to a different source: inspect the actual event role, completion and dependency before deciding.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3"
+      ],
+      "retrieval_skills": [
+        "scope"
+      ],
+      "facets": [
+        "bounded_ascent_refinement"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-21",
@@ -1518,7 +2962,19 @@
       "lesson": "The source requires 'take another left into large dining hall'; the actual candidate instead contains 'Walk towards the large dining hall.'. Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
       "reusable_rule": "Restore the additional left turn and entry into the large dining hall. Preserve the lobby entry and stairway approach.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry"
+      ],
+      "facets": [
+        "room_entry"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-22",
@@ -1536,7 +2992,20 @@
       "lesson": "The source requires 'when you get to the side of the stairs you have arrived'; the actual candidate instead contains 'Walk towards the stairs.'. Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP.",
       "reusable_rule": "Restore arrival at the side of the stairs after the final right; preserve prior window, picture-table and wall relations without adding STOP.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "endpoint"
+      ],
+      "facets": [
+        "explicit_arrival"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-23",
@@ -1554,7 +3023,19 @@
       "lesson": "The source requires 'left set of windows'; the actual candidate instead contains 'right set of windows'. Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed.",
       "reusable_rule": "Restore the left window set at the existing stop, retaining bedroom entry, bed approach and going around the bed.",
       "counter_boundary": "When the quoted source relation and its scope are preserved, accept the candidate rather than transferring this verdict.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2"
+      ],
+      "retrieval_skills": [
+        "frame"
+      ],
+      "facets": [
+        "window_side"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-24",
@@ -1574,7 +3055,24 @@
       "lesson": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
       "reusable_rule": "Restore the complete hallway-entry phrase with its slight-right and chair description before the right turn and third-door count. Keep its original modifier attachment; preserve the locker-side wait.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attachment",
+        "entry",
+        "ordinal"
+      ],
+      "facets": [
+        "hall_entry",
+        "modifier_attachment",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-25",
@@ -1593,7 +3091,22 @@
       "lesson": "Assess the preparatory turn with the ascent it enables in this source; a turn with its own stated observation or placement can be independent.",
       "reusable_rule": "Merge 'Turn left' with 'Continue up the stairs and stop' into one executable stage, preserving the pass-by of the white coach as the preceding reference and retaining the explicit final stop.",
       "counter_boundary": "Do not invent STOP, arrival, entry, or an endpoint to make a cut appear closed.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B1"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "endpoint",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-DIAG-26",
@@ -1613,7 +3126,24 @@
       "lesson": "A stair-directed approach does not execute the source hallway entry, yet the next stage assumes hallway occupancy.",
       "reusable_rule": "Restore entry into the hallway to the slight right at the beginning of stage 2, before the right turn and third-door count; keep chair pass-by as stage 1's endpoint.",
       "counter_boundary": "A preceding actual hallway entry permits inherited pose without a From clause.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attachment",
+        "entry",
+        "ordinal"
+      ],
+      "facets": [
+        "hall_entry",
+        "modifier_attachment",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "detect",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-001",
@@ -1624,7 +3154,7 @@
       "pair_relation": "same_source",
       "source_sha256": "ae7c7a63404afcff7a9912d41fd67e8f6773b4e8056477c9cd58f5d10199a9ff",
       "source_family": "R2R|val_seen|standard|record_id=1|episode_id=1|trajectory_id=37",
-      "content_sha256": "489c4f4083f128014636da8e2c6c1e5bfb27cbe509c1487bc5409e37bcb10024",
+      "content_sha256": "7e32be92399ebfa2b9229248c2a89a7d47f2bc7d189181a9121bbe66efc7043c",
       "skills": [
         "stair_target",
         "terminal"
@@ -1632,7 +3162,23 @@
       "lesson": "Complete the descent and right turn before the rug-side bench/piano placement; inherit that heading for the remaining approach.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A midway limit would constrain the descent itself rather than a new full descent.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-002",
@@ -1643,7 +3189,7 @@
       "pair_relation": "same_source",
       "source_sha256": "f48fa087dabaafe91a940258a355c37937c52fa6606d9d767f34c9367e7a6887",
       "source_family": "R2R|val_seen|standard|record_id=2|episode_id=2|trajectory_id=37",
-      "content_sha256": "2987e485bf1b3a2a75a4e10d27856c0666c94469be256e1737d96135bbd6bad8",
+      "content_sha256": "6f109f376959e4ee10d445e38b36952b42b68e833b6d1a3c9fb0ae1e5f89e825",
       "skills": [
         "stair_target",
         "terminal",
@@ -1652,7 +3198,25 @@
       "lesson": "The forward approach begins after the descent/right turn; the bench trigger closes at the wood between the bench and carpet.",
       "reusable_rule": "Inherit a completed stair/turn pose when unique, then keep the later trigger and exact terminal placement attached to the remaining approach.",
       "counter_boundary": "Keep a source-requested approach without inventing arrival if no later placement refines it.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "scope",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-003",
@@ -1663,7 +3227,7 @@
       "pair_relation": "same_source",
       "source_sha256": "92fd326812cb2b661801a7524a0a354c3e39f3d632ab398195823d51dd6ad0ba",
       "source_family": "R2R|val_seen|standard|record_id=3|episode_id=3|trajectory_id=37",
-      "content_sha256": "ae5c277deaccf5e208a048cbb75018a105e048b7cc99f66118f09476f275fe65",
+      "content_sha256": "afc63a8c9abddb62d0534bb41dbeef05b73f1242079b1de532e1b464785d4a91",
       "skills": [
         "stair_target",
         "pass_by",
@@ -1672,7 +3236,25 @@
       "lesson": "Keep the display-case pass on the route to the right-hand bench; inherit the completed descent and right turn.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Passing a case alone does not establish entry into a different room.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "pass_by",
+        "stair_target",
+        "terminal"
+      ],
+      "facets": [
+        "stair_turn",
+        "pass_then_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|s8pcmisQ38h|37",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-004",
@@ -1683,7 +3265,7 @@
       "pair_relation": "same_source",
       "source_sha256": "97206b43b3ba51eadc57fdf648e1bb77699c8bbdac95aa66feafc96e0a307087",
       "source_family": "R2R|val_seen|standard|record_id=4|episode_id=4|trajectory_id=93",
-      "content_sha256": "f085f772fc91482c21897020899b663cac9b49c63c8e84f9f10a3c502e3608d7",
+      "content_sha256": "9dec34580c3aa9449863e5d871b50a84dbef3b030885c82e27a26d3c0e11be8b",
       "skills": [
         "observation",
         "target_identity",
@@ -1692,7 +3274,23 @@
       "lesson": "The chandelier/table is the expected facing cue after the turn; the far-wall open door is selected and crossed before the hallway route.",
       "reusable_rule": "Use expected facing as an orientation cue, identify and cross the requested door, and keep observation separate from a visit goal.",
       "counter_boundary": "A source that explicitly asks to stop facing the chandelier would define a different endpoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "observation",
+        "target_identity"
+      ],
+      "facets": [
+        "expected_view",
+        "door_identity"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-005",
@@ -1703,7 +3301,7 @@
       "pair_relation": "same_source",
       "source_sha256": "7c33ce723ade71e8716f9da831eae928234ec393e61fe11de926974a77c8f3dd",
       "source_family": "R2R|val_seen|standard|record_id=5|episode_id=5|trajectory_id=93",
-      "content_sha256": "332452cd296b2a7fbe14b92fd12dff35eae01be92470eff59cbfca87e3446563",
+      "content_sha256": "eddc76a8811ce2a0fadff21565a7ab63ea6d16c2b34c4cdde16a0540f7929c64",
       "skills": [
         "entry",
         "target_identity",
@@ -1712,7 +3310,24 @@
       "lesson": "Use the table-side and arched-window cues to cross the selected door; traverse the hall into its end room before approaching the circular tables.",
       "reusable_rule": "Bind target-identifying relations before selection; distinct completed transitions may expose useful goals, while a faithful coarse alternative needs its own C10 assessment.",
       "counter_boundary": "A faithful single stage can preserve these ordered objectives; tables are approached, not certified reached.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "final_approach",
+        "target_identity"
+      ],
+      "facets": [
+        "door_identity",
+        "hall_end_entry",
+        "final_approach"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-006",
@@ -1723,7 +3338,7 @@
       "pair_relation": "same_source",
       "source_sha256": "139462c06e474852836b26c6b43a4242b036c2e1a3b36de4cd10b52a40a0f796",
       "source_family": "R2R|val_seen|standard|record_id=6|episode_id=6|trajectory_id=93",
-      "content_sha256": "797317bb857389b7a959c20b6578ce6350f79278578444d7c6937e57e50e08cb",
+      "content_sha256": "1626bd372ff798c6b669ebc5cb105404bd03eafbc64a6456d888f9239abb3721",
       "skills": [
         "transit",
         "endpoint",
@@ -1732,7 +3347,24 @@
       "lesson": "Use the unique arched doorway and straight small-hall transit to reach the next room; the blue mat specifies the final stop.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Entering the next room does not alone satisfy the later blue-mat placement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "arrival_trigger"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|93",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-007",
@@ -1743,7 +3375,7 @@
       "pair_relation": "same_source",
       "source_sha256": "e32a8b1cf276e49d7301ddbafe1fa24aea74279200cf03905b006db70815be8e",
       "source_family": "R2R|val_seen|standard|record_id=7|episode_id=7|trajectory_id=111",
-      "content_sha256": "0ebe12d8c5ce97f438a74e319ff56280db8f84e2b308cee7a1e30c4bbe0dab31",
+      "content_sha256": "84bcd094985de3ccdffcf1b70112b7236671bc51dfbecb0013dc3c98858564a4",
       "skills": [
         "entry",
         "direction"
@@ -1751,7 +3383,22 @@
       "lesson": "The lobby entry establishes the next frame; left toward the stairway is followed by another left into the dining hall.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Approaching the dining hall preserves its noun but loses the required turn and entry.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "ordered_turns",
+        "room_entry"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-008",
@@ -1762,7 +3409,7 @@
       "pair_relation": "same_source",
       "source_sha256": "921f4f57f580090753a82ec276412cf4bfec8ccae1c226146d32f911af41eb06",
       "source_family": "R2R|val_seen|standard|record_id=8|episode_id=8|trajectory_id=111",
-      "content_sha256": "d4aa446ce0d155c710b3daba14fd875d7973ab771a46c5c2b0a5987db8cdff76",
+      "content_sha256": "d36116bef7c4f20024c774503e6d25176ddb611fd0db66263598d4831f599a06",
       "skills": [
         "coupled",
         "pass_by",
@@ -1771,7 +3418,25 @@
       "lesson": "The complete fountain pass and left turn establish the next doorway-directed leg. The same source also permits a coherent unsplit maneuver; the example adds no intermediate STOP.",
       "reusable_rule": "Evaluate the complete pass-and-turn before a doorway placement; a faithful single maneuver can also be valid, and no intermediate physical stop is introduced.",
       "counter_boundary": "A separate visit with a stated completion before the turn could justify another stage.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "pass_then_turn",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-009",
@@ -1782,7 +3447,7 @@
       "pair_relation": "same_source",
       "source_sha256": "ec132b0e86c16ffe2c846ed932b94e3d21a5ebd09c6679ee5290f861db7c0999",
       "source_family": "R2R|val_seen|standard|record_id=9|episode_id=9|trajectory_id=111",
-      "content_sha256": "98bbf16153747bd8c634a197f67760c4a2298226f4b71b6170ce597c479b339a",
+      "content_sha256": "4fd98408fdccbc79d37f13158f41c26e8c0634a5a1e06b1fd1e78448b4ba1ace",
       "skills": [
         "transit",
         "entry",
@@ -1791,7 +3456,25 @@
       "lesson": "The big room is transit to the banquet hall; retain both left movements and the final position near the hall door.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A room name alone is not a mandatory stage boundary.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "room_entry",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|r1Q1Z4BcV1o|111",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-010",
@@ -1802,7 +3485,7 @@
       "pair_relation": "same_source",
       "source_sha256": "1a55da2e196d72e196bf36a79f2890a16e1ee66d248dcb8a97a33daf2e6e6a05",
       "source_family": "R2R|val_seen|standard|record_id=10|episode_id=10|trajectory_id=139",
-      "content_sha256": "4fd89e54556a060ccd2f7da83974039b5b37373044bee01f78bf4b9ce249fe1e",
+      "content_sha256": "4063a58ae72afd213ce54eea3cc6338a07ddfb0fa291d88c189f3783c1dea41d",
       "skills": [
         "attribute",
         "entry",
@@ -1811,7 +3494,23 @@
       "lesson": "The open door identifies the exit, not an opening command; the hallway connects to the bedroom selected by its blue floral blanket.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A source command to open a closed door would be an additional action worth preserving.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "entry",
+        "target_identity"
+      ],
+      "facets": [
+        "open_door_attribute",
+        "room_entry"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-011",
@@ -1822,7 +3521,7 @@
       "pair_relation": "same_source",
       "source_sha256": "065a4bfcd49ea52d5fd91ac36f84fa1f91e1fc0778683a1b0eaff52b0fd259d7",
       "source_family": "R2R|val_seen|standard|record_id=11|episode_id=11|trajectory_id=139",
-      "content_sha256": "162aed5d9084c31c949d8f0e7f4cb7aab8814d2162855ead3754edc1c7eeef45",
+      "content_sha256": "2ced5e700c12ff812dd8bb9210545063bc24842ac40006cc688f78d2ba3966c8",
       "skills": [
         "hall_end",
         "direction",
@@ -1831,7 +3530,26 @@
       "lesson": "The source explicitly ends the straight hallway traversal before the left turn; enter the bedroom and wait in its doorway.",
       "reusable_rule": "Use an explicitly stated corridor-end turn to bound that traversal; preserve the subsequent turn, entry and terminal doorway placement.",
       "counter_boundary": "A generic instruction to go down a hallway does not establish its far end.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "hall_end",
+        "terminal"
+      ],
+      "facets": [
+        "hall_end_entry",
+        "ordered_turns",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-012",
@@ -1842,7 +3560,7 @@
       "pair_relation": "same_source",
       "source_sha256": "3925695a9ad99f64fbddba9aba9870d0e4c7ec23a7385f0a4092e409009f6e99",
       "source_family": "R2R|val_seen|standard|record_id=12|episode_id=12|trajectory_id=139",
-      "content_sha256": "91ea09ed7a7fd893239e231a23b9a3fe8ff25a02d543018f20e76805f38ce7e8",
+      "content_sha256": "8a1ea7139f50044c179e7abb3b956b69290f27ac96d625d34234b9b265337f79",
       "skills": [
         "entry",
         "direction"
@@ -1850,7 +3568,22 @@
       "lesson": "The television-front movement and left exit precede the hall traversal and left-bedroom entry.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A predicted view of a doorway would not establish that exit.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry"
+      ],
+      "facets": [
+        "ordered_turns",
+        "room_entry"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|759xd9YjKW5|139",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-013",
@@ -1861,7 +3594,7 @@
       "pair_relation": "same_source",
       "source_sha256": "09224da0c0e5fb904f6fe9a3da2e1b6237d8d98ad02ed5f300e05c07005bdd83",
       "source_family": "R2R|val_seen|standard|record_id=13|episode_id=13|trajectory_id=149",
-      "content_sha256": "c96486ba4fbe56d5cbe617910fcbcb23fe325d1cdef40ed855fa9a818681e69f",
+      "content_sha256": "4799a37d121eb8704d66883ef421dbf3f6787d39c64b7f7a8bfafea202ca0a81",
       "skills": [
         "attribute",
         "transit",
@@ -1870,7 +3603,24 @@
       "lesson": "Open doors describe the passage state. Continue through the bedroom and its far-side door before the hallway/corner route to the home entrance.",
       "reusable_rule": "Preserve an open-door adjective as object state while executing the source crossing; add door operation only when the source commands it.",
       "counter_boundary": "An open-door adjective does not request operating the door.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attribute",
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "open_door_attribute",
+        "hall_transit"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-014",
@@ -1881,7 +3631,7 @@
       "pair_relation": "same_source",
       "source_sha256": "f08da453dec020f7243dc4e73ed74de4afa08cdfb622f0a2c6ecd10af5cbe364",
       "source_family": "R2R|val_seen|standard|record_id=14|episode_id=14|trajectory_id=149",
-      "content_sha256": "a0fc5a97cb3d117846092942d7a21ecbd808476327643c162f0af7571481a65b",
+      "content_sha256": "8411cb3518fae4ea26e356848582f5b94ea28a652a9615486cd3739a5f3ebf30",
       "skills": [
         "coupled",
         "transit",
@@ -1890,7 +3640,23 @@
       "lesson": "The completed bedroom traversal is followed by a right turn and glass-door stop before the outside exit. A faithful combined maneuver is also possible; preserve the before-exit limit in either grouping.",
       "reusable_rule": "Retain the bedroom traversal before the right turn and glass-door stop; the source before relation keeps the outside exit unperformed.",
       "counter_boundary": "A distinct visit completed inside the bedroom would change the grouping test.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "transit_before_exit_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-015",
@@ -1901,7 +3667,7 @@
       "pair_relation": "same_source",
       "source_sha256": "bf4014682ac494a872496b43efb854efbf9ab8f4c9cb66b0e05aa3d5ecadf7da",
       "source_family": "R2R|val_seen|standard|record_id=15|episode_id=15|trajectory_id=149",
-      "content_sha256": "aab5d9888428fcb26ddd225244d7da353b57c76fe0739d6c9875b7315e5c2097",
+      "content_sha256": "a8ecdf5fce9adfc7109c3fe6bac3d3ffec6c0907426cd81434a044257c3077b2",
       "skills": [
         "ordinal",
         "entry",
@@ -1910,7 +3676,23 @@
       "lesson": "Exit the bathroom, cross and exit the bedroom, then count the first right-hand door from that established region; keep the final right turn and stop.",
       "reusable_rule": "Retain the completed exit establishing an ordinal selection region; keep the count class, right-side frame and later second turn distinct.",
       "counter_boundary": "Removing the bedroom-exit context can change the origin of first door even when the ordinal word survives.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "ordinal"
+      ],
+      "facets": [
+        "door_count_origin",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|sT4fr6TAbpF|149",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-016",
@@ -1921,7 +3703,7 @@
       "pair_relation": "same_source",
       "source_sha256": "6f7c42231838b3c6975b806cec58f2c2fe22e1f6945cb29cbd2d65572f997834",
       "source_family": "R2R|val_seen|standard|record_id=16|episode_id=16|trajectory_id=180",
-      "content_sha256": "5e575487872a5854c3ffbb3fb3f12037e308e97aecb89703373515f6a29f1b87",
+      "content_sha256": "a687f70d6d7541fd71b053c3ae203b8b06036908910ed75416116ca1f157422b",
       "skills": [
         "entry",
         "terminal",
@@ -1930,7 +3712,24 @@
       "lesson": "The star-tile crossing establishes bedroom entry; the bed approach and route around it end at the left set of windows.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A right-window ending is a target error, not a failure of the already completed bedroom handoff.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "room_entry",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-017",
@@ -1941,7 +3740,7 @@
       "pair_relation": "same_source",
       "source_sha256": "113be0fedd42aa177dc9a71acef3834dd5313160bb593df82f383fa5b9feb1f8",
       "source_family": "R2R|val_seen|standard|record_id=17|episode_id=17|trajectory_id=180",
-      "content_sha256": "4958d1d5e3f041189b036625284581f8b3dcb74c1f6b89c9b5051b2b03a002f3",
+      "content_sha256": "ca65db3ca9fa80a7914052a7d19f253047290c5f2ad09e132896f8713f684ee3",
       "skills": [
         "pass_by",
         "entry",
@@ -1950,7 +3749,23 @@
       "lesson": "Retain the ordered sink, hand-statue and bird-statue route before bedroom entry identified by the wooden cabinet.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "An observed landmark is not automatically a separate visit or stop.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "pass_by",
+        "target_identity"
+      ],
+      "facets": [
+        "ordered_landmarks",
+        "door_identity"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-018",
@@ -1961,7 +3776,7 @@
       "pair_relation": "same_source",
       "source_sha256": "d48e9f03b0e14426048b38b6be5511dace46a30fa2c124f54928727be6b816d0",
       "source_family": "R2R|val_seen|standard|record_id=18|episode_id=18|trajectory_id=180",
-      "content_sha256": "09d74f82525d35d2b84e7a9b3f791c989b9ef0c2f968af3ba5ba540ae24b3f5b",
+      "content_sha256": "68f473678afa413a6942eca2f41249fcd344f6d098f5554e55864422ed90b40c",
       "skills": [
         "transit",
         "endpoint",
@@ -1970,7 +3785,24 @@
       "lesson": "Follow the transit route until the bedroom, keeping the waiting position at its door. Until limits the hallway movement.",
       "reusable_rule": "Keep the until condition on its hallway movement and the bedroom-door placement on the same endpoint; assess separate placement by its real objective.",
       "counter_boundary": "A separate final placement can be legitimate when its location and inherited entry remain explicit.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_until_bedroom",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|JeFG25nYj2p|180",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-019",
@@ -1981,7 +3813,7 @@
       "pair_relation": "same_source",
       "source_sha256": "b9e27f7b2c4bec398425e30f89c9e948f0a170c353296049685cc76d688117fd",
       "source_family": "R2R|val_seen|standard|record_id=19|episode_id=19|trajectory_id=185",
-      "content_sha256": "77e8060bc0276567325301cdfadeeac9d13c16c1240c08f66237399423cb8d6e",
+      "content_sha256": "cf91f053eb78c2765820a03e62d1c99952f4c1cac5c6f1b44bd7c0f38b7740f7",
       "skills": [
         "coupled",
         "direction",
@@ -1990,7 +3822,24 @@
       "lesson": "The coach pass prepares the left turn and stair ascent; keep this coupled local process and its final stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An independently requested turn-and-observe or turn-and-wait task could be a separate objective.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "preparatory_turn_ascent"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-020",
@@ -2001,7 +3850,7 @@
       "pair_relation": "same_source",
       "source_sha256": "31a8d89ff0507f51c41cee793af421eb07f09eb4ae4c22814600d7184c32c013",
       "source_family": "R2R|val_seen|standard|record_id=20|episode_id=20|trajectory_id=185",
-      "content_sha256": "f8ea1e7a8e6e6764e8ce6674cfe215bb6a76abc8c8f9bea478290199503e7e5b",
+      "content_sha256": "7629f3cda24589f06c8e0abfd13b215c1231a60dd465cb1293bec3086737755e",
       "skills": [
         "scope",
         "stair_target",
@@ -2010,7 +3859,24 @@
       "lesson": "Keep passing and taking-left attached to the living-room maneuver; climb into the entryway and preserve the third tile from the left at the top step.",
       "reusable_rule": "Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement.",
       "counter_boundary": "A participial turn is not automatically an action that begins only after an invented waypoint.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1"
+      ],
+      "retrieval_skills": [
+        "ordinal",
+        "scope",
+        "stair_target"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "ordinal_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-021",
@@ -2021,7 +3887,7 @@
       "pair_relation": "same_source",
       "source_sha256": "534becf371dcb72d9ed3ca19ec5e413f19a3d10d986ec7c770a577c05790f433",
       "source_family": "R2R|val_seen|standard|record_id=21|episode_id=21|trajectory_id=185",
-      "content_sha256": "f4be5b650c071cee96f4d3c07b036a2829aafe2472a5eccf47a68880a295376a",
+      "content_sha256": "8a01d248ae9a5e2c7aed9507c08929b0d296c2e26b910f571910a87305083f59",
       "skills": [
         "bounded",
         "endpoint",
@@ -2030,7 +3896,22 @@
       "lesson": "The three steps and their top-wait describe one bounded ascent; the later condition closes that ascent.",
       "reusable_rule": "Bind a top-wait and step count to one ascent; a completion refinement does not create a second ascent.",
       "counter_boundary": "Completing the entire staircase before climbing three more steps repeats movement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "bounded",
+        "endpoint",
+        "terminal"
+      ],
+      "facets": [
+        "bounded_ascent_refinement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|kEZ7cmS4wCh|185",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-022",
@@ -2041,7 +3922,7 @@
       "pair_relation": "same_source",
       "source_sha256": "d88cfa83bec46f06691ca76838e46a560d84d39859132175eb165a617e0f81a3",
       "source_family": "R2R|val_seen|standard|record_id=22|episode_id=22|trajectory_id=193",
-      "content_sha256": "2320acc92cea323c00726b5473b76887294fd1eced0cc82f07b5cb499644e4b0",
+      "content_sha256": "8195c929c6796770639512cd5e2511dcfbfe3688fa544d46ab319e5b74b18ab9",
       "skills": [
         "entry",
         "direction",
@@ -2050,7 +3931,23 @@
       "lesson": "Execute both door exits in order before the right turn, table-directed movement and stair target.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "A later context anchor cannot stand in for an unperformed doorway crossing.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "direction",
+        "entry",
+        "final_approach"
+      ],
+      "facets": [
+        "ordered_crossings",
+        "final_approach"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-023",
@@ -2061,7 +3958,7 @@
       "pair_relation": "same_source",
       "source_sha256": "84b89f2d0d8a4783ec3b7df375510485ca345b82663c82639c2d293cee29b555",
       "source_family": "R2R|val_seen|standard|record_id=23|episode_id=23|trajectory_id=193",
-      "content_sha256": "4108163445b481a56c63604c22883c6aed1007f32e7ee7ce633e887ebbcef859",
+      "content_sha256": "9ceacd23e24e8257642e55237108fb156a7d1a02d1b9df57342cd431c75648ec",
       "skills": [
         "observation",
         "entry",
@@ -2070,7 +3967,24 @@
       "lesson": "The indoor glass window is an expected cue after the vanity turn; cross the doorway before the hallway route and explicit side-of-stairs arrival.",
       "reusable_rule": "Preserve expected observation without promoting it to an extra visit; crossing and final specified arrival require their own source events.",
       "counter_boundary": "Walking toward stairs alone weakens the source-defined final arrival condition.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "endpoint",
+        "entry",
+        "observation"
+      ],
+      "facets": [
+        "expected_view",
+        "explicit_arrival"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-024",
@@ -2081,7 +3995,7 @@
       "pair_relation": "same_source",
       "source_sha256": "21d326541991a811ad5d62ae4769bf109b95ef4e66e0fc693456fb6e84e40351",
       "source_family": "R2R|val_seen|standard|record_id=24|episode_id=24|trajectory_id=193",
-      "content_sha256": "664052738e029964c28656d0f8c74928800e3fc827dbd90759b35933e294d97d",
+      "content_sha256": "aa94bbac41f169efefaab15f2522fc9fcf34af7e92c17e006f806abc15d80b68",
       "skills": [
         "coupled",
         "direction",
@@ -2090,7 +4004,25 @@
       "lesson": "Preserve the ordered right-left-right chain after the bathroom exit and wait at the top of the stairs.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Turn count or sentence count alone does not establish independent local targets.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "direction",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_turns",
+        "stair_wait"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|PX4nDJXEHrG|193",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-025",
@@ -2101,7 +4033,7 @@
       "pair_relation": "same_source",
       "source_sha256": "b162b139cf1791c874b85e6992af5ad56c4f223b7393970d15824f824fe0691d",
       "source_family": "R2R|val_seen|standard|record_id=25|episode_id=25|trajectory_id=251",
-      "content_sha256": "0892612f29ce628824f965f99366f991f1df927ef6c213be65897b4fa4470bc9",
+      "content_sha256": "f0d03989256e440169c85ecb2cab7439d1cd7bbd012175fbf044ec63363f986b",
       "skills": [
         "entry",
         "terminal",
@@ -2110,7 +4042,24 @@
       "lesson": "Enter the living room before placing the agent just behind the couch; the plant table remains an approach reference.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Living-room entry alone does not satisfy the just-behind-couch wait.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "room_entry",
+        "behind_target"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-026",
@@ -2121,7 +4070,7 @@
       "pair_relation": "same_source",
       "source_sha256": "78b9119a9a8cc212b632307081de40b9f6a281a168ff6429e7d7b3b87c2ab89d",
       "source_family": "R2R|val_seen|standard|record_id=26|episode_id=26|trajectory_id=251",
-      "content_sha256": "866f624de4cba8ef74b15b3f7aea8feffff772b0f5e11e58c20c213478dd9853",
+      "content_sha256": "fa452b53657535bc8a943cb1cd630d5a3686c45c2048da47d8ff0afd93f31fd1",
       "skills": [
         "transit",
         "entry"
@@ -2129,7 +4078,22 @@
       "lesson": "Continue alongside the stairs through the hall, then turn the corner into the couch-filled living area.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "The stairs are a route-side landmark, not an instruction to climb them.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "room_entry"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-027",
@@ -2140,7 +4104,7 @@
       "pair_relation": "same_source",
       "source_sha256": "3bfd05f54c7f12de83bd55ba2d49fa68d86c394c376c0341b0d27e2d0053be39",
       "source_family": "R2R|val_seen|standard|record_id=27|episode_id=27|trajectory_id=251",
-      "content_sha256": "43fb64ab1f421097ab6056981b144f790af4d76866bc6281ce08e439008c058d",
+      "content_sha256": "ca0e06034f15e0b9aba7da4703762090321a006ef46e7fc2238309a7dca170fb",
       "skills": [
         "entry",
         "frame",
@@ -2149,7 +4113,24 @@
       "lesson": "Retain the explicit open-area and living-room frames for successive right turns and the final couch-corner stop.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "Repeated right turns have different region owners; merging text cannot erase those owners.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "frame",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_turns",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|7y3sRwLe3Va|251",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-028",
@@ -2160,7 +4141,7 @@
       "pair_relation": "same_source",
       "source_sha256": "dbdcae2e693c56ac4d98c9e68fdf1952703f8420f0a337d31125322d42c00575",
       "source_family": "R2R|val_seen|standard|record_id=28|episode_id=28|trajectory_id=339",
-      "content_sha256": "515fa67033954c6896c7bdb643c1005c1347edb688602a6a22c8bceec0edd8b6",
+      "content_sha256": "6bdb24bf0f3eaaf80713ea1a29d7ef6a669a3cd3d7d0e55b97566ada0a048ea5",
       "skills": [
         "coupled",
         "target_identity",
@@ -2169,7 +4150,23 @@
       "lesson": "Pass the bottom of the stairs before selecting the center door on the right; preserve the compact whole maneuver.",
       "reusable_rule": "Keep the center/right relation on door selection and the source-directed destination as an event without inventing physical STOP.",
       "counter_boundary": "A center-door descriptor is not interchangeable with an ordinal door count.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "final_approach",
+        "target_identity"
+      ],
+      "facets": [
+        "center_door_selection"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-029",
@@ -2180,7 +4177,7 @@
       "pair_relation": "same_source",
       "source_sha256": "043c15909452dba0ad62add59cb7dd6ddfb7a111bfdf0f152557eecf3d820b25",
       "source_family": "R2R|val_seen|standard|record_id=29|episode_id=29|trajectory_id=339",
-      "content_sha256": "79078beb5b4dd5c1ca5f1aac84490a9dee9b135eaef0b555d2270a5280176690",
+      "content_sha256": "972e598aa95d0cf16c099f50b7d0844e1111d93353bc9d964b88a50ae2eb5dcd",
       "skills": [
         "coupled",
         "pass_by",
@@ -2189,7 +4186,25 @@
       "lesson": "Keep the entranceway approach, leftward pass of the stairs and stop near the doorway front together.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Stopping inside the hall would strengthen the source stop near the doorway front.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "pass_then_placement",
+        "doorway_stop"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-030",
@@ -2200,7 +4215,7 @@
       "pair_relation": "same_source",
       "source_sha256": "0932885420aa5665d0ed399525da7ac3cad94d5317ec755b355df8968cdd5079",
       "source_family": "R2R|val_seen|standard|record_id=30|episode_id=30|trajectory_id=339",
-      "content_sha256": "5f38251a3a381505cde37199d2f3dbc63d4c476ebf037f7b1e2f635438920245",
+      "content_sha256": "474362bf9e39eb3bf74c5e22495fe0822f3f928b5035569bcb1857675fa06695",
       "skills": [
         "entity_frame",
         "ordinal",
@@ -2209,7 +4224,25 @@
       "lesson": "The first room is left of the staircase; reaching the staircase bottom does not redefine that relation as the agent current left.",
       "reusable_rule": "Keep object-relative left/right tied to its reference object; arrival near that object does not convert it to agent heading.",
       "counter_boundary": "A source explicitly using on your left would supply an egocentric reference instead.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entity_frame",
+        "ordinal",
+        "terminal"
+      ],
+      "facets": [
+        "object_relative_room",
+        "ordinal_room",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|E9uDoFAP3SH|339",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-031",
@@ -2228,7 +4261,21 @@
       "lesson": "Read the back-of-church route and handrail/wall relations before assessing pack exit. Preserve a necessary unresolved exit identity rather than turning a likely spelling into certainty.",
       "reusable_rule": "Escalate only when the unresolved wording changes target selection or route execution; do not guess a likely typo.",
       "counter_boundary": "An explicit back exit in an otherwise identical source resolves that identity without a guess.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-C1"
+      ],
+      "retrieval_skills": [
+        "target_identity",
+        "uncertainty"
+      ],
+      "facets": [
+        "uncertain_name"
+      ],
+      "teaching_polarity": "source_limitation",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-032",
@@ -2239,7 +4286,7 @@
       "pair_relation": "same_source",
       "source_sha256": "c6f00355ebd771f8d688490d422130cd15c23c369b667d776fe99390117d0bae",
       "source_family": "R2R|val_seen|standard|record_id=32|episode_id=32|trajectory_id=355",
-      "content_sha256": "70d7ff61638aa15aa7b9f4dc88aa7a3c45eb392bc5c96cf29e65c071c7ec6fdd",
+      "content_sha256": "a733daf72662a419acd500eb3ce1823152684ac7518f237dced851ec4fcbbfb3",
       "skills": [
         "coupled",
         "final_approach"
@@ -2247,7 +4294,22 @@
       "lesson": "Keep the leftward hallway travel with continuation to the stairs; preserve the stated target without adding an unstated stop.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "An explicit source wait at the stairs would add a terminal event.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "coupled",
+        "final_approach"
+      ],
+      "facets": [
+        "hall_transit",
+        "stair_destination"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-033",
@@ -2258,7 +4320,7 @@
       "pair_relation": "same_source",
       "source_sha256": "fb4ac571dd4112164b0b17fb4f4b5e2521ecb801b9eb6e066ea6e4b8a87d39d6",
       "source_family": "R2R|val_seen|standard|record_id=33|episode_id=33|trajectory_id=355",
-      "content_sha256": "19bf4a7e93bfc7dfc79d0d3ea3e19456bd07d61bbfffb1ba1f364f055d0adad6",
+      "content_sha256": "c70bca62233f03f5787b4951103bc610289216405d87b20b9d8f1ed2275868d4",
       "skills": [
         "pass_by",
         "terminal"
@@ -2266,7 +4328,23 @@
       "lesson": "The fan and baptismal font are ordered pass-by landmarks; the in-ground pond is the waiting target.",
       "reusable_rule": "Keep the instruction as one stage when its turns, traversal and target selection form one coupled maneuver and no independent intermediate completion point is stated. Preserve all action order and conditions in the same stage.",
       "counter_boundary": "Reaching the font does not complete the later pond placement.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A1",
+        "R-P2-A3",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "pass_by",
+        "terminal"
+      ],
+      "facets": [
+        "ordered_landmarks",
+        "landmark_placement"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|dhjEzFoUFzH|355",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-034",
@@ -2277,7 +4355,7 @@
       "pair_relation": "same_source",
       "source_sha256": "cb9aead639400a939710d20d2f2800d8abef59d2cdf372c8f0624c33748ccab6",
       "source_family": "R2R|val_seen|standard|record_id=34|episode_id=34|trajectory_id=356",
-      "content_sha256": "f65774ad47d5fca0aa2a0c76124cfe4cf9c8ba55f9e1c7e9b7f50c78b8c55798",
+      "content_sha256": "30e1deb2bbb431aa958cf29d6593d1d1c0d073a64b9b598bd1cba17afe2d60ea",
       "skills": [
         "transit",
         "entry",
@@ -2286,7 +4364,24 @@
       "lesson": "Cross the sitting area and actually enter the hallway before turning right toward the locker room; wait inside that room.",
       "reusable_rule": "Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it.",
       "counter_boundary": "From the hallway is valid only after its entry has been expressed or uniquely established.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A3",
+        "R-P2-B1",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "entry",
+        "terminal",
+        "transit"
+      ],
+      "facets": [
+        "hall_transit",
+        "hall_entry"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     },
     {
       "template_id": "R2R-REV-035",
@@ -2297,7 +4392,7 @@
       "pair_relation": "same_source",
       "source_sha256": "e13cc3b49d21f1478b92c6af81d7c45ac3491346b926bac1880d08669699f455",
       "source_family": "R2R|val_seen|standard|record_id=35|episode_id=35|trajectory_id=356",
-      "content_sha256": "ede83dcda84e9c2d160c04cf2374d864c509a41a07538d95ce8a6a1c36472a4c",
+      "content_sha256": "f09032750a8481191c816cf89bf96139d110a1bb25339f53c415a5604872147d",
       "skills": [
         "attachment",
         "entry",
@@ -2306,7 +4401,24 @@
       "lesson": "Keep past the chair attached to the slight-right hallway-entry description. Complete that entry before the right turn, third left door and locker wait.",
       "reusable_rule": "Keep a modifier on its source action when a different attachment is not uniquely supported; complete actual entry before inheriting that region.",
       "counter_boundary": "A chair-pass waypoint is not uniquely authorized as a separate first-stage endpoint by this wording.",
-      "quality": "authored_and_contract_checked"
+      "quality": "authored_and_contract_checked",
+      "rule_ids": [
+        "R-P2-A2",
+        "R-P2-B2"
+      ],
+      "retrieval_skills": [
+        "attachment",
+        "entry",
+        "ordinal"
+      ],
+      "facets": [
+        "modifier_attachment",
+        "hall_entry",
+        "ordinal_door"
+      ],
+      "teaching_polarity": "accept",
+      "route_family": "R2R|val_seen|r47D5H71a5s|356",
+      "mapping_basis": "Authored lesson and case-local contrast, not query keyword occurrence"
     }
   ]
 }

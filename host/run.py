@@ -92,8 +92,8 @@ def prompt_components_metadata(role, phase, profile):
             root/"shared/dataset_rules/r2r_en.md",
             root/role/"dataset_rules/r2r_en.md",
         ])
-        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py",
-                      root/"shared/dataset_rules/r2r_teaching_index.json",
+        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py", root/"r2r/relations.py",
+                      root/"r2r/teaching_index.json",
                       root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])
     files = []
     for path in paths:
@@ -402,7 +402,8 @@ def run_record(src: Source, transport: Transport, *, pins: dict | None = None,
         }
         if src.profile == "r2r-en" and selection_mode == "adaptive":
             from r2r.selection import select_bundle
-            plan = select_bundle(src.raw, count=example_count)
+            from r2r.relations import route_family
+            plan = select_bundle(src.raw, count=example_count, source_family=route_family(src.provenance, src.split))
             selections = {role: plan[role] for role in ("generator", "reviewer")}
             retrieval_evidence = plan["evidence"]
         else:

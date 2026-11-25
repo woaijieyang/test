@@ -165,8 +165,12 @@
           "stop_scope": "none"
         },
         "conditions": {
-          "text": null,
-          "candidate_quotes": []
+          "text": "Preserve the table-relative doorway identity, arched-window cue, hall-end room and table position without asserting final arrival.",
+          "candidate_quotes": [
+            "on the other side of the table with the arched window above",
+            "the room at the end of the hallway",
+            "the circular tables in the middle of the large room"
+          ]
         },
         "source_requirement_ids": [
           "SRC-01",
@@ -191,8 +195,8 @@
     "semantic_pattern": "completed_region_transitions_followed_by_distinct_final_target",
     "decision_reason": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",
     "transfer_rule": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",
-    "anti_pattern": "Do not force splits at every clause or room reference. A single continuous maneuver with no independently supported intermediate completion remains one stage.",
-    "why_this_review_matters": "This is a grouping defect rather than a source-fidelity omission: the words remain, but the stage organization obscures distinct local navigation focus.",
+    "anti_pattern": "Do not infer a grouping defect merely from multiple room names, and do not excuse a genuinely obscured independent objective merely because all source words remain.",
+    "why_this_review_matters": "The ordered clauses retain local target identity and dependencies in a usable coarse stage. Another valid split is not evidence of a grouping defect; source coverage alone is also not sufficient to decide C10.",
     "reviewer_rule": "Independently inventory source events and inspect the candidate before consulting teaching cases. The verdict is local to this example, never a vote for the current task.",
     "teaching_verdict_is_not_prior": "This verdict is local to the teaching case. It is not a prior or vote for the current candidate; independently inspect current source and candidate evidence before deciding.",
     "review_principle": "The single stage retains the office traversal, identified doorway, hall-end room and final table approach in usable order. A faithful multi-stage alternative is also valid; a preferred count alone is not a defect.",

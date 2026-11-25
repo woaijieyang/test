@@ -57,7 +57,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "past the dining room table."
           ],
@@ -98,7 +98,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The third tile from the left at the top step. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The third tile from the left at the top step. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stopping on the third tile from the left at the top step."
           ],
@@ -123,7 +123,7 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "past the dining room table."
         },
         "next_entry": {

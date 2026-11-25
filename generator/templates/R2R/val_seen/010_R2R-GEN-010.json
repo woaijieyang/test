@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The hallway reached through the open bedroom door. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The hallway reached through the open bedroom door. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Walk out of the bedroom and into the hallway."
           ],
@@ -97,7 +97,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom identified by the blue floral blanket. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom identified by the blue floral blanket. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the bedroom with the blue floral blanket."
           ],

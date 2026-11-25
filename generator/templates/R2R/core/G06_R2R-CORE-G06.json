@@ -57,7 +57,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The lobby-like room entered after the initial movement. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The lobby-like room entered after the initial movement. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the large room that looks like a lobby."
           ],
@@ -100,7 +100,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-hall interior after the second left. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-hall interior after the second left. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "Take another left into the large dining hall."
           ],

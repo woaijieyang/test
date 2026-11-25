@@ -86,6 +86,12 @@ class EvidencePreservation(unittest.TestCase):
         for row in bank('generator').values():
             tid=row['template_id']
             number=int(row['provenance']['core_curated_from'][-3:]) if '-CORE-' in tid else int(tid[-3:])
+            if row['source']['split']=='authored_synthetic':
+                self.assertFalse(row['provenance']['is_official_dataset_record'])
+                from r2r_authoring.contrast import examples
+                expected=next(v for v in examples().values() if v['template_id']==tid)
+                self.assertEqual(row,expected)
+                continue
             if number in (20,23,30,35):continue
             path=next(i['path'] for i in teaching_index()[0].values() if i['template_id']==tid)
             old=json.loads(subprocess.check_output(['git','show',EVIDENCE+':'+path],cwd=ROOT))

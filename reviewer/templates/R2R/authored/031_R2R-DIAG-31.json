@@ -1,0 +1,224 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-31",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "authored_synthetic",
+    "role": "teaching",
+    "record_id": "return-bench-contrast",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null,
+    "trajectory_id": null,
+    "source_key": "R2R|authored_synthetic|return-bench-contrast"
+  },
+  "provenance": {
+    "source_type": "authored_synthetic",
+    "is_official_dataset_record": false,
+    "derivation": "Hand-authored semantic contrast, not copied from an evaluation episode.",
+    "navigation_ground_truth": false
+  },
+  "teaching_notes": {
+    "case_rationale": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "case_specific_focus": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "decision_reason": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "reusable_rule": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "transfer_rule": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "review_principle": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+    "primary_skills": [
+      "return",
+      "lost_action",
+      "terminal"
+    ],
+    "counter_example_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+    "why_this_case_matters": "The same final doorway does not justify deleting the trip to the bench and the return event."
+  },
+  "retrieval_tags": [
+    "return",
+    "lost_action",
+    "terminal"
+  ],
+  "pair_id": null,
+  "review_input": {
+    "original_instruction": "Walk away from the doorway to the bench. Return to the same doorway and wait.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Wait at the doorway."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "Walk away from the doorway to the bench.",
+        "requirement": "Visit the bench after leaving the doorway.",
+        "candidate_evidence": [],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Return to the same doorway",
+        "requirement": "Return after that departure, retaining doorway identity.",
+        "candidate_evidence": [],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-03",
+        "source_quote": "and wait.",
+        "requirement": "Wait at the returned-to doorway.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Wait at the doorway."
+          }
+        ],
+        "status": "covered"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "conclusion": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "code": "OMISSION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C01",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quote": "Walk away from the doorway to the bench. Return to the same doorway and wait.",
+        "candidate_evidence": [],
+        "evidence_level": "S1",
+        "problem": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "execution_consequence": "The same final doorway does not justify deleting the trip to the bench and the return event.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0
+          ],
+          "instruction": "Restore departure from the doorway to the bench and return to the same doorway before the retained wait.",
+          "protected_requirements": [
+            "Preserve the final doorway identity and wait; add no extra destination."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start at the source episode position; no observed completion is assumed.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The doorway as a waiting position; the required revisit has not been executed.",
+          "candidate_quotes": [
+            "the doorway"
+          ]
+        },
+        "process": {
+          "text": "Execute only the ordered or conditional process explicitly stated in this source.",
+          "candidate_quotes": [
+            "Wait at the doorway."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate waits but has omitted the excursion and return.",
+          "candidate_quotes": [
+            "Wait at the doorway."
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "The retained placement does not imply completion of the omitted travel.",
+          "candidate_quotes": [
+            "at the doorway"
+          ]
+        },
+        "source_quotes": [
+          "Walk away from the doorway to the bench.",
+          "Return to the same doorway",
+          "and wait."
+        ],
+        "carryover": [],
+        "status": "gap",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "prior_finding_reviews": []
+  }
+}

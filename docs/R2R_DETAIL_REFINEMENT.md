@@ -8,7 +8,7 @@ This refinement uses the existing development branch and the immutable evaluated
 - Named Generator/Reviewer responsibilities, workflows and scenario operations remain in each role's `dataset_rules/r2r_en.md`.
 - Runtime selection and projection remain in `r2r/selection.py` and `r2r/teaching.py`.
 - Offline source-local authoring remains in `r2r_authoring/`; `detail.py` is the active positive audit refinement used by `build.py`.
-- Runtime templates remain in the existing `generator/templates/R2R` and `reviewer/templates/R2R` locations. Indexes remain under shared dataset rules; validation and source-change receipts remain under `provenance/`.
+- Runtime templates remain in the existing `generator/templates/R2R` and `reviewer/templates/R2R` locations. The runtime index is owned by `r2r/teaching_index.json`; validation and source-change receipts remain under `provenance/`.
 - R2R-specific regression tests are in `r2r/test_refinement.py`, included by the repository regression runner. Common tests and RxR golden behavior are not loosened.
 
 No navigation Actor, Renderer, Adapter, common semantic contract, generic role prompt, Runtime Schema, RxR teaching source or RxR projection is changed. This is language organization, not online goal switching or a new STOP controller.
@@ -31,7 +31,7 @@ The center/right door selection retains its selection relation. A source-directe
 
 Positive Reviewer examples are synchronized with their actual same-source Generator candidates and coverage ownership. Existing source-local diagnostic repairs remain. A valid coarse office example retains an explicit C10 explanation; this does not remove the common ability to diagnose evidenced under-segmentation. The provenance no longer describes that accepted contrast as a deliberately corrupted route.
 
-No inspected evaluation outcome, partition label, score or trajectory is used as template content or a runtime retrieval feature. The 119 author assets remain curated teaching annotations, not official subinstruction ground truth or independently human-certified semantics.
+No inspected evaluation outcome, partition label, score or trajectory is used as template content or a runtime retrieval feature. The 119 original assets and six explicitly synthetic contrasts remain curated teaching annotations, not official subinstruction ground truth or independently human-certified semantics.
 
 ## Complete demonstrations and focused remaining cards
 
@@ -57,7 +57,7 @@ Use a full-history checkout when authoring, because immutable Git source evidenc
 2. Materialize source-local teaching: `python -B -m r2r_authoring.build --write`, then `--check`.
 3. Verify inherited explicit test expectations and compile via `python -B -m host.compile`.
 4. Compare protected assets and all frozen parent RxR four-phase requests with `python -B -m r2r_authoring.verify --isolation`.
-5. Refresh derived fingerprints and run `python -B verify_package.py`.
+5. Refresh derived fingerprints and run `python -B tools/verify_package.py`.
 6. Run `python -B -m r2r_authoring.regression`; this includes inherited tests, actual four-phase Host replays and the new detail/preservation tests.
 7. Run smoke and deterministic rebuild, refresh final records, and validate a clean candidate worktree before non-forced publication.
 
@@ -70,3 +70,5 @@ The inherited deployment test needs a companion manage_release.py outside this r
 The regression suite checks complete Core demonstrations, at least two complete Dynamic examples in all phases, the full diagnostic, projection receipt equality, copy isolation, preserved explicit anchors/local source evidence, source-backed field corrections, stable pairing, true selection trace, rule parent links and complete Host release/fallback behavior. It checks unchanged RxR inputs and assets separately from changed shared-code provenance hashes.
 
 It does not run a live Generator/Reviewer provider, visual navigation or counterfactual trajectory replay. No claim of improved SR/SPL/nDTW or elimination of all regressions follows from CI. Next evaluate semantic error/false finding/repair rates and paired navigation recovery/regression with frozen tasks, model, imagery, history, STOP policy and budget. Keep both prior successful cases and newly recovered cases in the regression roster.
+
+See [current refinement and evidence limits](R2R_REFINEMENT_REPORT.md) for the targeted follow-up, independent Reviewer authoring, source-family exclusion and selection audit.

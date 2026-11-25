@@ -5,10 +5,10 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "FILE_HASHES.json"
 REQUIRED = [
-    "README.md", "WORKFLOW.md", "IMPLEMENTATION.md", "CODEX_START_HERE.md",
+    "README.md", "docs/WORKFLOW.md", "docs/IMPLEMENTATION.md", "docs/CODEX_START_HERE.md",
     "generator/prompt.md", "generator/repair.md", "generator/output.schema.json",
     "reviewer/prompt.md", "reviewer/checklist.md", "reviewer/output.schema.json",
     "adapter/source.py", "adapter/profiles.json", "renderer/freeze.py",
@@ -39,7 +39,7 @@ REQUIRED = [
     ".github/workflows/validate.yml",
     "provenance/r2r_core_provenance.json", "provenance/rxr_profile_integrity.json",
     "provenance/r2r_profile_integrity.json",
-    "validation.json",
+    "provenance/package_validation.json",
 ]
 
 def main() -> int:

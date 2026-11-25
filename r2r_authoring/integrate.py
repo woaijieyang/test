@@ -7,7 +7,7 @@ from pathlib import Path
 import argparse,json,subprocess
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
-PREVIOUS='465635eb8dad310404dab0e1d684ade3b71ff70b'
+PREVIOUS='a1139e1eb2897e8bbaf2a4fbf6eb2e77b00295e8'
 
 def base(path):return subprocess.check_output(['git','show',PARENT+':'+path],cwd=ROOT).decode()
 def replace(text,old,new):
@@ -45,8 +45,8 @@ def expected():
             root/role/"dataset_rules/r2r_en.md",
         ])'''
     s=replace(s,anchor,anchor+'''
-        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py",
-                      root/"shared/dataset_rules/r2r_teaching_index.json",
+        paths.extend([root/"r2r/selection.py", root/"r2r/teaching.py", root/"r2r/relations.py",
+                      root/"r2r/teaching_index.json",
                       root/"generator/templates_manifest.json", root/"reviewer/templates_manifest.json"])''')
     old='''        selections = {
             role: select_examples(role, src.profile, src.raw,
@@ -57,7 +57,8 @@ def expected():
                               for role, ids in selections.items()}'''
     new='''        if src.profile == "r2r-en" and selection_mode == "adaptive":
             from r2r.selection import select_bundle
-            plan = select_bundle(src.raw, count=example_count)
+            from r2r.relations import route_family
+            plan = select_bundle(src.raw, count=example_count, source_family=route_family(src.provenance, src.split))
             selections = {role: plan[role] for role in ("generator", "reviewer")}
             retrieval_evidence = plan["evidence"]
         else:
@@ -79,10 +80,14 @@ def expected():
     p='.github/workflows/rxr-development.yml';s=base(p)
     s=replace(s,"      - 'tools/**'\n      - 'host/**'", "      - 'tools/rxr*'\n      - 'tools/build_rxr*'\n      - 'host/rxr*'")
     s=replace(s,"      - 'tests/**'", "      - 'tests/test_rxr*'")
+    s=s.replace('verify_package.py','tools/verify_package.py')
+    # Workflow-only maintenance must not launch the RxR authoring writer.
+    # Manual dispatch remains available; R2R CI independently verifies RxR isolation.
+    s=s.replace("      - '.github/workflows/rxr-development.yml'\n", '')
     out[p]=s
-    # README is an already reviewed release display, not a model input.
-    out['README.md']=subprocess.check_output(['git','show',PREVIOUS+':README.md'],cwd=ROOT).decode()
-    return out
+    # README and documentation are human-maintained, never reconstructed from history.
+    from r2r_authoring.runtime_layout import extend
+    return extend(out)
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--write',action='store_true');args=p.parse_args();changed=[]

@@ -60,7 +60,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The far-wall open doorway, identified separately from the chandelier observation. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The far-wall open doorway, identified separately from the chandelier observation. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "go through it."
           ],
@@ -103,7 +103,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The room with the blue patterned carpet and middle table. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The room with the blue patterned carpet and middle table. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "walk down the hallway into the room with the blue patterned carpet and the table in the middle."
           ],

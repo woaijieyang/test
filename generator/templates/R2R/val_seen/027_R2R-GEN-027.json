@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The open area after the console-table pass. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The open area after the console-table pass. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the open area."
           ],
@@ -96,7 +96,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "Behind the couch near the right corner in the living room. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "Behind the couch near the right corner in the living room. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop behind the couch near the right corner."
           ],

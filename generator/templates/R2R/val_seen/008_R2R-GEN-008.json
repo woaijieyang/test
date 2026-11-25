@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "bounded_action",
-          "text": "The post-fountain state after the specified left turn. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The post-fountain state after the specified left turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "turn left."
           ],
@@ -97,7 +97,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The doorway directly across from the stairs. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The doorway directly across from the stairs. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Stop in the doorway."
           ],

@@ -139,6 +139,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -151,41 +152,41 @@
           ]
         },
         "process": {
-          "text": "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
             "Walk straight into the living room passing the chair and the couch and taking a left behind the couch and past the dining room table."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "past the dining room table."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: taking a left behind the couch; past the dining room table",
+          "text": "Verify these source-specified relations in the candidate: taking a left behind the couch; past the dining room table",
           "candidate_quotes": [
             "taking a left behind the couch",
             "past the dining room table"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Walk straight into the living room passing the chair and the couch",
           "taking a left behind the couch and past the dining room table"
         ],
         "carryover": [
           "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "inherited_pose",
           "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain.",
@@ -198,36 +199,35 @@
           ]
         },
         "process": {
-          "text": "Go up the stairs into the entryway, stopping on the third tile from the left at the top step.",
+          "text": "Execute the source-backed events mapped to this actual stage.",
           "candidate_quotes": [
             "Go up the stairs into the entryway, stopping on the third tile from the left at the top step."
           ]
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The third tile from the left at the top step. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The third tile from the left at the top step. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stopping on the third tile from the left at the top step."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: third tile from the left; at the top step",
+          "text": "Verify these source-specified relations in the candidate: third tile from the left; at the top step",
           "candidate_quotes": [
             "third tile from the left",
             "at the top step"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-03",
+          "SRC-04"
+        ],
         "source_quotes": [
           "up the stairs into the entry way",
           "stopping on the third tile from the left at the top step"
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-03",
-          "SRC-04"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -236,7 +236,7 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "The dining-table pass within the coupled living-room route. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The dining-table pass within the coupled living-room route. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quote": "past the dining room table."
         },
         "next_entry": {
@@ -245,7 +245,7 @@
         },
         "shared_context": [
           {
-            "kind": "temporal_state",
+            "kind": "entity_or_region",
             "text": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
           }
         ],
@@ -255,7 +255,7 @@
           "SRC-03",
           "SRC-04"
         ],
-        "handoff_rationale": "The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain. Preserve simultaneous/participial movement attachment before evaluating a cut; retain the later stair and ordinal placement."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The coupled living-room maneuver retains its participial attachment; the stair ascent and third-tile placement remain."
       }
     ],
     "prior_finding_reviews": []

@@ -4,6 +4,7 @@ Existing candidate and audit evidence is retained unless an explicit authored
 correction below applies. No runtime request invokes these functions.
 """
 from copy import deepcopy
+from r2r_authoring.semantic_refinements import ending_text
 from r2r_authoring.positive import LESSONS,CANDIDATES,ENDINGS,CONDITIONS,OWNERS,field,evidence
 CANDIDATE_REPAIRS=frozenset({20,23,30,35})
 CONTEXT={
@@ -56,6 +57,19 @@ def _quotes(audit,stage):
         for q in audit[key]['candidate_quotes']:
             if not q or q not in stage:raise ValueError('Stale '+key+' evidence: '+repr(q))
 
+
+def source_stage_specs(number):
+    """Explicit source-local completion facts, shared taxonomy but not a model audit."""
+    specs=deepcopy(ENDINGS[number])
+    if number==8:specs=[('bounded_action','turn left.','none','The post-fountain state after the specified left turn.'),('explicit_event','Stop in the doorway.','terminal','The doorway directly across from the stairs.')]
+    if number==14:specs=[('explicit_event','Walk through the bedroom.','none','The completion of the source bedroom traversal.'),('explicit_event','stop at the glass doors before the outside exit.','terminal','The glass doors before the outside exit.')]
+    if number in (22,28,32):
+        _,q,scope,target=specs[-1];specs[-1]=('explicit_event',q,scope,target.replace('final directed target','source-directed destination'))
+    if number==5:
+        specs[1]=('explicit_event','enter the room at the end of the hallway.','none','The room entered at the explicitly stated hallway end.')
+        specs[2]=('terminal_goal_directive','walk towards the circular tables in the middle.','none','The circular tables in the already entered large room, approached without a stated arrival threshold.')
+    return specs
+
 def author_generator(row,number):
     source=row['input']['original_instruction'];out=row['output'];old=deepcopy(out);notes=row['teaching_notes']
     skills,lesson,counter=LESSONS[number]
@@ -68,19 +82,12 @@ def author_generator(row,number):
     if out['status']!='ok':return
     if number in CANDIDATE_REPAIRS:
         out['subtasks']=deepcopy(CANDIDATES[number]);row['decision']['mode']='split' if len(out['subtasks'])>1 else 'keep'
-    parts=out['subtasks'];specs=deepcopy(ENDINGS[number]);audits=deepcopy(old['stage_audit'])
-    if number==8:specs=[('bounded_action','turn left.','none','The post-fountain state after the specified left turn.'),('explicit_event','Stop in the doorway.','terminal','The doorway directly across from the stairs.')]
-    if number==14:specs=[('explicit_event','Walk through the bedroom.','none','The completion of the source bedroom traversal.'),('explicit_event','stop at the glass doors before the outside exit.','terminal','The glass doors before the outside exit.')]
+    parts=out['subtasks'];specs=source_stage_specs(number);audits=deepcopy(old['stage_audit'])
     if len(parts)!=len(audits) or len(parts)!=len(specs):raise ValueError('Changed stage count needs an explicit mapping: '+row['template_id'])
-    if number in (22,28,32):
-        _,q,scope,target=specs[-1];specs[-1]=('explicit_event',q,scope,target.replace('final directed target','source-directed destination'))
-    if number==5:
-        specs[1]=('explicit_event','enter the room at the end of the hallway.','none','The room entered at the explicitly stated hallway end.')
-        specs[2]=('terminal_goal_directive','walk towards the circular tables in the middle.','none','The circular tables in the already entered large room, approached without a stated arrival threshold.')
     for i,(audit,(kind,q,scope,target)) in enumerate(zip(audits,specs)):
         stage=parts[i];evidence(parts,i,q)
         audit['target']=field(target,q)
-        audit['ending']=dict(kind=kind,text=target+(' The source directs a final approach without specifying arrival or STOP.' if kind=='terminal_goal_directive' else ' This is the source-directed completion event; it adds no physical STOP.'),candidate_quotes=[q],stop_scope=scope)
+        audit['ending']=dict(kind=kind,text=ending_text(kind,target,scope),candidate_quotes=[q],stop_scope=scope)
         if stage!=old['subtasks'][i]:
             audit['process']=field(stage,stage)
             if any(q not in stage for q in audit['entry']['candidate_quotes']):
@@ -139,14 +146,43 @@ def author_paired(row,generator,number):
             q=c['source_quote'] if c['source_quote'] in parts[i] else exact[0] if exact else parts[i]
             ev.append(evidence(parts,i,q))
         c['candidate_evidence']=ev
-    a['stage_checks']=[]
-    for check in out['stage_audit']:
-        check=deepcopy(check);i=check['subtask_index'];check['status']='supported'
+    # Retain and re-derive the independent review against actual candidate text.
+    # Generator status/subtasks are paired input, but its audit/claims are not.
+    specs=source_stage_specs(number)
+    if len(a['stage_checks'])!=len(parts):raise ValueError('Reviewer stage mapping requires explicit authoring')
+    for i,check in enumerate(a['stage_checks']):
+        stage=parts[i];kind,q,scope,target=specs[i]
+        evidence(parts,i,q)
+        check['status']='supported'
+        check['target']=field(target,q)
+        check['ending']=dict(kind=kind,text=ending_text(kind,target,scope),candidate_quotes=[q],stop_scope=scope)
+        if not check['process']['candidate_quotes'] or any(q not in stage for q in check['process']['candidate_quotes']):
+            check['process']=field('Execute the source-backed events mapped to this actual stage.',stage)
+        if any(q not in stage for q in check['entry']['candidate_quotes']):
+            if i==0:raise ValueError('Unmapped initial Reviewer context')
+            check['entry']=dict(mode='inherited_pose',text=CONTEXT[number][i-1],candidate_quotes=[])
+        phrases=CONDITIONS.get(number,[[] for _ in parts])[i]
+        if number==5 and i==2:phrases=['Inside the large room','circular tables in the middle']
+        if number==8:phrases=[['past the water fountain','turn left'],['After passing the water fountain and turning left','directly across from the stairs']][i]
+        if number==14:phrases=[['through the bedroom'],['After walking through the bedroom','before the outside exit']][i]
+        if phrases:
+            for phrase in phrases:evidence(parts,i,phrase)
+            check['conditions']=field('Verify these source-specified relations in the candidate: '+'; '.join(phrases),*phrases)
+        elif any(q not in stage for q in check['conditions']['candidate_quotes']):
+            raise ValueError('Reviewer condition requires source-specific remapping')
         check['source_requirement_ids']=[c['requirement_id'] for c,own in zip(a['source_coverage'],owners) if i in own]
         check['source_quotes']=[c['source_quote'] for c,own in zip(a['source_coverage'],owners) if i in own]
-        a['stage_checks'].append(check)
-    a['handoffs']=deepcopy(out['handoffs'])
-    for h in a['handoffs']:h['source_requirement_ids']=list(dict.fromkeys(a['stage_checks'][h['from_subtask_index']]['source_requirement_ids']+a['stage_checks'][h['to_subtask_index']]['source_requirement_ids']))
+        check['carryover']=[CONTEXT[number][i]] if i<len(parts)-1 else []
+        _quotes(check,stage)
+    if len(a['handoffs'])!=len(parts)-1:raise ValueError('Reviewer handoff mapping requires explicit authoring')
+    for i,h in enumerate(a['handoffs']):
+        h['preceding_exit']=dict(text=a['stage_checks'][i]['ending']['text'],candidate_quote=specs[i][1])
+        if h['next_entry']['candidate_quote'] not in parts[i+1]:
+            h['next_entry']['candidate_quote']=parts[i+1].split('. ')[0].rstrip('.')+'.' if '. ' in parts[i+1] else parts[i+1]
+        h['next_entry']['text']=CONTEXT[number][i]
+        h['shared_context']=[dict(kind='count_origin' if number==15 else 'entity_or_region',text=CONTEXT[number][i])]
+        h['source_requirement_ids']=list(dict.fromkeys(a['stage_checks'][i]['source_requirement_ids']+a['stage_checks'][i+1]['source_requirement_ids']))
+        h['handoff_rationale']='Compare the mapped source events with the actual left completion and next unperformed action. '+CONTEXT[number][i]
     a['prior_finding_reviews']=[]
 
 def finalize_detail(rows):

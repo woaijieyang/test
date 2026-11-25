@@ -1,0 +1,226 @@
+{
+  "schema_version": "reviewer-v1.5.1-template",
+  "template_id": "R2R-DIAG-30",
+  "role": "reviewer",
+  "dataset_scope": "R2R",
+  "language": "en",
+  "source": {
+    "split": "authored_synthetic",
+    "role": "teaching",
+    "record_id": "conditional-hall-contrast",
+    "episode_id": null,
+    "instruction_id": null,
+    "scene_id": null,
+    "trajectory_id": null,
+    "source_key": "R2R|authored_synthetic|conditional-hall-contrast"
+  },
+  "provenance": {
+    "source_type": "authored_synthetic",
+    "is_official_dataset_record": false,
+    "derivation": "Hand-authored semantic contrast, not copied from an evaluation episode.",
+    "navigation_ground_truth": false
+  },
+  "teaching_notes": {
+    "case_rationale": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "case_specific_focus": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "decision_reason": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "reusable_rule": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "transfer_rule": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "review_principle": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+    "primary_skills": [
+      "branch",
+      "entry",
+      "terminal"
+    ],
+    "counter_example_boundary": "A source prescribing unconditional sequential visits is different; compare the actual source relations.",
+    "why_this_case_matters": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop."
+  },
+  "retrieval_tags": [
+    "branch",
+    "entry",
+    "terminal"
+  ],
+  "pair_id": null,
+  "review_input": {
+    "original_instruction": "If the hallway on your left is open, go through it and stop at its end. Otherwise, enter the room on your right and wait just inside.",
+    "candidate": {
+      "status": "ok",
+      "subtasks": [
+        "Go through the hallway on your left and stop at its end. Then enter the room on your right and wait just inside."
+      ]
+    }
+  },
+  "expected_review": {
+    "verdict": "revise",
+    "dimensions": {
+      "source_fidelity": "issue",
+      "closure_handoff": "issue",
+      "segmentation_adequacy": "pass"
+    },
+    "source_coverage": [
+      {
+        "requirement_id": "SRC-01",
+        "source_quote": "If the hallway on your left is open, go through it and stop at its end.",
+        "requirement": "Condition the left-hall traversal and its stop on openness.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go through the hallway on your left and stop at its end."
+          }
+        ],
+        "status": "altered_or_missing"
+      },
+      {
+        "requirement_id": "SRC-02",
+        "source_quote": "Otherwise, enter the room on your right and wait just inside.",
+        "requirement": "Execute the right-room branch only otherwise.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Then enter the room on your right and wait just inside."
+          }
+        ],
+        "status": "altered_or_missing"
+      }
+    ],
+    "layer_checks": [
+      {
+        "layer": "L0_integrity",
+        "status": "not_applicable",
+        "conclusion": "No rendered artifact is supplied.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L1_source_coverage",
+        "status": "issue",
+        "conclusion": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L2_dependencies",
+        "status": "issue",
+        "conclusion": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L3_stage_checks",
+        "status": "issue",
+        "conclusion": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "finding_indices": [
+          0
+        ]
+      },
+      {
+        "layer": "L4_handoffs",
+        "status": "not_applicable",
+        "conclusion": "No adjacent stage exists.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L5_grouping",
+        "status": "pass",
+        "conclusion": "The requirements checked at this layer are preserved.",
+        "finding_indices": []
+      },
+      {
+        "layer": "L6_route_readback",
+        "status": "issue",
+        "conclusion": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "finding_indices": [
+          0
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "code": "DETACHED_CONDITION",
+        "failed_layer": "L2_dependencies",
+        "c_check": "C04",
+        "dimension": "source_fidelity",
+        "related_dimensions": [
+          "closure_handoff"
+        ],
+        "affected_subtask_indices": [
+          0
+        ],
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
+        "source_quote": "If the hallway on your left is open, go through it and stop at its end. Otherwise, enter the room on your right and wait just inside.",
+        "candidate_evidence": [
+          {
+            "subtask_index": 0,
+            "quote": "Go through the hallway on your left and stop at its end. Then enter the room on your right and wait just inside."
+          }
+        ],
+        "evidence_level": "S1",
+        "problem": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "execution_consequence": "Removing if/otherwise converts mutually exclusive alternatives into two mandatory routes and an extra intermediate stop.",
+        "repair": {
+          "operation": "restore",
+          "affected_subtask_indices": [
+            0
+          ],
+          "instruction": "Restore the original if/otherwise scope so only the applicable route and its own final stop are executed. Do not add a door-opening action.",
+          "protected_requirements": [
+            "Preserve each branch destination and its stated stop/wait location."
+          ]
+        }
+      }
+    ],
+    "stage_checks": [
+      {
+        "subtask_index": 0,
+        "entry": {
+          "mode": "episode_start",
+          "text": "Start at the source episode position; no observed completion is assumed.",
+          "candidate_quotes": []
+        },
+        "target": {
+          "text": "The candidate wrongly requests both regions.",
+          "candidate_quotes": [
+            "the hallway on your left",
+            "the room on your right"
+          ]
+        },
+        "process": {
+          "text": "Execute only the ordered or conditional process explicitly stated in this source.",
+          "candidate_quotes": [
+            "Go through the hallway on your left and stop at its end. Then enter the room on your right and wait just inside."
+          ]
+        },
+        "ending": {
+          "kind": "explicit_event",
+          "text": "The candidate retains the final right-room wait but also executes a stop from a mutually exclusive branch.",
+          "candidate_quotes": [
+            "wait just inside"
+          ],
+          "stop_scope": "terminal"
+        },
+        "conditions": {
+          "text": "The candidate unconditionally sequences both branches.",
+          "candidate_quotes": [
+            "Then enter the room on your right"
+          ]
+        },
+        "source_quotes": [
+          "If the hallway on your left is open, go through it and stop at its end.",
+          "Otherwise, enter the room on your right and wait just inside."
+        ],
+        "carryover": [],
+        "status": "gap",
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "prior_finding_reviews": []
+  }
+}

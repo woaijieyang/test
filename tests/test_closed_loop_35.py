@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def g(dataset):return library('generator','r2r-en' if dataset=='r2r.json' else 'rxr-en-us')
 class CompleteContractTests(unittest.TestCase):
  def test_01_curated_libraries_by_role_and_profile(self):
-     for profile, expected in [('r2r-en',(25,55)),('rxr-en-us',(43,80))]:
+     for profile, expected in [('r2r-en',(27,59)),('rxr-en-us',(43,80))]:
          for role,n in zip(('generator','reviewer'),expected):
              rows=library(role,profile)
              self.assertEqual(len(rows),n)
@@ -31,8 +31,8 @@ class CompleteContractTests(unittest.TestCase):
          for generator_id, generator_row in gs.items():
              self.assertEqual(source(paired_by_id[generator_id]),source(generator_row))
          if profile == 'r2r-en':
-             self.assertEqual(len(paired),29)
-             self.assertEqual(sum(not r.get('pair_id') for r in library('reviewer',profile)),26)
+             self.assertEqual(len(paired),31)
+             self.assertEqual(sum(not r.get('pair_id') for r in library('reviewer',profile)),28)
  def test_03_every_generator_audit_and_handoff_validated(self):
   for ds in ('r2r.json','rxr_en_us.json'):
    for e in g(ds):

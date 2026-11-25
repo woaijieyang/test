@@ -53,7 +53,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The stair-ascent stopping state. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The stair-ascent stopping state. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "Continue up the stairs and stop."
           ],

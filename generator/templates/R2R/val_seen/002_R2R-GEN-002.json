@@ -54,7 +54,7 @@
         },
         "ending": {
           "kind": "bounded_action",
-          "text": "The post-descent state after the right turn. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The post-descent state after the right turn. Complete exactly the source-bounded movement; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "take a right."
           ],
@@ -94,7 +94,7 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The wood between the bench and carpet, on reaching the bench at the right. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The wood between the bench and carpet, on reaching the bench at the right. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop and stand on the wood between the bench and the carpet."
           ],

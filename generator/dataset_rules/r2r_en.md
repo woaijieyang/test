@@ -22,7 +22,7 @@ For a property such as an open door, retain the described object state while exe
 
 ### G-P2-A2 — Grounded language repair and uncertain names
 
-Separate wording repair from adding a navigation fact. A uniquely recoverable grammatical relation can be expressed naturally; an unfamiliar but usable source name can be retained verbatim. A changed number, ordinal, direction, entity identity or stop position requires unique support from the whole instruction, not phonetic similarity or a likely layout. When alternatives still imply different routes, preserve that limitation using the existing schema. An ordinary spelling irregularity alone is not a reason to refuse a clear route.
+Separate wording repair from adding a navigation fact. A uniquely recoverable grammatical relation can be expressed naturally; an unfamiliar but usable source name can be retained verbatim. A changed number, ordinal, direction, entity identity or stop position requires unique support from the whole instruction, not phonetic similarity or a likely layout. Use three outcomes: retain an unfamiliar but usable name; repair a uniquely supported non-route-changing grammatical relation; or preserve a route-critical limitation. Do not convert a homophone or a likely typo into a count. For any proposed new route fact, identify the exact supporting clause and explain why competing route-changing readings are excluded. An ordinary spelling irregularity alone is not a reason to refuse a clear route.
 
 ### G-P2-A3 — Spatial owner, viewpoint and counting origin
 
@@ -30,11 +30,11 @@ Carry the reference entity, viewpoint and time of each relation. A room left of 
 
 ### G-P2-A4 — Sustained constraints and modifier attachment
 
-Determine whether a phrase specifies a start, the whole movement, or the endpoint. A walk on a carpet remains on that surface; from the carpet expresses only a start. Bind while/keep/stay over the stated process, repeating a still-active restriction across an affected boundary only when needed. When merging sentences, retain which event a direction, participle or prepositional phrase modifies. Preserve the source attachment when rearranging it would choose an unsupported order or object-to-object relation.
+Determine whether a phrase specifies a start, the whole movement, or the endpoint. A walk on a carpet remains on that surface; from the carpet expresses only a start. Bind while/keep/stay over the stated process, repeating a still-active restriction across an affected boundary only when needed. Restoring a path-wide relation must preserve bounded or approximate movement, approach strength and the original stopping position; never repair one constraint by strengthening another. When merging sentences, retain which event a direction, participle or prepositional phrase modifies. Preserve the source attachment when rearranging it would choose an unsupported order or object-to-object relation.
 
 ### G-P2-A5 — Same-event refinement and terminal scope
 
-Attach until/when/halfway to the movement it actually limits. Read a later placement refinement before closing that movement: one partial descent stays one descent, not a full descent followed by another. Before relocating a clause, verify event identity, intervening actions and the intermediate/final status of every stop. Matching a repeated place name alone does not authorize moving the final stop earlier. Explicitly requested intermediate stops remain before the continuing route; final position and orientation remain together. An ambiguous source sequence is not repaired by choosing the tidiest endpoint.
+Attach until/when/halfway to the movement it actually limits. Read a later placement refinement before closing that movement: one partial descent stays one descent, not a full descent followed by another. Before relocating a clause, verify three conditions together: it refines the same event; intervening independent actions remain in source order; and the intermediate/final status of every stop is preserved. Matching a repeated place name alone does not authorize moving the final stop earlier. Explicitly requested intermediate stops remain before the continuing route; final position and orientation remain together. An ambiguous source sequence is not repaired by choosing the tidiest endpoint.
 
 ### G-P2-A6 — Alternatives, corrections and route history
 
@@ -56,11 +56,11 @@ Use stage-relevant source fragments as source evidence and field-relevant candid
 
 ### G-P2-B1 — Coupled transit and independent objectives
 
-Keep an exit with the turn and traversal it prepares when those actions form one continuing route. A transit room is not automatically a separate visit. Split after a genuinely completed objective when the next source-supported target or selection benefits from local focus. A short stair-plus-room instruction may split if the stair completion establishes the next selection frame. Conversely, a preparatory turn may remain with its ascent. Preserve both useful splitting and useful grouping rather than optimizing a stage count.
+First distinguish continuing transit, an independently completed objective, and a refinement of the same event. Keep an exit with the turn and traversal it prepares when those actions form one continuing route. A transit room is not automatically a separate visit. Bind a later extent, position or trigger to its owning event before proposing a cut. Split after a genuinely completed objective when the next source-supported target or selection benefits from local focus. A short stair-plus-room instruction may split if the stair completion establishes the next selection frame. Conversely, a preparatory turn may remain with its ascent. Preserve both useful splitting and useful grouping rather than optimizing a stage count.
 
 ### G-P2-B2 — Minimal sufficient entry and event handoff
 
-Begin the next stage with its first unperformed action. Inherit ordinary current pose and an unambiguous just-selected entity. Add the shortest phrase needed for a critical doorway identity, region-relative choice, counting origin or frame. If the preceding stage has not expressed or uniquely established entry into a hallway, perform that entry before using the hallway as context. Retain a necessary bedroom-exit count origin even when the ordinal word itself survives. A context phrase refers to completed events; it does not command their repetition or assert sensor verification.
+Begin the next stage with its first unperformed action. Inherit ordinary current pose and an unambiguous just-selected entity. Add the shortest phrase needed for a critical doorway identity, region-relative choice, counting origin or frame. Use three outcomes: inherit a uniquely established state; state the minimal source-supported dependency when a selection would otherwise be unclear; or move the cut, restore the missing action or merge when the prerequisite event is unperformed. If the preceding stage has not expressed or uniquely established entry into a hallway, perform that entry before using the hallway as context. A new From/Inside phrase cannot perform that crossing. Retain a necessary bedroom-exit count origin even when the ordinal word itself survives. A context phrase refers to completed events; it does not command their repetition or assert sensor verification.
 
 ### G-P2-B3 — Destination strength and local stopping position
 
@@ -70,15 +70,15 @@ Preserve the distinctions among towards, to, through, at a doorway, just inside,
 
 Retain clear source wording, order and deixis unless the candidate needs a specific repair. A useful local anchor may improve interpretation; a boilerplate From/Inside/After on every stage does not. Compare the actual dependency with the teaching case before transferring its phrasing or stage count. Keep necessary reference binding and endpoint refinement even when the route is short. Prefer an exact coherent single-goal source over cosmetic rewriting, while still exposing distinct useful objectives when warranted.
 
-## G-P1-C — Read back, repair and deliver the frozen candidate
+## G-P1-C — Read back, repair and submit the candidate
 
-Under G-P0 and S-REPAIR, compare source-to-candidate for omissions and candidate-to-source for additions or strengthening. Check the event order, role of each cue, relation owner, count origin, branch, history, terminal scope and every supported handoff. The natural English must express the executable requirements; a complete audit is not a substitute. Return only the phase's existing schema, with no navigation labels, new output fields or success guarantees.
+Under G-P0 and S-REPAIR, compare source-to-candidate for omissions and candidate-to-source for additions or strengthening. Check the event order, role of each cue, relation owner, count origin, branch, history, terminal scope and every supported handoff. The natural English must express the executable requirements; a complete audit is not a substitute. Return only the phase's existing schema, with no navigation labels, new output fields or success guarantees. Submit the candidate; Host validates it and Renderer freezes the exact English. You do not certify a frozen snapshot or release it.
 
 For G1, assess each indexed R0 finding against the immutable source and actual previous candidate. Accept, partially accept, reject or retain unresolved as the active repair schema permits. After the local operation, rebuild the complete candidate and its evidence, then repeat the full-source check. Keep all unaffected requirements, including a correct earlier handoff when a later endpoint is repaired.
 
 ### G-P2-C1 — Selective acceptance of fallible advice
 
-Check both the alleged defect and the proposed remedy. A correct diagnosis may propose an unsupported extra action. Restore only the source-required part and explain a partial acceptance using exact evidence. For a proposed number, direction, identity or terminal change, establish why the complete source uniquely supports it. A valid unchanged candidate is an appropriate response to an unsupported complaint; it need not be cosmetically edited to demonstrate cooperation.
+Check both the alleged defect and the proposed remedy. A correct diagnosis may propose an unsupported extra action. Restore only the source-required part and explain a partial acceptance using exact evidence. Apply G-P2-A2 to each proposed wording correction and G-P2-A5 to any event or terminal relocation; Reviewer advice is not additional source evidence. A valid unchanged candidate is an appropriate response to an unsupported complaint; it need not be cosmetically edited to demonstrate cooperation.
 
 ### G-P2-C2 — Repair closure without new regression
 

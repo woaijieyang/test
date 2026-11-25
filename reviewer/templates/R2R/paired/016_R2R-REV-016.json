@@ -111,6 +111,7 @@
     "stage_checks": [
       {
         "subtask_index": 0,
+        "status": "supported",
         "entry": {
           "mode": "episode_start",
           "text": "Begin at the episode start described or implied by the original instruction; do not infer an additional pose.",
@@ -130,31 +131,31 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The bedroom reached across the star tile. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The bedroom reached across the star tile. Complete this source-directed event; the stage boundary adds no physical stop.",
           "candidate_quotes": [
             "enter the bedroom."
           ],
           "stop_scope": "none"
         },
         "conditions": {
-          "text": "Operative constraints: star tile",
+          "text": "Verify these source-specified relations in the candidate: star tile",
           "candidate_quotes": [
             "star tile"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01"
+        ],
         "source_quotes": [
           "Walk over the star tile into the bedroom and walk towards the bed."
         ],
         "carryover": [
           "The bedroom entry is complete; retain the same bed and the left window set for the remaining route."
-        ],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01"
         ]
       },
       {
         "subtask_index": 1,
+        "status": "supported",
         "entry": {
           "mode": "explicit_context",
           "text": "The stage explicitly binds its entry to the immediately preceding transition or region.",
@@ -176,29 +177,28 @@
         },
         "ending": {
           "kind": "explicit_event",
-          "text": "The left window set after going around the bed. This is the source-directed completion event; it adds no physical STOP.",
+          "text": "The left window set after going around the bed. Preserve the source-required final stop/wait or standing placement as quoted; no additional stop is introduced.",
           "candidate_quotes": [
             "stop next to the left set of windows."
           ],
           "stop_scope": "terminal"
         },
         "conditions": {
-          "text": "Operative constraints: around it; left set of windows",
+          "text": "Verify these source-specified relations in the candidate: around it; left set of windows",
           "candidate_quotes": [
             "around it",
             "left set of windows"
           ]
         },
+        "source_requirement_ids": [
+          "SRC-01",
+          "SRC-02"
+        ],
         "source_quotes": [
           "Walk over the star tile into the bedroom and walk towards the bed.",
           "Walk around the bed, and stop next to the left set of windows."
         ],
-        "carryover": [],
-        "status": "supported",
-        "source_requirement_ids": [
-          "SRC-01",
-          "SRC-02"
-        ]
+        "carryover": []
       }
     ],
     "handoffs": [
@@ -207,11 +207,11 @@
         "to_subtask_index": 1,
         "status": "supported",
         "preceding_exit": {
-          "text": "Walk over the star tile and enter the bedroom.",
-          "candidate_quote": "Walk over the star tile and enter the bedroom."
+          "text": "The bedroom reached across the star tile. Complete this source-directed event; the stage boundary adds no physical stop.",
+          "candidate_quote": "enter the bedroom."
         },
         "next_entry": {
-          "text": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows",
+          "text": "The bedroom entry is complete; retain the same bed and the left window set for the remaining route.",
           "candidate_quote": "Inside the bedroom, walk towards the bed, go around it, and stop next to the left set of windows"
         },
         "shared_context": [
@@ -224,7 +224,7 @@
           "SRC-01",
           "SRC-02"
         ],
-        "handoff_rationale": "The bedroom entry is complete; retain the same bed and the left window set for the remaining route. Split only after the quoted event is actually completed. Keep the next stage's first unperformed action in that next stage, and bind only the minimum inherited entity, orientation, count origin or region needed to execute it."
+        "handoff_rationale": "Compare the mapped source events with the actual left completion and next unperformed action. The bedroom entry is complete; retain the same bed and the left window set for the remaining route."
       }
     ],
     "prior_finding_reviews": []

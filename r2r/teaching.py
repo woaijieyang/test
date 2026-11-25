@@ -58,7 +58,7 @@ def card(example, role, detailed):
             event=deepcopy(s['ending']['candidate_quotes']), kind=s['ending']['kind'],
             stop_scope=s['ending']['stop_scope']) for s in out['stage_audit']]
         result['stage_semantics'] = [dict(stage=s['subtask_index'],
-            entry=deepcopy(s['entry']), target=deepcopy(s['target']),
+            entry=deepcopy(s['entry']), target=deepcopy(s['target']), process=deepcopy(s['process']),
             conditions=deepcopy(s['conditions']), source_evidence=deepcopy(s['source_quotes']),
             carryover=deepcopy(s['carryover'])) for s in out['stage_audit']]
     else:
@@ -72,7 +72,7 @@ def card(example, role, detailed):
         result['local_repair'] = [dict(action=f['repair']['instruction'],
             preserve=deepcopy(f['repair']['protected_requirements'])) for f in out['findings']]
         result['stage_semantics'] = [dict(stage=s['subtask_index'], status=s['status'],
-            target=deepcopy(s['target']), ending=deepcopy(s['ending']),
+            entry=deepcopy(s['entry']), target=deepcopy(s['target']), process=deepcopy(s['process']), ending=deepcopy(s['ending']),
             conditions=deepcopy(s['conditions'])) for s in out['stage_checks']]
         result['continuity_evidence'] = deepcopy(out['handoffs'])
         if not out['findings']:

@@ -5,6 +5,7 @@ shared source-byte check admits only the explicit reviewed integration delta.
 """
 from pathlib import Path
 import argparse,json,re,subprocess
+from r2r_authoring.runtime_layout import extend_tests
 from r2r_authoring.projection_expectations import apply as projection
 ROOT=Path(__file__).resolve().parents[1]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
@@ -56,12 +57,13 @@ def main():
             changes.append('Assert actual count, pair mapping and captured trace instead of replaying the retired ranking formula.')
         revised=projection(name,new)
         if revised!=new:changes.append('Validate the exact new teaching representation and evidence; keep RxR expected prompt/schema hashes unchanged.')
-        new=revised
+        previous=revised
+        new=extend_tests(name,revised)
         if new==old:continue
         path=ROOT/rel;actual=path.read_text()
         # read_text normalizes CRLF; compare normalized text only for this
         # one-time authoring guard, never for prompt or released Source hashes.
-        if actual not in (old.replace('\r\n','\n'),new.replace('\r\n','\n')):raise ValueError('Concurrent test edit: '+rel)
+        if actual not in (previous.replace('\r\n','\n'),old.replace('\r\n','\n'),new.replace('\r\n','\n')):raise ValueError('Concurrent test edit: '+rel)
         if args.write:path.write_text(new)
         elif actual!=new.replace('\r\n','\n'):raise ValueError('R2R test expectations not materialized: '+rel)
         report.append(dict(path=rel,approved_expectation_changes=changes))

@@ -36,7 +36,7 @@ Target and Ending are classified from the case's actual source event. A source-d
 
 Source-local diagnostic corrections continue to preserve valid preceding entries/handoffs while locating later target or terminal errors. The office coarse alternative has an explicit C10 explanation; its acceptance does not abolish under-segmentation review. The source-limited church-exit example remains a model-assisted author judgment, not official subtask gold or independently human-certified correctness.
 
-The author inventory is 119 files: 45 Generator and 74 Reviewer. Runtime has ten fixed Core per role, 25 eligible Generator Dynamic, 29 retained Reviewer pair assets and 26 eligible diagnostics. Only the 25 pairs of eligible Generator examples can form the adaptive paired prefix; four retained pairs and nineteen promoted source copies are not filler.
+The immutable original inventory is 119 files (45 Generator and 74 Reviewer), plus six explicitly registered synthetic branch/return contrasts: two Generator, two paired Reviewer, and two diagnostics. The total is 125. Runtime has ten fixed Core per role, 27 eligible Generator Dynamic, 31 retained Reviewer pair assets and 28 eligible diagnostics. Only the 27 pairs of eligible Generator examples can form the adaptive paired prefix; four retained pairs and nineteen promoted source copies are not filler. Synthetic sources have no fabricated official episode or trajectory identity.
 
 ## Detailed teaching in actual four-phase requests
 
@@ -48,9 +48,9 @@ Teaching is intentionally detailed. Actual input token counts and truncation mus
 
 ## Selection, freezing and delivery
 
-R2R selects four to six Generator Dynamic examples, exact Reviewer pairs in the same order, and two to three diagnostics. At each slot it considers relation applicability, actual incremental authored skills, redundancy and stable tie breaks. Principal Core coverage is a soft cost, not a hard exclusion. Optional slots require a remaining concrete capability; weak source matches can use transparently labelled broad calibration from the approved R2R pool. Missing assets, forged source identity, count, pair or hash errors remain hard failures.
+R2R selects four to six Generator Dynamic examples, exact Reviewer pairs in the same order, and two to three diagnostics. At each slot it considers relation applicability, actual incremental authored skills, redundancy and stable tie breaks. Core relation coverage is a soft cost during mandatory selection. Optional slots require an uncovered relation subtype or teaching polarity, or a genuinely uncovered skill; weak source matches can use transparently labelled broad calibration from the approved R2R pool. Missing assets, forged source identity, count, pair or hash errors remain hard failures.
 
-Regex matches are source-quoted retrieval signals, not route facts or automatic KEEP/SPLIT decisions. The selection sees no navigation score, outcome, partition label, GT or trace. It records the real eligible candidate pool, excluded identities, per-slot ranking and projected Dynamic bytes/hash under the exact detail policy the compiler uses.
+Regex matches are source-quoted retrieval signals, not route facts or automatic KEEP/SPLIT decisions. The ranking sees no navigation score, outcome, evaluation partition label, GT or trace. Explicit dataset split, scene and path identity may form a Host-only exclusion key; these are not ranking features or model inputs. Fixed-Core overlap is reported, never silently removed. It records the real eligible candidate pool, excluded identities, per-slot ranking and projected Dynamic bytes/hash under the exact detail policy the compiler uses.
 
 Host freezes this plan and the rules/templates before G0. G0/G1 reuse the Generator bundle; R0/R1 reuse the Reviewer bundle. Their active schemas and phase payloads remain distinct. Reviewer sees only source, candidate status/subtasks/issues and frozen English, not Generator's private audit. G1 may accept, partially accept or reject source-checkable advice; R1 can resolve an unsupported old complaint using unchanged candidate evidence. Host releases only the corresponding reviewed snapshot or follows the existing exact-source fallback.
 
@@ -66,11 +66,12 @@ python -B -m r2r_authoring.test_expectations --write
 python -B -m host.compile
 python -B -m r2r_authoring.verify --isolation
 python -B -m r2r_authoring.verify --refresh
-python -B verify_package.py
+python -B tools/verify_package.py
 python -B -m r2r_authoring.regression
 python -B -m r2r_authoring.smoke
+python -B -m r2r_authoring.audit
 python -B -m r2r_authoring.verify --refresh
-python -B verify_package.py
+python -B tools/verify_package.py
 ```
 
 The integration guard accepts only its immutable parent, preceding reviewed integration or exact expected result and refuses concurrent unknown changes. The inherited test-expectation migration is an explicit previous-policy mapping; the detailed refinement tests independently check actual complete demonstrations, retained evidence and projection receipts. The terminal-approach capability test covers fixed Core plus Dynamic, rather than requiring a destination example in Dynamic to be incorrectly classified as an approach.
@@ -82,3 +83,5 @@ The CI publication stage checks the final changed-path allowlist and protected a
 An inherited release-transaction test requires a companion `manage_release.py` outside this repository. Only that precise missing dependency is separately reported as unavailable and not counted as passed. Other failures remain fatal.
 
 CI verifies structural/evidence integrity, actual prompt composition, deterministic selection, protected RxR behavior and scripted Host paths. It does not run a live semantic model or simulator. There is no new SR/SPL/nDTW improvement claim. Previously inspected tasks remain development/regression evidence. The next paired experiment must keep the model, images, history, Actor, STOP policy, roster and budgets fixed, and report both successful recoveries and newly introduced regressions.
+
+Current detailed implementation and pending evidence are recorded in [R2R refinement report](R2R_REFINEMENT_REPORT.md) and `provenance/r2r_issue_ledger.json`.
