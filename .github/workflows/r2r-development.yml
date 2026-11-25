@@ -4,8 +4,10 @@ on:
     branches: ['LLM-decompose-*']
     paths:
       - '.github/workflows/r2r-development.yml'
-      - 'r2r_authoring/**'
-      - 'r2r/**'
+      - 'tools/r2r_authoring/**'
+      - 'host/r2r/**'
+      - 'tests/r2r/**'
+      - 'tests/__init__.py'
       - 'generator/templates/R2R/**'
       - 'reviewer/templates/R2R/**'
       - 'generator/dataset_rules/r2r_en.md'
@@ -38,33 +40,33 @@ jobs:
         run: |
           set -euo pipefail
           git merge-base --is-ancestor 081db4b9ea0712ff720c137fe96c240c26f7b15c HEAD
-          python -B -m r2r_authoring.integrate --write
-          python -B -m r2r_authoring.build --write
-          python -B -m r2r_authoring.test_expectations --write
-          python -B -m r2r_authoring.integrate
-          python -B -m r2r_authoring.build --check
-          python -B -m r2r_authoring.test_expectations
+          python -B -m tools.r2r_authoring.integrate --write
+          python -B -m tools.r2r_authoring.build --write
+          python -B -m tools.r2r_authoring.test_expectations --write
+          python -B -m tools.r2r_authoring.integrate
+          python -B -m tools.r2r_authoring.build --check
+          python -B -m tools.r2r_authoring.test_expectations
           python -B -m host.compile
       - name: Compare parent RxR inputs and mixed-profile behavior
-        run: python -B -m r2r_authoring.verify --isolation
+        run: python -B -m tools.r2r_authoring.verify --isolation
       - name: Audit source-only selection and exact teaching injection
-        run: python -B -m r2r_authoring.audit
+        run: python -B -m tools.r2r_authoring.audit
       - name: Verify current candidate integrity
         run: |
-          python -B -m r2r_authoring.verify --refresh
+          python -B -m tools.r2r_authoring.verify --refresh
           python -B tools/verify_package.py
       - name: Run all repository tests and complete four-phase replay
-        run: python -B -m r2r_authoring.regression
+        run: python -B -m tools.r2r_authoring.regression
       - name: Run Renderer smoke, integration demo and repeat compilation
-        run: python -B -m r2r_authoring.smoke
+        run: python -B -m tools.r2r_authoring.smoke
       - name: Verify final manifests after all result records are written
         run: |
-          python -B -m r2r_authoring.verify --refresh
+          python -B -m tools.r2r_authoring.verify --refresh
           python -B tools/verify_package.py
           git diff --check
       - name: Recheck a clean candidate commit and publish without force
         if: github.event_name == 'push'
-        run: python -B -m r2r_authoring.publish
+        run: python -B -m tools.r2r_authoring.publish
       - name: Save validation evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
