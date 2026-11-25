@@ -1,4 +1,4 @@
-"""Deterministic R2R teaching selection; signals rank examples, never plan routes."""
+"""Deterministic R2R teaching selection, not a semantic route parser."""
 from pathlib import Path
 from functools import lru_cache
 import hashlib,json,re,math
@@ -28,10 +28,13 @@ PATTERNS={
  'return':[r'\b(?:return|backtrack|retrace|back to|same door)\b'],
  'uncertainty':[r'\b(?:either|unclear|not sure|or)\b'],
 }
+# Transparent specificity priorities, not learned navigation-success estimates.
+SPECIFIC=frozenset({'entity_frame','ordinal','bounded','hall_end','attribute','observation','negation','branch','return','attachment'})
 
 def digest(raw):return hashlib.sha256(raw).hexdigest()
 def normalized(text):return ' '.join(text.casefold().split())
 def _source(row):return (row.get('input') or row['review_input'])['original_instruction']
+def _weight(skills):return sum(2 if k in SPECIFIC else 1 for k in sorted(skills))
 
 @lru_cache(maxsize=4)
 def _index_blob(blob):
@@ -46,6 +49,7 @@ def teaching_index():
     return _index_blob(blob),digest(blob)
 
 def signals(text):
+    if not isinstance(text,str):raise TypeError('R2R source must be a string')
     out={}
     for skill,patterns in PATTERNS.items():
         spans=sorted({(m.start(),m.end(),m.group()) for p in patterns for m in re.finditer(p,text,re.I)})
@@ -53,16 +57,20 @@ def signals(text):
     return out
 
 def _verify(row,item):
-    if item['quality']!='authored_and_contract_checked' or item['role']!=row['role']:raise ValueError('Unapproved role/teaching identity')
+    if item['quality']!='authored_and_contract_checked' or item['role']!=row['role'] or item['template_id']!=row['template_id']:
+        raise ValueError('Unapproved role/teaching identity')
+    if row['dataset_scope']!='R2R' or row['language']!='en':raise ValueError('Cross-profile R2R template')
     rel=Path(item['path'])
     if rel.is_absolute() or '..' in rel.parts or '/templates/R2R/' not in rel.as_posix():raise ValueError('Invalid R2R asset path')
     raw=(ROOT/rel).read_bytes()
     if digest(raw)!=item['content_sha256'] or digest(_source(row).encode())!=item['source_sha256']:raise ValueError('R2R teaching index content drift: '+row['template_id'])
     if json.loads(raw)!=row:raise ValueError('Cached R2R library differs from indexed asset')
+    if not item.get('skills') or not item.get('lesson') or not item.get('counter_boundary'):raise ValueError('Incomplete teaching intent')
 
 
 def core_rows(role):
     from host.template_selector import validate_template
+    if role not in ('generator','reviewer'):raise ValueError('Invalid Core role')
     rows=[json.loads(p.read_bytes()) for p in sorted((ROOT/role/'templates/R2R/core').glob('*.json'))]
     ids=[f'R2R-CORE-{"G" if role=="generator" else "R"}{i:02d}' for i in range(1,11)]
     if [r['template_id'] for r in rows]!=ids:raise ValueError('R2R fixed Core count/order mismatch')
@@ -78,7 +86,6 @@ def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=()):
     core_focus=set()
     for r in core:
         item=index[r['template_id']];_verify(r,item)
-        # A Core's principal authored lesson, not every source keyword.
         core_focus.update(item['skills'][:1])
     options=[];excluded=[];blocked={normalized(text),*(normalized(x) for x in exclude)}
     for row in rows:
@@ -92,40 +99,64 @@ def _choose(rows,text,index,core,minimum,maximum,count=None,exclude=()):
         lexical=len(words&terms)/math.sqrt(max(1,len(terms)))
         options.append(dict(row=row,identity=identity,matched=matched,lexical=lexical,cost=len(_source(row).encode()),item=item))
     if len({x['identity'] for x in options})<(count or minimum):raise ValueError('Insufficient eligible R2R calibration library')
-    selected=[];trace=[];covered=set();ranking=[]
+    selected=[];trace=[];covered=set();ranking=[];initial_pool=sorted(x['row']['template_id'] for x in options)
     while options and len(selected)<(count or maximum):
         base=len(selected)<(count or minimum)
         eligible=options if base else [x for x in options if x['matched']-covered-core_focus]
         if not eligible:break
-        def key(x):
+        def components(x):
             novelty=x['matched']-covered
-            return (-len(x['matched']),-len(novelty-core_focus),-len(novelty),-.2*x['lexical'],x['cost'],x['row']['template_id'])
+            # Actual new Dynamic skills lead; fixed Core overlap is a soft cost.
+            incremental=_weight(novelty)-0.25*_weight(novelty&core_focus)
+            return incremental,_weight(x['matched']),_weight(x['matched']&covered)
+        def key(x):
+            inc,fit,repeat=components(x)
+            return (not bool(x['matched']),-inc,-fit,repeat,-.2*x['lexical'],x['cost'],x['row']['template_id'])
         ordered=sorted(eligible,key=key);best=ordered[0];tid=best['row']['template_id']
-        ranking.append(dict(slot=len(selected),ordered_candidates=[dict(template_id=x['row']['template_id'],matched_skills=sorted(x['matched']),incremental_skills=sorted(x['matched']-covered),core_overlap=sorted(x['matched']&core_focus),lexical=round(x['lexical'],10),cost_bytes=x['cost']) for x in ordered]))
+        ranking.append(dict(slot=len(selected),ordered_candidates=[dict(template_id=x['row']['template_id'],matched_skills=sorted(x['matched']),incremental_skills=sorted(x['matched']-covered),core_overlap=sorted(x['matched']&core_focus),incremental_score=components(x)[0],relation_score=components(x)[1],redundancy_score=components(x)[2],lexical=round(x['lexical'],10),source_bytes=x['cost'],content_sha256=x['item']['content_sha256']) for x in ordered]))
         reason='explicit_count' if count is not None else 'specific_complement' if base and best['matched'] else 'broad_calibration' if base else 'uncovered_skill'
         trace.append(dict(template_id=tid,selection_reason=reason,matched_skills=sorted(best['matched']),added_coverage=sorted(best['matched']-covered),optional_coverage=sorted(best['matched']-covered-core_focus) if not base else [],core_overlap=sorted(best['matched']&core_focus),matched_source_spans={s:hits[s] for s in sorted(best['matched'])}))
         selected.append(best['row']);covered.update(best['matched'])
+        duplicates=[x for x in options if x['identity']==best['identity'] and x['row']['template_id']!=tid]
+        excluded.extend(dict(template_id=x['row']['template_id'],reason='selected_source_family',selected_id=tid) for x in duplicates)
         options=[x for x in options if x['identity']!=best['identity']]
-    return selected,dict(selected=trace,excluded=excluded,ranking=ranking,query_signals=hits)
+    return selected,dict(selected=trace,excluded=excluded,ranking=ranking,eligible_pool=initial_pool,query_signals=hits)
+
+
+def _projection_receipts(role,ids,bank):
+    from r2r.teaching import card,dynamic_is_detailed
+    from shared.identity import canonical
+    out=[]
+    for position,tid in enumerate(ids):
+        detailed=dynamic_is_detailed(role,ids,position)
+        payload=canonical(card(bank[tid],role,detailed))
+        out.append(dict(template_id=tid,detailed=detailed,projection_utf8_bytes=len(payload.encode()),projection_sha256=digest(payload.encode())))
+    return out
 
 
 def select_bundle(text,count=None):
     from host.template_selector import library
     index,index_sha=teaching_index()
-    gs,ge=_choose(library('generator','r2r-en'),text,index,core_rows('generator'),4,6,count)
+    gen=library('generator','r2r-en')
+    gs,ge=_choose(gen,text,index,core_rows('generator'),4,6,count)
     rev=library('reviewer','r2r-en');pairs={r['pair_id']:r for r in rev if r.get('pair_id')}
+    if len(pairs)!=sum(bool(r.get('pair_id')) for r in rev):raise ValueError('Duplicate Reviewer pair')
     ids=[r['template_id'] for r in gs]
     if any(i not in pairs for i in ids):raise ValueError('Missing paired R2R Reviewer')
     paired=[pairs[i] for i in ids]
-    for r in paired:_verify(r,index[r['template_id']])
+    for g,r in zip(gs,paired):
+        _verify(r,index[r['template_id']])
+        if _source(g)!=_source(r):raise ValueError('Dynamic paired source mismatch')
     ds,de=_choose([r for r in rev if not r.get('pair_id')],text,index,core_rows('reviewer'),2,3,exclude=[_source(r) for r in paired])
-    return dict(generator=ids,reviewer=[r['template_id'] for r in paired+ds],
-                evidence={'generator':ge,'reviewer':dict(paired=[dict(template_id=r['template_id'],pair_id=r['pair_id'],selection_reason='frozen_generator_pair') for r in paired],diagnostics=de)},
-                source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity')
+    rids=[r['template_id'] for r in paired+ds]
+    ge['projection']=_projection_receipts('generator',ids,{r['template_id']:r for r in gs})
+    revidence=dict(paired=[dict(template_id=r['template_id'],pair_id=r['pair_id'],selection_reason='frozen_generator_pair') for r in paired],diagnostics=de,projection=_projection_receipts('reviewer',rids,{r['template_id']:r for r in paired+ds}))
+    return dict(generator=ids,reviewer=rids,evidence={'generator':ge,'reviewer':revidence},source_sha256=digest(text.encode()),teaching_index_sha256=index_sha,policy='source_relation_complementarity')
 
 
 def validate_selection(role,ids,mode='adaptive'):
     from host.template_selector import library
+    if role not in ('generator','reviewer'):raise ValueError('Invalid R2R role')
     rows=library(role,'r2r-en');bank={r['template_id']:r for r in rows};index,_=teaching_index()
     if len(ids)!=len(set(ids)) or any(i not in bank for i in ids):raise ValueError('Invalid R2R selected IDs')
     for i in ids:_verify(bank[i],index[i])
@@ -137,5 +168,7 @@ def validate_selection(role,ids,mode='adaptive'):
         if not 4<=len(ids)<=6:raise ValueError('R2R Generator requires 4..6 Dynamic examples')
         return
     ps=[i for i in ids if bank[i].get('pair_id')];ds=[i for i in ids if not bank[i].get('pair_id')]
-    eligible={r['template_id'] for r in library('generator','r2r-en')}
+    eligible={r['template_id']:r for r in library('generator','r2r-en')}
     if not 4<=len(ps)<=6 or not 2<=len(ds)<=3 or list(ids)!=ps+ds or any(bank[i]['pair_id'] not in eligible for i in ps):raise ValueError('R2R Reviewer requires ordered eligible pairs then diagnostics')
+    for i in ps:
+        if _source(bank[i])!=_source(eligible[bank[i]['pair_id']]):raise ValueError('Reviewer pair source mismatch')
