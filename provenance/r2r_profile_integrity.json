@@ -736,7 +736,7 @@
     },
     {
       "path": "tools/r2r_authoring/publish.py",
-      "git_blob_sha1": "00540ecc1806c17ee985fe15e19c9bdbfa2be7e6"
+      "git_blob_sha1": "503ba1df3925dfd21486260b9a6d11f0c63b08a3"
     },
     {
       "path": "tools/r2r_authoring/regression.py",

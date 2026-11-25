@@ -155,6 +155,6 @@ R2R 新实现、父分支差异和验证边界见 `docs/R2R_IMPLEMENTATION.md`�
 
 原始Excel、1068条原始运行记录及导航轨迹本次未提供，因此没有复算73条退化与52条恢复，也没有进行真实LLM或导航测评。尚缺有独立实质损害依据的C10欠分割金标准案例；不能将合法粗粒度分组改标为错误以补齐数量。固定Core仍含val_seen来源，重叠报告不等于正式测评隔离认证。
 
-## R2R complete Dynamic loading (local experiment)
+## R2R complete Dynamic loading
 
 Every selected R2R Generator, paired Reviewer, and diagnostic Reviewer Dynamic case now uses a complete runtime demonstration in G0/R0/G1/R1. The summary path is disabled. Full `expected_output` fields, exact source and Reviewer candidate are retained; authoring provenance remains Host-side. Core IDs, selection counts, retrieval, pairing, semantic rules, Runtime Schemas, Renderer and RxR behavior are unchanged. See `docs/R2R_FULL_DYNAMIC.md` for the contract and validation boundary.

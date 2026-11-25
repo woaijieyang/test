@@ -8,7 +8,7 @@ import json,os,shutil,subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[2]
 PARENT='081db4b9ea0712ff720c137fe96c240c26f7b15c'
 EXACT={
- 'README.md','FILE_HASHES.json','host/compile.py','host/template_selector.py','host/run.py',
+ 'README.md','host/README.md','FILE_HASHES.json','host/compile.py','host/template_selector.py','host/run.py',
  'generator/templates_manifest.json','reviewer/templates_manifest.json',
  'generator/compiled_r2r-en.txt','generator/compiled_repair_r2r-en.txt','reviewer/compiled_r2r-en.txt',
  'generator/templates/INDEX.md','reviewer/templates/INDEX.md','provenance/build_manifest.json',
