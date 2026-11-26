@@ -178,6 +178,13 @@
       "disposition": "explicit_profile_reconciliation"
     },
     {
+      "path": "docs/RXR_RULE_MAINTENANCE.md",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "e32b49b21cc64ba465ba1185283dbfdfdfb49cc0",
+      "disposition": "new_integration_support"
+    },
+    {
       "path": "docs/RXR_TEACHING_FOCUS.md",
       "source_blob": "dad5efc969f5166e6178d78a3d5564b226b5c3e3",
       "previous_target_blob": "ea941846767330348f127172d6e8d6e250c4cd76",
@@ -230,14 +237,14 @@
       "path": "generator/compiled_repair_rxr-en-us.txt",
       "source_blob": "974bdb10fd19110153a131968baa8f6918e105ab",
       "previous_target_blob": "4f31eb65895e88a4124c54590e4198601a98721f",
-      "integrated_blob": "279e5d9ce872bfbe227d10a6180803bf9a668b25",
+      "integrated_blob": "0c55373b08f0aa8df8498858e0da332592b0ec71",
       "disposition": "explicit_profile_reconciliation"
     },
     {
       "path": "generator/compiled_rxr-en-us.txt",
       "source_blob": "f6652a4ab9518d18b5beceb5dc5a4078474f169a",
       "previous_target_blob": "17983842a59bd462d19cb6e9efeaaf5975b7f46b",
-      "integrated_blob": "eb2b27b051e10631961e0d485b005ba422926328",
+      "integrated_blob": "b0c4b105f6f2a4183def20c00f83404e46ed3042",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -258,7 +265,7 @@
       "path": "generator/dataset_rules/rxr_en_us.md",
       "source_blob": "0fedbc5d3eb4167f7d374df155f79e1822efb012",
       "previous_target_blob": "7ff52125c14d997898cbd897015eb3263b14cbbb",
-      "integrated_blob": "79e2ec8ad96759f31d55e11453e8b56def7bf6a1",
+      "integrated_blob": "978c572e3150dadbba92e8d60f0e358ef6d8ee8a",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -727,7 +734,7 @@
       "path": "provenance/build_manifest.json",
       "source_blob": "1cedd48bec28de4f790edce94a6fdba7d137e9d1",
       "previous_target_blob": "a5775368832d2ba4cfcc9e0bc5df02fec77d4420",
-      "integrated_blob": "a388a5e5be3b6e357e3152602e1efe7d1704216f",
+      "integrated_blob": "96bdae5902f8b1f7ab281690858198ea8697b14e",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -874,7 +881,7 @@
       "path": "provenance/rxr_profile_integrity.json",
       "source_blob": "8609290da0f6aa7fbddf81864cf0323f57b2ac66",
       "previous_target_blob": "3d09f29a50cd9403269e1e37d782f993be3693ba",
-      "integrated_blob": "f2231870f56ea3315ff1427c8696f72e7f473c8a",
+      "integrated_blob": "0967793e9067042a252978f1053f60b93331c84c",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -888,8 +895,22 @@
       "path": "provenance/rxr_role_conversion.json",
       "source_blob": null,
       "previous_target_blob": "2e78d0ed8c6de6356b89593768b36d2abbf6e093",
-      "integrated_blob": "641989cd970480115bdf4e74704ee05a536a6ec6",
+      "integrated_blob": "7ab2c8af719379154bdbd831b98f00d446817860",
       "disposition": "explicit_profile_reconciliation"
+    },
+    {
+      "path": "provenance/rxr_rule_lock.json",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "bd4c0a35d8b3daaeba764234682057cc16fef21d",
+      "disposition": "new_integration_support"
+    },
+    {
+      "path": "provenance/rxr_rule_measurements.json",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "a520ff2462d80eb696602ae5ed82ac8162168410",
+      "disposition": "new_integration_support"
     },
     {
       "path": "provenance/rxr_teaching_changes.json",
@@ -916,7 +937,7 @@
       "path": "reviewer/compiled_rxr-en-us.txt",
       "source_blob": "ab67facb0d0a3854c45069cb78e69ddd27d334fb",
       "previous_target_blob": "f531f18c45f969ca83321bd3c579ab5eba2aa7dd",
-      "integrated_blob": "9658bd6e3f9e85df3da91edbbb4da8c007c93025",
+      "integrated_blob": "da426dd3d34707223af0ec3b8abe8d0e19d49859",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -937,7 +958,7 @@
       "path": "reviewer/dataset_rules/rxr_en_us.md",
       "source_blob": "e889ddcd6229b1294ed058a89e30bae0f02b12dc",
       "previous_target_blob": "e12eb87a64f18ab2fae25d118dfe7e4fe2f8d1d3",
-      "integrated_blob": "8bcb05589587f3f729638e1056e39042cfc030d7",
+      "integrated_blob": "80ad4557bb23aa1686b05eb971e27d0c87c169f8",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -1700,7 +1721,7 @@
       "path": "tests/fixtures/rxr_prompt_pins.json",
       "source_blob": "a4d110aba4f8a1a8240a9745a6b322b541fd91e0",
       "previous_target_blob": "c26aa44fbb6715f66b82d00f185bc9468e2ab72c",
-      "integrated_blob": "06db6e5f82785808f0a4424248c07ccf5ce22a1f",
+      "integrated_blob": "c387ae2a8c4032431ccb6058ce4643bb72f1bce7",
       "disposition": "explicit_profile_reconciliation"
     },
     {
@@ -1863,6 +1884,13 @@
       "previous_target_blob": "28f4929c23dbbdb098e14ef0c6d2e4782278784f",
       "integrated_blob": "28f4929c23dbbdb098e14ef0c6d2e4782278784f",
       "disposition": "retains_rxr_target"
+    },
+    {
+      "path": "tests/test_rxr_rule_lock.py",
+      "source_blob": null,
+      "previous_target_blob": null,
+      "integrated_blob": "a19cbac5358fb25d3a97a6bc057d9afc180da98d",
+      "disposition": "new_integration_support"
     },
     {
       "path": "tests/test_workflow_integration.py",

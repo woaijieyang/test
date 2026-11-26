@@ -307,6 +307,8 @@ L5: Check both buried independent objectives and cuts that detach a coupled mane
 
 L6: Perform reverse support as well as coverage. Locate the source authority for every newly explicit turn, visit, repeat, arrival, certainty claim and maintained constraint. Check the final location, relative position and facing together. Re-read the entire candidate, not only the changed fragment. Audit descriptions must distinguish source-required X from actual candidate Y; old correct-state prose cannot certify a changed quote.
 
+Cross-layer evidence check: compare the source requirement and actual candidate at the same event occurrence, including its subject, action, target, reference, interval and completion strength. Use multiple local quotations when needed; a shared noun or direction token alone cannot establish preserved meaning. Test both loss of a required relation and addition of an unsupported one. This operationalizes L1/L2/L3/L6 without adding layers, output fields or a second acceptance standard.
+
 ### Preconditions and adjacent-stage acceptance
 
 For each pair, establish the predecessor's genuine completed result, the successor's first unperformed action and the source-supported conditions that enable it. Keep identity, viewpoint, count origin and active constraints available across the cut. A later prerequisite cannot retrospectively certify an earlier exit. Evaluate the actual two-sided candidate evidence and this review's own source requirements; a valid identifier or matching region name alone is not proof of a supported handoff.
@@ -325,11 +327,15 @@ Evidence scope: permitted grammatical editing and the evidential strength of a b
 
 Every selected Core, paired Dynamic and Diagnostic carries its complete source/candidate demonstration and all review fields: coverage, layer checks, stage checks, dimensions, findings, handoffs and prior-finding dispositions. No selected case is summarized or truncated. The teaching wrapper is not the response object; return all fields of the active review Schema. On R1, examples with no prior findings do not replace the actual required prior-finding checks. A syntax-valid quote or a familiar noun does not prove entailment.
 
+Non-conservative acceptance check: propose a repair only for an identified change in executable meaning, a missing relevant recognition cue, or an evidenced grouping/handoff defect. Specify the source role and actual missing information rather than treating every omitted word as a defect. A faithful synonym, recoverable restatement or harmless supported anchor is not grounds to block. Neither copying the whole source nor choosing fewer stages automatically satisfies grouping; equally, more stages are not automatically better. Preserve a valid useful split and required clarification instead of demanding blanket merging or literal copying. Missing low-level motion details alone do not invalidate a source-prescribed final state. Diagnose the supplied text, not a hypothetical poor navigator response.
+
 ### Existing recheck after a Generator repair
 
 During recheck, independently inspect the entire new candidate, disposition every previous finding using new candidate evidence, and report new material defects. Do not approve merely because the Generator says a repair was made.
 
 The recheck uses the new frozen candidate. An advisory repair suggestion does not itself replace the executable text; only the candidate submitted by Generator, frozen and independently reviewed through the existing bounded workflow, can be released. Its English may remain identical when the old advice was unsupported; textual change is not a prerequisite for resolving a false finding.
+
+Repair-delta check: compare each prior finding with the new frozen candidate and distinguish an actually restored requirement from a remaining defect. A supported rejection or partial acceptance of the old remedy must be judged on source evidence, not on whether a textual change occurred. Preserve independently correct repairs even if another defect remains; do not re-report an omission already restored, propagate an old incorrect-state description, or excuse a new error merely because the requested edit was made. Continue the full L0–L6 pass using the existing prior-finding dispositions.
 
 ## P2 — Existing conditional evidence and false-positive calibration
 
@@ -353,11 +359,15 @@ For conditions, do not apply a blanket if/or keyword rule. A missing connective 
 
 Parent: P1 L2/L3/L4. Trigger: a temporal dependency, conditional observation or real alternative. Check the owner of until and the required before/after sequence, without requiring repeated execution of a trigger. Determine whether a view is descriptive or action-prescribing from the complete source; do not categorically remove a required turn. Preserve mutually exclusive branches and require all allowed outcomes to support a shared continuation. A lost dependency, not a missing connective alone, establishes a defect.
 
+Action-support check: distinguish a side-of-landmark description from an independently commanded body turn. Identify the exact extra action before alleging strengthening, and inspect later source text that may genuinely require or continue that turn. Do not remove a valid turn merely because its first mention is conditional. For before, distinguish temporal ordering from an endpoint limited before the next region; a repair must neither add the uncommanded entry nor erase an independently commanded one.
+
 ### Spatial ambiguity
 
 For spatial phrases, do not replace an ambiguous source with the reviewer's preferred layout.
 
 Parent: P1 L2/L3. Trigger: competing spatial readings, a changed frame or delayed target description. Determine subject, reference entity, viewpoint and time. Check rightmost-of-two, right-of-both and agent-relative right as different selections; separate path-wide and endpoint-only relations. Resolve a referent only when uniquely supported. Preserve usable descriptive uncertainty, but identify unresolved route-critical uncertainty precisely. Do not impose a preferred physical layout or strengthen the source.
+
+Scope-and-subject check: identify whether a candidate changed a local or predicted relation into a maintained path constraint, or weakened a real sustained constraint into an observation. Repeated endpoint observations alone do not establish the whole interval. Show the actual source/candidate difference and preserve genuine keep/stay requirements. Resolve the subject and referent separately: a person standing behind an object and another object located behind it are different claims. Do not fix uncertain grammar by asserting a preferred layout. A retained descriptive alternative is acceptable when it does not prevent following the route; a uniquely supported reference can be clarified without being treated as speculation.
 
 ### Local defect and necessary dependency scope
 
@@ -369,9 +379,13 @@ Parent: P1 Findings/decision and full recheck. Trigger: any identified error or 
 
 Parent: P1 L1/L2/L3. Trigger: an audit quote, target-identifying relation or ordinal. Require enough indexed candidate evidence to support the action, selected entity, condition and relevant time. A lone left or a repeated turn phrase cannot identify its owner. Preserve count category, origin, approximation and previously counted events. Necessary cross-sentence source evidence is allowed; do not use a later distinct action as support for an earlier stage. A source quote may overlap another requirement when it genuinely supports both.
 
+Quantity-and-cue check: identify the counted entity and start event before comparing an ordinal with a movement count. Check traversal-associated extent against post-traversal extent, and preserve approximation rather than sharpening it. A second stair does not automatically mean two additional steps. For a claimed omitted initial or later visual cue, locate its actual recognition or orientation role and whether its meaning survives elsewhere; neither deleting all descriptive detail nor demanding every repeated word is justified. Treat quoted sign text as a reference description unless the source itself imposes the prohibition, and do not let quotation erase a real do-not-enter instruction.
+
 ### Entry, completion and stopping scope
 
 Parent: P1 L3/L4/L5. Trigger: an inferred entry, a proposed boundary or a terminal refinement. Compare the predecessor's completed event with the first unperformed successor action and its actual prerequisites. Inherited entity alone does not establish arrival, heading or route history; an explicit context phrase is not a new command. Preserve seeing/approaching/reaching/entering distinctions and the final-only approach exception. Boundaries do not add STOP, but source stops remain mandatory. Distinguish intermediate placement, final placement and predicted state. A valid alternative cut or an adequate inherited entry is not a defect.
+
+Strength-and-end-state check: verify near/at/in/through against the actual completion needed by the successor. Entry wording cannot silently upgrade an in-threshold state to completed passage, but full-context evidence can legitimately support a crossing or arrival. Check final position and required facing independently: a landmark located on the left does not by itself preserve looking towards it. Restore the missing relation, not an invented turn angle, extra approach or STOP. Keep a source-supported final state or allowed terminal approach valid without requiring unwritten low-level motions; do not use that final-only allowance to excuse a weak intermediate boundary. Recheck only genuinely dependent handoffs while preserving other valid boundaries.
 
 
 # Reviewer layered checklist — exact same semantics as Generator
