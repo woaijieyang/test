@@ -10,9 +10,9 @@
     "generator": {
       "path": "generator/dataset_rules/rxr_en_us.md",
       "baseline_blob_sha": "0fedbc5d3eb4167f7d374df155f79e1822efb012",
-      "new_sha256": "eec74287baf505d7930b182a2f656123d3f36282453764aa06443cea2960e7c2",
+      "new_sha256": "4ddc47c4eae03d64b08726beaec3c4e0cb325364881c385adf90d0865ccb0fb2",
       "old_bytes": 4289,
-      "new_bytes": 16095,
+      "new_bytes": 21947,
       "sections": {
         "G-1": "## P0 — Role, responsibility and authority",
         "G-2": "### Whole-instruction interpretation, grouping and expression",
@@ -268,14 +268,18 @@
           "G-11"
         ]
       ],
-      "conversion_sha256": "ba9acc1e50764911cbbd787dda9ebe49b234b5cda994ab9fcd350453398eff17"
+      "conversion_sha256": "ba9acc1e50764911cbbd787dda9ebe49b234b5cda994ab9fcd350453398eff17",
+      "before_rule_completion": {
+        "new_sha256": "eec74287baf505d7930b182a2f656123d3f36282453764aa06443cea2960e7c2",
+        "new_bytes": 16095
+      }
     },
     "reviewer": {
       "path": "reviewer/dataset_rules/rxr_en_us.md",
       "baseline_blob_sha": "e889ddcd6229b1294ed058a89e30bae0f02b12dc",
-      "new_sha256": "56d589b6f87fa423d7329005ac57212ea470aa60722059cd24585ad54945dd50",
+      "new_sha256": "80556357e9f4c633b7be46bd353f0a8e0729071151714aabd51baee2bc3a5d14",
       "old_bytes": 5847,
-      "new_bytes": 15460,
+      "new_bytes": 20065,
       "sections": {
         "R-1": "## P0 — Independent reviewer identity and authority",
         "R-2": "### Ordered review framework: L0–L6",
@@ -574,7 +578,11 @@
           "R-9"
         ]
       ],
-      "conversion_sha256": "c4477c3b79a1822ba581adc2de7a503b6f5d3df6926a33d8313d05df41ea8ba7"
+      "conversion_sha256": "c4477c3b79a1822ba581adc2de7a503b6f5d3df6926a33d8313d05df41ea8ba7",
+      "before_rule_completion": {
+        "new_sha256": "56d589b6f87fa423d7329005ac57212ea470aa60722059cd24585ad54945dd50",
+        "new_bytes": 15460
+      }
     }
   },
   "baseline_prompts": {

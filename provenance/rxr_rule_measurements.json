@@ -1,0 +1,30 @@
+{
+  "measured_commit": "3352c9041682538102f09d18749f47b570d6ff19",
+  "workflow_run": "45748888079",
+  "measurements": {
+    "generator/initial": {
+      "sha256": "a121a79ccacb03da9964d73131329398cab3395e58ae986913ba5f56cf758896",
+      "schema_sha256": "4759ed0f5f6c69529a2538e22d0a86535716d4b6a03ee46a02c5d89814f7d645",
+      "utf8_bytes": 132278
+    },
+    "generator/repair": {
+      "sha256": "22ae8aa3348d19d8885afdd5e076bfe922a5c51d5e6373cdebb47b30d1dae371",
+      "schema_sha256": "2e0789d7a00a9973f1467e5506f2f031b1ac9ac018d616d6bb5b99dd29333d63",
+      "utf8_bytes": 147331
+    },
+    "reviewer/review": {
+      "sha256": "85dd1449c7f3d4cd2c2b9090285fb3e0443dc3b97be07e9ffcfc4a7913cb710c",
+      "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+      "utf8_bytes": 164600
+    },
+    "reviewer/recheck": {
+      "sha256": "85dd1449c7f3d4cd2c2b9090285fb3e0443dc3b97be07e9ffcfc4a7913cb710c",
+      "schema_sha256": "05d270f9caf762d824903a210eccc5a3f7a1979c8b752037857fa2b6f57591e6",
+      "utf8_bytes": 164600
+    }
+  },
+  "prompt_fixture_updated": false,
+  "rule_additions": 16,
+  "frozen_contracts": 9,
+  "navigation_evaluated": false
+}
