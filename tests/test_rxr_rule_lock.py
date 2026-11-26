@@ -146,7 +146,10 @@ class RuleLockTests(unittest.TestCase):
    self.assertNotIn('locked_pending_validation',b['prompt'])
    if b['profile']=='r2r-en':self.assertEqual(a['prompt'],b['prompt'])
    else:
-    name=self.data['roles'][b['role']]['path'];old=source(name).decode().strip();new=(ROOT/name).read_text().strip()
+    name=self.data['roles'][b['role']]['path']
+    # Compiler includes the raw role block, including its terminal newline.
+    # Replace exactly that entire authorized block; never normalize the prompt.
+    old=source(name).decode();new=(ROOT/name).read_text()
     self.assertEqual(a['prompt'].count(old),1);self.assertEqual(b['prompt'].count(new),1)
     self.assertEqual(b['prompt'].replace(new,old,1),a['prompt'])
 
